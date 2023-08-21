@@ -13,3 +13,4 @@ Course Sylabus <a href="Lecture/slides/Ch0_1.html" target="_blank"> Download her
 <div>
 The syllabus can be accessed <a href="https://willamette.edu/~esroberts/pykarel/reader/index.html"> here </a>
 </div>
+<p> trying whether the index can replace the README </p>
