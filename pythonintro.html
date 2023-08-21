@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .top-menu a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .top-menu a:hover {
+    background-color: #555;
+  }
+  .content {
+    padding-top: 60px; /* Add padding to account for fixed menu */
+    padding-left: 30px;
+    text-align: justify;
+  }
+  .two-column-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .column {
+    flex: 1;
+    padding: 20px;
+    border: 0px solid #ccc;
+    box-sizing: border-box;
+  }
+  .custom-list {
+    list-style:circle; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+    text-align: justify;
+  }
+
+  .custom-list li {
+    margin-bottom: 10px; /* Add spacing between items */
+  }
+  .container {
+    padding-top: 60px; /* Add padding to account for fixed menu */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px; /* Add negative margin to counteract padding */
+  }
+
+  .col {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .col:nth-child(odd) {
+    background-color: #e0e0e0;
+  }
+
+  .col:nth-child(even) {
+    background-color: #f0f0f0;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .col {
+      flex: 100%; /* Full width on smaller screens */
+    }
+  }
+</style>
+<title>Fred's page</title>
+</head>
+<body>
+  <div class="top-menu">
+    <a href="index.html">Home</a>
+    <a href="#about">About me</a>
+    <!--<a href="#services">Services</a>
+    <a href="#contact">Contact</a> -->
+  </div>
+
+  <div class="container">
+    <h1>Welcome to intro to programming with Python course page</h1>
+    <div class="row">
+      <div class="col">
+        <h2>Week 1</h2>
+        <p>This topic is on Karel the Robot</p>
+        <ul>
+            <li><a href="Lecture/slides/Ch0_1.html" target="_blankßßß">Kickoff with Karel the robot</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h2>Week 2</h2>
+        <p>This is the content of column 2.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h2>Week 3</h2>
+        <p>This is the content of column 3.</p>
+      </div>
+      <div class="col">
+        <h2>Week 4</h2>
+        <p>This is the content of column 4.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
