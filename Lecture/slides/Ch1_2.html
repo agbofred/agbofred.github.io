@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-01-30">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-09-11">
   <title>Functional Control</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,31 +36,30 @@
 
 <section id="title-slide">
   <h1 class="title">Functional Control</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">January 30, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">September 11, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 2 due Friday!
+<li>Problem Set 1 is due today!
 <ul>
-<li>I’m trying to get feedback to you all on PS1, hopefully by
+<li>I’ll try to get feedback to you all on PS1, hopefully by
 Wednesday</li>
 </ul></li>
+<li>I’m trying to post Problem Set 2 by tomorrow, and it will be due
+next week Monday</li>
 <li>Don’t forget you can contact your section leaders to ask questions
 as well!</li>
-<li>You have section meetings today and tomorrow!
-<ul>
-<li>If you are confused by the S#s that I have listed in the syllabus
-schedule, those are just an indicator of what you’ll be covering in
-section each week. You need to have nothing done before attending your
-section!</li>
-</ul></li>
-<li>Touching into some Ch 2 content today before doubling back to talk
-about a few more types from Ch 1 on Wednesday</li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>You have section meetings on Wednesdays and Thursdays!</li>
+<li>If you have just joined the course and not in section yet, see me
+after to class to fill out the form</li>
+<li>The last day you can <strong>add/drop</strong> a class without issue
+is <strong><em>Today</em></strong></li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
 </ul>
 </section>
 <section id="review-question" class="slide level2"
@@ -537,13 +539,9 @@ options:
 between each when printed.</p>
 <pre ><code class="python">print(1,2,'blue')</code></pre></li>
 <li class="fragment"><p>Concatenate what you want together with
-<code class="python">+</code>, converting to strings as needed</p>
+<code class="python">+</code>, converting to strings as needed
+<code class="python">python       print('2000' + ' - ' + '2023')</code></p>
 <pre ><code class="python">print(str(1) + ' ' + str(2) + ' blue')</code></pre></li>
-<li class="fragment"><p>Use Python’s wonderful <em>f-string</em>
-syntax</p>
-<pre ><code class="python">x = 'blue'
-y = 2
-print(f"F-strings are amazing: {1} {y} {x}")</code></pre></li>
 </ul></li>
 </ul>
 </div>
@@ -729,6 +727,24 @@ function you want to execute when the program is run directly</li>
 correctly</li>
 </ul></li>
 </ul>
+</section>
+<section id="sample-program" class="slide level2">
+<h2>Sample Program</h2>
+<pre ><code class="python" style="max-height: 900px">
+NUM_ODDS = 100 # Constant, so using all caps
+
+def print_odds():
+    """
+    Prints the first NUM_ODDS odd numbers 
+    starting at 1.
+    """
+    value = 1
+    for i in range(NUM_ODDS):
+        print(value)
+        value += 2
+
+if __name__ == '__main__':
+    print_odds()</code></pre>
 </section>
 <section id="sentinels" class="slide level2">
 <h2>Sentinels</h2>
@@ -1090,7 +1106,7 @@ if __name__ == '__main__':
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -1115,6 +1131,7 @@ if __name__ == '__main__':
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
