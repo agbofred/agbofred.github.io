@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-02-03">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-09-13">
   <title>Testing Ranges</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,28 +36,27 @@
 
 <section id="title-slide">
   <h1 class="title">Testing Ranges</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">February 3, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">September 13, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 2 due tonight!
+<li>Problem Set 2 is posted and due on Tuesday next week <strong><em>at
+12 noon</em></strong>
 <ul>
-<li>Feedback for PS1 went out yesterday! Don’t just look at the scores
-(which were largely quite good). <strong>Look at the
+<li>Feedback for PS1 will be ready by tomorrow! Don’t just look at the
+scores (which could be quite good). <strong>Look at the
 comments</strong></li>
-<li>Autochecker results are for your <em>own use and piece of mind</em>.
-They do not directly influence your grade</li>
-<li>Tired of getting emails from autochecker? I’ll show you where to
-deactivate those at the end of class</li>
 </ul></li>
-<li>I’ll be around for a chunk of the afternoon if you have questions,
-but have some meetings off and on (at 1 and then at 3)</li>
-<li>Problem Set 3 will go up this weekend</li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>If you have just joined the course and not in section yet, see me
+after to class to fill out the form</li>
+<li>We will be concluding chapter 2 of the text today. Hope eveyone is
+reading the text along</li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
 </ul>
 <!--
 ## Review Question
@@ -503,22 +505,15 @@ discoverable by other tools</p></li>
     assert count_letters("a", "strawberry") == 1
     assert count_letters("A", "apple") == 0
     assert count_letters("e", "eerie") == 3</code></pre>
-</section>
-<section id="showcasing-autochecks" class="slide level2">
-<h2>Showcasing Autochecks</h2>
-<ul>
-<li>When you submit code to GitHub, my pre-written tests are run
-<ul>
-<li>If <strong>any</strong> check fails, you’ll see the red X (and
-possibly get an email)</li>
-<li>Let’s look at how to get information about what went wrong</li>
-</ul></li>
-<li>VSCode actually can run all the tests locally as well
-<ul>
-<li>Let’s also walk through how that works (and looks)</li>
-</ul></li>
-</ul>
 <!--
+## Showcasing Autochecks
+- When you submit code to GitHub, my pre-written tests are run
+    - If **any** check fails, you'll see the red X (and possibly get an email)
+    - Let's look at how to get information about what went wrong
+- VSCode actually can run all the tests locally as well
+    - Let's also walk through how that works (and looks)
+
+
 ## Introduction to Wordle
 ::::::cols
 ::::col
@@ -711,7 +706,7 @@ possibly get an email)</li>
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -736,6 +731,7 @@ possibly get an email)</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

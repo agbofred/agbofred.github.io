@@ -1,7 +1,7 @@
 ---
 title: Testing Ranges
-author: Jed Rembold
-date: February 3, 2023
+author: Jed Rembold & Fred Agbo
+date: September 13, 2023
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,13 +15,11 @@ history: false
 
 
 ## Announcements
-- Problem Set 2 due tonight!
-	- Feedback for PS1 went out yesterday! Don't just look at the scores (which were largely quite good). **Look at the comments**
-	- Autochecker results are for your _own use and piece of mind_. They do not directly influence your grade
-	- Tired of getting emails from autochecker? I'll show you where to deactivate those at the end of class
-- I'll be around for a chunk of the afternoon if you have questions, but have some meetings off and on (at 1 and then at 3)
-- Problem Set 3 will go up this weekend
-- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
+- Problem Set 2 is posted and due on Tuesday next week ***at 12 noon***
+	- Feedback for PS1 will be ready by tomorrow! Don't just look at the scores (which could be quite good). **Look at the comments**
+- If you have just joined the course and not in section yet, see me after to class to fill out the form
+- We will be concluding chapter 2 of the text today. Hope eveyone is reading the text along
+- Polling continues today! Remember to use this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203) when it becomes **active**
 
 
 <!--
@@ -383,7 +381,7 @@ def test_count_letters():
 	assert count_letters("A", "apple") == 0
 	assert count_letters("e", "eerie") == 3
 ```
-
+<!--
 ## Showcasing Autochecks
 - When you submit code to GitHub, my pre-written tests are run
 	- If **any** check fails, you'll see the red X (and possibly get an email)
@@ -391,7 +389,7 @@ def test_count_letters():
 - VSCode actually can run all the tests locally as well
 	- Let's also walk through how that works (and looks)
 
-<!--
+
 ## Introduction to Wordle
 ::::::cols
 ::::col
