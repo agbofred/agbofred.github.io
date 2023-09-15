@@ -1,7 +1,7 @@
 ---
-title: "Ranging from Creation to Debugging"
-author: Jed Rembold & Fred Agbo
-date: September 15, 2023
+title: "Testing English Wordle"
+author: Jed Rembold
+date: February 5, 2023
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,50 +15,15 @@ history: false
 
 
 ## Announcements
-- Feedback on PS1 was out yesterday
-- You have Problem Set 2 due on Tuesday at **12 noon**
+- I'm working on PS2 feedback
+- You have Problem Set 3 due at the end of Friday
 	- You have everything you need to do all the problems after today
-- I have so many meetings this afternoon, including one during normal office hours
-	- Should you have any issue, ask me in the office until 10:30 am
-	- Also, get help from your section leader
-- - Polling continues today! Remember to use this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203) when it becomes **active**
+- Wordle Guidelines will be posted by the end of tonight
+- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
 
 
-## The `range()` iterable
-- Need an easy way to produce or describe a range of numeric values
-- The built-in `range()` function handles this and produces the needed iterable object
-- Takes 1, 2, or 3 arguments:
-	- Start (default 0): where to start the sequence at
-	- Stop (mandatory): the sequence ends just _below_ this value (does not include it!)
-	- Step (default 1): what value the sequence counts by
-<br><br>
 
-:::{.block name='Warning!'}
-Be careful, the `range` function will stop one step _before_ the final stop value.
-:::
-
-
-## For ranging examples
-- Providing just a stop argument:
-
-	```python
-	for n in range(5):
-		print(n)
-	```
-- Providing a start and stop:
-
-	```python
-	for n in range(1,11):
-		print(n)
-	```
-- Providing a start, stop, and step:
-
-	```python
-	for n in range(10,0,-1):
-		print(n)
-	```
-
-## Review Question and Understanding Check {data-notes="Answer is B, as it would not print the 0"}
+## Review Question {data-notes="Answer is B, as it would not print the 0"}
 Which of the below blocks of code would print something different from the others?
 
 ::::: cols
@@ -99,6 +64,37 @@ for k in range(0,10):
 ::::
 :::::
 
+## Assertions
+- You can use Python's `assert` statement to write test functions, which take the form:
+  ```python
+  assert condition
+  ```
+  where `condition` is any operation that returns a `True` or `False`
+- Assert statements "expect" a condition to yield a `True`, and if they do, nothing happens
+	- No news is good news in this case
+- If an assert condition evaluates to `False`, an error is raised
+- Naming your test functions starting with the word `test_` will make them automatically discoverable by other tools
+
+
+## Testing Example
+- Suppose we wanted to write some checks of the `count_letters` function from earlier
+
+```python
+def test_count_letters():
+	""" Runs several tests on the function count_letters """
+	assert count_letters("z", "banana") == 0
+	assert count_letters("a", "strawberry") == 1
+	assert count_letters("A", "apple") == 0
+	assert count_letters("e", "eerie") == 3
+```
+
+## Showcasing Autochecks
+- When you submit code to GitHub, my pre-written tests are run
+	- If **any** check fails, you'll see the red X (and possibly get an email)
+	- Let's look at how to get information about what went wrong
+- VSCode actually can run all the tests locally as well
+	- Let's also walk through how that works (and looks)
+
 
 ## Algorithms
 - Recall that when approaching a computation problem, you **must** have an algorithm designed before you start coding
@@ -109,36 +105,13 @@ for k in range(0,10):
 - You need to come up with an algorithm before you start coding!
 
 ## Creating your own Algorithms
-:::{.incremental style='font-size:.9em'}
 - Some useful hints to keep in mind when constructing your own algorithms:
 	- Think about how you would solve the problem **without** a computer. You can't write code if you don't understand what you want the computer to do.
-	- Computers are fast! Brute force methods are often very viable, or at least a good starting point.
 	- Try to use tools and programming patterns you have already seen. It is often far easier to write programs by assembling pieces from code you have already seen than writing each program entirely from scratch.
-		- Common patterns we have already seen include: looping over sequences, and using variables to track/control a loop
+		- Common patterns we have already seen include: looping over sequences, using variables to track/control a loop, and building up sequences from empty sequences using concatenation
 	- Recognize that the program you write is highly unlikely to work the first time
 		- Errors can occasionally be in your algorithms
-		- More often, early on, errors are in your translating of the algorithm into Python (the implementation)
-:::
-
-## Example: Greatest Factor
-- Suppose we wanted to write a function to compute the greatest factor of a provided number (not including the number itself)
-- Algorithm:
-
-  :::incremental
-  - Brute force -- check all smaller values to see if factor
-  - Start at top and work down, means first found is the greatest
-  - Check if factor by seeing if remainder 0
-  :::
-
-```{.python .fragment style='margin:auto;'}
-def greatest_factor(num):
-	"""Finds the greatest factor of a number."""
-	for i in range(num-1,0,-1):
-		if num % i == 0:
-			return i
-```
-
-<!-- not until strings
+		- More often, early on, errors are in your translating of the algorithm into Python
 
 ## Learning English
 - When working with sequences of characters, it is often useful or desirable to determine if they form actual valid English words
@@ -185,141 +158,8 @@ print(count)
 ::::
 ::::::
 
--->
-
-## Debugging
-
-::::quote
-> If debugging is the process of removing software bugs, then programming must be the process of putting them in.
-
-:::attribution
-Edsger W. Dijkstra
-:::
-::::
-
-:::incremental
-- Everyone makes mistakes when writing code
-- A core skill then is in efficiently finding the bugs that you introduce
-- We'll spend the rest of today looking at some good practices
-	- As always though, practice makes perfect
-:::
-
-## Strategy #1
-:::quip
-Concentrate on what your program IS doing, instead of what it SHOULD be doing.
-:::
-
-- It is impossible to find code that is missing
-- Instead focus on determining _what_ your program is doing, or _why_ it is behaving a certain way
-- Only once you understand what it is currently doing can you entertain thinking about how to change it productively
 
 
-## Strategy #2
-:::quip
-Let Python help you: print or log the state of different variables.
-:::
-
-- Many errors are caused by you expecting a variable to have some content that it doesn't have
-- Get Python to help you by adding print statements to print those variables out
-- Add print statements in blocks of code that you aren't sure are being accessed to see if you see a message
-
-
-## Strategy #3
-:::quip
-Stop and read. The documentation. The error messages.
-:::
-
-<iframe width="888" height="500" src="https://www.youtube.com/embed/X3jw1JVNdPE?start=78&end=139" title="how to never write bug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-## Parsing Error Messages
-- Start at the bottom! That is where the general type of error and a short description will show up.
-- Want to know where it happened? Look one line up from that.
-	- Will show a copy of the line where the error occurred
-	- One line up from that will include the line number
-- Want nicer error messages?
-	- The `rich` library offers some very pretty error messages: install with `pip install rich`
-	- At the top of your code, then include:
-	
-	  ```python
-	  from rich.traceback import install
-	  install(show_locals=True)
-	  ```
-
-## Strategy #4
-:::quip
-Use PythonTutor or a debugger to track EXACTLY what is happening in your program.
-:::
-
-<iframe width="888" height="500" src="https://www.youtube.com/embed/X3jw1JVNdPE?start=223&end=261" title="how to never write bug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-## Strategy #5
-:::quip
-Don't make random changes to your code in the hopes that it will miraculously start working.
-:::
-
-- Making random changes is easy, fast, and doesn't require a lot of thought
-- Unfortunately it is, at best, a wildly inefficient method of debugging, and at worst, actively detrimental
-- If you don't know _what_ you need to fix yet, you either haven't:
-	- Defined what you are attempting to do clearly enough, or
-	- Understood / tracked your program well enough to know what it is currently doing
-
-## Strategy #6
-:::quip
-Talk it out.
-:::
-
-- Explaining things verbally, in plain English, uncovers a shocking amount of misconceptions or mistakes
-- Find someone to talk at about your programming issues
-	- It isn't even important that they understand how to code, or even can talk back to you (though that might help in some cases)
-	- [Rubber Duck Debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging) is where a software developer explains an issue out loud to an inanimate rubber duck
-
-## Strategy #7
-:::quip
-Test your code as you go! Either manually or automatically.
-:::
-
-- Know that _everyone_ makes mistakes. The longer you go without testing that something in your program works, the harder it is to find where the mistake eventually is.
-- Write code that you test in small pieces as you go
-	- Decomposition into smaller functions is great for this: test each function individually as you go
-	- In the projects we try to construct the Milestones for this exact same purpose
-
-## Assertions
-- You can use Python's `assert` statement to write test functions, which take the form:
-  ```python
-  assert condition
-  ```
-  where `condition` is any operation that returns a `True` or `False`
-- Assert statements "expect" a condition to yield a `True`, and if they do, nothing happens
-	- No news is good news in this case
-- If an `assert` condition evaluates to `False`, an error is raised
-- Naming your test functions starting with the word `test_` will make them automatically discoverable by other tools
-
-
-## Testing Example
-- Suppose we wanted to write some checks of the `count_letters` function from earlier
-
-```python
-def test_greatest_factor():
-	""" Runs several tests on the function greatest_factor """
-	assert greatest_factor(10) == 5
-	assert greatest_factor(7) == 1
-	assert greatest_factor(51) == 17
-	assert greatest_factor(9) == 3
-```
-
-<!--
-
-## Showcasing Autochecks
-- When you submit code to GitHub, my pre-written tests are run
-	- If **any** check fails, you'll see the red X (and possibly get an email)
-	- Let's look at how to get information about what went wrong
-- VSCode actually can run all the tests locally as well
-	- Let's also walk through how that works (and looks)
--->
-
-<!-- moved to later
 ## Introduction to Wordle
 ::::::cols
 ::::col
@@ -377,7 +217,7 @@ def test_greatest_factor():
 		- A _milestone_ is a discrete checkpoint that you should ensure is working (and that you understand!) before moving on
 - Projects are all about managing complexity. If you start trying to implement milestones out of order, you are asking for disaster
 - Don't let yourself get overwhelmed by scale. Focus on one particular milestone at a time, which should involve focusing only on a small part of your overall code
--->
+
 
 <!-- next time
 ## The Worth of a Picture

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-09-15">
-  <title>Ranging from Creation to Debugging</title>
+  <meta name="author" content="Jed Rembold">
+  <meta name="dcterms.date" content="2023-02-05">
+  <title>Testing English Wordle</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,71 +35,28 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Ranging from Creation to Debugging</h1>
-  <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">September 15, 2023</p>
+  <h1 class="title">Testing English Wordle</h1>
+  <p class="author">Jed Rembold</p>
+  <p class="date">February 5, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Feedback on PS1 was out yesterday</li>
-<li>You have Problem Set 2 due on Tuesday at <strong>12 noon</strong>
+<li>I’m working on PS2 feedback</li>
+<li>You have Problem Set 3 due at the end of Friday
 <ul>
 <li>You have everything you need to do all the problems after today</li>
 </ul></li>
-<li>I have so many meetings this afternoon, including one during normal
-office hours
-<ul>
-<li>Should you have any issue, ask me in the office until 10:30 am</li>
-<li>Also, get help from your section leader</li>
-</ul></li>
-<li><ul>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
-</ul></li>
+<li>Wordle Guidelines will be posted by the end of tonight</li>
+<li>Polling: <a
+href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
 </ul>
 </section>
-<section id="the-range-iterable" class="slide level2">
-<h2>The <code class="python">range()</code> iterable</h2>
-<ul>
-<li>Need an easy way to produce or describe a range of numeric
-values</li>
-<li>The built-in <code class="python">range()</code> function handles
-this and produces the needed iterable object</li>
-<li>Takes 1, 2, or 3 arguments:
-<ul>
-<li>Start (default 0): where to start the sequence at</li>
-<li>Stop (mandatory): the sequence ends just <em>below</em> this value
-(does not include it!)</li>
-<li>Step (default 1): what value the sequence counts by <br><br></li>
-</ul></li>
-</ul>
-<div class="block" name="Warning!">
-<p>Be careful, the <code class="python">range</code> function will stop
-one step <em>before</em> the final stop value.</p>
-</div>
-</section>
-<section id="for-ranging-examples" class="slide level2">
-<h2>For ranging examples</h2>
-<ul>
-<li><p>Providing just a stop argument:</p>
-<pre ><code class="python">for n in range(5):
-    print(n)</code></pre></li>
-<li><p>Providing a start and stop:</p>
-<pre ><code class="python">for n in range(1,11):
-    print(n)</code></pre></li>
-<li><p>Providing a start, stop, and step:</p>
-<pre ><code class="python">for n in range(10,0,-1):
-    print(n)</code></pre></li>
-</ul>
-</section>
-<section id="review-question-and-understanding-check"
-class="slide level2"
+<section id="review-question" class="slide level2"
 data-notes="Answer is B, as it would not print the 0">
 <h2 data-notes="Answer is B, as it would not print the 0">Review
-Question and Understanding Check</h2>
+Question</h2>
 <p>Which of the below blocks of code would print something different
 from the others?</p>
 <div class="cols">
@@ -130,6 +87,55 @@ from the others?</p>
 </div>
 </div>
 </section>
+<section id="assertions" class="slide level2">
+<h2>Assertions</h2>
+<ul>
+<li><p>You can use Python’s <code class="python">assert</code> statement
+to write test functions, which take the form:</p>
+<pre ><code class="python">assert condition</code></pre>
+<p>where <code class="python">condition</code> is any operation that
+returns a <code class="python">True</code> or
+<code class="python">False</code></p></li>
+<li><p>Assert statements “expect” a condition to yield a
+<code class="python">True</code>, and if they do, nothing happens</p>
+<ul>
+<li>No news is good news in this case</li>
+</ul></li>
+<li><p>If an assert condition evaluates to
+<code class="python">False</code>, an error is raised</p></li>
+<li><p>Naming your test functions starting with the word
+<code class="python">test_</code> will make them automatically
+discoverable by other tools</p></li>
+</ul>
+</section>
+<section id="testing-example" class="slide level2">
+<h2>Testing Example</h2>
+<ul>
+<li>Suppose we wanted to write some checks of the
+<code class="python">count_letters</code> function from earlier</li>
+</ul>
+<pre ><code class="python">def test_count_letters():
+    """ Runs several tests on the function count_letters """
+    assert count_letters("z", "banana") == 0
+    assert count_letters("a", "strawberry") == 1
+    assert count_letters("A", "apple") == 0
+    assert count_letters("e", "eerie") == 3</code></pre>
+</section>
+<section id="showcasing-autochecks" class="slide level2">
+<h2>Showcasing Autochecks</h2>
+<ul>
+<li>When you submit code to GitHub, my pre-written tests are run
+<ul>
+<li>If <strong>any</strong> check fails, you’ll see the red X (and
+possibly get an email)</li>
+<li>Let’s look at how to get information about what went wrong</li>
+</ul></li>
+<li>VSCode actually can run all the tests locally as well
+<ul>
+<li>Let’s also walk through how that works (and looks)</li>
+</ul></li>
+</ul>
+</section>
 <section id="algorithms" class="slide level2">
 <h2>Algorithms</h2>
 <ul>
@@ -150,89 +156,73 @@ possible</li>
 </section>
 <section id="creating-your-own-algorithms" class="slide level2">
 <h2>Creating your own Algorithms</h2>
-<div style="font-size:.9em">
 <ul>
-<li class="fragment">Some useful hints to keep in mind when constructing
-your own algorithms:
+<li>Some useful hints to keep in mind when constructing your own
+algorithms:
 <ul>
-<li class="fragment">Think about how you would solve the problem
-<strong>without</strong> a computer. You can’t write code if you don’t
-understand what you want the computer to do.</li>
-<li class="fragment">Computers are fast! Brute force methods are often
-very viable, or at least a good starting point.</li>
-<li class="fragment">Try to use tools and programming patterns you have
-already seen. It is often far easier to write programs by assembling
-pieces from code you have already seen than writing each program
-entirely from scratch.
+<li>Think about how you would solve the problem <strong>without</strong>
+a computer. You can’t write code if you don’t understand what you want
+the computer to do.</li>
+<li>Try to use tools and programming patterns you have already seen. It
+is often far easier to write programs by assembling pieces from code you
+have already seen than writing each program entirely from scratch.
 <ul>
-<li class="fragment">Common patterns we have already seen include:
-looping over sequences, and using variables to track/control a loop</li>
+<li>Common patterns we have already seen include: looping over
+sequences, using variables to track/control a loop, and building up
+sequences from empty sequences using concatenation</li>
 </ul></li>
-<li class="fragment">Recognize that the program you write is highly
-unlikely to work the first time
+<li>Recognize that the program you write is highly unlikely to work the
+first time
 <ul>
-<li class="fragment">Errors can occasionally be in your algorithms</li>
-<li class="fragment">More often, early on, errors are in your
-translating of the algorithm into Python (the implementation)</li>
+<li>Errors can occasionally be in your algorithms</li>
+<li>More often, early on, errors are in your translating of the
+algorithm into Python</li>
 </ul></li>
 </ul></li>
 </ul>
-</div>
 </section>
-<section id="example-greatest-factor" class="slide level2">
-<h2>Example: Greatest Factor</h2>
+<section id="learning-english" class="slide level2">
+<h2>Learning English</h2>
 <ul>
-<li><p>Suppose we wanted to write a function to compute the greatest
-factor of a provided number (not including the number itself)</p></li>
-<li><p>Algorithm:</p>
-<div>
+<li>When working with sequences of characters, it is often useful or
+desirable to determine if they form actual valid English words</li>
+<li>This class provides for you a new library, through the file
+<code class="python">english.py</code></li>
+<li>The <code class="python">english</code> library provides two objects
+you can import into your programs:
 <ul>
-<li class="fragment">Brute force – check all smaller values to see if
-factor</li>
-<li class="fragment">Start at top and work down, means first found is
-the greatest</li>
-<li class="fragment">Check if factor by seeing if remainder 0</li>
+<li>The constant <code class="python">ENGLISH_WORDS</code>, which is a
+list of all the valid words in the English dictionary</li>
+<li>The function <code class="python">is_english_word()</code>, which
+accepts a single string as an argument and returns
+<code class="python">True</code> is the string represents a valid
+English word.</li>
+</ul></li>
+<li>This library will be particularly useful for Wordle!</li>
 </ul>
-</div></li>
+</section>
+<section id="example-how-many-2-letter-words" class="slide level2">
+<h2>Example: How many 2 letter words?</h2>
+<ul>
+<li>Before we start writing code, let’s pause. Give a physical English
+dictionary, how could you go about figuring out the number of two letter
+words?</li>
 </ul>
-<pre ><code class="python fragment" style="margin:auto;">def greatest_factor(num):
-    """Finds the greatest factor of a number."""
-    for i in range(num-1,0,-1):
-        if num % i == 0:
-            return i</code></pre>
-<!-- not until strings
-
-## Learning English
-- When working with sequences of characters, it is often useful or desirable to determine if they form actual valid English words
-- This class provides for you a new library, through the file `english.py`
-- The `english` library provides two objects you can import into your programs:
-    - The constant `ENGLISH_WORDS`, which is a list of all the valid words in the English dictionary
-    - The function `is_english_word()`, which accepts a single string as an argument and returns `True` is the string represents a valid English word.
-- This library will be particularly useful for Wordle!
-
-
-## Example: How many 2 letter words?
-- Before we start writing code, let's pause. Give a physical English dictionary, how could you go about figuring out the number of two letter words?
-
-::::::cols
-::::{.col .fragment}
-:::{.block name="Check valid words for right length"}
-```{.python style='width: 100%' .fragment}
-from english import ENGLISH_WORDS
+<div class="cols">
+<div class="col fragment">
+<div class="block" name="Check valid words for right length">
+<pre ><code class="python fragment" style="width: 100%">from english import ENGLISH_WORDS
 
 count = 0
 for word in ENGLISH_WORDS:
     if len(word) == 2:
         count += 1
-print(count)
-```
-:::
-::::
-
-::::{.col style='flex-grow:1.15' .fragment}
-:::{.block name="Check all two letter combinations"}
-```{.python style='width:100%' .fragment}
-from english import is_english_word
+print(count)</code></pre>
+</div>
+</div>
+<div class="col fragment" style="flex-grow:1.15">
+<div class="block" name="Check all two letter combinations">
+<pre ><code class="python fragment" style="width:100%">from english import is_english_word
 
 count = 0
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -241,262 +231,117 @@ for letter1 in alphabet:
         word = letter1 + letter2
         if is_english_word(word):
             count += 1
-print(count)
-```
-:::
-::::
-::::::
-
--->
+print(count)</code></pre>
+</div>
+</div>
+</div>
 </section>
-<section id="debugging" class="slide level2">
-<h2>Debugging</h2>
-<div class="quote">
-<blockquote>
-<p>If debugging is the process of removing software bugs, then
-programming must be the process of putting them in.</p>
-</blockquote>
-<div class="attribution">
-<p>Edsger W. Dijkstra</p>
+<section id="introduction-to-wordle" class="slide level2">
+<h2>Introduction to Wordle</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Our first project will be Wordle</li>
+<li>Milestone guide will be posted today</li>
+<li>Not due until February 17th</li>
+<li>You still have PS3 due this Friday</li>
+<li>Could complete in a week, but we are getting it to you early in case
+you want to start sooner</li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/wordle.png" alt="The game of Wordle" />
+<figcaption aria-hidden="true">The game of Wordle</figcaption>
+</figure>
 </div>
 </div>
-<div>
+</section>
+<section id="your-responsibilities" class="slide level2">
+<h2>Your Responsibilities</h2>
 <ul>
-<li class="fragment">Everyone makes mistakes when writing code</li>
-<li class="fragment">A core skill then is in efficiently finding the
-bugs that you introduce</li>
-<li class="fragment">We’ll spend the rest of today looking at some good
-practices
+<li>We will provide you with a custom data type that will handle all the
+graphics and user interaction
 <ul>
-<li class="fragment">As always though, practice makes perfect</li>
+<li>Don’t worry, you’ll have a chance to implement your own GUIs later
+in the semester!</li>
+</ul></li>
+<li>Your responsibilities will include:
+<ul>
+<li>Displaying and reading letters from boxes</li>
+<li>Evaluating whether a word is valid</li>
+<li>Determining what color each letter of a word should be</li>
+<li>Determining when victory or defeat occurs</li>
+</ul></li>
+</ul>
+</section>
+<section id="your-toolbox" class="slide level2">
+<h2>Your Toolbox</h2>
+<ul>
+<li>Special functions provided by the provided graphics data type:
+<code class="python">WordleGWindow</code>
+<ul>
+<li>These will be well documented, and include, but are not limited to,
+things like
+<ul>
+<li>Getting or setting a letter in a particular box</li>
+<li>Getting or changing the color of a given box</li>
+<li>Changing which row is used when characters are entered</li>
+</ul></li>
+</ul></li>
+<li>Variables and functions</li>
+<li>Control statements
+<ul>
+<li>Good use of loops and if statements will be very useful</li>
+</ul></li>
+<li>Basic string functions</li>
+</ul>
+</section>
+<section id="receiver-syntax" class="slide level2">
+<h2>Receiver Syntax</h2>
+<div style="font-size:.9em">
+<ul>
+<li><p>So far, all operations between or on objects have used symbols to
+indicate the operation</p>
+<ul>
+<li>The <code class="python">+</code> sign, for instance</li>
+</ul></li>
+<li><p>Going forward, we will begin to see more examples of operations
+on objects that use <em>receiver syntax</em></p></li>
+<li><p>In receiver syntax, we specify the object to act on, followed by
+a dot and then a predefined function (called a <em>method</em> here)
+name</p>
+<pre ><code class="python">obj.method_name()</code></pre>
+<ul>
+<li>This is like you are running this special function on the object, so
+you <strong>need</strong> the <code class="python">()</code> at the
+end</li>
+<li>Some methods also allow arguments, to influence exactly how the
+operation will proceed</li>
 </ul></li>
 </ul>
 </div>
 </section>
-<section id="strategy-1" class="slide level2">
-<h2>Strategy #1</h2>
-<div class="quip">
-<p>Concentrate on what your program IS doing, instead of what it SHOULD
-be doing.</p>
-</div>
+<section id="an-approach-to-success" class="slide level2">
+<h2>An Approach to Success</h2>
 <ul>
-<li>It is impossible to find code that is missing</li>
-<li>Instead focus on determining <em>what</em> your program is doing, or
-<em>why</em> it is behaving a certain way</li>
-<li>Only once you understand what it is currently doing can you
-entertain thinking about how to change it productively</li>
-</ul>
-</section>
-<section id="strategy-2" class="slide level2">
-<h2>Strategy #2</h2>
-<div class="quip">
-<p>Let Python help you: print or log the state of different
-variables.</p>
-</div>
+<li>Each project is accompanied by a highly detailed guide: <strong>read
+it!</strong>
 <ul>
-<li>Many errors are caused by you expecting a variable to have some
-content that it doesn’t have</li>
-<li>Get Python to help you by adding print statements to print those
-variables out</li>
-<li>Add print statements in blocks of code that you aren’t sure are
-being accessed to see if you see a message</li>
-</ul>
-</section>
-<section id="strategy-3" class="slide level2">
-<h2>Strategy #3</h2>
-<div class="quip">
-<p>Stop and read. The documentation. The error messages.</p>
-</div>
-<iframe width="888" height="500" src="https://www.youtube.com/embed/X3jw1JVNdPE?start=78&amp;end=139" title="how to never write bug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-</section>
-<section id="parsing-error-messages" class="slide level2">
-<h2>Parsing Error Messages</h2>
+<li>Explains background ideas so that you can understand the big picture
+of what you are needing to do</li>
+<li>Also included a breakdown of individual <em>milestones</em>
 <ul>
-<li>Start at the bottom! That is where the general type of error and a
-short description will show up.</li>
-<li>Want to know where it happened? Look one line up from that.
-<ul>
-<li>Will show a copy of the line where the error occurred</li>
-<li>One line up from that will include the line number</li>
+<li>A <em>milestone</em> is a discrete checkpoint that you should ensure
+is working (and that you understand!) before moving on</li>
 </ul></li>
-<li>Want nicer error messages?
-<ul>
-<li><p>The <code class="python">rich</code> library offers some very
-pretty error messages: install with
-<code class="python">pip install rich</code></p></li>
-<li><p>At the top of your code, then include:</p>
-<pre ><code class="python">from rich.traceback import install
-install(show_locals=True)</code></pre></li>
 </ul></li>
+<li>Projects are all about managing complexity. If you start trying to
+implement milestones out of order, you are asking for disaster</li>
+<li>Don’t let yourself get overwhelmed by scale. Focus on one particular
+milestone at a time, which should involve focusing only on a small part
+of your overall code</li>
 </ul>
-</section>
-<section id="strategy-4" class="slide level2">
-<h2>Strategy #4</h2>
-<div class="quip">
-<p>Use PythonTutor or a debugger to track EXACTLY what is happening in
-your program.</p>
-</div>
-<iframe width="888" height="500" src="https://www.youtube.com/embed/X3jw1JVNdPE?start=223&amp;end=261" title="how to never write bug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-</section>
-<section id="strategy-5" class="slide level2">
-<h2>Strategy #5</h2>
-<div class="quip">
-<p>Don’t make random changes to your code in the hopes that it will
-miraculously start working.</p>
-</div>
-<ul>
-<li>Making random changes is easy, fast, and doesn’t require a lot of
-thought</li>
-<li>Unfortunately it is, at best, a wildly inefficient method of
-debugging, and at worst, actively detrimental</li>
-<li>If you don’t know <em>what</em> you need to fix yet, you either
-haven’t:
-<ul>
-<li>Defined what you are attempting to do clearly enough, or</li>
-<li>Understood / tracked your program well enough to know what it is
-currently doing</li>
-</ul></li>
-</ul>
-</section>
-<section id="strategy-6" class="slide level2">
-<h2>Strategy #6</h2>
-<div class="quip">
-<p>Talk it out.</p>
-</div>
-<ul>
-<li>Explaining things verbally, in plain English, uncovers a shocking
-amount of misconceptions or mistakes</li>
-<li>Find someone to talk at about your programming issues
-<ul>
-<li>It isn’t even important that they understand how to code, or even
-can talk back to you (though that might help in some cases)</li>
-<li><a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">Rubber
-Duck Debugging</a> is where a software developer explains an issue out
-loud to an inanimate rubber duck</li>
-</ul></li>
-</ul>
-</section>
-<section id="strategy-7" class="slide level2">
-<h2>Strategy #7</h2>
-<div class="quip">
-<p>Test your code as you go! Either manually or automatically.</p>
-</div>
-<ul>
-<li>Know that <em>everyone</em> makes mistakes. The longer you go
-without testing that something in your program works, the harder it is
-to find where the mistake eventually is.</li>
-<li>Write code that you test in small pieces as you go
-<ul>
-<li>Decomposition into smaller functions is great for this: test each
-function individually as you go</li>
-<li>In the projects we try to construct the Milestones for this exact
-same purpose</li>
-</ul></li>
-</ul>
-</section>
-<section id="assertions" class="slide level2">
-<h2>Assertions</h2>
-<ul>
-<li><p>You can use Python’s <code class="python">assert</code> statement
-to write test functions, which take the form:</p>
-<pre ><code class="python">assert condition</code></pre>
-<p>where <code class="python">condition</code> is any operation that
-returns a <code class="python">True</code> or
-<code class="python">False</code></p></li>
-<li><p>Assert statements “expect” a condition to yield a
-<code class="python">True</code>, and if they do, nothing happens</p>
-<ul>
-<li>No news is good news in this case</li>
-</ul></li>
-<li><p>If an <code class="python">assert</code> condition evaluates to
-<code class="python">False</code>, an error is raised</p></li>
-<li><p>Naming your test functions starting with the word
-<code class="python">test_</code> will make them automatically
-discoverable by other tools</p></li>
-</ul>
-</section>
-<section id="testing-example" class="slide level2">
-<h2>Testing Example</h2>
-<ul>
-<li>Suppose we wanted to write some checks of the
-<code class="python">count_letters</code> function from earlier</li>
-</ul>
-<pre ><code class="python">def test_greatest_factor():
-    """ Runs several tests on the function greatest_factor """
-    assert greatest_factor(10) == 5
-    assert greatest_factor(7) == 1
-    assert greatest_factor(51) == 17
-    assert greatest_factor(9) == 3</code></pre>
-<!--
-
-## Showcasing Autochecks
-- When you submit code to GitHub, my pre-written tests are run
-    - If **any** check fails, you'll see the red X (and possibly get an email)
-    - Let's look at how to get information about what went wrong
-- VSCode actually can run all the tests locally as well
-    - Let's also walk through how that works (and looks)
--->
-<!-- moved to later
-## Introduction to Wordle
-::::::cols
-::::col
-- Our first project will be Wordle
-- Milestone guide will be posted today
-- Not due until February 17th
-- You still have PS3 due this Friday
-- Could complete in a week, but we are getting it to you early in case you want to start sooner
-::::
-
-::::col
-![The game of Wordle](../images/wordle.png)
-::::
-::::::
-
-## Your Responsibilities
-- We will provide you with a custom data type that will handle all the graphics and user interaction
-    - Don't worry, you'll have a chance to implement your own GUIs later in the semester!
-- Your responsibilities will include:
-    - Displaying and reading letters from boxes
-    - Evaluating whether a word is valid
-    - Determining what color each letter of a word should be
-    - Determining when victory or defeat occurs
-
-
-## Your Toolbox
-- Special functions provided by the provided graphics data type: `WordleGWindow`
-    - These will be well documented, and include, but are not limited to, things like
-        - Getting or setting a letter in a particular box
-        - Getting or changing the color of a given box
-        - Changing which row is used when characters are entered
-- Variables and functions
-- Control statements
-    - Good use of loops and if statements will be very useful
-- Basic string functions
-
-## Receiver Syntax
-:::{style='font-size:.9em'}
-- So far, all operations between or on objects have used symbols to indicate the operation
-    - The `+` sign, for instance
-- Going forward, we will begin to see more examples of operations on objects that use _receiver syntax_
-- In receiver syntax, we specify the object to act on, followed by a dot and then a predefined function (called a _method_ here) name
-
-  ```python
-  obj.method_name()
-  ```
-  - This is like you are running this special function on the object, so you **need** the `()` at the end
-  - Some methods also allow arguments, to influence exactly how the operation will proceed
-:::
-
-## An Approach to Success
-- Each project is accompanied by a highly detailed guide: **read it!**
-    - Explains background ideas so that you can understand the big picture of what you are needing to do
-    - Also included a breakdown of individual _milestones_
-        - A _milestone_ is a discrete checkpoint that you should ensure is working (and that you understand!) before moving on
-- Projects are all about managing complexity. If you start trying to implement milestones out of order, you are asking for disaster
-- Don't let yourself get overwhelmed by scale. Focus on one particular milestone at a time, which should involve focusing only on a small part of your overall code
--->
 <!-- next time
 ## The Worth of a Picture
 :::{style='font-size:.9em'}
