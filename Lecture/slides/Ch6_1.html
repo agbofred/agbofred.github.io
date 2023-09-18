@@ -1219,44 +1219,28 @@ integers
 -2)\)</span></li>
 <li>In binary: <span class="math inline">\(\quad\displaystyle
 1\frac{1}{4} = \frac{1}{1} + \frac{0}{2} + \frac{1}{4} = 1.01 = (101,
--10)\)</span> &lt;!–</li>
+-10)\)</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="floating-binary" class="slide level2">
-<h2>Floating Binary</h2>
-<div>
+<section id="consequences" class="slide level2">
+<h2>Consequences</h2>
 <ul>
-<li class="fragment">Say we wanted to convert the value <span
-class="math inline">\(\tfrac{7}{8}\)</span> to a binary floating point
-representation: <span class="math display">\[\frac{7}{8} = \frac{0}{1} +
-\frac{1}{2} + \frac{1}{4} + \frac{1}{8} = 0.111 = (111,
--11)\]</span></li>
-<li class="fragment">Now how would we convert <span
-class="math inline">\(\frac{1}{10}\)</span> to binary??
+<li>The best we can do within the range of normal integers <span
+class="math display">\[\frac{3602879701896397}{2^{55}} =
+0.10000000000000000555111512312578270\]</span></li>
+<li>When doing operations on these numbers, extra decimals will
+sometimes get rounded off, suddenly making the number look precise, but
+you might always have a tiny bit of this rounding error showing up in
+floating point values.</li>
+<li>So be <em>careful</em> using <code class="python">==</code> for
+numeric comparisons! Rounding might result in unexpected falsehoods
 <ul>
-<li class="fragment">We run into a problem! An infinitely repeating
-sequence! <span class="math display">\[\frac{1}{10} = \frac{0}{1} +
-\frac{0}{2} + \frac{0}{8} + \frac{1}{16} + \frac{1}{32} + \frac{0}{64} +
-\frac{0}{128} + \frac{1}{256} +  \cdots =
-0.0001100110011\ldots\]</span></li>
-<li class="fragment">Have to stop the sequence somewhere and approximate
-it: <span class="math display">\[\frac{3}{32} =
-0.09375\quad\text{or}\quad\frac{25}{256} = 0.09765625\]</span></li>
+<li><code class="python">0.1 + 0.1 + 0.1 != 0.3</code></li>
+<li>Far better to check if two numbers are within a small margin of one
+another, or greater or less than the other</li>
 </ul></li>
 </ul>
-</div>
-<p>–&gt; ## Consequences - The best we can do within the range of normal
-integers <span class="math display">\[\frac{3602879701896397}{2^{55}} =
-0.10000000000000000555111512312578270\]</span> - When doing operations
-on these numbers, extra decimals will sometimes get rounded off,
-suddenly making the number look precise, but you might always have a
-tiny bit of this rounding error showing up in floating point values. -
-So be <em>careful</em> using <code class="python">==</code> for numeric
-comparisons! Rounding might result in unexpected falsehoods -
-<code class="python">0.1 + 0.1 + 0.1 != 0.3</code> - Far better to check
-if two numbers are within a small margin of one another, or greater or
-less than the other</p>
 </section>
 <section id="representing-characters" class="slide level2">
 <h2>Representing Characters</h2>
