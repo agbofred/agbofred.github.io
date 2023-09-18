@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-03-01">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-09-18">
   <title>10 Representations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,34 +36,60 @@
 
 <section id="title-slide">
   <h1 class="title">10 Representations</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">March 1, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">September 18, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Midterm on Friday!
+<li>You have Problem Set 2 due on tomorrow Tuesday at <strong>12
+noon</strong></li>
+<li>Come to see me during my office hours should you have any questions
 <ul>
-<li>Second practice exam posted (actually the exam from last
-semester)</li>
-<li>Test is open book, open note, but no computer</li>
-<li>I will provide the Python summary page posted on the website for
-you!</li>
-</ul></li>
-<li>Breakout guide should be posted by tomorrow whenever you want to
-start looking at it</li>
-<li>Graphics contest will be going live by the end of the week
+<li>Ask on discord too</li>
+<li>Get help from your section leader</li>
+<li>Other resources: the QUAD Center is open six days a week for
+in-person (drop-in) tutoring.
 <ul>
-<li>Entries due at the end of the month</li>
-<li>Winner gets a free 100% on any assignment, project, or exam of their
-choosing</li>
-<li>All credible entries entered for a drawing for a 10% boost to any
-graded submission</li>
+<li>They also offer Zoom appointments</li>
 </ul></li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+</ul></li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
+<li>We are jumpting to <strong>chapter 7</strong> today!</li>
 </ul>
+</section>
+<section id="review-question" class="slide level2">
+<h2>Review Question</h2>
+<div class="cols">
+<div class="col">
+<p>The Kilburn’s algorithm for finding the factor of a number using
+brute-force strategy is shown on the right. What would be the printed
+output of the code?</p>
+<div class="poll">
+<ol>
+<li>12</li>
+<li>10</li>
+<li>5</li>
+<li>15</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python">def largest_factor(n):
+    factor = n - 1
+    while n % factor != 0:
+        factor -= 1
+    return factor
+
+if __name__ == '__main__':
+    fac = largest_factor(20)
+    print(fac)
+</code></pre>
+</div>
+</div>
 </section>
 <section id="representations" class="slide level2">
 <h2>Representations</h2>
@@ -68,7 +97,7 @@ href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
 <li>Focusing today on how a computer can internally store more complex
 and abstract information</li>
 <li>Initially will look at numbers</li>
-<li>Then we’ll segue to strings</li>
+<li>Then we’ll transition to strings</li>
 </ul>
 </section>
 <section id="bit-power" class="slide level2">
@@ -92,7 +121,7 @@ class="math inline">\(2\times2\times2\)</span>) values</li>
 class="math inline">\(2\times2\times2\times2\)</span> or <span
 class="math inline">\(2^4\)</span>) values, etc</li>
 </ul></li>
-<li>My laptop here has 16GB of system memory, and can therefore keep
+<li>Many laptops have 16GB of system memory, and can therefore keep
 track of approximately <span
 class="math inline">\(2^{16,000,000,000}\)</span> states!</li>
 </ul>
@@ -1063,28 +1092,34 @@ we represent that number.</strong>
 bases</li>
 </ul></li>
 </ul>
-</section>
-<section id="understanding-check" class="slide level2">
-<h2>Understanding Check</h2>
-<div class="cols">
-<div class="col">
-<p>How could you represent the number of items shown to the right in a
-binary representation?</p>
-<div class="poll">
-<ol>
-<li>1011</li>
-<li>10110</li>
-<li>10010</li>
-<li>11010</li>
-</ol>
-</div>
-</div>
-<div class="col">
-<p><img
-data-src="../images/svg_cache/45409201b004e856928b4c30b5bde518fc6c73c3.svg"
-style="width:80.0%" /></p>
-</div>
-</div>
+<!--
+## Understanding Check
+:::::cols
+::::col
+How could you represent the number of items shown to the right in a binary representation?
+
+:::poll
+#. 1011
+#. 10110
+#. 10010
+#. 11010
+:::
+
+::::
+
+::::col
+\begin{tikzpicture}%%width=80%
+\foreach \c in {0,1,...,17} {
+    \pgfmathparse{floor(\c/4)}
+    \def\y{\pgfmathresult}
+    \pgfmathparse{Mod(\c,5)}
+    \def\x{\pgfmathresult}
+    \node[circle, draw=white, thick, fill=MRed, minimum size=0.75cm] at ({Mod(\c,5)}, {floor(\c/5)}) {};
+}
+\end{tikzpicture}
+::::
+:::::
+-->
 </section>
 <section id="binary-clocks" class="slide level2"
 data-background-iframe="https://clock.sasaya.me/"
@@ -1134,7 +1169,7 @@ binary digit</li>
 <section id="baseic-practice" class="slide level2">
 <h2>Base(ic) Practice</h2>
 <ul>
-<li>The Java compiler has a fun quirk where every binary file is
+<li>The Java compiler has a fun quirk where every binary file it
 produces begins with <br><br></li>
 </ul>
 <p><img
@@ -1184,7 +1219,7 @@ integers
 -2)\)</span></li>
 <li>In binary: <span class="math inline">\(\quad\displaystyle
 1\frac{1}{4} = \frac{1}{1} + \frac{0}{2} + \frac{1}{4} = 1.01 = (101,
--10)\)</span></li>
+-10)\)</span> &lt;!–</li>
 </ul></li>
 </ul>
 </section>
@@ -1211,25 +1246,17 @@ it: <span class="math display">\[\frac{3}{32} =
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="consequences" class="slide level2">
-<h2>Consequences</h2>
-<ul>
-<li>The best we can do within the range of normal integers <span
-class="math display">\[\frac{3602879701896397}{2^{55}} =
-0.10000000000000000555111512312578270\]</span></li>
-<li>When doing operations on these numbers, extra decimals will
-sometimes get rounded off, suddenly making the number look precise, but
-you might always have a tiny bit of this rounding error showing up in
-floating point values.</li>
-<li>So be <em>careful</em> using <code class="python">==</code> for
-numeric comparisons! Rounding might result in unexpected falsehoods
-<ul>
-<li><code class="python">0.1 + 0.1 + 0.1 != 0.3</code></li>
-<li>Far better to check if two numbers are within a small margin of one
-another, or greater or less than the other</li>
-</ul></li>
-</ul>
+<p>–&gt; ## Consequences - The best we can do within the range of normal
+integers <span class="math display">\[\frac{3602879701896397}{2^{55}} =
+0.10000000000000000555111512312578270\]</span> - When doing operations
+on these numbers, extra decimals will sometimes get rounded off,
+suddenly making the number look precise, but you might always have a
+tiny bit of this rounding error showing up in floating point values. -
+So be <em>careful</em> using <code class="python">==</code> for numeric
+comparisons! Rounding might result in unexpected falsehoods -
+<code class="python">0.1 + 0.1 + 0.1 != 0.3</code> - Far better to check
+if two numbers are within a small margin of one another, or greater or
+less than the other</p>
 </section>
 <section id="representing-characters" class="slide level2">
 <h2>Representing Characters</h2>
@@ -3923,6 +3950,7 @@ international world, and has therefore been superseded by Unicode.</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

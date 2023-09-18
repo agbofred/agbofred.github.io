@@ -10,5 +10,12 @@ def greatest_divisor(x,y):
             x, y = y, remainder
     return gd
 
-if __name__ == '__main__' :
-       print(f'The greatest divisor is {greatest_divisor(60, 45)}')
+def largest_factor(n):
+    factor = n - 1
+    while n % factor != 0:
+        factor -= 1
+    return factor
+
+if __name__ == '__main__':
+	fac = largest_factor(20)
+	print(fac)
