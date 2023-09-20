@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-03-05">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-09-20">
   <title>Stringy Pythons</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,29 +36,26 @@
 
 <section id="title-slide">
   <h1 class="title">Stringy Pythons</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">March 5, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">September 20, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>It is going to take me a bit to get through the midterms, so please
-be patient
-<ul>
-<li>To those wondering, I always score things as I feel appropriate
-while grading and then, based on the class average, decide if some extra
-points to “curve” are warranted</li>
-</ul></li>
-<li>Breakout project due on Friday!
-<ul>
-<li>You have seen everything you need to complete this! Be making
-progress!</li>
-</ul></li>
-<li>Graphics contest rules posted to make website</li>
+<li>Problem set 3 is posted already and due <strong>next week Tuesday at
+12:noon</strong></li>
+<li>I would recommend you turn in your weekly solution <strong><em>as
+is</em></strong> on <strong>due date</strong> to avoid being overloaded
+in the following week.</li>
+<li>This week’s lecture introduces concepts you would need for the first
+project coming up next week</li>
 <li>Sections this week on working with strings</li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>Remember to seek help from your section leaders to resolve any
+problem or QUAD Center</li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
 </ul>
 </section>
 <section id="review" class="slide level2"
@@ -129,6 +129,144 @@ print(A == B)
     - Repeated calculation of some types can sometimes accumulate errors in the same direction and cause more of an issue
 -->
 </section>
+<section id="revisiting-other-data-types-string" class="slide level2">
+<h2>Revisiting Other Data Types (STRING)</h2>
+<ul>
+<li>Numbers are great, but what about other types of data?</li>
+<li>We briefly touched string data type in earlier class but let us
+revisit it in more details</li>
+<li>Note! other data type you would see later include:
+<ul>
+<li>lists!</li>
+</ul></li>
+</ul>
+</section>
+<section id="strings" class="slide level2">
+<h2>Strings</h2>
+<ul>
+<li>A <em>string</em> in Python represents textual data, in form of a
+sequence of individual characters
+<ul>
+<li>Domain: all possible sequences of characters</li>
+<li>Operations: <strong>Many!</strong> We’ll see some of them soon</li>
+</ul></li>
+<li>Denoted by placing the desired sequence of characters between two
+quotation marks
+<ul>
+<li><code class="python">'I am a string'</code></li>
+<li>In Python, either single or double quotes can be used, but the ends
+must match
+<ul>
+<li><code class="python">"I am also a string!"</code></li>
+<li><code class="python">"I'm sad you've gone"</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<!--
+## Lists
+- A _list_ in Python represents a sequence of **any** type of data
+- Denote by bordering with square brackets (`[`, `]`) with commas separating each element of the sequence
+    - Each element could be any data type (even mixing from element to element!)
+    - `['This', 'is', 'a', 'list']`
+    - `['Great', 4, 'storing', 5 * 10]`
+- There are many operations that we will see are possible on lists, but will start with only the basics
+-->
+</section>
+<section id="sequences" class="slide level2">
+<h2>Sequences</h2>
+<ul>
+<li>Both <em>strings</em> and <em>lists</em> are examples of a more
+general type called a <em>sequence</em>
+<ul>
+<li>Strings are sequences of characters</li>
+<li>Lists are sequences of anything</li>
+</ul></li>
+<li>Sequences are <em>ordered</em>, so we can number off their elements,
+which we call their <em>index</em>
+<ul>
+<li>Counting in Python always starts with <strong>0</strong>, so the
+first element of the sequence has index 0</li>
+</ul></li>
+<li>Python defines operations that work on all sequences
+<ul>
+<li>Selecting an individual element out of a sequence</li>
+<li>Concatenating two sequences together</li>
+<li>Determing the number of elements in a sequence</li>
+</ul></li>
+</ul>
+</section>
+<section id="selection" class="slide level2">
+<h2>Selection</h2>
+<ul>
+<li>You can select or “pluck out” just a single element from a sequence
+using square brackets <code class="python">[</code>
+<code class="python">]</code>
+<ul>
+<li>There are <strong>no</strong> commas between these square brackets,
+so they can’t be confused with a list</li>
+<li>The square brackets come after the sequence (or variable name
+representing a sequence)</li>
+<li>Inside the square brackets, you place the index number of the
+element you want to select</li>
+</ul></li>
+</ul>
+<div class="cols">
+<div class="col fragment">
+<pre ><code class="python">>>> A = [2, 4, 6, 8]
+>>> print(A[1])
+4</code></pre>
+</div>
+<div class="col fragment">
+<pre ><code class="python">>>> B = "Spaghetti"
+>>> print(B[6])
+'t'</code></pre>
+</div>
+</div>
+</section>
+<section id="concatenation" class="slide level2">
+<h2>Concatenation</h2>
+<ul>
+<li><em>Concatenation</em> is the act of taking two separate objects and
+bringing them together to create a single object</li>
+<li>For sequences, concatenation takes the contents of one sequence and
+add them to the end of another sequence</li>
+<li>The <code class="python">+</code> operator concatenates sequences
+<ul>
+<li>This is why it is important to keep track of your variable types!
+<code class="python">+</code> will <strong>add</strong> two integers,
+but will <strong>concatenate</strong> two strings</li>
+</ul>
+<div class="cols">
+<div class="col fragment">
+<pre ><code class="python">>>> 'fish' + 'sticks'
+'fishsticks'</code></pre>
+</div>
+<div class="col fragment">
+<pre ><code class="python">>>> A = [1, 'fish']
+>>> B = [2, 'fish']
+>>> print(A + B)
+[1, 'fish', 2, 'fish']</code></pre>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="lengths" class="slide level2">
+<h2>Lengths</h2>
+<ul>
+<li><p>The number of elements in a sequence is commonly called its
+<em>length</em>, and can be given by the
+<code class="python">len( )</code> function</p></li>
+<li><p>Simply place the sequence you desire to know the length of
+between the parentheses:</p>
+<pre ><code class="python">>>> len("spaghetti")
+9</code></pre></li>
+<li><p>You can have sequences of 0 length as well!</p>
+<pre ><code class="python">>>> A = ""
+>>> B = [ ]
+>>> print( len(A) + len(B) )
+0</code></pre></li>
+</ul>
+</section>
 <section id="representing-characters" class="slide level2">
 <h2>Representing Characters</h2>
 <ul>
@@ -148,7 +286,8 @@ therefore been superseded by Unicode.</li>
 </section>
 <section id="ascii" class="slide level2">
 <h2>ASCII</h2>
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -2648,7 +2787,9 @@ therefore been superseded by Unicode.</li>
     </g>
   </g>
 </svg>
-</p>
+
+<figcaption>The ASCII subset of Unicode</figcaption>
+</figure>
 </section>
 <section id="meeting-chr-and-ord" class="slide level2">
 <h2>Meeting <code class="python">chr</code> and
@@ -3209,6 +3350,7 @@ vowel to the end and append on “ay” at the end
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -68,6 +71,32 @@ expression below will <strong>not</strong> give you the string
 <li><code class="python">x[-6:-1]</code></li>
 </ol>
 </div>
+<!--
+## Understanding Check
+:::::cols
+::::col
+What would be the printed output of the code to the right?
+
+:::poll
+#. 12
+#. 13
+#. 14
+#. 15
+:::
+::::
+::::col
+```python
+A = "hots"
+B = ["fire", A + A]
+C = A[3] + A[1]
+B += C + C[0]
+D = B[0] + B[1] + B[2]
+print(len(D))
+```
+
+::::
+:::::
+-->
 </section>
 <section id="transforming-methods" class="slide level2">
 <h2>Transforming Methods</h2>
@@ -704,6 +733,7 @@ Check!</h2>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
