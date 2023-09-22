@@ -17,7 +17,7 @@ def second_drw_console_pyramid(size):
     for i in range(size,0,-1):
         #indent = " "*i
         #output = star.rjust(i)
-        print(f'{star.center(i)}')
+        print(f'{star:^16}')
         star = star + addstar
 if __name__ == "__main__":
     #draw_console_pyramid(8)
