@@ -244,10 +244,8 @@ print(count)
 ::::::cols
 ::::col
 - Our first project will be Wordle
-- Milestone guide will be posted today
-- Not due until February 17th
-- You still have PS3 due this Friday
-- Could complete in a week, but we are getting it to you early in case you want to start sooner
+- Milestone guide will be posted tomorrow
+- Not due until October 3rd
 ::::
 
 ::::col
