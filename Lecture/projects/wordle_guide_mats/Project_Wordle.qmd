@@ -93,7 +93,7 @@ Even though you know the position of the `R`, it doesn't make sense to guess mor
 ```{r engine='tikz'}
 #| echo: false
 #| fig-align: center
-#| fig-ext: svg
+#| fig-ext: png
 #| out-width: 50%
 \definecolor{CORRECT}{HTML}{66BB66}
 \definecolor{PRESENT}{HTML}{CCBB66}
