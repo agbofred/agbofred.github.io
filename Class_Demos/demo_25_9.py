@@ -31,10 +31,18 @@ def draw_checker():
                 rect.set_filled(True)
             gw.add(rect)
 
+def draw_centere_line():
+    gw = GWindow(500, 200)
+    msg = GLabel("hello world!")
+    msg.set_font("italic bold 20px 'times new roman'")
+    x = 250 - msg.get_width() / 2
+    y = 100 + msg.get_ascent() / 2
+    gw.add(msg, x, y)
 
 if __name__ == "__main__":
-    draw_over()
+    #draw_over()
     #draw_checker()
+    draw_centere_line()
 
 
 
