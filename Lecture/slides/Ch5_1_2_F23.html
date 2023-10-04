@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-02">
-  <title>Scoping Out Functions</title>
+  <meta name="dcterms.date" content="2023-10-04">
+  <title>Functional Arguments</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,31 +35,28 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Scoping Out Functions</h1>
+  <h1 class="title">Functional Arguments</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 2, 2023</p>
+  <p class="date">October 4, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Remember the due date for Problem 1 is <strong><em>tomorrow at 12
-noon</em></strong>.</li>
-<li>I’m still tackling with PS3, will be done ASAP! Apologies for the
-delay.</li>
-<li>We will enter Ch 6 this week in the text, which is a return to
-graphics</li>
-<li>Before that, we will talk about the following
+<li>Feedback on PS3 is completed.</li>
+<li>Midterm exam 1 is Friday at <strong>9:10 am - 10:10 am</strong> in
+this hall</li>
+<li>Come with a computer for the exam</li>
+<li>We shall test-run the exam on Canvas in the last 10 minutes of
+today’s class</li>
+<li>Practice exam questions 2 will be released on Canvas after the
+class</li>
+<li>Ch 6 of the text will begin week</li>
+<li>I am going over <strong>Functions</strong> today to clarify last
+review question &amp; explanations
 <ul>
-<li>Some quick information about your 1st mid-term test taking place on
-<strong>Friday 6th Oct</strong></li>
-<li>Ch 5 - Scoping Function -</li>
+<li>also to emphasize program tracing</li>
 </ul></li>
-<li>I suggested some of you to attend the BoT luncheon- watchout for the
-email invite.</li>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
 </ul>
 <!--
 ## Wordle Tidbits
@@ -77,46 +74,97 @@ when it becomes <strong>active</strong></li>
       uppered = "abcDEF".upper()
       ```
       - The method returns a **new** string, so make sure you assign it to something
+
+## Mid-term test
+- Test will take place during the class time **9:10 - 10:10 0n Friday**.
+- Those with accommodations should already contact the testing center and cc me.
+- Practice questions are posted on this week's module
+- Basic things to keep in mind:
+    - The test contain detailed information to guide on what to expect. ***Read it carefully***
+    - The exam is partially open, and thus you are free to utilize:
+        - The text
+        - Your notes
+        - Class slides
+        - Any past work you have done as part of sections, problem sets, or projects, provided it has been uploaded, and you access it through GitHub.
+
+## Mid-term test        
+- You are allowed to use a computer for ease of typing and accessing the above resources, 
+- You are **prohibited** from accessing and using any editor or terminal to run your code. 
+    - Visual Studio Code or any similar editor should **never** be open on your computer during this exam. 
+- Additionally, you are **prohibited** from accessing outside internet resources beyond the webpages described above.
 -->
 </section>
-<section id="mid-term-test" class="slide level2">
-<h2>Mid-term test</h2>
+<section id="positional-vs-keyward-arguments" class="slide level2">
+<h2>Positional VS Keyward arguments</h2>
 <ul>
-<li>Test will take place during the class time <strong>9:10 - 10:10 0n
-Friday</strong>.</li>
-<li>Those with accommodations should already contact the testing center
-and cc me.</li>
-<li>Practice questions are posted on this week’s module</li>
-<li>Basic things to keep in mind:
+<li>A function defined with positional arguments assigns each argument
+to its corresponding parameter when it’s called</li>
+</ul>
+<pre ><code class="python">>>> def func( first, second, third ):
+        print( first, second, third )
+>>> func(1,2,3)
+1 2 3
+>>> func(2,6,4)
+2 6 4</code></pre>
 <ul>
-<li>The test contain detailed information to guide on what to expect.
-<strong><em>Read it carefully</em></strong></li>
-<li>The exam is partially open, and thus you are free to utilize:
-<ul>
-<li>The text</li>
-<li>Your notes</li>
-<li>Class slides</li>
-<li>Any past work you have done as part of sections, problem sets, or
-projects, provided it has been uploaded, and you access it through
-GitHub.</li>
-</ul></li>
-</ul></li>
+<li>First argument to first parameter, second to second parameter,
+etc</li>
 </ul>
 </section>
-<section id="mid-term-test-1" class="slide level2">
-<h2>Mid-term test</h2>
+<section id="keyword-arguments" class="slide level2">
+<h2>Keyword arguments</h2>
 <ul>
-<li>You are allowed to use a computer for ease of typing and accessing
-the above resources,</li>
-<li>You are <strong>prohibited</strong> from accessing and using any
-editor or terminal to run your code.
-<ul>
-<li>Visual Studio Code or any similar editor should
-<strong>never</strong> be open on your computer during this exam.</li>
-</ul></li>
-<li>Additionally, you are <strong>prohibited</strong> from accessing
-outside internet resources beyond the webpages described above.</li>
+<li><p>Arguments may also be specified by a keyword, in which the caller
+precedes the argument with a parameter name and equals sign</p></li>
+<li><p>Always stores the argument value in the specified
+parameter</p></li>
 </ul>
+<pre ><code class="python">>>> def func( first, second, third ):
+        print( first, second, third )
+>>> func(third=4, first=2, second=6)
+2 6 4</code></pre>
+<ul>
+<li><strong>Keyword arguments can appear in any order</strong></li>
+<li>We can mix positional and keyword arguments when calling a function,
+but…</li>
+<li>All keyword arguments must come after any positional arguments!</li>
+</ul>
+</section>
+<section id="default-parameters" class="slide level2">
+<h2>Default parameters</h2>
+<ul>
+<li>When defining a function, arguments could be assigned default
+value</li>
+</ul>
+<pre ><code class="python">
+def num_dif(w=30, h=55):
+    ans = w-h
+    return ans
+num_dif(h=3, w=33) # keyword parameters mapped to override the default argument
+</code></pre>
+<ul>
+<li>This function define <strong>w = 30</strong> and <strong>h =
+55</strong> as their default values</li>
+<li>This example calls the function with keyword parameter but different
+values</li>
+<li>Although the parameter arrangement changed, the keyword fashion
+assigns values based on their parameter names</li>
+</ul>
+</section>
+<section id="default-arguments" class="slide level2">
+<h2>Default Arguments</h2>
+<ul>
+<li>Here is an example we saw in last class</li>
+</ul>
+<pre ><code class="python">def printArea(width = 1, height = 2):
+    area = width * height
+    print("width:", width, "\theight:", height, "\tarea:", area)
+
+printArea() # Default arguments width = 1 and height = 2
+printArea(4, 2.5) # Positional arguments width = 4 and height = 2.5
+printArea(height = 5, width = 3) # Keyword arguments width 
+printArea(width = 1.2) # Default height = 2
+printArea(height = 6.2) # Default widht = 1</code></pre>
 </section>
 <section id="review-question" class="slide level2"
 data-notes="Answer is 27">
@@ -146,57 +194,92 @@ print(z)
 </div>
 </div>
 </section>
-<section id="summary-of-a-function-call" class="slide level2">
-<h2>Summary of a Function Call</h2>
-<div style="font-size:.8em">
-<ol>
-<li class="fragment">Evaluate the arguments in the context of the
-caller</li>
-<li class="fragment">Reserve space for the function in a new stack
-frame</li>
-<li class="fragment">Copy each positional argument to the corresponding
-parameter variable</li>
-<li class="fragment">Copy each keyword argument to the parameter with
-that name</li>
-<li class="fragment">For parameters with default values, if not already
-assigned, assign those values</li>
-<li class="fragment">Evaluate statements in the function body, using
-current stack frame to look up values of local variables</li>
-<li class="fragment">On encountering a
-<code class="python">return</code>, compute the return value and
-substitute that value in place of the function call</li>
-<li class="fragment">Remove the stack frame</li>
-<li class="fragment">Return to the caller, continuing from just after
-the function call</li>
-</ol>
-</div>
-</section>
-<section id="name-resolution-and-scope" class="slide level2">
-<h2>Name Resolution and Scope</h2>
+<section id="walk-through-vegas" class="slide level2">
+<h2>Walk through vegas</h2>
 <ul>
-<li>When Python encounters a variable name in a program, it looks for
-where the variable was defined in an expanding search:
-<ol type="1">
-<li><strong>Local</strong> - The local context is all the variables
-defined within the current function. This includes variables appearing
-as a parameter!</li>
-<li><strong>Enclosing</strong> - The enclosing context consists of the
-names defined in a function enclosing the current one.</li>
-<li><strong>Global</strong> - The global context consists of names
-defined outside of any function or imported into the current
-module.</li>
-<li><strong>Built-in</strong> - The last place Python looks is in the
-names of any built-in functions, like <code class="python">abs</code>,
-<code class="python">str</code>, <code class="python">print</code>,
-etc.</li>
-</ol></li>
-<li>The part of a program in which a name is defined in called its
-<em>scope</em></li>
+<li>Consider the code to below. When the final value of
+<code class="python">x</code> and <code class="python">z</code> are
+printed, what will their value be?</li>
 </ul>
+<pre ><code class="python">def Vegas(x):
+    y = 2
+    for i in range(5):
+        x += y
+    return x
+
+x = 3
+z = Vegas(x)
+print('z =', z)
+print('x =', x)</code></pre>
 </section>
-<section id="scoping-example" class="slide level2">
-<h2>Scoping Example</h2>
-<pre ><code class="python" data-line-numbers="" style="max-height:900px">def func1(x,y):
+<section id="mystery-word" class="slide level2">
+<h2>Mystery word</h2>
+<ul>
+<li>Let us walk through this program and unravel what will be printed
+when the program complete execution.</li>
+</ul>
+<pre ><code class="python">def mystery (x):
+    def enigma (s, t):
+        t -= 2
+    return s [::6] + s[t]
+y = len(x)
+z = x[1 - y]
+z += enigma (x, y)
+z += enigma (x, y - 2)
+print(z)
+
+if __name__ == '__main__ ':
+    print( mystery ("abcdefgh"))
+
+
+</code></pre>
+</section>
+<section id="graphic-function-with-default-color" class="slide level2">
+<h2>Graphic function with default color</h2>
+<ul>
+<li>You can return any type of variable from a function, including
+GObject graphical objects</li>
+<li>Can be useful to write simple functions that bundle together common
+tasks
+<ul>
+<li>For instance, to create a filled circle centered at some
+location:</li>
+</ul></li>
+</ul>
+<pre ><code class="python">def make_filled_circ(x_cent, y_cent, radius, color='black'):
+    circle = GOval(x_cent-radius, y_cent-radius, 2*radius, 2*radius)
+    circle.set_color(color)
+    circle.set_filled(True)
+    return circle
+</code></pre>
+<!--
+
+## Summary of a Function Call 
+
+:::{.incremental style='font-size:.8em'}
+#. Evaluate the arguments in the context of the caller
+#. Reserve space for the function in a new stack frame
+#. Copy each positional argument to the corresponding parameter variable
+#. Copy each keyword argument to the parameter with that name
+#. For parameters with default values, if not already assigned, assign those values
+#. Evaluate statements in the function body, using current stack frame to look up values of local variables
+#. On encountering a `return`, compute the return value and substitute that value in place of the function call
+#. Remove the stack frame
+#. Return to the caller, continuing from just after the function call
+:::
+
+
+## Name Resolution and Scope
+- When Python encounters a variable name in a program, it looks for where the variable was defined in an expanding search:
+    1. **Local** - The local context is all the variables defined within the current function. This includes variables appearing as a parameter!
+    2. **Enclosing** - The enclosing context consists of the names defined in a function enclosing the current one.
+    3. **Global** - The global context consists of names defined outside of any function or imported into the current module.
+    4. **Built-in** - The last place Python looks is in the names of any built-in functions, like `abs`, `str`, `print`, etc.
+- The part of a program in which a name is defined in called its _scope_
+
+## Scoping Example
+```{.python data-line-numbers="" style='max-height:900px'}
+def func1(x,y):
     return z + func2(x,y)
 
 def func2(x,y):
@@ -207,27 +290,9 @@ def func2(x,y):
     return z - y
 
 z = 1
-print(func1(2,z))</code></pre>
-</section>
-<section id="local-variables" class="slide level2">
-<h2>Local Variables</h2>
-<ul>
-<li><p>In Python, assigning any value to a variable means that the
-variable is assumed to be <em>local</em></p>
-<ul>
-<li>This generally makes sense, as you would not want more specific
-functions overriding variables in other areas</li>
-</ul></li>
-<li><p>Can lead to issues though:</p>
-<pre ><code class="python badcode">def increment():
-  x = x + 1
-
-x = 0
-increment()</code></pre></li>
-<li><p>The variable x in the fuction is local within that scope, and
-another <strong><em>global</em></strong> x with value 0 can cause
-issues</p></li>
-</ul>
+print(func1(2,z))
+```
+-->
 </section>
     </div>
   </div>
