@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-02-17">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-10-09">
   <title>Clicky Clicky</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,46 +36,43 @@
 
 <section id="title-slide">
   <h1 class="title">Clicky Clicky</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">February 17, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">October 9, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Wordle Project due tonight!</li>
-<li>Problem Set 4 will go out later today or early tomorrow</li>
-<li>I have a meeting from noon until 2 today, but otherwise should be
-around my office most of the afternoon if you have last minute Wordle
-questions</li>
-<li>No class on Monday! Enjoy your mini-break!</li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>Wordle Project grading still ongoing!</li>
+<li>Midterm-1 exam grade posted. <strong><em>Good performance on the
+average</em></strong></li>
+<li>If you have any concerns, see me during my office hours</li>
+<li>Problem Set 4 will go out this week!</li>
+<li>The Graphics Contest is a suitable option to boost your grade.
+<ul>
+<li>Consider participating in the contest</li>
+<li>Instructions and due date will be posted this week</li>
+</ul></li>
+<li>No Polling Today! <strong>Review course grading
+instead</strong></li>
 </ul>
-</section>
-<section id="review-question" class="slide level2">
-<h2>Review Question</h2>
-<div class="cols">
-<div class="col">
-<p>Which of the below images is the mostly likely output of the code to
-the right?</p>
+<!--
+## Review Question
+::::::cols
+::::col
+Which of the below images is the mostly likely output of the code to the right?
+
 <div style="display: flex; flex-wrap: wrap; justify-content:center;">
-<div>
-<img src="../images/random_revq1.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
+<div><img src="../images/random_revq1.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
+<div><img src="../images/random_revq2.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
+<div><img src="../images/random_revq3.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
+<div><img src="../images/random_revq4.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
 </div>
-<div>
-<img src="../images/random_revq2.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
-</div>
-<div>
-<img src="../images/random_revq3.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
-</div>
-<div>
-<img src="../images/random_revq4.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
-</div>
-</div>
-</div>
-<div class="col" style="flex-grow:1.2;">
-<pre ><code class="python" style="max-height:950px; font-size:.75em;">def make_circle(x,y,r):
+::::
+
+::::{.col style='flex-grow:1.2;'}
+```{.python style='max-height:950px; font-size:.75em;'}
+def make_circle(x,y,r):
     c = GOval(x-r, y-r, 2*r, 2*r)
     c.set_filled(True)
     if randint(1, 100) > 75:
@@ -88,10 +88,13 @@ for i in range(50):
             randint(50,450), 
             randint(5,50)
             )
-          )</code></pre>
-</div>
-</div>
-<!--
+          )
+```
+::::
+::::::
+
+
+
 ## Understanding Check
 ::::cols
 :::col
@@ -139,24 +142,46 @@ What value will be printed to the screen when the code to the left is run?
 `get_color()`{.no-highlight} | Returns the color currently assigned to the object
 
 :::
-
-## The Python Event Model
-- Graphical applications usually make it possible for the user to control the action of a program by using an input device such a mouse.
-    - Programs supporting this type of control are called _interactive programs_.
-- User actions such as clicking the mouse are called _events_.
-- Programs that respond to events are said to be _event driven_.
-- User input does not generally occur at predictable times. As the events are not controlled by the program, they are said to be _asynchronous_.
-- In Python, you write a function that acts as a _listener_ for a particular event type. When the event happens, the listener is called.
-
-
-## First Class Functions
-- Functions in Python are treated as data values just like anything else!
-    - We will need to take advantage of this to write listener functions.
-- You can assign a function to a variable, pass it as a parameter, return it as a result, etc
-- Functions treated like any other data value are called _first-class functions_
-- To work with a function itself, you leave off the `()`. Including the parentheses is how you _call_ the function!
-
 -->
+</section>
+<section id="the-python-event-model" class="slide level2">
+<h2>The Python Event Model</h2>
+<ul>
+<li>Graphical applications usually make it possible for the user to
+control the action of a program by using an input device such a mouse.
+<ul>
+<li>Programs supporting this type of control are called <em>interactive
+programs</em>.</li>
+</ul></li>
+<li>User actions such as clicking the mouse are called
+<em>events</em>.</li>
+<li>Programs that respond to events are said to be <em>event
+driven</em>.</li>
+<li>User input does not generally occur at predictable times. As the
+events are not controlled by the program, they are said to be
+<em>asynchronous</em>.</li>
+<li>In Python, you write a function that acts as a <em>listener</em> for
+a particular event type. When the event happens, the listener is
+called.</li>
+</ul>
+</section>
+<section id="first-class-functions" class="slide level2">
+<h2>First Class Functions</h2>
+<ul>
+<li>Functions in Python are treated as data values just like anything
+else!
+<ul>
+<li>We will need to take advantage of this to write listener
+functions.</li>
+</ul></li>
+<li>You can assign a function to a variable, pass it as a parameter,
+return it as a result, etc</li>
+<li>Functions treated like any other data value are called
+<em>first-class functions</em></li>
+<li>To work with a function itself, you leave off the
+<code class="python">()</code>. Including the parentheses is how you
+<em>call</em> the function!</li>
+</ul>
 </section>
 <section id="a-first-class-example" class="slide level2">
 <h2>A First Class Example</h2>
@@ -460,7 +485,7 @@ if __name__ == '__main__':
 <section id="timer-events" class="slide level2">
 <h2>Timer Events</h2>
 <ul>
-<li>Previously we looked at how to our programs could react to mouse
+<li>Previously we looked at how our programs could react to mouse
 events</li>
 <li>Can also listen for <em>timer events</em>, which occur after a
 specific time interval</li>
@@ -684,6 +709,7 @@ identifies the timer, and can be stopped by invoking the
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

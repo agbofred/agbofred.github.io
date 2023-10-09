@@ -1,31 +1,13 @@
 from english import is_english_word, ENGLISH_WORDS
-"""def tracer(n):
-    total = 0
-    while n > 0:# start tracing here
-        digit = n % 10
-        total += digit
-        n //= 10
-    return total"""
+import random
+#print((9-3) + 25 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 13 // 7)  #Answer `37`
+#print(2 + 3**2 * 2 // 2 ** 2 - 2 % 2) # Answer 6
 
 
-"""def mystery (x):
-    def enigma (s, t):
-        t -= 1
-        return s [::12] + s[t]
-    y = len(x)
-    z = x[3 - y]
-    z += enigma (x, y)
-    #z += enigma (x, 9-y)
-    return z
-if __name__ == "__main__":
-    print(mystery("abcdefghijklmn")) # Answer damn"""
+print(not(12 < 6 - 5 and 3 % 0 == 3)) # Answer True
 
-#50 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 13 // 7  #Answer `31`
-#print(2 + 2 * 2 // 2 ** 2 - 2 % 2) # Answer 3
-
-#print(7 < 9 - 5 and 3 % 0 == 3) # Answer False
-
-#a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#print(a[13:15]+a[18::5]+ a[-2]) # Answer is NOSXY
 #print(a[5:15:3] * 3)
 
 def problem3 (s): ## Answer is sesrest
@@ -38,7 +20,7 @@ def problem3 (s): ## Answer is sesrest
     return r
 
 # Another Quesition
-def prob4a (s): ## with s = "Hit tie why wish noon rip lord ding" output will be "Hi world"
+def prob4a(s): ## with s = "Hit tie why wish noon rip lord ding" output will be "Hi world"
     r = 0
     new = ""
     for i in range ( len(s)):
@@ -69,7 +51,7 @@ print(func (5,False,True))
 #-------------
 #Another Question
 
-def puzzle (t): # Answer is cfadg
+"""def puzzle (t): # Answer is cfadg
     def mystery (r,x):
         x += 1
         def enigma (s):
@@ -77,7 +59,7 @@ def puzzle (t): # Answer is cfadg
         return enigma
     x = 2
     y = mystery (t,x)
-    return y(x) + y(0)
+    return y(x) + y(0)"""
 
 
 # Question on Programming 
@@ -94,7 +76,6 @@ def one_off(word):
                 counter +=1
     return counter
             
-
 if __name__ == "__main__":
     #print(problem3("ressets"))
     #print(prob4a("Hit tie why wish noon rip lord ding"))
