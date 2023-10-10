@@ -41,10 +41,10 @@ def one_off(word):
             new_word = word
 
 
-            new_word.replace(letter, i)
+            new_word.replace(letter, alphabet[i])
 
 
-            if new_word in is_english_word:
+            if new_word in ENGLISH_WORDS:
 
 
                 print(new_word)

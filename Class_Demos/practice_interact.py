@@ -1,11 +1,11 @@
-from english import ENGLISH_WORDS, is_english_word
+#from english import ENGLISH_WORDS, is_english_word
 from pgl import GWindow, GLine, GRect, GOval
 from G_helper import circle
 
 import math
 GW_WIDTH = 500
 GW_HEIGHT = 500
-RADIUS = 10
+RADIUS = 20
 
 ## Drawing dots on click
 def interactDrawDot():
