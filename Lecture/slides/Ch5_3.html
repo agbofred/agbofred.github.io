@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-02-22">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-10-11">
   <title>Getting Animated</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,33 +36,34 @@
 
 <section id="title-slide">
   <h1 class="title">Getting Animated</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">February 22, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">October 11, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <div style="font-size:.9em">
 <ul>
-<li>Welcome back to Ford 102!</li>
-<li>PS4 due on <em>Saturday</em> this week
+<li>Welcome back to today’s class!</li>
+<li>Problem set 4 is due on <strong><em>October 17 at 12
+noon</em></strong>. That is next week Tuesday!
 <ul>
-<li>I was a bit slow getting it out to you</li>
-<li>By having it due on Saturday, I’m trying to ensure I can still have
-feedback to you before the midterm next week</li>
+<li>It was available since Monday evening this week</li>
+<li>Remember! Try not to turn in your submission late to free time for
+other assignments</li>
+<li>Attend your sections to get help on the problem set 4</li>
 </ul></li>
-<li>Midterm a week from Friday!
+<li>See me if you have any concerns regarding the midterm</li>
+<li>CS151 Graphics Contest is ongoing and it is due on <strong><em>31st
+October</em></strong>
 <ul>
-<li>A study guide and several sample exams will be posted</li>
-<li>Sections next week will be focused on review and the sample
-exams</li>
-<li>Exams are open note / printed materials, but closed to computers or
-internet capable devices</li>
-<li>We are fortunate in that no class comes in after us, but I’ll still
-be limiting time to 1 hr 15 minutes for equality sake</li>
+<li>Instructions on how to make submission is posted on Canvas</li>
+<li>You are allowed to demonstrate your imaginative and creative skills
+On Friday is holiday. <strong>No Class!</strong></li>
 </ul></li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
 </ul>
 </div>
 </section>
@@ -125,7 +129,7 @@ if __name__ == '__main__':
 <section id="timer-events" class="slide level2">
 <h2>Timer Events</h2>
 <ul>
-<li>Previously we looked at how to our programs could react to mouse
+<li>Previously we looked at how our programs could react to mouse
 events</li>
 <li>Can also listen for <em>timer events</em>, which occur after a
 specific time interval</li>
@@ -587,6 +591,7 @@ bounding box and the starting and end points of the arc</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

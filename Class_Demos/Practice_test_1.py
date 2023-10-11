@@ -20,40 +20,43 @@ from english import ENGLISH_WORDS, is_english_word
             i = i+1
     return sum
 print(positive(5))"""
-def one_off(word):
+def one_off(the_word):
 
 
-    number_of_words = 0    
+    result_words = ""
 
 
-    for i in range(len(word)):
+    for word in ENGLISH_WORDS:
 
 
-        letter = word[i]
+        if len(word)== len(the_word):
 
 
-        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+            diff_count=0
 
 
-        for i in range(len(alphabet)):
+            for i in range(len(word)):
 
 
-            new_word = word
+                if word[i] != the_word[i]:
 
 
-            new_word.replace(letter, alphabet[i])
+                    diff_count += 1
+
+                if diff_count == 1:
 
 
-            if new_word in ENGLISH_WORDS:
+                    #(I froze I dont remember this part)
 
 
-                print(new_word)
+                    result_words
 
 
-                number_of_words += 1
+                    #print(results)
 
 
-    return number_of_words
+    return len(result_words) 
+   
 
 if __name__ =="__main__":
     print(one_off("money"))

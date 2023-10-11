@@ -52,13 +52,28 @@ def drawRectangle():
     gw.add_event_listener("mousedown", mouseD)
     gw.add_event_listener("drag", dragrec)
 
-
+# Review Question 
+def rev_q():
+    def act_A(e):
+        sq.set_filled(True)
+    def act_B(e):
+        sq.set_size(
+            sq.get_width() - 10,
+            sq.get_height() - 10
+        )
+    gw = GWindow(500, 500)
+    sq = GRect(200, 200, 100, 100)
+    sq.set_color("blue")
+    gw.add(sq)
+    gw.add_event_listener("mousedown", act_B)
+    gw.add_event_listener("click", act_A)
 
 if __name__ == "__main__":
     #interactDrawDot()
     #creatFilledCircle(200,200,"red")
     #drawline()
-    drawRectangle()
+    #drawRectangle()
+    rev_q()
 
 
 
