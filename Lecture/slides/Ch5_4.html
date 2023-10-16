@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-02-24">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-10-16">
   <title>Complex Shapes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,25 +36,29 @@
 
 <section id="title-slide">
   <h1 class="title">Complex Shapes</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">February 24, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">October 16, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>PS4 due <em>tomorrow</em>
-<ul>
-<li>I gave you an extra day, as I didn’t get it posted until Sunday</li>
-</ul></li>
-<li>I’m working on PS3 feedback</li>
+<li>PS4 due <em>tomorrow</em></li>
 <li>Section Leaders are working on Project 1 feedback</li>
-<li>Midterm a week from today!
+<li>Note the change in lecture hall on Friday this week.
 <ul>
-<li>Study materials going out tomorrow</li>
+<li><strong>Lecture holds at Smullin B17</strong></li>
 </ul></li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>Remember! CS151 Graphics Contest is ongoing and it is due on
+<strong><em>31st October</em></strong>
+<ul>
+<li>Instructions on how to make submission is posted on Canvas</li>
+<li>You are allowed to demonstrate your imaginative and creative
+skills</li>
+</ul></li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
 </ul>
 <!--
 ## Quick General Poll
@@ -115,10 +122,10 @@ alt="(D)" />
     gw.set_timeout(once, 1000)</code></pre>
 </div>
 </div>
-</section>
-<section id="making-those-circles-grow" class="slide level2">
-<h2>Making those circles grow!</h2>
-<pre ><code class="python" style="max-height:800px;" data-line-numbers="">from pgl import GWindow, GOval
+<!--
+## Making those circles grow!
+```{.python style='max-height:800px;' data-line-numbers=""}
+from pgl import GWindow, GOval
 import random
 
 GWIDTH = 500
@@ -177,27 +184,20 @@ def growing_circles():
     gw.circles_created = 0
     gw.current_size = 0
     gw.desired_size = 0
-    timer = gw.set_interval(step, DELTA_TIME)</code></pre>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<ul>
-<li>Our technique of piecing together many small movements to resemble
-motion is not limited to just making pretty animations!</li>
-<li>Physicists use similar techniques to break complex problems into
-simple pieces
-<ul>
-<li>“In this small time interval, the motion is simple”</li>
-<li>Chain together many time intervals to construct the full motion</li>
-</ul></li>
-<li>There are many areas where this is the <strong>only</strong> way to
-solve a problem, as we can not write down equations to express the
-result otherwise!</li>
-</ul>
-</section>
-<section id="the-two-body-problem" class="slide level2">
-<h2>The Two Body Problem</h2>
-<pre ><code class="python" style="max-height:800px;">from pgl import GWindow, GOval, GLine
+    timer = gw.set_interval(step, DELTA_TIME)
+```
+
+
+## Simulation
+- Our technique of piecing together many small movements to resemble motion is not limited to just making pretty animations!
+- Physicists use similar techniques to break complex problems into simple pieces
+    - "In this small time interval, the motion is simple"
+    - Chain together many time intervals to construct the full motion
+- There are many areas where this is the **only** way to solve a problem, as we can not write down equations to express the result otherwise!
+
+## The Two Body Problem
+```{.python style="max-height:800px;"}
+from pgl import GWindow, GOval, GLine
 from pgl_tools import create_filled_circle
 
 def two_body():
@@ -255,7 +255,9 @@ def two_body():
     gw.set_interval(step, 30)
 
 if __name__ == '__main__':
-    two_body()</code></pre>
+    two_body()
+```
+-->
 </section>
 <section id="something-to-smile-about" class="slide level2">
 <h2>Something to smile about</h2>
@@ -751,6 +753,7 @@ you set the location of the reference point</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
