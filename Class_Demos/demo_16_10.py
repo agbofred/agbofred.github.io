@@ -2,6 +2,7 @@ from pgl import GWindow, GOval, GLine, GRect, GLabel, GArc, GPolygon, GCompound
 from  G_helper import create_filled_rect, circle
 GWIDTH = 500
 GHEIGHT =500
+# Drawing an arc starting from angle 0 degree and sweep until 180 degree
 def drawrc():
     
     gw = GWindow(GWIDTH,GHEIGHT)
@@ -12,7 +13,7 @@ def drawrc():
     arc = GArc(50, 50, GWIDTH-80, GHEIGHT, 0, 180)
     arc.set_color("yellow")
     arc.set_filled(True)
-    gw.add(arc)
+    #gw.add(arc)
 
 #Create Triangle With Polygon
     def create_triangle(b, h):
@@ -26,7 +27,7 @@ def drawrc():
     triangle.set_color("pink")
     #gw.add(triangle, GWIDTH/2, GHEIGHT/2)
     
-    
+    # attempting to create a sun-like spike
     for i in range(5):
         x= 180 + 40*i
         y = 60-i
@@ -35,6 +36,7 @@ def drawrc():
         triangle.set_color("yellow")
         #gw.add(triangle, x, y)
    
+    #Drawing Diamond shape with GPolygon
     def drawDiamond_v(): # Diamond with vertex 
         pol = GPolygon()
         pol.add_vertex(-50, 0)
@@ -44,7 +46,7 @@ def drawrc():
         return pol
     
 
-    def drawDiamond_e(): # Diamond with vertex 
+    def drawDiamond_edge(): # Diamond with edges 
         pol = GPolygon()
         pol.add_vertex(-50, 0)# Must be added first
         pol.add_edge(-50, 50)
@@ -54,14 +56,34 @@ def drawrc():
         return pol
     
 
-    diamond = drawDiamond_e()
-    diamond.set_fill_color("green")
+    diamond = drawDiamond_edge()
+    diamond.set_fill_color("pink")
     diamond.set_filled(True)
     #gw.add(diamond,GWIDTH/2, GHEIGHT/2)
 
+def my_axe():
+    def create_axe():
+        axe = GCompound()
+        shaft = GRect(-15, 0, 30, 300)
+        shaft.set_filled(True)
+        shaft.set_color("brown")
+        axe.add(shaft)
 
+        blade = GPolygon()
+        blade.add_vertex(0, 0)
+        blade.add_vertex(200, -50)
+        blade.add_vertex(200, 50)
+        blade.set_filled(True)
+        blade.set_color("gray")
+        axe.add(blade, -80, 50)
+        return axe
+
+    gw = GWindow(500, 500)
+    axe = create_axe()
+    gw.add(axe, 250, 100)
 
 
 
 if __name__ == "__main__":
-    drawrc()
+    #drawrc()
+    my_axe()
