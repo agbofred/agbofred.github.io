@@ -57,9 +57,9 @@ def drawrc():
     
 
     diamond = drawDiamond_edge()
-    diamond.set_fill_color("pink")
+    diamond.set_fill_color("#00FFAF06")
     diamond.set_filled(True)
-    #gw.add(diamond,GWIDTH/2, GHEIGHT/2)
+    gw.add(diamond,GWIDTH/2, GHEIGHT/2)
 
 def my_axe():
     def create_axe():
@@ -74,7 +74,7 @@ def my_axe():
         blade.add_vertex(200, -50)
         blade.add_vertex(200, 50)
         blade.set_filled(True)
-        blade.set_color("gray")
+        blade.set_color("#0020AF66")
         axe.add(blade, -80, 50)
         return axe
 
@@ -85,5 +85,5 @@ def my_axe():
 
 
 if __name__ == "__main__":
-    #drawrc()
-    my_axe()
+    drawrc()
+    #my_axe()

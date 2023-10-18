@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-03-10">
-  <title>Mutating Lists</title>
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-10-18">
+  <title>Arrays and Lists</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -32,22 +35,32 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Mutating Lists</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">March 10, 2023</p>
+  <h1 class="title">Arrays and Lists</h1>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">October 18, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Project 2: Breakout due tonight!</li>
-<li>Problem Set 5 will be due next week
+<li>Project 2: Breakout is posted and due <strong>next week Tuesday at
+noon!</strong></li>
+<li>Problem Set 4 grading is ongoing</li>
+<li>Section Leaders are working on Project 1 feedback</li>
+<li>Note the change in lecture hall on Friday this week.
 <ul>
-<li>Only 1 more problem set after that!</li>
+<li><strong>Lecture holds at Smullin B17</strong></li>
 </ul></li>
-<li>Midterms back??</li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>Remember! CS151 Graphics Contest is ongoing and it is due on
+<strong><em>31st October</em></strong></li>
+<li>CS/DS Tea tomorrow at 11:30 in Ford 101 (Digital Learning Studio)
+<ul>
+<li>There will be a special talk by <strong><em>Dr. Rachel
+Brown</em></strong> from Lewis &amp; Clark</li>
+</ul></li>
+<li>Polling continues today! Remember to use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+when it becomes <strong>active</strong></li>
 </ul>
 <!--
 ## Review Question {data-notes="Solution: C, as it has the wrong data types for x and y"}
@@ -103,22 +116,154 @@ def func_D():
 ::::::
 -->
 </section>
+<section id="project-2-breakout" class="slide level2">
+<h2>Project 2: Breakout!</h2>
+<div class="cols" style="align-items:center">
+<div class="col">
+<ul>
+<li>Project 2 is recreating the classic arcade game Breakout!</li>
+<li>Guide will be posted tomorrow, not due until March 10</li>
+<li>Focus on the midterm initially, but then consider getting a start
+this weekend</li>
+</ul>
+</div>
+<div class="col">
+<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/UhAEjDKEHgk" title="Data Driven Gamer: Breakout (Atari, 1976 arcade, 60fps)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/QrlIqaN4ltM" title="DX Ball 2 gameplay (PC Game, 1999)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</div>
+</section>
+<section id="breakout-history" class="slide level2">
+<h2>Breakout History</h2>
+<ul>
+<li class="fragment">The popular Breakout arcade game was released by
+Atari in 1976</li>
+<li class="fragment">Atari founder Nolan Bushnell wanted a new game that
+would build on the success of the earlier game Pong. He assigned Steve
+Jobs to develop the game, promising a bonus if the game required a small
+number of chips.</li>
+<li class="fragment">As Wikipedia tells the story, “Jobs had little
+specialized knowledge of circuit board design but knew [his friend
+Steve] Wozniak was capable of producing designs with a small number of
+chips. He convinced Wozniak to work with him, promising to split the fee
+evenly between them.”</li>
+<li class="fragment">Wozniak completed the game design in four days, but
+Jobs never told him about the bonus offer. Jobs was paid <span
+class="math inline">\(\$5,000\)</span>, but Wozniak received only <span
+class="math inline">\(\$350\)</span>.</li>
+<li class="fragment">Jobs and Wozniak co-founded Apple Computer the
+following year, which has grown to be the largest corporation in the
+world by market capitalization.</li>
+</ul>
+</section>
+<section id="breakout-basics" class="slide level2">
+<h2>Breakout Basics</h2>
+<div class="cols" style="align-items: center">
+<div class="col" style="font-size:.9em">
+<ul>
+<li>Breakout is a game in which the player attempts to break all the
+colored bricks by causing a bouncing ball to collide with them</li>
+<li>The player controls a paddle at the bottom of the screen which the
+ball will bounce off
+<ul>
+<li>The paddle can only move left and right</li>
+</ul></li>
+<li>If the ball makes it past the paddle to the bottom of the screen,
+the player loses a life
+<ul>
+<li>Lose 3 lives and it is game over!</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<video data-src="../video/project1_demo.webm" style="width:50.0%"
+controls=""><a href="../video/project1_demo.webm">Breakout!</a></video>
+<figcaption aria-hidden="true">Breakout!</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="breakout-milestones" class="slide level2">
+<h2>Breakout Milestones</h2>
+<ul>
+<li>Breakout is broken up over 5 milestones</li>
+<li>You have already seen or written pieces of similar code to many of
+the milestones!
+<ul>
+<li>Milestone 1: PS4 brick pyramid</li>
+<li>Milestone 3: Section bouncy ball problem (this week)</li>
+</ul></li>
+</ul>
+</section>
+<section id="milestone-1" class="slide level2">
+<h2>Milestone 1</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html">
+</iframe>
+</section>
+<section id="milestone-2" class="slide level2">
+<h2>Milestone 2</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout2/index.html">
+</iframe>
+</section>
+<section id="milestone-3" class="slide level2">
+<h2>Milestone 3</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout3/index.html">
+</iframe>
+</section>
+<section id="milestone-4" class="slide level2">
+<h2>Milestone 4</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout4/index.html">
+</iframe>
+</section>
+<section id="milestone-5" class="slide level2">
+<h2>Milestone 5</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html">
+</iframe>
+</section>
 <section id="review-question" class="slide level2"
-data-notes="The 32//8 option">
-<h2 data-notes="The 32//8 option">Review Question!</h2>
-<p>Which of the provided formatted string options below would evaluate
-to appear as:</p>
-<center>
-<code class="python">101,234.98   & 4000</code>
-</center>
-<p>when printed?</p>
-<div class="poll">
-<ol>
-<li><code class="python">f"{101234.984:<12,.2f} & {3200//8:<4d}"</code></li>
-<li><code class="python">f"{101234.984:>12,.2f} & {32000//8:0>3d}"</code></li>
-<li><code class="python">f"{101234.984:<12,f} & {320//8:0>4d}"</code></li>
-<li><code class="python">f"{101234.984:<12,.2f} & {32//8:0<4d}"</code></li>
-</ol>
+data-note="Solution is A">
+<h2 data-note="Solution is A">Review Question</h2>
+<div class="cols">
+<div class="col">
+<p>Which of the below blocks of code will create the image to the right?
+The window measures 500 x 200 pixels and the value of
+<code class="python">d</code> is 150.</p>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/GArc_RevQ.png" style="width:65.0%" alt=" " />
+<figcaption aria-hidden="true"> </figcaption>
+</figure>
+</div>
+</div>
+<div class="cols">
+<div class="col">
+<div class="block" name="A">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+a1 = GArc(x, y, d, d, 90, -180)
+gw.add(a1)</code></pre>
+</div>
+<div class="block" name="C">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d, 100 - d
+a1 = GArc(x, y, d, d, -180, 90)
+gw.add(a1)</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block" name="B">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+a1 = GArc(x, y, d, d, 90, 180)
+gw.add(a1)</code></pre>
+</div>
+<div class="block" name="D">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+a1 = GArc(x, y, d, 180, -90)
+gw.add(a1)</code></pre>
+</div>
+</div>
 </div>
 </section>
 <section id="arrays-and-lists" class="slide level2">
@@ -213,23 +358,21 @@ Python called <em>sequences</em></li>
 </div>
 </div>
 </div>
-</section>
-<section id="understanding-check" class="slide level2"
-data-notes="Solution: None of the above, as it errors">
-<h2 data-notes="Solution: None of the above, as it errors">Understanding
-Check!</h2>
-<p>What would the below expression evaluate to?</p>
+<!--
+## Understanding Check! {data-notes="Solution: None of the above, as it errors"}
+What would the below expression evaluate to?
+
 <center>
-<code>[“One”, 2, True][-1:1:-1][1]</code>
+<code>["One", 2, True][-1:1:-1][1]</code>
 </center>
-<div class="poll">
-<ol>
-<li><code class="python">"n"</code></li>
-<li><code class="python">2</code></li>
-<li><code class="python">True</code></li>
-<li>None of the above, or this will error</li>
-</ol>
-</div>
+
+:::{.poll}
+#. `"n"`
+#. `2`
+#. `True`
+#. None of the above, or this will error
+:::
+-->
 </section>
 <section id="mutants" class="slide level2">
 <h2>Mutants</h2>
@@ -321,8 +464,8 @@ href="http://www.pythontutor.com/visualize.html#code=def%20reverse_in_place%28ar
 <li>List’s mutability can frequently be very nice to work with, but as
 with lists as arguments to functions, you need to be careful in some
 instances to ensure you understand how Python is treating the list</li>
-<li>I’ve encountered a few other problems where it can be easy to mess
-up:
+<li>One could encountered a few other problems where it can be easy to
+mess up:
 <ul>
 <li>Initializing a list to look like another list, wanting to make
 changes and then compare it to the original
@@ -435,7 +578,7 @@ loops</li>
 values</li>
 </ul></li>
 <li><p>Example: all even numbers to 20 not also visible by 3</p>
-<pre ><code class="python">[i for i in range(0,2,20) if i % 3 != 0]</code></pre></li>
+<pre ><code class="python">[i for i in range(0,20,2) if i % 3 != 0]</code></pre></li>
 </ul>
 </section>
     </div>
@@ -607,6 +750,7 @@ values</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
