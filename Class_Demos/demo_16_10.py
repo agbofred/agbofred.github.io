@@ -82,8 +82,13 @@ def my_axe():
     axe = create_axe()
     gw.add(axe, 250, 100)
 
+def arc(d):
+    gw = GWindow(500, 200)
 
+    x, y = 250 - d / 2, 100 - d / 2
+    a1 = GArc(x, y, d, d, 90, -180)
+    gw.add(a1)
 
 if __name__ == "__main__":
-    drawrc()
-    #my_axe()
+    #arc(150)
+    my_axe()
