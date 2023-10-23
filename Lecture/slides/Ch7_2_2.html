@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-20">
+  <meta name="dcterms.date" content="2023-10-23">
   <title>Comprehension and multidimensional arrays</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,7 +37,7 @@
 <section id="title-slide">
   <h1 class="title">Comprehension and multidimensional arrays</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 20, 2023</p>
+  <p class="date">October 23, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -105,108 +105,46 @@ print(other_colors)
 - I find it useful to think of a reference as the "address" in memory where that object's contents can be found
 - This undeniably complicates things, as referencing a mutable object lets you change it, which will immediately be reflected in anything _else_ that referenced that object
 - Mutable objects can be terrific to work with, as their mutability makes them very flexible, but be wary of unexpected behavior
+
+
+## Lists as Arguments
+- When you pass a list as an argument to a function or return a list as a result, only the **reference** to the list is actually passed back and forth
+- This means that the elements of the list are effectively shared between the function and the caller
+    - Changes that the function makes to the elements **will** persist after the function returns
+- Example of reversing a list in PythonTutor: [here](http://www.pythontutor.com/visualize.html#code=def%20reverse_in_place%28array%29%3A%0A%20%20%20%20for%20lh%20in%20range%28len%28array%29//2%29%3A%0A%20%20%20%20%20%20%20%20rh%20%3D%20len%28array%29%20-%20lh%20-%201%0A%20%20%20%20%20%20%20%20array%5Blh%5D,%20array%5Brh%5D%20%3D%20array%5Brh%5D,%20array%5Blh%5D%0A%0Aarray%20%3D%20%5B0,%201,%202,%203,%204,%205,%206,%207,%208,%209%5D%0Aprint%28f%22Forward%3A%20%7Barray%7D%22%29%0Areverse_in_place%28array%29%0Aprint%28f%22Reverse%3A%20%7Barray%7D%22%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+
+
+## Sneaky Mutability
+- List's mutability can frequently be very nice to work with, but as with lists as arguments to functions, you need to be careful in some instances to ensure you understand how Python is treating the list
+- One could encounter a few other problems where it can be easy to mess up:
+    - Initializing a list to look like another list, wanting to make changes and then compare it to the original
+        - [Example](http://www.pythontutor.com/visualize.html#code=A%20%3D%20%5B'Aardvark',%20'Butterfly',%20'Centipede'%5D%0AB%20%3D%20A%0A%0AB.append%28'Deer'%29%0AB.remove%28'Butterfly'%29%0A%0Aprint%28A%29%0Aprint%28B%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+    - Looping over a mutating list
+        - [Example](http://www.pythontutor.com/visualize.html#code=A%20%3D%20%5B1,2,3,4,5,6,7,8,9%5D%0A%0Afor%20i%20in%20range%28len%28A%29%29%3A%0A%20%20%20%20print%28'Current%20index%3A%20%7B%7D,%20Current%20value%3A%20%7B%7D'.format%28i,A%5Bi%5D%29%29%0A%20%20%20%20if%203%20%3C%20A%5Bi%5D%20%3C%206%3A%0A%20%20%20%20%20%20%20%20A.remove%28A%5Bi%5D%29%0A%20%20%20%0Aprint%28A%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+
+
+## Cloning
+- What can we do in these sorts of instances to not let mutability trip us up?
+- _Clone_ the list instead of just assigning a reference
+    - Creates a **new** object in memory
+- Several ways you can make a shallow clone (in code)
+    - Using the `.copy()` list method
+    - Any slice always returns a new object
+    - Using the `list()` function will return a new object
+
+
+
+## Common Useful List Methods
+
+Method | Description
+---- | ------
+`list.copy()` | Returns a new list whose elements are the same as the original
+`list.append(value)` | Adds `value` to the end of the list
+`list.insert(idx, val)` | Inserts `val` before the specified `idx`
+`list.remove(value)` | Removes the first instance of `value` from the list, or errors
+`list.reverse()` | Reverses the order of the elements in the list
+`list.sort()` | Sorts the elements of the list. Can take an optional argument `key` to specify how to sort
 -->
-</section>
-<section id="lists-as-arguments" class="slide level2">
-<h2>Lists as Arguments</h2>
-<ul>
-<li>When you pass a list as an argument to a function or return a list
-as a result, only the <strong>reference</strong> to the list is actually
-passed back and forth</li>
-<li>This means that the elements of the list are effectively shared
-between the function and the caller
-<ul>
-<li>Changes that the function makes to the elements
-<strong>will</strong> persist after the function returns</li>
-</ul></li>
-<li>Example of reversing a list in PythonTutor: <a
-href="http://www.pythontutor.com/visualize.html#code=def%20reverse_in_place%28array%29%3A%0A%20%20%20%20for%20lh%20in%20range%28len%28array%29//2%29%3A%0A%20%20%20%20%20%20%20%20rh%20%3D%20len%28array%29%20-%20lh%20-%201%0A%20%20%20%20%20%20%20%20array%5Blh%5D,%20array%5Brh%5D%20%3D%20array%5Brh%5D,%20array%5Blh%5D%0A%0Aarray%20%3D%20%5B0,%201,%202,%203,%204,%205,%206,%207,%208,%209%5D%0Aprint%28f%22Forward%3A%20%7Barray%7D%22%29%0Areverse_in_place%28array%29%0Aprint%28f%22Reverse%3A%20%7Barray%7D%22%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">here</a></li>
-</ul>
-</section>
-<section id="sneaky-mutability" class="slide level2">
-<h2>Sneaky Mutability</h2>
-<ul>
-<li>List’s mutability can frequently be very nice to work with, but as
-with lists as arguments to functions, you need to be careful in some
-instances to ensure you understand how Python is treating the list</li>
-<li>One could encounter a few other problems where it can be easy to
-mess up:
-<ul>
-<li>Initializing a list to look like another list, wanting to make
-changes and then compare it to the original
-<ul>
-<li><a
-href="http://www.pythontutor.com/visualize.html#code=A%20%3D%20%5B&#39;Aardvark&#39;,%20&#39;Butterfly&#39;,%20&#39;Centipede&#39;%5D%0AB%20%3D%20A%0A%0AB.append%28&#39;Deer&#39;%29%0AB.remove%28&#39;Butterfly&#39;%29%0A%0Aprint%28A%29%0Aprint%28B%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Example</a></li>
-</ul></li>
-<li>Looping over a mutating list
-<ul>
-<li><a
-href="http://www.pythontutor.com/visualize.html#code=A%20%3D%20%5B1,2,3,4,5,6,7,8,9%5D%0A%0Afor%20i%20in%20range%28len%28A%29%29%3A%0A%20%20%20%20print%28&#39;Current%20index%3A%20%7B%7D,%20Current%20value%3A%20%7B%7D&#39;.format%28i,A%5Bi%5D%29%29%0A%20%20%20%20if%203%20%3C%20A%5Bi%5D%20%3C%206%3A%0A%20%20%20%20%20%20%20%20A.remove%28A%5Bi%5D%29%0A%20%20%20%0Aprint%28A%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Example</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="cloning" class="slide level2">
-<h2>Cloning</h2>
-<ul>
-<li>What can we do in these sorts of instances to not let mutability
-trip us up?</li>
-<li><em>Clone</em> the list instead of just assigning a reference
-<ul>
-<li>Creates a <strong>new</strong> object in memory</li>
-</ul></li>
-<li>Several ways you can make a shallow clone (in code)
-<ul>
-<li>Using the <code class="python">.copy()</code> list method</li>
-<li>Any slice always returns a new object</li>
-<li>Using the <code class="python">list()</code> function will return a
-new object</li>
-</ul></li>
-</ul>
-</section>
-<section id="common-useful-list-methods" class="slide level2">
-<h2>Common Useful List Methods</h2>
-<table>
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 60%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code class="python">list.copy()</code></td>
-<td>Returns a new list whose elements are the same as the original</td>
-</tr>
-<tr class="even">
-<td><code class="python">list.append(value)</code></td>
-<td>Adds <code class="python">value</code> to the end of the list</td>
-</tr>
-<tr class="odd">
-<td><code class="python">list.insert(idx, val)</code></td>
-<td>Inserts <code class="python">val</code> before the specified
-<code class="python">idx</code></td>
-</tr>
-<tr class="even">
-<td><code class="python">list.remove(value)</code></td>
-<td>Removes the first instance of <code class="python">value</code> from
-the list, or errors</td>
-</tr>
-<tr class="odd">
-<td><code class="python">list.reverse()</code></td>
-<td>Reverses the order of the elements in the list</td>
-</tr>
-<tr class="even">
-<td><code class="python">list.sort()</code></td>
-<td>Sorts the elements of the list. Can take an optional argument
-<code class="python">key</code> to specify how to sort</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="list-functions-on-iterators" class="slide level2">
 <h2>List functions on Iterators</h2>
