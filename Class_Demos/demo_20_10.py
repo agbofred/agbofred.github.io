@@ -1,4 +1,4 @@
-A = [
+"""A = [
      'Fox',
      'Giraffe', 
      'Hippo'
@@ -6,10 +6,26 @@ A = [
 A.append('Iguana')
 A[:].reverse()
 B = A
-for anim in B:
-    if anim[1] == 'i':
-        B.pop()
-print(A)
+for i in A:
+    if i[1]== 'G':
+        A.pop()
+    print(B)"""
 
-li =[[3,2,1],[4,5,6],[7,8,9]]
-print(li[2][1])
+A = [
+     'Fox',
+     'Giraffe', 
+     'Hippo',
+    ]
+A.append('Iguana')
+A[:].reverse()
+B = A
+C =[] # Create a new list C
+for num  in B:
+       if num[1]=='i':
+           continue
+       else:
+            C.append(num)
+
+print(f'this is A {A}')
+print(f'this is B {B}')
+print(f'this is C {C}')
