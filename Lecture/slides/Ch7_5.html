@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -64,29 +67,22 @@ data-notes="Solution: &#39;2222&#39;">
 <div class="poll">
 <ol>
 <li><code class="python">21</code></li>
-<li><code class="python">"0000"</code></li>
+<li><code class="python">",,,,"</code></li>
 <li><code class="python">"cccc"</code></li>
 <li><code class="python">"2222"</code></li>
 </ol>
 </div>
-</section>
-<section id="multidimensional-arrays" class="slide level2">
-<h2>Multidimensional Arrays</h2>
-<ul>
-<li><p>We know that elements of a list can be lists in and of
-themselves. If the lengths of all the lists making up the elements of a
-list remain fixed, then the list of lists is called a
-<em>multidimensional array</em></p></li>
-<li><p>In Python, we can create multidimensional arrays just by creating
-lists of constant length as the elements to another list</p>
-<pre ><code class="python">magic = [ [2, 9, 4], [7, 5, 3], [6, 1, 8] ]</code></pre></li>
-<li><p>We can always get the individual element of one of the inner
-lists by using <strong>2</strong> indices.</p>
-<ul>
-<li><code class="python">magic[1][1] = 5</code></li>
-<li><code class="python">magic[-1][0] = 6</code></li>
-</ul></li>
-</ul>
+<!--
+## Multidimensional Arrays
+- We know that elements of a list can be lists in and of themselves. If the lengths of all the lists making up the elements of a list remain fixed, then the list of lists is called a _multidimensional array_
+- In Python, we can create multidimensional arrays just by creating lists of constant length as the elements to another list
+  ```python
+  magic = [ [2, 9, 4], [7, 5, 3], [6, 1, 8] ]
+  ```
+- We can always get the individual element of one of the inner lists by using **2** indices.
+    - `magic[1][1] = 5`
+    - `magic[-1][0] = 6`
+-->
 </section>
 <section id="picturing-multidimensional-arrays" class="slide level2">
 <h2>Picturing Multidimensional Arrays</h2>
@@ -3612,6 +3608,7 @@ the pixel</td>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

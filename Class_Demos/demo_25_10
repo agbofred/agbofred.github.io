@@ -1,0 +1,5 @@
+with open("todaydemo.txt") as file:
+    txt = file.read()
+    text_l = txt.splitlines()
+    for i in text_l:
+        print(i)
