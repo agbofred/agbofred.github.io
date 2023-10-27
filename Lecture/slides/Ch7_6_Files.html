@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-03-17">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-10-27">
   <title>Reading and Writing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,20 +36,22 @@
 
 <section id="title-slide">
   <h1 class="title">Reading and Writing</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">March 17, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">October 27, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 5 due <strong>next</strong> Friday</li>
-<li>Project 3: ImageShop will be introduced on Monday (not due until
-after break)</li>
-<li>Jed will be back on Monday, or if you have questions you can
-email</li>
-<li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+<li>Problem Sets 5 is due <em>next</em> week Tuesday at 12 noon</li>
+<li>Grading of project 1 to be published soon.</li>
+<li>Project 3 will be posted early next week. You will be notified when
+uploaded</li>
+<li>CS151 Graphics Contest is due on <strong><em>31st
+October</em></strong></li>
+<li>We will return to Ford Hall 102 from Monday next week</li>
+<li>Polling continues today! Use this link <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 <!--
 ## Review Question
@@ -104,47 +109,165 @@ data-notes="Solution: [2,3,4,5]">
 </ol>
 </div>
 </section>
-<section id="reading" class="slide level2">
-<h2>Reading</h2>
+<section id="tabulating-with-list" class="slide level2">
+<h2>Tabulating with list</h2>
 <ul>
-<li>Programs often need to work with collections of data that are too
-large to reasonably exist typed all out in the code
+<li>Arrays can also be useful when you have a set of values and you need
+to count how many values fall into a different ranges
 <ul>
-<li>Easier to read in the values of a list from some external data
-file</li>
+<li>Process is called <em>tabulation</em></li>
 </ul></li>
-<li>A <em>file</em> is the generic name for any named collection of data
-maintained on some permanent storage media attached to a computer</li>
-<li>Files can contain information encoded in many different ways
-<ul>
-<li>Most common is the <em>text file</em></li>
-<li>Contains character data like you’d find in a string</li>
-</ul></li>
+<li>The idea is that for each data file we encounter, we figure out a
+corresponding index in our tabular array and then increment the value of
+that element</li>
+<li>Your book shows this for seeing how many times each letter of the
+alphabet appears in a text sequence</li>
 </ul>
 </section>
-<section id="strings-vs-text-files" class="slide level2">
-<h2>Strings vs Text Files</h2>
+<section id="tabulating-with-list-example" class="slide level2">
+<h2>Tabulating with list example</h2>
 <ul>
-<li>While strings and text files both store characters, there are some
-important differences:
-<ul>
-<li><strong>The longevity of the data stored</strong>
-<ul>
-<li>The value of a string variable lasts only as long as the string
-exists, is not overridden, or is not thrown out when a function
-completes</li>
-<li>Information in a text file exists until the file is deleted</li>
-</ul></li>
-<li><strong>How data is read in</strong>
-<ul>
-<li>You have access to all the characters in a string variable pretty
-much immediately</li>
-<li>Data from text files is generally read in sequentially, starting
-from the beginning and proceeding until the end of the file is
-reached</li>
-</ul></li>
-</ul></li>
+<li>Below program is an example of determining how many students got
+different letters grades on a final</li>
 </ul>
+<pre ><code class="python" style="min-height:850px; width=100%;">import random
+mark = [random.randint(50,100) for i in range(27) ]
+count = [0 for i in range(5)]
+for i in range(len(mark)):
+    if mark[i] >= 90:
+        count[0] +=1
+    elif mark[i] >= 80:
+        count[1] +=1
+    elif mark[i] >= 70:
+        count[2] +=1
+    elif mark[i] >= 60:
+        count[3] +=1
+    else:
+        count[4] +=1
+print(mark)
+print(count)
+</code></pre>
+<ul>
+<li>List generated contains random values, it changes every time it
+executes</li>
+</ul>
+</section>
+<section id="breaking-out-the-pixel-colors" class="slide level2">
+<h2>Breaking out the Pixel Colors</h2>
+<ul>
+<li>You do not need to convert the pixel values yourself! PGL has
+built-in ways to extract the various colors</li>
+</ul>
+<div style="font-size:.8em;">
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="python">GImage.get_red(pixel)</code></td>
+<td>Returns the integer (0-255) corresponding to the red portion of the
+pixel</td>
+</tr>
+<tr class="even">
+<td><code class="python">GImage.get_green(pixel)</code></td>
+<td>Returns the integer (0-255) corresponding to the green portion of
+the pixel</td>
+</tr>
+<tr class="odd">
+<td><code class="python">GImage.get_blue(pixel)</code></td>
+<td>Returns the integer (0-255) corresponding to the blue portion of the
+pixel</td>
+</tr>
+<tr class="even">
+<td><code class="python">GImage.get_alpha(pixel)</code></td>
+<td>Returns the integer (0-255) corresponding to the alpha portion of
+the pixel</td>
+</tr>
+<tr class="odd">
+<td><code class="python">GImage.create_rgb_pixel(r,g,b)</code></td>
+<td>Returns a 32-bit integer corresponding to the desired color</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="image-thresholding" class="slide level2">
+<h2>Image Thresholding</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>As an example of reading and manipulating pixel values, lets look at
+how we could threshold the image to the right</li>
+<li>Thresholding is when you take a grayscale image and convert it to a
+black and white image, where a pixel is set to be white if it is above a
+certain threshold in brightness</li>
+<li>Grayscale, so each RGB component is the same Let’s threshold at a
+value of 30</li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<img data-src="../../Class_Demos/Moon.png" style="width:80.0%"
+alt="Blurry Moon by Jed" />
+<figcaption aria-hidden="true">Blurry Moon by Jed</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="image-thresholding-example" class="slide level2">
+<h2>Image Thresholding Example</h2>
+<pre ><code class="python" style="min-height:980px; width=100%;">
+from pgl import GWindow, GOval, GImage
+
+gw =GWindow(600,400)
+image = GImage("Moon.png", 0,0)
+image.scale(gw.get_width()/image.get_width())
+gw.add(image)
+
+def imagetreshold(e):
+    TRESHOLD = 130
+    pixel = image.get_pixel_array()
+    #print(pixel)
+    for r in range(len(pixel)):
+        for c in range(len(pixel[0])):
+            value = pixel[r][c]
+            red =GImage.get_red(value)
+            if red< TRESHOLD:
+                pixel[r][c]= GImage.create_rgb_pixel(0,0,0)
+            else:
+                pixel[r][c] = GImage.create_rgb_pixel(255,255,255)
+    # You must create a new Gimage
+    new_image = GImage(pixel)
+    gw.add(new_image)
+gw.add_event_listener("click", imagetreshold)
+</code></pre>
+<!--
+## Reading
+- Programs often need to work with collections of data that are too large to reasonably exist typed all out in the code
+    - Easier to read in the values of a list from some external data file
+- A _file_ is the generic name for any named collection of data maintained on some permanent storage media attached to a computer
+- Files can contain information encoded in many different ways
+    - Most common is the _text file_
+    - Contains character data like you'd find in a string
+
+
+## Strings vs Text Files
+- While strings and text files both store characters, there are some important differences:
+    - **The longevity of the data stored**
+        - The value of a string variable lasts only as long as the string exists, is not overridden, or is not thrown out when a function completes
+        - Information in a text file exists until the file is deleted
+    - **How data is read in**
+        - You have access to all the characters in a string variable pretty much immediately
+        - Data from text files is generally read in sequentially, starting from the beginning and proceeding until the end of the file is reached
+-->
 </section>
 <section id="reading-text-files" class="slide level2">
 <h2>Reading Text Files</h2>
@@ -218,65 +341,6 @@ it splits the string at them</p>
 # Then you can do whatever you want with the list of lines</code></pre></li>
 </ul>
 </section>
-<section id="example-name-mangling" class="slide level2">
-<h2>Example: Name Mangling</h2>
-<ul>
-<li>Let’s look at an example with some more meat to it</li>
-<li>I have a text file with all your first names. I’d like to:
-<ul>
-<li>Read in the names</li>
-<li>Select two at random</li>
-<li>Combine the first half of one name with the second half of the
-other</li>
-<li>Print out both potential hybrid names</li>
-</ul></li>
-<li>We’ll practice breaking a problem into steps along the way here</li>
-</ul>
-</section>
-<section id="example-code" class="slide level2">
-<h2>Example Code:</h2>
-<pre ><code class="python" style="font-size:.6em; max-height:800px; width=100%;">import random
-
-def name_mangler(filename):
-    """
-    Reads from a roster of first names and then randomly chooses two to cut in half
-    and recombine with the other. Then prints off both combinations.
-
-    Inputs:
-        filename (string): The filename containing the names
-
-    Outputs:
-        None
-    """
-
-    def get_names(filename):
-        """Reads in the roster. """
-        with open(filename) as fh:
-            names = fh.read().splitlines()
-        return names
-
-    def choose_two(name_list):
-        """ Chooses two different names from the list. """
-        name1 = random.choice(name_list)
-        name2 = random.choice(name_list)
-        while name1 == name2:
-            name2 = random.choice(name_list)
-        return [name1, name2]
-
-    def slice_and_combine(name1, name2):
-        """ Slices and recombines both names, printing to the screen. """
-        name1_mid = len(name1)//2
-        name2_mid = len(name2)//2
-        print(name1[:name1_mid] + name2[name2_mid:])
-        print(name2[:name2_mid] + name1[name1_mid:])
-
-    names = get_names(filename)
-    chosen = choose_two(names)
-    slice_and_combine(chosen[0], chosen[1])
-
-if __name__ == '__main__':
-    name_mangler('class_first_names.csv')</code></pre>
-</section>
 <section id="arent-you-exceptional" class="slide level2">
 <h2>Aren’t you Exceptional</h2>
 <ul>
@@ -345,23 +409,31 @@ immediately just return the filename, but if it fails due to a
 <code class="python">IOError</code>, we display a message and then keep
 asking</p></li>
 </ul>
-<!--
-## Choosing Wisely
-- The Python package used to implement `pgl.py` also supports a mechanism to choose files interactively, made available through the `filechooser.py` library module.
-- `filechooser.py` exports two functions:
-    - `choose_input_file` for selecting a file
-    - `choose_output_file` for selecting a folder and filename to save a file to
-- Both open up a file dialog that lets you select/choose a file
-    - Clicking Open or Save returns the full pathname of the file
-    - Clicking Cancel returns an empty string
-
-- Using it thus looks something like:
-```python
-filename = choose_input_file()
+</section>
+<section id="choosing-wisely" class="slide level2">
+<h2>Choosing Wisely</h2>
+<ul>
+<li>The Python package used to implement
+<code class="python">pgl.py</code> also supports a mechanism to choose
+files interactively, made available through the
+<code class="python">filechooser.py</code> library module.</li>
+<li><code class="python">filechooser.py</code> exports two functions:
+<ul>
+<li><code class="python">choose_input_file</code> for selecting a
+file</li>
+<li><code class="python">choose_output_file</code> for selecting a
+folder and filename to save a file to</li>
+</ul></li>
+<li>Both open up a file dialog that lets you select/choose a file
+<ul>
+<li>Clicking Open or Save returns the full pathname of the file</li>
+<li>Clicking Cancel returns an empty string</li>
+</ul></li>
+<li>Using it thus looks something like:</li>
+</ul>
+<pre ><code class="python">filename = choose_input_file()
 with open(filename) as f:
-    # Code to read file
-```
--->
+    # Code to read file</code></pre>
 </section>
 <section id="writing-text-files" class="slide level2">
 <h2>Writing Text Files</h2>
@@ -614,6 +686,7 @@ if __name__ == '__main__':
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

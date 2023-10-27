@@ -1,7 +1,7 @@
 ---
 title: "Reading and Writing"
-author: Jed Rembold
-date: March 17, 2023
+author: Jed Rembold & Fred Agbo
+date: October 27, 2023
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,10 +15,13 @@ history: false
 
 
 ## Announcements
-- Problem Set 5 due **next** Friday
-- Project 3: ImageShop will be introduced on Monday (not due until after break)
-- Jed will be back on Monday, or if you have questions you can email
-- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
+- Problem Sets 5 is due _next_ week Tuesday at 12 noon
+- Grading of project 1 to be published soon.
+- Project 3 will be posted early next week. You will be notified when uploaded
+- CS151 Graphics Contest is due on ***31st October***
+- We will return to Ford Hall 102 from Monday next week
+- Polling continues today! Use this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+
 
 <!--
 ## Review Question
@@ -77,7 +80,103 @@ What would be the output of:
 #. `[2,2,2,2]`
 :::
 
+## Tabulating with list
 
+- Arrays can also be useful when you have a set of values and you need to count how many values fall into a different ranges
+  - Process is called _tabulation_
+- The idea is that for each data file we encounter, we figure out a corresponding index in our tabular array and then increment the value of that element
+- Your book shows this for seeing how many times each letter of the alphabet appears in a text sequence
+
+
+## Tabulating with list example
+
+- Below program is an example of determining how many students got different letters grades on a final
+
+
+```{.python style='min-height:850px; width=100%;'}
+import random
+mark = [random.randint(50,100) for i in range(27) ]
+count = [0 for i in range(5)]
+for i in range(len(mark)):
+    if mark[i] >= 90:
+        count[0] +=1
+    elif mark[i] >= 80:
+        count[1] +=1
+    elif mark[i] >= 70:
+        count[2] +=1
+    elif mark[i] >= 60:
+        count[3] +=1
+    else:
+        count[4] +=1
+print(mark)
+print(count)
+
+```
+- List generated contains random values, it changes every time it executes
+
+## Breaking out the Pixel Colors
+- You do not need to convert the pixel values yourself! PGL has built-in ways to extract the various colors
+
+:::{style="font-size:.8em;"}
+
+Function | Description
+--- | -----
+`GImage.get_red(pixel)` | Returns the integer (0-255) corresponding to the red portion of the pixel
+`GImage.get_green(pixel)` | Returns the integer (0-255) corresponding to the green portion of the pixel
+`GImage.get_blue(pixel)` | Returns the integer (0-255) corresponding to the blue portion of the pixel
+`GImage.get_alpha(pixel)` | Returns the integer (0-255) corresponding to the alpha portion of the pixel
+`GImage.create_rgb_pixel(r,g,b)` | Returns a 32-bit integer corresponding to the desired color
+
+:::
+
+
+## Image Thresholding
+::::::cols
+::::col
+- As an example of reading and manipulating pixel values, lets look at how we could threshold the image to the right
+- Thresholding is when you take a grayscale image and convert it to a black and white image, where a pixel is set to be white if it is above a certain threshold in brightness
+- Grayscale, so each RGB component is the same
+Let’s threshold at a value of 30
+::::
+
+::::col
+![Blurry Moon by Jed](../../Class_Demos/Moon.png){width=80%}
+::::
+::::::
+
+
+## Image Thresholding Example 
+
+
+```{.python style='min-height:980px; width=100%;'}
+
+from pgl import GWindow, GOval, GImage
+
+gw =GWindow(600,400)
+image = GImage("Moon.png", 0,0)
+image.scale(gw.get_width()/image.get_width())
+gw.add(image)
+
+def imagetreshold(e):
+    TRESHOLD = 130
+    pixel = image.get_pixel_array()
+    #print(pixel)
+    for r in range(len(pixel)):
+        for c in range(len(pixel[0])):
+            value = pixel[r][c]
+            red =GImage.get_red(value)
+            if red< TRESHOLD:
+                pixel[r][c]= GImage.create_rgb_pixel(0,0,0)
+            else:
+                pixel[r][c] = GImage.create_rgb_pixel(255,255,255)
+    # You must create a new Gimage
+    new_image = GImage(pixel)
+    gw.add(new_image)
+gw.add_event_listener("click", imagetreshold)
+
+```
+
+<!--
 ## Reading
 - Programs often need to work with collections of data that are too large to reasonably exist typed all out in the code
 	- Easier to read in the values of a list from some external data file
@@ -95,7 +194,7 @@ What would be the output of:
 	- **How data is read in**
 		- You have access to all the characters in a string variable pretty much immediately
 		- Data from text files is generally read in sequentially, starting from the beginning and proceeding until the end of the file is reached
-
+-->
 ## Reading Text Files
 - The general approach for reading a text file is to first _open_ the file and associate that file with a variable, commonly called its _file handle_
 - We will also use the _with_ keyword to ensure that Python cleans up after itself (closes the file) when we are done with it (Many of us could use a `with` irl)
@@ -145,63 +244,7 @@ What would be the output of:
 	  lines = f.read().splitlines()
   # Then you can do whatever you want with the list of lines
   ```
-
-## Example: Name Mangling
-- Let's look at an example with some more meat to it
-- I have a text file with all your first names. I'd like to:
-	- Read in the names
-	- Select two at random
-	- Combine the first half of one name with the second half of the other
-	- Print out both potential hybrid names
-- We'll practice breaking a problem into steps along the way here
-
-
-## Example Code:
-```{.python style='font-size:.6em; max-height:800px; width=100%;'}
-import random
-
-def name_mangler(filename):
-    """
-    Reads from a roster of first names and then randomly chooses two to cut in half
-    and recombine with the other. Then prints off both combinations.
-
-    Inputs:
-        filename (string): The filename containing the names
-
-    Outputs:
-        None
-    """
-
-    def get_names(filename):
-        """Reads in the roster. """
-        with open(filename) as fh:
-            names = fh.read().splitlines()
-        return names
-
-    def choose_two(name_list):
-        """ Chooses two different names from the list. """
-        name1 = random.choice(name_list)
-        name2 = random.choice(name_list)
-        while name1 == name2:
-            name2 = random.choice(name_list)
-        return [name1, name2]
-
-    def slice_and_combine(name1, name2):
-        """ Slices and recombines both names, printing to the screen. """
-        name1_mid = len(name1)//2
-        name2_mid = len(name2)//2
-        print(name1[:name1_mid] + name2[name2_mid:])
-        print(name2[:name2_mid] + name1[name1_mid:])
-
-    names = get_names(filename)
-    chosen = choose_two(names)
-    slice_and_combine(chosen[0], chosen[1])
-
-if __name__ == '__main__':
-    name_mangler('class_first_names.csv')
-```
-
-
+  
 ## Aren't you Exceptional
 - When opening a file for reading, it is possible the file does not exist!
 	- Python handles this (and many other potential errors that can arise) using a mechanism called _exception handling_
@@ -242,7 +285,7 @@ if __name__ == '__main__':
 - If the `open` call succeeds, we immediately just return the filename, but if it fails due to a `IOError`, we display a message and then keep asking
 
 
-<!--
+
 ## Choosing Wisely
 - The Python package used to implement `pgl.py` also supports a mechanism to choose files interactively, made available through the `filechooser.py` library module.
 - `filechooser.py` exports two functions:
@@ -258,7 +301,6 @@ filename = choose_input_file()
 with open(filename) as f:
 	# Code to read file
 ```
--->
 
 
 ## Writing Text Files
