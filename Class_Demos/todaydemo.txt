@@ -1,2 +1,3 @@
-It appears like the former text were overidden 
- would like to add these lines of paragraph
+Today is Friday and its 
+cold
+While in class 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-03-20">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-10-30">
   <title>Definitely Not Photoshop</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,27 +36,26 @@
 
 <section id="title-slide">
   <h1 class="title">Definitely Not Photoshop</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">March 20, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">October 30, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 5 due on Friday</li>
-<li>Project 3: Imageshop guide will be released by the end of tomorrow
-(though I’m aiming for today)</li>
-<li>Feel that things are hopeless and need to withdraw? The deadline is
-Wednesday
+<li>Problem Sets 5 is due <em>tomorrow</em> at 12 noon</li>
+<li>Grading of project 1 to be published soon.</li>
+<li>Project 3 will be posted latest <em>tomorrow</em>. You will be
+notified when uploaded</li>
+<li>CS151 Graphics Contest is due on <strong><em>EOD
+tomorrow</em></strong>. No extension will be granted!</li>
+<li>Feel that things are not going as expected and need to withdraw? See
+me to discuss
 <ul>
-<li>Grade Reports were posted to WISE! If things look dire,
-<strong>please reach out before Wednesday</strong>, so we can figure out
-if withdrawing is the correct option</li>
+<li>The deadline is this week</li>
 </ul></li>
-<li>A reminder that the graphics contest is due end of the month if you
-are interested in submitting something to that</li>
 <li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 <!--
 ## What if it didn't go well?
@@ -132,6 +134,88 @@ print(c.find("father"))</code></pre>
 </div>
 </div>
 </section>
+<section id="writing-text-files" class="slide level2">
+<h2>Writing Text Files</h2>
+<ul>
+<li><p>You can write text files using almost the same syntax as
+reading:</p>
+<pre ><code class="python">with open(filename, mode) as file_handle:
+    # Code to write the file using file_handle</code></pre></li>
+<li><p>Note the <code class="python">mode</code> parameter to
+<code class="python">open</code> here! Mode is a string which is
+either</p>
+<ul>
+<li><code class="python">"w"</code> to <strong>write</strong> a new file
+(or overwrite an existing file)</li>
+<li><code class="python">"a"</code> to <strong>append</strong> new
+contents to the end of an existing file</li>
+</ul></li>
+<li><p>The file handler supports the methods:</p>
+<ul>
+<li><code class="python">.write(some_string)</code> to write a string to
+the file</li>
+<li><code class="python">.writelines(iterable_of_strings)</code> to
+write each iterable element to the file</li>
+</ul></li>
+</ul>
+</section>
+<section id="writing-ascii-sine" class="slide level2">
+<h2>Writing ASCII SINE</h2>
+<ul>
+<li>Suppose I wanted to try my hand at some ASCII art and fill a text
+file with a vertical oscillating sine wave</li>
+<li>A sine wave generally looks like: <span class="math display">\[ A +
+A \sin\left(\frac{2\pi}{T}x\right)\]</span> where <span
+class="math inline">\(A\)</span> is the amplitude of the wave and <span
+class="math inline">\(T\)</span> the period of the wave, or how quickly
+it repeats
+<ul>
+<li>The extra <span class="math inline">\(A +\)</span> out front is to
+push the wave over to the right, since we can’t really place negative
+characters</li>
+</ul></li>
+<li>How can we put this together?</li>
+</ul>
+</section>
+<section id="ascii-sine-code" class="slide level2">
+<h2>ASCII SINE Code</h2>
+<pre ><code class="python" style="font-size:.6em; max-height:900px;">
+from math import sin, pi
+
+def sine_file(filename, A, T, symbol, padding=" "):
+    """ 
+    Creates a new sine wave in the provided file with the provided amplitude (A),
+    and period (T) with the indicated symbol at the end.
+
+    Inputs:
+        filename (string): the name of the file to write the art to
+        A (int): the amplitude of the wave in terms of number of characters
+        T (int): the period of the wave in terms of number of lines
+        symbol (string): the symbol to place to mark the wave
+        padding (string): what character to pad the left side of the wave with
+
+    Outputs:
+        None
+    """
+
+    def compute_symb_placement(A, T, x):
+        """Computes where the symbol should be placed."""
+        value = A * sin(2 * pi / T * x) + A
+        return int(value) # to integer character placement
+
+    def construct_line(placement, symbol, padding):
+        """Constructs the line with the necessary padding and symbol at the end."""
+        return padding * placement + symbol
+
+    with open(filename, 'w') as fh:
+        for x in range(10 * T): # write 10 periods worth of lines
+            v = compute_symb_placement(A, T, x)
+            line = construct_line(v, symbol, padding)
+            fh.write(line + '\n') # need the newline character at the end!
+
+if __name__ == '__main__':
+    sine_file('sine_test.txt', A=30, T=50, symbol='X')</code></pre>
+</section>
 <section id="choosing-wisely" class="slide level2">
 <h2>Choosing Wisely</h2>
 <div style="font-size:.9em">
@@ -165,8 +249,8 @@ with open(filename) as f:
 <div class="cols">
 <div class="col">
 <ul>
-<li>While you have a PS due this week, the next project will be due the
-week after Spring Break</li>
+<li>While you have a PS due tomorrow, the next project will be due next
+week</li>
 <li>Taking a moment today to introduce Imageshop, and the guide will be
 posted by tomorrow</li>
 </ul>
@@ -227,8 +311,8 @@ layouts:
 your main program</li>
 <li>You are encouraged to write the necessary functions for Milestone 5
 in their own file and import them in accordingly</li>
-<li>I’ve <strong><em>seen</em></strong> you all scrolling madly around
-trying to find the code you want. This helps with that!</li>
+<li>To avoid scrolling madly around trying to find the code you want,
+this helps with that!</li>
 </ul></li>
 </ul>
 </section>
@@ -288,7 +372,7 @@ much</li>
 <ul>
 <li>Here you will add buttons to rotate the image left or right (or CW
 or CCW if you prefer)</li>
-<li>Most of the difficulty comes in keeping track of of rows and columns
+<li>Most of the difficulty comes in keeping track of rows and columns
 <ul>
 <li>Need to create a new list of lists of the correct dimensions</li>
 <li>Need to copy over the pixels from the original to the needed
@@ -542,6 +626,7 @@ cool graphical effects and add a button for them!</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

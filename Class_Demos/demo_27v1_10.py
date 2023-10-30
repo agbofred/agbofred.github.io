@@ -40,7 +40,7 @@ def imageThreshing():
                 if red< TRESHOLD:
                     pixel[r][c]= GImage.create_rgb_pixel(0,0,0)
                 else:
-                    pixel[r][c] = GImage.create_rgb_pixel(10, 0,255,0)
+                    pixel[r][c] = GImage.create_rgb_pixel(255,255,255)
         # You must create a new Gimage
         new_image = GImage(pixel)
 

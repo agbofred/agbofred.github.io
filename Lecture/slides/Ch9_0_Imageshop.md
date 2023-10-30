@@ -1,7 +1,7 @@
 ---
 title: "Definitely Not Photoshop"
-author: Jed Rembold
-date: March 20, 2023
+author: Jed Rembold & Fred Agbo
+date: October 30, 2023
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,12 +15,14 @@ history: false
 
 
 ## Announcements
-- Problem Set 5 due on Friday
-- Project 3: Imageshop guide will be released by the end of tomorrow (though I'm aiming for today)
-- Feel that things are hopeless and need to withdraw? The deadline is Wednesday
-	- Grade Reports were posted to WISE! If things look dire, **please reach out before Wednesday**, so we can figure out if withdrawing is the correct option
-- A reminder that the graphics contest is due end of the month if you are interested in submitting something to that
-- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
+- Problem Sets 5 is due _tomorrow_ at 12 noon
+- Grading of project 1 to be published soon.
+- Project 3 will be posted latest _tomorrow_. You will be notified when uploaded
+- CS151 Graphics Contest is due on ***EOD tomorrow***. No extension will be granted!
+- Feel that things are not going as expected and need to withdraw? See me to discuss
+	- The deadline is this week 
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+
 
 <!--
 ## What if it didn't go well?
@@ -116,6 +118,70 @@ with open('PBride.txt') as f:
 ::::
 ::::::
 
+## Writing Text Files
+- You can write text files using almost the same syntax as reading:
+  ```python
+  with open(filename, mode) as file_handle:
+  	  # Code to write the file using file_handle
+  ```
+- Note the `mode` parameter to `open` here! Mode is a string which is either
+	- `"w"` to **write** a new file (or overwrite an existing file)
+	- `"a"` to **append** new contents to the end of an existing file
+- The file handler supports the methods:
+	- `.write(some_string)` to write a string to the file
+	- `.writelines(iterable_of_strings)` to write each iterable element to the file
+
+
+## Writing ASCII SINE
+- Suppose I wanted to try my hand at some ASCII art and fill a text file with a vertical oscillating sine wave
+- A sine wave generally looks like:
+	$$ A + A \sin\left(\frac{2\pi}{T}x\right)$$
+  where $A$ is the amplitude of the wave and $T$ the period of the wave, or how quickly it repeats
+  - The extra $A +$ out front is to push the wave over to the right, since we can't really place negative characters
+- How can we put this together?
+
+
+## ASCII SINE Code
+```{.python style='font-size:.6em; max-height:900px;'}
+
+from math import sin, pi
+
+def sine_file(filename, A, T, symbol, padding=" "):
+    """ 
+    Creates a new sine wave in the provided file with the provided amplitude (A),
+    and period (T) with the indicated symbol at the end.
+
+    Inputs:
+        filename (string): the name of the file to write the art to
+        A (int): the amplitude of the wave in terms of number of characters
+        T (int): the period of the wave in terms of number of lines
+        symbol (string): the symbol to place to mark the wave
+        padding (string): what character to pad the left side of the wave with
+
+    Outputs:
+        None
+    """
+
+    def compute_symb_placement(A, T, x):
+		"""Computes where the symbol should be placed."""
+        value = A * sin(2 * pi / T * x) + A
+        return int(value) # to integer character placement
+
+    def construct_line(placement, symbol, padding):
+		"""Constructs the line with the necessary padding and symbol at the end."""
+        return padding * placement + symbol
+
+    with open(filename, 'w') as fh:
+        for x in range(10 * T): # write 10 periods worth of lines
+            v = compute_symb_placement(A, T, x)
+            line = construct_line(v, symbol, padding)
+            fh.write(line + '\n') # need the newline character at the end!
+
+if __name__ == '__main__':
+    sine_file('sine_test.txt', A=30, T=50, symbol='X')
+```
+
+
 ## Choosing Wisely
 
 ::: {style='font-size:.9em'}
@@ -139,7 +205,7 @@ with open('PBride.txt') as f:
 ## Introducing ImageShop
 ::::::cols
 ::::col
-- While you have a PS due this week, the next project will be due the week after Spring Break
+- While you have a PS due tomorrow, the next project will be due next week
 - Taking a moment today to introduce Imageshop, and the guide will be posted by tomorrow
 ::::
 
@@ -171,7 +237,7 @@ with open('PBride.txt') as f:
 - ImageShop is the first project to start leveraging multi-file layouts:
 	- Some functions will already be provided in `GrayscaleImage.py` that you can import into your main program
 	- You are encouraged to write the necessary functions for Milestone 5 in their own file and import them in accordingly
-	- I've ***seen*** you all scrolling madly around trying to find the code you want. This helps with that!
+	- To avoid scrolling madly around trying to find the code you want, this helps with that!
 
 
 ## GButtons
@@ -199,7 +265,7 @@ with open('PBride.txt') as f:
 ::::::{.cols style='align-items: center'}
 ::::col
 - Here you will add buttons to rotate the image left or right (or CW or CCW if you prefer)
-- Most of the difficulty comes in keeping track of of rows and columns
+- Most of the difficulty comes in keeping track of rows and columns
 	- Need to create a new list of lists of the correct dimensions
 	- Need to copy over the pixels from the original to the needed location in the new list
 ::::
