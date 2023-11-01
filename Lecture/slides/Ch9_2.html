@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-03-24">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-11-01">
   <title>Spin me right round</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,57 +36,100 @@
 
 <section id="title-slide">
   <h1 class="title">Spin me right round</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">March 24, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">November 1, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 5 due tonight!</li>
-<li>ImageShop guide posted!</li>
-<li>I’ll be around this afternoon, but have a few meetings at 1:30 and
-then at 3</li>
-<li>Stuck on something over break? Feel free to email me or send a
-message on Discord! I won’t reply as fast as I usually would, but I’ll
-be around a computer and should be able to get back to you
+<li>Welcome to the month of November</li>
+<li>Grading of project 1 was published on Canvas.</li>
+<li>Project 3 has commenced and will be due <em>Tuesday next
+week</em>.</li>
+<li>CS151 Graphics Contest was due
+<strong><em>yesterday</em></strong>.</li>
+<li>Feel that things are not going as expected and need to withdraw? See
+me to discuss
 <ul>
-<li>Reminder: unless you are behind, I don’t expect you to work on
-anything over break!</li>
+<li>The deadline is this week</li>
+</ul></li>
+<li>Welcome to the newly rebranded “TechBytes”
+<ul>
+<li>Tomorrow at 11:30-12:30, Ford 102</li>
+<li>we have special lectures from Jed Rembold and Mike Woodford</li>
 </ul></li>
 <li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
+<!--
+## Introspection Question
+Starting today off with a bit of introspection (all correct answers).
+<br><br>
+
+Of the debugging strategies presented on Wednesday, for which of the following strategies do you see the most room for improvement in your own debugging?
+
+:::poll
+#. Strategy #1 or Strategy #2
+#. Strategy #3 or Strategy #4
+#. Strategy #5
+#. Strategy #6 or Strategy #7
+:::
+
+Once you've submitted your answer, share and justify with a neighbor why you chose the option you did, and some specific steps you'll take to improve.
+
+## Did you Listen?
+What strategy was your neighbor looking to improve?
+
+:::poll
+#. Strategy #1 or Strategy #2
+#. Strategy #3 or Strategy #4
+#. Strategy #5
+#. Strategy #6 or Strategy #7
+:::
+-->
 </section>
-<section id="introspection-question" class="slide level2">
-<h2>Introspection Question</h2>
-<p>Starting today off with a bit of introspection (all correct answers).
-<br><br></p>
-<p>Of the debugging strategies presented on Wednesday, for which of the
-following strategies do you see the most room for improvement in your
-own debugging?</p>
-<div class="poll">
-<ol>
-<li>Strategy #1 or Strategy #2</li>
-<li>Strategy #3 or Strategy #4</li>
-<li>Strategy #5</li>
-<li>Strategy #6 or Strategy #7</li>
-</ol>
+<section id="review" class="slide level2" data-notes="Solution: D">
+<h2 data-notes="Solution: D">Review!</h2>
+<p>Suppose you had the file contents to the left and wanted to turn it
+into the contents on the right. Which code snippet below would
+accomplish this?</p>
+<div class="cols">
+<div class="col">
+<pre ><code class="python" style="align:left;">food</code></pre>
 </div>
-<p>Once you’ve submitted your answer, share and justify with a neighbor
-why you chose the option you did, and some specific steps you’ll take to
-improve.</p>
-</section>
-<section id="did-you-listen" class="slide level2">
-<h2>Did you Listen?</h2>
-<p>What strategy was your neighbor looking to improve?</p>
-<div class="poll">
-<ol>
-<li>Strategy #1 or Strategy #2</li>
-<li>Strategy #3 or Strategy #4</li>
-<li>Strategy #5</li>
-<li>Strategy #6 or Strategy #7</li>
-</ol>
+<div class="col">
+<pre ><code class="python" style="align:right;">fooddoof</code></pre>
+</div>
+</div>
+<div class="cols">
+<div class="col">
+<div class="block" name="Option_A">
+<pre ><code class="python">with open(file) as fh:
+    data = fh.read()
+with open(file, 'w') as fh:
+    fh.write(data[::-1])</code></pre>
+</div>
+<div class="block" name="Option_B">
+<pre ><code class="python">with open(file) as fh:
+    data = fh.read()
+with open(file, 'a') as fh:
+    fh.write(data[::-1])</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block" name="Option_C">
+<pre ><code class="python">with open(file, 'rw') as fh:
+    data = fh.read()
+    fh.write(data[::-1])</code></pre>
+</div>
+<div class="block" name="Option_D">
+<pre ><code class="python">with open(file) as fh:
+    data = fh.read()
+with open(file, 'a') as fh:
+    fh.write(data[-2::-1])</code></pre>
+</div>
+</div>
 </div>
 </section>
 <section id="its-a-record" class="slide level2">
@@ -11922,6 +11968,7 @@ lab/.style={font=\tt\small, anchor=south west},
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
