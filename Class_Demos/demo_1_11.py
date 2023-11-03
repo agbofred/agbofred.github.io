@@ -1,19 +1,21 @@
-tu = ("grace", 43)
-name, age = tu
-empty_t =(4,)
-tu1 =tu[1:]
-tu2 = ("Fred",) + tu1
-"""
-[print(f'{name}--{age}') for i in range(len(tu)) ]"""
-#print(tu2*2)
-#print(tu[1], + tu[0],)
+class Employee():
+    def __init__(self, name, sex):
+        self.name = name
+        self.sex = sex
+    def middlename(self, mname):
+        self.name +=  mname
 
-# Named tupple
+"""def creat_empl(name, sex):
+    emp = Employee()
+    emp.name =name
+    emp.sex =sex
+    return emp
+sales = creat_empl("fred", "not unknown")
+manager = creat_empl("Jed", "male")
+print(manager.sex)"""
 
-from collections import namedtuple
+sales = Employee("Fred", "Male")
+Manager = Employee("Maria", "F")
+Manager.middlename("Joe") 
 
-employee = namedtuple("record", ["name", "age", "salary"])
-
-e1 = employee("Fred", 33, 1000)
-e1 = employee("grace", 44,20)
-print(employee.count())
+print(Manager.name)
