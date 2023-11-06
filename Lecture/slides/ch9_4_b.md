@@ -16,7 +16,7 @@ history: false
 
 ## Announcements
 - Grading of problem sets 5 is not ready yet! Apologies!.
-- Project 3 is due on _tomorrow_.
+- Project 3 is due _tomorrow_ at 12:00 PM.
 - Midterm 2 is **this week Friday at 9:10-10:10 am**
     - I’m going to post practice exams and learning objectives for you today
     - Focused on Chapters 4-6, and 8 (graphics, functions, and lists)
