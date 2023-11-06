@@ -378,27 +378,82 @@ class Employee:
 	def set_salary(self, new_salary):
 		self.salary = new_salary
 ```
-## Maps and Dictionaries 
-- A common form of information associates pairs of data values
-    - Commonly called a map in computer science
-    - Python calls such a structure a dictionary
-- A dictionary associates two different values:
-    - A simple value called the key, which is often a string but doesn’t need to be
-    - A larger and more complex object called the value
-- This idea of associating pairs of values is exhibited all over in the real world
-    - Actual dictionaries! The words are the keys, the definitions the values.
-    - Web addresses! Keys are the urls, the values are the webpage contents.
 
-## Creating Dictionaries 
-- Python dictionaries use squiggly brackets {} to enclose their contents
-- Can create an empty dictionary by providing no key-value pairs:
-```python
-empty_dict = {}
+
+## Keys and Values
+- The value of a key-value pair can be any Python object, mutable or immutable
+    - This include other dictionaries!
+- The key is more restricted:
+    - Must be immutable
+        - So dictionaries or lists can not work as a key
+        - Tuples can though!
+    - Must be unique per dictionary
+
+::::cols
+
+:::{.block name=Viable}
+```{.python style='width: 800px'}
+A = {True: 'Seth', False: 'Jesse'}
+B = {'Jill': 13, 'Jack': 12}
+C = {(1,2): {'x':1}}
 ```
-- If creating a dictionary with key-value pairs
-    - Keys are separated from values with a colon :
-    - Pairs are separated by a comma ,
-```python
-generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}
+:::
+
+:::{.block name=Illegal}
+```{.python style='width: 800px'}
+X = {{'x': 1, 'y': 2}: 'Shark'}
+Y = {[1,3,5]: 'Odd'}
+Z = {'A': 13, 'B': 24, 'A': 15}
 ```
+:::
+
+::::
+
+## Selection
+- The fundamental operation on dictionaries is selection, which is still indicated with square brackets: ```[]```
+
+- Dictionaries though are unordered, so it is not a numeric index that goes inside the ```[ ]```
+
+- You instead use the key directly to select corresponding values:
+  ```python-repl
+  >>> A = {'Jack': 12, 'Jill': 13}['Jack']
+  >>> print(A)
+  12
+  >>> B = {True: 13, 0: 'Why?'}[0]
+  >>> print(B)
+  Why?
+  ```
+
+
+
+## Losing your keys
+- If you attempt to index out a key that doesn’t exist:
+```python
+    A = {'Jack': 12, 'Jill': 13}
+    print(A['Jil'])
+```
+    - you will get an error!
+- If in doubt, check for the presence of a key with the in operator:
+```python
+    if 'Jil' in A:
+        print(A['Jil'])
+```
+
+## Rewriting the dictionary
+- Dictionaries are ***mutable***!
+    - We can add new key-value pairs
+    - We can change the value of corresponding keys
+
+
+  ```python-repl
+  >>> d = {}
+  >>> d['A'] = 10
+  >>> d['B'] = 12
+  >>> print(d)
+  {'A':10, 'B':12}
+  >>> d['A'] = d['B']
+  >>> print(d)
+  {'A':12, 'B':12}
+  ```
+
 
