@@ -432,7 +432,7 @@ should be printed</li>
         self.salary = new_salary</code></pre>
 </section>
 <section id="maps-and-dictionaries" class="slide level2">
-<h2>MAPS AND DICTIONARIES</h2>
+<h2>Maps and Dictionaries</h2>
 <ul>
 <li>A common form of information associates pairs of data values
 <ul>
@@ -456,7 +456,7 @@ contents.</li>
 </ul>
 </section>
 <section id="creating-dictionaries" class="slide level2">
-<h2>CREATING DICTIONARIES</h2>
+<h2>Creating Dictionaries</h2>
 <ul>
 <li>Python dictionaries use squiggly brackets {} to enclose their
 contents</li>
@@ -470,57 +470,6 @@ contents</li>
 <li>Pairs are separated by a comma ,</li>
 </ul>
 <pre ><code class="python">generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}</code></pre></li>
-</ul>
-</section>
-<section id="selection" class="slide level2">
-<h2>Selection</h2>
-<ul>
-<li><p>The fundamental operation on dictionaries is selection, which is
-still indicated with square brackets:
-<code class="python">[]</code></p></li>
-<li><p>Dictionaries though are unordered, so it is not a numeric index
-that goes inside the <code class="python">[ ]</code></p></li>
-<li><p>You instead use the key directly to select corresponding
-values:</p>
-<pre ><code class="python-repl">>>> A = {'Jack': 12, 'Jill': 13}['Jack']
->>> print(A)
-12
->>> B = {True: 13, 0: 'Why?'}[0]
->>> print(B)
-Why?</code></pre></li>
-</ul>
-</section>
-<section id="losing-your-keys" class="slide level2">
-<h2>Losing your keys</h2>
-<ul>
-<li>If you attempt to index out a key that doesn’t exist:</li>
-</ul>
-<pre ><code class="python">    A = {'Jack': 12, 'Jill': 13}
-    print(A['Jil'])</code></pre>
-<pre ><code >- you will get an error!</code></pre>
-<ul>
-<li>If in doubt, check for the presence of a key with the in
-operator:</li>
-</ul>
-<pre ><code class="python">    if 'Jil' in A:
-        print(A['Jil'])</code></pre>
-</section>
-<section id="rewriting-the-dictionary" class="slide level2">
-<h2>Rewriting the dictionary</h2>
-<ul>
-<li>Dictionaries are <strong><em>mutable</em></strong>!
-<ul>
-<li>We can add new key-value pairs</li>
-<li>We can change the value of corresponding keys</li>
-</ul>
-<pre ><code class="python-repl">>>> d = {}
->>> d['A'] = 10
->>> d['B'] = 12
->>> print(d)
-{'A':10, 'B':12}
->>> d['A'] = d['B']
->>> print(d)
-{'A':12, 'B':12}</code></pre></li>
 </ul>
 </section>
     </div>

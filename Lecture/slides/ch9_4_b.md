@@ -378,7 +378,7 @@ class Employee:
 	def set_salary(self, new_salary):
 		self.salary = new_salary
 ```
-## MAPS AND DICTIONARIES
+## Maps and Dictionaries 
 - A common form of information associates pairs of data values
     - Commonly called a map in computer science
     - Python calls such a structure a dictionary
@@ -389,7 +389,7 @@ class Employee:
     - Actual dictionaries! The words are the keys, the definitions the values.
     - Web addresses! Keys are the urls, the values are the webpage contents.
 
-## CREATING DICTIONARIES
+## Creating Dictionaries 
 - Python dictionaries use squiggly brackets {} to enclose their contents
 - Can create an empty dictionary by providing no key-value pairs:
 ```python
@@ -401,53 +401,4 @@ empty_dict = {}
 ```python
 generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}
 ```
-
-
-## Selection
-- The fundamental operation on dictionaries is selection, which is still indicated with square brackets: ```[]```
-
-- Dictionaries though are unordered, so it is not a numeric index that goes inside the ```[ ]```
-
-- You instead use the key directly to select corresponding values:
-  ```python-repl
-  >>> A = {'Jack': 12, 'Jill': 13}['Jack']
-  >>> print(A)
-  12
-  >>> B = {True: 13, 0: 'Why?'}[0]
-  >>> print(B)
-  Why?
-  ```
-
-
-
-## Losing your keys
-- If you attempt to index out a key that doesn’t exist:
-```python
-    A = {'Jack': 12, 'Jill': 13}
-    print(A['Jil'])
-```
-    - you will get an error!
-- If in doubt, check for the presence of a key with the in operator:
-```python
-    if 'Jil' in A:
-        print(A['Jil'])
-```
-
-## Rewriting the dictionary
-- Dictionaries are ***mutable***!
-    - We can add new key-value pairs
-    - We can change the value of corresponding keys
-
-
-  ```python-repl
-  >>> d = {}
-  >>> d['A'] = 10
-  >>> d['B'] = 12
-  >>> print(d)
-  {'A':10, 'B':12}
-  >>> d['A'] = d['B']
-  >>> print(d)
-  {'A':12, 'B':12}
-  ```
-
 
