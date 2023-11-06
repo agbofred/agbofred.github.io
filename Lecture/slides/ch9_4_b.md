@@ -402,34 +402,52 @@ empty_dict = {}
 generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}
 ```
 
-## Keys and Values
-- The value of a key-value pair can be any Python object, mutable or immutable
-    - This include other dictionaries!
-- The key is more restricted:
-    - Must be immutable
-        - So dictionaries or lists can not work as a key
-        - Tuples can though!
-    - Must be unique per dictionary
 
-::::cols
+## Selection
+- The fundamental operation on dictionaries is selection, which is still indicated with square brackets: ```[]```
 
-:::{.block name=Viable}
-```{.python style='width: 800px'}
-A = {True: 'Seth', False: 'Jesse'}
-B = {'Jill': 13, 'Jack': 12}
-C = {(1,2): {'x':1}}
+- Dictionaries though are unordered, so it is not a numeric index that goes inside the ```[ ]```
+
+- You instead use the key directly to select corresponding values:
+  ```python-repl
+  >>> A = {'Jack': 12, 'Jill': 13}['Jack']
+  >>> print(A)
+  12
+  >>> B = {True: 13, 0: 'Why?'}[0]
+  >>> print(B)
+  Why?
+  ```
+
+
+
+## Losing your keys
+- If you attempt to index out a key that doesn’t exist:
+```python
+    A = {'Jack': 12, 'Jill': 13}
+    print(A['Jil'])
 ```
-:::
-
-:::{.block name=Illegal}
-```{.python style='width: 800px'}
-X = {{'x': 1, 'y': 2}: 'Shark'}
-Y = {[1,3,5]: 'Odd'}
-Z = {'A': 13, 'B': 24, 'A': 15}
+    - you will get an error!
+- If in doubt, check for the presence of a key with the in operator:
+```python
+    if 'Jil' in A:
+        print(A['Jil'])
 ```
-:::
 
-::::
+## Rewriting the dictionary
+- Dictionaries are ***mutable***!
+    - We can add new key-value pairs
+    - We can change the value of corresponding keys
 
+
+  ```python-repl
+  >>> d = {}
+  >>> d['A'] = 10
+  >>> d['B'] = 12
+  >>> print(d)
+  {'A':10, 'B':12}
+  >>> d['A'] = d['B']
+  >>> print(d)
+  {'A':12, 'B':12}
+  ```
 
 
