@@ -294,7 +294,60 @@ print(A.make, A.color, A.year)
   ```
 - Getters are far more common than setters, as you don't always want the client to have the freedom to change attributes on a whim
 
+## Understanding check {data-notes="Solution: D"}
+:::::cols
+::::col
+The code block to the right starts defining a class. Only 1 of the below options for defining an ```increment``` method will work. Which one?
+::::
 
+::::col
+```python
+class BestCounter:
+  def __init__(self, start):
+    self.counter = start
+```
+
+::::
+::::::
+
+::::::cols
+::::col
+
+:::{.block name=A}
+```python
+def increment(self, value):
+    counter += value
+```
+:::
+
+:::{.block name=B}
+```python
+def increment(self, value):
+    self.counter += self.value
+```
+:::
+
+
+::::
+
+::::col
+
+:::{.block name=C}
+```python
+def increment(value):
+    counter += self.value
+```
+:::
+
+:::{.block name=D}
+```python
+def increment(self, value):
+    self.counter += value
+```
+:::
+
+::::
+::::::
 
 
 ## Representation
@@ -416,13 +469,13 @@ Z = {'A': 13, 'B': 24, 'A': 15}
 
   ```python-repl
   >>> d = {}
->>> d['A'] = 10
->>> d['B'] = 12
->>> print(d)
-{'A':10, 'B':12}
->>> d['A'] = d['B']
->>> print(d)
-{'A':12, 'B':12}
+  >>> d['A'] = 10
+  >>> d['B'] = 12
+  >>> print(d)
+  {'A':10, 'B':12}
+  >>> d['A'] = d['B']
+  >>> print(d)
+  {'A':12, 'B':12}
   ```
 
 
