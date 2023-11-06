@@ -83,7 +83,7 @@ right?</p>
 </div>
 </div>
 <div class="col">
-<pre ><code class="python" style="min-height:940px; width: 1000px">class Pet:
+<pre ><code class="python" style="min-height:940px; width: 1200px">class Pet:
     def __init__(self, name, color, age):
         self.name = name
         self.color="black"
@@ -324,6 +324,196 @@ self manually</p>
 Employee.give_raise(clerk, 15)</code></pre></li>
 </ul></li>
 </ul></li>
+</ul>
+</section>
+<section id="visualization-summary" class="slide level2">
+<h2>Visualization Summary</h2>
+<ul>
+<li>To summarize in a visual manner, we can look at everything together
+on <a
+href="http://pythontutor.com/live.html#code=class%20Employee%3A%0A%20%20%20%20def%20__init__%28self,%20name,%20title,%20salary%29%3A%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0A%20%20%20%20%20%20%20%20self.title%20%3D%20title%0A%20%20%20%20%20%20%20%20self.salary%20%3D%20salary%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20def%20give_raise%28self,%20amount%29%3A%0A%20%20%20%20%20%20%20%20current%20%3D%20self.salary%0A%20%20%20%20%20%20%20%20self.salary%20%2B%3D%20amount%0A%20%20%20%20%20%20%20%20%0A%0Aclerk%20%3D%20Employee%28%22Bob%20Cratchit%22,%20%22clerk%22,%2015%29%0Aboss%20%3D%20Employee%28%22Scrooge%22,%20%22founder%22,%201000%29%0A%0Aclerk.give_raise%2820%29&amp;cumulative=false&amp;curInstr=1&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-live.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">PythonTutor</a></li>
+</ul>
+<p><img data-src="../images/ConstructorPythonTutor.png"
+style="width:50.0%" /></p>
+</section>
+<section id="getters-and-setters" class="slide level2">
+<h2>Getters and Setters</h2>
+<ul>
+<li><p>In the object-oriented model, the client is not supposed to
+muck-about with the object internals</p></li>
+<li><p>The implementation should therefore provide methods to retrieve
+desired attributes (called <em>getters</em>) or to make changes to
+desired attributes (called <em>setters</em>)</p></li>
+<li><p>Setting up getters and setters for the attribute
+<code class="python">salary</code> might look like:</p>
+<pre ><code class="python">def get_salary(self):
+  return self.salary
+
+def set_salary(self, new_salary):
+  self.salary = new_salary</code></pre></li>
+<li><p>Getters are far more common than setters, as you don’t always
+want the client to have the freedom to change attributes on a
+whim</p></li>
+</ul>
+</section>
+<section id="representation" class="slide level2">
+<h2>Representation</h2>
+<ul>
+<li><p>Printing out an object that you just created as an instance of a
+custom class will look ugly:</p>
+<pre ><code class="python-repl">>>> C = Employee('Bob', 'clerk', 15)
+>>> print(C)
+<__main__.Employee object at 0x7f942ba13550></code></pre></li>
+<li><p>You can define special methods for a class that specify how your
+object should be converted to a string (or anything else really)</p>
+<ul>
+<li>All these special methods have double underscores before and after,
+and hence are frequently termed “dunder” (double underscore)
+methods</li>
+<li>You can the <code class="python">__str__</code> or
+<code class="python">__repr__</code> method to specify how your object
+should be printed</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-good-employee" class="slide level2">
+<h2>A Good Employee</h2>
+<pre ><code class="python" style="max-height:900px">class Employee:
+    def __init__(self, name, title, salary):
+        self.name = name
+        self.title = title
+        self.salary = salary
+
+    def __str__(self):
+        return f"{self.name} ({self.title}): {self.salary}"
+
+    def get_salary(self):
+        return self.salary
+
+    def set_salary(self, new_salary):
+        self.salary = new_salary</code></pre>
+</section>
+<section id="maps-and-dictionaries" class="slide level2">
+<h2>MAPS AND DICTIONARIES</h2>
+<ul>
+<li>A common form of information associates pairs of data values
+<ul>
+<li>Commonly called a map in computer science</li>
+<li>Python calls such a structure a dictionary</li>
+</ul></li>
+<li>A dictionary associates two different values:
+<ul>
+<li>A simple value called the key, which is often a string but doesn’t
+need to be</li>
+<li>A larger and more complex object called the value</li>
+</ul></li>
+<li>This idea of associating pairs of values is exhibited all over in
+the real world
+<ul>
+<li>Actual dictionaries! The words are the keys, the definitions the
+values.</li>
+<li>Web addresses! Keys are the urls, the values are the webpage
+contents.</li>
+</ul></li>
+</ul>
+</section>
+<section id="creating-dictionaries" class="slide level2">
+<h2>CREATING DICTIONARIES</h2>
+<ul>
+<li>Python dictionaries use squiggly brackets {} to enclose their
+contents</li>
+<li>Can create an empty dictionary by providing no key-value pairs:</li>
+</ul>
+<pre ><code class="python">empty_dict = {}</code></pre>
+<ul>
+<li>If creating a dictionary with key-value pairs
+<ul>
+<li>Keys are separated from values with a colon :</li>
+<li>Pairs are separated by a comma ,</li>
+</ul>
+<pre ><code class="python">generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}</code></pre></li>
+</ul>
+</section>
+<section id="keys-and-values" class="slide level2">
+<h2>Keys and Values</h2>
+<ul>
+<li>The value of a key-value pair can be any Python object, mutable or
+immutable
+<ul>
+<li>This include other dictionaries!</li>
+</ul></li>
+<li>The key is more restricted:
+<ul>
+<li>Must be immutable
+<ul>
+<li>So dictionaries or lists can not work as a key</li>
+<li>Tuples can though!</li>
+</ul></li>
+<li>Must be unique per dictionary</li>
+</ul></li>
+</ul>
+<div class="cols">
+<div class="block" name="Viable">
+<pre ><code class="python" style="width: 800px">A = {True: 'Seth', False: 'Jesse'}
+B = {'Jill': 13, 'Jack': 12}
+C = {(1,2): {'x':1}}</code></pre>
+</div>
+<div class="block" name="Illegal">
+<pre ><code class="python" style="width: 800px">X = {{'x': 1, 'y': 2}: 'Shark'}
+Y = {[1,3,5]: 'Odd'}
+Z = {'A': 13, 'B': 24, 'A': 15}</code></pre>
+</div>
+</div>
+</section>
+<section id="selection" class="slide level2">
+<h2>Selection</h2>
+<ul>
+<li><p>The fundamental operation on dictionaries is selection, which is
+still indicated with square brackets:
+<code class="python">[]</code></p></li>
+<li><p>Dictionaries though are unordered, so it is not a numeric index
+that goes inside the <code class="python">[ ]</code></p></li>
+<li><p>You instead use the key directly to select corresponding
+values:</p>
+<pre ><code class="python-repl">>>> A = {'Jack': 12, 'Jill': 13}['Jack']
+>>> print(A)
+12
+>>> B = {True: 13, 0: 'Why?'}[0]
+>>> print(B)
+Why?</code></pre></li>
+</ul>
+</section>
+<section id="losing-your-keys" class="slide level2">
+<h2>Losing your keys</h2>
+<ul>
+<li>If you attempt to index out a key that doesn’t exist:</li>
+</ul>
+<pre ><code class="python">    A = {'Jack': 12, 'Jill': 13}
+    print(A['Jil'])</code></pre>
+<pre ><code >- you will get an error!</code></pre>
+<ul>
+<li>If in doubt, check for the presence of a key with the in
+operator:</li>
+</ul>
+<pre ><code class="python">    if 'Jil' in A:
+        print(A['Jil'])</code></pre>
+</section>
+<section id="rewriting-the-dictionary" class="slide level2">
+<h2>Rewriting the dictionary</h2>
+<ul>
+<li>Dictionaries are <strong><em>mutable</em></strong>!
+<ul>
+<li>We can add new key-value pairs</li>
+<li>We can change the value of corresponding keys</li>
+</ul>
+<pre ><code class="python-repl">>>> d = {}
+>>> d['A'] = 10
+>>> d['B'] = 12
+>>> print(d)
+{'A':10, 'B':12}
+>>> d['A'] = d['B']
+>>> print(d)
+{'A':12, 'B':12}</code></pre></li>
 </ul>
 </section>
     </div>
