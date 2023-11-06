@@ -20,7 +20,7 @@ history: false
 - Midterm 2 is **this week Friday at 9:10-10:10 am**
     - I’m going to post practice exams and learning objectives for you today
     - Focused on Chapters 4-6, and 8 (graphics, functions, and lists)
-    - No problem set next week: just studying for exam
+    - No problem set this week: just studying for exam
 - Wednesday class will welcome a guest faculty - Prof. Calvin 
     - Talk on CS/DS Fall Advising Preview!
     - Calvin will be briefly discussing what classes are being offered
@@ -479,4 +479,3 @@ Z = {'A': 13, 'B': 24, 'A': 15}
   ```
 
 
-  
