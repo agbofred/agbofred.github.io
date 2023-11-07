@@ -436,14 +436,14 @@ should be printed</li>
 <ul>
 <li>A common form of information associates pairs of data values
 <ul>
-<li>Commonly called a map in computer science</li>
-<li>Python calls such a structure a dictionary</li>
+<li>Commonly called a <em>map</em> in computer science</li>
+<li>Python calls such a structure a <em>dictionary</em></li>
 </ul></li>
 <li>A dictionary associates two different values:
 <ul>
-<li>A simple value called the key, which is often a string but doesn’t
-need to be</li>
-<li>A larger and more complex object called the value</li>
+<li>A simple value called the <em>key</em>, which is often a string but
+doesn’t need to be</li>
+<li>A larger and more complex object called the <em>value</em></li>
 </ul></li>
 <li>This idea of associating pairs of values is exhibited all over in
 the real world
@@ -458,16 +458,16 @@ contents.</li>
 <section id="creating-dictionaries" class="slide level2">
 <h2>Creating Dictionaries</h2>
 <ul>
-<li>Python dictionaries use squiggly brackets {} to enclose their
-contents</li>
-<li>Can create an empty dictionary by providing no key-value pairs:</li>
-</ul>
-<pre ><code class="python">empty_dict = {}</code></pre>
+<li><p>Python dictionaries use squiggly brackets
+<code class="python">{}</code> to enclose their contents</p></li>
+<li><p>Can create an empty dictionary by providing no key-value
+pairs:</p>
+<pre ><code class="python">empty_dict = {}</code></pre></li>
+<li><p>If creating a dictionary with key-value pairs</p>
 <ul>
-<li>If creating a dictionary with key-value pairs
-<ul>
-<li>Keys are separated from values with a colon :</li>
-<li>Pairs are separated by a comma ,</li>
+<li>Keys are separated from values with a colon
+<code class="python">:</code></li>
+<li>Pairs are separated by a comma <code class="python">,</code></li>
 </ul>
 <pre ><code class="python">generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}</code></pre></li>
 </ul>
@@ -475,8 +475,8 @@ contents</li>
 <section id="keys-and-values" class="slide level2">
 <h2>Keys and Values</h2>
 <ul>
-<li>The value of a key-value pair can be any Python object, mutable or
-immutable
+<li>The value of a key-value pair can be <strong>any</strong> Python
+object, mutable or immutable
 <ul>
 <li>This include other dictionaries!</li>
 </ul></li>
@@ -484,22 +484,26 @@ immutable
 <ul>
 <li>Must be immutable
 <ul>
-<li>So dictionaries or lists can not work as a key</li>
+<li>So dictionaries or lists can <strong>not</strong> work as a key</li>
 <li>Tuples can though!</li>
 </ul></li>
 <li>Must be unique per dictionary</li>
 </ul></li>
 </ul>
 <div class="cols">
+<div class="col">
 <div class="block" name="Viable">
-<pre ><code class="python" style="width: 800px">A = {True: 'Seth', False: 'Jesse'}
+<pre ><code class="python">A = {True: 'Seth', False: 'Jesse'}
 B = {'Jill': 13, 'Jack': 12}
 C = {(1,2): {'x':1}}</code></pre>
 </div>
-<div class="block" name="Illegal">
-<pre ><code class="python" style="width: 800px">X = {{'x': 1, 'y': 2}: 'Shark'}
+</div>
+<div class="col">
+<div class="block" name="Illegal" style="border-color:var(--red)">
+<pre ><code class="python">X = {{'x': 1, 'y': 2}: 'Shark'}
 Y = {[1,3,5]: 'Odd'}
 Z = {'A': 13, 'B': 24, 'A': 15}</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -509,8 +513,9 @@ Z = {'A': 13, 'B': 24, 'A': 15}</code></pre>
 <li><p>The fundamental operation on dictionaries is selection, which is
 still indicated with square brackets:
 <code class="python">[]</code></p></li>
-<li><p>Dictionaries though are unordered, so it is not a numeric index
-that goes inside the <code class="python">[ ]</code></p></li>
+<li><p>Dictionaries though are <strong>unordered</strong>, so it is not
+a numeric index that goes inside the
+<code class="python">[ ]</code></p></li>
 <li><p>You instead use the key directly to select corresponding
 values:</p>
 <pre ><code class="python-repl">>>> A = {'Jack': 12, 'Jill': 13}['Jack']
@@ -524,22 +529,20 @@ Why?</code></pre></li>
 <section id="losing-your-keys" class="slide level2">
 <h2>Losing your keys</h2>
 <ul>
-<li>If you attempt to index out a key that doesn’t exist:</li>
+<li><p>If you attempt to index out a key that doesn’t exist:</p>
+<pre ><code class="python badcode">A = {'Jack': 12, 'Jill': 13}
+print(A['Jil'])</code></pre>
+<p>you will get an error!</p></li>
+<li><p>If in doubt, check for the presence of a key with the
+<code class="python">in</code> operator:</p>
+<pre ><code class="python">if 'Jil' in A:
+    print(A['Jil'])</code></pre></li>
 </ul>
-<pre ><code class="python">    A = {'Jack': 12, 'Jill': 13}
-    print(A['Jil'])</code></pre>
-<pre ><code >- you will get an error!</code></pre>
-<ul>
-<li>If in doubt, check for the presence of a key with the in
-operator:</li>
-</ul>
-<pre ><code class="python">    if 'Jil' in A:
-        print(A['Jil'])</code></pre>
 </section>
 <section id="rewriting-the-dictionary" class="slide level2">
-<h2>Rewriting the dictionary</h2>
+<h2>Rewriting the Dictionary</h2>
 <ul>
-<li>Dictionaries are <strong><em>mutable</em></strong>!
+<li>Dictionaries are <em>mutable</em>!
 <ul>
 <li>We can add new key-value pairs</li>
 <li>We can change the value of corresponding keys</li>
