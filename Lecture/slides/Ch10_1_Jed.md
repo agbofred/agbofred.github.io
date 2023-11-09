@@ -414,11 +414,11 @@ def get_students_with_score():
 
 Method call | Description
 ---|-----
-`len(|||dict|||)`{.mypython} | Returns the number of key-value pairs in the dictionary
-`|||dict|||.get(key, value)`{.mypython} | Returns the value associated with the `key` in the dictionary. If the key is not found, returns the specified value, which is `None` by default)
-`|||dict|||.pop(key)`{.mypython} | Removes the key-value pair corresponding to `key` and returns the associated value. Will raise an error if the key is not found.
-`|||dict|||.clear()`{.mypython} | Removes all key-value pairs from the dictionary, leaving it empty.
-`|||dict|||.items()`{.mypython} | Returns an iterable object that cycles through the successive tuples consisting of a key-value pair.
+`len(dict)`{.python} | Returns the number of key-value pairs in the dictionary
+`dict.get(key, value)`{.python} | Returns the value associated with the `key` in the dictionary. If the key is not found, returns the specified value, which is `None` by default
+`dict.pop(key)`{.python} | Removes the key-value pair corresponding to `key` and returns the associated value. Will raise an error if the key is not found.
+`dict.clear()`{.python} | Removes all key-value pairs from the dictionary, leaving it empty.
+`dict.items()`{.python} | Returns an iterable object that cycles through the successive tuples consisting of a key-value pair.
 
 
 ## Dictionary Records
