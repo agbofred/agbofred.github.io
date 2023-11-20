@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-04-24">
+  <meta name="author" content="Jed Rembold and Fred">
+  <meta name="dcterms.date" content="2023-11-20">
   <title>Token Searches</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,57 +36,41 @@
 
 <section id="title-slide">
   <h1 class="title">Token Searches</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">April 24, 2023</p>
+  <p class="author">Jed Rembold and Fred</p>
+  <p class="date">November 20, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Project 5 guide posted!
-<ul>
-<li>Section meetings this week will focus on common sticking points</li>
-<li>I’m fine with you partnering with anyone from your small section or
-this class
-<ul>
-<li>Even if working alone, you will still need to form a “team” when
-accepting the assignment</li>
-<li>Only join a team if you and that person have agreed to work
-together!</li>
-</ul></li>
-<li><strong>Back things up to GitHub after finishing every
-Milestone!</strong></li>
-</ul></li>
-<li>Final
-<ul>
-<li>I will be posting final study materials and some old test at the end
-of the week so that you can start studying</li>
-<li>Will be more weighted toward content from the latter half of the
-semester, but everything we’ve been doing this semester builds on
-earlier material</li>
-</ul></li>
+<li>Midterm grading almost done! Latest today!</li>
+<li>Enigma project is due <strong>tomorrow</strong></li>
+<li>Final project will be after returning from holiday</li>
+<li>Graphics Contest result will be announced on
+<strong>Monday</strong></li>
 <li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
-</ul>
-</section>
-<section id="review-question" class="slide level2">
-<h2>Review Question!</h2>
-<div class="cols">
-<div class="col">
-<p>The two classes to the right mimic a bit of what might occur in the
-course of the Adventure Project. What python data type is
-<code class="python">ANS</code>?</p>
-<div class="poll">
-<ol>
-<li>A String</li>
-<li>An AdvObject</li>
-<li>An AdvLocation</li>
-<li>A List</li>
-</ol>
-</div>
-</div>
-<div class="col">
-<pre ><code class="python" style="max-height:1000px; font-size:.6em;">class AdvObject:
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+<!--
+## Review Question!
+
+::::cols
+:::col
+The two classes to the right mimic a bit of what might occur in the course of the Adventure Project. What python data type is `ANS`?
+
+:::::poll
+#. A String
+#. An AdvObject
+#. An AdvLocation
+#. A List
+:::::
+
+
+:::
+:::col
+
+
+```{.python style='max-height:1000px; font-size:.6em;'}
+class AdvObject:
     def __init__(self, name, loc):
         self.name = name
         self.loc = loc
@@ -104,9 +91,12 @@ B = AdvObject("Torch", "RA")
 RA = AdvLocation("Room A")
 RA.store(A)
 RA.store(B)
-ANS = RA.retrieve_top().get_loc()</code></pre>
-</div>
-</div>
+ANS = RA.retrieve_top().get_loc()
+```
+:::
+::::
+--></li>
+</ul>
 </section>
 <section id="abstract-data-types" class="slide level2">
 <h2>Abstract Data Types</h2>
@@ -122,7 +112,7 @@ client</li>
 <li>Flexibility. If the internal representation needs to be changed by
 the programmer, they can do so without breaking outside
 compatibility</li>
-<li>Security. Keeping the internal representation away from clients
+<li>Security. Keeping the internal representation away from clients;
 prevents clients from directly altering values that may cause the type
 to behave unexpectedly</li>
 </ul></li>
@@ -133,8 +123,8 @@ to define our own abstract types</li>
 <section id="token-adt" class="slide level2">
 <h2>Token ADT</h2>
 <ul>
-<li>I find it helps to think of ADT’s as a data type which helps to
-fulfill a particular objective or behavioral goal
+<li>Think of ADT’s as a data type which helps to fulfill a particular
+objective or behavioral goal
 <ul>
 <li>They are little machines, packaged up inside a class</li>
 </ul></li>
@@ -179,7 +169,7 @@ needed</li>
 <ul>
 <li>Frequently, specific wants or objectives make for good methods to
 include in the token scanner</li>
-<li>Chapter 12 includes an example of a common implementation</li>
+<li>Chapter 10 includes an example of a common implementation</li>
 <li>Exports 4 main methods:
 <ol>
 <li><code class="python">scanner.set_input(str)</code>
