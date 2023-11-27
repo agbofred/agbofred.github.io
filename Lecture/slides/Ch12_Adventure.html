@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2021-11-29">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-11-27">
   <title>Adventure</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -14,10 +14,18 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
   <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
@@ -28,52 +36,63 @@
 
 <section id="title-slide">
   <h1 class="title">Adventure</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">November 29, 2021</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">November 27, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>If you are not caught up on the Projects, please send me an email so we can find a time to meet in the next 3 days to see what, if anything, can be done.</li>
-<li>Project 5 guidelines going out today
+<li>Exam 2 scores is posted in canvas
 <ul>
-<li>Can work on it with a partner if you want, but not required</li>
-<li>Email me if you’d like a partner but don’t currently have one and I’ll try to connect people</li>
-<li>Due the last Friday of classes (approx 2 weeks)</li>
+<li>I’m moderating the score by adding 15 points across</li>
 </ul></li>
-<li>Polling: <a href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
-</ul>
-</section>
-<section id="review-question" class="slide level2" data-notes="Solution: {[&#39;A&#39;, &#39;B&#39;]: {1, 2}}">
-<h2 data-notes="Solution: {[&#39;A&#39;, &#39;B&#39;]: {1, 2}}">Review Question</h2>
-<p>Three of the below expressions are valid; one is not. Which one would return an error?</p>
-<div class="poll">
-<ol>
-<li><code class="python">{'A': {'B': (1,2)}, 'C': 3}</code></li>
-<li><code class="python">{1, 2, (3,4), 5 }</code></li>
-<li><code class="python">[{'Alpha': 1, 'Omega': 26}, {2, 3, 4, 5}]</code></li>
-<li><code class="python">{['A', 'B']: {1, 2}}</code></li>
-</ol>
-</div>
+<li>Project 5 <strong>Adventure</strong> guidelines is out today
+<ul>
+<li>Due on <strong><em>Wednesday December 6th</em></strong> (i.e., next
+week)</li>
+<li>Can work on it with a partner if you want, but not required</li>
+</ul></li>
+<li>Graphics Contest result will be announced in class today</li>
+<li>I will dedicate next week to:
+<ul>
+<li>reviewing midterm exams 1 &amp; 2</li>
+<li>providing final exam practice and guidelines</li>
+</ul></li>
+<li>Final exam is 2 Mondays from now (exactly 2 weeks)</li>
+<li>Polling: <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
 <!--
-## Review Question
-::::::cols
-::::col
-The data file to the right is read in and run using the TeachingMachine. What question do you end up at if you choose B 4 times in a row?
+## Review Question {data-notes="Solution: {['A', 'B']: {1, 2}}"}
+Three of the below expressions are valid; one is not. Which one would return an error?
 
 :::{.poll}
-#. Q1
-#. Q2
-#. Q3
-#. None of the above
+#. `{'A': {'B': (1,2)}, 'C': 3}`
+#. `{1, 2, (3,4), 5 }`
+#. `[{'Alpha': 1, 'Omega': 26}, {2, 3, 4, 5}]`
+#. `{['A', 'B']: {1, 2}}`
 :::
-
-::::
-
-::::col
-
-:::{.text}
+--></li>
+</ul>
+</section>
+<section id="review-question" class="slide level2">
+<h2>Review Question</h2>
+<div class="cols">
+<div class="col">
+<p>The data file to the right is read in and run using the
+TeachingMachine. What question do you end up at if you choose B 4 times
+in a row?</p>
+<div class="poll">
+<ol>
+<li>Q1</li>
+<li>Q2</li>
+<li>Q3</li>
+<li>None of the above</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<div class="text">
 <pre style='font-size:0.5em;'>
 Q1
 What is the square root of 36?
@@ -103,54 +122,64 @@ What is your age?
 A: Q1
 *: Q2
 </pre>
-:::
+</div>
+</div>
+</div>
+<!--
+## Beginning the Adventure
+- One of the first computer games I ever played was Riven: The Sequel to Myst
 
+::::::cols
+::::col
+![](../images/Riven_cover.jpg){width=75%}
+::::
 
+::::col
+<video width='100%' controls src="../video/RivenOpening.webm"></video>
 ::::
 ::::::
 -->
 </section>
-<section id="beginning-the-adventure" class="slide level2">
-<h2>Beginning the Adventure</h2>
-<ul>
-<li>One of the first computer games I ever played was Riven: The Sequel to Myst</li>
-</ul>
-<div class="cols">
-<div class="col">
-<p><img data-src="../images/Riven_cover.jpg" style="width:75.0%" /></p>
-</div>
-<div class="col">
-<video width="100%" controls src="../video/RivenOpening.webm">
-</video>
-</div>
-</div>
-</section>
 <section id="teaching-the-adventure" class="slide level2">
 <h2>Teaching the Adventure</h2>
 <ul>
-<li>The TeachingMachine program can process and run <em>any</em> data file that has the correct format
+<li>The TeachingMachine program can process and run <em>any</em> data
+file that has the correct format
 <ul>
-<li>Does not need to technically be a series of educational questions</li>
-<li>This is part of the strength of the data driven model: data is easy to change, programs less so</li>
+<li>Does not need to technically be a series of educational
+questions</li>
+<li>This is part of the strength of the data driven model: data is easy
+to change, programs less so</li>
 </ul></li>
-<li>Could make a sort of “Choose your own adventure” game out of it!</li>
+<li>Could make a sort of “Choose your own adventure” game out of
+it!</li>
 </ul>
 </section>
 <section id="life-among-wizards" class="slide level2">
 <h2>Life among Wizards</h2>
 <ul>
-<li>The history of the early internet has been told in several books. One relates the following story:</li>
+<li>The history of the early internet has been told in several books.
+One relates the following story:</li>
 </ul>
 <div class="cols">
 <div class="col">
 <figure class="r-stack">
-<img class="fragment fade-out visible" style="width:80.0%" alt="&nbsp;" data-fragment-index="0" src="../images/wizardsuplate.png" data-lazy-loaded=""></img> <img class="fragment fade-in visible" style="width:80.0%" alt="&nbsp;" data-fragment-index="0" src="../images/mirkwoodtales.png" data-lazy-loaded=""></img>
+<img class="fragment fade-out visible" style="width:80.0%" alt="&nbsp;" data-fragment-index="0" src="../images/wizardsuplate.png" data-lazy-loaded=""></img>
+<img class="fragment fade-in visible" style="width:80.0%" alt="&nbsp;" data-fragment-index="0" src="../images/mirkwoodtales.png" data-lazy-loaded=""></img>
 </figure>
 </div>
 <div class="col" style="font-size:.7em; flex-grow:2">
 <blockquote>
-<p>A small circle of friends at BBN had gotten hooked on Dungeons and Dragons, an elaborate fantasy role-playing game in which one player invents a setting and populates it with monsters and puzzles, and the other players then make their way through that setting. The game exists only in the minds of the players.</p>
-<p>Dave Walden got his introduction to the game one night when Eric Roberts, a student from a class he was teaching at Harvard, took him to a D&amp;D session. Walden immediately rounded up a group of friends from the ARPANET team for continued sessions. Roberts created the Mirkwood Tales.</p>
+<p>A small circle of friends at BBN had gotten hooked on Dungeons and
+Dragons, an elaborate fantasy role-playing game in which one player
+invents a setting and populates it with monsters and puzzles, and the
+other players then make their way through that setting. The game exists
+only in the minds of the players.</p>
+<p>Dave Walden got his introduction to the game one night when Eric
+Roberts, a student from a class he was teaching at Harvard, took him to
+a D&amp;D session. Walden immediately rounded up a group of friends from
+the ARPANET team for continued sessions. Roberts created the Mirkwood
+Tales.</p>
 <p>One of the regulars was Will Crowther.</p>
 </blockquote>
 </div>
@@ -158,7 +187,11 @@ A: Q1
 </section>
 <section id="the-team" class="slide level2">
 <h2>The Team</h2>
-<img data-src="../images/arpanetteam.png" title="fig:" class="stretch" alt="ARPANET D&amp;D Team" />
+<figure>
+<img data-src="../images/arpanetteam.png" class="stretch"
+alt="ARPANET D&amp;D Team" />
+<figcaption aria-hidden="true">ARPANET D&amp;D Team</figcaption>
+</figure>
 </section>
 <section id="willie-crowthers-adventure-game" class="slide level2">
 <h2>Willie Crowther’s Adventure Game</h2>
@@ -173,18 +206,23 @@ A: Q1
 <li>Eric Roberts begins the Mirkwood Tales in early 1975</li>
 <li>Will Crowther creates Adventure later that year</li>
 <li>Will moves to Xerox/PARC in 1976</li>
-<li>Stanford graduate student Don Woods released an expanded version of Adventure in early 1977</li>
-<li>Dave Lebling and others from MIT release the first version of Zork in 1977
+<li>Stanford graduate student Don Woods released an expanded version of
+Adventure in early 1977</li>
+<li>Dave Lebling and others from MIT release the first version of Zork
+in 1977
 <ul>
-<li>Game later becomes the foundation of the computer game company Infocom</li>
+<li>Game later becomes the foundation of the computer game company
+Infocom</li>
 </ul></li>
 <li>Adventure is ported to wide variety of platforms by 1980</li>
-<li>Eric Roberts creates an expanded version in 1984 and uses it as the basis for his first Adventure Project/Contest at Wellesley</li>
+<li>Eric Roberts creates an expanded version in 1984 and uses it as the
+basis for his first Adventure Project/Contest at Wellesley</li>
 </ul>
 </section>
 <section id="adventure-classes" class="slide level2">
 <h2>Adventure Classes</h2>
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -407,13 +445,17 @@ A: Q1
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ececec;fill-opacity:1">object in the game.</tspan></tspan></text>
   </g>
 </svg>
-</p>
+
+<figcaption> </figcaption>
+</figure>
 </section>
 <section id="milestone-1" class="slide level2">
 <h2>Milestone 1</h2>
 <ul>
-<li>Adapt the code from the Teaching Machine application so that it uses the class and method names for Adventure</li>
-<li>Once you finish this milestone, you should be able to wander around a bit in the game</li>
+<li>Adapt the code from the Teaching Machine application so that it uses
+the class and method names for Adventure</li>
+<li>Once you finish this milestone, you should be able to wander around
+a bit in the game</li>
 </ul>
 <video width="70%" data-autoplay loop src="../video/Adventure_M1.webm">
 </video>
@@ -449,8 +491,11 @@ DOWN: OutsideBuilding
 <section id="milestone-2" class="slide level2">
 <h2>Milestone 2</h2>
 <ul>
-<li>Implement <code class="python">set_visited</code> and <code class="python">has_been_visited</code> to keep track of which rooms have been visited.</li>
-<li>Check this flag in the code that describes a room to know which description to show</li>
+<li>Implement <code class="python">set_visited</code> and
+<code class="python">has_been_visited</code> to keep track of which
+rooms have been visited.</li>
+<li>Check this flag in the code that describes a room to know which
+description to show</li>
 </ul>
 <video width="70%" data-autoplay loop src="../video/Adventure_M2.webm">
 </video>
@@ -458,20 +503,28 @@ DOWN: OutsideBuilding
 <section id="milestone-3" class="slide level2">
 <h2>Milestone 3</h2>
 <ul>
-<li>Implement the <code class="python">QUIT</code>, <code class="python">HELP</code>, and <code class="python">LOOK</code> commands</li>
+<li>Implement the <code class="python">QUIT</code>,
+<code class="python">HELP</code>, and <code class="python">LOOK</code>
+commands</li>
 <li>Adds extra commands that let the player do more than just move</li>
 </ul>
-<p><br> <video width='70%' data-autoplay loop src="../video/Adventure_M3.webm"></video></p>
+<p><br>
+<video width='70%' data-autoplay loop src="../video/Adventure_M3.webm"></video></p>
 </section>
 <section id="milestone-4" class="slide level2">
 <h2>Milestone 4</h2>
 <ul>
 <li>Implement the <code class="python">AdvObject</code> class</li>
-<li>Implement the methods in the <code class="python">AdvRoom</code> class that make it possible to keep track of the objects in a room</li>
-<li>In the <code class="python">AdvGame</code> class, write the code to put each object in its initial room (ignoring the <code class="python">"PLAYER"</code> room for now)</li>
-<li>Change the code for displaying a room so that it displays a list of the objects in the room as well</li>
+<li>Implement the methods in the <code class="python">AdvRoom</code>
+class that make it possible to keep track of the objects in a room</li>
+<li>In the <code class="python">AdvGame</code> class, write the code to
+put each object in its initial room (ignoring the
+<code class="python">"PLAYER"</code> room for now)</li>
+<li>Change the code for displaying a room so that it displays a list of
+the objects in the room as well</li>
 </ul>
-<p><br> <video width='70%' data-autoplay loop src="../video/Adventure_M4.webm"></video></p>
+<p><br>
+<video width='70%' data-autoplay loop src="../video/Adventure_M4.webm"></video></p>
 </section>
 <section id="the-smallobjects-data-file" class="slide level2">
 <h2>The <code class="python">SmallObjects</code> data file</h2>
@@ -498,16 +551,22 @@ PLAYER
 <section id="milestone-5" class="slide level2">
 <h2>Milestone 5</h2>
 <ul>
-<li>Implement the <code class="python">TAKE</code>, <code class="python">DROP</code>, and <code class="python">INVENTORY</code> commands and any code you need to remember what the player is carrying</li>
+<li>Implement the <code class="python">TAKE</code>,
+<code class="python">DROP</code>, and
+<code class="python">INVENTORY</code> commands and any code you need to
+remember what the player is carrying</li>
 </ul>
-<p><br> <video width='70%' data-autoplay loop src="../video/Adventure_M5.webm"></video></p>
+<p><br>
+<video width='70%' data-autoplay loop src="../video/Adventure_M5.webm"></video></p>
 </section>
 <section id="milestone-6" class="slide level2">
 <h2>Milestone 6</h2>
 <ul>
-<li>Implement synonym processing so that the player can use abbreviated forms of the directions and alternative names for the objects</li>
+<li>Implement synonym processing so that the player can use abbreviated
+forms of the directions and alternative names for the objects</li>
 </ul>
-<p><br> <video width='70%' data-autoplay loop src="../video/Adventure_M6.webm"></video></p>
+<p><br>
+<video width='70%' data-autoplay loop src="../video/Adventure_M6.webm"></video></p>
 </section>
 <section id="the-smallsynonyms.txt-data-file" class="slide level2">
 <h2>The <code class="python">SmallSynonyms.txt</code> data file</h2>
@@ -531,10 +590,15 @@ BOTTLE=WATER
 <section id="milestone-7" class="slide level2">
 <h2>Milestone 7</h2>
 <ul>
-<li>Implement <em>locked passages</em>, which are passages that require a particular object to use</li>
-<li>Making this change requires moving <code class="python">get_next_room</code> from <code class="python">AdvRoom</code> to <code class="python">AdvGame</code> so that it can see the objects</li>
+<li>Implement <em>locked passages</em>, which are passages that require
+a particular object to use</li>
+<li>Making this change requires moving
+<code class="python">get_next_room</code> from
+<code class="python">AdvRoom</code> to
+<code class="python">AdvGame</code> so that it can see the objects</li>
 </ul>
-<p><br> <video width='70%' data-autoplay loop src="../video/Adventure_M7.webm"></video></p>
+<p><br>
+<video width='70%' data-autoplay loop src="../video/Adventure_M7.webm"></video></p>
 </section>
 <section id="the-smallrooms.txt-data-file-1" class="slide level2">
 <h2>The <code class="python">SmallRooms.txt</code> data file</h2>
@@ -563,13 +627,82 @@ FORCED: OutsideGrate
 <section id="milestone-8" class="slide level2">
 <h2>Milestone 8</h2>
 <ul>
-<li>Implement <em>forced motion</em>, in which the player is forced to immediately move from a room to a new room without issuing a command
+<li>Implement <em>forced motion</em>, in which the player is forced to
+immediately move from a room to a new room without issuing a command
 <ul>
 <li>Indicated by the verb <code class="python">FORCED</code></li>
 </ul></li>
-<li>Implementation of forced motion needs to allow some forced passages to still be locked</li>
+<li>Implementation of forced motion needs to allow some forced passages
+to still be locked</li>
 </ul>
-<p><br> <video width='70%' data-autoplay loop src="../video/Adventure_M8.webm"></video></p>
+<p><br>
+<video width='70%' data-autoplay loop src="../video/Adventure_M8.webm"></video></p>
+</section>
+<section id="graphics-contest-grading" class="slide level2">
+<h2>Graphics Contest Grading</h2>
+<ul>
+<li>5 submissions from this class but 4 were eligible for grading</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 28%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: center;">Name of project</th>
+<th style="text-align: center;">Documentation</th>
+<th style="text-align: center;">Workability</th>
+<th style="text-align: center;">Aesthetic</th>
+<th style="text-align: center;">Algorithmic sophistication</th>
+<th style="text-align: center;">Final</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Alien spaceship</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">400</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Color Chaos</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">370</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Sudoku</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">330</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Winter Scene</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">320</td>
+</tr>
+</tbody>
+</table>
 </section>
     </div>
   </div>
@@ -594,6 +727,7 @@ FORCED: OutsideGrate
 		//autoAnimateEasing: 'ease-in',
 		//autoAnimateDuration: 1.0,
 		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
         // Display controls in the bottom right corner
         controls: true,
         // Help the user learn the controls by providing hints, for example by
@@ -612,7 +746,7 @@ FORCED: OutsideGrate
         // page/copying the URL will return you to the same slide
         hash: true,
         // Push each slide change to the browser history
-        history: true,
+        history: false,
         // Enable keyboard shortcuts for navigation
         keyboard: true,
         // Enable the slide overview mode
@@ -621,27 +755,16 @@ FORCED: OutsideGrate
         center: false,
         // Enables touch navigation on devices with touch input
         touch: true,
-        // Loop the presentation
-        loop: false,
-        // Change the presentation direction to be RTL
-        rtl: false,
         // see https://revealjs.com/vertical-slides/#navigation-mode
         navigationMode: 'default',
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
         // Turns fragments on and off globally
         fragments: true,
         // Flags whether to include the current fragment in the URL,
         // so that reloading brings you to the same fragment position
         fragmentInURL: true,
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
         // Flags if we should show a help overlay when the questionmark
         // key is pressed
         help: true,
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
         // Global override for autoplaying embedded media (video/audio/iframe)
         // - null: Media will only autoplay if data-autoplay is present
         // - true: All media will autoplay, regardless of individual setting
@@ -665,14 +788,10 @@ FORCED: OutsideGrate
         // presenting each slide. This is used to show a pacing timer in the
         // speaker view
         defaultTiming: null,
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
         // Hide cursor if inactive
         hideInactiveCursor: true,
         // Time before the cursor is hidden (in ms)
         hideCursorTime: 5000,
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
         // Transition style
         transition: 'fade', // none/fade/slide/convex/concave/zoom
         // Transition speed
@@ -729,7 +848,7 @@ FORCED: OutsideGrate
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -754,6 +873,7 @@ FORCED: OutsideGrate
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

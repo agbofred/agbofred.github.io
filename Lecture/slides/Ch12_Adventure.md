@@ -1,7 +1,7 @@
 ---
 title: "Adventure"
-author: Jed Rembold
-date: November 29, 2021
+author: Jed Rembold & Fred Agbo
+date: November 27, 2023
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,14 +15,18 @@ history: false
 
 
 ## Announcements
-- If you are not caught up on the Projects, please send me an email so we can find a time to meet in the next 3 days to see what, if anything, can be done.
-- Project 5 guidelines going out today
+- Exam 2 scores is posted in canvas
+	- I'm moderating the score by adding 15 points across 
+- Project 5 __Adventure__ guidelines is out today 
+	- Due on ***Wednesday December 6th***  (i.e., next week)
 	- Can work on it with a partner if you want, but not required
-	- Email me if you'd like a partner but don't currently have one and I'll try to connect people
-	- Due the last Friday of classes (approx 2 weeks)
-- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
-
-
+- Graphics Contest result will be announced in class today
+- I will dedicate next week to:
+	- reviewing midterm exams 1 & 2
+	- providing final exam practice and guidelines
+- Final exam is 2 Mondays from now (exactly 2 weeks)
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+<!--
 ## Review Question {data-notes="Solution: {['A', 'B']: {1, 2}}"}
 Three of the below expressions are valid; one is not. Which one would return an error?
 
@@ -32,8 +36,8 @@ Three of the below expressions are valid; one is not. Which one would return an 
 #. `[{'Alpha': 1, 'Omega': 26}, {2, 3, 4, 5}]`
 #. `{['A', 'B']: {1, 2}}`
 :::
+-->
 
-<!--
 ## Review Question
 ::::::cols
 ::::col
@@ -85,8 +89,8 @@ A: Q1
 
 ::::
 ::::::
--->
 
+<!--
 ## Beginning the Adventure
 - One of the first computer games I ever played was Riven: The Sequel to Myst
 
@@ -99,7 +103,7 @@ A: Q1
 <video width='100%' controls src="../video/RivenOpening.webm"></video>
 ::::
 ::::::
-
+-->
 
 ## Teaching the Adventure
 - The TeachingMachine program can process and run _any_ data file that has the correct format
@@ -311,3 +315,13 @@ FORCED: OutsideGrate
 
 <br>
 <video width='70%' data-autoplay loop src="../video/Adventure_M8.webm"></video>
+
+## Graphics Contest Grading
+- 5 submissions from this class but 4 were eligible for grading
+
+|  #  |  Name of project |  Documentation | Workability | Aesthetic | Algorithmic sophistication | Final | 
+|:---:|:----------------:|:--------------:|:-----------:|:---------:|:--------------------------:|:-----:|
+|  1  | Alien spaceship  | 100            |  100        |  100      |  100                       |   400 | 
+|  2  | Color Chaos      | 100            |  100        |  80       |  90                        |   370 | 
+|  3  | Sudoku           |  70            |  100        |  60       |  100                       |   330 | 
+|  4  | Winter Scene     |  100           |  100        |  100      |  20                        |   320 | 
