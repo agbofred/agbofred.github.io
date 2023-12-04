@@ -48,7 +48,7 @@ and has the internal representation shown below, where I’ve labeled both posit
 
 # Question 2a-1c
 (2a).     Given the program
-
+``` python
 def problem1(s):
     r = ""
     for i in range(len(s)):
@@ -60,23 +60,23 @@ def problem1(s):
 
 if __name__ == '__main__ ':
     print(problem1("ressets"))
-
+```
 What will be printed to the terminal after the program execute?
 `Ans: sesrest`
 
 (2b).      Consider the function below. What value will be printed to the terminal?
-
+```python
 def func(a, b=5, c= True): 
     if c:
         return a + c
     else:
         return a * b
 print(func(5,True,False))
-
+```
 `Ans: 5`
 
 (2c). Determine what will be printed to the terminal after the program below executes
-
+```python
 def prob2a(s):
     r = 0
     new = ""
@@ -97,7 +97,7 @@ def prob2b(y):
     return " "
 if __name__ == "__main__":
     print(prob2a("Hit tie why wish noon rip lord ding"))
-
+```
 `Ans: Hi world`
 
 ## Question 3
