@@ -1,5 +1,5 @@
 ---
-title: "Chapters 4-6,8-11 Review "
+title: "Chapters 4-6,8 Review "
 author: Fred Agbo
 date: December 4, 2023
 slideNumber: true
@@ -14,7 +14,7 @@ history: false
 ---
 
 ## Announcements
-- Project 5 is due on ***Wednesday December***. 
+- Project 5 is due on ***Wednesday 6th December***. 
 - **Game Contest**, is due on __Friday 15th December__. ***NO EXTENSION***
 - Final exam is **Next week Mondays 11th December** ***at 7:00 pm - 10 pm***
     - Venue is ***Ford Hall 102***, our usual lecture hall!
@@ -282,6 +282,7 @@ Method | Description
 	```python
 	[i for i in range(0,20,2) if i % 3 != 0]
 	```
+
 ## Multidimensional Arrays
 - We know that elements of a list can be lists in and of themselves. If the lengths of all the lists making up the elements of a list remain fixed, then the list of lists is called a _multidimensional array_
 - In Python, we can create multidimensional arrays just by creating lists of constant length as the elements to another list
@@ -329,7 +330,7 @@ block/.style = {draw, MGreen, outer sep=0pt, font=\Large, minimum size=1cm},
 \node[block,color=MBlue,font=\tt,right=0 of 01](02) {magic[0][2]};
 \node[block,color=MBlue,font=\tt,right=0 of 11](12) {magic[1][2]};
 \node[block,color=MBlue,font=\tt,right=0 of 21](22) {magic[2][2]};
-\end{tikzpicture}
+\end{tikzpicture} 
 
 ## Reading
 - Programs often need to work with collections of data that are too large to reasonably exist typed all out in the code
@@ -399,4 +400,4 @@ block/.style = {draw, MGreen, outer sep=0pt, font=\Large, minimum size=1cm},
   # Then you can do whatever you want with the list of lines
   ```
 
-  ## Midterm 1 review
+## Midterm 1 review
