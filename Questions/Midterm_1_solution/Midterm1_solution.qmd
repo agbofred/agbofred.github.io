@@ -20,7 +20,7 @@ format:
     title-block-banner: ./Images/banner.png
     title-block-banner-color: black
 ---
-## Question 1a-1d
+## Questions 1a-1d
 For each of the below expressions, write out both the value of the expression in the box provided. If the expression results in an error, simply type "Error" in the box. You can assume that the constant ALPHABET has already been defined earlier in the code as
 
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -46,7 +46,7 @@ and has the internal representation shown below, where I’ve labeled both posit
 
 
 
-# Question 2a-1c
+# Questions 2a-2c
 (2a).     Given the program
 ``` python
 def problem1(s):
