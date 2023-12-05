@@ -6,8 +6,13 @@
 <style>
   body {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
   }
 
   .top-menu {
@@ -33,8 +38,11 @@
   }
   .content {
     padding-top: 60px; /* Add padding to account for fixed menu */
-    padding-left: 30px;
-    text-align: justify;
+    /*padding-left: 30px; */
+    /*text-align: justify; */
+    max-width: 1800px; /* Adjust the width as needed */
+    padding: 30px 10px 10px 10px; /* Adjust the padding as needed */
+    text-align: justify; /* To center align content inside the container */
   }
   .two-column-container {
     display: flex;
@@ -56,6 +64,15 @@
   .custom-list li {
     margin-bottom: 10px; /* Add spacing between items */
   }
+  .footer {
+  background-color: #f2f2f2;
+  padding: 5px 0 15px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+}
 </style>
 <title>Fred's page</title>
 </head>
@@ -70,31 +87,59 @@
   <div class="content">
     <h1>Welcome to my website</h1>
     <div class="two-column-container">
-        <div class="column">
-            <img src="images/fredprofile.jpg" width="200">
-            <p style="padding-left: 10px;"> <strong> Fred Agbo</strong>, PhD <em>(he/him)</em>
+      <div class="column">
+        <img src="images/fredprofile.jpg" width="200">
+          <p style="padding-left: 10px;"> <strong> Fred Agbo</strong>, PhD <em>(he/him)</em>
             <br>Assistant Professor of Computer Science 
             <br> Willamette University, Salem OR, 97301, USA <br>
             fjagbo at willamette.edu 
 
-            </p>
+          </p>
         </div>
-        <div class="column">
-            <h2>Education</h2>
-            <ul class="custom-list">
-                <li>PhD in Computer Science, University of Eastern Finland - 2022</li>
-                <li>MSc in Computer Science, University of Ilorin - 2017</li>
-                <li>BSc in Computer Science, University of Jos - 2013</li>
-            </ul>
-            
+      <div class="column">
+        <div>
+          <h2>Biography</h2>
+          <ul class="custom-list">
+              <p>
+                Fred Agbo joined the School of Computing and Information Science, 
+                Willamette University in 2023 as an Assistant Professor of Computer Science. 
+                Before joining Willamette University, he worked as a University Lecturer at the School of Computing, 
+                University of Eastern Finland (UEF) in Joensuu, Finland. Fred completed his PhD degree from the same 
+                University of Eastern Finland in 2022, 
+                specializing in computing education and educational technology.
+
+              </p>
+          </ul>
         </div>
+        <div>
+          <h2>Education</h2>
+          <ul class="custom-list">
+              <li>PhD in Computer Science, University of Eastern Finland - 2022</li>
+              <li>MSc in Computer Science, University of Ilorin - 2017</li>
+              <li>BSc in Computer Science, University of Jos - 2013</li>
+          </ul>
+        </div>
+      </div> 
     </div>
     <hr>
-    <h2>My Courses</h2>
+    <div>
+      <h2>My Research Interest</h2>
+      <ul class="custom-list">
+          <li>	Computer Science Education </li>
+          <li>	Computational Thinking Education</li>
+          <li>	Human-Computer Interaction</li>
+          <li>	Smart Learning Environments</li>
+          <li>	Emerging Technology for Learning</li>
+          <li>	Virtual and Augmented Reality in Education</li>
+          <li>	Machine Learning Education</li>
+      </ul>
+    </div>
+    <hr>
+    <h2>Courses</h2>
     <div>
         <table>
             <tr>
-                <td><a href="pythonintro.html"> <strong> Intro to programming with Python - CS 151</strong></a></td>
+                <td><a href="pythonintro.html" target="_blank"> <strong> Intro to programming with Python - CS 151</strong></a></td>
             </tr>
             <tr>
                 <td><a href="#"> <strong> Human-Computer Interaction - CS 299 </strong></a></td>
@@ -106,13 +151,26 @@
         
     </div>
     <hr>
-    <h2>My Research (coming soon)</h2>
+    <h2>Publications (See link below)</h2>
     <div>
-      <a href="https://scholar.google.com/citations?user=mSqmwdgAAAAJ&hl=en&oi=sra">Google Schoolar</a>
+      <a href="https://scholar.google.com/citations?user=mSqmwdgAAAAJ&hl=en&oi=sra" target="_blank">Google Schoolar</a>
         
     </div>
-    <hr>
-    <p> </p>
+
+    <hr >
+    <div style="margin-bottom: 30px;">
+
+
+    </div>
   </div>
+  <footer class="footer">
+    &copy; <span id="currentYear"></span> | Fred Agbo. All Rights Reserved.</p>
+  </footer>
+  <script>
+    const yearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+  </script>
+
 </body>
 </html>
