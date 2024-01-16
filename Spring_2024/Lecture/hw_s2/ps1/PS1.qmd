@@ -22,7 +22,7 @@ Both questions on this first problem set have template files in the repository. 
 worry about changing any file names, you want to overwrite the original template files.
 
 ```{=html}
-<a href='https://classroom.github.com/a/TZuyHEUQ' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom.github.com/a/RDIbxLf-' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 
