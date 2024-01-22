@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-01-20">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2024-01-22">
   <title>Controlling Karel</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,20 +36,20 @@
 
 <section id="title-slide">
   <h1 class="title">Controlling Karel</h1>
-  <p class="author">Instructor: Fred Agbo <br> <strong> Slide by: Jed Rembold</strong> </p>
-  <p class="date">August 30, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">January 22, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Beginning of semester survey for CS/DS/Math: watchout for a survey form from <em></em>Kelley Strawn</em></li>
-<li>To sync the course more efficiently, a unique <strong>Discord Server for CS 151</strong> is being created</li>
-<li>Problem Set 1 will be posted this Friday and due <em>next 2</em> Monday night</li>
-<li>Sections start mid next week. If you have not yet filled out your
-availability, please do that <strong>now</strong> <a
-href="https://forms.gle/75s2M4XhQt23iFdY8">here</a>!</li>
-<li>Polling starts today! <a href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a> </li>
+<li>Problem Set 1 is posted and due on <em>Monday night, 29
+January</em></li>
+<li>Sections start hopefully this week. If you have not yet filled out
+your availability, please do that <strong>now</strong> <a
+href="https://forms.gle/o8Ckec2dPboSV8bPA">here</a>!</li>
+<li>Polling starts today! Use this <a
+href="https://www.polleverywhere.com/agbofred203">link</a>
 <ul>
 <li>I don’t need your full official name, but include enough that I can
 identify you!</li>
@@ -231,7 +234,8 @@ def main():
 the same directory as your program</li>
 </ul></li>
 </ul>
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    width="376.22427mm"
    height="199.66743mm"
@@ -1703,7 +1707,9 @@ SZIkSaoRQ6AkSZIk1YghUJIkSZJq5P8B9G/DO2aZL7AAAAAASUVORK5CYII=
        sodipodi:nodetypes="cc" />
   </g>
 </svg>
-</p>
+
+<figcaption>Karel Interface</figcaption>
+</figure>
 </section>
 <section id="functional-programs" class="slide level2">
 <h2>Functional Programs</h2>
@@ -1843,7 +1849,7 @@ style="width:60.0%" /></p>
 <div class="cols">
 <div class="col">
 <ul>
-<li>From a big picture perspective, we might break this down to something
+<li>From a big picture perspective, we might break this down something
 like:
 <ul>
 <li>Moving between potholes</li>
@@ -2262,7 +2268,7 @@ def turn_around():
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -2287,6 +2293,7 @@ def turn_around():
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
