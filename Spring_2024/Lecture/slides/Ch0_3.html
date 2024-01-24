@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-01-23">
-  <title>Round and Round</title>
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2024-01-24">
+  <title>Cleaver Karel</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -32,35 +35,42 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Round and Round</h1>
-  <p class="author">Instructor: Fred Agbo <br><strong> Slide by: Jed Rembold</strong> </p>
-  <p class="date">September 1, 2023</p>
+  <h1 class="title">Cleaver Karel</h1>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">January 24, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 1 posted today! </li>
-<li>The <em>PDF file</em> containing all instructions and link to the Github classroom is posted on Canvas!
+<li>Problem Set 1 is due on <strong>Monday Jan. 29th @ 10pm</strong>!
 <ul>
-<li>Problem Set 1 is due <em>next 2</em> Monday's night at 11:59 pm</li>
 <li>You’ll have basically all you need to solve it after today</li>
 </ul></li>
-<li>Small sections starting up next week Wednesday/Thursday (depending on when your
+<li>Small sections starting up today or tomorrow (depending on when your
 section meets)
 <ul>
-<li>If you got an email from me, it means you had not signed up your availability as at <strong>4:00pm yesterday</strong>.
-You must fill out the availability poll <strong>NOW!</strong></li>
+<li>Did you not get a message from <em>Prof. Jed</em> about your section
+meeting time? You must not have filled out the availability poll.</li>
+<li>Come see me after class and we can see about getting you placed into
+one.</li>
 </ul></li>
-<li>Polling continues today! Remember to use this link when I make it <strong>active</strong> <a href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a> </li>
+<li>Polling: <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
 <ul>
 <li>Reminder: include enough of your name that I can uniquely identify
 you!</li>
 </ul></li>
+<li>Welcome to TechByte event tomorrow <strong>by 11:30 am @ Ford
+102</strong>. Talk will be on how to find and apply for internships</li>
+<li>Welcome to Cookie Social at QUAD Center (Ford 224) <strong>TUE Jan
+30 @ 4:30pm</strong></li>
+<li>I’ve requested for <strong><em>relocation of lecture
+hall</em></strong>. Stay tunned for the info soon!</li>
 </ul>
 </section>
-<section id="kinda-iffy" class="slide level2">
-<h2>Kinda Iffy</h2>
+<section id="if-conditions" class="slide level2">
+<h2>If Conditions</h2>
 <ul>
 <li><p>Predicate functions can be used to control a kind of “switch”:
 running one piece of code if the answer is yes and a different piece of
@@ -78,22 +88,66 @@ is no, you can ignore the “else” part of the statement:</p>
 # Carrying on with code that will always run</code></pre></li>
 </ul>
 </section>
-<section id="karels-decisions-example" class="slide level2">
-<h2>Karel’s Decisions Example</h2>
-<ul>
-<li>Suppose we want Karel to move across the bottom of the world and
-fill in any gaps in the beepers
-<ul>
-<li>We want an even layer of beepers, no stacks</li>
-<li>What questions should we have Karel ask?</li>
-</ul></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/cbb1d667e55a3e0db68cbdcd40529fb8fee0cf5f.svg"
-style="width:60.0%" /></p>
+<section id="remember-predicate-functions" class="slide level2">
+<h2>Remember Predicate Functions?</h2>
+<p>Potential questions you can ask Karel include:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><code class="python">front_is_clear()</code></td>
+<td><code class="python">front_is_blocked()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">left_is_clear()</code></td>
+<td><code class="python">left_is_blocked()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">right_is_clear()</code></td>
+<td><code class="python">right_is_blocked()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">beepers_present()</code></td>
+<td><code class="python">no_beepers_present()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">beepers_in_bag()</code></td>
+<td><code class="python">no_beepers_in_bag()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">facing_north()</code></td>
+<td><code class="python">not_facing_north()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">facing_south()</code></td>
+<td><code class="python">not_facing_south()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">facing_east()</code></td>
+<td><code class="python">not_facing_east()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">facing_west()</code></td>
+<td><code class="python">not_facing_west()</code></td>
+</tr>
+</tbody>
+</table>
+<!--
+## Karel's Decisions Example
+- Suppose we want Karel to move across the bottom of the world and fill in any gaps in the beepers
+    - We want an even layer of beepers, no stacks
+    - What questions should we have Karel ask?
+
+\begin{tikzpicture}%%width=60%
+\karelgrid[MGreen]{4}{2}
+\karelbeeper[MBlue]{2}{1}
+\karelbeeper[MBlue]{3}{1}
+\karelmark[fill=MYellow]{1}{1}{0}
+\end{tikzpicture}
+
+-->
 </section>
-<section id="its-been-a-while" class="slide level2">
-<h2>It’s been a while</h2>
+<section id="iterative-while" class="slide level2">
+<h2>Iterative: while</h2>
 <ul>
 <li><p>Another common use of predicate functions is in controlling a
 type of iterative function called a <em>while</em> loop</p></li>
@@ -348,35 +402,124 @@ times</p>
 </div>
 </div>
 </div>
-<!--
-## Algorithms
-- The process of designing a solution strategy to a problem is called _algorithmic design_
-- An _algorithm_ is just an approach or recipe for a method to solve a particular problem
-    - Frequently language agnostic
-- Algorithms are not a new concept
-    - Euclids algorithm to find greatest common denominators for instance
-- A large part of computer science is focused on the study or analysis of algorithms
-
-## Algorithm ⮕ Code
-- You need to have an algorithm in place **before** you can write the code to tell the computer what you want to do
-    - Imagine an alien asking me how to bake a cake. I need to understand the steps to baking the cake before I can even worry about the translation or communication
-- Programming tools like conditional statements and loops will frequently play a role in your algorithm, but as general concepts
-    - I can easily describe a loop to you without needing the exact syntax of Python
-- The implementation of the algorithm is the act of translating it into Python (or whatever language you are using)
-
-## An Amazing Algorithm
-::::::cols
-::::col
-- Consider a simple, loop-less, maze that we want to move through
-- A common algorithm to get through the maze is to essentially always follow or touch the wall to your right
-- Practically speaking, this largely means to go forward unless a passage opens to your right, in which case you take that passage
-- In Karel, if the exit was a beeper, we might implement the above algorithm as:
-
-::::
-
-::::col
-```{.python .fragment style='max-height:900px; font-size: .75em;'}
-while no_beepers_present():
+</section>
+<section id="algorithms" class="slide level2">
+<h2>Algorithms</h2>
+<ul>
+<li>The process of designing a solution strategy to a problem is called
+<em>algorithmic design</em></li>
+<li>An <em>algorithm</em> is just an approach or recipe for a method to
+solve a particular problem
+<ul>
+<li>Frequently language agnostic</li>
+</ul></li>
+<li>Algorithms are not a new concept
+<ul>
+<li>Euclids algorithm to find greatest common denominators for
+instance</li>
+</ul></li>
+<li>A large part of computer science is focused on the study or analysis
+of algorithms</li>
+</ul>
+</section>
+<section id="algorithm-code" class="slide level2">
+<h2>Algorithm ⮕ Code</h2>
+<ul>
+<li>You need to have an algorithm in place <strong>before</strong> you
+can write the code to tell the computer what you want to do
+<ul>
+<li>Imagine an alien asking me how to bake a cake. I need to understand
+the steps to baking the cake before I can even worry about the
+translation or communication</li>
+</ul></li>
+<li>Programming tools like conditional statements and loops will
+frequently play a role in your algorithm, but as general concepts
+<ul>
+<li>I can easily describe a loop to you without needing the exact syntax
+of Python</li>
+</ul></li>
+<li>The implementation of the algorithm is the act of translating it
+into Python (or whatever language you are using)</li>
+</ul>
+</section>
+<section id="algorithms-1" class="slide level2">
+<h2>Algorithms</h2>
+<ul>
+<li>The process of designing a solution strategy to a problem is called
+<em>algorithmic design</em></li>
+<li>An <em>algorithm</em> is just an approach or recipe for a method to
+solve a particular problem
+<ul>
+<li>Frequently language agnostic</li>
+</ul></li>
+<li>Algorithms are not a new concept
+<ul>
+<li>Euclid’s algorithm to find greatest common denominators for
+instance</li>
+</ul></li>
+<li>A large part of computer science is focused on the study or analysis
+of algorithms</li>
+</ul>
+</section>
+<section id="algorithm-code-1" class="slide level2">
+<h2>Algorithm ⮕ Code</h2>
+<ul>
+<li>You need to have an algorithm in place <strong>before</strong> you
+can write the code to tell the computer what you want to do
+<ul>
+<li>Imagine an alien asking me how to bake a cake. I need to understand
+the steps to baking the cake before I can even worry about the
+translation or communication</li>
+</ul></li>
+<li>Programming tools like conditional statements and loops will
+frequently play a role in your algorithm, but as general concepts
+<ul>
+<li>I can easily describe a loop to you without needing the exact syntax
+of Python</li>
+</ul></li>
+<li>The implementation of the algorithm is the act of translating it
+into Python (or whatever language you are using)</li>
+</ul>
+</section>
+<section id="an-amazing-algorithm" class="slide level2">
+<h2>An Amazing Algorithm</h2>
+<div class="cols">
+<div class="col" style="font-size:.9em">
+<ul>
+<li>Consider a simple, loop-less, maze that we want to move through
+<ul>
+<li>Karel could start anywhere</li>
+<li>The end of the maze is a beeper</li>
+</ul></li>
+<li>A common algorithm to get through the maze is to essentially always
+follow or touch the wall to your right
+<ul>
+<li>How could we phrase this in language Karel would understand?</li>
+</ul></li>
+<li>Let’s take a few minutes to work with a neighbor(s) to sketch out
+your code</li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/b6ec06c2a3fee2efeceb1865b37293e5194d5fa8.svg"
+style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="an-amazing-algorithm-1" class="slide level2">
+<h2>An Amazing Algorithm</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Practically speaking, this largely means to go forward unless a
+passage opens to your right, in which case you take that passage</li>
+<li>In Karel, since the exit is a beeper, we might implement the above
+algorithm as:</li>
+</ul>
+</div>
+<div class="col">
+<pre ><code class="python fragment" style="max-height:900px; font-size: .75em;">while no_beepers_present():
     # if opening on right, we follow
     if right_is_clear():
         turn_right()
@@ -386,13 +529,10 @@ while no_beepers_present():
         if front_is_clear():
             move()
         else:
-            turn_left()
-```
-
-::::
-::::::
-
-
+            turn_left()</code></pre>
+</div>
+</div>
+<!--
 ## Complications
 - More complicated problems will generally result or require more complex and longer code
 - _Stepwise Refinement_ is the process of starting with the biggest problem and breaking it into smaller and smaller pieces
@@ -602,7 +742,7 @@ def create_beeper_chain():
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -627,6 +767,7 @@ def create_beeper_chain():
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

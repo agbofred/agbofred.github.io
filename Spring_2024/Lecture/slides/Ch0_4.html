@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-01-25">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2023-01-26">
   <title>Stepwise Refinement</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,8 +36,8 @@
 
 <section id="title-slide">
   <h1 class="title">Stepwise Refinement</h1>
-  <p class="author">Instructor: Fred Agbo <br><strong> Slide by: Jed Rembold</strong> </p>
-  <p class="date">Sept 6, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">January 26, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -42,13 +45,17 @@
 <ul>
 <li>Homework
 <ul>
-<li>Problem Set 1 due on Monday night!</li>
+<li>Problem Set 1 due on Friday night!</li>
 </ul></li>
-<li>You should start meeting in your section from this week! </li>
-<li>You should have received an email regarding your section meeting time and location</li>
+<li>You should have met with your section!
 <ul>
-<li>Attending the section meeting is very important. Try not to miss it</li>
-<li>Polling continues today! Remember to use this link when I make it <strong>active</strong> <a href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a> </li>
+<li>If you missed it, reach out to your section leader, and set yourself
+a reminder for next week</li>
+<li>I may be approaching a few of you in the coming days to see if you’d
+be willing to swap to another to help keep the numbers balanced</li>
+</ul></li>
+<li>Polling: <a
+href="http://rembold-class.ddns.net/">rembold-class.ddns.net</a></li>
 </ul>
 </section>
 <section id="review-question" class="slide level2">
@@ -403,76 +410,55 @@ data-auto-animate="True">
 <p><img
 data-src="../images/svg_cache/3a7e718ef4f46bfcd251460ab073581ad81f843d.svg"
 style="width:80.0%" /></p>
-</section>
-<section id="algorithms" class="slide level2">
-<h2>Algorithms</h2>
-<ul>
-<li>The process of designing a solution strategy to a problem is called
-<em>algorithmic design</em></li>
-<li>An <em>algorithm</em> is just an approach or recipe for a method to
-solve a particular problem
-<ul>
-<li>Frequently language agnostic</li>
-</ul></li>
-<li>Algorithms are not a new concept
-<ul>
-<li>Euclid’s algorithm to find greatest common denominators for
-instance</li>
-</ul></li>
-<li>A large part of computer science is focused on the study or analysis
-of algorithms</li>
-</ul>
-</section>
-<section id="algorithm-code" class="slide level2">
-<h2>Algorithm ⮕ Code</h2>
-<ul>
-<li>You need to have an algorithm in place <strong>before</strong> you
-can write the code to tell the computer what you want to do
-<ul>
-<li>Imagine an alien asking me how to bake a cake. I need to understand
-the steps to baking the cake before I can even worry about the
-translation or communication</li>
-</ul></li>
-<li>Programming tools like conditional statements and loops will
-frequently play a role in your algorithm, but as general concepts
-<ul>
-<li>I can easily describe a loop to you without needing the exact syntax
-of Python</li>
-</ul></li>
-<li>The implementation of the algorithm is the act of translating it
-into Python (or whatever language you are using)</li>
-</ul>
-</section>
-<section id="an-amazing-algorithm" class="slide level2">
-<h2>An Amazing Algorithm</h2>
-<div class="cols">
-<div class="col" style="font-size:.9em">
-<ul>
-<li>Consider a simple, loop-less, maze that we want to move through
-<ul>
-<li>Karel could start anywhere</li>
-<li>The end of the maze is a beeper</li>
-</ul></li>
-<li>A common algorithm to get through the maze is to essentially always
-follow or touch the wall to your right
-<ul>
-<li>How could we phrase this in language Karel would understand?</li>
-</ul></li>
-<li>Let’s take the rest of class to work with a neighbor(s) to sketch
-out your code
-<ul>
-<!--<li>Want to test it? A zip with some mazes is located <a
-href="">here</a></li> -->
-</ul></li>
-</ul>
-</div>
-<div class="col">
-<p><img
-data-src="../images/svg_cache/b6ec06c2a3fee2efeceb1865b37293e5194d5fa8.svg"
-style="width:100.0%" /></p>
-</div>
-</div>
 <!--
+## Algorithms
+- The process of designing a solution strategy to a problem is called _algorithmic design_
+- An _algorithm_ is just an approach or recipe for a method to solve a particular problem
+    - Frequently language agnostic
+- Algorithms are not a new concept
+    - Euclid's algorithm to find greatest common denominators for instance
+- A large part of computer science is focused on the study or analysis of algorithms
+
+## Algorithm ⮕ Code
+- You need to have an algorithm in place **before** you can write the code to tell the computer what you want to do
+    - Imagine an alien asking me how to bake a cake. I need to understand the steps to baking the cake before I can even worry about the translation or communication
+- Programming tools like conditional statements and loops will frequently play a role in your algorithm, but as general concepts
+    - I can easily describe a loop to you without needing the exact syntax of Python
+- The implementation of the algorithm is the act of translating it into Python (or whatever language you are using)
+
+## An Amazing Algorithm
+::::::cols
+::::{.col style='font-size:.9em'}
+- Consider a simple, loop-less, maze that we want to move through
+    - Karel could start anywhere
+    - The end of the maze is a beeper
+- A common algorithm to get through the maze is to essentially always follow or touch the wall to your right
+    - How could we phrase this in language Karel would understand?
+- Let's take the rest of class to work with a neighbor(s) to sketch out your code
+    - Want to test it? A zip with some mazes is located [here]()
+
+::::
+
+::::col
+\begin{tikzpicture}%%width=100%
+\karelgrid[MGreen]{5}{5}
+\karelmark[MYellow]{1}{1}{90}
+\karelbeeper[MBlue]{5}{4}
+
+\draw[very thick, MGreen]
+    (1.5,0.5) -- ++(0,1) -- ++(1,0)
+    (3.5,0.5) -- ++(0,1)
+    (2.5,5.5) -- ++(0,-1) -- ++(-1,0) -- ++(0,-2)
+    (1.5,3.5) -- ++(1,0)
+    (2.5,4.5) -- ++(1,0) -- ++(0,-2) -- ++(-1,0) -- ++ (2,0) -- ++ (0,-1)
+    (5.5,3.5) -- ++(-1,0) -- ++ (0,1);
+
+\end{tikzpicture}
+
+
+::::
+::::::
+
 ```{.python .fragment style='max-height:900px; font-size: .75em;'}
 while no_beepers_present():
     # if opening on right, we follow
@@ -489,7 +475,7 @@ while no_beepers_present():
 
 -->
 </section>
-<!--<section id="data-types" class="slide level2">
+<section id="data-types" class="slide level2">
 <h2>Data Types</h2>
 <ul>
 <li>Generally, the data processed by computers can take on many
@@ -528,7 +514,7 @@ decimal point</p>
 component (which we won’t deal with)</p></li>
 </ul></li>
 </ul>
-</section> 
+</section>
 <section id="expressions" class="slide level2">
 <h2>Expressions</h2>
 <ul>
@@ -547,10 +533,10 @@ in a moment!)</li>
 on Monday!)</li>
 <li>another expression enclosed in parentheses</li>
 </ul></li>
-</ul> 
+</ul>
 <p><br></p>
 <p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) 
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
    width="329.58304mm"
@@ -627,7 +613,7 @@ on Monday!)</li>
   </g>
 </svg>
 </p>
-</section> -->
+</section>
     </div>
   </div>
 
@@ -772,7 +758,7 @@ on Monday!)</li>
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -797,6 +783,7 @@ on Monday!)</li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>
