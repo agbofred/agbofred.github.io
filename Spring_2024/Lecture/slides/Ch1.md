@@ -1,5 +1,5 @@
 ---
-title: "What is your type?"
+title: "Data Type & Functions?"
 author: Jed Rembold & Fred Agbo
 date: January 29, 2024
 slideNumber: true
@@ -346,6 +346,122 @@ Function | Description
 `round(x)` | The value of x rounded to the nearest integer
 `int(x)` | The value of x truncated to an integer
 `float(x)` | The value of x as a decimal
+
+
+## Python Applications
+- In Python, application programs are generally stored in files whose names end with `.py`. Such files are called _modules_.
+- Most interesting applications interact with the user
+	- In modern applications, this often happens through a _graphical user interface_ or _GUI_
+		- We'll be constructing some GUIs later this semester!
+	- For now, all interaction will happen through the terminal
+		- Requires we know how to output information to the terminal and how to input information into the terminal
+
+## Output: `print`
+:::{.incremental style='font-size:.89em'}
+- We've already seen examples of how to output information to the terminal
+- Python's built-in `print()` command will display whatever is between the `()` to the screen
+- If you want to display several things, you have options:
+	- Separate each thing by a comma inside the `print` statement. This will insert a space between each when printed.
+	
+	  ```python
+	  print(1,2,'blue')
+	  ```
+	- Concatenate what you want together with `+`, converting to strings as needed
+		```python
+		print('2000' + ' - ' + '2023')
+		```
+	
+	  ```python
+	  print(str(1) + ' ' + str(2) + ' blue')
+	  ```
+:::
+
+
+## Boolean Expressions
+- Python defines two types of operators that work with Boolean data: _relational operators_ and _logical operators_
+- Relational operators compare values of other types and produce a `True`/`False` result:
+
+	---- ----------------- - - - ---- --------------------
+	`==` Equals                  `!=` Not equals
+	 `<` Less than               `<=` Less than or equal too
+	 `>` Greater than            `>=` Greater than or equal to
+	---- ----------------- - - - ---- --------------------
+- Be careful! `==` _compares_ two booleans. A single `=` _assigns_ a variable. The odds are high you'll use one when you meant the other at least once this semester!
+
+
+## The Vulcan Way
+- Logical operators act on Boolean pairings
+
+	Operator | Description
+	---|---
+	`A and B` | True if both terms True, False otherwise
+	`A or B` | True if _any_ term is True, False otherwise
+	`not A` | True if A False, False if A True (opposite)
+
+::: incremental
+- Order of operations follows parentheses and then proceeds left to right
+- Careful that `or` is still `True` if both options are `True` 
+- Similarly, careful with combining `not` with `and` and `or`
+	- "Not A or B" in common English is not the same as `not A or B`
+:::
+
+## Understanding Check
+What value is printed when the code to the right runs?
+
+:::: cols
+::: col
+:::::{.poll}
+#. `True`
+#. `False`
+#. `"4Quiz"`
+#. This would give an error
+:::::
+:::
+
+::: {.col style="flex-grow:2;"}
+```python
+A = 10
+B = 4
+C = "Quiz"
+A *= B
+if A > 40 and C != "C":
+	print(str(B)+C)
+else:
+	print(A < B or not (C == "C"))
+
+```
+:::
+::::
+
+## Shorting the Circuit
+- Python evaluates _and_ and _or_ operators using a strategy called _short-circuit mode_
+- Only evaluates the right operand if it actually needs to
+	- Example: if `n=0`, then the `x % n == 0` is never actually checked in the statement
+
+		```python
+		n != 0 and x % n == 0
+		```
+
+		since `n != 0` already is `False` and `False and ` _anything_ is always `False`
+- Can use short-circuit to prevent errors: the above `x % n == 0` statement would have erred out if `n=0`
+
+## Input: `input`
+- To retrieve data from a user, we can use Python's built-in `input()` function
+- The form will generally look like:
+
+  ```python
+  variable = input(prompt_text)
+  ```
+    - `variable` is the variable name you want to assign the user's typed input to
+	- `prompt_text` is the string that will be displayed on the screen to communicate to the user what they should be doing
+- The `input()` function **always returns a string**
+	- If you want to get an integer from the user, you will need to convert it yourself after retrieving it
+	
+	  ```python
+	  num = int(input('Pick a number between 1 and 10: '))
+	  ```
+
+
 
 
 <!--

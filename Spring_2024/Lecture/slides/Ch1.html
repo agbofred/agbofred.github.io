@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
   <meta name="dcterms.date" content="2024-01-29">
-  <title>What is your type?</title>
+  <title>Data Type &amp; Functions?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,7 +35,7 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">What is your type?</h1>
+  <h1 class="title">Data Type &amp; Functions?</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
   <p class="date">January 29, 2024</p>
 </section>
@@ -848,6 +848,212 @@ include:</li>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="python-applications" class="slide level2">
+<h2>Python Applications</h2>
+<ul>
+<li>In Python, application programs are generally stored in files whose
+names end with <code class="python">.py</code>. Such files are called
+<em>modules</em>.</li>
+<li>Most interesting applications interact with the user
+<ul>
+<li>In modern applications, this often happens through a <em>graphical
+user interface</em> or <em>GUI</em>
+<ul>
+<li>We’ll be constructing some GUIs later this semester!</li>
+</ul></li>
+<li>For now, all interaction will happen through the terminal
+<ul>
+<li>Requires we know how to output information to the terminal and how
+to input information into the terminal</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="output-print" class="slide level2">
+<h2>Output: <code class="python">print</code></h2>
+<div style="font-size:.89em">
+<ul>
+<li class="fragment">We’ve already seen examples of how to output
+information to the terminal</li>
+<li class="fragment">Python’s built-in
+<code class="python">print()</code> command will display whatever is
+between the <code class="python">()</code> to the screen</li>
+<li class="fragment">If you want to display several things, you have
+options:
+<ul>
+<li class="fragment"><p>Separate each thing by a comma inside the
+<code class="python">print</code> statement. This will insert a space
+between each when printed.</p>
+<pre ><code class="python">print(1,2,'blue')</code></pre></li>
+<li class="fragment"><p>Concatenate what you want together with
+<code class="python">+</code>, converting to strings as needed
+<code class="python">python       print('2000' + ' - ' + '2023')</code></p>
+<pre ><code class="python">print(str(1) + ' ' + str(2) + ' blue')</code></pre></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="boolean-expressions" class="slide level2">
+<h2>Boolean Expressions</h2>
+<ul>
+<li><p>Python defines two types of operators that work with Boolean
+data: <em>relational operators</em> and <em>logical
+operators</em></p></li>
+<li><p>Relational operators compare values of other types and produce a
+<code class="python">True</code>/<code class="python">False</code>
+result:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><code class="python">==</code></td>
+<td style="text-align: left;">Equals</td>
+<td></td>
+<td></td>
+<td></td>
+<td><code class="python">!=</code></td>
+<td style="text-align: left;">Not equals</td>
+</tr>
+<tr class="even">
+<td><code class="python"><</code></td>
+<td style="text-align: left;">Less than</td>
+<td></td>
+<td></td>
+<td></td>
+<td><code class="python"><=</code></td>
+<td style="text-align: left;">Less than or equal too</td>
+</tr>
+<tr class="odd">
+<td><code class="python">></code></td>
+<td style="text-align: left;">Greater than</td>
+<td></td>
+<td></td>
+<td></td>
+<td><code class="python">>=</code></td>
+<td style="text-align: left;">Greater than or equal to</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Be careful! <code class="python">==</code> <em>compares</em> two
+booleans. A single <code class="python">=</code> <em>assigns</em> a
+variable. The odds are high you’ll use one when you meant the other at
+least once this semester!</p></li>
+</ul>
+</section>
+<section id="the-vulcan-way" class="slide level2">
+<h2>The Vulcan Way</h2>
+<ul>
+<li><p>Logical operators act on Boolean pairings</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code class="python">A and B</code></td>
+<td>True if both terms True, False otherwise</td>
+</tr>
+<tr class="even">
+<td><code class="python">A or B</code></td>
+<td>True if <em>any</em> term is True, False otherwise</td>
+</tr>
+<tr class="odd">
+<td><code class="python">not A</code></td>
+<td>True if A False, False if A True (opposite)</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<div>
+<ul>
+<li class="fragment">Order of operations follows parentheses and then
+proceeds left to right</li>
+<li class="fragment">Careful that <code class="python">or</code> is
+still <code class="python">True</code> if both options are
+<code class="python">True</code></li>
+<li class="fragment">Similarly, careful with combining
+<code class="python">not</code> with <code class="python">and</code> and
+<code class="python">or</code>
+<ul>
+<li class="fragment">“Not A or B” in common English is not the same as
+<code class="python">not A or B</code></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="understanding-check-1" class="slide level2">
+<h2>Understanding Check</h2>
+<p>What value is printed when the code to the right runs?</p>
+<div class="cols">
+<div class="col">
+<div class="poll">
+<ol>
+<li><code class="python">True</code></li>
+<li><code class="python">False</code></li>
+<li><code class="python">"4Quiz"</code></li>
+<li>This would give an error</li>
+</ol>
+</div>
+</div>
+<div class="col" style="flex-grow:2;">
+<pre ><code class="python">A = 10
+B = 4
+C = "Quiz"
+A *= B
+if A > 40 and C != "C":
+    print(str(B)+C)
+else:
+    print(A < B or not (C == "C"))
+</code></pre>
+</div>
+</div>
+</section>
+<section id="shorting-the-circuit" class="slide level2">
+<h2>Shorting the Circuit</h2>
+<ul>
+<li>Python evaluates <em>and</em> and <em>or</em> operators using a
+strategy called <em>short-circuit mode</em></li>
+<li>Only evaluates the right operand if it actually needs to
+<ul>
+<li><p>Example: if <code class="python">n=0</code>, then the
+<code class="python">x % n == 0</code> is never actually checked in the
+statement</p>
+<pre ><code class="python">n != 0 and x % n == 0</code></pre>
+<p>since <code class="python">n != 0</code> already is
+<code class="python">False</code> and
+<code class="python">False and</code> <em>anything</em> is always
+<code class="python">False</code></p></li>
+</ul></li>
+<li>Can use short-circuit to prevent errors: the above
+<code class="python">x % n == 0</code> statement would have erred out if
+<code class="python">n=0</code></li>
+</ul>
+</section>
+<section id="input-input" class="slide level2">
+<h2>Input: <code class="python">input</code></h2>
+<ul>
+<li><p>To retrieve data from a user, we can use Python’s built-in
+<code class="python">input()</code> function</p></li>
+<li><p>The form will generally look like:</p>
+<pre ><code class="python">variable = input(prompt_text)</code></pre>
+<ul>
+<li><code class="python">variable</code> is the variable name you want
+to assign the user’s typed input to</li>
+<li><code class="python">prompt_text</code> is the string that will be
+displayed on the screen to communicate to the user what they should be
+doing</li>
+</ul></li>
+<li><p>The <code class="python">input()</code> function <strong>always
+returns a string</strong></p>
+<ul>
+<li><p>If you want to get an integer from the user, you will need to
+convert it yourself after retrieving it</p>
+<pre ><code class="python">num = int(input('Pick a number between 1 and 10: '))</code></pre></li>
+</ul></li>
+</ul>
 <!--
 ## Running a Program
 - Python programs specify what part of the code is supposed to be when a program is run using a few special lines at the end of the program

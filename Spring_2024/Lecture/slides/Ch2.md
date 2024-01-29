@@ -1,7 +1,7 @@
 ---
-title: Testing Ranges
+title: Ranges & Controls
 author: Jed Rembold & Fred Agbo
-date: September 13, 2023
+date: February 2, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -76,6 +76,23 @@ print(len(D))
 	- "Not A or B" in common English is not the same as `not A or B`
 :::
 -->
+## Review Question {data-notes="Solution: 40"}
+What is the printed value of `A` in the code below?
+```idle
+>>> A = 10
+>>> B = 5 % 3
+>>> C = A * B ** B
+>>> A -= B + A // 2
+>>> A, B, C = C, A, B
+>>> print(A)
+??
+```
+:::{.hpoll}
+#. 3
+#. 12
+#. 30
+#. 40
+:::
 
 ## Review Question
 What value is printed when the code to the right runs?
@@ -92,14 +109,14 @@ What value is printed when the code to the right runs?
 
 ::: {.col style="flex-grow:2;"}
 ```python
-A = 10
-B = 4
-C = "Quiz"
-A *= len(C)
-if A > 40 and C != "C":
+A = 15
+B = 3
+C = "Python"
+A *= B
+if A >= 45 and C == "C":
 	print(str(B)+C)
 else:
-	print(A < B or not (C == "C"))
+	print(A > B and not (C == "C"))
 
 ```
 :::
@@ -165,7 +182,7 @@ What will the printed output of the code to the left?
 
 ## Sentinels
 - Many programs in programming can be approached similarly by using a particular _idiom_ or _pattern_
-<!--- A common one with repetition is to use a variable to keep track of the loop state until something particular happens (the sentinel is triggered)-->
+- A common one with repetition is to use a variable to keep track of the loop state until something particular happens (the sentinel is triggered)
 
 
 ::::::cols
@@ -204,7 +221,36 @@ What will the printed output of the code to the left?
 ::::
 ::::::
 
+## Running a Program
+- Python programs specify what part of the code is supposed to be executed when a program is run using a few special lines at the end of the program
 
+	```python
+	if __name__ == '__main__':
+		function_to_run()
+	```
+	- `function_to_run` is the name of whatever function you want to execute when the program is run directly
+- Patterns of this sort are commonly called _boilerplate_
+	- Less important to fully understand all the pieces of it now
+	- Is important to understand what it is doing and how to implement it correctly
+
+## Sample Program
+```{.python style='max-height: 900px'}
+
+NUM_ODDS = 100 # Constant, so using all caps
+
+def print_odds():
+	"""
+	Prints the first NUM_ODDS odd numbers 
+	starting at 1.
+	"""
+	value = 1
+	for i in range(NUM_ODDS):
+		print(value)
+		value += 2
+
+if __name__ == '__main__':
+	print_odds()
+```
 
 ## Visiting the library(ies)
 - A huge strength of Python is that it offers a very large number of code collections called _libraries_

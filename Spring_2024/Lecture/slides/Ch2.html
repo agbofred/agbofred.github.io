@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-09-13">
-  <title>Testing Ranges</title>
+  <meta name="dcterms.date" content="2024-02-02">
+  <title>Ranges &amp; Controls</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,9 +35,9 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Testing Ranges</h1>
+  <h1 class="title">Ranges &amp; Controls</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">September 13, 2023</p>
+  <p class="date">February 2, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -113,7 +113,28 @@ print(len(D))
 :::
 -->
 </section>
-<section id="review-question" class="slide level2">
+<section id="review-question" class="slide level2"
+data-notes="Solution: 40">
+<h2 data-notes="Solution: 40">Review Question</h2>
+<p>What is the printed value of <code class="python">A</code> in the
+code below?</p>
+<pre ><code class="idle">>>> A = 10
+>>> B = 5 % 3
+>>> C = A * B ** B
+>>> A -= B + A // 2
+>>> A, B, C = C, A, B
+>>> print(A)
+??</code></pre>
+<div class="hpoll">
+<ol>
+<li>3</li>
+<li>12</li>
+<li>30</li>
+<li>40</li>
+</ol>
+</div>
+</section>
+<section id="review-question-1" class="slide level2">
 <h2>Review Question</h2>
 <p>What value is printed when the code to the right runs?</p>
 <div class="cols">
@@ -128,14 +149,14 @@ print(len(D))
 </div>
 </div>
 <div class="col" style="flex-grow:2;">
-<pre ><code class="python">A = 10
-B = 4
-C = "Quiz"
-A *= len(C)
-if A > 40 and C != "C":
+<pre ><code class="python">A = 15
+B = 3
+C = "Python"
+A *= B
+if A >= 45 and C == "C":
     print(str(B)+C)
 else:
-    print(A < B or not (C == "C"))
+    print(A > B and not (C == "C"))
 </code></pre>
 </div>
 </div>
@@ -201,8 +222,10 @@ What will the printed output of the code to the left?
 <h2>Sentinels</h2>
 <ul>
 <li>Many programs in programming can be approached similarly by using a
-particular <em>idiom</em> or <em>pattern</em>
-<!--- A common one with repetition is to use a variable to keep track of the loop state until something particular happens (the sentinel is triggered)--></li>
+particular <em>idiom</em> or <em>pattern</em></li>
+<li>A common one with repetition is to use a variable to keep track of
+the loop state until something particular happens (the sentinel is
+triggered)</li>
 </ul>
 <div class="cols">
 <div class="col">
@@ -233,6 +256,45 @@ while i < len(word):
 </div>
 </div>
 </div>
+</section>
+<section id="running-a-program" class="slide level2">
+<h2>Running a Program</h2>
+<ul>
+<li><p>Python programs specify what part of the code is supposed to be
+executed when a program is run using a few special lines at the end of
+the program</p>
+<pre ><code class="python">if __name__ == '__main__':
+    function_to_run()</code></pre>
+<ul>
+<li><code class="python">function_to_run</code> is the name of whatever
+function you want to execute when the program is run directly</li>
+</ul></li>
+<li><p>Patterns of this sort are commonly called
+<em>boilerplate</em></p>
+<ul>
+<li>Less important to fully understand all the pieces of it now</li>
+<li>Is important to understand what it is doing and how to implement it
+correctly</li>
+</ul></li>
+</ul>
+</section>
+<section id="sample-program" class="slide level2">
+<h2>Sample Program</h2>
+<pre ><code class="python" style="max-height: 900px">
+NUM_ODDS = 100 # Constant, so using all caps
+
+def print_odds():
+    """
+    Prints the first NUM_ODDS odd numbers 
+    starting at 1.
+    """
+    value = 1
+    for i in range(NUM_ODDS):
+        print(value)
+        value += 2
+
+if __name__ == '__main__':
+    print_odds()</code></pre>
 </section>
 <section id="visiting-the-libraryies" class="slide level2">
 <h2>Visiting the library(ies)</h2>
