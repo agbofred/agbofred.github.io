@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-01-27">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2024-01-29">
   <title>What is your type?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,27 +36,38 @@
 
 <section id="title-slide">
   <h1 class="title">What is your type?</h1>
-  <p class="author">Instructor: Fred Agbo <br><strong> Slide by: Jed Rembold</strong> </p>
-  <p class="date">September 8, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">January 29, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 1 is due on Monday night!
+<li>Problem Set 1 due tonight!
 <ul>
-<!--<li>A new problem set will be posted later today or tomorrow</li>
+<li>A new problem set will be posted later today or tomorrow</li>
 <li>I’ll be trying to get feedback to you by early next week</li>
 </ul></li>
-<li>I may still be contacting a few of you to see about section swaps,
-but not many more are needed, so thank you!</li> -->
+<li>If you recently added the course, ensure you fill out the section
+form <a href="https://forms.gle/o8Ckec2dPboSV8bPA">here</a></li>
+<li>Also use this link to <a
+href="https://discord.gg/AnCB5NEpfw">join</a> the <strong><em>Discord
+Server</em></strong>.</li>
+<li>The last day you can <strong>add/drop</strong> a class without issue
+is <strong><em>tomorrow</em></strong></li>
 <li>Moving back into the book today, catching information and details
 from Ch 1 that we haven’t yet talked about
 <ul>
-<li>Text is posted on Canvas and I encourage you to read the chapters we are treating before the class</li>
+<li>Text is posted <a
+href="http://willamette.edu/~jjrembold/class_files/cs151/CS151-Reader-2023.pdf">here</a>
+and also linked on the main course webpage</li>
 </ul></li>
-<li>I have a 1 hour reserved after class today to attend to any issues related to the class</li>
-<li>Polling continues today! Remember to use this link when I make it <strong>active</strong> <a href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a> </li>
+<li>Polling: <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+<ul>
+<li>Reminder: include enough of your name that I can uniquely identify
+you!</li>
+</ul></li>
 </ul>
 </section>
 <section id="review-question" class="slide level2"
@@ -305,8 +319,8 @@ be updated as the program progresses</li>
 <li>Envision as a named box capable of storing a value
 <p><img
 data-src="../images/svg_cache/f6c6bb43f05da24ad71fc0f13983388e3f56eafe.svg"
-style="width:20.0%" data-id="box&#39;"
-alt="&#39;Will this work?" /></p></li>
+style="width:20.0%" alt="&#39;Will this work?"
+data-id="box&#39;" /></p></li>
 <li>Each variable has the following attributes:
 <ul>
 <li>A <em>name</em>: which enables you to tell variables apart</li>
@@ -423,27 +437,26 @@ values</li>
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="understanding-check-1" class="slide level2"
-data-notes="Solution: 40">
-<h2 data-notes="Solution: 40">Understanding Check!</h2>
-<p>What is the printed value of <code class="python">A</code> in the
-code below?</p>
-<pre ><code class="idle">>>> A = 10
+<!--
+## Understanding Check! {data-notes="Solution: 40"}
+What is the printed value of `A` in the code below?
+```idle
+>>> A = 10
 >>> B = 4
 >>> C = A * B
 >>> A -= B
 >>> A, B, C = C, A, B
 >>> print(A)
-??</code></pre>
-<div class="hpoll">
-<ol>
-<li>4</li>
-<li>10</li>
-<li>30</li>
-<li>40</li>
-</ol>
-</div>
+??
+```
+:::{.hpoll}
+#. 4
+#. 10
+#. 30
+#. 40
+:::
+
+-->
 </section>
 <section id="what-is-your-function" class="slide level2">
 <h2>What is your Function?</h2>
@@ -1050,7 +1063,7 @@ if __name__ == '__main__':
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -1075,6 +1088,7 @@ if __name__ == '__main__':
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 ---
 title: "What is your type?"
-author: Jed Rembold
-date: January 27, 2023
+author: Jed Rembold & Fred Agbo
+date: January 29, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -18,11 +18,13 @@ history: false
 - Problem Set 1 due tonight!
 	- A new problem set will be posted later today or tomorrow
 	- I'll be trying to get feedback to you by early next week
-- I may still be contacting a few of you to see about section swaps, but not many more are needed, so thank you!
+- If you recently added the course, ensure you fill out the section form [here](https://forms.gle/o8Ckec2dPboSV8bPA)
+- Also use this link to [join](https://discord.gg/AnCB5NEpfw) the ***Discord Server***. 
+- The last day you can **add/drop** a class without issue is ***tomorrow***
 - Moving back into the book today, catching information and details from Ch 1 that we haven't yet talked about
 	- Text is posted [here](http://willamette.edu/~jjrembold/class_files/cs151/CS151-Reader-2023.pdf) and also linked on the main course webpage
-- I have a 30 min meeting immediately after class today, but will have office hours from noon until 1
-- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+	- Reminder: include enough of your name that I can uniquely identify you!
 
 ## Review Question {data-notes="Solution: C"}
 ::::::cols
@@ -253,7 +255,7 @@ What is the value of the below expression?
 	- This can give you a very concise way of swapping variable values
 
 :::
-
+<!--
 ## Understanding Check! {data-notes="Solution: 40"}
 What is the printed value of `A` in the code below?
 ```idle
@@ -272,6 +274,7 @@ What is the printed value of `A` in the code below?
 #. 40
 :::
 
+-->
 
 ## What is your Function?
 - As discussed in the context of Karel, a _function_ is a sequence of commands that have been collected together and given a name.

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-09-11">
+  <meta name="dcterms.date" content="2024-01-31">
   <title>Functional Control</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,7 +37,7 @@
 <section id="title-slide">
   <h1 class="title">Functional Control</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">September 11, 2023</p>
+  <p class="date">January 31, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -55,8 +55,6 @@ as well!</li>
 <li>You have section meetings on Wednesdays and Thursdays!</li>
 <li>If you have just joined the course and not in section yet, see me
 after to class to fill out the form</li>
-<li>The last day you can <strong>add/drop</strong> a class without issue
-is <strong><em>Today</em></strong></li>
 <li>Polling continues today! Remember to use this link <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
 when it becomes <strong>active</strong></li>
@@ -83,6 +81,19 @@ code below?</p>
 </ol>
 </div>
 </section>
+<section id="other-data-types" class="slide level2">
+<h2>Other Data Types</h2>
+<ul>
+<li>Numbers are great, but what about other types of data?</li>
+<li>We will spend considerable time on the details of these data types
+later</li>
+<li>For now, let us introduce:
+<ul>
+<li>strings!</li>
+<li>lists!</li>
+</ul></li>
+</ul>
+</section>
 <section id="a-quick-string-primer" class="slide level2">
 <h2>A quick String primer</h2>
 <ul>
@@ -101,14 +112,10 @@ quotation marks
 must match
 <ul>
 <li><code class="python">"I am also a string!"</code></li>
-<li><code class="python">"I'm sad you've gone"</code></li>
+<li><code class="python">"I'm sad you've gone"</code> &lt;!– ## What is
+your Function?</li>
 </ul></li>
 </ul></li>
-</ul>
-</section>
-<section id="what-is-your-function" class="slide level2">
-<h2>What is your Function?</h2>
-<ul>
 <li>As discussed in the context of Karel, a <em>function</em> is a
 sequence of commands that have been collected together and given a
 name.</li>
@@ -118,34 +125,25 @@ have inputs and outputs</li>
 <p><img
 data-src="../images/svg_cache/cccf49edc6991a2d280154bffc41be691b400980.svg"
 style="width:70.0%" /></p>
-</section>
-<section id="writing-your-own-functions" class="slide level2">
-<h2>Writing your own functions</h2>
-<div>
+<p>–&gt; ## Writing your own functions :::incremental - The general form
+of a function definition looks like:</p>
+<pre ><code >``` {.python}
+def name(parameter_list):
+    #statements in function body
+```
+- `name` is your chosen name for the function
+- `parameter_list`{.no-highlight} is a comma-separated list of **variable names** that will hold each input value</code></pre>
 <ul>
-<li class="fragment"><p>The general form of a function definition looks
-like:</p>
-<pre ><code class="python">def name(parameter_list):
-    #statements in function body</code></pre>
-<ul>
-<li class="fragment"><code class="python">name</code> is your chosen
-name for the function</li>
-<li class="fragment"><code class="no-highlight">parameter_list</code> is
-a comma-separated list of <strong>variable names</strong> that will hold
-each input value</li>
-</ul></li>
-<li class="fragment"><p>You can return or output a value from the
-function by including a return statement in the function body</p>
+<li><p>You can return or output a value from the function by including a
+return statement in the function body</p>
 <pre ><code class="python">return expression</code></pre>
 <ul>
-<li class="fragment"><code class="python">expression</code> is the value
-you want to return or output</li>
-<li class="fragment">If no <code class="python">return</code> statement
-is included, Python will by default return
-<code class="python">None</code></li>
+<li><code class="python">expression</code> is the value you want to
+return or output</li>
+<li>If no <code class="python">return</code> statement is included,
+Python will by default return <code class="python">None</code> :::</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="a-functional-diagram" class="slide level2">
 <h2>A Functional Diagram</h2>
@@ -435,37 +433,33 @@ is included, Python will by default return
     </g>
   </g>
 </svg>
-</p>
-</section>
-<section id="simple-function-examples" class="slide level2">
-<h2>Simple function examples</h2>
-<ul>
-<li><p>Convert Fahrenheit temperatures to their Celsius equivalent</p>
-<pre ><code class="python">def f_to_c(f):
-    return 5 / 9 * (f - 32)</code></pre>
-<ul>
-<li><p>Using the function:</p>
-<pre ><code class="python">print(f_to_c(45))</code></pre></li>
-</ul></li>
-<li><p>Computes the volume of a cylinder of height
-<code class="python">h</code> and radius
-<code class="python">r</code></p>
-<pre ><code class="python">def cylinder_volume(r, h):
-    return 3.14159 * r**2 * h</code></pre>
-<ul>
-<li><p>Using the function:</p>
-<pre ><code class="python">print(cylinder_volume(2,10))</code></pre></li>
-</ul></li>
-</ul>
-</section>
-<section id="built-ins" class="slide level2">
-<h2>Built-ins</h2>
-<ul>
-<li>All modern languages include a collection of pre-defined functions
-for convenience</li>
-<li>In Python, common build-in functions that operate on numbers
-include:</li>
-</ul>
+<!--
+## Simple function examples
+- Convert Fahrenheit temperatures to their Celsius equivalent
+
+    ```python
+    def f_to_c(f):
+        return 5 / 9 * (f - 32)
+    ```
+    - Using the function:
+
+        ```python
+        print(f_to_c(45))
+        ```
+- Computes the volume of a cylinder of height `h` and radius `r`
+
+    ```python
+    def cylinder_volume(r, h):
+        return 3.14159 * r**2 * h
+    ```
+    - Using the function:
+
+        ```python
+        print(cylinder_volume(2,10))
+        ```
+--> ## Built-ins - All modern languages include a collection of
+pre-defined functions for convenience - In Python, common build-in
+functions that operate on numbers include:</p>
 <table>
 <thead>
 <tr class="header">
