@@ -1,7 +1,7 @@
 ---
 title: Ranges & Controls
 author: Jed Rembold & Fred Agbo
-date: February 2, 2024
+date: January 31, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai

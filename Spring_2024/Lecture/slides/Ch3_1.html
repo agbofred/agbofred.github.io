@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-09-15">
+  <meta name="dcterms.date" content="2024-02-02">
   <title>Ranging from Creation to Debugging</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,7 +37,7 @@
 <section id="title-slide">
   <h1 class="title">Ranging from Creation to Debugging</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">September 15, 2023</p>
+  <p class="date">February 2, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -384,21 +384,16 @@ loud to an inanimate rubber duck</li>
 <p>Test your code as you go! Either manually or automatically.</p>
 </div>
 <ul>
-<li>Know that <em>everyone</em> makes mistakes. The longer you go
+<li><p>Know that <em>everyone</em> makes mistakes. The longer you go
 without testing that something in your program works, the harder it is
-to find where the mistake eventually is.</li>
-<li>Write code that you test in small pieces as you go
+to find where the mistake eventually is.</p></li>
+<li><p>Write code that you test in small pieces as you go</p>
 <ul>
 <li>Decomposition into smaller functions is great for this: test each
 function individually as you go</li>
 <li>In the projects we try to construct the Milestones for this exact
-same purpose</li>
+same purpose &lt;!– ## Assertions</li>
 </ul></li>
-</ul>
-</section>
-<section id="assertions" class="slide level2">
-<h2>Assertions</h2>
-<ul>
 <li><p>You can use Python’s <code class="python">assert</code> statement
 to write test functions, which take the form:</p>
 <pre ><code class="python">assert condition</code></pre>
@@ -429,15 +424,21 @@ discoverable by other tools</p></li>
     assert greatest_factor(7) == 1
     assert greatest_factor(51) == 17
     assert greatest_factor(9) == 3</code></pre>
-<!--
-
-## Showcasing Autochecks
-- When you submit code to GitHub, my pre-written tests are run
-    - If **any** check fails, you'll see the red X (and possibly get an email)
-    - Let's look at how to get information about what went wrong
-- VSCode actually can run all the tests locally as well
-    - Let's also walk through how that works (and looks)
--->
+</section>
+<section id="showcasing-autochecks" class="slide level2">
+<h2>Showcasing Autochecks</h2>
+<ul>
+<li>When you submit code to GitHub, my pre-written tests are run
+<ul>
+<li>If <strong>any</strong> check fails, you’ll see the red X (and
+possibly get an email)</li>
+<li>Let’s look at how to get information about what went wrong</li>
+</ul></li>
+<li>VSCode actually can run all the tests locally as well
+<ul>
+<li>Let’s also walk through how that works (and looks) –&gt;</li>
+</ul></li>
+</ul>
 <!-- moved to later
 ## Introduction to Wordle
 ::::::cols
