@@ -44,21 +44,16 @@
 <h2>Announcements</h2>
 <ul>
 <li>Feedback on PS1 was out yesterday</li>
-<li>You have Problem Set 2 due on Tuesday at <strong>12 noon</strong>
+<li>You have Problem Set 2 due on Monday at <strong>10 pm</strong>
 <ul>
 <li>You have everything you need to do all the problems after today</li>
 </ul></li>
-<li>I have so many meetings this afternoon, including one during normal
-office hours
-<ul>
-<li>Should you have any issue, ask me in the office until 10:30 am</li>
-<li>Also, get help from your section leader</li>
-</ul></li>
-<li><ul>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
-</ul></li>
+<li>Use my office hours T, TH, &amp; FR if you want to see me</li>
+<li>Remember to also get help from your section leader</li>
+<li>We will be concluding chapter 3 of the text today. Hope eveyone is
+reading the text along</li>
+<li>Link to Polling <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 </section>
 <section id="the-range-iterable" class="slide level2">
@@ -384,61 +379,52 @@ loud to an inanimate rubber duck</li>
 <p>Test your code as you go! Either manually or automatically.</p>
 </div>
 <ul>
-<li><p>Know that <em>everyone</em> makes mistakes. The longer you go
+<li>Know that <em>everyone</em> makes mistakes. The longer you go
 without testing that something in your program works, the harder it is
-to find where the mistake eventually is.</p></li>
-<li><p>Write code that you test in small pieces as you go</p>
+to find where the mistake eventually is.</li>
+<li>Write code that you test in small pieces as you go
 <ul>
 <li>Decomposition into smaller functions is great for this: test each
 function individually as you go</li>
 <li>In the projects we try to construct the Milestones for this exact
-same purpose &lt;!– ## Assertions</li>
+same purpose</li>
 </ul></li>
-<li><p>You can use Python’s <code class="python">assert</code> statement
-to write test functions, which take the form:</p>
-<pre ><code class="python">assert condition</code></pre>
-<p>where <code class="python">condition</code> is any operation that
-returns a <code class="python">True</code> or
-<code class="python">False</code></p></li>
-<li><p>Assert statements “expect” a condition to yield a
-<code class="python">True</code>, and if they do, nothing happens</p>
-<ul>
-<li>No news is good news in this case</li>
-</ul></li>
-<li><p>If an <code class="python">assert</code> condition evaluates to
-<code class="python">False</code>, an error is raised</p></li>
-<li><p>Naming your test functions starting with the word
-<code class="python">test_</code> will make them automatically
-discoverable by other tools</p></li>
 </ul>
-</section>
-<section id="testing-example" class="slide level2">
-<h2>Testing Example</h2>
-<ul>
-<li>Suppose we wanted to write some checks of the
-<code class="python">count_letters</code> function from earlier</li>
-</ul>
-<pre ><code class="python">def test_greatest_factor():
+<!--
+## Assertions
+- You can use Python's `assert` statement to write test functions, which take the form:
+  ```python
+  assert condition
+  ```
+  where `condition` is any operation that returns a `True` or `False`
+- Assert statements "expect" a condition to yield a `True`, and if they do, nothing happens
+    - No news is good news in this case
+- If an `assert` condition evaluates to `False`, an error is raised
+- Naming your test functions starting with the word `test_` will make them automatically discoverable by other tools
+-->
+<!--
+
+## Testing Example
+- Suppose we wanted to write some checks of the `count_letters` function from earlier
+
+```python
+def test_greatest_factor():
     """ Runs several tests on the function greatest_factor """
     assert greatest_factor(10) == 5
     assert greatest_factor(7) == 1
     assert greatest_factor(51) == 17
-    assert greatest_factor(9) == 3</code></pre>
-</section>
-<section id="showcasing-autochecks" class="slide level2">
-<h2>Showcasing Autochecks</h2>
-<ul>
-<li>When you submit code to GitHub, my pre-written tests are run
-<ul>
-<li>If <strong>any</strong> check fails, you’ll see the red X (and
-possibly get an email)</li>
-<li>Let’s look at how to get information about what went wrong</li>
-</ul></li>
-<li>VSCode actually can run all the tests locally as well
-<ul>
-<li>Let’s also walk through how that works (and looks) –&gt;</li>
-</ul></li>
-</ul>
+    assert greatest_factor(9) == 3
+```
+
+
+
+## Showcasing Autochecks
+- When you submit code to GitHub, my pre-written tests are run
+    - If **any** check fails, you'll see the red X (and possibly get an email)
+    - Let's look at how to get information about what went wrong
+- VSCode actually can run all the tests locally as well
+    - Let's also walk through how that works (and looks)
+-->
 <!-- moved to later
 ## Introduction to Wordle
 ::::::cols
