@@ -15,11 +15,16 @@ history: false
 
 
 ## Announcements
-- Problem Set 2 is posted and due on Tuesday next week ***at 12 noon***
-	- Feedback for PS1 will be ready by tomorrow! Don't just look at the scores (which could be quite good). **Look at the comments**
-- If you have just joined the course and not in section yet, see me after to class to fill out the form
+- Problem Set 2 is posted and due on Monday next week ***at 10 pm***
+	- Feedback for PS1 will be ready by next week! 
+- I will strongly recommend making your submission as is on due dates
+- Policy for unexcussed late submissions will attract losing points as follows:
+	- 10%  for 24 hours late submission.
+	- 20%  for 48 hours late submission.
+	- 50%  for a week late submission.
+	- Beyound 1 week may not earn points
 - We will be concluding chapter 2 of the text today. Hope eveyone is reading the text along
-- Polling continues today! Remember to use this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203) when it becomes **active**
+- Link to Polling [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
 
 
 <!--
@@ -93,7 +98,7 @@ What is the printed value of `A` in the code below?
 #. 30
 #. 40
 :::
-
+<!--
 ## Review Question
 What value is printed when the code to the right runs?
 
@@ -121,7 +126,7 @@ else:
 ```
 :::
 ::::
-
+-->
 <!--
 ## Shorting the Circuit
 - Python evaluates _and_ and _or_ operators using a strategy called _short-circuit mode_
@@ -179,6 +184,61 @@ What will the printed output of the code to the left?
 
 :::::
 -->
+## Boolean Expressions
+- Python defines two types of operators that work with Boolean data: _relational operators_ and _logical operators_
+- Relational operators compare values of other types and produce a `True`/`False` result:
+
+	---- ----------------- - - - ---- --------------------
+	`==` Equals                  `!=` Not equals
+	 `<` Less than               `<=` Less than or equal too
+	 `>` Greater than            `>=` Greater than or equal to
+	---- ----------------- - - - ---- --------------------
+- Be careful! `==` _compares_ two booleans. A single `=` _assigns_ a variable. The odds are high you'll use one when you meant the other at least once this semester!
+
+
+## The Vulcan Way
+- Logical operators act on Boolean pairings
+
+	Operator | Description
+	---|---
+	`A and B` | True if both terms True, False otherwise
+	`A or B` | True if _any_ term is True, False otherwise
+	`not A` | True if A False, False if A True (opposite)
+
+::: incremental
+- Order of operations follows parentheses and then proceeds left to right
+- Careful that `or` is still `True` if both options are `True` 
+- Similarly, careful with combining `not` with `and` and `or`
+	- "Not A or B" in common English is not the same as `not A or B`
+:::
+
+## Shorting the Circuit
+- Python evaluates _and_ and _or_ operators using a strategy called _short-circuit mode_
+- Only evaluates the right operand if it actually needs to
+	- Example: if `n=0`, then the `x % n == 0` is never actually checked in the statement
+
+		```python
+		n != 0 and x % n == 0
+		```
+
+		since `n != 0` already is `False` and `False and ` _anything_ is always `False`
+- Can use short-circuit to prevent errors: the above `x % n == 0` statement would have erred out if `n=0`
+
+## Input: `input`
+- To retrieve data from a user, we can use Python's built-in `input()` function
+- The form will generally look like:
+
+  ```python
+  variable = input(prompt_text)
+  ```
+    - `variable` is the variable name you want to assign the user's typed input to
+	- `prompt_text` is the string that will be displayed on the screen to communicate to the user what they should be doing
+- The `input()` function **always returns a string**
+	- If you want to get an integer from the user, you will need to convert it yourself after retrieving it
+	
+	  ```python
+	  num = int(input('Pick a number between 1 and 10: '))
+	  ```
 
 ## Sentinels
 - Many programs in programming can be approached similarly by using a particular _idiom_ or _pattern_
