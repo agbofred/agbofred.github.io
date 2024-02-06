@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-09-22">
+  <meta name="dcterms.date" content="2024-02-09">
   <title>Formatting Strings</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,19 +37,19 @@
 <section id="title-slide">
   <h1 class="title">Formatting Strings</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">September 22, 2023</p>
+  <p class="date">February 9, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem set 3 is due <strong>next week Tuesday at
-12:noon</strong></li>
-<li>I am working on returning PS 2. You should get it hopefully, by this
-weekend</li>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
+<li>Problem set 3 is due <strong>next week Monday at 10 pm</strong></li>
+<li>I am working on returning PS 2. You should get it hopefully, by next
+week</li>
+<li>Remember the only way to master coding is to keep
+<strong>practicing</strong></li>
+<li>Link to Polling <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 </section>
 <section id="review" class="slide level2"
@@ -449,6 +449,61 @@ to appear as:</p>
 <li><code class="python">f"{101234.984:<12,f} & {320//8:0>4d}"</code></li>
 <li><code class="python">f"{101234.984:<12,.2f} & {32//8:0<4d}"</code></li>
 </ol>
+</div>
+</section>
+<section id="learning-english" class="slide level2">
+<h2>Learning English</h2>
+<ul>
+<li>When working with sequences of characters, it is often useful or
+desirable to determine if they form actual valid English words</li>
+<li>This class provides for you a new library, through the file
+<code class="python">english.py</code></li>
+<li>The <code class="python">english</code> library provides two objects
+you can import into your programs:
+<ul>
+<li>The constant <code class="python">ENGLISH_WORDS</code>, which is a
+list of all the valid words in the English dictionary</li>
+<li>The function <code class="python">is_english_word()</code>, which
+accepts a single string as an argument and returns
+<code class="python">True</code> if the string represents a valid
+English word.</li>
+</ul></li>
+<li>This library will be particularly useful for Wordle!</li>
+</ul>
+</section>
+<section id="example-how-many-2-letter-words" class="slide level2">
+<h2>Example: How many 2 letter words?</h2>
+<ul>
+<li>Before we start writing code, let’s pause. Give a physical English
+dictionary, how could you go about figuring out the number of two letter
+words?</li>
+</ul>
+<div class="cols">
+<div class="col fragment">
+<div class="block" name="Check valid words for right length">
+<pre ><code class="python fragment" style="width: 100%">from english import ENGLISH_WORDS
+
+count = 0
+for word in ENGLISH_WORDS:
+    if len(word) == 2:
+        count += 1
+print(count)</code></pre>
+</div>
+</div>
+<div class="col fragment" style="flex-grow:1.15">
+<div class="block" name="Check all two letter combinations">
+<pre ><code class="python fragment" style="width:100%">from english import is_english_word
+
+count = 0
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+for letter1 in alphabet:
+    for letter2 in alphabet:
+        word = letter1 + letter2
+        if is_english_word(word):
+            count += 1
+print(count)</code></pre>
+</div>
+</div>
 </div>
 <!--
 ## Arrays and Lists
