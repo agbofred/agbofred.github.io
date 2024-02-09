@@ -1,6 +1,6 @@
 ---
 title: "Project 1: Wordle"
-subtitle: "Due: October 3, 2023"
+subtitle: "Due: February 19, 2024"
 filters:
   - include-code-files
 format:
@@ -30,7 +30,7 @@ Welcome to the first project of CS 151! This project is designed to help you pra
 As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
 
 ```{=html}
-<a href='https://classroom.github.com/a/zuj48Yqm' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom.github.com/a/CaFFMwXg' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br>
 
@@ -70,93 +70,29 @@ The object of the Wordle puzzle is to figure out the hidden word for the day usi
 
 For example, suppose that the hidden word for the day was `RELIC`, and your first guess was `RATES`, as in the @fig-startinggraphics image. The `R` is in the correct position, and the word contains an `E`, but not in the position guessed. The hidden word does not contain the letters `T`, `A`, and `S`. Wordle reports that information by changing the background color of the squares like this:
 
-```{r engine='tikz'}
-#| echo: false
-#| fig-align: center
-#| fig-ext: svg
-#| out-width: 50%
-\definecolor{CORRECT}{HTML}{66BB66}
-\definecolor{PRESENT}{HTML}{CCBB66}
-\definecolor{MISSING}{HTML}{999999}
-\usetikzlibrary{positioning}
-	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
-		\node[fill=CORRECT](R) at (0,0) {R};
-		\node[fill=MISSING, right=2pt of R](A) {A};
-		\node[fill=MISSING, right=2pt of A](T) {T};
-		\node[fill=PRESENT, right=2pt of T](E) {E};
-		\node[fill=MISSING, right=2pt of E](S) {S};
-	\end{tikzpicture}
-```
+![](./images/rates.png){width=40% fig-align="center"}
 
 Even though you know the position of the `R`, it doesn't make sense to guess more words beginning with `R` at this point because doing so gives you no new information (assuming you are not playing in hard mode, where you are required to do so). Suppose that you tried guessing the word `LINGO`, which contains five new letters, two of which appear in the word but none of which are correctly positioned. Wordle responds by coloring the letters in your second guess as follows:
 
-```{r engine='tikz'}
-#| echo: false
-#| fig-align: center
-#| fig-ext: png
-#| out-width: 50%
-\definecolor{CORRECT}{HTML}{66BB66}
-\definecolor{PRESENT}{HTML}{CCBB66}
-\definecolor{MISSING}{HTML}{999999}
-\usetikzlibrary{positioning}
-	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
-		\node[fill=PRESENT](1) at (0,0) {L};
-		\node[fill=PRESENT, right=2pt of 1](2) {I};
-		\node[fill=MISSING, right=2pt of 2](3) {N};
-		\node[fill=MISSING, right=2pt of 3](4) {G};
-		\node[fill=MISSING, right=2pt of 4](5) {O};
-	\end{tikzpicture}
-```
+![](./images/Lingo.png){width=40% fig-align="center"}
 
 Putting these clues together means that you know that the word begins with an `R`, contains the letters `E`, `L`, and `I` in some order other than the one you guessed, and that the letters `A`, `T`, `S`, `N`, `G`, and `O` do not appear anywhere in the word. These answers give you an enormous amount of information! If you think carefully about it, you might find the word `RELIC`, which is in fact the only English word that meets these conditions.
 
-```{r engine='tikz'}
-#| echo: false
-#| fig-align: center
-#| fig-ext: svg
-#| out-width: 50%
-#| cache: true
-\definecolor{CORRECT}{HTML}{66BB66}
-\definecolor{PRESENT}{HTML}{CCBB66}
-\definecolor{MISSING}{HTML}{999999}
-\usetikzlibrary{positioning}
-	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
-		\node[fill=CORRECT](1) at (0,0) {R};
-		\node[fill=CORRECT, right=2pt of 1](2) {E};
-		\node[fill=CORRECT, right=2pt of 2](3) {L};
-		\node[fill=CORRECT, right=2pt of 3](4) {I};
-		\node[fill=CORRECT, right=2pt of 4](5) {C};
-	\end{tikzpicture}
-```
+![](./images/Relic.png){width=40% fig-align="center"}
+
 Done in three!
 
 It is worth noting a few other rules and special cases. The hidden word and each of your guesses must be a real English word that is five letters long. The file `english.py` included in the repository is described in Chapter 3 of the text, and exports two resources here: the constant `ENGISH_WORDS`, which is a sequence of all valid English words in lowercase (of any length, not just the five-letter ones!), and a function `is_english_word(s)`, which tests whether `s` is a valid English word. If you guess a word that is not in the word list, Wordle displays a message to that effect, at which point you can delete the letters you've entered and try again. Another rule is that you only get six guesses. If all the letters don't match by then, Wordle gives up on you and tells you what the hidden word was.
 
 The most interesting special cases arise when the hidden word and the guesses contain multiple copies of the same letter. Suppose, for example, that the hidden word is `GLASS` and you, for some reason, guess the word `SASSY`. Wordle responds with the following colors:
 
-```{r engine='tikz'}
-#| echo: false
-#| fig-align: center
-#| fig-ext: svg
-#| out-width: 50%
-#| cache: true
-\definecolor{CORRECT}{HTML}{66BB66}
-\definecolor{PRESENT}{HTML}{CCBB66}
-\definecolor{MISSING}{HTML}{999999}
-\usetikzlibrary{positioning}
-	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
-		\node[fill=PRESENT](1) at (0,0) {S};
-		\node[fill=PRESENT, right=2pt of 1](2) {A};
-		\node[fill=MISSING, right=2pt of 2](3) {S};
-		\node[fill=CORRECT, right=2pt of 3](4) {S};
-		\node[fill=MISSING, right=2pt of 4](5) {Y};
-	\end{tikzpicture}
-```
+![](./images/Sassy.png){width=40% fig-align="center"}
+
 The green `S` shows that there is an `S` in the fourth position, and the yellow `S` shows that a second `S` appears somewhere else in the hidden word. The `S` in the middle of `SASSY`, however, remains gray because the hidden word does not contain three instances of the letter `S`.
 
 
 
-# The WordleGraphics Module
+# The Wordle Graphics Module
 
 Even though you don't need to make any changes to it or understand the details of its operation, you need to know what capabilities the `WordleGraphics` module has on offer so that you can use those facilities in your code. The most important thing to know is that this library module exports a data type called `WordleGWindow`, which implements all the graphical capabilities of the game. The methods exported by the `WordleGWindow` type are outlined below in @tbl-gwmethods. The right column gives a brief description of what these functions do, though more complete descriptions appear later in this guide in the description of the milestones that require them.
 
@@ -267,51 +203,5 @@ There are many extensions you could add to the Wordle game. Here are a few that 
 - _Create an option that lists all possible words that are legal given the previous guesses._ Even though doing so is clearly cheating, some players would like to see a list of all the words remaining in the dictionary that would be acceptable given the previous set of guesses. You can trigger this option by having the user hit the `RETURN` key or click the `ENTER` key when the line is not yet finished and filled with text, in which case some squares will contain the empty string. When this occurs, you can have your program go through all the words, check whether they conform to all the previous clues, and print those words to the console.
 - _Implement Wordle's "hard mode"._ In both the original implementation and the _Times_ version, you can choose to play Wordle in "hard mode" by toggling a switch in the options. Upon doing so, you are no longer free to guess any valid five-letter word. Instead, each subsequent guess _must_ incorporate any information you have gotten from previous guesses. So if you determine on your first guess that an `R` is the first letter and that an `E` is present but not the fourth letter, then your next guess must reflect that information: having the `R` still in the first position and the `E` in either the second, third, or fifth positions.
 - _Keep score in a file._ The _New York Times_ Wordle site keeps track of the number of games you've played and presents a graph of the number of guesses you needed. To implement this feature, you would need to maintain a file that kept track of this information from game to game and then display it at the end. Although you could print this information to the console, you could also display the counts in the Wordle grid, so that each row shows the number of times you needed that many guesses. Thus, if you had solved four Wordle games in three guesses, eleven in four guesses, and six in five guesses, your Wordle program might show the following display at the end:
-```{r engine='tikz'}
-#| echo: false
-#| fig-align: center
-#| fig-ext: svg
-#| out-width: 50%
-\definecolor{CORRECT}{HTML}{66BB66}
-\definecolor{PRESENT}{HTML}{CCBB66}
-\definecolor{MISSING}{HTML}{999999}
-\usetikzlibrary{positioning}
 
-			\begin{tikzpicture}[every node/.style={draw, black, text=black, font=\bfseries\sffamily\Huge, minimum size=.90cm}, scale=0.9, transform shape]
-				\node [fill=CORRECT] at (0,0) {1};
-				\node [] at (1,0) {};
-				\node [] at (2,0) {};
-				\node [] at (3,0) {};
-				\node [] at (4,0) {0};
-
-				\node [fill=CORRECT] at (0,-1) {2};
-				\node []			 at (1,-1) {};
-				\node [] 			 at (2,-1) {};
-				\node [] 			 at (3,-1) {};
-				\node [] 			 at (4,-1) {0};
-
-				\node [fill=CORRECT] at (0,-2) {3};
-				\node []			 at (1,-2) {};
-				\node [] 			 at (2,-2) {};
-				\node [] 			 at (3,-2) {};
-				\node [] 			 at (4,-2) {4};
-
-				\node [fill=CORRECT] at (0,-3) {4};
-				\node []			 at (1,-3) {};
-				\node [] 			 at (2,-3) {};
-				\node [] 			 at (3,-3) {1};
-				\node [] 			 at (4,-3) {1};
-
-				\node [fill=CORRECT] at (0,-4) {5};
-				\node []			 at (1,-4) {};
-				\node [] 			 at (2,-4) {};
-				\node [] 			 at (3,-4) {};
-				\node [] 			 at (4,-4) {6};
-
-				\node [fill=CORRECT] at (0,-5) {6};
-				\node []			 at (1,-5) {};
-				\node [] 			 at (2,-5) {};
-				\node [] 			 at (3,-5) {};
-				\node [] 			 at (4,-5) {0};
-			\end{tikzpicture}
-```
+![](./images/Last.png){width=40% fig-align="center"}
