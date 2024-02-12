@@ -1,5 +1,5 @@
 ########################################
-# Name: Fred - with the help og Jed's version
+# Name: Fred - with the help of Jed's version
 # Collaborators (if any):
 # Estimated time spent (hr):
 # Description of any added extensions:
