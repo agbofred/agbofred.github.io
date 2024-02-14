@@ -52,51 +52,67 @@ section</li>
 <li>Polling continues <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
-</section>
-<section id="review-question" class="slide level2">
-<h2>Review Question</h2>
-<p>Which of the below images would be produced by the following
-code?</p>
-<pre ><code class="python">gw = GWindow(200,200)
+<!--
+## Review Question
+Which of the below images would be produced by the following code?
+```python
+gw = GWindow(200,200)
 for c in range(0,10):
     for r in range(0,10):
         rect = GRect(20*c,20*r,20,20)
         if (r+c) % 2 != 0:
             rect.set_filled(True)
-    gw.add(rect)</code></pre>
-<div class="cols">
-<div class="col">
-<figure>
-<img data-src="../images/PGL_Review_1.png" style="width:80.0%"
-alt="A" />
-<figcaption aria-hidden="true">A</figcaption>
-</figure>
-</div>
-<div class="col">
-<figure>
-<img data-src="../images/PGL_Review_2.png" style="width:80.0%"
-alt="B" />
-<figcaption aria-hidden="true">B</figcaption>
-</figure>
-</div>
-<div class="col">
-<figure>
-<img data-src="../images/PGL_Review_3.png" style="width:80.0%"
-alt="C" />
-<figcaption aria-hidden="true">C</figcaption>
-</figure>
-</div>
-<div class="col">
-<figure>
-<img data-src="../images/PGL_Review_4.png" style="width:80.0%"
-alt="D" />
-<figcaption aria-hidden="true">D</figcaption>
-</figure>
-</div>
-</div>
+    gw.add(rect)
+```
+
+:::cols
+
+::::col
+![A](../images/PGL_Review_1.png){width=80%}
+::::
+::::col
+![B](../images/PGL_Review_2.png){width=80%}
+::::
+::::col
+![C](../images/PGL_Review_3.png){width=80%}
+::::
+::::col
+![D](../images/PGL_Review_4.png){width=80%}
+::::
+
+:::
+-->
+</section>
+<section id="wordle-tidbits" class="slide level2">
+<h2>Wordle Tidbits</h2>
+<ul>
+<li>Two useful ideas for Wordle:
+<ul>
+<li><p>You can check if an individual element is in a particular
+sequence of elements using the <code class="python">in</code>
+keyword</p>
+<pre ><code class="python">"1" in "12345"</code></pre>
+<ul>
+<li>Always returns a boolean (True/False)</li>
+</ul></li>
+<li><p>You can change the case of all letters in a string using
+<code class="python">upper()</code> or
+<code class="python">lower()</code> methods</p>
+<pre ><code class="python">lowered = "ABCDEF".lower()
+uppered = "abcDEF".upper()</code></pre>
+<ul>
+<li>The method returns a <strong>new</strong> string, so make sure you
+assign it to something</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
 <section id="other-simple-objects" class="slide level2">
 <h2>Other Simple Objects</h2>
+<ul>
+<li>Remember we introduced the
+<code class="python">GWindow(width, height)</code> in last class</li>
+</ul>
 <p>Functions to create simple geometric objects: <br></p>
 <ul>
 <li>Rectangles!

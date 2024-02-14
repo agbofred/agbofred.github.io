@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-02">
-  <title>Scoping Out Functions</title>
+  <meta name="dcterms.date" content="2024-02-16">
+  <title>Functional Arguments &amp; Scope</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,116 +35,290 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Scoping Out Functions</h1>
+  <h1 class="title">Functional Arguments &amp; Scope</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 2, 2023</p>
+  <p class="date">February 16, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Remember the due date for Problem 1 is <strong><em>tomorrow at 12
-noon</em></strong>.</li>
-<li>I’m still tackling with PS3, will be done ASAP! Apologies for the
-delay.</li>
-<li>We will enter Ch 6 this week in the text, which is a return to
+<li>Remember the due date for Project Wordle is <strong><em>Monday next
+week at 10 pm</em></strong>.</li>
+<li>I’m still grading PS3, will be done by next week!</li>
+<li>We will enter Ch 6 of the text next week, which is a return to
 graphics</li>
-<li>Before that, we will talk about the following:
+<li>Remember the <strong>1st midterm exam is next Friday Feb 23</strong>
+at Ford Hall
 <ul>
-<li>Some quick information about your 1st mid-term test taking place on
-<strong>Friday 6th Oct</strong></li>
-<li>Ch 5 - Scoping Function -</li>
+<li>I will provide more information about the exam on Monday next
+week<br />
+</li>
 </ul></li>
-<li>I suggested some of you to attend the BoT luncheon- watchout for the
-email invite.</li>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
-</ul>
-<!--
-## Wordle Tidbits
-- Two useful ideas for Wordle:
-    - You can check if an individual element is in a particular sequence of elements using the `in` keyword
-      
-      ```python
-      "1" in "12345"
-      ```
-      - Always returns a boolean (True/False)
-    - You can change the case of all letters in a string using `upper()` or `lower()` methods
-      
-      ```python
-      lowered = "ABCDEF".lower()
-      uppered = "abcDEF".upper()
-      ```
-      - The method returns a **new** string, so make sure you assign it to something
--->
-</section>
-<section id="mid-term-test" class="slide level2">
-<h2>Mid-term test</h2>
-<ul>
-<li>Test will take place during the class time <strong>9:10 - 10:10 0n
-Friday</strong>.</li>
-<li>Those with accommodations should already contact the testing center
-and cc me.</li>
-<li>Practice questions are posted on this week’s module</li>
-<li>Basic things to keep in mind:
-<ul>
-<li>The test contain detailed information to guide on what to expect.
-<strong><em>Read it carefully</em></strong></li>
-<li>The exam is partially open, and thus you are free to utilize:
-<ul>
-<li>The text</li>
-<li>Your notes</li>
-<li>Class slides</li>
-<li>Any past work you have done as part of sections, problem sets, or
-projects, provided it has been uploaded, and you access it through
-GitHub.</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="mid-term-test-1" class="slide level2">
-<h2>Mid-term test</h2>
-<ul>
-<li>You are allowed to use a computer for ease of typing and accessing
-the above resources,</li>
-<li>You are <strong>prohibited</strong> from accessing and using any
-editor or terminal to run your code.
-<ul>
-<li>Visual Studio Code or any similar editor should
-<strong>never</strong> be open on your computer during this exam.</li>
-</ul></li>
-<li>Additionally, you are <strong>prohibited</strong> from accessing
-outside internet resources beyond the webpages described above.</li>
+<li>Today, we will deal with Ch 5 (Function)</li>
+<li>Polling continues <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 </section>
 <section id="review-question" class="slide level2"
-data-notes="Answer is 27">
-<h2 data-notes="Answer is 27">Review Question!</h2>
+data-notes="Answer is D">
+<h2 data-notes="Answer is D">Review Question</h2>
+<p>Which of the below images would be produced by the following
+code?</p>
+<pre ><code class="python">gw = GWindow(200,200)
+for c in range(0,10):
+    for r in range(0,10):
+        rect = GRect(20*c,20*r,20,20)
+        if (r+c) % 2 != 0:
+            rect.set_filled(True)
+    gw.add(rect)</code></pre>
 <div class="cols">
 <div class="col">
-<p>What would be the printed value of z at the end of the code to the
-right?</p>
-<div class="poll">
-<ol>
-<li>19</li>
-<li>25</li>
-<li>27</li>
-<li>None of the above</li>
-</ol>
-</div>
+<figure>
+<img data-src="../images/PGL_Review_1.png" style="width:80.0%"
+alt="A" />
+<figcaption aria-hidden="true">A</figcaption>
+</figure>
 </div>
 <div class="col">
-<pre ><code class="python">def f(x,y=0):
+<figure>
+<img data-src="../images/PGL_Review_2.png" style="width:80.0%"
+alt="B" />
+<figcaption aria-hidden="true">B</figcaption>
+</figure>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/PGL_Review_3.png" style="width:80.0%"
+alt="C" />
+<figcaption aria-hidden="true">C</figcaption>
+</figure>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/PGL_Review_4.png" style="width:80.0%"
+alt="D" />
+<figcaption aria-hidden="true">D</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="function-review" class="slide level2">
+<h2>Function Review</h2>
+<ul>
+<li><p>A <em>function</em> is just a sequence of statements that have
+been collected together and given a name</p>
+<ul>
+<li>Makes it possible to execute the statements multiple times much more
+easily</li>
+</ul></li>
+<li><p>Some reminders about vocabulary:</p>
+<ul>
+<li>Invoking or running a function by name is known as
+<strong>calling</strong> that function.</li>
+<li>The caller passes information to a function using
+<strong>arguments</strong>.</li>
+<li>When a function completes its block of code, it
+<strong>returns</strong> to its caller.</li>
+<li>The function gives information back to the caller by
+<strong>returning a result</strong></li>
+</ul></li>
+<li><p>Syntax:</p>
+<pre ><code class="python">def function_name( parameter_list ):
+  function_body</code></pre></li>
+</ul>
+</section>
+<section id="predicate-functions" class="slide level2">
+<h2>Predicate Functions</h2>
+<ul>
+<li><p>Functions that return a Boolean value are called <em>predicate
+functions</em></p>
+<pre ><code class="python">def is_divisible_by(x, y):
+  return x % y == 0</code></pre></li>
+<li><p>Once you have defined a predicate function, you can use it in any
+conditional expression!</p>
+<pre ><code class="python">for i in range(1, 100):
+  if is_divisible_by(i, 7):
+      print(i)</code></pre></li>
+</ul>
+</section>
+<section id="predicate-no-nos" class="slide level2">
+<h2>Predicate No-nos</h2>
+<ul>
+<li><p>Don’t complicate your code for no reason!</p></li>
+<li><p>Work directly with the boolean values when possible</p></li>
+<li><p>Try not to code patterns like the following:</p>
+<pre ><code class="python badcode">def is_divisible_by(x, y):
+  if x % y == 0:
+      return True
+  else:
+      return False</code></pre>
+<pre ><code class="python badcode">for i in range(1, 100):
+  if is_divisible_by(i,7) == True:
+      print(i)</code></pre></li>
+</ul>
+</section>
+<section id="parameter-purposes" class="slide level2">
+<h2>Parameter Purposes</h2>
+<ul>
+<li>Functions perform some sort of service for their callers</li>
+<li>It is necessary for them to know enough details so that they can
+carry out the requested task
+<ul>
+<li>Imagine you were trying to accomplish the task yourself!</li>
+<li>What is the minimum amount of information you would need to
+know?</li>
+</ul></li>
+<li>The necessary information needed for the function to generally
+accomplish its task is the information conveyed in the parameters</li>
+</ul>
+</section>
+<section id="jockeying-for-position" class="slide level2">
+<h2>Jockeying for Position</h2>
+<ul>
+<li><p>So far we have used a positional way to assign arguments to
+parameters</p>
+<pre ><code class="python-repl">>>> def func( first, second, third ):
+        print( first, second, third )
+>>> func(1,2,3)
+1 2 3
+>>> func(2,6,4)
+2 6 4</code></pre>
+<ul>
+<li>First argument to first parameter, second to second parameter,
+etc</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-word-is-key" class="slide level2">
+<h2>The Word is Key</h2>
+<ul>
+<li><p>Arguments may also be specified by a <em>keyword</em>, in which
+the caller precedes the argument with a parameter name and equals
+sign</p></li>
+<li><p>Always stores the argument value in the specified parameter</p>
+<pre ><code class="python-repl">>>>  def func( first, second, third ):
+      print( first, second, third )
+>>>  func(third=4, first=2, second=6)
+2 6 4</code></pre></li>
+<li><p>Keyword arguments can appear in any order</p></li>
+<li><p><strong>All keyword arguments must come after any positional
+arguments!</strong></p></li>
+</ul>
+</section>
+<section id="default-slide-title" class="slide level2">
+<h2>Default Slide Title</h2>
+<ul>
+<li><p>Python allows you to specify a default value for a parameter,
+which is will use if one is not directly supplied</p></li>
+<li><p>Do so by adding an equals sign and a value after the parameter
+name</p>
+<ul>
+<li>So you define default values when you define the function</li>
+</ul>
+<pre ><code class="python">def introduction(name='Jed', age=35):
+  print(f'My name is {name} and I am {age}')</code></pre></li>
+<li><p>If providing any parameters after a default parameter, you must
+indicate them through keywords</p>
+<pre ><code class="python-repl" style="max-height: 200px">>>> introduction()
+My name is Jed and I am 35
+>>> introduction('Bob', 25)
+My name is Bob and I am 25
+>>> introduction('Larry')
+My name is Larry and I am 35
+>>> introduction(age=68)
+My name is Jed and I am 68</code></pre></li>
+</ul>
+<!--
+## Review Question! {data-notes="Answer is 27"}
+
+::::::cols
+::::col
+What would be the printed value of z at the end of the code to the right?
+
+:::{.poll}
+#. 19
+#. 25
+#. 27
+#. None of the above
+:::
+
+::::
+
+::::col
+```python
+def f(x,y=0):
     z = (x + 3) ** 2
     return y + z
 
 x = 1
 z = x + f(y=x,x=2)
 print(z)
+
+```
+
+::::
+::::::
+-->
+</section>
+<section id="walk-through-vegas" class="slide level2">
+<h2>Walk through vegas</h2>
+<ul>
+<li>Consider the code to below. When the final value of
+<code class="python">x</code> and <code class="python">z</code> are
+printed, what will their value be?</li>
+</ul>
+<pre ><code class="python">def Vegas(x):
+    y = 2
+    for i in range(5):
+        x += y
+    return x
+
+x = 3
+z = Vegas(x)
+print('z =', z)
+print('x =', x)</code></pre>
+</section>
+<section id="mystery-word" class="slide level2">
+<h2>Mystery word</h2>
+<ul>
+<li>Let us walk through this program and unravel what will be printed
+when the program complete execution.</li>
+</ul>
+<pre ><code class="python">def mystery (x):
+    def enigma (s, t):
+        t -= 2
+    return s [::6] + s[t]
+y = len(x)
+z = x[1 - y]
+z += enigma (x, y)
+z += enigma (x, y - 2)
+print(z)
+
+if __name__ == '__main__ ':
+    print( mystery ("abcdefgh"))
+
+
 </code></pre>
-</div>
-</div>
+</section>
+<section id="graphic-function-with-default-color" class="slide level2">
+<h2>Graphic function with default color</h2>
+<ul>
+<li>You can return any type of variable from a function, including
+GObject graphical objects</li>
+<li>Can be useful to write simple functions that bundle together common
+tasks
+<ul>
+<li>For instance, to create a filled circle centered at some
+location:</li>
+</ul></li>
+</ul>
+<pre ><code class="python">def make_filled_circ(x_cent, y_cent, radius, color='black'):
+    circle = GOval(x_cent-radius, y_cent-radius, 2*radius, 2*radius)
+    circle.set_color(color)
+    circle.set_filled(True)
+    return circle
+</code></pre>
 </section>
 <section id="summary-of-a-function-call" class="slide level2">
 <h2>Summary of a Function Call</h2>
@@ -224,14 +398,9 @@ functions overriding variables in other areas</li>
 
 x = 0
 increment()</code></pre></li>
-<<<<<<< HEAD
 <li><p>The variable x in the fuction is local within that scope, and
 another <strong><em>global</em></strong> x with value 0 can cause
 issues</p></li>
-=======
-<li><p>The variable x in the fuction is local within that scope, and then
-another global x with value 0 can cause issues</p></li>
->>>>>>> da4c1b30af81e4fd7225cc1a7eef0e0c19956569
 </ul>
 </section>
     </div>

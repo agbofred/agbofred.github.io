@@ -58,6 +58,48 @@ review question &amp; explanations
 <li>also to emphasize program tracing</li>
 </ul></li>
 </ul>
+</section>
+<section id="review-question" class="slide level2">
+<h2>Review Question</h2>
+<p>Which of the below images would be produced by the following
+code?</p>
+<pre ><code class="python">gw = GWindow(200,200)
+for c in range(0,10):
+    for r in range(0,10):
+        rect = GRect(20*c,20*r,20,20)
+        if (r+c) % 2 != 0:
+            rect.set_filled(True)
+    gw.add(rect)</code></pre>
+<div class="cols">
+<div class="col">
+<figure>
+<img data-src="../images/PGL_Review_1.png" style="width:80.0%"
+alt="A" />
+<figcaption aria-hidden="true">A</figcaption>
+</figure>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/PGL_Review_2.png" style="width:80.0%"
+alt="B" />
+<figcaption aria-hidden="true">B</figcaption>
+</figure>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/PGL_Review_3.png" style="width:80.0%"
+alt="C" />
+<figcaption aria-hidden="true">C</figcaption>
+</figure>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/PGL_Review_4.png" style="width:80.0%"
+alt="D" />
+<figcaption aria-hidden="true">D</figcaption>
+</figure>
+</div>
+</div>
 <!--
 ## Wordle Tidbits
 - Two useful ideas for Wordle:
@@ -166,7 +208,7 @@ printArea(height = 5, width = 3) # Keyword arguments width
 printArea(width = 1.2) # Default height = 2
 printArea(height = 6.2) # Default widht = 1</code></pre>
 </section>
-<section id="review-question" class="slide level2"
+<section id="review-question-1" class="slide level2"
 data-notes="Answer is 27">
 <h2 data-notes="Answer is 27">Review Question!</h2>
 <div class="cols">
