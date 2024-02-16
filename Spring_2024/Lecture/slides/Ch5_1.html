@@ -209,18 +209,24 @@ arguments!</strong></p></li>
 <section id="default-slide-title" class="slide level2">
 <h2>Default Slide Title</h2>
 <ul>
-<li><p>Python allows you to specify a default value for a parameter,
-which is will use if one is not directly supplied</p></li>
-<li><p>Do so by adding an equals sign and a value after the parameter
-name</p>
+<li>Python allows you to specify a default value for a parameter, which
+it will use if one is not directly supplied</li>
+<li>Do so by adding an equals sign and a value after the parameter name
 <ul>
 <li>So you define default values when you define the function</li>
 </ul>
 <pre ><code class="python">def introduction(name='Jed', age=35):
   print(f'My name is {name} and I am {age}')</code></pre></li>
-<li><p>If providing any parameters after a default parameter, you must
-indicate them through keywords</p>
-<pre ><code class="python-repl" style="max-height: 200px">>>> introduction()
+<li>If providing any parameters after a default parameter, you must
+indicate them through keywords</li>
+</ul>
+</section>
+<section id="default-slide-title-1" class="slide level2">
+<h2>Default Slide Title</h2>
+<ul>
+<li><p>Different cases of calling the <em>introduction</em>
+function:</p>
+<pre ><code class="python-repl" style="min-height: 400px">>>> introduction()
 My name is Jed and I am 35
 >>> introduction('Bob', 25)
 My name is Bob and I am 25
