@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-11">
-  <title>Getting Animated</title>
+  <meta name="dcterms.date" content="2024-02-19">
+  <title>Clicky Clicky</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,75 +35,255 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Getting Animated</h1>
+  <h1 class="title">Clicky Clicky</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 11, 2023</p>
+  <p class="date">February 19, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
+<ul>
+<li>Project Wordle is <strong><em>due today at 10 pm</em></strong>.</li>
+<li>Grading for PS3 is returned! Ask me questions if you’ve got one
+regarding it</li>
+<li>We are in Ch6 of the text this week, which is interactive
+graphics</li>
+<li>Remember the <strong>1st midterm exam is this Friday Feb 23</strong>
+in this hall
+<ul>
+<li>I will provide more information about the exam right this
+morning</li>
+<li>Those with accommodations with <strong>Testing Center</strong>
+should contact them to make arrangement NOW! and cc me in the email</li>
+</ul></li>
+<li>Polling continues <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
+</ul>
+</section>
+<section id="our-first-interactive-example" class="slide level2">
+<h2>Our First Interactive Example</h2>
 <div style="font-size:.9em">
 <ul>
-<li>Welcome back to today’s class!</li>
-<li>Problem set 4 is due on <strong><em>October 17 at 12
-noon</em></strong>. That is next week Tuesday!
+<li><p>Consider the simple program below, where we’ve imported the
+basics and some of our helper functions</p>
+<pre ><code class="python">def draw_dots():
+    def click_action(event):
+        c = create_filled_rect(
+            event.get_x(), event.get_y(), 
+            10,10, random_color())
+        gw.add(c)
+
+    gw = GWindow(500, 500)
+    gw.add_event_listener("click", click_action)</code></pre></li>
+<li><p>The <code class="python">click_action</code> function specifies
+what to do when the mouse is clicked</p>
 <ul>
-<li>It was available since Monday evening this week</li>
-<li>Remember! Try not to turn in your submission late to free time for
-other assignments</li>
-<li>Attend your sections to get help on the problem set 4</li>
+<li>Note that it has access to the <code class="python">gw</code>
+variable since it is in the enclosing function and thus in the
+closure.</li>
 </ul></li>
-<li>See me if you have any concerns regarding the midterm</li>
-<li>CS151 Graphics Contest is ongoing and it is due on <strong><em>31st
-October</em></strong>
-<ul>
-<li>Instructions on how to make submission is posted on Canvas</li>
-<li>You are allowed to demonstrate your imaginative and creative skills
-On Friday is holiday. <strong>No Class!</strong></li>
-</ul></li>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
 </ul>
 </div>
 </section>
-<section id="review-question" class="slide level2"
-data-notes="Solution: Shrinks and then filled">
-<h2 data-notes="Solution: Shrinks and then filled">Review Question!</h2>
-<div class="cols">
-<div class="col">
-<p>When the function <code class="python">rev_q</code> is called, what
-happens when the mouse is clicked in the window?</p>
-<div class="poll">
-<ol>
-<li>The square shrinks</li>
-<li>The square gets filled</li>
-<li>The square shrinks and then gets filled</li>
-<li>The square gets filled and then shrinks</li>
-</ol>
-</div>
-</div>
-<div class="col" style="flex-grow:2">
-<pre ><code class="python" style="max-height:900px; font-size:.80em; width:100%">def rev_q():
-    def act_A(e):
-        sq.set_filled(True)
-    def act_B(e):
-        sq.set_size(
-            sq.get_width() - 10,
-            sq.get_height() - 10
-        )
-    gw = GWindow(500, 500)
-    sq = GRect(200, 200, 100, 100)
-    sq.set_color("blue")
-    gw.add(sq)
-    gw.add_event_listener("mousedown", act_B)
-    gw.add_event_listener("click", act_A)</code></pre>
-</div>
-</div>
+<section id="registering-a-listener" class="slide level2">
+<h2>Registering a Listener</h2>
+<ul>
+<li><p>The last line of our example function:</p>
+<pre ><code class="python">gw.add_event_listener("click", click_action)</code></pre>
+<p>tells the graphics window (<code class="python">gw</code>) to call
+the <code class="python">click_action</code> function whenever a mouse
+“click” occurs within the window.</p></li>
+<li><p>When the user clicks the mouse, the graphics window, in essense,
+calls the client back to let them know that a click has occured. Thus,
+functions such as <code class="python">click_action</code> are known as
+<em>callback functions</em>.</p></li>
+<li><p>The parameter <code class="python">event</code> given to the
+callback function is a special data structure called a <em>mouse
+event</em>, which contains details about the specifics of the event that
+triggered the action.</p></li>
+</ul>
+</section>
+<section id="mouse-events" class="slide level2">
+<h2>Mouse Events</h2>
+<ul>
+<li>We have a fairly comprehensive list of mouse-events that we can
+trigger callbacks on:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code class="python">"click"</code></td>
+<td style="text-align: left;">The user clicks the mouse in the
+window</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code class="python">"dblclk"</code></td>
+<td style="text-align: left;">The user double-clicks the mouse in the
+window</td>
+</tr>
+<tr class="odd">
+<td
+style="text-align: right;"><code class="python">"mousedown"</code></td>
+<td style="text-align: left;">The user presses the mouse button
+down</td>
+</tr>
+<tr class="even">
+<td
+style="text-align: right;"><code class="python">"mouseup"</code></td>
+<td style="text-align: left;">The user releases the mouse button</td>
+</tr>
+<tr class="odd">
+<td
+style="text-align: right;"><code class="python">"mousemove"</code></td>
+<td style="text-align: left;">The user moves the mouse</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code class="python">"drag"</code></td>
+<td style="text-align: left;">The user moves the mouse with the button
+down</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="event-details" class="slide level2">
+<h2>Event Details</h2>
+<ul>
+<li>Certain actions can trigger more than one event
+<ul>
+<li>Clicking generates a “mousedown”, “mouseup”, and then “click” event,
+in that order</li>
+</ul></li>
+<li>Events trigger no action unless the window is listening for that
+event
+<ul>
+<li>If I drag my mouse in the <code class="python">draw_dots()</code>
+function, you’ll notice that nothing happens</li>
+</ul></li>
+<li>You can setup however many listeners you feel you need in order to
+make your program behave as desired</li>
+</ul>
+<pre ><code class="python">gw.add_event_listener("click", click_action)
+gw.add_event_listener("dblclk", dblclk_action)</code></pre>
+</section>
+<section id="line-drawing" class="slide level2">
+<h2>Line Drawing</h2>
+<ul>
+<li>Say we wanted to write a simple program that allows the user to draw
+lines by clicking and dragging the mouse</li>
+<li>Using two event listeners would be useful:
+<ul>
+<li>“mousedown” could start drawing a zero-length line at the current
+mouse position (and add it to the window)</li>
+<li>“drag” could update the end-point of that line</li>
+</ul></li>
+<li>The strategy would allow the user to have visual feedback as they
+drag around, helping them to position the line
+<ul>
+<li>Since the line stretches and contracts as you move the cursor
+around, the technique is commonly called <em>rubber-banding</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="attempt-1" class="slide level2">
+<h2>Attempt #1</h2>
+<pre ><code class="python badcode" style="max-height:800px;">from pgl import GWindow, GLine
+
+WIDTH = 500
+HEIGHT = 500
+
+def draw_lines():
+    def mousedown_event(e):
+        x = e.get_x()
+        y = e.get_y()
+        line = GLine(x,y,x,y)
+        gw.add(line)
+
+    def drag_action(e):
+        line.set_end_point(e.get_x(), e.get_y())
+
+    gw = GWindow(WIDTH, HEIGHT)
+    line = None
+    gw.add_event_listener("mousedown", mousedown_event)
+    gw.add_event_listener("drag", drag_action)
+
+if __name__ == '__main__':
+    draw_lines()</code></pre>
+</section>
+<section id="what-happened" class="slide level2">
+<h2>What Happened?</h2>
+<ul>
+<li>Remember that if you define a variable in a function, that variable
+is assumed to be local!
+<ul>
+<li>Keeps you from accidentally overwriting variables you may not have
+meant to</li>
+<li>It works against us here, since we WANT to override the original
+value</li>
+</ul></li>
+<li>We can’t pass in the info as a parameter, since it is not part of
+the event information</li>
+<li>Python <em>does</em> have a <code class="python">nonlocal</code>
+keyword, which allows you to state that a specific variable is
+<em>not</em> local, but it tends to just confuse students</li>
+</ul>
+</section>
+<section id="in-the-window" class="slide level2">
+<h2>In the Window</h2>
+<ul>
+<li>A common tactic is to store all variables that need to be shared
+between two or more functions in a <em>state object</em></li>
+<li>A state object is just a single object which serves as a storage
+space for a collection of values</li>
+<li>The object is created in such a location as to ensure it is in the
+closure of any functions that need to access its contents</li>
+<li>We will most often encounter this issue with graphics applications,
+where we actually already have an object that could serve as a state
+object
+<ul>
+<li>The <code class="python">GWindow</code> object (mostly commonly
+named <code class="python">gw</code>)!</li>
+</ul></li>
+</ul>
+</section>
+<section id="storage-and-retrieval" class="slide level2">
+<h2>Storage and Retrieval</h2>
+<ul>
+<li>Do you want to store a value in your state object?
+<ul>
+<li>We can store it as an <em>attribute</em> to the
+<code class="python">gw</code> object</li>
+<li>Requires specifying the object name, followed by a dot and then your
+desired attribute name:</li>
+</ul>
+<pre ><code class="python">gw.my_attribute_name = some_cool_value</code></pre></li>
+<li>Do you want to retrieve a value from your state object?
+<ul>
+<li><p>Just refer to the object and attribute name:</p>
+<pre ><code class="python">print(gw.my_attribute_name)</code></pre></li>
+</ul></li>
+</ul>
+<!--
+## Using `GState`
+- The PGL library has a `GState` object type that we can import to use for sharing data between callback functions
+- Create a variable, conventionally called `gs` immediately after creating the window:
+```python
+gw = GWindow(WIDTH, HEIGHT)
+gs = GState()
+```
+- Value to be shared can be stored as part of the `gs` variable as an object attribute, which we will talk much more about in Ch 9
+    - For now, shared variables should include `gs` and then a period before the variable name.
+    - So `line` will become `gs.line` everywhere in our example
+-->
 </section>
 <section id="fixed-line-drawing" class="slide level2">
 <h2>Fixed Line-Drawing</h2>
-<pre ><code class="python" style="max-height:800px;" data-line-numbers="">from pgl import GWindow, GLine
+<pre ><code class="python" style="max-height:800px;">from pgl import GWindow, GLine
 
 WIDTH = 500
 HEIGHT = 500
@@ -152,7 +332,10 @@ the animations will appear smooth to the human eye</li>
 once</strong> after a specified delay
 <ul>
 <li><p>Created with</p>
-<pre ><code class="python">gw.set_timeout(function, delay)</code></pre></li>
+<pre ><code class="python">gw.set_timeout(function, delay)</code></pre>
+<p>where <code class="python">function</code> is the callback function
+and <code class="python">delay</code> is the time interval in
+milliseconds</p></li>
 </ul></li>
 <li>An <em>interval timer</em> invokes its callback function
 <strong>repeatedly</strong> at regular intervals
@@ -160,9 +343,6 @@ once</strong> after a specified delay
 <li><p>Created with</p>
 <pre ><code class="python">gw.set_interval(function, delay)</code></pre></li>
 </ul></li>
-<li>In both, <code class="python">function</code> is the callback
-function and <code class="python">delay</code> is the time interval in
-milliseconds</li>
 </ul></li>
 <li>Both methods return a <code class="python">GTimer</code> object that
 identifies the timer, and can be stopped by invoking the
@@ -183,244 +363,6 @@ identifies the timer, and can be stopped by invoking the
     square = create_filled_rect(12, 100, 24, 24, "red")
     gw.add(square)
     timer = gw.set_interval(step, 20)</code></pre>
-</section>
-<section id="growing-circles" class="slide level2">
-<h2>Growing Circles</h2>
-<figure>
-<img data-src="../images/GrowingCircles.gif" style="width:50.0%"
-alt="These circles are growing!" />
-<figcaption aria-hidden="true">These circles are growing!</figcaption>
-</figure>
-</section>
-<section id="waiting-vs-events" class="slide level2">
-<h2>Waiting vs Events</h2>
-<ul>
-<li><p>Many would probably try to approach this doing something like as
-follows:</p>
-<pre ><code class="python">def growing_circles():
-  gw = GWindow(WIDTH, HEIGHT)
-  for i in range(NUM_CIRCLES):
-      # Create a new circle
-      # Animate the circle to grow it
-      # Wait for the animation to complete</code></pre></li>
-<li><p>The problem here is that there is no clear way to “wait” for an
-animation to complete</p>
-<ul>
-<li>Code you write runs basically instantly or when run by a
-callback</li>
-</ul></li>
-<li><p>Instead need an event callback that takes care of both circle
-creation (when needed) and growing animations</p></li>
-</ul>
-</section>
-<section id="using-events-wisely" class="slide level2">
-<h2>Using Events Wisely</h2>
-<ul>
-<li>Need to keep track of what the program <strong>should</strong> be
-doing, and then have the timer callback function handle whatever is
-needed</li>
-<li>Conceptually, for these circles, might look more like this:</li>
-</ul>
-<pre ><code class="python">def step():
-    if """ there is a circle still growing """
-        """then increase its size """
-    elif """ a new circle needs to be created """
-        """ then create one """
-    else:
-        timer.stop()</code></pre>
-</section>
-<section id="making-those-circles-grow" class="slide level2">
-<h2>Making those circles grow!</h2>
-<pre ><code class="python" style="max-height:800px;" data-line-numbers="">from pgl import GWindow, GOval
-import random
-
-GWIDTH = 500
-GHEIGHT = 400
-N_CIRCLES = 20
-MIN_RADIUS = 15
-MAX_RADIUS = 100
-DELTA_TIME = 10
-DELTA_SIZE = 1
-
-def random_color():
-    color = "#"
-    for i in range(6):
-        color += random.choice("0123456789ABCDEF")
-    return color
-
-def create_filled_circle(x, y, r, color="black"):
-    circ = Goval(x-r, y-r, 2*r, 2*r)
-    circ.set_filled(True)
-    circ.set_color(color)
-    return circ
-
-def growing_circles():
-    def start_new_circle():
-        r = random.uniform(MIN_RADIUS, MAX_RADIUS)
-        x = random.uniform(r, GWIDTH - r)
-        y = random.uniform(r, GHEIGHT - r)
-        gw.circle = create_filled_circle(
-                            x, y, 
-                            0, random_color()
-                        )
-        gw.desired_size = 2 * r
-        gw.current_size = 0
-        gw.circles_created += 1
-        return gw.circle
-
-    def step():
-        # Grow a circle if needed
-        if gw.current_size < gw.desired_size:
-            gw.current_size += DELTA_SIZE
-            x = gw.circle.get_x() - DELTA_SIZE / 2
-            y = gw.circle.get_y() - DELTA_SIZE / 2
-            gw.circle.set_bounds(
-                            x, y, 
-                            gw.current_size,
-                            gw.current_size
-                        )
-        # or add a circle if you can
-        elif gw.circles_created < N_CIRCLES:
-            gw.add(start_new_circle())
-        # or stop
-        else:
-            timer.stop()
-
-    gw = GWindow(GWIDTH, GHEIGHT)
-    gw.circles_created = 0
-    gw.current_size = 0
-    gw.desired_size = 0
-    timer = gw.set_interval(step, DELTA_TIME)</code></pre>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<ul>
-<li>Our technique of piecing together many small movements to resemble
-motion is not limited to just making pretty animations!</li>
-<li>Physicists use similar techniques to break complex problems into
-simple pieces
-<ul>
-<li>“In this small time interval, the motion is simple”</li>
-<li>Chain together many time intervals to construct the full motion</li>
-</ul></li>
-<li>There are many areas where this is the <strong>only</strong> way to
-solve a problem, as we can not write down equations to express the
-result otherwise!</li>
-</ul>
-</section>
-<section id="the-two-body-problem" class="slide level2">
-<h2>The Two Body Problem</h2>
-<pre ><code class="python" style="max-height:800px;">from pgl import GWindow, GOval, GLine
-from pgl_tools import create_filled_circle
-
-def two_body():
-    def step():
-        # Compute forces and accelerations
-        dx = planet1.get_x() - planet2.get_x()
-        dy = planet1.get_y() - planet2.get_y()
-        r3 = (dx ** 2 + dy ** 2) ** (3 / 2)
-        ax = 1000 / r3 * dx
-        ay = 1000 / r3 * dy
-
-        # Update velocities
-        gw.vx1 += -ax
-        gw.vy1 += -ay
-        gw.vx2 += ax
-        gw.vy2 += ay
-
-        # Augment history paths
-        path1 = GLine(
-            planet1.get_x() + 10,
-            planet1.get_y() + 10,
-            planet1.get_x() + 10 + gw.vx1,
-            planet1.get_y() + 10 + gw.vy1,
-        )
-        path1.set_color("red")
-        path1.set_line_width(3)
-
-        path2 = GLine(
-            planet2.get_x() + 10,
-            planet2.get_y() + 10,
-            planet2.get_x() + 10 + gw.vx2,
-            planet2.get_y() + 10 + gw.vy2,
-        )
-        path2.set_color("cyan")
-        path2.set_line_width(3)
-
-        # Move planets
-        planet1.move(gw.vx1, gw.vy1)
-        planet2.move(gw.vx2, gw.vy2)
-
-        gw.add(path1)
-        gw.add(path2)
-
-    gw = GWindow(600, 600)
-    # Defining state variables
-    gw.vx1, gw.vy1 = 0, 1
-    gw.vx2, gw.vy2 = 0, -1
-
-    planet1 = create_filled_circle(200, 200, 10, "red")
-    planet2 = create_filled_circle(400, 200, 10, "cyan")
-
-    gw.add(planet1)
-    gw.add(planet2)
-
-    gw.set_interval(step, 30)
-
-if __name__ == '__main__':
-    two_body()</code></pre>
-</section>
-<section id="something-to-smile-about" class="slide level2">
-<h2>Something to smile about</h2>
-<div class="cols">
-<div class="col" style="font-size:.9em">
-<!--- Up until now, we haven't had a way to draw an arc!-->
-<ul>
-<li>The <code class="python">GArc</code> class represents an arc formed
-by taking a section of the perimeter of an oval.</li>
-<li>3 things necessary:
-<ul>
-<li>The bounding rectangle geometry (upper left corner and width and
-height)</li>
-<li>The <em>starting angle</em> (in degrees)</li>
-<li>The <em>sweep angle</em> (in degrees) which is how far the arc
-extends</li>
-</ul></li>
-<li>Negative angles move in the clockwise direction</li>
-</ul>
-</div>
-<div class="col">
-<p><img
-data-src="../images/svg_cache/568c4310834f76d9a4b710159f6c6cd65c6a7d0b.svg"
-style="width:100.0%" /></p>
-</div>
-</div>
-</section>
-<section id="fillable-arcs" class="slide level2">
-<h2>Fillable Arcs</h2>
-<ul>
-<li>The <code class="python">GArc</code> class is a
-<code class="python">GFillableObject</code>, and so you can call
-<code class="python">.set_filled()</code> on a
-<code class="python">GArc</code> object</li>
-<li>Filled like a pie-shaped wedge formed between the center of the
-bounding box and the starting and end points of the arc</li>
-</ul>
-<div class="cols">
-<div class="col">
-<pre ><code class="python">def filled_arc():
-    gw = GWindow(400, 400)
-    arc = GArc(50, 50, 
-               350, 350, 
-               90, 135)
-    arc.set_color("orange")
-    arc.set_filled(True)
-    gw.add(arc)</code></pre>
-</div>
-<div class="col">
-<p><img data-src="../images/FilledArc.png" style="width:50.0%" /></p>
-</div>
-</div>
 </section>
     </div>
   </div>

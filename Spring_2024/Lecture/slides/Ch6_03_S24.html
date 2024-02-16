@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-11">
-  <title>Getting Animated</title>
+  <meta name="dcterms.date" content="2023-10-16">
+  <title>Complex Shapes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,203 +35,97 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Getting Animated</h1>
+  <h1 class="title">Complex Shapes</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 11, 2023</p>
+  <p class="date">October 16, 2023</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
-<div style="font-size:.9em">
 <ul>
-<li>Welcome back to today’s class!</li>
-<li>Problem set 4 is due on <strong><em>October 17 at 12
-noon</em></strong>. That is next week Tuesday!
+<li>PS4 due <em>tomorrow</em></li>
+<li>Section Leaders are working on Project 1 feedback</li>
+<li>Note the change in lecture hall on Friday this week.
 <ul>
-<li>It was available since Monday evening this week</li>
-<li>Remember! Try not to turn in your submission late to free time for
-other assignments</li>
-<li>Attend your sections to get help on the problem set 4</li>
+<li><strong>Lecture holds at Smullin B17</strong></li>
 </ul></li>
-<li>See me if you have any concerns regarding the midterm</li>
-<li>CS151 Graphics Contest is ongoing and it is due on <strong><em>31st
-October</em></strong>
+<li>Remember! CS151 Graphics Contest is ongoing and it is due on
+<strong><em>31st October</em></strong>
 <ul>
 <li>Instructions on how to make submission is posted on Canvas</li>
-<li>You are allowed to demonstrate your imaginative and creative skills
-On Friday is holiday. <strong>No Class!</strong></li>
+<li>You are allowed to demonstrate your imaginative and creative
+skills</li>
 </ul></li>
 <li>Polling continues today! Remember to use this link <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
 when it becomes <strong>active</strong></li>
 </ul>
-</div>
+<!--
+## Quick General Poll
+Comparatively speaking, how would you say you are doing in absorbing and keeping up with the material in this class?
+
+:::{.poll}
+#. "Probably better than the majority of my peers"
+#. "Probably about the same as the majority of my peers"
+#. "Probably worse than the majority of my peers"
+#. "Probably way worse than the majority of my peers"
+:::
+-->
 </section>
 <section id="review-question" class="slide level2"
-data-notes="Solution: Shrinks and then filled">
-<h2 data-notes="Solution: Shrinks and then filled">Review Question!</h2>
+data-notes="Answer: B, as step will run 50 times in 1 second">
+<h2 data-notes="Answer: B, as step will run 50 times in 1 second">Review
+Question!</h2>
 <div class="cols">
 <div class="col">
-<p>When the function <code class="python">rev_q</code> is called, what
-happens when the mouse is clicked in the window?</p>
-<div class="poll">
-<ol>
-<li>The square shrinks</li>
-<li>The square gets filled</li>
-<li>The square shrinks and then gets filled</li>
-<li>The square gets filled and then shrinks</li>
-</ol>
-</div>
-</div>
-<div class="col" style="flex-grow:2">
-<pre ><code class="python" style="max-height:900px; font-size:.80em; width:100%">def rev_q():
-    def act_A(e):
-        sq.set_filled(True)
-    def act_B(e):
-        sq.set_size(
-            sq.get_width() - 10,
-            sq.get_height() - 10
-        )
-    gw = GWindow(500, 500)
-    sq = GRect(200, 200, 100, 100)
-    sq.set_color("blue")
-    gw.add(sq)
-    gw.add_event_listener("mousedown", act_B)
-    gw.add_event_listener("click", act_A)</code></pre>
-</div>
-</div>
-</section>
-<section id="fixed-line-drawing" class="slide level2">
-<h2>Fixed Line-Drawing</h2>
-<pre ><code class="python" style="max-height:800px;" data-line-numbers="">from pgl import GWindow, GLine
-
-WIDTH = 500
-HEIGHT = 500
-
-def draw_lines():
-    def mousedown_event(e):
-        x = e.get_x()
-        y = e.get_y()
-        gw.line = GLine(x,y,x,y)
-        gw.add(gw.line)
-
-    def drag_action(e):
-        gw.line.set_end_point(e.get_x(), e.get_y())
-
-    gw = GWindow(WIDTH, HEIGHT)
-    gw.line = None
-    gw.add_event_listener("mousedown", mousedown_event)
-    gw.add_event_listener("drag", drag_action)
-
-if __name__ == '__main__':
-    draw_lines()</code></pre>
-</section>
-<section id="timer-events" class="slide level2">
-<h2>Timer Events</h2>
-<ul>
-<li>Previously we looked at how our programs could react to mouse
-events</li>
-<li>Can also listen for <em>timer events</em>, which occur after a
-specific time interval</li>
-<li>You specify the listener for a timer event in the form of a callback
-function that is invoked at the end of the time interval</li>
-<li>Can add animation to our graphics by creating a timer whose callback
-makes small updates to the graphical objects in the window
-<ul>
-<li>If the time interval is short enough (usually sub 30 milliseconds),
-the animations will appear smooth to the human eye</li>
-</ul></li>
-</ul>
-</section>
-<section id="timer-types" class="slide level2">
-<h2>Timer Types</h2>
-<ul>
-<li>PGL supports two kinds of timers:
-<ul>
-<li>A <em>one-shot timer</em> invokes its callback <strong>only
-once</strong> after a specified delay
-<ul>
-<li><p>Created with</p>
-<pre ><code class="python">gw.set_timeout(function, delay)</code></pre></li>
-</ul></li>
-<li>An <em>interval timer</em> invokes its callback function
-<strong>repeatedly</strong> at regular intervals
-<ul>
-<li><p>Created with</p>
-<pre ><code class="python">gw.set_interval(function, delay)</code></pre></li>
-</ul></li>
-<li>In both, <code class="python">function</code> is the callback
-function and <code class="python">delay</code> is the time interval in
-milliseconds</li>
-</ul></li>
-<li>Both methods return a <code class="python">GTimer</code> object that
-identifies the timer, and can be stopped by invoking the
-<code class="python">.stop()</code> method on that timer</li>
-</ul>
-</section>
-<section id="moving-square" class="slide level2">
-<h2>Moving Square</h2>
-<pre ><code class="python" style="max-height:900px">def moving_square():
-    def step():
-        square.move(dx, dy)
-        if square.get_x() > 500:
-            timer.stop()
-
-    gw = GWindow(500, 200)
-    dx = 1
-    dy = 0
-    square = create_filled_rect(12, 100, 24, 24, "red")
-    gw.add(square)
-    timer = gw.set_interval(step, 20)</code></pre>
-</section>
-<section id="growing-circles" class="slide level2">
-<h2>Growing Circles</h2>
+<p>When the function to the right is run, what does the screen look like
+just after 1 second has passed?</p>
+<div class="cols">
+<div class="col">
 <figure>
-<img data-src="../images/GrowingCircles.gif" style="width:50.0%"
-alt="These circles are growing!" />
-<figcaption aria-hidden="true">These circles are growing!</figcaption>
+<img data-src="../images/AnimationA.png" style="width:60.0%"
+alt="(A)" />
+<figcaption aria-hidden="true">(A)</figcaption>
 </figure>
-</section>
-<section id="waiting-vs-events" class="slide level2">
-<h2>Waiting vs Events</h2>
-<ul>
-<li><p>Many would probably try to approach this doing something like as
-follows:</p>
-<pre ><code class="python">def growing_circles():
-  gw = GWindow(WIDTH, HEIGHT)
-  for i in range(NUM_CIRCLES):
-      # Create a new circle
-      # Animate the circle to grow it
-      # Wait for the animation to complete</code></pre></li>
-<li><p>The problem here is that there is no clear way to “wait” for an
-animation to complete</p>
-<ul>
-<li>Code you write runs basically instantly or when run by a
-callback</li>
-</ul></li>
-<li><p>Instead need an event callback that takes care of both circle
-creation (when needed) and growing animations</p></li>
-</ul>
-</section>
-<section id="using-events-wisely" class="slide level2">
-<h2>Using Events Wisely</h2>
-<ul>
-<li>Need to keep track of what the program <strong>should</strong> be
-doing, and then have the timer callback function handle whatever is
-needed</li>
-<li>Conceptually, for these circles, might look more like this:</li>
-</ul>
-<pre ><code class="python">def step():
-    if """ there is a circle still growing """
-        """then increase its size """
-    elif """ a new circle needs to be created """
-        """ then create one """
-    else:
-        timer.stop()</code></pre>
-</section>
-<section id="making-those-circles-grow" class="slide level2">
-<h2>Making those circles grow!</h2>
-<pre ><code class="python" style="max-height:800px;" data-line-numbers="">from pgl import GWindow, GOval
+<figure>
+<img data-src="../images/AnimationC.png" style="width:60.0%"
+alt="(C)" />
+<figcaption aria-hidden="true">(C)</figcaption>
+</figure>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/AnimationB.png" style="width:60.0%"
+alt="(B)" />
+<figcaption aria-hidden="true">(B)</figcaption>
+</figure>
+<figure>
+<img data-src="../images/AnimationD.png" style="width:60.0%"
+alt="(D)" />
+<figcaption aria-hidden="true">(D)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="col" style="flex-grow:1">
+<pre ><code class="python" style="max-height:900px; font-size:0.8em">def rev_q():
+    def step():
+        rect.move(1, 1)
+
+    def once():
+        rect.set_filled(True)
+
+    gw = GWindow(200, 200)
+    rect = GRect(0, 0, 25, 25)
+    gw.add(rect)
+    gw.set_interval(step, 20)
+    gw.set_timeout(once, 1000)</code></pre>
+</div>
+</div>
+<!--
+## Making those circles grow!
+```{.python style='max-height:800px;' data-line-numbers=""}
+from pgl import GWindow, GOval
 import random
 
 GWIDTH = 500
@@ -290,27 +184,20 @@ def growing_circles():
     gw.circles_created = 0
     gw.current_size = 0
     gw.desired_size = 0
-    timer = gw.set_interval(step, DELTA_TIME)</code></pre>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<ul>
-<li>Our technique of piecing together many small movements to resemble
-motion is not limited to just making pretty animations!</li>
-<li>Physicists use similar techniques to break complex problems into
-simple pieces
-<ul>
-<li>“In this small time interval, the motion is simple”</li>
-<li>Chain together many time intervals to construct the full motion</li>
-</ul></li>
-<li>There are many areas where this is the <strong>only</strong> way to
-solve a problem, as we can not write down equations to express the
-result otherwise!</li>
-</ul>
-</section>
-<section id="the-two-body-problem" class="slide level2">
-<h2>The Two Body Problem</h2>
-<pre ><code class="python" style="max-height:800px;">from pgl import GWindow, GOval, GLine
+    timer = gw.set_interval(step, DELTA_TIME)
+```
+
+
+## Simulation
+- Our technique of piecing together many small movements to resemble motion is not limited to just making pretty animations!
+- Physicists use similar techniques to break complex problems into simple pieces
+    - "In this small time interval, the motion is simple"
+    - Chain together many time intervals to construct the full motion
+- There are many areas where this is the **only** way to solve a problem, as we can not write down equations to express the result otherwise!
+
+## The Two Body Problem
+```{.python style="max-height:800px;"}
+from pgl import GWindow, GOval, GLine
 from pgl_tools import create_filled_circle
 
 def two_body():
@@ -368,7 +255,9 @@ def two_body():
     gw.set_interval(step, 30)
 
 if __name__ == '__main__':
-    two_body()</code></pre>
+    two_body()
+```
+-->
 </section>
 <section id="something-to-smile-about" class="slide level2">
 <h2>Something to smile about</h2>
@@ -421,6 +310,279 @@ bounding box and the starting and end points of the arc</li>
 <p><img data-src="../images/FilledArc.png" style="width:50.0%" /></p>
 </div>
 </div>
+<!-- Moving to a lab?
+## Pacman Discussion
+::::::cols
+::::col
+How to recreate the animation below? Each group has a question to answer on the right.
+<br><br><br>
+
+![PacMan!](../images/Pacman.gif){width=100%}
+::::
+::::{.col style="flex-grow:1.5;"}
+
+
+Group A
+: How could we create the initial PacMan image?
+
+Group B
+: How can we move PacMan and bounce him off the edges?
+
+Group C
+: How can we make his mouth open and close?
+
+Group D
+: How can we make his mouth flip around when he bounces off the walls?
+
+
+::::
+
+::::::
+-->
+</section>
+<section id="the-gpolygon-class" class="slide level2">
+<h2>The <code class="python">GPolygon</code> class</h2>
+<ul>
+<li>Used to represent graphical objects bounded by line segments
+<ul>
+<li>Polygons consist of several <em>vertices</em> bounded by
+<em>edges</em></li>
+</ul></li>
+</ul>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="GPolygons.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 316.60822 101.79784"
+   height="101.79784mm"
+   width="316.60822mm">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="43"
+     inkscape:window-x="1096"
+     inkscape:window-height="1381"
+     inkscape:window-width="2528"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="0.068641731"
+     inkscape:cx="818.37938"
+     inkscape:zoom="0.49497475"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-218.05446,41.926654)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       inkscape:transform-center-x="3.388389e-06"
+       d="M 269.46239,53.744498 224.18114,9.4812806 268.44436,-35.79997 313.72561,8.463248 Z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="2.344826"
+       sodipodi:arg1="1.5594278"
+       sodipodi:r2="31.660797"
+       sodipodi:r1="44.775127"
+       sodipodi:cy="8.9722643"
+       sodipodi:cx="268.95337"
+       sodipodi:sides="4"
+       id="path835"
+       style="fill:none;stroke:#66d9ef;stroke-width:8.665;stroke-linecap:round"
+       sodipodi:type="star" />
+    <path
+       inkscape:transform-center-x="4.7445856e-06"
+       d="m 404.69518,50.575813 -48.01813,-0.03726 -23.97679,-41.6035483 24.04133,-41.5662887 48.01813,0.03726 23.97679,41.6035489 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="1.5715723"
+       sodipodi:arg1="1.0479735"
+       sodipodi:r2="40.561043"
+       sodipodi:r1="48.018143"
+       sodipodi:cy="8.9722643"
+       sodipodi:cx="380.71838"
+       sodipodi:sides="6"
+       id="path837"
+       style="fill:none;stroke:#f92672;stroke-width:8.665;stroke-linecap:round"
+       sodipodi:type="star" />
+    <path
+       inkscape:transform-center-x="6.1462532e-06"
+       d="M 468.09743,19.433937 450.34445,0.47401838 476.00728,-3.5342564 488.55326,-26.277281 500.2956,-3.1091087 525.80242,1.7948475 507.39677,20.12184 510.61487,45.895676 487.4972,34.054208 463.97928,45.079359 Z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="3.4732543"
+       sodipodi:arg1="2.8449358"
+       sodipodi:r2="39.676682"
+       sodipodi:r1="20.664049"
+       sodipodi:cy="13.393324"
+       sodipodi:cx="487.85886"
+       sodipodi:sides="5"
+       id="path839"
+       style="fill:none;stroke:#a6e22e;stroke-width:8.665;stroke-linecap:round"
+       sodipodi:type="star" />
+    <circle
+       r="4.5723495"
+       cy="8.9722643"
+       cx="268.95337"
+       id="path841"
+       style="fill:#6c6f93;stroke:none;stroke-width:8.665;stroke-linecap:round" />
+    <circle
+       style="fill:#6c6f93;stroke:none;stroke-width:8.665;stroke-linecap:round"
+       id="circle843"
+       cx="380.71838"
+       cy="8.9722643"
+       r="4.5723495" />
+    <circle
+       r="4.5723495"
+       cy="12.059289"
+       cx="488.12354"
+       id="circle845"
+       style="fill:#6c6f93;stroke:none;stroke-width:8.665;stroke-linecap:round" />
+  </g>
+</svg>
+
+<figcaption> </figcaption>
+</figure>
+<ul>
+<li>Location not fixed in upper left, but at some convenient reference
+point</li>
+<li>Often a convenient reference point is near the center of the object,
+but it doesn’t need to be</li>
+<li><code class="python">GPolygon</code>s are
+<code class="python">GFillableObject</code>s, so they can be filled</li>
+</ul>
+</section>
+<section id="polygonal-construction" class="slide level2">
+<h2>Polygonal Construction</h2>
+<ul>
+<li>The <code class="python">GPolygon</code> function creates an
+<strong>empty</strong> polygon, to which you then can add vertexes</li>
+<li>Can create a vertex by calling
+<code class="python">.add_vertex(x,y)</code> on the
+<code class="python">GPolygon</code> object
+<ul>
+<li><code class="python">x</code> and <code class="python">y</code>
+measured <strong>relative to the reference point</strong></li>
+</ul></li>
+<li>Vertexes past the first can be defined in a few ways:
+<ul>
+<li><code class="python">.add_vertex(x,y)</code> adds another new vertex
+relative to the reference point</li>
+<li><code class="python">.add_edge(dx,dy)</code> adds a new vertex
+relative to the preceding vertex</li>
+<li><code class="python">.add_polar_edge(r, theta)</code> adds a new
+vertex relative to the previous using polar coordinates</li>
+</ul></li>
+</ul>
+</section>
+<section id="triangle-by-vertex" class="slide level2">
+<h2>Triangle By Vertex</h2>
+<pre ><code class="python" style="max-height:800px;">def triangle_by_vertex():
+    def create_triangle(b, h):
+        tri = GPolygon()
+        tri.add_vertex(-b / 2, h / 2)
+        tri.add_vertex(b / 2, h / 2)
+        tri.add_vertex(0, -h / 2)
+        return tri
+
+    gw = GWindow(500, 500)
+    triangle = create_triangle(200, 200)
+    triangle.set_filled(True)
+    triangle.set_color("red")
+    gw.add(triangle, 250, 250)</code></pre>
+</section>
+<section id="triangle-by-polar-edge" class="slide level2">
+<h2>Triangle by Polar Edge</h2>
+<pre ><code class="python" style="max-height:800px;">def triangle_by_polar_edge():
+    def create_eq_triangle(side):
+        tri = GPolygon()
+        tri.add_vertex(0, 0)
+        for i in range(0, 360, 120):
+            tri.add_polar_edge(side, i)
+        return tri
+
+    gw = GWindow(500, 500)
+    triangle = create_eq_triangle(100)
+    triangle.set_filled(True)
+    triangle.set_color("green")
+    gw.add(triangle, 250, 250)</code></pre>
+</section>
+<section id="compound-objects" class="slide level2">
+<h2>Compound Objects</h2>
+<ul>
+<li>The <code class="python">GCompound</code> class makes it possible to
+combine several graphical objects so that the entire structure behaves
+as a single object</li>
+<li>Can be thought of as a combination of
+<code class="python">GWindow</code> and
+<code class="python">GObject</code>
+<ul>
+<li>You can add objects to it, but then you can also add it (and
+everything in it) to a window as a single unit</li>
+</ul></li>
+<li>Uses its own coordinate system relative to a reference point
+<ul>
+<li>When adding objects to the <code class="python">GCompound</code>,
+you place them relative to the reference point</li>
+<li>When adding the <code class="python">GCompound</code> to a canvas,
+you set the location of the reference point</li>
+</ul></li>
+</ul>
+</section>
+<section id="and-my-axe" class="slide level2">
+<h2>And my Axe!</h2>
+<pre ><code class="python" style="max-height:800px;">def my_axe():
+    def create_axe():
+        axe = GCompound()
+        shaft = GRect(-15, 0, 30, 300)
+        shaft.set_filled(True)
+        shaft.set_color("brown")
+        axe.add(shaft)
+
+        blade = GPolygon()
+        blade.add_vertex(0, 0)
+        blade.add_vertex(200, -50)
+        blade.add_vertex(200, 50)
+        blade.set_filled(True)
+        blade.set_color("gray")
+        axe.add(blade, -80, 50)
+        return axe
+
+    gw = GWindow(500, 500)
+    axe = create_axe()
+    gw.add(axe, 250, 100)</code></pre>
 </section>
     </div>
   </div>
