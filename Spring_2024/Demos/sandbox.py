@@ -1,4 +1,4 @@
-from pgl import GWindow, GOval, GLine, GRect, GLabel
+from pgl import GWindow, GOval, GLine, GRect, GLabel, GArc
 import random
 """
 def make_filled_circ(x_cent, y_cent, radius, color='black'):
@@ -13,7 +13,7 @@ if __name__ =="__main__":
     c2= make_filled_circ(300,300, 40,"red")
     gw.add(c2)
     c3= make_filled_circ(200,200, 10,"white")
-    gw.add(c3)"""
+    gw.add(c3)
 
 
 #------------------------Clicking event program----------
@@ -39,4 +39,14 @@ def draw_dots():
     gw.add_event_listener("click", click_action)
 
 if __name__ =="__main__":
-   draw_dots()
+   draw_dots()"""
+
+def filled_arc():
+    gw = GWindow(400, 400)
+    arc = GArc(50, 50, 
+               350, 350, 
+               90, 135)
+    arc.set_color("orange")
+    arc.set_filled(True)
+    gw.add(arc)
+filled_arc()

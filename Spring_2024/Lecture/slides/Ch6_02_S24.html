@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-11">
+  <meta name="dcterms.date" content="2024-02-23">
   <title>Getting Animated</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,35 +37,19 @@
 <section id="title-slide">
   <h1 class="title">Getting Animated</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 11, 2023</p>
+  <p class="date">February 23, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
-<div style="font-size:.9em">
 <ul>
-<li>Welcome back to today’s class!</li>
-<li>Problem set 4 is due on <strong><em>October 17 at 12
-noon</em></strong>. That is next week Tuesday!
-<ul>
-<li>It was available since Monday evening this week</li>
-<li>Remember! Try not to turn in your submission late to free time for
-other assignments</li>
-<li>Attend your sections to get help on the problem set 4</li>
-</ul></li>
-<li>See me if you have any concerns regarding the midterm</li>
-<li>CS151 Graphics Contest is ongoing and it is due on <strong><em>31st
-October</em></strong>
-<ul>
-<li>Instructions on how to make submission is posted on Canvas</li>
-<li>You are allowed to demonstrate your imaginative and creative skills
-On Friday is holiday. <strong>No Class!</strong></li>
-</ul></li>
-<li>Polling continues today! Remember to use this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
+<li>Welcome back to Friday class! Hopefully the internet is back
+soom!</li>
+<li>The midterm exam is postponed to <strong>next week
+Monday</strong></li>
+<li>Polling continues <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
-</div>
 </section>
 <section id="review-question" class="slide level2"
 data-notes="Solution: Shrinks and then filled">
@@ -100,10 +84,10 @@ happens when the mouse is clicked in the window?</p>
     gw.add_event_listener("click", act_A)</code></pre>
 </div>
 </div>
-</section>
-<section id="fixed-line-drawing" class="slide level2">
-<h2>Fixed Line-Drawing</h2>
-<pre ><code class="python" style="max-height:800px;" data-line-numbers="">from pgl import GWindow, GLine
+<!--
+## Fixed Line-Drawing
+```{.python style="max-height:800px;" data-line-numbers=""}
+from pgl import GWindow, GLine
 
 WIDTH = 500
 HEIGHT = 500
@@ -124,54 +108,39 @@ def draw_lines():
     gw.add_event_listener("drag", drag_action)
 
 if __name__ == '__main__':
-    draw_lines()</code></pre>
-</section>
-<section id="timer-events" class="slide level2">
-<h2>Timer Events</h2>
-<ul>
-<li>Previously we looked at how our programs could react to mouse
-events</li>
-<li>Can also listen for <em>timer events</em>, which occur after a
-specific time interval</li>
-<li>You specify the listener for a timer event in the form of a callback
-function that is invoked at the end of the time interval</li>
-<li>Can add animation to our graphics by creating a timer whose callback
-makes small updates to the graphical objects in the window
-<ul>
-<li>If the time interval is short enough (usually sub 30 milliseconds),
-the animations will appear smooth to the human eye</li>
-</ul></li>
-</ul>
-</section>
-<section id="timer-types" class="slide level2">
-<h2>Timer Types</h2>
-<ul>
-<li>PGL supports two kinds of timers:
-<ul>
-<li>A <em>one-shot timer</em> invokes its callback <strong>only
-once</strong> after a specified delay
-<ul>
-<li><p>Created with</p>
-<pre ><code class="python">gw.set_timeout(function, delay)</code></pre></li>
-</ul></li>
-<li>An <em>interval timer</em> invokes its callback function
-<strong>repeatedly</strong> at regular intervals
-<ul>
-<li><p>Created with</p>
-<pre ><code class="python">gw.set_interval(function, delay)</code></pre></li>
-</ul></li>
-<li>In both, <code class="python">function</code> is the callback
-function and <code class="python">delay</code> is the time interval in
-milliseconds</li>
-</ul></li>
-<li>Both methods return a <code class="python">GTimer</code> object that
-identifies the timer, and can be stopped by invoking the
-<code class="python">.stop()</code> method on that timer</li>
-</ul>
-</section>
-<section id="moving-square" class="slide level2">
-<h2>Moving Square</h2>
-<pre ><code class="python" style="max-height:900px">def moving_square():
+    draw_lines()
+```
+
+
+## Timer Events
+- Previously we looked at how our programs could react to mouse events
+- Can also listen for _timer events_, which occur after a specific time interval
+- You specify the listener for a timer event in the form of a callback function that is invoked at the end of the time interval
+- Can add animation to our graphics by creating a timer whose callback makes small updates to the graphical objects in the window
+    - If the time interval is short enough (usually sub 30 milliseconds), the animations will appear smooth to the human eye
+
+
+## Timer Types
+- PGL supports two kinds of timers:
+    - A _one-shot timer_ invokes its callback **only once** after a specified delay
+        - Created with
+
+          ```python
+          gw.set_timeout(function, delay)
+          ```
+    - An _interval timer_ invokes its callback function **repeatedly** at regular intervals
+        - Created with
+
+            ```python
+            gw.set_interval(function, delay)
+            ```
+    - In both, `function` is the callback function and `delay` is the time interval in milliseconds
+- Both methods return a `GTimer` object that identifies the timer, and can be stopped by invoking the `.stop()` method on that timer
+
+
+## Moving Square
+```{.python style="max-height:900px"}
+def moving_square():
     def step():
         square.move(dx, dy)
         if square.get_x() > 500:
@@ -182,7 +151,9 @@ identifies the timer, and can be stopped by invoking the
     dy = 0
     square = create_filled_rect(12, 100, 24, 24, "red")
     gw.add(square)
-    timer = gw.set_interval(step, 20)</code></pre>
+    timer = gw.set_interval(step, 20)
+```
+-->
 </section>
 <section id="growing-circles" class="slide level2">
 <h2>Growing Circles</h2>

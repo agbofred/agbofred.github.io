@@ -6,7 +6,7 @@ def draw_dots():
     def click_action(event):
         c = create_filled_rect(
             event.get_x(), event.get_y(), 
-            10,10, random_color())
+            50,50, random_color())
         gw.add(c)
 
     def create_filled_rect(x,y,w,h,color):
@@ -29,14 +29,15 @@ def draw_lines():
     def mousedown_event(e):
         x = e.get_x()
         y = e.get_y()
-        line = GLine(x,y,x,y)
-        gw.add(line)
+        gw.line = GLine(x,y,x,y)
+        gw.line.set_line_width(20)
+        gw.add(gw.line)
 
     def drag_action(e):
-        line.set_end_point(e.get_x(), e.get_y())
+        gw.line.set_end_point(e.get_x(), e.get_y())
 
     gw = GWindow(WIDTH, HEIGHT)
-    line = None
+    gw.line = None
     gw.add_event_listener("mousedown", mousedown_event)
     gw.add_event_listener("drag", drag_action)
 
@@ -45,7 +46,7 @@ def draw_lines():
 def moving_square():
     def step():
         square.move(dx, dy)
-        if square.get_x() > 500:
+        if square.get_x() > 490:
             timer.stop()
     
     def create_filled_rect(x,y,w,h,color):
@@ -57,9 +58,10 @@ def moving_square():
     gw = GWindow(WIDTH, HEIGHT)
     dx = 1
     dy = 0
-    square = create_filled_rect(12, 100, 24, 24, "red")
+    square = create_filled_rect(12, 100, 100, 100, "red")
     gw.add(square)
-    timer = gw.set_interval(step, 10)
+    timer = gw.set_interval(step, 5)
+    
 
 if __name__ =="__main__":
     #draw_dots()
