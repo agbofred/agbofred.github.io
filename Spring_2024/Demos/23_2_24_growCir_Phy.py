@@ -4,7 +4,7 @@ from G_helper import circle
 
 GWIDTH = 500
 GHEIGHT = 400
-N_CIRCLES = 20
+N_CIRCLES =25
 MIN_RADIUS = 15
 MAX_RADIUS = 100
 DELTA_TIME = 10
@@ -115,8 +115,9 @@ def two_body():
     gw.add(planet1)
     gw.add(planet2)
 
-    gw.set_interval(step, 20)
+    gw.set_interval(step, 10)
 
 if __name__ == '__main__':
-    #two_body()
-    growing_circles()
+    #growing_circles()
+    two_body()
+    

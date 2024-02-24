@@ -45,8 +45,27 @@ def filled_arc():
     gw = GWindow(400, 400)
     arc = GArc(50, 50, 
                350, 350, 
-               90, 135)
-    arc.set_color("orange")
+               40, 160)
+    #arc.set_color("")
     arc.set_filled(True)
     gw.add(arc)
 filled_arc()
+
+
+#---------
+"""def rev_q():
+    def act_A(e):
+        sq.set_filled(True)
+    def act_B(e):
+        sq.set_size(
+            sq.get_width() - 10,
+            sq.get_height() - 10
+        )
+    gw = GWindow(500, 500)
+    sq = GRect(200, 200, 100, 100)
+    sq.set_color("blue")
+    gw.add(sq)
+    gw.add_event_listener("mousedown", act_B)
+    gw.add_event_listener("click", act_A)
+
+rev_q()"""
