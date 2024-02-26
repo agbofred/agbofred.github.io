@@ -1,4 +1,4 @@
-from pgl import GWindow, GOval, GLine, GRect, GLabel, GArc
+from pgl import GWindow, GOval, GLine, GRect, GLabel, GArc, GPolygon
 import random
 """
 def make_filled_circ(x_cent, y_cent, radius, color='black'):
@@ -40,32 +40,30 @@ def draw_dots():
 
 if __name__ =="__main__":
    draw_dots()"""
+GWIDTH = 600
+GHEIGHT = 600
+gw = GWindow(GWIDTH,GHEIGHT)
+#Create Triangle With Polygon
+def create_triangle(w,h):
+    tri = GPolygon()
+    #tri.add_vertex(0,0)
+    tri.add_vertex(h/2,w/2)
+    tri.add_vertex(-w/2, h/2)
+    tri.add_vertex(0,-h/2)
 
-def filled_arc():
-    gw = GWindow(400, 400)
-    arc = GArc(50, 50, 
-               350, 350, 
-               40, 160)
-    #arc.set_color("")
-    arc.set_filled(True)
-    gw.add(arc)
-filled_arc()
+    tri.set_filled(True)
+    tri.set_color("pink")
+    gw.add(tri, GWIDTH/2, GHEIGHT/2)
+
+create_triangle(150,150)
 
 
-#---------
-"""def rev_q():
-    def act_A(e):
-        sq.set_filled(True)
-    def act_B(e):
-        sq.set_size(
-            sq.get_width() - 10,
-            sq.get_height() - 10
-        )
-    gw = GWindow(500, 500)
-    sq = GRect(200, 200, 100, 100)
-    sq.set_color("blue")
-    gw.add(sq)
-    gw.add_event_listener("mousedown", act_B)
-    gw.add_event_listener("click", act_A)
-
-rev_q()"""
+def create_hexagon(side):
+    hex = GPolygon()
+    hex.add_vertex(-side, 0)
+    angle = 60
+    for i in range(6):
+        hex.add_polar_edge(side, angle)
+        angle -= 60
+    return gw.add(hex, 100, 100)
+#create_hexagon(40)
