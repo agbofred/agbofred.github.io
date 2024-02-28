@@ -76,7 +76,7 @@ The number, dimensions, and spacing of the bricks are specified using constants 
 
 This part of the project will rely largely on constructing the proper loops and getting the spacing worked out. Don't be afraid to sketch out distances and dimensions on a sheet of paper to help you get the necessary spacing. You've also done something _very_ similar in creating the pyramid of bricks on PS4, so do not be afraid to look back at how you approached things there!
 
-As a suggestion, try to have this part of the program working by the end of Tuesday. That would have you displaying most of what you see on the final screen, and give you confidence that you can get the rest done. And that ensures you are well on your way before time gets short.
+As a suggestion, try to have this part of the program working by the end of Friday. That would have you displaying most of what you see on the final screen, and give you confidence that you can get the rest done. And that ensures you are well on your way before time gets short.
 
 
 ## Milestone 2: Create the paddle
