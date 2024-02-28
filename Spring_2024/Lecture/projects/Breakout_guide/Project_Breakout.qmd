@@ -84,7 +84,7 @@ The next step is to create the paddle. On one level, this is considerably easier
 
 The challenge in creating the paddle is to make it track the mouse. The technique is similar to that discussed in Chapter 6 with dragging the endpoints of the line around. Here, however, are only moving the mouse, not dragging, and you only need to pay attention to the $x$ coordinate of the mouse since the $y$ position of the paddle is always fixed. The only additional wrinkle is that you should not let the paddle move off the edge of the window. Thus, you'll have to check to see whether the $x$ coordinate of the mouse would make the paddle extend beyond the window boundary and change that $x$ coordinate if necessary to ensure that the entire paddle is visible in the window at all times.
 
-As another suggestion, why don't you try to get this part of the program working by the end of Wednesday? This entire part of the program takes fewer than 10 or so lines of code, so it shouldn't take all that long to implement. 
+As another suggestion, why don't you try to get this part of the program working by the end of Friday? This entire part of the program takes fewer than 10 or so lines of code, so it shouldn't take all that long to implement. 
 
 
 ## Milestone 3: Create a bouncy ball

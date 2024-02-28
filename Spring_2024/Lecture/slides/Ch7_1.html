@@ -114,250 +114,210 @@ def func_D():
 
 ::::
 ::::::
--->
-</section>
-<section id="project-2-breakout" class="slide level2">
-<h2>Project 2: Breakout!</h2>
-<div class="cols" style="align-items:center">
-<div class="col">
-<ul>
-<li>Project 2 is recreating the classic arcade game Breakout!</li>
-<li>Guide will be posted tomorrow, not due until March 10</li>
-<li>Focus on the midterm initially, but then consider getting a start
-this weekend</li>
-</ul>
-</div>
-<div class="col">
-<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/UhAEjDKEHgk" title="Data Driven Gamer: Breakout (Atari, 1976 arcade, 60fps)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/QrlIqaN4ltM" title="DX Ball 2 gameplay (PC Game, 1999)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-</div>
-</div>
-</section>
-<section id="breakout-history" class="slide level2">
-<h2>Breakout History</h2>
-<ul>
-<li class="fragment">The popular Breakout arcade game was released by
-Atari in 1976</li>
-<li class="fragment">Atari founder Nolan Bushnell wanted a new game that
-would build on the success of the earlier game Pong. He assigned Steve
-Jobs to develop the game, promising a bonus if the game required a small
-number of chips.</li>
-<li class="fragment">As Wikipedia tells the story, “Jobs had little
-specialized knowledge of circuit board design but knew [his friend
-Steve] Wozniak was capable of producing designs with a small number of
-chips. He convinced Wozniak to work with him, promising to split the fee
-evenly between them.”</li>
-<li class="fragment">Wozniak completed the game design in four days, but
-Jobs never told him about the bonus offer. Jobs was paid <span
-class="math inline">\(\$5,000\)</span>, but Wozniak received only <span
-class="math inline">\(\$350\)</span>.</li>
-<li class="fragment">Jobs and Wozniak co-founded Apple Computer the
-following year, which has grown to be the largest corporation in the
-world by market capitalization.</li>
-</ul>
-</section>
-<section id="breakout-basics" class="slide level2">
-<h2>Breakout Basics</h2>
-<div class="cols" style="align-items: center">
-<div class="col" style="font-size:.9em">
-<ul>
-<li>Breakout is a game in which the player attempts to break all the
-colored bricks by causing a bouncing ball to collide with them</li>
-<li>The player controls a paddle at the bottom of the screen which the
-ball will bounce off
-<ul>
-<li>The paddle can only move left and right</li>
-</ul></li>
-<li>If the ball makes it past the paddle to the bottom of the screen,
-the player loses a life
-<ul>
-<li>Lose 3 lives and it is game over!</li>
-</ul></li>
-</ul>
-</div>
-<div class="col">
-<figure>
-<video data-src="../video/project1_demo.webm" style="width:50.0%"
-controls=""><a href="../video/project1_demo.webm">Breakout!</a></video>
-<figcaption aria-hidden="true">Breakout!</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="breakout-milestones" class="slide level2">
-<h2>Breakout Milestones</h2>
-<ul>
-<li>Breakout is broken up over 5 milestones</li>
-<li>You have already seen or written pieces of similar code to many of
-the milestones!
-<ul>
-<li>Milestone 1: PS4 brick pyramid</li>
-<li>Milestone 3: Section bouncy ball problem (this week)</li>
-</ul></li>
-</ul>
-</section>
-<section id="milestone-1" class="slide level2">
-<h2>Milestone 1</h2>
-<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html">
-</iframe>
-</section>
-<section id="milestone-2" class="slide level2">
-<h2>Milestone 2</h2>
-<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout2/index.html">
-</iframe>
-</section>
-<section id="milestone-3" class="slide level2">
-<h2>Milestone 3</h2>
-<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout3/index.html">
-</iframe>
-</section>
-<section id="milestone-4" class="slide level2">
-<h2>Milestone 4</h2>
-<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout4/index.html">
-</iframe>
-</section>
-<section id="milestone-5" class="slide level2">
-<h2>Milestone 5</h2>
-<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html">
-</iframe>
-</section>
-<section id="review-question" class="slide level2"
-data-note="Solution is A">
-<h2 data-note="Solution is A">Review Question</h2>
-<div class="cols">
-<div class="col">
-<p>Which of the below blocks of code will create the image to the right?
-The window measures 500 x 200 pixels and the value of
-<code class="python">d</code> is 150.</p>
-</div>
-<div class="col">
-<figure>
-<img data-src="../images/GArc_RevQ.png" style="width:65.0%" alt=" " />
-<figcaption aria-hidden="true"> </figcaption>
-</figure>
-</div>
-</div>
-<div class="cols">
-<div class="col">
-<div class="block" name="A">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+
+
+## Project 2: Breakout!
+
+::::::{.cols style='align-items:center'}
+::::col
+- Project 2 is recreating the classic arcade game Breakout!
+- Guide will be posted tomorrow, not due until March 10
+- Focus on the midterm initially, but then consider getting a start this weekend
+::::
+
+::::col
+
+<iframe width='100%' height='400vh' src="https://www.youtube.com/embed/UhAEjDKEHgk" title="Data Driven Gamer: Breakout (Atari, 1976 arcade, 60fps)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/QrlIqaN4ltM" title="DX Ball 2 gameplay (PC Game, 1999)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+::::
+::::::
+
+## Breakout History
+> - The popular Breakout arcade game was released by Atari in 1976
+> - Atari founder Nolan Bushnell wanted a new game that would build on the success of the earlier game Pong. He assigned Steve Jobs to develop the game, promising a bonus if the game required a small number of chips.
+> - As Wikipedia tells the story, "Jobs had little specialized knowledge of circuit board design but knew [his friend Steve] Wozniak was capable of producing designs with a small number of chips. He convinced Wozniak to work with him, promising to split the fee evenly between them."
+> - Wozniak completed the game design in four days, but Jobs never told him about the bonus offer. Jobs was paid $\$5,000$, but Wozniak received only $\$350$.
+> - Jobs and Wozniak co-founded Apple Computer the following year, which has grown to be the largest corporation in the world by market capitalization.
+
+
+## Breakout Basics
+::::::{.cols style='align-items: center'}
+::::{.col style='font-size:.9em'}
+- Breakout is a game in which the player attempts to break all the colored bricks by causing a bouncing ball to collide with them
+- The player controls a paddle at the bottom of the screen which the ball will bounce off
+    - The paddle can only move left and right
+- If the ball makes it past the paddle to the bottom of the screen, the player loses a life
+    - Lose 3 lives and it is game over!
+::::
+
+::::col
+
+![Breakout!](../video/project1_demo.webm){width=50%}
+
+::::
+::::::
+
+## Breakout Milestones
+- Breakout is broken up over 5 milestones
+- You have already seen or written pieces of similar code to many of the milestones!
+    - Milestone 1: PS4 brick pyramid
+    - Milestone 3: Section bouncy ball problem (this week)
+
+
+## Milestone 1
+
+<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html"></iframe>
+
+
+## Milestone 2
+
+<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout2/index.html"></iframe>
+
+
+## Milestone 3
+
+<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout3/index.html"></iframe>
+
+
+## Milestone 4
+
+<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout4/index.html"></iframe>
+
+
+## Milestone 5
+
+<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html"></iframe>
+
+
+
+## Review Question {data-note="Solution is A"}
+::::::cols
+::::col
+Which of the below blocks of code will create the image to the right? The window measures 500 x 200 pixels and the value of `d` is 150.
+::::
+
+::::col
+![\ ](../images/GArc_RevQ.png){width=65%}
+::::
+::::::
+
+::::::cols
+::::col
+
+:::{.block name="A"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, d, 90, -180)
-gw.add(a1)</code></pre>
-</div>
-<div class="block" name="C">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d, 100 - d
+gw.add(a1)
+```
+:::
+
+:::{.block name="C"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d, 100 - d
 a1 = GArc(x, y, d, d, -180, 90)
-gw.add(a1)</code></pre>
-</div>
-</div>
-<div class="col">
-<div class="block" name="B">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+gw.add(a1)
+```
+:::
+
+::::
+
+::::col
+:::{.block name="B"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, d, 90, 180)
-gw.add(a1)</code></pre>
-</div>
-<div class="block" name="D">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+gw.add(a1)
+```
+:::
+
+:::{.block name="D"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, 180, -90)
-gw.add(a1)</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="arrays-and-lists" class="slide level2">
-<h2>Arrays and Lists</h2>
-<ul>
-<li>From the earliest days, programming languages have supported the
-idea of an <em>array</em>, or an ordered sequence of values.</li>
-<li>Individual values in an array are called <em>elements</em>, and the
-number of elements is the <em>length</em> of the array.</li>
-<li>Each element’s position in the array is given by its <em>index</em>,
-with index numbers starting at 0 and extending up to 1 less than the
-length of the array</li>
-<li>Python implements the array concept in a bit more general form
-called a <em>list</em>.</li>
-</ul>
-</section>
-<section id="reminder-making-lists" class="slide level2">
-<h2>Reminder: Making Lists</h2>
-<ul>
-<li><p>Created using square brackets with elements separated by
-commas:</p>
-<pre ><code class="python">COIN_VALUES = [1, 5, 10, 25, 50, 100]
-COIN_NAMES = [ "penny", "nickle", "dime",
-               "quarter", "half-dollar", "dollar" ]</code></pre></li>
-<li><p>Lists are commonly represented visually or conceptually as a
-series of numbered boxes:</p>
-<p><img
-data-src="../images/svg_cache/67f6a6cc83082b4fbd2d4c7ab6ffbe9b6ab8558b.svg"
-style="width:80.0%" /></p></li>
-</ul>
-</section>
-<section id="what-we-already-know" class="slide level2">
-<h2>What we already know</h2>
-<ul>
-<li><p>Can retrieve the value of any element in a list by writing the
-index of that element in square brackets after the list name</p>
-<ul>
-<li><code class="python">COIN_VALUES[3]</code> ⟶
-<code class="python">25</code></li>
-<li><code class="python">COIN_NAMES[2]</code> ⟶
-<code class="python">"dime"</code></li>
-</ul></li>
-<li><p>Can concatenate two lists to form a new list with elements from
-both</p>
-<ul>
-<li><code class="python">[1,2,3] + [4,5,6]</code>⟶
-<code class="python">[1,2,3,4,5,6]</code></li>
-</ul></li>
-<li><p>Can loop through each of the list elements in turn</p>
-<pre ><code class="python">for elem in my_list:
-  # do stuff with elem</code></pre>
-<p>where <code class="python">elem</code> is the name of the variable
-that will sequentially get assigned the value of every element in
-<code class="python">my_list</code></p></li>
-</ul>
-</section>
-<section id="sequences" class="slide level2">
-<h2>Sequences</h2>
-<ul>
-<li>Sound familiar? Lists are just like more general strings!</li>
-<li>Strings and lists are examples of a more general class of object in
-Python called <em>sequences</em></li>
-</ul>
-<div class="cols">
-<div class="col">
-<div class="block" name="Old">
-<ul>
-<li>We already knew that all sequences support:
-<ul>
-<li>The <code class="python">len</code> function</li>
-<li>Index numbering starting at 0</li>
-<li>Concatenation using <code class="python">+</code> or
-<code class="python">+=</code></li>
-<li>Selection of an individual element using square brackets</li>
-<li>Looping over elements</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div class="col">
-<div class="block fragment" name="New">
-<ul>
-<li>We can now add:
-<ul>
-<li>Negative index numbering counting backwards from the end</li>
-<li>Slicing in all forms</li>
-<li>Comparing sequences</li>
-<li>Repetition using <code class="python">*</code></li>
-<li>Inclusion testing using <code class="python">in</code> operator</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
+gw.add(a1)
+```
+:::
+
+::::
+::::::
+
+## Arrays and Lists
+- From the earliest days, programming languages have supported the idea of an _array_, or an ordered sequence of values.
+- Individual values in an array are called _elements_, and the number of elements is the _length_ of the array.
+- Each element's position in the array is given by its _index_, with index numbers starting at 0 and extending up to 1 less than the length of the array
+- Python implements the array concept in a bit more general form called a _list_.
+
+
+## Reminder: Making Lists
+- Created using square brackets with elements separated by commas:
+  ```python
+  COIN_VALUES = [1, 5, 10, 25, 50, 100]
+  COIN_NAMES = [ "penny", "nickle", "dime",
+                 "quarter", "half-dollar", "dollar" ]
+  ```
+- Lists are commonly represented visually or conceptually as a series of numbered boxes:
+\begin{tikzpicture}%%width=80%
+[box/.style={draw, thick, MBlue, minimum width=2cm, minimum height=1cm, font=\tt, text width=2cm, align=center}]
+\node[box, label={[MPurple,font=\footnotesize]below:0}](0) at (0,0) {1};
+\node[box, label={[MPurple,font=\footnotesize]below:1}, right=0cm of 0](1) {5};
+\node[box, label={[MPurple,font=\footnotesize]below:2}, right=0cm of 1](2) {10};
+\node[box, label={[MPurple,font=\footnotesize]below:3}, right=0cm of 2](3) {25};
+\node[box, label={[MPurple,font=\footnotesize]below:4}, right=0cm of 3](4) {50};
+\node[box, label={[MPurple,font=\footnotesize]below:5}, right=0cm of 4](5) {100};
+\node[anchor=south west, font=\tt\footnotesize, color=MGreen] at (0.north west) {COIN\_VALUES};
+\node[box, label={[MPurple,font=\footnotesize]below:0}](0) at (0,-2) {"penny"};
+\node[box, label={[MPurple,font=\footnotesize]below:1}, right=0cm of 0](1) {"nickel"};
+\node[box, label={[MPurple,font=\footnotesize]below:2}, right=0cm of 1](2) {"dime"};
+\node[box, label={[MPurple,font=\footnotesize]below:3}, right=0cm of 2](3) {"quarter"};
+\node[box, label={[MPurple,font=\footnotesize]below:4}, right=0cm of 3](4) {"half-\\dollar"};
+\node[box, label={[MPurple,font=\footnotesize]below:5}, right=0cm of 4](5) {"dollar"};
+\node[anchor=south west, font=\tt\footnotesize, color=MGreen] at (0.north west) {COIN\_NAMES};
+\end{tikzpicture}
+
+
+## What we already know
+- Can retrieve the value of any element in a list by writing the index of that element in square brackets after the list name
+    - `COIN_VALUES[3]` ⟶ `25`
+    - `COIN_NAMES[2]` ⟶ `"dime"`
+- Can concatenate two lists to form a new list with elements from both
+    - `[1,2,3] + [4,5,6]`⟶  `[1,2,3,4,5,6]`
+
+- Can loop through each of the list elements in turn
+  ```python
+  for elem in my_list:
+    # do stuff with elem
+  ```
+  where `elem` is the name of the variable that will sequentially get assigned the value of every element in `my_list`
+
+## Sequences
+- Sound familiar? Lists are just like more general strings!
+- Strings and lists are examples of a more general class of object in Python called _sequences_
+
+::::::cols
+::::col
+:::{.block name=Old}
+- We already knew that all sequences support:
+  - The `len` function
+  - Index numbering starting at 0
+  - Concatenation using `+` or `+=`
+  - Selection of an individual element using square brackets
+  - Looping over elements
+:::
+::::
+
+::::col
+:::{.block name=New .fragment}
+- We can now add:
+  - Negative index numbering counting backwards from the end 
+  - Slicing in all forms
+  - Comparing sequences
+  - Repetition using `*`
+  - Inclusion testing using `in` operator
+:::
+::::
+::::::
+-->
 <!--
 ## Understanding Check! {data-notes="Solution: None of the above, as it errors"}
 What would the below expression evaluate to?
@@ -373,43 +333,27 @@ What would the below expression evaluate to?
 #. None of the above, or this will error
 :::
 -->
-</section>
-<section id="mutants" class="slide level2">
-<h2>Mutants</h2>
-<ul>
-<li>The most important difference between strings and lists is one of
-<em>mutability</em>
-<ul>
-<li>Strings we have already identified as being <em>immutable</em>: you
-can not change the individual elements</li>
-<li>Lists, in contrast, are <em>mutable</em>, which means that we
-<strong>can</strong> change or assign new values to the elements of a
-list</li>
-</ul></li>
-<li>Immutable objects have many advantages in programming:
-<ul>
-<li>You don’t have to worry about if the values will change</li>
-<li>Immutable values can be more easily shared</li>
-<li>Immutable objects are easier to use with concurrent programs</li>
-</ul></li>
-<li>In some situations though, mutable objects are the perfect tool for
-the job</li>
-</ul>
-</section>
-<section id="a-tutorial-on-lists" class="slide level2">
-<h2>A Tutorial on Lists</h2>
-<div class="cols">
-<div class="col">
-<ul>
-<li>Thinking about mutable objects requires a shift in how we visualize
-our code interacting with the objects in memory</li>
-<li><a
-href="https://pythontutor.com/render.html#code=cool%20%3D%20%5B&#39;blue&#39;,%20&#39;violet&#39;%5D%0Awarm%20%3D%20%5B&#39;red&#39;,%20&#39;orange&#39;%5D%0A%0Acolors%20%3D%20%5Bcool,%20warm%5D%0Aother_colors%20%3D%20%5B%5B&#39;blue&#39;,%20&#39;violet&#39;%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B&#39;red&#39;,%20&#39;orange&#39;%5D%5D%0A%0Aprint%28colors%20%3D%3D%20other_colors%29%0Aprint%28colors%20is%20other_colors%29%0A%0Acool%5B0%5D%20%3D%20&#39;indigo&#39;%0Awarm%20%3D%20%5B&#39;orange&#39;,%20&#39;yellow&#39;%5D%0A%0Aprint%28colors%29%0Aprint%28other_colors%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Link
-here</a></li>
-</ul>
-</div>
-<div class="col" style="flex-grow:2;">
-<pre ><code class="python" style="max-height:900px; font-size:0.8em;">cool = ['blue', 'violet']
+<!--
+## Mutants
+- The most important difference between strings and lists is one of _mutability_
+    - Strings we have already identified as being _immutable_: you can not change the individual elements
+    - Lists, in contrast, are _mutable_, which means that we **can** change or assign new values to the elements of a list
+- Immutable objects have many advantages in programming:
+    - You don't have to worry about if the values will change
+    - Immutable values can be more easily shared
+    - Immutable objects are easier to use with concurrent programs
+- In some situations though, mutable objects are the perfect tool for the job
+
+## A Tutorial on Lists
+::::::cols
+::::col
+- Thinking about mutable objects requires a shift in how we visualize our code interacting with the objects in memory
+- [Link here](https://pythontutor.com/render.html#code=cool%20%3D%20%5B'blue',%20'violet'%5D%0Awarm%20%3D%20%5B'red',%20'orange'%5D%0A%0Acolors%20%3D%20%5Bcool,%20warm%5D%0Aother_colors%20%3D%20%5B%5B'blue',%20'violet'%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B'red',%20'orange'%5D%5D%0A%0Aprint%28colors%20%3D%3D%20other_colors%29%0Aprint%28colors%20is%20other_colors%29%0A%0Acool%5B0%5D%20%3D%20'indigo'%0Awarm%20%3D%20%5B'orange',%20'yellow'%5D%0A%0Aprint%28colors%29%0Aprint%28other_colors%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+::::
+
+::::{.col style="flex-grow:2;"}
+```{.python style='max-height:900px; font-size:0.8em;'}
+cool = ['blue', 'violet']
 warm = ['red', 'orange']
 
 colors = [cool, warm]
@@ -423,24 +367,17 @@ cool[0] = 'indigo'
 warm = ['orange', 'yellow']
 
 print(colors)
-print(other_colors)</code></pre>
-</div>
-</div>
-</section>
-<section id="for-reference" class="slide level2">
-<h2>For Reference</h2>
-<ul>
-<li>When working with mutable objects, it is better to think of the
-variable as holding a <em>reference</em> to the object, rather than the
-actual contents of the object</li>
-<li>I find it useful to think of a reference as the “address” in memory
-where that object’s contents can be found</li>
-<li>This undeniably complicates things, as referencing a mutable object
-lets you change it, which will immediately be reflected in anything
-<em>else</em> that referenced that object</li>
-<li>Mutable objects can be terrific to work with, as their mutability
-makes them very flexible, but be wary of unexpected behavior</li>
-</ul>
+print(other_colors)
+```
+::::
+::::::
+
+## For Reference
+- When working with mutable objects, it is better to think of the variable as holding a _reference_ to the object, rather than the actual contents of the object
+- I find it useful to think of a reference as the "address" in memory where that object's contents can be found
+- This undeniably complicates things, as referencing a mutable object lets you change it, which will immediately be reflected in anything _else_ that referenced that object
+- Mutable objects can be terrific to work with, as their mutability makes them very flexible, but be wary of unexpected behavior
+-->
 </section>
 <section id="lists-as-arguments" class="slide level2">
 <h2>Lists as Arguments</h2>
