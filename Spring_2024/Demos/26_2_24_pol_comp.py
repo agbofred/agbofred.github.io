@@ -69,53 +69,73 @@ gw.add(rec)
 arc = GArc(50, 50, GWIDTH-80, GHEIGHT, 0, 180)
 arc.set_color("yellow")
 arc.set_filled(True)
-gw.add(arc)
+#gw.add(arc)
+
+# attempting to create a sun-like spike
+"""for i in range(5):
+    x= 180 + 40*i
+    y = 60-i
+    triangle = create_triangle(50, 50)
+    triangle.set_filled(True)
+    triangle.set_color("yellow")
+    #gw.add(triangle, x, y)"""
+
 
 #Create Triangle With Polygon
 def create_triangle(b, h):
     tri = GPolygon()
-    tri.add_vertex(-b / 2, h / 2)
-    tri.add_vertex(b / 2, h / 2)
-    tri.add_vertex(0, -h / 2)
+    tri.add_vertex(b/2, 0)
+    tri.add_vertex(0, h)
+    tri.add_vertex(b, h)
     return tri
 triangle = create_triangle(150, 150)
 triangle.set_filled(True)
 triangle.set_color("pink")
 #gw.add(triangle, GWIDTH/2, GHEIGHT/2)
 
-# attempting to create a sun-like spike
-for i in range(5):
-    x= 180 + 40*i
-    y = 60-i
-    triangle = create_triangle(50, 50)
-    triangle.set_filled(True)
-    triangle.set_color("yellow")
-    #gw.add(triangle, x, y)
 
 #Drawing Diamond shape with GPolygon
 def drawDiamond_v(): # Diamond with vertex 
     pol = GPolygon()
     pol.add_vertex(-50, 0)
     pol.add_vertex(0, 50)
-    pol.add_vertex(50, -0)
+    pol.add_vertex(50, 0)
     pol.add_vertex(0, -50)
     return pol
 
 
 def drawDiamond_edge(): # Diamond with edges 
     pol = GPolygon()
-    pol.add_vertex(-50, 0)# Must be added first
-    pol.add_edge(-50, 50)
-    pol.add_edge(50, 50)
-    pol.add_edge(50, -50)
-    pol.add_edge(-50,-50)
+    pol.add_vertex(-100, 0)# Must be added first
+    pol.add_edge(-100, 100)
+    pol.add_edge(100, 100)
+    pol.add_edge(100, -100)
+    pol.add_edge(-100,-100)
     return pol
 
 
 diamond = drawDiamond_edge()
-diamond.set_fill_color("#00FFAF06")
+diamond.set_fill_color("white")
 diamond.set_filled(True)
-gw.add(diamond,GWIDTH/2, GHEIGHT/2)
+#gw.add(diamond,GWIDTH/2, GHEIGHT/2)
+
+#Hexagon by Polar_Edge
+def triangle_by_polar_edge():
+    def create_eq_triangle(side):
+        tri = GPolygon()
+        tri.add_vertex(0, 0)
+        for i in range(0, 360, 60):
+            tri.add_polar_edge(side, i)
+        return tri
+
+    gw = GWindow(500, 500)
+    triangle = create_eq_triangle(100)
+    triangle.set_filled(True)
+    triangle.set_color("green")
+    gw.add(triangle, 250, 250)
+
+#triangle_by_polar_edge()
+
 
 
 #--------AXE
@@ -139,7 +159,7 @@ def my_axe():
 
     gw = GWindow(500, 500)
     axe = create_axe()
-    #gw.add(axe, 250, 100)
+    gw.add(axe, 250, 100)
 
 
 if __name__ == "__main__":
@@ -147,4 +167,4 @@ if __name__ == "__main__":
    #arc(150)
     
     #drawrc()
-    #my_axe()
+    my_axe()
