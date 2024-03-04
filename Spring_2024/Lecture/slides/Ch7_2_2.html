@@ -56,6 +56,39 @@ email</li>
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
 when it becomes <strong>active</strong></li>
 </ul>
+</section>
+<section id="review" class="slide level2"
+data-notes="Solution: [&#39;Fox&#39;, &#39;Hippo&#39;, &#39;Iguana&#39;]">
+<h2
+data-notes="Solution: [&#39;Fox&#39;, &#39;Hippo&#39;, &#39;Iguana&#39;]">Review</h2>
+<div class="cols">
+<div class="col">
+<p>Given the code to the right, what would be the final printed value of
+<code class="python">A</code>?</p>
+<div class="poll">
+<ol>
+<li><code class="python">['Fox', 'Giraffe', 'Hippo', 'Iguana']</code></li>
+<li><code class="python">['Fox', 'Hippo', 'Iguana']</code></li>
+<li><code class="python">['Iguana', 'Fox']</code></li>
+<li><code class="python">['Fox', 'Iguana']</code></li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python" style="max-height:900px">A = [
+     'Fox',
+     'Giraffe', 
+     'Hippo'
+    ]
+A.append('Iguana')
+A[:].reverse()
+B = A
+for anim in B:
+    if anim[1] == 'i':
+        B.remove(anim)
+print(A)</code></pre>
+</div>
+</div>
 <!--
 ## Review! {data-notes="Solution: None of the above, as it errors"}
 What would the below expression evaluate to?
@@ -144,120 +177,73 @@ Method | Description
 `list.remove(value)` | Removes the first instance of `value` from the list, or errors
 `list.reverse()` | Reverses the order of the elements in the list
 `list.sort()` | Sorts the elements of the list. Can take an optional argument `key` to specify how to sort
--->
-</section>
-<section id="list-functions-on-iterators" class="slide level2">
-<h2>List functions on Iterators</h2>
-<ul>
-<li>The <code class="python">.sort</code> and
-<code class="python">.reverse</code> methods reorder the list <strong>in
-place</strong> and do not return anything</li>
-<li>Commonly, you might want to loop through a list in a particular
-order, but not change the original list</li>
-<li>Python gives you two matching functions to do this, which return a
-<strong>new</strong> ordered version of the list, without changing the
-original
-<ul>
-<li>The <code class="python">reversed()</code> function creates a new
-iterable object that returns its elements in the opposite order</li>
-<li>The <code class="python">sorted()</code> function creates a new
-iterable object that returns its elements in ascending order</li>
-</ul></li>
-</ul>
-</section>
-<section id="revisiting-the-example-of-list-iterator"
-class="slide level2"
-data-notes="Solution: [&#39;Fox&#39;, &#39;Hippo&#39;, &#39;Iguana&#39;]">
-<h2
-data-notes="Solution: [&#39;Fox&#39;, &#39;Hippo&#39;, &#39;Iguana&#39;]">Revisiting
-the example of list iterator</h2>
-<div class="cols">
-<div class="col">
-<p>Given the code to the right, what would be the final printed value of
-<code class="python">A</code>?</p>
-<div class="poll">
-<ol>
-<li><code class="python">['Fox', 'Giraffe', 'Hippo', 'Iguana']</code></li>
-<li><code class="python">['Fox', 'Hippo', 'Iguana']</code></li>
-<li><code class="python">['Iguana', 'Fox']</code></li>
-<li><code class="python">['Fox', 'Iguana']</code></li>
-</ol>
-</div>
-</div>
-<div class="col">
-<pre ><code class="python" style="max-height:900px">A = [
-     'Fox',
-     'Giraffe', 
-     'Hippo'
-    ]
-A.append('Iguana')
-A[:].reverse()
-B = A
-for anim in B:
-    if anim[1] == 'i':
-        B.remove(anim)
-print(A)</code></pre>
-</div>
-</div>
-</section>
-<section id="deleting-elements-from-list" class="slide level2">
-<h2>Deleting elements from list</h2>
-<ul>
-<li>Deleting an element from a list is possible with
-<code class="python">del</code> statement</li>
-<li>However, in looping through the list:
-<ul>
-<li>attempt to delete an an element while looping will result to
-IndexError</li>
-</ul></li>
-<li>One technique is to create a new list to store all desired element
-when looping</li>
-</ul>
-<div class="cols">
-<div class="col">
-<div class="block" name="NormalDelete">
-<ul>
-<li>The code below will delete the 4th element in the list</li>
-</ul>
-<pre ><code class="python">list1 =[2,4,6,5,3]
+
+## List functions on Iterators
+- The `.sort` and `.reverse` methods reorder the list **in place** and do not return anything
+- Commonly, you might want to loop through a list in a particular order, but not change the original list
+- Python gives you two matching functions to do this, which return a **new** ordered version of the list, without changing the original
+    - The `reversed()` function creates a new iterable object that returns its elements in the opposite order
+    - The `sorted()` function creates a new iterable object that returns its elements in ascending order
+
+
+
+## Deleting elements from list
+- Deleting an element from a list is possible with ```del``` statement
+- However, in looping through the list:
+    - attempt to delete an an element while looping will result to IndexError
+- One technique is to create a new list to store all desired element when looping
+
+::::::cols
+::::col
+:::{.block name=NormalDelete}
+- The code below will delete the 4th element in the list
+```python
+list1 =[2,4,6,5,3]
 del list1[3]
-print(list1)</code></pre>
-</div>
-</div>
-<div class="col">
-<div class="block fragment" name="NewListTechnique">
-<ul>
-<li>Code below create a new list of even num</li>
-</ul>
-<pre ><code class="python">llist1 = [2,4,6,5,3]
+print(list1)
+```
+:::
+::::
+
+::::col
+:::{.block name=NewListTechnique .fragment}
+- Code below create a new list of even num 
+```python 
+list1 = [2,4,6,5,3]
 list2 =[] #to store desired elements
 for i in range(len(list1)):
       if list1[i]%2==0: #remove odd numbers
             list2.append(list1[i])
             
 print(list1)
-print(list2)</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="list-building-with-loops" class="slide level2">
-<h2>List building with loops</h2>
-<ul>
-<li><p>Commonly will make lists with a simple:</p>
-<pre ><code class="python">even_digits = [ 2, 4, 6, 8 ]</code></pre></li>
-<li><p>But in many cases, it is easier to specify the elements of a list
-using a sequence of values generated by a
-<code class="python">for</code> loop. For instance</p>
-<pre ><code class="python">even_digits = [ ]
-for i in range(0, 10, 2):
-    even_digits.append(i)</code></pre></li>
-<li><p>Python gives us a shorthand notation to achieve this:</p>
-<pre ><code class="python">even_digits = [ i for i in range(0, 10, 2) ]</code></pre>
-<ul>
-<li>Called <em>list comprehension</em></li>
-</ul></li>
-</ul>
+print(list2)
+```
+:::
+::::
+::::::
+
+
+
+## List building with loops
+- Commonly will make lists with a simple:
+
+    ```python
+    even_digits = [ 2, 4, 6, 8 ]
+    ```
+- But in many cases, it is easier to specify the elements of a list using a sequence of values generated by a `for` loop. For instance
+
+    ```python
+    even_digits = [ ]
+    for i in range(0, 10, 2):
+        even_digits.append(i)
+    ```
+- Python gives us a shorthand notation to achieve this:
+
+    ```python
+    even_digits = [ i for i in range(0, 10, 2) ]
+    ```
+    - Called _list comprehension_
+-->
 </section>
 <section id="comprehending-lists" class="slide level2">
 <h2>Comprehending Lists</h2>

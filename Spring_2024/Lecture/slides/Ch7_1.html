@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-18">
-  <title>Arrays and Lists</title>
+  <meta name="dcterms.date" content="2024-03-04">
+  <title>Lists Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,33 +35,37 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Arrays and Lists</h1>
+  <h1 class="title">Lists Methods</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 18, 2023</p>
+  <p class="date">March 4, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Project 2: Breakout is posted and due <strong>next week Tuesday at
-noon!</strong></li>
-<li>Problem Set 4 grading is ongoing</li>
+<li>Problem Set 4 is due <strong>tomorrow Tuesday at 10pm</strong></li>
+<li>Project 2: <strong>Breakout</strong> is posted and due <strong>next
+week Tuesday at 10pm!</strong></li>
+<li>Midterm-1 Exam is being graded.</li>
 <li>Section Leaders are working on Project 1 feedback</li>
-<li>Note the change in lecture hall on Friday this week.
-<ul>
-<li><strong>Lecture holds at Smullin B17</strong></li>
-</ul></li>
-<li>Remember! CS151 Graphics Contest is ongoing and it is due on
-<strong><em>31st October</em></strong></li>
-<li>CS/DS Tea tomorrow at 11:30 in Ford 101 (Digital Learning Studio)
-<ul>
-<li>There will be a special talk by <strong><em>Dr. Rachel
-Brown</em></strong> from Lewis &amp; Clark</li>
-</ul></li>
-<li>Polling continues today! Remember to use this link <a
+<li>Polling continues <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-when it becomes <strong>active</strong></li>
+<ul>
+<li>General poll today! Thus, no need for your names. <strong><em>Just
+use pseudo-name, nicke-name or initials</em></strong></li>
+</ul></li>
 </ul>
+<!--
+## Quick General Poll
+Comparatively speaking, how would you say you are doing in absorbing and keeping up with the material in this class?
+
+:::{.poll}
+#. "Probably better than the majority of my peers"
+#. "Probably about the same as the majority of my peers"
+#. "Probably worse than the majority of my peers"
+#. "Probably way worse than the majority of my peers"
+:::
+-->
 <!--
 ## Review Question {data-notes="Solution: C, as it has the wrong data types for x and y"}
 All the functions below would print out all valid two letter words from the English language *at least once* except for 1. Which does not?
@@ -114,56 +118,95 @@ def func_D():
 
 ::::
 ::::::
-
-
-## Project 2: Breakout!
-
-::::::{.cols style='align-items:center'}
-::::col
-- Project 2 is recreating the classic arcade game Breakout!
-- Guide will be posted tomorrow, not due until March 10
-- Focus on the midterm initially, but then consider getting a start this weekend
-::::
-
-::::col
-
-<iframe width='100%' height='400vh' src="https://www.youtube.com/embed/UhAEjDKEHgk" title="Data Driven Gamer: Breakout (Atari, 1976 arcade, 60fps)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/QrlIqaN4ltM" title="DX Ball 2 gameplay (PC Game, 1999)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-::::
-::::::
-
-## Breakout History
-> - The popular Breakout arcade game was released by Atari in 1976
-> - Atari founder Nolan Bushnell wanted a new game that would build on the success of the earlier game Pong. He assigned Steve Jobs to develop the game, promising a bonus if the game required a small number of chips.
-> - As Wikipedia tells the story, "Jobs had little specialized knowledge of circuit board design but knew [his friend Steve] Wozniak was capable of producing designs with a small number of chips. He convinced Wozniak to work with him, promising to split the fee evenly between them."
-> - Wozniak completed the game design in four days, but Jobs never told him about the bonus offer. Jobs was paid $\$5,000$, but Wozniak received only $\$350$.
-> - Jobs and Wozniak co-founded Apple Computer the following year, which has grown to be the largest corporation in the world by market capitalization.
-
-
-## Breakout Basics
-::::::{.cols style='align-items: center'}
-::::{.col style='font-size:.9em'}
-- Breakout is a game in which the player attempts to break all the colored bricks by causing a bouncing ball to collide with them
-- The player controls a paddle at the bottom of the screen which the ball will bounce off
-    - The paddle can only move left and right
-- If the ball makes it past the paddle to the bottom of the screen, the player loses a life
-    - Lose 3 lives and it is game over!
-::::
-
-::::col
-
-![Breakout!](../video/project1_demo.webm){width=50%}
-
-::::
-::::::
-
-## Breakout Milestones
-- Breakout is broken up over 5 milestones
-- You have already seen or written pieces of similar code to many of the milestones!
-    - Milestone 1: PS4 brick pyramid
-    - Milestone 3: Section bouncy ball problem (this week)
-
-
+-->
+</section>
+<section id="project-2-breakout" class="slide level2">
+<h2>Project 2: Breakout!</h2>
+<div class="cols" style="align-items:center">
+<div class="col">
+<ul>
+<li>Project 2 is recreating the classic arcade game Breakout!</li>
+<li>Guide will be posted tomorrow, not due until March 10</li>
+<li>Focus on the midterm initially, but then consider getting a start
+this weekend</li>
+</ul>
+</div>
+<div class="col">
+<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/UhAEjDKEHgk" title="Data Driven Gamer: Breakout (Atari, 1976 arcade, 60fps)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<iframe width="100%" height="400vh" src="https://www.youtube.com/embed/QrlIqaN4ltM" title="DX Ball 2 gameplay (PC Game, 1999)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</div>
+</section>
+<section id="breakout-history" class="slide level2">
+<h2>Breakout History</h2>
+<ul>
+<li class="fragment">The popular Breakout arcade game was released by
+Atari in 1976</li>
+<li class="fragment">Atari founder Nolan Bushnell wanted a new game that
+would build on the success of the earlier game Pong. He assigned Steve
+Jobs to develop the game, promising a bonus if the game required a small
+number of chips.</li>
+<li class="fragment">As Wikipedia tells the story, “Jobs had little
+specialized knowledge of circuit board design but knew [his friend
+Steve] Wozniak was capable of producing designs with a small number of
+chips. He convinced Wozniak to work with him, promising to split the fee
+evenly between them.”</li>
+<li class="fragment">Wozniak completed the game design in four days, but
+Jobs never told him about the bonus offer. Jobs was paid <span
+class="math inline">\(\$5,000\)</span>, but Wozniak received only <span
+class="math inline">\(\$350\)</span>.</li>
+<li class="fragment">Jobs and Wozniak co-founded Apple Computer the
+following year, which has grown to be the largest corporation in the
+world by market capitalization.</li>
+</ul>
+</section>
+<section id="breakout-basics" class="slide level2">
+<h2>Breakout Basics</h2>
+<div class="cols" style="align-items: center">
+<div class="col" style="font-size:.9em">
+<ul>
+<li>Breakout is a game in which the player attempts to break all the
+colored bricks by causing a bouncing ball to collide with them</li>
+<li>The player controls a paddle at the bottom of the screen which the
+ball will bounce off
+<ul>
+<li>The paddle can only move left and right</li>
+</ul></li>
+<li>If the ball makes it past the paddle to the bottom of the screen,
+the player loses a life
+<ul>
+<li>Lose 3 lives and it is game over!</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<figure>
+<video data-src="../video/project1_demo.webm" style="width:50.0%"
+controls=""><a href="../video/project1_demo.webm">Breakout!</a></video>
+<figcaption aria-hidden="true">Breakout!</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="breakout-milestones" class="slide level2">
+<h2>Breakout Milestones</h2>
+<ul>
+<li>Breakout is broken up over 5 milestones</li>
+<li>You have already seen or written pieces of similar code to many of
+the milestones!
+<ul>
+<li>Milestone 1: PS4 brick pyramid</li>
+<li>Milestone 3: Section bouncy ball problem (this week)</li>
+</ul></li>
+</ul>
+</section>
+<section id="other-milestones" class="slide level2">
+<h2>Other Milestones</h2>
+<p><a
+href="https://agbofred.github.io/Spring_2024/Lecture/projects/Breakout_guide/Project_Breakout.html">Check
+the desciption here</a> <!--
 ## Milestone 1
 
 <iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html"></iframe>
@@ -187,6 +230,8 @@ def func_D():
 ## Milestone 5
 
 <iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html"></iframe>
+
+
 
 
 
@@ -241,7 +286,7 @@ gw.add(a1)
 
 ::::
 ::::::
-
+--> <!--
 ## Arrays and Lists
 - From the earliest days, programming languages have supported the idea of an _array_, or an ordered sequence of values.
 - Individual values in an array are called _elements_, and the number of elements is the _length_ of the array.
@@ -317,8 +362,7 @@ gw.add(a1)
 :::
 ::::
 ::::::
--->
-<!--
+--> <!--
 ## Understanding Check! {data-notes="Solution: None of the above, as it errors"}
 What would the below expression evaluate to?
 
@@ -332,8 +376,7 @@ What would the below expression evaluate to?
 #. `True`
 #. None of the above, or this will error
 :::
--->
-<!--
+--> <!--
 ## Mutants
 - The most important difference between strings and lists is one of _mutability_
     - Strings we have already identified as being _immutable_: you can not change the individual elements
@@ -377,7 +420,7 @@ print(other_colors)
 - I find it useful to think of a reference as the "address" in memory where that object's contents can be found
 - This undeniably complicates things, as referencing a mutable object lets you change it, which will immediately be reflected in anything _else_ that referenced that object
 - Mutable objects can be terrific to work with, as their mutability makes them very flexible, but be wary of unexpected behavior
--->
+--></p>
 </section>
 <section id="lists-as-arguments" class="slide level2">
 <h2>Lists as Arguments</h2>
@@ -480,6 +523,25 @@ the list, or errors</td>
 </tbody>
 </table>
 </section>
+<section id="list-functions-on-iterators" class="slide level2">
+<h2>List functions on Iterators</h2>
+<ul>
+<li>The <code class="python">.sort</code> and
+<code class="python">.reverse</code> methods reorder the list <strong>in
+place</strong> and do not return anything</li>
+<li>Commonly, you might want to loop through a list in a particular
+order, but not change the original list</li>
+<li>Python gives you two matching functions to do this, which return a
+<strong>new</strong> ordered version of the list, without changing the
+original
+<ul>
+<li>The <code class="python">reversed()</code> function creates a new
+iterable object that returns its elements in the opposite order</li>
+<li>The <code class="python">sorted()</code> function creates a new
+iterable object that returns its elements in ascending order</li>
+</ul></li>
+</ul>
+</section>
 <section id="list-building-with-loops" class="slide level2">
 <h2>List building with loops</h2>
 <ul>
@@ -498,25 +560,63 @@ for i in range(0, 10, 2):
 </ul></li>
 </ul>
 </section>
-<section id="comprehending-lists" class="slide level2">
-<h2>Comprehending Lists</h2>
+<section id="deleting-elements-from-list" class="slide level2">
+<h2>Deleting elements from list</h2>
 <ul>
-<li><p>The simplest list comprehension syntax is:</p>
-<pre ><code class="python">[ expression iterator ]</code></pre>
-<p>where <code class="python">expression</code> is any Python expression
-and <code class="python">iterator</code> is a
-<code class="python">for</code> loop header</p></li>
-<li><p>The iterator component can be followed by any number of
-additional modifiers</p>
+<li>Deleting an element from a list is possible with
+<code class="python">del</code> statement</li>
+<li>However, in looping through the list:
 <ul>
-<li>More <code class="python">for</code> loop headers for nested
-loops</li>
-<li>or <code class="python">if</code> statements to select specific
-values</li>
+<li>attempt to delete an element while looping will result to
+IndexError</li>
 </ul></li>
-<li><p>Example: all even numbers to 20 not also visible by 3</p>
-<pre ><code class="python">[i for i in range(0,20,2) if i % 3 != 0]</code></pre></li>
+<li>One technique is to create a new list to store all desired element
+when looping</li>
 </ul>
+<div class="cols">
+<div class="col">
+<div class="block" name="NormalDelete">
+<ul>
+<li>The code below will delete the 4th element in the list</li>
+</ul>
+<pre ><code class="python">list1 =[2,4,6,5,3]
+del list1[3]
+print(list1)</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block fragment" name="NewListTechnique">
+<ul>
+<li>Code below create a new list of even num</li>
+</ul>
+<pre ><code class="python">list1 = [2,4,6,5,3]
+list2 =[] #to store ele
+for i in range(len(list1)):
+      if list1[i]%2==0: #remove odd
+            list2.append(list1[i])
+            
+print(list1)
+print(list2)</code></pre>
+</div>
+</div>
+</div>
+<!--
+## Comprehending Lists
+- The simplest list comprehension syntax is:
+    
+    ```python
+    [ expression iterator ]
+    ```
+    where `expression` is any Python expression and `iterator` is a `for` loop header
+- The iterator component can be followed by any number of additional modifiers
+    - More `for` loop headers for nested loops
+    - or `if` statements to select specific values
+- Example: all even numbers to 20 not also visible by 3
+
+    ```python
+    [i for i in range(0,20,2) if i % 3 != 0]
+    ```
+-->
 </section>
     </div>
   </div>
