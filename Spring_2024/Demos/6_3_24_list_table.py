@@ -5,7 +5,7 @@ for i in range(30):
     score.append(random.randint(50,100))
 
 #score =[random.randint(50,100) for i in range(30)] # with comprehension
-count=[0]*5
+count=[0,0,0,0,0]
 for i in range(len(score)):
     if score[i]>=90:
         count[0] +=1
