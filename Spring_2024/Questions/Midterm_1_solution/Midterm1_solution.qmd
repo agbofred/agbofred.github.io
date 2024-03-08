@@ -26,7 +26,7 @@ For each of the below expressions, write out both the value of the expression in
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 
 and has the internal representation shown below, where I’ve labeled both positive and negative indices.<br>
-![](./block.png)
+![](./Alphabet.png)
 
 (1a).    ```(9 - 3)  +  25  %  5  +  3  *  4  -  1  *  (4  -  3  **  3  +  5)  +  23  //  7```
 
@@ -136,5 +136,5 @@ def one_off(word):
     return counter
             
 if __name__ == "__main__":
-    print(one_off("money"))
+    print(one_off("monkey"))
 ```

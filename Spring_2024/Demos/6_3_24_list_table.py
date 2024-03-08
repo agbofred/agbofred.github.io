@@ -19,5 +19,6 @@ for i in range(len(score)):
         count[4]+=1
 L=["A","B","C","D","F"]
 for i in range(len(count)):
+    pass
     print(f'{L[i]} --> {count[i]}')
 print(score)

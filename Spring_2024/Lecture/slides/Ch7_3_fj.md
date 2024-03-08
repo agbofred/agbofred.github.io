@@ -1,7 +1,7 @@
 ---
 title: "GImage and Pixels "
 author: Jed Rembold & Fred Agbo
-date: October 25, 2023
+date: March 8, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,11 +15,12 @@ history: false
 
 
 ## Announcements
-- Problem Set 5 released!
-	- Not due until _next_ week Tuesday at 12 noon
-- Feedback from Problem 1 out? Hopefully, grade reports to be updated soon.
-- Take not of the last day to withdraw
-- Polling continues today! Use this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Project 2: __Breakout__ is due ***next week Tuesday at 10pm!***
+- Midterm grading posted
+	- any concern? Reach out to me.
+	- My version of the solution will be shared when all folks takes the exam
+Grading for Problem Set 4 will be returned next week!
+- Polling continues on this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
 
 
 
