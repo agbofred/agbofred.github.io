@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-27">
+  <meta name="dcterms.date" content="2024-03-11">
   <title>Reading and Writing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,20 +37,18 @@
 <section id="title-slide">
   <h1 class="title">Reading and Writing</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 27, 2023</p>
+  <p class="date">March 11, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Sets 5 is due <em>next</em> week Tuesday at 12 noon</li>
-<li>Grading of project 1 to be published soon.</li>
-<li>Project 3 will be posted early next week. You will be notified when
-uploaded</li>
-<li>CS151 Graphics Contest is due on <strong><em>31st
-October</em></strong></li>
-<li>We will return to Ford Hall 102 from Monday next week</li>
-<li>Polling continues today! Use this link <a
+<li>Project 2: <strong>Breakout</strong> is due <strong><em>tomorrow at
+10pm!</em></strong></li>
+<li>Problem set 5 will be posted tomorrow: To be due next week
+Tuesday</li>
+<li>Grading for Problem Set 4 will be returned this week!</li>
+<li>Polling continues on this link <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 <!--
@@ -108,29 +106,22 @@ data-notes="Solution: [2,3,4,5]">
 <li><code class="python">[2,2,2,2]</code></li>
 </ol>
 </div>
-</section>
-<section id="tabulating-with-list" class="slide level2">
-<h2>Tabulating with list</h2>
-<ul>
-<li>Arrays can also be useful when you have a set of values and you need
-to count how many values fall into a different ranges
-<ul>
-<li>Process is called <em>tabulation</em></li>
-</ul></li>
-<li>The idea is that for each data file we encounter, we figure out a
-corresponding index in our tabular array and then increment the value of
-that element</li>
-<li>Your book shows this for seeing how many times each letter of the
-alphabet appears in a text sequence</li>
-</ul>
-</section>
-<section id="tabulating-with-list-example" class="slide level2">
-<h2>Tabulating with list example</h2>
-<ul>
-<li>Below program is an example of determining how many students got
-different letters grades on a final</li>
-</ul>
-<pre ><code class="python" style="min-height:850px; width=100%;">import random
+<!--
+## Tabulating with list
+
+- Arrays can also be useful when you have a set of values and you need to count how many values fall into a different ranges
+  - Process is called _tabulation_
+- The idea is that for each data file we encounter, we figure out a corresponding index in our tabular array and then increment the value of that element
+- Your book shows this for seeing how many times each letter of the alphabet appears in a text sequence
+
+
+## Tabulating with list example
+
+- Below program is an example of determining how many students got different letters grades on a final
+
+
+```{.python style='min-height:850px; width=100%;'}
+import random
 mark = [random.randint(50,100) for i in range(27) ]
 count = [0 for i in range(5)]
 for i in range(len(mark)):
@@ -146,11 +137,10 @@ for i in range(len(mark)):
         count[4] +=1
 print(mark)
 print(count)
-</code></pre>
-<ul>
-<li>List generated contains random values, it changes every time it
-executes</li>
-</ul>
+
+```
+- List generated contains random values, it changes every time it executes
+-->
 </section>
 <section id="breaking-out-the-pixel-colors" class="slide level2">
 <h2>Breaking out the Pixel Colors</h2>
@@ -215,7 +205,7 @@ value of 30</li>
 </div>
 <div class="col">
 <figure>
-<img data-src="../../Class_Demos/Moon.png" style="width:80.0%"
+<img data-src="../../Demos/Moon.png" style="width:80.0%"
 alt="Blurry Moon by Jed" />
 <figcaption aria-hidden="true">Blurry Moon by Jed</figcaption>
 </figure>
@@ -267,79 +257,57 @@ gw.add_event_listener("click", imagetreshold)
     - **How data is read in**
         - You have access to all the characters in a string variable pretty much immediately
         - Data from text files is generally read in sequentially, starting from the beginning and proceeding until the end of the file is reached
+
+## Reading Text Files
+- The general approach for reading a text file is to first _open_ the file and associate that file with a variable, commonly called its _file handle_
+- We will also use the _with_ keyword to ensure that Python cleans up after itself (closes the file) when we are done with it (Many of us could use a `with` irl)
+  ```python
+  with open(filename) as file_handle:
+    # Code to read the file using the file_handle
+  ```
+- Python gives you several ways to actually read in the data
+    - `read` reads the entire file in as a string
+    - `readline` or `readlines` reads a single line or lines from the file
+    - `read` alongside `splitlines` gets you a list of line strings
+    - Can use the file handle as an iterator to loop over
+
+## Entire file ⟶ String
+- The `read` method reads the entire file into a string, with includes newline characters (`\n`) to mark the end of lines
+- Simple, but can be cumbersome to work with the newline characters, and, for large files, it can take a large amount of memory
+
+- As an example, the file:<br><br>
+
+  :::{.block name="Seuss.txt" style='width:40%; margin-left: auto; margin-right: auto;'}
+    One fish<br>
+    two fish<br>
+    red fish<br>
+    blue fish
+  :::
+
+  would get read as
+
+`"One fish\ntwo fish\nred fish\nblue fish"`{style="display: block; margin: auto; text-align: center;"}
+
+## Line by Line
+- Of the ways to read the file in a string at a time, using the file handler as an iterator and looping is probably best and certainly most flexible
+- Leads to code that looks like:
+  ```python
+  with open(filename) as f:
+      for line in f:
+          # Do something with the line
+  ```
+- Note that **most** strategies preserve the newline character, which you very likely do not want, so be ready to strip them out before doing more processing
+
+
+## Powers Combined
+- So long as your files are not gigantic, using `read` and then the `splitlines` method can be a good option
+- This **does** remove the newline characters, since it splits the string at them
+  ```python
+  with open(filename) as f:
+      lines = f.read().splitlines()
+  # Then you can do whatever you want with the list of lines
+  ```
 -->
-</section>
-<section id="reading-text-files" class="slide level2">
-<h2>Reading Text Files</h2>
-<ul>
-<li><p>The general approach for reading a text file is to first
-<em>open</em> the file and associate that file with a variable, commonly
-called its <em>file handle</em></p></li>
-<li><p>We will also use the <em>with</em> keyword to ensure that Python
-cleans up after itself (closes the file) when we are done with it (Many
-of us could use a <code class="python">with</code> irl)</p>
-<pre ><code class="python">with open(filename) as file_handle:
-  # Code to read the file using the file_handle</code></pre></li>
-<li><p>Python gives you several ways to actually read in the data</p>
-<ul>
-<li><code class="python">read</code> reads the entire file in as a
-string</li>
-<li><code class="python">readline</code> or
-<code class="python">readlines</code> reads a single line or lines from
-the file</li>
-<li><code class="python">read</code> alongside
-<code class="python">splitlines</code> gets you a list of line
-strings</li>
-<li>Can use the file handle as an iterator to loop over</li>
-</ul></li>
-</ul>
-</section>
-<section id="entire-file-string" class="slide level2">
-<h2>Entire file ⟶ String</h2>
-<ul>
-<li><p>The <code class="python">read</code> method reads the entire file
-into a string, with includes newline characters
-(<code class="python">\n</code>) to mark the end of lines</p></li>
-<li><p>Simple, but can be cumbersome to work with the newline
-characters, and, for large files, it can take a large amount of
-memory</p></li>
-<li><p>As an example, the file:<br><br></p>
-<div class="block" name="Seuss.txt"
-style="width:40%; margin-left: auto; margin-right: auto;">
-<p>One fish<br> two fish<br> red fish<br> blue fish</p>
-</div>
-<p>would get read as</p></li>
-</ul>
-<p><code class="python" style="display: block; margin: auto; text-align: center;">"One fish\ntwo fish\nred fish\nblue fish"</code></p>
-</section>
-<section id="line-by-line" class="slide level2">
-<h2>Line by Line</h2>
-<ul>
-<li><p>Of the ways to read the file in a string at a time, using the
-file handler as an iterator and looping is probably best and certainly
-most flexible</p></li>
-<li><p>Leads to code that looks like:</p>
-<pre ><code class="python">with open(filename) as f:
-    for line in f:
-        # Do something with the line</code></pre></li>
-<li><p>Note that <strong>most</strong> strategies preserve the newline
-character, which you very likely do not want, so be ready to strip them
-out before doing more processing</p></li>
-</ul>
-</section>
-<section id="powers-combined" class="slide level2">
-<h2>Powers Combined</h2>
-<ul>
-<li><p>So long as your files are not gigantic, using
-<code class="python">read</code> and then the
-<code class="python">splitlines</code> method can be a good
-option</p></li>
-<li><p>This <strong>does</strong> remove the newline characters, since
-it splits the string at them</p>
-<pre ><code class="python">with open(filename) as f:
-    lines = f.read().splitlines()
-# Then you can do whatever you want with the list of lines</code></pre></li>
-</ul>
 </section>
 <section id="arent-you-exceptional" class="slide level2">
 <h2>Aren’t you Exceptional</h2>

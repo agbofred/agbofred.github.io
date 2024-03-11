@@ -1,7 +1,7 @@
 ---
 title: "Reading and Writing"
 author: Jed Rembold & Fred Agbo
-date: October 27, 2023
+date: March 11, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,12 +15,10 @@ history: false
 
 
 ## Announcements
-- Problem Sets 5 is due _next_ week Tuesday at 12 noon
-- Grading of project 1 to be published soon.
-- Project 3 will be posted early next week. You will be notified when uploaded
-- CS151 Graphics Contest is due on ***31st October***
-- We will return to Ford Hall 102 from Monday next week
-- Polling continues today! Use this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Project 2: __Breakout__ is due ***tomorrow at 10pm!***
+- Problem set 5 will be posted tomorrow: To be due next week Tuesday
+- Grading for Problem Set 4 will be returned this week!
+- Polling continues on this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
 
 
 <!--
@@ -79,7 +77,7 @@ What would be the output of:
 #. `[2,3,4,5]`
 #. `[2,2,2,2]`
 :::
-
+<!--
 ## Tabulating with list
 
 - Arrays can also be useful when you have a set of values and you need to count how many values fall into a different ranges
@@ -113,7 +111,7 @@ print(count)
 
 ```
 - List generated contains random values, it changes every time it executes
-
+-->
 ## Breaking out the Pixel Colors
 - You do not need to convert the pixel values yourself! PGL has built-in ways to extract the various colors
 
@@ -140,7 +138,7 @@ Let’s threshold at a value of 30
 ::::
 
 ::::col
-![Blurry Moon by Jed](../../Class_Demos/Moon.png){width=80%}
+![Blurry Moon by Jed](../../Demos/Moon.png){width=80%}
 ::::
 ::::::
 
@@ -194,7 +192,7 @@ gw.add_event_listener("click", imagetreshold)
 	- **How data is read in**
 		- You have access to all the characters in a string variable pretty much immediately
 		- Data from text files is generally read in sequentially, starting from the beginning and proceeding until the end of the file is reached
--->
+
 ## Reading Text Files
 - The general approach for reading a text file is to first _open_ the file and associate that file with a variable, commonly called its _file handle_
 - We will also use the _with_ keyword to ensure that Python cleans up after itself (closes the file) when we are done with it (Many of us could use a `with` irl)
@@ -244,7 +242,7 @@ gw.add_event_listener("click", imagetreshold)
 	  lines = f.read().splitlines()
   # Then you can do whatever you want with the list of lines
   ```
-  
+-->
 ## Aren't you Exceptional
 - When opening a file for reading, it is possible the file does not exist!
 	- Python handles this (and many other potential errors that can arise) using a mechanism called _exception handling_

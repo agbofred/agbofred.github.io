@@ -1,19 +1,14 @@
 from pgl import GImage, GWindow, GLabel
+# Remeber to update the ANTIALIAS in PLG
 
 def image_example():
     gw = GWindow(800, 550)
-    image = GImage("VLA_Moonset.jpg")
-    #image.scale(gw.get_width() / image.get_width())
+    image = GImage("/Users/fjagbo/Documents/GitHub/agbofred.github.io/Spring_2024/Demos/Moon.png")
+    image.scale(gw.get_width() / image.get_width())
     gw.add(image)
-    #print(image.get_pixel_array())
-    """ pixel =[]
-     for i in image.get_pixel_array():
-        pixel.append(i)
+    pixel=image.get_pixel_array()
+    print(pixel[2][3])
     
-    print(pixel[2][2]) 
-    """
-   
-
 
     citation = GLabel("Image Credit: Jeff Hellermann, NRAO / AUI / NSF")
     citation.set_font("15px 'Sans-Serif'")
@@ -22,3 +17,20 @@ def image_example():
     gw.add(citation, x, y)
 
 image_example()
+
+
+"""with open("/Users/fjagbo/Documents/GitHub/agbofred.github.io/Spring_2024/Demos/demo_3.8.24.txt") as f:
+    txt = f.read().splitlines()
+    print(txt)
+ for i in txt:
+    if (len(i)>7):
+        print(i)  """ 
+    
+
+
+""" pixel =[]
+     for i in image.get_pixel_array():
+        pixel.append(i)
+    
+    print(pixel[2][2]) 
+    """

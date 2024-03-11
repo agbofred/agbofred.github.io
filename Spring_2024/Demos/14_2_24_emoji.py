@@ -42,8 +42,10 @@ def draw_emoji():
     def move_eye(event):
         #lradius = lpupil.get_width()/2
         #rradius = rpupil.get_width()/2
-        lpupil.move_polar(0.03, event.get_x())
-        rpupil.move_polar(0.03, event.get_x())
+        lpupil.move_polar(0.04, event.get_x()) #0.03
+        rpupil.move_polar(0.04, event.get_x())
+        #lpupil.move_polar(leye.get_width()/200, event.get_y())
+        #rpupil.move_polar(reye.get_width()/200, event.get_y())
   
     gw.add_event_listener("mousemove",move_eye)
 
