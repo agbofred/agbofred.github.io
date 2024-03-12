@@ -20,5 +20,5 @@ def image_example():
 image_example()
 
 S = "It appears like the former text were overidden \n would like to add these lines of paragraph"
-with open("todaydemo.txt","w") as fi:
-    fi.write(S)
+#with open("todaydemo.txt","w") as fi:
+    #fi.write(S)

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-11-01">
-  <title>Spin me right round</title>
+  <meta name="dcterms.date" content="2024-03-13">
+  <title>Reords and Tuple</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,31 +35,19 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Spin me right round</h1>
+  <h1 class="title">Reords and Tuple</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">November 1, 2023</p>
+  <p class="date">March 13, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Welcome to the month of November</li>
-<li>Grading of project 1 was published on Canvas.</li>
-<li>Project 3 has commenced and will be due <em>Tuesday next
-week</em>.</li>
-<li>CS151 Graphics Contest was due
-<strong><em>yesterday</em></strong>.</li>
-<li>Feel that things are not going as expected and need to withdraw? See
-me to discuss
-<ul>
-<li>The deadline is this week</li>
-</ul></li>
-<li>Welcome to the newly rebranded “TechBytes”
-<ul>
-<li>Tomorrow at 11:30-12:30, Ford 102</li>
-<li>we have special lectures from Jed Rembold and Mike Woodford</li>
-</ul></li>
-<li>Polling: <a
+<li>Project 2: <strong>Breakout</strong> was due yesterday</li>
+<li>Problem set 5 is posted and is due <strong><em>next week Tuesday at
+10pm!</em></strong></li>
+<li>Grading for Problem Set 4 will be returned later this week!</li>
+<li>Two Polls today on this link <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 <!--
@@ -89,8 +77,8 @@ What strategy was your neighbor looking to improve?
 :::
 -->
 </section>
-<section id="review" class="slide level2" data-notes="Solution: D">
-<h2 data-notes="Solution: D">Review!</h2>
+<section id="review-1" class="slide level2" data-notes="Solution: D">
+<h2 data-notes="Solution: D">Review 1!</h2>
 <p>Suppose you had the file contents to the left and wanted to turn it
 into the contents on the right. Which code snippet below would
 accomplish this?</p>
@@ -128,6 +116,50 @@ with open(file, 'a') as fh:
     data = fh.read()
 with open(file, 'a') as fh:
     fh.write(data[-2::-1])</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="review-2" class="slide level2"
+data-notes="Solution: D, others print the .">
+<h2 data-notes="Solution: D, others print the .">Review 2!</h2>
+<div class="cols">
+<div class="col">
+<p>To the right are the contents of a text file named
+<code class="python">PBride.txt</code>. Which code snippet below would
+print off the word “father”?</p>
+</div>
+<div class="col">
+<pre ><code class="no-highlight" style="color:white;">My name is Inigo Montoya.
+You killed my father.
+Prepare to die.</code></pre>
+</div>
+</div>
+<div class="cols">
+<div class="col">
+<div class="block" name="A">
+<pre ><code class="python">with open('PBride.txt') as f:
+    for line in f:
+        w = line.split()
+        if w[0] == "You":
+            print(w[-1])</code></pre>
+</div>
+<div class="block" name="B">
+<pre ><code class="python">c = read('PBride.txt')
+print(c.find("father"))</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block" name="C">
+<pre ><code class="python">with open('PBride.txt') as f:
+    c = f.read().splitlines()
+    print(c[1][4])</code></pre>
+</div>
+<div class="block" name="D">
+<pre ><code class="python">with open('PBride.txt') as f:
+    c = f.read()
+    i = c.find("f")
+    print(c[i:i+6])</code></pre>
 </div>
 </div>
 </div>

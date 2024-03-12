@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2022-10-28">
-  <title>Spin me right round</title>
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2024-03-15">
+  <title>Classes Vs Objects</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -32,152 +35,49 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Spin me right round</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">October 28, 2022</p>
+  <h1 class="title">Classes Vs Objects</h1>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">March 15, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 5 due tonight!</li>
-<li>ImageShop guide posted!</li>
-<li>Withdrawal deadline is today</li>
-<li>New club introduction!</li>
-<li>I’ll be around this afternoon, but may be in Ford 222 from 1-3. If
-you have a question just come outside the door and catch my eye!</li>
+<li>Grading of problem sets 5 is not ready yet.</li>
+<li>Project 3 is due on <em>Tuesday next week</em>.</li>
+<li>Midterm 2 is <strong>Friday November 10</strong></li>
 <li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
 </section>
 <section id="review-question" class="slide level2"
-data-notes="Solution: D[1][2]">
-<h2 data-notes="Solution: D[1][2]">Review Question</h2>
-<p>After running the below code, how would you access the
-<code class="python">"ninja"</code> element in list
-<code class="python">D</code>?</p>
-<pre ><code class="python">A = ['pirate', 'ninja']
-B = ['samurai'] + A
-C = [B, ['ship', 'rope', 'horse']]
-D = C[::-1]</code></pre>
+data-notes="Solution: Error, can&#39;t add strings and tuples">
+<h2
+data-notes="Solution: Error, can&#39;t add strings and tuples">Review
+Question</h2>
+<div class="cols">
+<div class="col">
+<p>What would be the output of the printed statement in the code to the
+right?</p>
 <div class="poll">
 <ol>
-<li><code class="python">D[1][0]</code></li>
-<li><code class="python">D[0][1]</code></li>
-<li><code class="python">D[0][2]</code></li>
-<li><code class="python">D[1][2]</code></li>
+<li><code class="no-highlight">(1, 'a', 'b')</code></li>
+<li><code class="no-highlight">(1, 'a')</code></li>
+<li>Error: can’t add strings and tuples</li>
+<li>Error: index out of range</li>
 </ol>
 </div>
-</section>
-<section id="an-objects-purpose" class="slide level2">
-<h2>An Object’s Purpose</h2>
-<ul>
-<li>Python uses the concepts of objects and classes to achieve at least
-three different goals:
-<ul>
-<li><strong>Aggregation</strong>. Objects make it possible to represent
-collections of independent data as a single unit. Such collections are
-traditionally called <em>records</em>.</li>
-<li><strong>Encapsulation</strong>. Classes make it possible to store
-data together with the operations that manipulate that data.
-<ul>
-<li>In Python the data values are called <em>attributes</em> and the
-operations are called <em>methods</em></li>
-</ul></li>
-<li><strong>Inheritance</strong>. Class hierarchies make it possible for
-a class that shares some attributes and methods with a previously
-defined class to <em>inherit</em> those definitions without rewriting
-them all</li>
-</ul></li>
-<li>We’ll introduce many of these concepts in this course, but for more
-exposure and practice you’ll want to take CS 152 (Data Structures)</li>
-</ul>
-</section>
-<section id="old-records" class="slide level2">
-<h2>Old Records</h2>
-<ul>
-<li>Records are a very old idea, dating back to the 19th century
-BCE</li>
-<li>Frequently pressed into clay</li>
-<li>In 2017, researchers established that the below tablet records
-Pythagorean triples!</li>
-</ul>
-<figure>
-<img data-src="../images/Plimpton_322.jpg" style="width:40.0%"
-alt="The Plimpton 322 Tablet" />
-<figcaption aria-hidden="true">The Plimpton 322 Tablet</figcaption>
-</figure>
-</section>
-<section id="recording-dickens" class="slide level2">
-<h2>Recording Dickens</h2>
-<ul>
-<li>Suppose we had some records from the two-employee firm Scrooge and
-Marley</li>
-<li>Each contains the employee name, their title, and their salary</li>
-</ul>
-<p><img
-data-src="../images/svg_cache/3505431e17d85b81d84a2cfe3c10454a814f6a66.svg"
-style="width:70.0%" /></p>
-</section>
-<section id="tuple-time" class="slide level2">
-<h2>Tuple Time</h2>
-<ul>
-<li>In Python, simplest strategy for representing a record uses the
-built-in type <em>tuple</em>
-<ul>
-<li>An ordered, <strong>immutable</strong> sequence of values</li>
-</ul></li>
-<li>Feel similar to lists, except immutable, and used very differently
-<ul>
-<li>Think of tuples as more like records than lists</li>
-</ul></li>
-<li>Created by enclosing a collection of elements in parentheses
-<code class="inlinecode">employee = ("Bob Cratchit", "clerk", 15)</code></li>
-<li>Stored internally similarly to a list, so each element has a
-corresponding index</li>
-</ul>
-</section>
-<section id="tuple-usage" class="slide level2">
-<h2>Tuple Usage</h2>
-<ul>
-<li>Can largely envision tuples as sitting between strings and lists
-<ul>
-<li>Immutable, like strings</li>
-<li>Elements can be <em>anything</em>, like lists</li>
-</ul></li>
-<li>Common operations mimic that of strings
-<ul>
-<li>Can concatenate with addition</li>
-<li>Can duplicate by multiplying by an integer</li>
-<li>Can index and slice them</li>
-<li>Can loop over them directly or via index</li>
-</ul></li>
-<li>A tuple of a single value <strong>needs</strong> a comma still in
-order to be a tuple</li>
-</ul>
-</section>
-<section id="tuple-selection" class="slide level2">
-<h2>Tuple Selection</h2>
-<ul>
-<li>You can select or slice elements from a tuple just like you can with
-lists
-<ul>
-<li>Unfortunately, records are not usually ordered in a particular way.
-Rather, it is the name that is usually important</li>
-</ul></li>
-<li>If using tuples, you can make programs more readable by using a
-<em>destructuring assignment</em>, which breaks a tuple into named
-components:</li>
-</ul>
-<p><code class="inlinecode no-highlight">name, title, salary = employee</code></p>
-<ul>
-<li>While modern versions of Python have such thing as a <em>named
-tuple</em>, we will not look at them here.
-<ul>
-<li>The more general strategy is to define a new class to better
-represent the objects in question</li>
-</ul></li>
-</ul>
+</div>
+<div class="col">
+<pre ><code class="python">A = (1, 3, 5)
+B = (2*A, ('a', ) )
+C = B + ('b', 'c', 'd')
+D = tuple()
+for v in C[:3]:
+    D += v[:1]
+print(D)</code></pre>
+</div>
+</div>
 </section>
 <section id="classes-vs-objects" class="slide level2">
 <h2>Classes vs Objects</h2>
@@ -205,7 +105,8 @@ different rectangles, each of which was an instance of the
 </section>
 <section id="thinking-about-objects" class="slide level2">
 <h2>Thinking about Objects</h2>
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -474,7 +375,33 @@ different rectangles, each of which was an instance of the
          id="tspan981">implementation</tspan></text>
   </g>
 </svg>
-</p>
+
+<figcaption> </figcaption>
+</figure>
+</section>
+<section id="an-objects-purpose" class="slide level2">
+<h2>An Object’s Purpose</h2>
+<ul>
+<li>Python uses the concepts of objects and classes to achieve at least
+three different goals:
+<ul>
+<li><strong>Aggregation</strong>. Objects make it possible to represent
+collections of independent data as a single unit. Such collections are
+traditionally called <em>records</em>.</li>
+<li><strong>Encapsulation</strong>. Classes make it possible to store
+data together with the operations that manipulate that data.
+<ul>
+<li>In Python the data values are called <em>attributes</em> and the
+operations are called <em>methods</em></li>
+</ul></li>
+<li><strong>Inheritance</strong>. Class hierarchies make it possible for
+a class that shares some attributes and methods with a previously
+defined class to <em>inherit</em> those definitions without rewriting
+them all</li>
+</ul></li>
+<li>We’ll introduce many of these concepts in this course, but for more
+exposure and practice you’ll want to take CS 152 (Data Structures)</li>
+</ul>
 </section>
 <section id="classes-as-templates" class="slide level2">
 <h2>Classes as Templates</h2>
@@ -554,9 +481,28 @@ name and a value, just like you’d define a new variable</p></li>
   clerk = Employee()
   clerk.name = "Bob Cratchit"
   clerk.title = "clerk"
-  clerk.salary = 15</code></pre></li>
+  clerk.salary = 15
+  return clerk</code></pre></li>
 <li><p>Note that none of these assigned attributes affect the
 <code class="python">Employee</code> class in any way</p></li>
+</ul>
+</section>
+<section id="more-generally" class="slide level2">
+<h2>More Generally</h2>
+<ul>
+<li><p>We could accomplish this more generally by passing arguments to
+our function:</p>
+<pre ><code class="python">def create_employee(name, title, salary):
+  emp = Employee()
+  emp.name = name
+  emp.title = title
+  emp.salary = salary
+  return emp</code></pre></li>
+<li><p>We could then use that as:</p>
+<pre ><code class="python">clerk = create_employee('Bob Cratchit', 'clerk', 15)
+boss = create_employee(
+          'Ebeneezer Scrooge', 'founder', 1000
+          )</code></pre></li>
 </ul>
 </section>
     </div>
@@ -582,6 +528,7 @@ name and a value, just like you’d define a new variable</p></li>
 		//autoAnimateEasing: 'ease-in',
 		//autoAnimateDuration: 1.0,
 		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
         // Display controls in the bottom right corner
         controls: true,
         // Help the user learn the controls by providing hints, for example by
@@ -702,7 +649,7 @@ name and a value, just like you’d define a new variable</p></li>
         ],
 		chalkboard: {
 		boardmarkerWidth: 4,
-        chalkWidth: 7,
+        chalkWidth: 5,
 		boardmarkers : [
                 { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
                 { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
@@ -727,6 +674,7 @@ name and a value, just like you’d define a new variable</p></li>
 			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
 		],
       });
+      
     </script>
     </body>
 </html>

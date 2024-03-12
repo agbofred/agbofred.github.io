@@ -76,7 +76,7 @@ def breakout():
                 y = ystart + r * (BRICK_HEIGHT + BRICK_SEP)
                 # NOTE: Rects drawn with origin upper left
                 brick = GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT)
-                #brick.set_color("WHITE")
+                brick.set_color("WHITE")
                 brick.set_fill_color(col)
                 brick.set_filled(True)
                 gw.add(brick)
