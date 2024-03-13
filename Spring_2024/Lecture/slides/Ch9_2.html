@@ -77,52 +77,9 @@ What strategy was your neighbor looking to improve?
 :::
 -->
 </section>
-<section id="review-1" class="slide level2" data-notes="Solution: D">
-<h2 data-notes="Solution: D">Review 1!</h2>
-<p>Suppose you had the file contents to the left and wanted to turn it
-into the contents on the right. Which code snippet below would
-accomplish this?</p>
-<div class="cols">
-<div class="col">
-<pre ><code class="python" style="align:left;">food</code></pre>
-</div>
-<div class="col">
-<pre ><code class="python" style="align:right;">fooddoof</code></pre>
-</div>
-</div>
-<div class="cols">
-<div class="col">
-<div class="block" name="Option_A">
-<pre ><code class="python">with open(file) as fh:
-    data = fh.read()
-with open(file, 'w') as fh:
-    fh.write(data[::-1])</code></pre>
-</div>
-<div class="block" name="Option_B">
-<pre ><code class="python">with open(file) as fh:
-    data = fh.read()
-with open(file, 'a') as fh:
-    fh.write(data[::-1])</code></pre>
-</div>
-</div>
-<div class="col">
-<div class="block" name="Option_C">
-<pre ><code class="python">with open(file, 'rw') as fh:
-    data = fh.read()
-    fh.write(data[::-1])</code></pre>
-</div>
-<div class="block" name="Option_D">
-<pre ><code class="python">with open(file) as fh:
-    data = fh.read()
-with open(file, 'a') as fh:
-    fh.write(data[-2::-1])</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="review-2" class="slide level2"
-data-notes="Solution: D, others print the .">
-<h2 data-notes="Solution: D, others print the .">Review 2!</h2>
+<section id="review-1" class="slide level2"
+data-notes="Solution: D, the other prints the .">
+<h2 data-notes="Solution: D, the other prints the .">Review 1!</h2>
 <div class="cols">
 <div class="col">
 <p>To the right are the contents of a text file named
@@ -160,6 +117,49 @@ print(c.find("father"))</code></pre>
     c = f.read()
     i = c.find("f")
     print(c[i:i+6])</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="review-2" class="slide level2" data-notes="Solution: B">
+<h2 data-notes="Solution: B">Review 2!</h2>
+<p>Suppose you had the file contents to the left and wanted to turn it
+into the contents on the right. Which code snippet below would
+accomplish this?</p>
+<div class="cols">
+<div class="col">
+<pre ><code class="python" style="align:left;">food</code></pre>
+</div>
+<div class="col">
+<pre ><code class="python" style="align:right;">fooddoof</code></pre>
+</div>
+</div>
+<div class="cols">
+<div class="col">
+<div class="block" name="Option_A">
+<pre ><code class="python">with open(file) as fh:
+    data = fh.read()
+with open(file, 'w') as fh:
+    fh.write(data[::-1])</code></pre>
+</div>
+<div class="block" name="Option_B">
+<pre ><code class="python">with open(file) as fh:
+    data = fh.read()
+with open(file, 'a') as fh:
+    fh.write(data[::-1])</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block" name="Option_C">
+<pre ><code class="python">with open(file, 'rw') as fh:
+    data = fh.read()
+    fh.write(data[::-1])</code></pre>
+</div>
+<div class="block" name="Option_D">
+<pre ><code class="python">with open(file) as fh:
+    data = fh.read()
+with open(file, 'a') as fh:
+    fh.write(data[-2::-1])</code></pre>
 </div>
 </div>
 </div>
