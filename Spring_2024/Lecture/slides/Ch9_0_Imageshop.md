@@ -1,7 +1,7 @@
 ---
 title: "Definitely Not Photoshop"
 author: Jed Rembold & Fred Agbo
-date: October 30, 2023
+date: April 1, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,14 +15,14 @@ history: false
 
 
 ## Announcements
-- Problem Sets 5 is due _tomorrow_ at 12 noon
+<!-- - Problem Sets 5 is due _tomorrow_ at 12 noon
 - Grading of project 1 to be published soon.
 - Project 3 will be posted latest _tomorrow_. You will be notified when uploaded
 - CS151 Graphics Contest is due on ***EOD tomorrow***. No extension will be granted!
 - Feel that things are not going as expected and need to withdraw? See me to discuss
 	- The deadline is this week 
 - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
-
+-->
 
 <!--
 ## What if it didn't go well?
@@ -55,7 +55,6 @@ What would be the output of:
 #. `[2,2,2,2]`
 :::
 
--->
 
 ## Review! {data-notes="Solution: D, others print the ."}
 ::::::cols
@@ -201,7 +200,41 @@ if __name__ == '__main__':
   	  # Code to read file
   ```
 :::
+-->
+## Review Question {data-notes="Solution: Loly, black, 4 becuase color in constructor was not referenced but defualted"}
+::::::cols
+::::col
+What would be the output of the printed statement in the code to the right?
 
+:::{.poll}
+#. Loly black 2
+#. Loly brown 4
+#. Loly, black, 4
+#. Loly, brown, 4
+:::
+
+::::
+
+::::col
+```{.python style='min-height:940px; width: 1200px'}
+class Pet:
+    def __init__(self, name, color, age):
+        self.name = name
+        self.color="black"
+        self.age = age
+
+    def bmi(self, weight, height):
+        if weight/height > 2:
+            self.age = self.age*2
+        else:
+            self.age += 1
+dog = Pet("Loly", "brown", 2)
+dog.bmi(180,45)
+print(f'{dog.name}, {dog.color}, {dog.age}')
+
+```
+::::
+::::::
 ## Introducing ImageShop
 ::::::cols
 ::::col
@@ -322,3 +355,27 @@ if __name__ == '__main__':
 - They are **easy**! Just come up with interesting or cool graphical effects and add a button for them!
 - You'll look at several this week in your section meetings
 	- Adding these in your project is encouraged and will be regarded as "sub-extensions", but come up with your own as well!
+
+## Maps and Dictionaries
+- A common form of information associates pairs of data values
+	- Commonly called a _map_ in computer science
+	- Python calls such a structure a _dictionary_
+- A dictionary associates two different values:
+	- A simple value called the _key_, which is often a string but doesn't need to be
+	- A larger and more complex object called the _value_
+- This idea of associating pairs of values is exhibited all over in the real world
+	- Actual dictionaries! The words are the keys, the definitions the values.
+	- Web addresses! Keys are the urls, the values are the webpage contents.
+
+## Creating Dictionaries
+- Python dictionaries use squiggly brackets ```{}``` to enclose their contents
+- Can create an empty dictionary by providing no key-value pairs:
+  ```python
+  empty_dict = {}
+  ```
+- If creating a dictionary with key-value pairs
+	- Keys are separated from values with a colon ```:```
+	- Pairs are separated by a comma ```,```
+  ```python
+  generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}
+  ```

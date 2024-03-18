@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-10-30">
+  <meta name="dcterms.date" content="2024-04-01">
   <title>Definitely Not Photoshop</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,26 +37,19 @@
 <section id="title-slide">
   <h1 class="title">Definitely Not Photoshop</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">October 30, 2023</p>
+  <p class="date">April 1, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
-<ul>
-<li>Problem Sets 5 is due <em>tomorrow</em> at 12 noon</li>
-<li>Grading of project 1 to be published soon.</li>
-<li>Project 3 will be posted latest <em>tomorrow</em>. You will be
-notified when uploaded</li>
-<li>CS151 Graphics Contest is due on <strong><em>EOD
-tomorrow</em></strong>. No extension will be granted!</li>
-<li>Feel that things are not going as expected and need to withdraw? See
-me to discuss
-<ul>
-<li>The deadline is this week</li>
-</ul></li>
-<li>Polling: <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
-</ul>
+<!-- - Problem Sets 5 is due _tomorrow_ at 12 noon
+- Grading of project 1 to be published soon.
+- Project 3 will be posted latest _tomorrow_. You will be notified when uploaded
+- CS151 Graphics Contest is due on ***EOD tomorrow***. No extension will be granted!
+- Feel that things are not going as expected and need to withdraw? See me to discuss
+    - The deadline is this week 
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+-->
 <!--
 ## What if it didn't go well?
 - Some things to keep in mind, especially if you didn't do as well as you'd hoped:
@@ -88,98 +81,94 @@ What would be the output of:
 #. `[2,2,2,2]`
 :::
 
--->
-</section>
-<section id="review" class="slide level2"
-data-notes="Solution: D, others print the .">
-<h2 data-notes="Solution: D, others print the .">Review!</h2>
-<div class="cols">
-<div class="col">
-<p>To the right are the contents of a text file named
-<code class="python">PBride.txt</code>. Which code snippet below would
-print off the word “father”?</p>
-</div>
-<div class="col">
-<pre ><code class="no-highlight" style="color:white;">My name is Inigo Montoya.
+
+## Review! {data-notes="Solution: D, others print the ."}
+::::::cols
+::::col
+To the right are the contents of a text file named `PBride.txt`. Which code snippet below would print off the word "father"?
+::::
+
+::::col
+```{.no-highlight style="color:white;"}
+My name is Inigo Montoya.
 You killed my father.
-Prepare to die.</code></pre>
-</div>
-</div>
-<div class="cols">
-<div class="col">
-<div class="block" name="A">
-<pre ><code class="python">with open('PBride.txt') as f:
+Prepare to die.
+```
+
+::::
+::::::
+
+::::::cols
+::::col
+
+:::{.block name=A}
+```python
+with open('PBride.txt') as f:
     for line in f:
         w = line.split()
         if w[0] == "You":
-            print(w[-1])</code></pre>
-</div>
-<div class="block" name="B">
-<pre ><code class="python">c = read('PBride.txt')
-print(c.find("father"))</code></pre>
-</div>
-</div>
-<div class="col">
-<div class="block" name="C">
-<pre ><code class="python">with open('PBride.txt') as f:
+            print(w[-1])
+```
+:::
+
+:::{.block name=B}
+```python
+c = read('PBride.txt')
+print(c.find("father"))
+```
+:::
+
+
+::::
+
+::::col
+
+:::{.block name=C}
+```python
+with open('PBride.txt') as f:
     c = f.read().splitlines()
-    print(c[1][4])</code></pre>
-</div>
-<div class="block" name="D">
-<pre ><code class="python">with open('PBride.txt') as f:
+    print(c[1][4])
+```
+:::
+
+:::{.block name=D}
+```python
+with open('PBride.txt') as f:
     c = f.read()
     i = c.find("f")
-    print(c[i:i+6])</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="writing-text-files" class="slide level2">
-<h2>Writing Text Files</h2>
-<ul>
-<li><p>You can write text files using almost the same syntax as
-reading:</p>
-<pre ><code class="python">with open(filename, mode) as file_handle:
-    # Code to write the file using file_handle</code></pre></li>
-<li><p>Note the <code class="python">mode</code> parameter to
-<code class="python">open</code> here! Mode is a string which is
-either</p>
-<ul>
-<li><code class="python">"w"</code> to <strong>write</strong> a new file
-(or overwrite an existing file)</li>
-<li><code class="python">"a"</code> to <strong>append</strong> new
-contents to the end of an existing file</li>
-</ul></li>
-<li><p>The file handler supports the methods:</p>
-<ul>
-<li><code class="python">.write(some_string)</code> to write a string to
-the file</li>
-<li><code class="python">.writelines(iterable_of_strings)</code> to
-write each iterable element to the file</li>
-</ul></li>
-</ul>
-</section>
-<section id="writing-ascii-sine" class="slide level2">
-<h2>Writing ASCII SINE</h2>
-<ul>
-<li>Suppose I wanted to try my hand at some ASCII art and fill a text
-file with a vertical oscillating sine wave</li>
-<li>A sine wave generally looks like: <span class="math display">\[ A +
-A \sin\left(\frac{2\pi}{T}x\right)\]</span> where <span
-class="math inline">\(A\)</span> is the amplitude of the wave and <span
-class="math inline">\(T\)</span> the period of the wave, or how quickly
-it repeats
-<ul>
-<li>The extra <span class="math inline">\(A +\)</span> out front is to
-push the wave over to the right, since we can’t really place negative
-characters</li>
-</ul></li>
-<li>How can we put this together?</li>
-</ul>
-</section>
-<section id="ascii-sine-code" class="slide level2">
-<h2>ASCII SINE Code</h2>
-<pre ><code class="python" style="font-size:.6em; max-height:900px;">
+    print(c[i:i+6])
+```
+:::
+
+::::
+::::::
+
+## Writing Text Files
+- You can write text files using almost the same syntax as reading:
+  ```python
+  with open(filename, mode) as file_handle:
+      # Code to write the file using file_handle
+  ```
+- Note the `mode` parameter to `open` here! Mode is a string which is either
+    - `"w"` to **write** a new file (or overwrite an existing file)
+    - `"a"` to **append** new contents to the end of an existing file
+- The file handler supports the methods:
+    - `.write(some_string)` to write a string to the file
+    - `.writelines(iterable_of_strings)` to write each iterable element to the file
+
+
+## Writing ASCII SINE
+- Suppose I wanted to try my hand at some ASCII art and fill a text file with a vertical oscillating sine wave
+- A sine wave generally looks like:
+    $$ A + A \sin\left(\frac{2\pi}{T}x\right)$$
+  where $A$ is the amplitude of the wave and $T$ the period of the wave, or how quickly it repeats
+  - The extra $A +$ out front is to push the wave over to the right, since we can't really place negative characters
+- How can we put this together?
+
+
+## ASCII SINE Code
+```{.python style='font-size:.6em; max-height:900px;'}
+
 from math import sin, pi
 
 def sine_file(filename, A, T, symbol, padding=" "):
@@ -214,34 +203,66 @@ def sine_file(filename, A, T, symbol, padding=" "):
             fh.write(line + '\n') # need the newline character at the end!
 
 if __name__ == '__main__':
-    sine_file('sine_test.txt', A=30, T=50, symbol='X')</code></pre>
+    sine_file('sine_test.txt', A=30, T=50, symbol='X')
+```
+
+
+## Choosing Wisely
+
+::: {style='font-size:.9em'}
+
+- The Python package used to implement `pgl.py` also supports a mechanism to choose files interactively, made available through the `filechooser.py` library module.
+- `filechooser.py` exports two functions:
+    - `choose_input_file` for selecting a file
+    - `choose_output_file` for selecting a folder and filename to save a file to
+- Both open up a file dialog that lets you select/choose a file
+    - Clicking Open or Save returns the full pathname of the file
+    - Clicking Cancel returns an empty string
+
+- Using it thus looks something like:
+  ```python
+  filename = choose_input_file()
+  with open(filename) as f:
+      # Code to read file
+  ```
+:::
+-->
 </section>
-<section id="choosing-wisely" class="slide level2">
-<h2>Choosing Wisely</h2>
-<div style="font-size:.9em">
-<ul>
-<li><p>The Python package used to implement
-<code class="python">pgl.py</code> also supports a mechanism to choose
-files interactively, made available through the
-<code class="python">filechooser.py</code> library module.</p></li>
-<li><p><code class="python">filechooser.py</code> exports two
-functions:</p>
-<ul>
-<li><code class="python">choose_input_file</code> for selecting a
-file</li>
-<li><code class="python">choose_output_file</code> for selecting a
-folder and filename to save a file to</li>
-</ul></li>
-<li><p>Both open up a file dialog that lets you select/choose a file</p>
-<ul>
-<li>Clicking Open or Save returns the full pathname of the file</li>
-<li>Clicking Cancel returns an empty string</li>
-</ul></li>
-<li><p>Using it thus looks something like:</p>
-<pre ><code class="python">filename = choose_input_file()
-with open(filename) as f:
-    # Code to read file</code></pre></li>
-</ul>
+<section id="review-question" class="slide level2"
+data-notes="Solution: Loly, black, 4 becuase color in constructor was not referenced but defualted">
+<h2
+data-notes="Solution: Loly, black, 4 becuase color in constructor was not referenced but defualted">Review
+Question</h2>
+<div class="cols">
+<div class="col">
+<p>What would be the output of the printed statement in the code to the
+right?</p>
+<div class="poll">
+<ol>
+<li>Loly black 2</li>
+<li>Loly brown 4</li>
+<li>Loly, black, 4</li>
+<li>Loly, brown, 4</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python" style="min-height:940px; width: 1200px">class Pet:
+    def __init__(self, name, color, age):
+        self.name = name
+        self.color="black"
+        self.age = age
+
+    def bmi(self, weight, height):
+        if weight/height > 2:
+            self.age = self.age*2
+        else:
+            self.age += 1
+dog = Pet("Loly", "brown", 2)
+dog.bmi(180,45)
+print(f'{dog.name}, {dog.color}, {dog.age}')
+</code></pre>
+</div>
 </div>
 </section>
 <section id="introducing-imageshop" class="slide level2">
@@ -455,6 +476,47 @@ cool graphical effects and add a button for them!</li>
 <li>Adding these in your project is encouraged and will be regarded as
 “sub-extensions”, but come up with your own as well!</li>
 </ul></li>
+</ul>
+</section>
+<section id="maps-and-dictionaries" class="slide level2">
+<h2>Maps and Dictionaries</h2>
+<ul>
+<li>A common form of information associates pairs of data values
+<ul>
+<li>Commonly called a <em>map</em> in computer science</li>
+<li>Python calls such a structure a <em>dictionary</em></li>
+</ul></li>
+<li>A dictionary associates two different values:
+<ul>
+<li>A simple value called the <em>key</em>, which is often a string but
+doesn’t need to be</li>
+<li>A larger and more complex object called the <em>value</em></li>
+</ul></li>
+<li>This idea of associating pairs of values is exhibited all over in
+the real world
+<ul>
+<li>Actual dictionaries! The words are the keys, the definitions the
+values.</li>
+<li>Web addresses! Keys are the urls, the values are the webpage
+contents.</li>
+</ul></li>
+</ul>
+</section>
+<section id="creating-dictionaries" class="slide level2">
+<h2>Creating Dictionaries</h2>
+<ul>
+<li><p>Python dictionaries use squiggly brackets
+<code class="python">{}</code> to enclose their contents</p></li>
+<li><p>Can create an empty dictionary by providing no key-value
+pairs:</p>
+<pre ><code class="python">empty_dict = {}</code></pre></li>
+<li><p>If creating a dictionary with key-value pairs</p>
+<ul>
+<li>Keys are separated from values with a colon
+<code class="python">:</code></li>
+<li>Pairs are separated by a comma <code class="python">,</code></li>
+</ul>
+<pre ><code class="python">generic_dict = {'Bob': 21, 0: False, 13: 'Thirteen'}</code></pre></li>
 </ul>
 </section>
     </div>
