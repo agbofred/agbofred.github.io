@@ -50,12 +50,11 @@ def draw_emoji():
             if event.get_x() < gw.get_x_lpupil and event.get_y()> gw.get_y_lpupil :
                 dx = gw.get_x_lpupil - leye.get_height()//5
                 dy = gw.get_x_lpupil + leye.get_height()//25
-                print(f'Leye->{dx,dy}')
                 lpupil.set_location(dx,dy) 
+                
             elif event.get_x() > gw.get_x_lpupil and event.get_y()> gw.get_y_lpupil :
                 dx = gw.get_x_lpupil + leye.get_height()//5
                 dy = gw.get_x_lpupil + leye.get_height()//25
-                print(f'Leye->{dx,dy}')
                 lpupil.set_location(dx,dy)
     
     # Right pupil movement action
@@ -64,13 +63,11 @@ def draw_emoji():
             if event.get_x() < gw.get_x_rpupil and event.get_y() > gw.get_y_rpupil :
                 dx = gw.get_x_rpupil - reye.get_height()//10
                 dy = gw.get_y_rpupil + reye.get_height()//3
-                print(f'Reye->{dx,dy}')
                 rpupil.set_location(dx,dy) 
 
             elif event.get_x() > gw.get_x_rpupil and event.get_y()> gw.get_y_rpupil :
                 dx = gw.get_x_rpupil + reye.get_height()//5
                 dy = gw.get_y_rpupil + reye.get_height()//4
-                print(f'Reye->{dx,dy}')
                 rpupil.set_location(dx,dy)
 
     # Giving the image a lable
