@@ -38,7 +38,11 @@ __Useful info:__
 1. *There is no timer function set on this exam to track or monitor the time you have spent or remaining. You've got to monitor your time manually to remain within the allowable 1 hour.*
 
 
-2. *Make your submission within the 1-hour duration to avoid losing points or scoring 0. You will earn points from different components, which means that you must not complete all the tasks before making your submission.*
+
+2. *Those with Willamette University official accommodation for extra time for exams could add their time to the 1 hour originally scheduled for the exam. This means that the late submission policy only applies to such a student after the 1 hour + the extra time.*
+
+
+3. *Make your submission within the 1-hour duration to avoid losing points or scoring 0. You will earn points from different components, which means that you must not complete all the tasks before making your submission.* 
 
 
 __Late Submission Policy__
