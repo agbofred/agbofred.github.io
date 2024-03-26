@@ -208,7 +208,7 @@ What would be the output of the printed statement in the code to the right?
 
 :::{.poll}
 #. Loly black 2
-#. Loly brown 4
+#. Loly, brown, 3
 #. Loly, black, 4
 #. Loly, brown, 4
 :::
