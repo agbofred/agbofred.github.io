@@ -275,7 +275,7 @@ class TMQuestion:
                 answers[response] = next_question
         return TMQuestion(name, text, answers)
 ```
-
+-->
 ## Mathematical Sets
 - A _set_ is an unordered collection of **distinct** values.
 	- **digits** =  0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
@@ -288,7 +288,7 @@ class TMQuestion:
 	- **$\mathbf{Z}$** =  x where x is an integer 
 	- **$\mathbf{N}$** =  x where x is an integer >=0 
 - The set with no elements is call the _empty set_ (∅)
--->
+
 
 ## Pythonic Sets
 - Enclosed within squiggly brackets
