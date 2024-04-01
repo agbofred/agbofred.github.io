@@ -78,7 +78,7 @@ Since the dimensions of the new image are inverted from the original (the new wi
 Once you have done so, you need to copy each old pixel into the correct position in the new array.
 This process is illustrated in @fig-ImageRotation, which shows where each pixel in the first row of the old array (before) moves to the new array (after) during a 90&deg; rotation left (or counter-clockwise).
 
-![Graphical depiction of rotating an image array 90&deg; counter-clockwise (left). Note that what was previously the last column is now the first row, and what was the first row is now the first column.](rotation_image.svg){#fig-ImageRotation width=550}
+![Graphical depiction of rotating an image array 90&deg; counter-clockwise (left). Note that what was previously the last column is now the first row, and what was the first row is now the first column.](rotation_img.svg){#fig-ImageRotation width=550}
 
 ## Milestone 3: Add a Grayscale button
 
