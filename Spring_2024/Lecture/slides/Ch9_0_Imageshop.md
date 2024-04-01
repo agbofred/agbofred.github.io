@@ -15,14 +15,14 @@ history: false
 
 
 ## Announcements
-<!-- - Problem Sets 5 is due _tomorrow_ at 12 noon
-- Grading of project 1 to be published soon.
-- Project 3 will be posted latest _tomorrow_. You will be notified when uploaded
-- CS151 Graphics Contest is due on ***EOD tomorrow***. No extension will be granted!
-- Feel that things are not going as expected and need to withdraw? See me to discuss
-	- The deadline is this week 
+- Problem Sets 5 and Midterm #2 grading were posted
+- Grading of project 1 to be published soon but you could have gotten feedback already.
+- Feel that things are not going as expected and need to discuss, come and see me.
+	- From my assessment, almost everyone __who turn assignments in__ are doing okay in the class
+- Project #3 **ImageShop** will be posted today and it is __due on Monday next week at 10 pm__
+
 - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
--->
+
 
 <!--
 ## What if it didn't go well?
