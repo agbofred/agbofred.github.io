@@ -15,11 +15,15 @@ history: false
 
 
 ## Announcements
-- Problem Sets 5 and Midterm #2 grading were posted
-- Grading of project 1 to be published soon but you could have gotten feedback already.
-- Feel that things are not going as expected and need to discuss, come and see me.
-	- From my assessment, almost everyone __who turn assignments in__ are doing okay in the class
-- Project #3 **ImageShop** will be posted today and it is __due on Monday next week at 10 pm__
+- Problem Sets 5 and Midterm #2 grading were posted last week
+- Although the majority did well, I'm considering curving the grades across by 10% 
+- Grading of project 1 to be published soon on canvas
+	- It appears you've got some feedback already.
+- My version of solution to Midterm #1 exam is posted in this week module
+- Feeling that things are not going as expected and need to discuss?
+	- Please come and see me to discuss.
+	- From my assessment, almost everyone ***turning in assignments*** are doing okay
+- Project #3 **ImageShop** is posted and is __due next week Monday 8th Apr at 10pm__
 
 - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
 
