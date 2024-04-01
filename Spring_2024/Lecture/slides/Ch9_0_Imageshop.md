@@ -242,8 +242,8 @@ print(f'{dog.name}, {dog.color}, {dog.age}')
 ## Introducing ImageShop
 ::::::cols
 ::::col
-- While you have a PS due tomorrow, the next project will be due next week
-- Taking a moment today to introduce Imageshop, and the guide will be posted by tomorrow
+- While you are refreshed from spring break, the next project is starting today and will be due next week Monday
+- Taking a moment today to introduce Imageshop, and the guide is already posted
 ::::
 
 ::::col
