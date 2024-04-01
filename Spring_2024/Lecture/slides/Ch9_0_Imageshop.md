@@ -337,7 +337,7 @@ print(f'{dog.name}, {dog.color}, {dog.age}')
 - Unlike other buttons, when this one is clicked, you should use the file chooser library to prompt the user to select _another_ image
 	- This is the image that will be overlaid on whatever image is currently shown on the screen
 - You will want to start with an "empty" pixel array with the same dimensions as the background
-- Depending on how "green" a pixel is, you will choose between different choices
+- Depending on how "green" a pixel is, you will choose between different choices:
 	- If green enough, you will copy the pixel from the _background_ image to your pixel array
 	- If not green enough, you will copy the pixel from the _foreground_ image to your pixel array
 
