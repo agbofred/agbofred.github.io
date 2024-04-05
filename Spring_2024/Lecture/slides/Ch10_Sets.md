@@ -1,7 +1,7 @@
 ---
 title: "Sets"
 author: Jed Rembold & Fred Agbo
-date: November 13, 2023
+date: April 5, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,14 +15,13 @@ history: false
 
 
 ## Announcements
-- Problem Set 6 due on _Saturday_!
-	- I was still working on getting some autotests up for the new Problem 2, maybe they are up by now?
-- New grade reports will be posted as soon as I have all of the Breakout scores in from the section leaders
-- Winner of the Graphics contest was Dash, with a neat rectangle artwork program!
-	- I really enjoyed all the submissions though, and the others will be entered into a drawing at the end of the semester. Thank you for submitting!
-	- The last contest of the semester will be a Game Contest. Instructions up by the end of the week.
-- Polling: [rembold-class.ddns.net](http://rembold-class.ddns.net)
+- Project ImageShop is due __next week Monday at 10pm__.
+- You are welcome to attend a guest talk today by ***Dr Devrim Bilgili*** related to Data Science
+    - Lecture Topic: ***first lecture in Hypothesis Testing*** at Ford 202 (10-11 am)
+    - Research Topic: ***SIZE AND SHAPE ANALYSIS OF SILICA (SIO2) AND GOLD (AU) NANOPARTICLES*** at Ford 101 (11:30-12:20 am) 
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
 
+<!--
 ## Review Question {data-notes="Solution: [125,167,204]"}
 What is the printed value of the below code?
 ```python
@@ -52,7 +51,7 @@ print([d['weight'] for d in A if 'weight' in d])
 </ol>
 </div>
 </div>
-<!--
+
 ## Review Question {data-notes="Solution: hnktge"}
 ::::::cols
 ::::col

@@ -1,3 +1,5 @@
+#A = {'Jack': 12, 'Jill': 13}['Jack']
+
 def read_to_dict(filename):
     dictionary = {}
     with open(filename) as f:
@@ -18,6 +20,5 @@ def get_student_score():
                 print(f"Student got a {scores[student_id]}.")
             else:
                 print(f"Student id {student_id} was not found in classlist")
-
-if __name__ =="__main__":
+if __name__=="__main__":
     get_student_score()

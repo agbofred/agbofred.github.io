@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2023-11-13">
+  <meta name="dcterms.date" content="2024-04-05">
   <title>Sets</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,37 +37,31 @@
 <section id="title-slide">
   <h1 class="title">Sets</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">November 13, 2023</p>
+  <p class="date">April 5, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 6 due on <em>Saturday</em>!
+<li>Project ImageShop is due <strong>next week Monday at
+10pm</strong>.</li>
+<li>You are welcome to attend a guest talk today by <strong><em>Dr
+Devrim Bilgili</em></strong> related to Data Science
 <ul>
-<li>I was still working on getting some autotests up for the new Problem
-2, maybe they are up by now?</li>
-</ul></li>
-<li>New grade reports will be posted as soon as I have all of the
-Breakout scores in from the section leaders</li>
-<li>Winner of the Graphics contest was Dash, with a neat rectangle
-artwork program!
-<ul>
-<li>I really enjoyed all the submissions though, and the others will be
-entered into a drawing at the end of the semester. Thank you for
-submitting!</li>
-<li>The last contest of the semester will be a Game Contest.
-Instructions up by the end of the week.</li>
+<li>Lecture Topic: <strong><em>first lecture in Hypothesis
+Testing</em></strong> at Ford 202 (10-11 am)</li>
+<li>Research Topic: <strong><em>SIZE AND SHAPE ANALYSIS OF SILICA (SIO2)
+AND GOLD (AU) NANOPARTICLES</em></strong> at Ford 101 (11:30-12:20
+am)</li>
 </ul></li>
 <li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
-</section>
-<section id="review-question" class="slide level2"
-data-notes="Solution: [125,167,204]">
-<h2 data-notes="Solution: [125,167,204]">Review Question</h2>
-<p>What is the printed value of the below code?</p>
-<pre ><code class="python">A = [
+<!--
+## Review Question {data-notes="Solution: [125,167,204]"}
+What is the printed value of the below code?
+```python
+A = [
     {'name': 'Jill',  'weight':125, 'height':62},
     {'name': 'Sam',   'height':68},
     {'name': 'Bobby', 'height':72},
@@ -75,30 +69,25 @@ data-notes="Solution: [125,167,204]">
 A.append({'weight':204, 'height':70, 'name':'Jim'})
 B= A[1]
 B['weight'] = 167
-print([d['weight'] for d in A if 'weight' in d])</code></pre>
-<div class="cols">
-<div class="col poll">
+print([d['weight'] for d in A if 'weight' in d])
+```
+
+
+<div class='cols'>
+<div class='col poll'>
 <ol>
-<li>
-<code class="python">[100,204]</code>
-</li>
-<li>
-<code class="python">[156,173,204]</code>
-</li>
-</ol>
+    <li> `[100,204]`</li>
+    <li>`[156,173,204]`</li>
+    </ol>
 </div>
-<div class="col poll">
-<ol style="counter-reset: li 2">
-<li>
-<code class="python">[100,167,173,204]</code>
-</li>
-<li>
-<code class="python">[125,167,204]</code>
-</li>
+<div class='col poll'>
+<ol style='counter-reset: li 2'>
+    <li> `[100,167,173,204]` </li>
+    <li>`[125,167,204]` </li>
 </ol>
 </div>
 </div>
-<!--
+
 ## Review Question {data-notes="Solution: hnktge"}
 ::::::cols
 ::::col
