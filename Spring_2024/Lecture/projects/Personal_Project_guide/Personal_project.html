@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
-
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-}
-pre.numberSource { margin-left: 3em; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -3026,42 +2992,10 @@ color: white;
 }
 .quarto-title-block .quarto-title-banner {
 color: white;
-background: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%);
+background: linear-gradient(120deg, rgba(156, 79, 150, 1) 0%, rgba(255, 99, 85, 1) 20%, rgba(251,169,73,1) 40%, rgba(250, 228, 66, 1) 60%, rgba(139,212,72,1) 80%, rgba(42, 168, 242, 1) 100%);
 }
 </style>
 
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var head = document.getElementsByTagName("head")[0];
-      var link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
-      head.appendChild(link);
-
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
-      script.async = false;
-      script.addEventListener('load', function() {
-        var mathElements = document.getElementsByClassName("math");
-          var macros = [];
-          for (var i = 0; i < mathElements.length; i++) {
-            var texText = mathElements[i].firstChild;
-            if (mathElements[i].tagName == "SPAN") {
-              window.katex.render(texText.data, mathElements[i], {
-                displayMode: mathElements[i].classList.contains('display'),
-                throwOnError: false,
-                macros: macros,
-                fleqn: false
-              });
-            }
-          }
-      });
-      head.appendChild(script);
-    });
-  </script>
-  
 
 </head>
 
@@ -3090,13 +3024,8 @@ background: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#expectations-and-rubrics" id="toc-expectations-and-rubrics" class="nav-link active" data-scroll-target="#expectations-and-rubrics">Expectations and Rubrics</a>
-  <ul class="collapse">
-  <li><a href="#part-a" id="toc-part-a" class="nav-link" data-scroll-target="#part-a">Part A</a></li>
-  <li><a href="#part-b" id="toc-part-b" class="nav-link" data-scroll-target="#part-b">Part B</a></li>
-  <li><a href="#part-c" id="toc-part-c" class="nav-link" data-scroll-target="#part-c">Part C</a></li>
-  </ul></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#expectations-and-rubrics" id="toc-expectations-and-rubrics" class="nav-link active" data-scroll-target="#expectations-and-rubrics">Expectations and Rubrics</a></li>
+  <li><a href="#official-rules" id="toc-official-rules" class="nav-link" data-scroll-target="#official-rules">Official Rules:</a></li>
   </ul>
 </nav>
 </div>
@@ -3105,80 +3034,29 @@ background: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%
 
 
 
-<p>As exciting as there were, the graphics projects you have completed including Breakout game only scratches the surface of what you can do with the Portable Graphics Library. To give you a chance to explore the capabilities of the library in greater depth, I am introducing <strong>Personal Project</strong> which is different from the <em>defined ones</em>. Each of you MUST submit one entry for the personal project, where an entry consists of a program that uses the Portable Graphics Library. You are free to use any of the capabilities in that library, including those described in the online documentation. To get started, you can grab a starting repository by clicking on the button below. Make sure you fill out the top metadata on the main program file please!</p>
-<a href="https://classroom.github.com/a/tRWjmOEL" target="_blank" class="btn btn-info" style="margin:auto; display: block; width:50%;">Accept Assignment</a>
+<p>As exciting as there were, the graphics projects you have completed including Breakout game only scratches the surface of what you can do with the Portable Graphics Library. To give you a chance to explore the capabilities of the library in greater depth, I am introducing <strong>Personal Project</strong> which is different from the <em>defined ones</em>.</p>
+<p>Each of you MUST submit one entry for the personal project, where an entry consists of a program that uses the Portable Graphics Library. You are free to use any of the capabilities in that library, including those described in the online documentation. To get started, you can grab a starting repository by clicking on the button below. Make sure you fill out the top metadata on the main program file please!</p>
+<a href="https://classroom.github.com/a/kUI1AbrM" target="_blank" class="btn btn-info" style="margin:auto; display: block; width:50%;">Grab the starting repository</a>
 <p><br></p>
 <section id="expectations-and-rubrics" class="level1">
 <h1>Expectations and Rubrics</h1>
-<p>Assuming 10 or more total submissions, a prize will be awarded in each of two categories: - Aesthetic merit – This prize is awarded based on the aesthetic value of the entry.</p>
+<p>The project grade will will be awarded in each of two categories:</p>
 <ul>
-<li>Algorithmic sophistication – This prize will be based on the difficulty of the underlying programming and the sophistication of the displayed images.</li>
+<li><p><strong>Quality</strong> - Points here will be based on workability of your program, <em>appropraite comments</em> for functions and important sections in your program, and no errors reported in the terminal.</p></li>
+<li><p><strong>Aesthetic merit</strong> – Points here will be based on the aesthetic value of the submission.</p></li>
+<li><p><strong>Algorithmic sophistication</strong> – The submission will receive points be based on the difficulty of the underlying programming and the sophistication of the displayed images, annimations, or interactions.</p></li>
 </ul>
-<p>If fewer than 10 entries are received, then only a single prize will be awarded. In both categories, programming style will be part of the evaluation. Please note that you do not need to specify a category; all entries will be eligible for either prize.</p>
-<section id="part-a" class="level2">
-<h2 class="anchored" data-anchor-id="part-a">Part A</h2>
-<p>Write a function called <code>create_histogram_array(imax, data)</code> which takes two values as arguments:</p>
-<ul>
-<li>A maximum index <code>imax</code>, which represents the total number of possible things you would like to count. This would have been 10 in our above example.</li>
-<li>A list of integers <code>data</code>, which represents the items for which you would like to tabulate a histogram.</li>
-</ul>
-<p>This function should return a new list which has the histogram counts as each element. For example, your function should be able to mimic:</p>
-<pre class="python-repl"><code>&gt;&gt;&gt; create_histogram_array(5, [1, 0, 3, 2, 4, 2, 2, 1, 3, 0])
-[2, 2, 3, 2, 1]</code></pre>
-<p>where <code>imax</code> was chosen to be 5 since there were 5 different values appearing in the <code>data</code> list (0 through 4). Note though that if your value of <code>imax</code> is smaller than the variety of digits in <code>data</code>, the later digits will not be counted. Only the first <code>imax</code> digits will be counted. If <code>imax</code> is larger than the number of different digits in <code>data</code>, 0’s will be counted for those extra digits. So, for instance:</p>
-<pre class="python-repl"><code>&gt;&gt;&gt; create_histogram_array(3, [1, 0, 3, 2, 4, 2, 2, 1, 3, 0])
-[2, 2, 3]
-&gt;&gt;&gt; create_histogram_array(8, [1, 0, 3, 2, 4, 2, 2, 1, 3, 0])
-[2, 2, 3, 2, 1, 0, 0, 0]</code></pre>
+<p>In all categories, programming style will be part of the evaluation. Please note that you do not need to specify a category; all entries will be eligible and evaluated accordingly.</p>
 </section>
-<section id="part-b" class="level2">
-<h2 class="anchored" data-anchor-id="part-b">Part B</h2>
-<p>Now that you can use your function from Part A to compute a histogram array, how about displaying it nicely to the screen? For this part, write a new function called <code>print_histogram(array)</code> that take a histogram counts list (of the exact sort returned by <code>create_histogram_array</code>!) as an argument. This function should print to the console a rotated histogram using asterisks to indicate the count of values in each index. For example, if you call <code>print_histogram</code> with the histogram formed by the first 16 digits of <span class="math inline">\pi</span>, you should see the following:</p>
-<pre class="python-repl"><code>&gt;&gt;&gt; print_histogram(create_histogram_array(PI_DIGITS))
-0:
-1: **
-2: *
-3: **
-4: *
-5: ****
-6: *
-7: *
-8: *
-9: ***</code></pre>
-<p>Your function should mimic this printing <em>exactly</em>. This should not be particularly complicated, as you have all the necessary tools with string formatting and the repetition operator for strings.</p>
-</section>
-<section id="part-c" class="level2">
-<h2 class="anchored" data-anchor-id="part-c">Part C</h2>
-<p>While printing to the console is one way to visualize a histogram, it is not the classical graphical way. So for this part, you should write a function called <code>create_histogram_graph(array, width, height)</code> which will use PGL to create a histogram <code>GCompound</code>. The <code>array</code> parameter represents the same input array as from Part B (or the returned output from Part A), and the <code>width</code> and <code>height</code> parameters represent the desired size of the <code>GCompound</code>. You will need to use these values to figure out how wide and tall each of your histogram rectangles should be. The function should return a <code>GCompound</code> object that contains filled <code>GRect</code> objects arranged to produce a traditional bar graph histogram, where the height of a particular box reflects the proportional number of items in that index in the histogram array. The scaling of the bars should be chosen so that the largest bar in the graph completely fills the desired height, and all the bars arranged next to one another should completely fill the desired width. The reference point of the <code>GCompound</code> should be the upper left corner.</p>
-<p>To illustrate how this part should work, it may help to consider the following simple test program, which is included in the code template:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_create_histogram_graph():</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    WIDTH, HEIGHT <span class="op">=</span> <span class="dv">800</span>, <span class="dv">600</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    gw <span class="op">=</span> GWindow(WIDTH, HEIGHT)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    PI_DIGITS <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">9</span>]</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    array <span class="op">=</span> create_histogram_array(<span class="dv">10</span>, PI_DIGITS)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    graph <span class="op">=</span> test_create_histogram_graph(array, WIDTH, HEIGHT)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    gw.add(graph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>which should display the following graph so that it fills the graphics window: <img src="./images/Histogram.png" class="img-fluid" alt="A PI_DIGITS traditional histogram."></p>
-<p>Note that because <code>create_histogram_graph</code> just returns to you a <code>GCompound</code>, if you made 4 of them with half the width and height of the window, you could also display multiple across the screen by adding them at the correct coordinates: <img src="./images/Histogram2.png" class="img-fluid" alt="Multiple histograms on the screen at once!"></p>
-</section>
-</section>
-<section id="problem-2" class="level1">
-<h1>Problem 2</h1>
-<p>A <em>magic square</em> is a two-dimensional array of integers in which the rows, columns, and diagonals all add up to the same value. One of the most famous magic squares appears in the 1514 engraving <em>Melencolia I</em> by Albrecht Dürer shown below, in which a 4x4 magic square appears in the upper right, just under the bell. In Dürer’s square, all four rows, all four columns, and both diagonals add up to 34.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/melencolia_I.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">The <em>Melencolia I</em> by Albrecht Dürer, in which a magic square is visible in the upper right, just under the bell.</figcaption>
-</figure>
-</div>
-<p>A more familiar example is the following 3x3 magic square, in which each of the rows, columns, and diagonals add up to 15, as shown:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/magic_sq.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A 3x3 magic square summing to 15</figcaption>
-</figure>
-</div>
-<p>Write a predicate function called <code>is_magic_square</code> that takes a two-dimensional array of integers and then tests whether that array of integers forms a magic square. The square could be of any size and the rows, columns, and diagonals could sum to any value. Your function should return <code>True</code> if the array forms a magic square, or <code>False</code> if it does not. Thus your function should also return <code>False</code> if the provided two-dimensional array is not square (for instance, if it is a 4x3 array).</p>
+<section id="official-rules" class="level1">
+<h1>Official Rules:</h1>
+<ol type="1">
+<li><p>Make sure you fill out the top metadata on the main program file named <strong>Project_Entry.py</strong> and briefly introduce your project so that readers can understand what the program entails and can at least engage with it!</p></li>
+<li><p>All entries must be submitted by 10:00pm on Monday, April 15.</p></li>
+<li><p>Only one entry per person will be accepted.</p></li>
+<li><p>You are required to do all your graphical operations using the classes from the Portable Graphics Library. In particular, you may not dig into the source code for pgl.py and use other features of the TKinter library on which PGL is based.</p></li>
+<li><p>Your entry may not set a window size larger than 1024x768 pixels.</p></li>
+</ol>
 </section>
 
 </main>
