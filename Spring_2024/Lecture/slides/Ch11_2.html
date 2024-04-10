@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold">
-  <meta name="dcterms.date" content="2023-04-17">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2024-04-10">
   <title>The Teaching Machine</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,8 +17,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -33,31 +36,23 @@
 
 <section id="title-slide">
   <h1 class="title">The Teaching Machine</h1>
-  <p class="author">Jed Rembold</p>
-  <p class="date">April 17, 2023</p>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">April 10, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Enigma Project due on Friday night!</li>
-<li>The Game Contest rules will be posted on website today if you want
-to start on that over next week.
+<li>Personal Project is due on Monday night next week!
 <ul>
-<li>Non-winning but legit entries will be entered into a drawing at the
-end of the semester for 2 15% boosts to any exam (up to 100%)</li>
+<li>Try not to ask for extension becuase the next week project is a bit
+extensive</li>
 </ul></li>
-<li>Adventure Project will be introduced on Friday
-<ul>
-<li>Professor Roberts is going to cover this lecture, owing to his
-extensive personal experience with the origins of the Adventure
-game</li>
-<li>I’ll email out a polling question Thursday night and have the poll
-open all class!</li>
-</ul></li>
-<li>No class on Wednesday! Go to some SSRD talks!</li>
+<li>10% grade curving for midterm #2 was applied</li>
+<li>Adventure Project may be introduced on Friday</li>
 <li>Polling: <a
-href="http://rembold-class.ddns.net">rembold-class.ddns.net</a></li>
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+<!-- No class on Wednesday! Go to some SSRD talks! --></li>
 </ul>
 </section>
 <section id="review-question" class="slide level2">
@@ -144,15 +139,26 @@ class MyNewClass:
     - `MyNewClass.my_method(1,2)`
 - Frequently used for functions that are related to the class but could otherwise be independent of the class
     - Examples: `GImage.get_red(pixel)` and `GImage.create_rgb_pixel(a,r,g,b)`
-
-## Data-Driven Programs
-- In most programming languages, data structures are easier to manipulate than the code itself
-- Often useful then to push as much of the program behavior as possible into data structures rather than methods and functions
-    - Programs working in this fashion are said to be _data driven_
-- In a data-driven model, the actual program (commonly called the _driver_) is generally very small and simple simple managing:
-    - Reading in data from a file into a suitable internal structure
-    - Using the data structure to control the flow of the program
 -->
+</section>
+<section id="data-driven-programs" class="slide level2">
+<h2>Data-Driven Programs</h2>
+<ul>
+<li>In most programming languages, data structures are easier to
+manipulate than the code itself</li>
+<li>Often useful then to push as much of the program behavior as
+possible into data structures rather than methods and functions
+<ul>
+<li>Programs working in this fashion are said to be <em>data
+driven</em></li>
+</ul></li>
+<li>In a data-driven model, the actual program (commonly called the
+<em>driver</em>) is generally very small and simple simple managing:
+<ul>
+<li>Reading in data from a file into a suitable internal structure</li>
+<li>Using the data structure to control the flow of the program</li>
+</ul></li>
+</ul>
 </section>
 <section id="the-teaching-machine" class="slide level2">
 <h2>The Teaching Machine</h2>
@@ -222,7 +228,8 @@ d: RemQ2
 </section>
 <section id="an-internal-representation" class="slide level2">
 <h2>An Internal Representation</h2>
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -793,7 +800,9 @@ d: RemQ2
     </g>
   </g>
 </svg>
-</p>
+
+<figcaption> </figcaption>
+</figure>
 </section>
 <section id="data-file-to-internal-rep" class="slide level2">
 <h2>Data file to Internal Rep</h2>
@@ -828,7 +837,8 @@ What is the value of 9 // 4?
 </div>
 </div>
 <div class="col">
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<figure>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -2270,7 +2280,9 @@ What is the value of 9 // 4?
     </g>
   </g>
 </svg>
-</p>
+
+<figcaption> </figcaption>
+</figure>
 </div>
 </div>
 </section>

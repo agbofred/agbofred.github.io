@@ -236,66 +236,37 @@ def to_pig_latin(text):
         translation += token
     return translation
 ```
--->
-</section>
-<section id="understanding-check" class="slide level2">
-<h2>Understanding Check</h2>
-<p>Looking at the same sets:</p>
-<table>
-<tbody>
-<tr class="odd">
-<td><strong>digits</strong> = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }</td>
-</tr>
-<tr class="even">
-<td><strong>evens</strong> = { 0, 2, 4, 6, 8 }</td>
-</tr>
-<tr class="odd">
-<td><strong>odds</strong> = { 1, 3, 5, 7, 9 }</td>
-</tr>
-<tr class="even">
-<td><strong>primes</strong> = { 2, 3, 5, 7 }</td>
-</tr>
-<tr class="odd">
-<td><strong>squares</strong> = { 0, 1, 4, 9 }</td>
-</tr>
-</tbody>
-</table>
-<p>What is the set resulting from: <span class="math display">\[
-(\text{primes} \cap \text{evens}) \cup
-(\text{odds}\cap\text{squares})\]</span></p>
-<div class="hpoll">
-<ol>
-<li>∅</li>
-<li>{ 1, 2, 9 }</li>
-<li>{ 1, 3, 4, 5}</li>
-<li>{ 0, 3, 4, 5, 7}</li>
-</ol>
-</div>
-</section>
-<section id="set-relationships" class="slide level2">
-<h2>Set Relationships</h2>
-<ul>
-<li>Sets <span class="math inline">\(A\)</span> and <span
-class="math inline">\(B\)</span> are <em>equal</em> (<span
-class="math inline">\(A = B\)</span>) if they have the same elements.
-<ul>
-<li>This would make them the same circles in a Venn diagram</li>
-</ul></li>
-<li>Set <span class="math inline">\(A\)</span> is a <em>subset</em> of
-<span class="math inline">\(B\)</span> (<span
-class="math inline">\(A\subseteq B\)</span>) if all the elements in
-<span class="math inline">\(A\)</span> are also in <span
-class="math inline">\(B\)</span>.
-<ul>
-<li>This would mean that the circle for <span
-class="math inline">\(A\)</span> would be entirely inside (or equal) to
-the circle of <span class="math inline">\(B\)</span></li>
-</ul></li>
-<li>Set <span class="math inline">\(A\)</span> is a <em>proper
-subset</em> of <span class="math inline">\(B\)</span> (<span
-class="math inline">\(A\subset B\)</span>) if <span
-class="math inline">\(A\)</span> is a subset of <span
-class="math inline">\(B\)</span> and the two sets are not equal <!--
+
+
+## Understanding Check
+Looking at the same sets:
+
+----
+**digits** = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+**evens** = { 0, 2, 4, 6, 8 }
+**odds** = { 1, 3, 5, 7, 9 }
+**primes** = { 2, 3, 5, 7 }
+**squares** = { 0, 1, 4, 9 }
+----
+
+What is the set resulting from:
+$$ (\text{primes} \cap \text{evens}) \cup (\text{odds}\cap\text{squares})$$
+
+:::{.hpoll}
+#. ∅
+#. { 1, 2, 9 }
+#. { 1, 3, 4, 5}
+#. { 0, 3, 4, 5, 7}
+:::
+
+
+## Set Relationships
+- Sets $A$ and $B$ are _equal_ ($A = B$) if they have the same elements.
+    - This would make them the same circles in a Venn diagram
+- Set $A$ is a _subset_ of $B$ ($A\subseteq B$) if all the elements in $A$ are also in $B$.
+    - This would mean that the circle for $A$ would be entirely inside (or equal) to the circle of $B$
+- Set $A$ is a _proper subset_ of $B$ ($A\subset B$) if $A$ is a subset of $B$ and the two sets are not equal
+
 ## Informal Proofs
 - You can use Venn diagrams to justify different set identities
 - Example: Say you wanted to show that:
@@ -303,197 +274,70 @@ $$ A - (B \cap C) = (A-B) \cup (A-C)$$
 
 ![](../images/Set_Proof.svg)
 
---></li>
-</ul>
-</section>
-<section id="python-set-methods" class="slide level2">
-<h2>Python Set Methods</h2>
-<ul>
-<li>Can also use “set comprehension” to generate a set
-<code class="inlinecode">{ x for x in range(0,100,2) }</code></li>
-</ul>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 66%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code class="python">len(set)</code></td>
-<td>Returns the number of elements in a set</td>
-</tr>
-<tr class="even">
-<td><code class="python">elem in set</code></td>
-<td>Returns <code class="python">True</code> if
-<code class="python">elem</code> is in the set</td>
-</tr>
-<tr class="odd">
-<td><code class="python">set.copy()</code></td>
-<td>Creates and returns a shallow copy of the set</td>
-</tr>
-<tr class="even">
-<td><code class="python">set.add(elem)</code></td>
-<td>Adds the specified <code class="python">elem</code> to the set</td>
-</tr>
-<tr class="odd">
-<td><code class="python">set.remove(elem)</code></td>
-<td>Removes the element from the set, raising a
-<code class="python">ValueError</code> if it is missing</td>
-</tr>
-<tr class="even">
-<td><code class="python">set.discard(elem)</code></td>
-<td>Removes the element from the set, doing nothing if it is
-missing</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="why-use-sets" class="slide level2">
-<h2>Why use sets?</h2>
-<dl>
-<dt>Sets come up naturally in many situations</dt>
-<dd>
-Many real-world applications involve unordered collections of unique
-elements, for which sets are the natural model.
-</dd>
-<dt>Sets have a well-established mathematical foundation</dt>
-<dd>
-If you can frame your application in terms of sets, you can rely on the
-various mathematical properties that apply to sets.
-</dd>
-<dt>Sets can make it easier to reason about your program</dt>
-<dd>
-One of the advantages of mathematical abstraction is that using it often
-makes it easy to think clearly and rigorously about what your program
-does.
-</dd>
-<dt>Many important algorithms are described in terms of sets</dt>
-<dd>
-If you look at websites that describe some of the most important
-algorithms in computer science, many of them base those descriptions in
-terms of set operations.
-</dd>
-</dl>
-</section>
-<section id="representing-data" class="slide level2">
-<h2>Representing Data</h2>
-<ul>
-<li>To use computation effectively, we frequently need to be able to
-represent real world data in a way that computers can easily work with
-<ul>
-<li>Real world data is often more complicated or nuanced than just “a
-list of numbers”</li>
-</ul></li>
-<li>Python’s existing data structures are <strong>tools</strong>, which
-you can use to help represent certain ideas
-<ul>
-<li><em>Lists</em> when you have sequential type data, wherein there is
-a logical ordering to the data in question (where position matters)
-<ul>
-<li>Example: GPA over the course of 4 years</li>
-</ul></li>
-<li><em>Tuples</em> or <em>classes</em> when you have elements that
-should be grouped together but which have no inherent ordering.
-Generally use tuples for simple records and write custom classes for
-more complex. Could potentially also use a dictionary.
-<ul>
-<li>Example: Student names in a class</li>
-</ul></li>
-<li><em>Maps</em> or <em>dictionaries</em> when you have specific keys
-corresponding to other values.
-<ul>
-<li>Example: Student grades</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="tricky-data" class="slide level2">
-<h2>Tricky Data</h2>
-<ul>
-<li>Human readable data is not always the best machine-readable
-data!</li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Name</th>
-<th style="text-align: center;">Class</th>
-<th style="text-align: center;">Q1</th>
-<th style="text-align: center;">Mid</th>
-<th style="text-align: center;">Q3</th>
-<th style="text-align: center;">Final</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Sally</td>
-<td style="text-align: center;">Python</td>
-<td style="text-align: center;">A</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">A</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Jake</td>
-<td style="text-align: center;">Python</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">C</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">James</td>
-<td style="text-align: center;">Astro</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">A</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Lily</td>
-<td style="text-align: center;">Astro</td>
-<td style="text-align: center;">A</td>
-<td style="text-align: center;">A</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Ben</td>
-<td style="text-align: center;">Python</td>
-<td style="text-align: center;">C</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">B</td>
-<td style="text-align: center;">A</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Storing the above in a 2D array would work, but would be frustrating
-to work with</li>
-</ul>
-</section>
-<section id="a-computer-friendly-approach" class="slide level2">
-<h2>A Computer Friendly Approach</h2>
-<ul>
-<li>Student grades are time ordered, so we could use a list for the
-grades</li>
-<li>Each student has a corresponding sequence of grades (and students
-are unordered), so we could use a dictionary where student names are the
-keys and the list of grades the values</li>
-<li>Each class corresponds to an unordered set of students. Could have
-another dictionary where the keys were the class names and the values
-were the dictionary of students/grades</li>
-</ul>
-</section>
-<section id="example-representation" class="slide level2">
-<h2>Example Representation</h2>
-<pre ><code class="python" style="max-height:900px">{
+
+
+## Python Set Methods
+- Can also use "set comprehension" to generate a set
+    `{ x for x in range(0,100,2) }`{.inlinecode}
+
+ Function | Description
+---|------
+`len(set)` | Returns the number of elements in a set
+`elem in set` | Returns `True` if `elem` is in the set
+`set.copy()` | Creates and returns a shallow copy of the set
+`set.add(elem)` | Adds the specified `elem` to the set
+`set.remove(elem)` | Removes the element from the set, raising a `ValueError` if it is missing
+`set.discard(elem)` | Removes the element from the set, doing nothing if it is missing
+
+
+## Why use sets?
+
+Sets come up naturally in many situations
+: Many real-world applications involve unordered collections of unique elements, for which sets are the natural model.
+
+Sets have a well-established mathematical foundation
+: If you can frame your application in terms of sets, you can rely on the various mathematical properties that apply to sets.
+
+Sets can make it easier to reason about your program
+: One of the advantages of mathematical abstraction is that using it often makes it easy to think clearly and rigorously about what your program does.
+
+Many important algorithms are described in terms of sets
+: If you look at websites that describe some of the most important algorithms in computer science, many of them base those descriptions in terms of set operations.
+
+
+## Representing Data
+- To use computation effectively, we frequently need to be able to represent real world data in a way that computers can easily work with
+    - Real world data is often more complicated or nuanced than just "a list of numbers"
+- Python's existing data structures are **tools**, which you can use to help represent certain ideas
+    - _Lists_ when you have sequential type data, wherein there is a logical ordering to the data in question (where position matters)
+        - Example: GPA over the course of 4 years
+    - _Tuples_ or _classes_ when you have elements that should be grouped together but which have no inherent ordering. Generally use tuples for simple records and write custom classes for more complex. Could potentially also use a dictionary.
+        - Example: Student names in a class
+    - _Maps_ or _dictionaries_ when you have specific keys corresponding to other values.
+        - Example: Student grades
+
+## Tricky Data
+- Human readable data is not always the best machine-readable data!
+
+|  Name |  Class | Q1 | Mid | Q3 | Final |
+|:-----:|:------:|:--:|:---:|:--:|:-----:|
+| Sally | Python |  A |  B  |  B |   A   |
+|  Jake | Python |  B |  B  |  B |   C   |
+| James |  Astro |  B |  B  |  A |       |
+|  Lily |  Astro |  A |  A  |  B |       |
+|  Ben  | Python |  C |  B  |  B |   A   |
+
+- Storing the above in a 2D array would work, but would be frustrating to work with
+
+
+## A Computer Friendly Approach
+- Student grades are time ordered, so we could use a list for the grades
+- Each student has a corresponding sequence of grades (and students are unordered), so we could use a dictionary where student names are the keys and the list of grades the values
+- Each class corresponds to an unordered set of students. Could have another dictionary where the keys were the class names and the values were the dictionary of students/grades
+
+## Example Representation
+```{.python style='max-height:900px'}
+{
     "Python": {
         "Sally": ["A", "B", "B", "A"],
         "Jake": ["B", "B", "B", "C"],
@@ -503,109 +347,60 @@ were the dictionary of students/grades</li>
         "James": ["B", "B", "A"],
         "Lily": ["A", "A", "B"]
     }
-}</code></pre>
-</section>
-<section id="compound-structure-storage" class="slide level2">
-<h2>Compound Structure Storage</h2>
-<ul>
-<li>Structures representing complicated data can often be large enough
-that you don’t want to store them within your program itself</li>
-<li>We can put them in their own file, but reading them in with our
-current tools would be complicated
-<ul>
-<li>Current methods read in text, so we would need to <em>parse</em> the
-text to identify what data structures we needed to create and what
-elements we needed to add</li>
-<li>This is certainly possible, but potentially more overhead than what
-we would like for some structures</li>
-</ul></li>
-<li>Useful then to store the data structure in file in such a format
-that it can be easily read into Python</li>
-</ul>
-</section>
-<section id="file-io" class="slide level2">
-<h2>File I/O</h2>
-<ul>
-<li>A variety of ways this can be done
-<ul>
-<li>XML, YAML, JSON</li>
-</ul></li>
-<li>JSON is particularly interesting to us, because its syntax almost
-exactly matches Python’s (even though it was made for Javascript)</li>
-<li>Python has a built-in library to read and write JSON files, just
-called <code class="python">json</code>
-<ul>
-<li><code class="python">json.load(file_handle)</code>
-<ul>
-<li>Loads the JSON data structure from the specified file into its
-Python equivalent</li>
-</ul></li>
-<li><code class="python">json.dump(data_object, file_handle)</code>
-<ul>
-<li>Writes a JSON text representation of the data object to the given
-file</li>
-</ul></li>
-<li>Both methods are used inside our normal
-<code class="python">with open() as fhandle:</code> syntax</li>
-</ul></li>
-</ul>
-</section>
-<section id="using-json" class="slide level2">
-<h2>Using JSON</h2>
-<ul>
-<li><p>To read a JSON file into a variable
-<code class="python">data</code>:</p>
-<pre ><code class="python">import json
-with open('file.json') as fh:
-    data = json.load(fh)</code></pre></li>
-<li><p>To write a variable with complex structure out to a JSON
-file:</p>
-<pre ><code class="python">import json
-with open('file.json', 'w') as fh:
-    json.dump(data, fh)</code></pre></li>
-</ul>
-</section>
-<section id="the-power-of-json" class="slide level2">
-<h2>The Power of JSON</h2>
-<ul>
-<li>One very nice aspect of JSON is that it is often the defacto way
-that information is passed around the internet</li>
-<li>This means it can be easy to find data providers where you can
-access or download information already in a JSON format</li>
-<li>DND Fireball Spell info <a
-href="https://www.dnd5eapi.co/api/spells/fireball">here</a></li>
-<li>We could download this information to a file, which we could then
-read in and use within our Python program</li>
-<li>Later we’ll also look at how we could process the information
-straight from the internet as well</li>
-</ul>
-</section>
-<section id="json-gotchas" class="slide level2">
-<h2>JSON Gotchas</h2>
-<ul>
-<li>If you are writing JSON files from within Python or using files
-gotten elsewhere, they should already be properly formatted</li>
-<li>If you need/want to edit a JSON file directly though, you should be
-aware of a few “gotchas” where the JSON syntax varies <em>slightly</em>
-from Python’s syntax
-<ul>
-<li>You can <strong>not</strong> have trailing commas at the end of a
-JSON structure
-<ul>
-<li>Something like <code class="python">[1, 2, 3,]</code> is perfectly
-fine in Python, but illegal in JSON</li>
-</ul></li>
-<li>JSON strings require double quotes
-<ul>
-<li>In Python you can use either double or single quotes, but JSON
-requires double</li>
-</ul></li>
-<li>Booleans are all lowercase in JSON
-<ul>
-<li>Vs starting with a capital letter in Python</li>
-</ul></li>
-</ul></li>
-</ul>
+}
+```
+
+## Compound Structure Storage
+- Structures representing complicated data can often be large enough that you don't want to store them within your program itself
+- We can put them in their own file, but reading them in with our current tools would be complicated
+    - Current methods read in text, so we would need to _parse_ the text to identify what data structures we needed to create and what elements we needed to add
+    - This is certainly possible, but potentially more overhead than what we would like for some structures
+- Useful then to store the data structure in file in such a format that it can be easily read into Python
+
+## File I/O
+- A variety of ways this can be done
+    - XML, YAML, JSON
+- JSON is particularly interesting to us, because its syntax almost exactly matches Python's (even though it was made for Javascript)
+- Python has a built-in library to read and write JSON files, just called `json`
+    - `json.load(file_handle)`
+        - Loads the JSON data structure from the specified file into its Python equivalent
+    - `json.dump(data_object, file_handle)`
+        - Writes a JSON text representation of the data object to the given file
+    - Both methods are used inside our normal `with open() as fhandle:` syntax
+
+## Using JSON
+- To read a JSON file into a variable `data`:
+  ```python
+  import json
+  with open('file.json') as fh:
+      data = json.load(fh)
+  ```
+- To write a variable with complex structure out to a JSON file:
+  ```python
+  import json
+  with open('file.json', 'w') as fh:
+      json.dump(data, fh)
+  ```
+
+
+## The Power of JSON
+- One very nice aspect of JSON is that it is often the defacto way that information is passed around the internet
+- This means it can be easy to find data providers where you can access or download information already in a JSON format
+- DND Fireball Spell info [here](https://www.dnd5eapi.co/api/spells/fireball)
+- We could download this information to a file, which we could then read in and use within our Python program
+- Later we'll also look at how we could process the information straight from the internet as well
+
+
+## JSON Gotchas
+- If you are writing JSON files from within Python or using files gotten elsewhere, they should already be properly formatted
+- If you need/want to edit a JSON file directly though, you should be aware of a few "gotchas" where the JSON syntax varies _slightly_ from Python's syntax
+    - You can **not** have trailing commas at the end of a JSON structure
+        - Something like `[1, 2, 3,]` is perfectly fine in Python, but illegal in JSON
+    - JSON strings require double quotes
+        - In Python you can use either double or single quotes, but JSON requires double
+    - Booleans are all lowercase in JSON
+        - Vs starting with a capital letter in Python
+-->
 </section>
 <section id="data-driven-programs" class="slide level2">
 <h2>Data-Driven Programs</h2>
