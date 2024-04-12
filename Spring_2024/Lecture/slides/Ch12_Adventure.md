@@ -1,7 +1,7 @@
 ---
 title: "Adventure"
 author: Jed Rembold & Fred Agbo
-date: November 27, 2023
+date: April 12, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,18 +15,19 @@ history: false
 
 
 ## Announcements
-- Exam 2 scores is posted in canvas
-	- I'm moderating the score by adding 15 points across 
-- Project 5 __Adventure__ guidelines is out today 
-	- Due on ***Wednesday December 6th***  (i.e., next week)
-	- Can work on it with a partner if you want, but not required
-- Graphics Contest result will be announced in class today
+- Personal Project is due on Monday night next week!
+	- Try not to ask for extension becuase the next week project is a bit extensive
+- Project 5 __Adventure__ guidelines will be posted this weekend 
+	- Due on ***Monday 29th of April***  (i.e., 2 weeks +)
+	- You __Can__ work with a partner on this project. Both partners will earn the same grade. 
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+
+<!-- - Graphics Contest result will be announced in class today
 - I will dedicate next week to:
 	- reviewing midterm exams 1 & 2
 	- providing final exam practice and guidelines
-- Final exam is 2 Mondays from now (exactly 2 weeks)
-- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
-<!--
+- Final exam is 2 Mondays from now (exactly 2 weeks) -->
+
 ## Review Question {data-notes="Solution: {['A', 'B']: {1, 2}}"}
 Three of the below expressions are valid; one is not. Which one would return an error?
 
@@ -36,59 +37,8 @@ Three of the below expressions are valid; one is not. Which one would return an 
 #. `[{'Alpha': 1, 'Omega': 26}, {2, 3, 4, 5}]`
 #. `{['A', 'B']: {1, 2}}`
 :::
--->
-
-## Review Question
-::::::cols
-::::col
-The data file to the right is read in and run using the TeachingMachine. What question do you end up at if you choose B 4 times in a row?
-
-:::{.poll}
-#. Q1
-#. Q2
-#. Q3
-#. None of the above
-:::
-
-::::
-
-::::col
-
-:::{.text}
-<pre style='font-size:0.5em;'>
-Q1
-What is the square root of 36?
-	A) 0
-	B) 6
-	C) 10
------
-A: Q2
-B: Q3
-C: Q1
-
-Q2
-Are you happy?
-	A) Yes
-	B) No
-	C) What kind of question is this?
------
-B: Q1
-*: Q3
-
-Q3
-What is your age?
-	A) Young
-	B) Prime of my life
-	C) Old
------
-A: Q1
-*: Q2
-</pre>
-:::
 
 
-::::
-::::::
 
 <!--
 ## Beginning the Adventure
@@ -315,13 +265,67 @@ FORCED: OutsideGrate
 
 <br>
 <video width='70%' data-autoplay loop src="../video/Adventure_M8.webm"></video>
-
+<!--
 ## Graphics Contest Grading
 - 5 submissions from this class but 4 were eligible for grading
-
+--><!--
 |  #  |  Name of project |  Documentation | Workability | Aesthetic | Algorithmic sophistication | Final | 
 |:---:|:----------------:|:--------------:|:-----------:|:---------:|:--------------------------:|:-----:|
 |  1  | Alien spaceship  | 100            |  100        |  100      |  100                       |   400 | 
 |  2  | Color Chaos      | 100            |  100        |  80       |  90                        |   370 | 
 |  3  | Sudoku           |  70            |  100        |  60       |  100                       |   330 | 
 |  4  | Winter Scene     |  100           |  100        |  100      |  20                        |   320 | 
+
+-->
+
+## Review Question
+::::::cols
+::::col
+The data file to the right is read in and run using the TeachingMachine. What question do you end up at if you choose B 4 times in a row?
+
+:::{.poll}
+#. Q1
+#. Q2
+#. Q3
+#. None of the above
+:::
+
+::::
+
+::::col
+
+:::{.text}
+<pre style='font-size:0.5em;'>
+Q1
+What is the square root of 36?
+	A) 0
+	B) 6
+	C) 10
+-----
+A: Q2
+B: Q3
+C: Q1
+
+Q2
+Are you happy?
+	A) Yes
+	B) No
+	C) What kind of question is this?
+-----
+B: Q1
+*: Q3
+
+Q3
+What is your age?
+	A) Young
+	B) Prime of my life
+	C) Old
+-----
+A: Q1
+*: Q2
+</pre>
+:::
+
+
+::::
+::::::
