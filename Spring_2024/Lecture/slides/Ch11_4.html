@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold and Fred">
-  <meta name="dcterms.date" content="2023-11-20">
-  <title>Token Searches</title>
+  <meta name="dcterms.date" content="2024-04-15">
+  <title>Searching Algorithms</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,44 +35,51 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Token Searches</h1>
+  <h1 class="title">Searching Algorithms</h1>
   <p class="author">Jed Rembold and Fred</p>
-  <p class="date">November 20, 2023</p>
+  <p class="date">April 15, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Midterm grading almost done! Latest today!</li>
-<li>Enigma project is due <strong>tomorrow</strong></li>
-<li>Final project will be after returning from holiday</li>
-<li>Graphics Contest result will be announced on
-<strong>Monday</strong></li>
-<li>Faculty candidate talk today at TechByte: Time - 11:30, Ford 101
-<strong>Monday</strong></li>
+<li>Personal Project is due tonight at 10 pm!
+<ul>
+<li>If you are asking for extension, send me an email.
+<ul>
+<li>I will check to see you have not used your 3 chances before granting
+it.</li>
+</ul></li>
+</ul></li>
+<li>Project 5 <strong>Adventure</strong> guidelines is posted.
+<ul>
+<li>Due on <strong><em>Monday 29th of April at 10 pm</em></strong>
+(i.e., exactly 2 weeks from now!)</li>
+<li>You <strong>Can</strong> work with a partner on this project. Both
+partners will earn the same grade.</li>
+</ul></li>
 <li>Polling: <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
-<!--
-## Review Question!
-
-::::cols
-:::col
-The two classes to the right mimic a bit of what might occur in the course of the Adventure Project. What python data type is `ANS`?
-
-:::::poll
-#. A String
-#. An AdvObject
-#. An AdvLocation
-#. A List
-:::::
-
-
-:::
-:::col
-
-
-```{.python style='max-height:1000px; font-size:.6em;'}
-class AdvObject:
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
+</ul>
+</section>
+<section id="review-question" class="slide level2">
+<h2>Review Question!</h2>
+<div class="cols">
+<div class="col">
+<p>The two classes to the right mimic a bit of what might occur in the
+course of the Adventure Project. What python data type is
+<code class="python">ANS</code>?</p>
+<div class="poll">
+<ol>
+<li>A String</li>
+<li>An AdvObject</li>
+<li>An AdvLocation</li>
+<li>A List</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python" style="max-height:1000px; font-size:.6em;">class AdvObject:
     def __init__(self, name, loc):
         self.name = name
         self.loc = loc
@@ -93,113 +100,54 @@ B = AdvObject("Torch", "RA")
 RA = AdvLocation("Room A")
 RA.store(A)
 RA.store(B)
-ANS = RA.retrieve_top().get_loc()
-```
-:::
-::::
---></li>
-</ul>
-</section>
-<section id="abstract-data-types" class="slide level2">
-<h2>Abstract Data Types</h2>
-<ul>
-<li>Many object types have some aspect of storing information as their
-primary purpose</li>
-<li>Types that are instead defined largely by their behavior are called
-<em>abstract data types</em> or <em>ADT</em> s which have the following
-advantages
-<ul>
-<li>Simplicity. The internal representation is hidden from the
-client</li>
-<li>Flexibility. If the internal representation needs to be changed by
-the programmer, they can do so without breaking outside
-compatibility</li>
-<li>Security. Keeping the internal representation away from clients;
-prevents clients from directly altering values that may cause the type
-to behave unexpectedly</li>
-</ul></li>
-<li>Want to start to focus on how we can bring all these ideas together
-to define our own abstract types</li>
-</ul>
-</section>
-<section id="token-adt" class="slide level2">
-<h2>Token ADT</h2>
-<ul>
-<li>Think of ADT’s as a data type which helps to fulfill a particular
-objective or behavioral goal
-<ul>
-<li>They are little machines, packaged up inside a class</li>
-</ul></li>
-<li>Thinking back to our Pig Latin translation program:
-<ul>
-<li><code class="python">word_to_pig_latin</code> took a single word and
-translated into Pig Latin</li>
-<li>To translate an entire sentence, we would need code to break the
-sentence up into individual words, which we could then pass into
-<code class="python">word_to_pig_latin</code></li>
-</ul></li>
-<li>The latter is an example of something that comes up often in
-computer science: breaking a larger thing into particular smaller chunks
-<ul>
-<li>These “chunks” can really be anything, so the more general term
-computer scientists use is a <em>token</em></li>
-</ul></li>
-</ul>
-</section>
-<section id="a-token-scanner" class="slide level2">
-<h2>A Token Scanner</h2>
-<ul>
-<li>A class that plucked out individual tokens might be called a
-<em>token scanner</em></li>
-<li>What would a client want from a token scanner?
-<ul>
-<li>A way to pass in the necessary input</li>
-<li>A way to retrieve the next individual token</li>
-<li>A way to know when there are no more tokens</li>
-<li>Maybe a way to tailor what tokens are desired</li>
-</ul></li>
-<li>These requirements help inform what methods should be incorporated
-into a token scanner class!
-<ul>
-<li>Still need to determine what internal attributes or method might be
-needed</li>
-</ul></li>
-</ul>
-</section>
-<section id="token-scanner-design" class="slide level2">
-<h2>Token Scanner Design</h2>
-<ul>
-<li>Frequently, specific wants or objectives make for good methods to
-include in the token scanner</li>
-<li>Chapter 10 includes an example of a common implementation</li>
-<li>Exports 4 main methods:
-<ol>
-<li><code class="python">scanner.set_input(str)</code>
-<ul>
-<li>Sets the input of the token scanner to the specified string or input
-stream</li>
-</ul></li>
-<li><code class="python">scanner.next_token()</code>
-<ul>
-<li>Returns the next token from the stream, or
-<code class="python">""</code> at the end</li>
-</ul></li>
-<li><code class="python">scanner.has_more_tokens</code>
-<ul>
-<li>Returns <code class="python">True</code> if more tokens exist,
-<code class="python">False</code> otherwise</li>
-</ul></li>
-<li><code class="python">scanner.ignore_whitespace()</code>
-<ul>
-<li>Customization option which tells the scanner to ignore whitespace
-characters</li>
-</ul></li>
-</ol></li>
-</ul>
-</section>
-<section id="token-scanner-code" class="slide level2">
-<h2>Token Scanner Code</h2>
-<pre ><code class="python" style="max-height:900px; font-size:.6em; font-spacing:2em;" data-line-numbers="7-46|54-59|63-69|71-86|88-94|96-100|104-109"># File: tokenscanner.py
+ANS = RA.retrieve_top().get_loc()</code></pre>
+</div>
+</div>
+<!--
+## Abstract Data Types
+- Many object types have some aspect of storing information as their primary purpose
+- Types that are instead defined largely by their behavior are called _abstract data types_ or _ADT_ s which have the following advantages
+    - Simplicity. The internal representation is hidden from the client
+    - Flexibility. If the internal representation needs to be changed by the programmer, they can do so without breaking outside compatibility
+    - Security. Keeping the internal representation away from clients; prevents clients from directly altering values that may cause the type to behave unexpectedly
+- Want to start to focus on how we can bring all these ideas together to define our own abstract types
+
+
+## Token ADT
+-  Think of ADT's as a data type which helps to fulfill a particular objective or behavioral goal
+    - They are little machines, packaged up inside a class
+- Thinking back to our Pig Latin translation program:
+    - `word_to_pig_latin` took a single word and translated into Pig Latin
+    - To translate an entire sentence, we would need code to break the sentence up into individual words, which we could then pass into `word_to_pig_latin`
+- The latter is an example of something that comes up often in computer science: breaking a larger thing into particular smaller chunks
+    - These "chunks" can really be anything, so the more general term computer scientists use is a _token_
+
+## A Token Scanner
+- A class that plucked out individual tokens might be called a _token scanner_
+- What would a client want from a token scanner?
+    - A way to pass in the necessary input
+    - A way to retrieve the next individual token
+    - A way to know when there are no more tokens
+    - Maybe a way to tailor what tokens are desired
+- These requirements help inform what methods should be incorporated into a token scanner class!
+    - Still need to determine what internal attributes or method might be needed
+
+## Token Scanner Design
+- Frequently, specific wants or objectives make for good methods to include in the token scanner
+- Chapter 10 includes an example of a common implementation
+- Exports 4 main methods:
+    #. `scanner.set_input(str)`
+        - Sets the input of the token scanner to the specified string or input stream
+    #. `scanner.next_token()`
+        - Returns the next token from the stream, or `""` at the end
+    #. `scanner.has_more_tokens`
+        - Returns `True` if more tokens exist, `False` otherwise
+    #. `scanner.ignore_whitespace()`
+        - Customization option which tells the scanner to ignore whitespace characters
+
+## Token Scanner Code
+```{.python style='max-height:900px; font-size:.6em; font-spacing:2em;' data-line-numbers='7-46|54-59|63-69|71-86|88-94|96-100|104-109'}
+# File: tokenscanner.py
 
 """
 This file implements a simple version of a token scanner class.
@@ -307,23 +255,18 @@ class TokenScanner:
         Skips over any whitespace characters before the next token.
         """
         while self._cp < self._nch and self._source[self._cp].isspace():
-            self._cp += 1</code></pre>
-</section>
-<section id="using-tokenscanner" class="slide level2">
-<h2>Using <code class="python">TokenScanner</code></h2>
-<ul>
-<li>Need to initialize the token scanner object</li>
-<li>Generally keep looping as long as there are still tokens
-<ul>
-<li>Each iteration, get the latest token and then do something with
-it</li>
-</ul></li>
-</ul>
-</section>
-<section id="using-tokenscanner-in-piglatin" class="slide level2">
-<h2>Using <code class="python">TokenScanner</code> in
-<code class="python">PigLatin</code></h2>
-<pre ><code class="python" style="max-height:900px">from tokenscanner import TokenScanner
+            self._cp += 1
+```
+
+## Using `TokenScanner`
+- Need to initialize the token scanner object
+- Generally keep looping as long as there are still tokens
+    - Each iteration, get the latest token and then do something with it
+
+
+## Using `TokenScanner` in `PigLatin`
+```{.python style='max-height:900px'}
+from tokenscanner import TokenScanner
 
 def to_pig_latin(text):
     translation = ""
@@ -334,7 +277,9 @@ def to_pig_latin(text):
         if token.isalpha():
             token = word_to_pig_latin(token)
         translation += token
-    return translation</code></pre>
+    return translation
+```
+-->
 </section>
 <section id="searching-for-efficiency" class="slide level2">
 <h2>Searching for Efficiency</h2>
@@ -375,6 +320,28 @@ it is the one you desire</p>
     return -1</code></pre></li>
 </ul>
 </section>
+<section id="linear-search-from-english-words" class="slide level2">
+<h2>Linear Search from English Words</h2>
+<ul>
+<li>Assuming we would like to search for a word in the list of
+<code class="python">ENGLISH_WORDS</code></li>
+<li>The Python strategy using
+<code class="python">is_english_word</code> would below</li>
+</ul>
+<pre ><code class="python">def is_english_word(s):
+    s = s.lower()
+    for i in range(len(ENGLISH_WORDS)):
+        if s == ENGLISH_WORDS[i]:
+        return True
+    return False</code></pre>
+<ul>
+<li>The for loop begins at the beginning and continues until it comes to
+the end of the ENGLISH_WORDS array.</li>
+<li>The function returns <code class="python">True</code> when it finds
+the word in the array or, <code class="python">False</code> when it
+fails to find the word at the end of the for loop.</li>
+</ul>
+</section>
 <section id="searching-for-area-codes" class="slide level2">
 <h2>Searching for Area Codes</h2>
 <ul>
@@ -398,7 +365,7 @@ you can beat the computer at finding 503.
 <section id="linear-search-in-action" class="slide level2">
 <h2>Linear Search in Action</h2>
 <div class="fig-container" data-file="../images/d3/LinearSearch.html"
-data-style="width:100%; display:inline;" data-scroll="no">
+data-style="width:100%; display:inline;" data-scroll="yes">
 
 </div>
 </section>
@@ -419,7 +386,7 @@ direction and check again</li>
 <section id="racing-linear-search-again" class="slide level2">
 <h2>Racing Linear Search Again</h2>
 <div class="fig-container" data-file="../images/d3/LinearSearch_v2.html"
-data-style="width:100%; display:inline;" data-scroll="no">
+data-style="width:100%; display:inline;" data-scroll="yes">
 
 </div>
 </section>

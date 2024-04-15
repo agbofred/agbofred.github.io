@@ -1,7 +1,7 @@
 ---
-title: "Algorithm Analysis"
-author: Jed Rembold and Fred
-date: November 29, 2023
+title: "Searching Algorithm"
+author: Jed Rembold and Fred Agbo
+date: April 15, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -14,17 +14,14 @@ history: false
 ---
 
 ## Announcements
-- Project 5 due on ***Wednesday December 6th***. Partnering is possible but
-	- should be someone from this class or someone from your small section
-- For those interested! **Game Contest** will be posted today
-    - Due on __Friday 15th December__
-- I will dedicate this week Friday and next week to:
-    - reviewing the chapters and midterm exams 1 & 2
-	- providing final exam practice and guidelines
-- Final exam is **Mondays 11th December** 
-    - For those concerned, arrange with testing center ASAP & cc me
-    - Arrange to take the exam within that same week of Dec 11
+- Personal Project is due tonight at 10 pm!
+	- If you are asking for extension, send me an email. 
+		- I will check to see you have not used your 3 chances before granting it.
+- Project 5 __Adventure__ guidelines is posted.
+	- Due on ***Monday 29th of April at 10 pm***  (i.e., exactly 2 weeks from now!)
+	- You __Can__ work with a partner on this project. Both partners will earn the same grade. 
 - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+
 
 ## Review Question!
 
@@ -271,6 +268,22 @@ def to_pig_latin(text):
   	  return -1
   ```
 
+
+## Linear Search from English Words 
+- Assuming we would like to search for a word in the list of `ENGLISH_WORDS`
+- The Python strategy using `is_english_word` would below
+```python
+def is_english_word(s):
+	s = s.lower()
+ 	for i in range(len(ENGLISH_WORDS)):
+ 		if s == ENGLISH_WORDS[i]:
+ 		return True
+ 	return False
+```
+- The for loop begins at the beginning and continues until it comes to the end of the ENGLISH_WORDS array. 
+- The function returns `True` when it finds the word in the array or, `False` when it fails to find the word at the end of the for loop.
+
+
 ## Searching for Area Codes
 - To illustrate the efficiency of linear search, it can be helpful to work with a larger dataset
 - We'll look here at searching through potential US area codes to find that of Salem: 503
@@ -323,5 +336,4 @@ def binary_search(target, array):
 			rh = middle - 1
 	return -1
 ```
-## Sorting
-- Switch to the ppt slides
+

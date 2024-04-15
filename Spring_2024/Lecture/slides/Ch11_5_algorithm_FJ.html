@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold and Fred">
-  <meta name="dcterms.date" content="2023-11-29">
-  <title>Algorithm Analysis</title>
+  <meta name="author" content="Jed Rembold and Fred Agbo">
+  <meta name="dcterms.date" content="2024-04-15">
+  <title>Searching Algorithm</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,35 +35,28 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Algorithm Analysis</h1>
-  <p class="author">Jed Rembold and Fred</p>
-  <p class="date">November 29, 2023</p>
+  <h1 class="title">Searching Algorithm</h1>
+  <p class="author">Jed Rembold and Fred Agbo</p>
+  <p class="date">April 15, 2024</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Project 5 due on <strong><em>Wednesday December 6th</em></strong>.
-Partnering is possible but
+<li>Personal Project is due tonight at 10 pm!
 <ul>
-<li>should be someone from this class or someone from your small
-section</li>
+<li>If you are asking for extension, send me an email.
+<ul>
+<li>I will check to see you have not used your 3 chances before granting
+it.</li>
 </ul></li>
-<li>For those interested! <strong>Game Contest</strong> will be posted
-today
-<ul>
-<li>Due on <strong>Friday 15th December</strong></li>
 </ul></li>
-<li>I will dedicate this week Friday and next week to:
+<li>Project 5 <strong>Adventure</strong> guidelines is posted.
 <ul>
-<li>reviewing the chapters and midterm exams 1 &amp; 2</li>
-<li>providing final exam practice and guidelines</li>
-</ul></li>
-<li>Final exam is <strong>Mondays 11th December</strong>
-<ul>
-<li>For those concerned, arrange with testing center ASAP &amp; cc
-me</li>
-<li>Arrange to take the exam within that same week of Dec 11</li>
+<li>Due on <strong><em>Monday 29th of April at 10 pm</em></strong>
+(i.e., exactly 2 weeks from now!)</li>
+<li>You <strong>Can</strong> work with a partner on this project. Both
+partners will earn the same grade.</li>
 </ul></li>
 <li>Polling: <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
@@ -327,6 +320,28 @@ it is the one you desire</p>
     return -1</code></pre></li>
 </ul>
 </section>
+<section id="linear-search-from-english-words" class="slide level2">
+<h2>Linear Search from English Words</h2>
+<ul>
+<li>Assuming we would like to search for a word in the list of
+<code class="python">ENGLISH_WORDS</code></li>
+<li>The Python strategy using
+<code class="python">is_english_word</code> would below</li>
+</ul>
+<pre ><code class="python">def is_english_word(s):
+    s = s.lower()
+    for i in range(len(ENGLISH_WORDS)):
+        if s == ENGLISH_WORDS[i]:
+        return True
+    return False</code></pre>
+<ul>
+<li>The for loop begins at the beginning and continues until it comes to
+the end of the ENGLISH_WORDS array.</li>
+<li>The function returns <code class="python">True</code> when it finds
+the word in the array or, <code class="python">False</code> when it
+fails to find the word at the end of the for loop.</li>
+</ul>
+</section>
 <section id="searching-for-area-codes" class="slide level2">
 <h2>Searching for Area Codes</h2>
 <ul>
@@ -415,12 +430,6 @@ data-style="width:100%; display:inline;" data-scroll="no">
         else:
             rh = middle - 1
     return -1</code></pre>
-</section>
-<section id="sorting" class="slide level2">
-<h2>Sorting</h2>
-<ul>
-<li>Switch to the ppt slides</li>
-</ul>
 </section>
     </div>
   </div>
