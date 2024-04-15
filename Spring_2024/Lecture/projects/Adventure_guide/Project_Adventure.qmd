@@ -32,7 +32,7 @@ As per usual, you will submit this project through GitHub Classroom, and you can
 ```
 <br/>
 
-To allow for the possibility of partners, everyone will need to make a team when accepting the assignment, even if you are just going to be working on things solo. Once one partner has made the team, the other can join it. If you accidentally join a team you did not mean to, let Professor Rembold know, and they can see about getting you removed so that you can join another. Only join an existing team if you intend to work with that person! It can help if you name your teams based on the expected team member's names.
+To allow for the possibility of partners, everyone will need to make a team when accepting the assignment, even if you are just going to be working on things solo. Once one partner has made the team, the other can join it. If you accidentally join a team you did not mean to, let Professor Agbo know, and they can see about getting you removed so that you can join another. Only join an existing team if you intend to work with that person! It can help if you name your teams based on the expected team member's names.
 
 
 # Overview of the Adventure Game
