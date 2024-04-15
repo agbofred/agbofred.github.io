@@ -336,4 +336,40 @@ def binary_search(target, array):
 			rh = middle - 1
 	return -1
 ```
+## Sorting
+- Binary search only works on arrays in which the elements are ordered.
+	- The process of putting the elements into order is called _sorting_.
+- Lots of different sorting algorithms, which can vary substantially in their efficiency.
+- From an algorithms view, sorting is probably the most applicable algorithm we'll discuss in this course
+	- Organizing data makes it easier to digest that data, whether the data is being digested by other machines or by humans
+
+
+## Selection Sort
+- The easiest sorting algorithm to explain is that of _selection sort_
+- Imagine your left hand keeping track of where you were in the array, and your right hand scanning through and finding the next smallest value to move to that location each iteration
+
+```python
+def selection_sort(array):
+	for lh in range(len(array)):
+		rh = lh
+		for i in range(lh+1, len(array)):
+			if array[i] < array[rh]:
+				rh = i
+		array[lh], array[rh] = array[rh], array[lh]
+```
+
+## Following Selection Sort
+```{.python data-line-numbers='1-9|2|3|4|5|4|5|4|5|6|4|5|4|5|4|5|4|5|4|5|6|4|4|7|2|3|4|1-9'}
+def selection_sort(array):
+	for lh in range(len(array)):
+		rh = lh
+		for i in range(lh+1, len(array)):
+			if array[i] < array[rh]:
+				rh = i
+		array[lh], array[rh] = array[rh], array[lh]
+L = [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+selection_sort(L)
+```
+
+<div class="fig-container" data-file="../images/d3/SelectionSort.html" data-scroll="no", data-style="width:90%; display:inline;"></div>
 

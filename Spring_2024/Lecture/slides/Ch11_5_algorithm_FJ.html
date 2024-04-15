@@ -431,6 +431,55 @@ data-style="width:100%; display:inline;" data-scroll="no">
             rh = middle - 1
     return -1</code></pre>
 </section>
+<section id="sorting" class="slide level2">
+<h2>Sorting</h2>
+<ul>
+<li>Binary search only works on arrays in which the elements are
+ordered.
+<ul>
+<li>The process of putting the elements into order is called
+<em>sorting</em>.</li>
+</ul></li>
+<li>Lots of different sorting algorithms, which can vary substantially
+in their efficiency.</li>
+<li>From an algorithms view, sorting is probably the most applicable
+algorithm we’ll discuss in this course
+<ul>
+<li>Organizing data makes it easier to digest that data, whether the
+data is being digested by other machines or by humans</li>
+</ul></li>
+</ul>
+</section>
+<section id="selection-sort" class="slide level2">
+<h2>Selection Sort</h2>
+<ul>
+<li>The easiest sorting algorithm to explain is that of <em>selection
+sort</em></li>
+<li>Imagine your left hand keeping track of where you were in the array,
+and your right hand scanning through and finding the next smallest value
+to move to that location each iteration</li>
+</ul>
+<pre ><code class="python">def selection_sort(array):
+    for lh in range(len(array)):
+        rh = lh
+        for i in range(lh+1, len(array)):
+            if array[i] < array[rh]:
+                rh = i
+        array[lh], array[rh] = array[rh], array[lh]</code></pre>
+</section>
+<section id="following-selection-sort" class="slide level2">
+<h2>Following Selection Sort</h2>
+<pre ><code class="python" data-line-numbers="1-9|2|3|4|5|4|5|4|5|6|4|5|4|5|4|5|4|5|4|5|6|4|4|7|2|3|4|1-9">def selection_sort(array):
+    for lh in range(len(array)):
+        rh = lh
+        for i in range(lh+1, len(array)):
+            if array[i] < array[rh]:
+                rh = i
+        array[lh], array[rh] = array[rh], array[lh]
+L = [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+selection_sort(L)</code></pre>
+<div class="fig-container" data-file="../images/d3/SelectionSort.html" data-scroll="no", data-style="width:90%; display:inline;"></div>
+</section>
     </div>
   </div>
 
