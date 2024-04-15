@@ -17,9 +17,13 @@ history: false
 - Personal Project is due tonight at 10 pm!
 	- If you are asking for extension, send me an email. 
 		- I will check to see you have not used your 3 chances before granting it.
-- Project 5 __Adventure__ guidelines is posted.
-	- Due on ***Monday 29th of April at 10 pm***  (i.e., exactly 2 weeks from now!)
+- Project 5 __Adventure__ guidelines is posted. Due on ***Monday 29th April at 10 pm*** 
 	- You __Can__ work with a partner on this project. Both partners will earn the same grade. 
+	- To accept this project, __you must great a team__ ***even if you are not working with a partner***
+	- If you are working with a partner, One person create the term, the second will join 
+	- Otherwise, use your regular GitHub username as the team name
+- __NO CLASS on Wednesday this week__ due to SSRD program 
+	- However, the section meeting will hold. Please try to attend!
 - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
 
 
