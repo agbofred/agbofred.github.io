@@ -1,7 +1,7 @@
 ---
 title: "Chapters 1-3,7 Review "
 author: Fred Agbo
-date: December 1, 2023
+date: April 24, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -14,15 +14,13 @@ history: false
 ---
 
 ## Announcements
-- Project 5 is due on ***Wednesday December 6th***. 
-- For those interested! **Game Contest**, instruction is posted on canvas
-    - Due on __Friday 15th December__. ***NO EXTENSION***
-- Final exam is **Mondays 11th December** ***at 7:30 am - 10am***
+- Project 5 is due on ***Monday April 29th***. 
+- Final exam is **Tuesday 7th May** ***at 2pm - 5pm***
     - Venue is this same hall
     - For those concerned, arrange with testing center ASAP & cc me
-    - Arrange to take the exam within that same week of Dec 11
+    - Arrange to take the exam within that same week of May 7th
 - __Course Evaluation__, email from Kelley Strawn is sent to everyone
-    - 15 minutes is reserved to fill out the form after exams
+    - 15 minutes is reserved today to fill out the form.
 
 
 ## CH-1: Data Types
@@ -87,7 +85,7 @@ Function | Description
 
 ## Boolean Operators Precedence 
 - Logical operators act on Boolean pairings
-
+	
 	Operator | Description
 	---|---
 	`A and B` | True if both terms True, False otherwise
@@ -95,13 +93,13 @@ Function | Description
 	`not A` | True if A False, False if A True (opposite)
 - Order of operations follows parentheses and then proceeds left to right
 - Careful that `or` is still `True` if both options are `True` 
-- Similarly, careful with combining `not` with `and` and `or`
-- See the expressions below: `True ==1` and `False==0` 
+	- Similarly, careful with combining `not` with `and` and `or`
+	- See the expressions below: `True ==1` and `False==0` 
 ```python
 a,b,c= 2,True, False
-print(a + b)
-# >>>3
+print(a + b)   # >>>3
 ```
+
 ## Looping: The `range()` iterable
 - Need an easy way to produce or describe a range of numeric values
 - The built-in `range()` function handles this and produces the needed iterable object
