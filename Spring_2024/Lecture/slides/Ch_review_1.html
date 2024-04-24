@@ -49,6 +49,7 @@
 5pm</em></strong>
 <ul>
 <li>Venue is this same hall</li>
+<li>More about the final on Monday next week</li>
 <li>For those concerned, arrange with testing center ASAP &amp; cc
 me</li>
 <li>Arrange to take the exam within that same week of May 7th</li>
@@ -59,6 +60,33 @@ to everyone
 <li>15 minutes is reserved today to fill out the form.</li>
 </ul></li>
 </ul>
+</section>
+<section id="review-question" class="slide level2"
+data-notes="Solution: B">
+<h2 data-notes="Solution: B">Review Question</h2>
+<ul>
+<li>Consider this Bubble Sort algorithm implementation. What is it’s
+asymptotic time complexity?</li>
+</ul>
+<pre ><code class="python">def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+test_array = [64, 34, 25, 12, 22, 11, 90]
+sorted_array = bubbleSort(test_array)
+print("Sorted array:", sorted_array)
+</code></pre>
+<div class="hpoll">
+<ol>
+<li>O(n)</li>
+<li>O(n<sup>2</sup>)</li>
+<li>O(nlog<sub>2</sub>n)</li>
+<li>O(n<sup>3</sup>)</li>
+</ol>
+</div>
 </section>
 <section id="ch-1-data-types" class="slide level2">
 <h2>CH-1: Data Types</h2>

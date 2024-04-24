@@ -17,11 +17,34 @@ history: false
 - Project 5 is due on ***Monday April 29th***. 
 - Final exam is **Tuesday 7th May** ***at 2pm - 5pm***
     - Venue is this same hall
+	- More about the final on Monday next week
     - For those concerned, arrange with testing center ASAP & cc me
     - Arrange to take the exam within that same week of May 7th
 - __Course Evaluation__, email from Kelley Strawn is sent to everyone
     - 15 minutes is reserved today to fill out the form.
 
+
+## Review Question {data-notes="Solution: B"} 
+- Consider this Bubble Sort algorithm implementation. What is it's asymptotic time complexity?
+```python
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+test_array = [64, 34, 25, 12, 22, 11, 90]
+sorted_array = bubbleSort(test_array)
+print("Sorted array:", sorted_array)
+
+```
+:::{.hpoll}
+#. O(n)
+#. O(n<sup>2</sup>)
+#. O(nlog<sub>2</sub>n)
+#. O(n<sup>3</sup>)
+:::
 
 ## CH-1: Data Types
 - Generally, the data processed by computers can take on many forms

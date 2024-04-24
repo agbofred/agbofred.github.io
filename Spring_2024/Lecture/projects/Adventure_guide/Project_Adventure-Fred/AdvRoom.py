@@ -32,6 +32,7 @@ class AdvRoom:
         self._shortdesc = shortdesc
         self._longdesc = longdesc
         self._passages = passages
+        self._visited = False
 
     def get_name(self):
         """Returns the name of this room."""
@@ -48,6 +49,12 @@ class AdvRoom:
     def get_passages(self):
         """Returns the dictionary mapping directions to names."""
         return self._passages
+    def set_visited(self, value):
+        """Set the variable for the visited room to booolean ."""
+        self._visited = value
+    def has_been_visited(self):
+        """Set the variable for the visited room to booolean ."""
+        return self._visited
 
 # Method to read a room from a file
 

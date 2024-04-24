@@ -60,11 +60,23 @@ class AdvGame:
 
     def run(self):
         """Plays the adventure game stored in this object."""
+        def check_room_visited():
+            if room.has_been_visited():
+                print(room.get_short_description())
+            else:
+                for line in room.get_long_description():
+                    print(line)
+                room.set_visited(True)
+                
+        
         current = "START"
+        new_room_entered =True
         while current != "EXIT":
             room = self.get_room(current)
-            for line in room.get_long_description():
-                print(line)
+            if new_room_entered:
+                check_room_visited()
+                new_room_entered = False
+
             response = input("> ").strip().upper()
             passages = room.get_passages()
             next_room = passages.get(response, None)
@@ -74,6 +86,7 @@ class AdvGame:
                 print("I don't understand that response.")
             else:
                 current = next_room
+                new_room_entered =True
     
 # Constants
 
