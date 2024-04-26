@@ -15,7 +15,7 @@ history: false
 
 ## Announcements
 - Project 5 is due on ***Monday April 29th***. 
-- Final exam is **Tuesday 7th/Monday 7th May** ***at 2pm - 5pm***
+- Final exam is **Monday 6th/Tuesday 7th May** ***at 2pm - 5pm***
     - Venue is this same hall
 	- More about the final on Monday next week
     - For those concerned, arrange with testing center ASAP & cc me
