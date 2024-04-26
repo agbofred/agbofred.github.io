@@ -1,7 +1,7 @@
 ---
 title: "Chapters 4-6,8 Review "
 author: Fred Agbo
-date: December 4, 2023
+date: April 26, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -12,7 +12,7 @@ hash: true
 history: false
 
 ---
-
+<!--
 ## Announcements
 - Project 5 is due on ***Wednesday 6th December***. 
 - **Game Contest**, is due on __Friday 15th December__. ***NO EXTENSION***
@@ -26,7 +26,48 @@ history: false
     - Arrange to take the exam within that same week of Dec 11
 - __Course Evaluation__: email from Kelley Strawn is sent to everyone
     - 15 minutes is reserved to fill out the form after exams
+-->
 
+## Announcements
+- Project 5 is due on ***Monday April 29th***. 
+- Final exam is **Tuesday 7th/Monday 7th May** ***at 2pm - 5pm***
+    - Venue is this same hall
+	- More about the final on Monday next week
+    - For those concerned, arrange with testing center ASAP & cc me
+    - Arrange to take the exam within that same week of May 7th
+- __Course Evaluation__, thanks to those that filled it out already
+	- If not yet, kindly seearch your email box for a message from Kelley Strawn ***kstrawn@willamette.edu***
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+
+
+## Understanding Check
+::::cols
+:::col
+```python
+def f(x,y):
+	return x**2 + y
+
+def g(z,n):
+	x = 2
+	for i in range(n):
+		x += z(i,n)
+	return x
+
+print(g(f,2))
+```
+:::
+:::col
+What value will be printed to the screen when the code to the left is run?
+
+:::::{.poll}
+#. 2
+#. 4
+#. 7
+#. This will give an error
+:::::
+
+:::
+::::
 
 ## CH-4: The Portable Graphics Library
 - Built atop Tkinter
@@ -400,4 +441,3 @@ block/.style = {draw, MGreen, outer sep=0pt, font=\Large, minimum size=1cm},
   # Then you can do whatever you want with the list of lines
   ```
 
-## Midterm 1 review
