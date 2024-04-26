@@ -12,6 +12,18 @@ hash: true
 history: false
 
 ---
+
+## Announcements
+- Project 5 is due on ***Monday April 29th***. 
+- Final exam is **Tuesday 7th/Monday 7th May** ***at 2pm - 5pm***
+    - Venue is this same hall
+	- More about the final on Monday next week
+    - For those concerned, arrange with testing center ASAP & cc me
+    - Arrange to take the exam within that same week of May 7th
+- __Course Evaluation__, thanks to those that filled it out already
+	- If not yet, kindly seearch your email box for a message from Kelley Strawn ***kstrawn@willamette.edu***
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+
 <!--
 ## Announcements
 - Project 5 is due on ***Wednesday 6th December***. 
@@ -27,18 +39,6 @@ history: false
 - __Course Evaluation__: email from Kelley Strawn is sent to everyone
     - 15 minutes is reserved to fill out the form after exams
 -->
-
-## Announcements
-- Project 5 is due on ***Monday April 29th***. 
-- Final exam is **Tuesday 7th/Monday 7th May** ***at 2pm - 5pm***
-    - Venue is this same hall
-	- More about the final on Monday next week
-    - For those concerned, arrange with testing center ASAP & cc me
-    - Arrange to take the exam within that same week of May 7th
-- __Course Evaluation__, thanks to those that filled it out already
-	- If not yet, kindly seearch your email box for a message from Kelley Strawn ***kstrawn@willamette.edu***
-- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
-
 
 ## Understanding Check
 ::::cols
