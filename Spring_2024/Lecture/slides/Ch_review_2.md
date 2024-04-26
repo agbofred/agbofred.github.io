@@ -206,6 +206,8 @@ gw = GWindow(width, height)
 - The parameter `event` given to the callback function is a special data structure called a _mouse event_, which contains details about the specifics of the event that triggered the action.
 
 
+## Types of Events
+
 | Name | Description
 ---:|:-----
 `"click"` | The user clicks the mouse in the window
