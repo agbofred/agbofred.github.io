@@ -35,7 +35,7 @@ history: false
         - data structures: strings, lists, dictionary, tuple, reading and writing files
 		- Asymptotic time complexity of algorithms
         - simple functions for interactive graphics. 
-    - Go over the PS and Class Notes, Practice questions 
+    - Go over the PS and Class Notes, Practice questions (to be posted today)
 
 ## Final Exam Arrengement
 - Practice questions are posted on Canvas week 16 (did not cover all the topics)
