@@ -1,5 +1,5 @@
 ---
-title: "Chapters >=9 Review "
+title: "Chapters 10-12 Review "
 author: Fred Agbo
 date: April 29, 2024
 slideNumber: true
@@ -30,17 +30,15 @@ history: false
 - Final exam last for 2 hours 
     - Will be partially open exam. Same rules as midterm 1 exams
     - Basically covers 
-        - functions (program Reading/tracing)
+        - functions (program reading/tracing)
         - expressions and data representations
         - data structures: strings, lists, dictionary, tuple, reading and writing files
 		- Asymptotic time complexity of algorithms
         - simple functions for interactive graphics. 
-    - Go over the PS and Class Notes, Practice questions (to be posted today)
-
-## Final Exam Arrengement
-- Practice questions are posted on Canvas week 16 (did not cover all the topics)
-- strongly recommend that you attend the session this week and ask questions where you're confused 
-- Do well to carefully ***read and follow all instruction***. 
+    - Go over the PS and Class Notes, Practice questions
+	- Practice questions will be posted today on Canvas week 16 (did not cover all the topics!)
+	- strongly recommend that you attend the session this week and ask questions where you're confused 
+	- Do well to carefully ***read and follow all instruction***. 
 
 ## CH-10: Tuple
 - In Python, the simplest strategy for representing a record uses the built-in type _tuple_
