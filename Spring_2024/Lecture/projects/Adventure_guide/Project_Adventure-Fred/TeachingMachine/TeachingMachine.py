@@ -18,8 +18,8 @@ def choose_course():
             filename = input("Enter course name: ")
             with open(filename + ".txt") as f:
                 return read_course(f)
-        except IOError:
-            print("Please enter a valid course name.")
+        except IOError as e:
+            print("Please enter a valid course name.", e)
 
 # Startup code
 

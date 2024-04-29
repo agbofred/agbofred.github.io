@@ -1,7 +1,7 @@
 ---
 title: "Chapters >=9 Review "
 author: Fred Agbo
-date: December 6, 2023
+date: April 29, 2024
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,31 +15,32 @@ history: false
 
 ## Announcements
 - Project 5 is due ***today***. 
-- **Game Contest**, is due on __Friday 15th December__. ***NO EXTENSION***
-- On Monday after the exam, we’ll have a class picture and leave you time to fill out the class evaluation which may take less than 15 minutes. 
+- Final exam is next week **Monday 6th/Tuesday 7th May** ***at 2pm - 5pm***
+    - Venue is this same hall
+    - For those concerned, arrange with testing center ASAP & cc me
+    - Arrange to take the exam within that same week of May 6th
+- __Course Evaluation__, thanks to those that filled it out already
+	- If not yet, kindly seearch your email box for a message from Kelley Strawn ***kstrawn@willamette.edu***
+- On the exam day, we’ll have a class picture 
     - So, please wait behind after completing your exams 
     - Those taking exams elsewhere at different time could also show up!
-    
 - No Poll, no attendance! 
    
 ## Final Exam Arrengement
-- Final exam is **Next week Mondays 11th December** ***at 7:00 pm - 10 pm***
-    - Venue is ***Ford Hall 102***, our usual lecture hall!
-    - Last for 2 hours 
-    - Remember to wait for the class picture & filling out the evaluation form
-    - Will be open exam. Same rules as midterm 1 & 2 exams
+- Final exam last for 2 hours 
+    - Will be partially open exam. Same rules as midterm 1 exams
     - Basically covers 
-        - functions (Reading/tracing programs)
+        - functions (program Reading/tracing)
         - expressions and data representations
-        - data structures: strings, lists, dictionary, reading and writing files
+        - data structures: strings, lists, dictionary, tuple, reading and writing files
+		- Asymptotic time complexity of algorithms
         - simple functions for interactive graphics. 
     - Go over the PS and Class Notes, Practice questions 
 
 ## Final Exam Arrengement
-- Practice questions are posted on Canvas week 15 (did not cover all the topics)
+- Practice questions are posted on Canvas week 16 (did not cover all the topics)
 - strongly recommend that you attend the session this week and ask questions where you're confused 
-- For those concerned, arrange with testing center ASAP & cc me
-- Arrange to take the exam within that same week of Dec 11
+- Do well to carefully ***read and follow all instruction***. 
 
 ## CH-10: Tuple
 - In Python, the simplest strategy for representing a record uses the built-in type _tuple_
@@ -70,6 +71,7 @@ history: false
 - If using tuples, you can make programs more readable by using a _destructuring assignment_, which breaks a tuple into named components:
 
   ```python
+  employee = ("Bob Cratchit", "clerk", 15)
   name, title, salary = employee
   ```
 
@@ -340,9 +342,9 @@ clerk = Employee('Bob Cratchit', 'clerk', 15)
 - Dictionaries though are **unordered**, so it is not a numeric index that goes inside the `[ ]`
 - You instead use the key directly to select corresponding values:
   ```python-repl
-  >>> A = {'Jack': 12, 'Jill': 13}['Jack']
+  >>> A = {'Jack': 12, 'Jill': 17}['Jack']
   >>> print(A)
-  13
+  12
   >>> B = {True: 13, 0: 'Why?'}[0]
   >>> print(B)
   Why?
@@ -531,4 +533,4 @@ d: RemQ2
 ::::::
 
 
-## Midterm 2 review
+
