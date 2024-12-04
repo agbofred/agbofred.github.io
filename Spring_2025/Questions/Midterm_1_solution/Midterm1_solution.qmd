@@ -1,0 +1,140 @@
+---
+title: "Midterm-1 Review"
+subtitle: "2024"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - ../projects_light.scss
+      dark: 
+        - darkly
+        - ../projects_dark.scss
+    smooth-scroll: true
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: ./Images/banner.png
+    title-block-banner-color: black
+---
+## Questions 1a-1d
+For each of the below expressions, write out both the value of the expression in the box provided. If the expression results in an error, simply type "Error" in the box. You can assume that the constant ALPHABET has already been defined earlier in the code as
+
+ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+
+and has the internal representation shown below, where I’ve labeled both positive and negative indices.<br>
+![](./Alphabet.png)
+
+(1a).    ```(9 - 3)  +  25  %  5  +  3  *  4  -  1  *  (4  -  3  **  3  +  5)  +  23  //  7```
+
+`Ans: 39`
+
+(1b).    2  +  3 ** 2  *  2  //  2  **  2  -  2  %  2
+
+`And: 6`
+
+(1c).  not (12  <  6  -  5  or  9 //  3  ==  3)
+
+`Ans: False`
+
+(1d).  ALPHABET [12:15:2]  +  ALPHABET[18::5]  +  ALPHABET[-8]
+
+`Ans: MOSXI`
+
+
+
+# Questions 2a-2c
+(2a).     Given the program
+``` python
+def problem1(s):
+    r = ""
+    for i in range(len(s)):
+        if i % 2 != 0:
+            r += s[i]
+        else :
+            r = s[i] + r
+    return r
+
+if __name__ == '__main__ ':
+    print(problem1("ressets"))
+```
+What will be printed to the terminal after the program execute?
+`Ans: sesrest`
+
+(2b).      Consider the function below. What value will be printed to the terminal?
+```python
+def func(a, b=5, c= True): 
+    if c:
+        return a + c
+    else:
+        return a * b
+print(func(5,True,False))
+```
+`Ans: 5`
+
+(2c). Determine what will be printed to the terminal after the program below executes
+```python
+def prob2a(s):
+    r = 0
+    new = ""
+    for i in range(len(s)):
+        if s[i].isspace() and is_english_word(s[r:i]):
+            new += prob2b(s[r:i])
+            r = i + 1
+    new += prob2b(s[r:])
+    return new
+
+def prob2b(y):
+    done = False
+    for r in y[:: -1]:
+        if done :
+            return r
+        if r. lower() in "aeiou":
+            done = True
+    return " "
+if __name__ == "__main__":
+    print(prob2a("Hit tie why wish noon rip lord ding"))
+```
+`Ans: Hi world`
+
+## Question 3
+
+(3).  In many word puzzles or games, it is frequently desirable or useful to come up with new words which differ from a current word by only a single letter. For instance, if the starting word was boat, then words like moat, boot, and boar all would differ by only a single letter. The resulting word must be the same length as the original: imagine that you could just change a single letter to a different letter.
+
+Here your task is to write a function called one_off that takes a single argument which will be the word as a string. Your function should then print out every word in the English language which differs from the input word by a single letter. At the end, it should return the number of words that were found.
+
+The below would be one example of some output:
+
+
+>>> print(one_off("monkey"))
+
+donkey
+
+honkey
+
+2
+
+
+You are free to assume that list of ENGLISH_WORDS are already imported from english.py
+
+```python
+# Here is my version of the solution
+def one_off(word):
+    counter=0
+    for w in ENGLISH_WORDS:
+        if len(word)== len(w):
+            count = 0
+            for i in range(len(w)):
+                if w[i]== word[i]:
+                    count +=1
+            if count == len(word)-1:
+                print(w)
+                counter +=1
+    return counter
+            
+if __name__ == "__main__":
+    print(one_off("monkey"))
+```

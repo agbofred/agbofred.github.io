@@ -1,0 +1,30 @@
+Week: 22
+--------
+Mon: Workday
+Tue: Workday
+Wed: Workday
+Thu: Workday
+Fri: Workday
+Sat: Weekend
+Sun: Weekend
+
+Week: 23
+--------
+Mon: Workday
+Tue: Independence Day!
+Wed: Workday
+Thu: Workday
+Fri: Workday
+Sat: Weekend
+Sun: Weekend
+
+Week: 24
+--------
+Mon: Workday
+Tue: Workday
+Wed: Workday
+Thu: Workday
+Fri: Workday
+Sat: Weekend
+Sun: Weekend
+

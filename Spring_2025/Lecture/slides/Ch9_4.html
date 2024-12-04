@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2024-03-18">
+  <title>Construction Zone</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Construction Zone</h1>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">March 18, 2024</p>
+</section>
+
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li>Problem sets 5 is due <strong>tomorrow at 10pm</strong>.</li>
+<li>Midterm 2 is on <strong>Friday, and it will last for an hour (class
+time)</strong>
+<ul>
+<li>No assignment this week. <strong><em>Just practice chapter 6
+exercises to prepare for the exams</em></strong></li>
+<li>It is totally open exam and could be taken from anywhere</li>
+</ul></li>
+<li>Week 12 is Imageshop project and Week 13 is your personal project
+<ul>
+<li>You might want to use part of the break to engage with your personal
+project</li>
+</ul></li>
+<li>Polling: <a
+href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
+</ul>
+</section>
+<section id="recall" class="slide level2">
+<h2>Recall!</h2>
+<ul>
+<li><p>We could accomplish a more more general class attributes by
+passing arguments to our function:</p>
+<pre ><code class="python">def create_employee(name, title, salary):
+  emp = Employee()
+  emp.name = name
+  emp.title = title
+  emp.salary = salary
+  return emp</code></pre></li>
+<li><p>We could then use that as:</p>
+<pre ><code class="python">clerk = create_employee('Bob Cratchit', 'clerk', 15)
+boss = create_employee(
+          'Ebeneezer Scrooge', 'founder', 1000
+          )</code></pre></li>
+</ul>
+</section>
+<section id="constructors" class="slide level2">
+<h2>Constructors</h2>
+<ul>
+<li>While the previous method works, it is not ideal
+<ul>
+<li>Forces the client to tinker with the internal workings of the
+Employee</li>
+<li>Details of the data structure are the property of the
+implementation, not the client</li>
+</ul></li>
+<li>Better to add a method to the <code class="python">Employee</code>
+class called a <em>constructor</em>, which is responsible for
+initializing attributes to a newly created object
+<ul>
+<li>In Python, a constructor is created by defining a special function
+named <code class="python">__init__</code></li>
+<li>The constructor function is called automatically whenever a new
+object of that type is created</li>
+</ul></li>
+</ul>
+</section>
+<section id="know-thy-self" class="slide level2">
+<h2>Know Thy <code class="python">self</code></h2>
+<div>
+<ul>
+<li class="fragment">Moving the function into the Employee class has a
+problem:
+<ul>
+<li class="fragment">When we set attributes, they are specific to a
+given object</li>
+<li class="fragment">The class itself though is just a template, and not
+linked to a specific object</li>
+</ul></li>
+<li class="fragment">We need a general way within the class to refer to
+whatever object is being created
+<ul>
+<li class="fragment">The overwhelming convention in Python is to call
+this variable <code class="python">self</code></li>
+<li class="fragment">Whenever a new object is created, you could imagine
+that, for that object, Python replaces all of the
+<code class="python">self</code>s in the class with that object’s name
+<ul>
+<li class="fragment">This isn’t quite the order of what is happening,
+but it can help envision what <code class="python">self</code> is
+doing</li>
+</ul></li>
+</ul></li>
+<li class="fragment"><code class="python">self</code> is always the
+first parameter to the <code class="python">__init__</code> constructor
+<ul>
+<li class="fragment">Any other arguments provided are passed in as
+additional parameters afterwards</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="an-employee-constructor" class="slide level2">
+<h2>An Employee Constructor</h2>
+<pre ><code class="python">class Employee:
+    def __init__(self, name, title, salary):
+        self.name = name
+        self.title = title
+        self.salary = salary
+
+
+clerk = Employee('Bob Cratchit', 'clerk', 15)</code></pre>
+<ul>
+<li>Note that you do not need to provide an argument for
+<code class="python">self</code> when creating the object, Python
+supplies this reference automatically</li>
+<li>Viewing in PythonTutor can be helpful, as is shown <a
+href="https://pythontutor.com/render.html#code=class%20Employee%3A%0A%20%20%20%20def%20__init__%28self,%20name,%20title,%20salary%29%3A%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0A%20%20%20%20%20%20%20%20self.title%20%3D%20title%0A%20%20%20%20%20%20%20%20self.salary%20%3D%20salary%0A%0A%0Aclerk%20%3D%20Employee%28&#39;Bob%20Cratchit&#39;,%20&#39;clerk&#39;,%2015%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">here</a></li>
+</ul>
+</section>
+<section id="understanding-check" class="slide level2">
+<h2>Understanding Check</h2>
+<div class="cols">
+<div class="col">
+<p>What is printed out on the final line of code to the right?</p>
+<div class="poll">
+<ol>
+<li><code class="no-highlight">Honda red 2006</code></li>
+<li><code class="no-highlight">Honda blue 2006</code></li>
+<li><code class="no-highlight">Toyota blue 2008</code></li>
+<li><code class="no-highlight">Honda red 2008</code></li>
+</ol>
+</div>
+</div>
+<div class="col" style="flex-grow:2">
+<pre ><code class="python" style="max-height:800px">class Car:
+    def __init__(self, color, year):
+        self.color = color
+        self.year = year
+        self.make = 'Toyota'
+
+A = Car('blue', 2008)
+B = Car('red', 2006)
+A.make = 'Honda'
+A.year = B.year
+print(A.make, A.color, A.year)</code></pre>
+</div>
+</div>
+</section>
+<section id="whats-your-method" class="slide level2">
+<h2>What’s your Method?</h2>
+<ul>
+<li><p>Most classes define additional functions called methods to allow
+clients to read or update attributes or manipulate the object</p></li>
+<li><p>Methods look like a normal function definition but will
+<strong>always</strong> declare the parameter
+<code class="python">self</code> at the beginning of the parameter
+list</p>
+<ul>
+<li>This is true even if the method has no other parameters</li>
+</ul></li>
+<li><p>Methods are defined in the body of the class and would thus look
+something like:</p>
+<pre ><code class="python">def method_name (self, other_parameters):
+  ...body of the method...</code></pre></li>
+<li><p>For example</p>
+<pre ><code class="python">def give_raise(self, amount):
+  self.salary += amount</code></pre></li>
+</ul>
+</section>
+<section id="accessing-and-using-methods" class="slide level2">
+<h2>Accessing and Using Methods</h2>
+<ul>
+<li>After definition, there are two mains ways you can access and use
+the method:
+<ul>
+<li><strong>Dot Notation (Conventional)</strong>
+<ul>
+<li><p>Python sets <code class="python">self</code> to be a reference to
+the <em>receiver</em>, which is the object to which the method is
+applied</p>
+<pre ><code class="python">clerk = Employee('Bob', 'clerk', 15)
+clerk.give_raise(15)</code></pre></li>
+</ul></li>
+<li><strong>Function Notation</strong>
+<ul>
+<li><p>You retrieve the method from the class itself, and then provide
+self manually</p>
+<pre ><code class="python">clerk = Employee('Bob', 'clerk', 15)
+Employee.give_raise(clerk, 15)</code></pre></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="visualization-summary" class="slide level2">
+<h2>Visualization Summary</h2>
+<ul>
+<li>To summarize in a visual manner, we can look at everything together
+on <a
+href="http://pythontutor.com/live.html#code=class%20Employee%3A%0A%20%20%20%20def%20__init__%28self,%20name,%20title,%20salary%29%3A%0A%20%20%20%20%20%20%20%20self.name%20%3D%20name%0A%20%20%20%20%20%20%20%20self.title%20%3D%20title%0A%20%20%20%20%20%20%20%20self.salary%20%3D%20salary%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20def%20give_raise%28self,%20amount%29%3A%0A%20%20%20%20%20%20%20%20current%20%3D%20self.salary%0A%20%20%20%20%20%20%20%20self.salary%20%2B%3D%20amount%0A%20%20%20%20%20%20%20%20%0A%0Aclerk%20%3D%20Employee%28%22Bob%20Cratchit%22,%20%22clerk%22,%2015%29%0Aboss%20%3D%20Employee%28%22Scrooge%22,%20%22founder%22,%201000%29%0A%0Aclerk.give_raise%2820%29&amp;cumulative=false&amp;curInstr=1&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-live.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">PythonTutor</a></li>
+</ul>
+<p><img data-src="../images/ConstructorPythonTutor.png"
+style="width:50.0%" /></p>
+</section>
+<section id="getters-and-setters" class="slide level2">
+<h2>Getters and Setters</h2>
+<ul>
+<li><p>In the object-oriented model, the client is not supposed to
+muck-about with the object internals</p></li>
+<li><p>The implementation should therefore provide methods to retrieve
+desired attributes (called <em>getters</em>) or to make changes to
+desired attributes (called <em>setters</em>)</p></li>
+<li><p>Setting up getters and setters for the attribute
+<code class="python">salary</code> might look like:</p>
+<pre ><code class="python">def get_salary(self):
+  return self.salary
+
+def set_salary(self, new_salary):
+  self.salary = new_salary</code></pre></li>
+<li><p>Getters are far more common than setters, as you don’t always
+want the client to have the freedom to change attributes on a
+whim</p></li>
+</ul>
+</section>
+<section id="representation" class="slide level2">
+<h2>Representation</h2>
+<ul>
+<li><p>Printing out an object that you just created as an instance of a
+custom class will look ugly:</p>
+<pre ><code class="python-repl">>>> C = Employee('Bob', 'clerk', 15)
+>>> print(C)
+<__main__.Employee object at 0x7f942ba13550></code></pre></li>
+<li><p>You can define special methods for a class that specify how your
+object should be converted to a string (or anything else really)</p>
+<ul>
+<li>All these special methods have double underscores before and after,
+and hence are frequently termed “dunder” (double underscore)
+methods</li>
+<li>You can the <code class="python">__str__</code> or
+<code class="python">__repr__</code> method to specify how your
+object</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-good-employee" class="slide level2">
+<h2>A Good Employee</h2>
+<pre ><code class="python" style="max-height:900px">class Employee:
+    def __init__(self, name, title, salary):
+        self.name = name
+        self.title = title
+        self.salary = salary
+
+    def __str__(self):
+        return f"{self.name} ({self.title}): {self.salary}"
+
+    def get_salary(self):
+        return self.salary
+
+    def set_salary(self, new_salary):
+        self.salary = new_salary</code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1200,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+Week: 50 
+--------
+Mon: Workday
+Tue: Workday
+Wed: Workday
+Thu: Workday
+Fri: Workday
+Sat: Weekend
+Sun: Weekend
+
+Week: 51 
+--------
+Mon: Workday
+Tue: Workday
+Wed: Workday
+Thu: Workday
+Fri: Workday
+Sat: Weekend
+Sun: Christmas eve
+
+Week: 52 
+--------
+Mon: Christmas holiday
+Tue: Boxing day holiday
+Wed: Workday
+Thu: Workday
+Fri: Workday
+Sat: Weekend
+Sun: New year eve
+

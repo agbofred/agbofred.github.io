@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+
+  .top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .top-menu a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .top-menu a:hover {
+    background-color: #555;
+  }
+  .content {
+    padding-top: 60px; /* Add padding to account for fixed menu */
+    /*padding-left: 30px; */
+    /*text-align: justify; */
+    max-width: 1800px; /* Adjust the width as needed */
+    padding: 30px 10px 10px 10px; /* Adjust the padding as needed */
+    text-align: justify; /* To center align content inside the container */
+  }
+  .two-column-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .column {
+    flex: 1;
+    padding: 20px;
+    border: 0px solid #ccc;
+    box-sizing: border-box;
+  }
+  .custom-list {
+    list-style:circle; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+    text-align: justify;
+  }
+
+  .custom-list li {
+    margin-bottom: 10px; /* Add spacing between items */
+  }
+  .footer {
+  background-color: #f2f2f2;
+  padding: 5px 0 15px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+}
+</style>
+<title>Fred's page</title>
+</head>
+<body>
+  <div class="top-menu">
+    <a href="index.html">Home</a>
+    <!--<a href="aboutme.html">About me</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a> -->
+  </div>
+
+  <div class="content">
+    <h1>Welcome to my website</h1>
+    <div class="two-column-container">
+      <div class="column">
+        <img src="images/fredprofile.jpg" width="200">
+          <p style="padding-left: 10px;"> <strong> Fred Agbo</strong>, PhD <em>(he/him)</em>
+            <br>Assistant Professor of Computer Science 
+            <br> Willamette University, Salem OR, 97301, USA <br>
+            fjagbo at willamette.edu 
+
+          </p>
+        </div>
+      <div class="column">
+        <div>
+          <h2>Biography</h2>
+          <ul class="custom-list">
+              <p>
+                Fred Agbo joined the School of Computing and Information Science, 
+                Willamette University in 2023 as an Assistant Professor of Computer Science. 
+                Before joining Willamette University, he worked as a University Lecturer at the School of Computing, 
+                University of Eastern Finland (UEF) in Joensuu, Finland. Fred completed his PhD degree from the same 
+                University of Eastern Finland in 2022, 
+                specializing in computing education and educational technology.
+
+              </p>
+          </ul>
+        </div>
+        <div>
+          <h2>Education</h2>
+          <ul class="custom-list">
+              <li>PhD in Computer Science, University of Eastern Finland - 2022</li>
+              <li>MSc in Computer Science, University of Ilorin - 2017</li>
+              <li>BSc in Computer Science, University of Jos - 2013</li>
+          </ul>
+        </div>
+      </div> 
+    </div>
+    <hr>
+    <div>
+      <h2>My Research Interest</h2>
+      <ul class="custom-list">
+          <li>	Computer Science Education </li>
+          <li>	Computational Thinking Education</li>
+          <li>	Human-Computer Interaction</li>
+          <li>	Smart Learning Environments</li>
+          <li>	Emerging Technology for Learning</li>
+          <li>	Virtual and Augmented Reality in Education</li>
+          <li>	AI and ML Education</li>
+      </ul>
+    </div>
+    <hr>
+    <h2>Courses</h2>
+    <div>
+        <table>
+            <tr>
+                <td style="width: 60%;">
+                  <div>
+                    <h3>Spring 2024</h3>
+                      <ul>
+                        <li>
+                          <a href="springintro.html" target="_blank"> <strong> Intro to programming with Python - CS 151</strong></a>
+                        </li>
+                        <li>
+                          <a href="#"> <strong>Full-Stack Web Development</strong></a> 
+                        </li>
+                      </ul>
+                  </div>
+                </td>
+                <td style="width: 60%;">
+                    <div>
+                      <h3>Fall 2024</h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 60%;">
+                  <div>
+                    <h3>Fall 2023</h3>
+                      <ul>
+                        <li><!--../pythonintro.html-->
+                          <a href="#" target="_blank"> <strong> Intro to programming with Python - CS 151</strong></a>
+                        </li>
+                        <li>
+                          <a href="#"> <strong> Human-Computer Interaction - CS 299 </strong></a>
+                        </li>
+                      </ul>
+                  </div>
+                </td>
+                <td style="width: 40%;">
+                  <div>
+                    <h3>Summer 2023</h3>
+                      <ul>
+                        <li>
+                          <a href="#"> <strong> Python for Data Science - CS 599 </strong></a>
+                        </li>
+                      </ul>
+                  </div>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <hr>
+    <h2>Publications (See link below)</h2>
+    <div>
+      <a href="https://scholar.google.com/citations?user=mSqmwdgAAAAJ&hl=en&oi=sra" target="_blank">Google Schoolar</a>
+        
+    </div>
+
+    <hr >
+    <div style="margin-bottom: 30px;">
+
+
+    </div>
+  </div>
+  <footer class="footer">
+    &copy; <span id="currentYear"></span> | Fred Agbo. All Rights Reserved.</p>
+  </footer>
+  <script>
+    const yearSpan = document.getElementById('currentYear');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+  </script>
+
+</body>
+</html>
