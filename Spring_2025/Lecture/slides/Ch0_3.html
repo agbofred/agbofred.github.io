@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-01-24">
+  <meta name="dcterms.date" content="2025-01-17">
   <title>Cleaver Karel</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,13 +37,13 @@
 <section id="title-slide">
   <h1 class="title">Cleaver Karel</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">January 24, 2024</p>
+  <p class="date">January 17, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 1 is due on <strong>Monday Jan. 29th @ 10pm</strong>!
+<li>Problem Set 1 is due on <strong>Tuesday Jan. 22nd @ 10pm</strong>!
 <ul>
 <li>You’ll have basically all you need to solve it after today</li>
 </ul></li>
@@ -66,71 +66,42 @@ you!</li>
 <li>Welcome to Cookie Social at QUAD Center (Ford 224) <strong>TUE Jan
 30 @ 4:30pm</strong></li>
 <li>I’ve requested for <strong><em>relocation of lecture
-hall</em></strong>. Stay tunned for the info soon!</li>
+hall</em></strong>. Stay tuned for the info soon!</li>
 </ul>
-</section>
-<section id="if-conditions" class="slide level2">
-<h2>If Conditions</h2>
-<ul>
-<li><p>Predicate functions can be used to control a kind of “switch”:
-running one piece of code if the answer is yes and a different piece of
-code if the answer is no.</p></li>
-<li><p>Commonly called <em>if</em> or <em>if-else</em> statements, they
-take on the syntax of:</p>
-<pre ><code class="python">if conditional_test:
-    # Code to run if test answer is yes
-else:
-    # Code to run if test answer is no</code></pre></li>
-<li><p>If you don’t want the code to do anything special if the answer
-is no, you can ignore the “else” part of the statement:</p>
-<pre ><code class="python">if conditional_test:
-    # Code to run if test is true
-# Carrying on with code that will always run</code></pre></li>
-</ul>
-</section>
-<section id="remember-predicate-functions" class="slide level2">
-<h2>Remember Predicate Functions?</h2>
-<p>Potential questions you can ask Karel include:</p>
-<table>
-<tbody>
-<tr class="odd">
-<td><code class="python">front_is_clear()</code></td>
-<td><code class="python">front_is_blocked()</code></td>
-</tr>
-<tr class="even">
-<td><code class="python">left_is_clear()</code></td>
-<td><code class="python">left_is_blocked()</code></td>
-</tr>
-<tr class="odd">
-<td><code class="python">right_is_clear()</code></td>
-<td><code class="python">right_is_blocked()</code></td>
-</tr>
-<tr class="even">
-<td><code class="python">beepers_present()</code></td>
-<td><code class="python">no_beepers_present()</code></td>
-</tr>
-<tr class="odd">
-<td><code class="python">beepers_in_bag()</code></td>
-<td><code class="python">no_beepers_in_bag()</code></td>
-</tr>
-<tr class="even">
-<td><code class="python">facing_north()</code></td>
-<td><code class="python">not_facing_north()</code></td>
-</tr>
-<tr class="odd">
-<td><code class="python">facing_south()</code></td>
-<td><code class="python">not_facing_south()</code></td>
-</tr>
-<tr class="even">
-<td><code class="python">facing_east()</code></td>
-<td><code class="python">not_facing_east()</code></td>
-</tr>
-<tr class="odd">
-<td><code class="python">facing_west()</code></td>
-<td><code class="python">not_facing_west()</code></td>
-</tr>
-</tbody>
-</table>
+<!--
+## If Conditions
+- Predicate functions can be used to control a kind of "switch": running one piece of code if the answer is yes and a different piece of code if the answer is no.
+- Commonly called _if_ or _if-else_ statements, they take on the syntax of:
+
+    ```python
+    if conditional_test:
+        # Code to run if test answer is yes
+    else:
+        # Code to run if test answer is no
+    ```
+- If you don't want the code to do anything special if the answer is no, you can ignore the "else" part of the statement:
+    
+    ```python
+    if conditional_test:
+        # Code to run if test is true
+    # Carrying on with code that will always run
+    ```
+
+## Remember Predicate Functions?
+Potential questions you can ask Karel include:
+
+ | 
+---|----
+`front_is_clear()` | `front_is_blocked()`
+`left_is_clear()` |  `left_is_blocked()`
+`right_is_clear()` | `right_is_blocked()`
+`beepers_present()` | `no_beepers_present()`
+`beepers_in_bag()` | `no_beepers_in_bag()`
+`facing_north()` | `not_facing_north()`
+`facing_south()` | `not_facing_south()`
+`facing_east()` | `not_facing_east()`
+`facing_west()` | `not_facing_west()`
+
 <!--
 ## Karel's Decisions Example
 - Suppose we want Karel to move across the bottom of the world and fill in any gaps in the beepers
@@ -145,45 +116,37 @@ is no, you can ignore the “else” part of the statement:</p>
 \end{tikzpicture}
 
 -->
-</section>
-<section id="iterative-while" class="slide level2">
-<h2>Iterative: while</h2>
-<ul>
-<li><p>Another common use of predicate functions is in controlling a
-type of iterative function called a <em>while</em> loop</p></li>
-<li><p>The structure of a while loop looks like:</p>
-<pre ><code class="python">while some_conditional_test:
-    # Code to repeat as long as the answer
-    # to the conditional_test is yes (true)
-# Code to run once the answer is no</code></pre></li>
-<li><p>All of our predicate functions give yes-or-no answers though! So
-we can do something like</p>
-<pre ><code class="python">while front_is_clear():
-    move()</code></pre>
-<p>which will continually move Karel forward as long as there is not a
-wall in front of them!</p></li>
-</ul>
-</section>
-<section id="smarty-karel" class="slide level2">
-<h2>Smarty Karel</h2>
-<ul>
-<li>Combining conditional statements with loops lets us write a program
-for Karel in which it can <strong>react</strong> to different situations
-in different ways, all using the same code</li>
-<li>Our pothole code from earlier could <strong>only</strong> handle two
-potholes, and they had to be perfectly spaced</li>
-<li>With one loop and one if statement, we can make the program fill any
-number of potholes with any manner of spacing!</li>
-<li>Key questions:
-<ul>
-<li>How do we know when we are done?</li>
-<li>How do we know when we reach a pothole?</li>
-</ul></li>
-</ul>
-</section>
-<section id="smart-potholes" class="slide level2">
-<h2>Smart Potholes</h2>
-<pre ><code class="python" style="max-height: 900px">def main():
+<!--
+## Iterative: while
+- Another common use of predicate functions is in controlling a type of iterative function called a _while_ loop
+- The structure of a while loop looks like:
+  ```python
+  while some_conditional_test:
+      # Code to repeat as long as the answer
+      # to the conditional_test is yes (true)
+  # Code to run once the answer is no
+  ```
+- All of our predicate functions give yes-or-no answers though! So we can do something like
+
+    ```python
+    while front_is_clear():
+        move()
+    ```
+    which will continually move Karel forward as long as there is not a wall in front of them!
+
+
+
+## Smarty Karel
+- Combining conditional statements with loops lets us write a program for Karel in which it can **react** to different situations in different ways, all using the same code
+- Our pothole code from earlier could **only** handle two potholes, and they had to be perfectly spaced
+- With one loop and one if statement, we can make the program fill any number of potholes with any manner of spacing!
+- Key questions:
+    - How do we know when we are done?
+    - How do we know when we reach a pothole?
+
+## Smart Potholes
+```{.python style='max-height: 900px'}
+def main():
     """
     Main function to fill any number of
     potholes at any location!
@@ -214,7 +177,9 @@ def turn_right():
 def turn_around():
     """ Turns Karel 180 deg around. """
     turn_left()
-    turn_left()</code></pre>
+    turn_left()
+```
+-->
 </section>
 <section id="inception-loops-in-loops" class="slide level2">
 <h2>Inception: Loops in Loops</h2>
@@ -558,6 +523,317 @@ def create_beeper_chain():
             move()
 ```
 -->
+</section>
+<section id="stepwise-refinement"
+class="slide level2 data-auto-animate">
+<h2 class="data-auto-animate">Stepwise Refinement</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>The most successful way to solve a complex problem is to break it
+down into progressively simpler problems</li>
+<li>Begin by breaking the whole problem into a few simpler parts
+<ul>
+<li>Some of these parts might then need further breaking down into even
+simpler parts</li>
+</ul></li>
+<li>The process is commonly called <em>stepwise refinement</em> or
+<em>decomposition</em></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/fa41b9f3d829b9445fb46c47d01debe72c06cb1a.svg"
+style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="excellent-decomposing" class="slide level2">
+<h2>Excellent Decomposing</h2>
+<ul>
+<li><p>A good problem decomposition should mean:</p>
+<dl>
+<dt>The proposed pieces should be easy to explain</dt>
+<dd>
+One indication that you have succeeded is if it is easy to give them
+simple names
+</dd>
+<dt>The steps are as general as possible</dt>
+<dd>
+Each piece of code you can reuse is one less piece of code you need to
+write! If your steps solve general tasks, they are much easier to reuse.
+</dd>
+<dt>The steps should make logical sense for the problem you are
+solving</dt>
+<dd>
+If you have a function that will work to solve a step but was designed
+(and named) with something else entirely in mind, adopt it for the
+currently needed situation
+</dd>
+</dl></li>
+</ul>
+</section>
+<section id="enter-the-winter" class="slide level2">
+<h2>Enter the Winter</h2>
+<ul>
+<li>Suppose we want Karel to usher in the Fall/Winter by removing the
+“leaves” from the tops of all the trees</li>
+</ul>
+<p><img
+data-src="../images/svg_cache/c392900647544fde342c8e0a5ef0f5a2ff23bab9.svg"
+style="width:90.0%" /></p>
+</section>
+<section id="understanding-the-problem" class="slide level2">
+<h2>Understanding the Problem</h2>
+<ul>
+<li>What are we guaranteed by the problem?</li>
+<li>How will we know when we are done?</li>
+</ul>
+<p><img
+data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="understanding-the-problem-1" class="slide level2">
+<h2>Understanding the Problem</h2>
+<ul>
+<li>There are four trees in this problem</li>
+<li>We need to find a tree at a time</li>
+<li>We need to remove the leaves
+<ul>
+<li>there are four leaves per tree</li>
+</ul></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-1" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/4e41dbd42114df74ccca5f17a01f09c74865a46d.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-2" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/6b8e67c0a2a37c81ead1b4594151b28fab9d3e14.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-3" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/e75db5cab8556666b58ff0bc80fecf8390a86728.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-4" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/886d22da5dd8b4feb81c40044f6a22f3c4d65db6.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-5" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/179042babe66e96f8e0d89398361dfd634edbeec.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-6" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/e918ac408e6c1c97f6734d18b154481f5e21510a.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-7" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/5541a39e99d7bb1fa853dc49400b8c2657298f32.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-8" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/3a7e718ef4f46bfcd251460ab073581ad81f843d.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="remember-your-algorithms" class="slide level2">
+<h2>Remember Your Algorithms!</h2>
+<ul>
+<li><em>Algorithmic design</em>: The process of designing a solution
+strategy to a problem</li>
+<li>An <em>algorithm</em> is just an approach or recipe for a method to
+solve a particular problem
+<ul>
+<li>Frequently language agnostic</li>
+</ul></li>
+<li>Can you design algorithm to address the Fall/Winter problem?</li>
+</ul>
+</section>
+<section id="algorithm-code-1" class="slide level2">
+<h2>Algorithm ⮕ Code</h2>
+<div class="cols" style="font-size:.95em">
+<div class="col">
+<div class="block" name="General Algorithm">
+<ul>
+<li>for four iterations
+<ul>
+<li>find a tree</li>
+<li>then remove leaves</li>
+</ul></li>
+</ul>
+</div>
+<div class="block" name="Algorithm to find a tree">
+<ul>
+<li>while the front is clear
+<ul>
+<li>keep moving</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="col" style="flex-grow:1.5">
+<div class="block" name="Algorithm to remove leaves">
+<ul>
+<li>move up the tree</li>
+<li>remove each leaf</li>
+<li>move down the tree</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="algorithm-code-2" class="slide level2">
+<h2>Algorithm ⮕ Code</h2>
+<div class="cols" style="font-size:.95em">
+<div class="col">
+<div class="block" name="Main Program">
+<pre ><code class="python">import karel
+def main():
+    # Here is our general solution with higher level of decomposition
+    for i in range(3):
+        find_next_tree()
+        remove_leaves()</code></pre>
+</div>
+<div class="block" name="Find next tree">
+<pre ><code class="python">def find_next_tree():
+    # the codes to find next tree
+    while front_is_clear():
+        move()</code></pre>
+</div>
+</div>
+<div class="col" style="flex-grow:1.5">
+<div class="block" name="Remove leaves">
+<pre ><code class="python">def remove_leaves():# codes to remove leaves
+    move_up()
+    deleaf()
+    move_down()</code></pre>
+<ul>
+<li>moving up</li>
+</ul>
+<pre ><code class="python">def move_up():
+    turn_left()
+    while right_is_blocked():
+        move()</code></pre>
+<ul>
+<li>deleafing</li>
+</ul>
+<pre ><code class="python">def deleaf():
+    pick_beeper()
+    for i in range(3):
+        move()
+        pick_beeper()
+        turn_right()
+    turn_left()</code></pre>
+<ul>
+<li>moving down</li>
+</ul>
+<pre ><code class="python">def move_down():
+    while front_is_clear():
+        move()
+    turn_left()</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="class-activity" class="slide level2">
+<h2>Class Activity?</h2>
 </section>
     </div>
   </div>

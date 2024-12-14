@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-02-02">
+  <meta name="dcterms.date" content="2025-01-29">
   <title>Ranging from Creation to Debugging</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,7 +37,7 @@
 <section id="title-slide">
   <h1 class="title">Ranging from Creation to Debugging</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">February 2, 2024</p>
+  <p class="date">January 29, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -56,40 +56,41 @@ eveyone is reading the text along</li>
 <li>Link to Polling <a
 href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
 </ul>
-</section>
-<section id="the-range-iterable" class="slide level2">
-<h2>The <code class="python">range()</code> iterable</h2>
-<ul>
-<li>Need an easy way to produce or describe a range of numeric
-values</li>
-<li>The built-in <code class="python">range()</code> function handles
-this and produces the needed iterable object</li>
-<li>Takes 1, 2, or 3 arguments:
-<ul>
-<li>Start (default 0): where to start the sequence at</li>
-<li>Stop (mandatory): the sequence ends just <em>below</em> this value
-(does not include it!)</li>
-<li>Step (default 1): what value the sequence counts by <br><br></li>
-</ul></li>
-</ul>
-<div class="block" name="Warning!">
-<p>Be careful, the <code class="python">range</code> function will stop
-one step <em>before</em> the final stop value.</p>
-</div>
-</section>
-<section id="for-ranging-examples" class="slide level2">
-<h2>For ranging examples</h2>
-<ul>
-<li><p>Providing just a stop argument:</p>
-<pre ><code class="python">for n in range(5):
-    print(n)</code></pre></li>
-<li><p>Providing a start and stop:</p>
-<pre ><code class="python">for n in range(1,11):
-    print(n)</code></pre></li>
-<li><p>Providing a start, stop, and step:</p>
-<pre ><code class="python">for n in range(10,0,-1):
-    print(n)</code></pre></li>
-</ul>
+<!--
+## The `range()` iterable
+- Need an easy way to produce or describe a range of numeric values
+- The built-in `range()` function handles this and produces the needed iterable object
+- Takes 1, 2, or 3 arguments:
+    - Start (default 0): where to start the sequence at
+    - Stop (mandatory): the sequence ends just _below_ this value (does not include it!)
+    - Step (default 1): what value the sequence counts by
+<br><br>
+
+:::{.block name='Warning!'}
+Be careful, the `range` function will stop one step _before_ the final stop value.
+:::
+
+
+## For ranging examples
+- Providing just a stop argument:
+
+    ```python
+    for n in range(5):
+        print(n)
+    ```
+- Providing a start and stop:
+
+    ```python
+    for n in range(1,11):
+        print(n)
+    ```
+- Providing a start, stop, and step:
+
+    ```python
+    for n in range(10,0,-1):
+        print(n)
+    ```
+-->
 </section>
 <section id="review-question-and-understanding-check"
 class="slide level2"
@@ -125,100 +126,67 @@ from the others?</p>
 </div>
 </div>
 </div>
-</section>
-<section id="iterating-over-sequences" class="slide level2">
-<h2>Iterating over sequences</h2>
-<ul>
-<li><p>We can also use a <code class="python">for</code> loop to iterate
-directly over a sequence of values</p></li>
-<li><p>We can loop through a string or list to examine each individual
-character or element</p></li>
-<li><p>Example of looping through a word to count occurrences of a given
-letter:</p>
-<pre ><code class="python">def count_letters(letter, string):
-    count = 0
-    for character in string:
-        if character == letter:
-            count += 1
-    return count</code></pre></li>
-</ul>
-</section>
-<section id="test-yourself" class="slide level2">
-<h2>Test Yourself</h2>
-<ul>
-<li>It is easy to make mistakes when writing code
-<ul>
-<li>Syntax mistakes</li>
-<li>Typos or operations mistakes</li>
-<li>Overall conceptual mistakes</li>
-</ul></li>
-<li>Given that making mistakes is entirely natural, it is also
-imperative that looking for mistakes become entirely natural</li>
-<li>You known what the desired goal is for basically every problem in
-this class. <strong>Test your code!</strong></li>
-</ul>
-</section>
-<section id="way-of-testing" class="slide level2">
-<h2>Way of Testing</h2>
-<div>
-<ul>
-<li class="fragment">Run your code early and often
-<ul>
-<li class="fragment">If your code is breaking at something early, it is
-not going to fix itself if you continue</li>
-</ul></li>
-<li class="fragment">Test outputs directly
-<ul>
-<li class="fragment">Problems will generally give several example
-outputs of desired functions</li>
-<li class="fragment">For your own functions, you should know what you
-want them to be outputting</li>
-<li class="fragment">Run a function as isolated as you can make it after
-writing it, and <em>ensure</em> that it is performing as expected</li>
-</ul></li>
-<li class="fragment">Write code to test code
-<ul>
-<li class="fragment">Wherever possible, I provide some automated tests
-that can be run</li>
-<li class="fragment">You can (and should) write your own tests as well.
-They need not be complicated!!</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="assertions" class="slide level2">
-<h2>Assertions</h2>
-<ul>
-<li><p>You can use Python’s <code class="python">assert</code> statement
-to write test functions, which take the form:</p>
-<pre ><code class="python">assert condition</code></pre>
-<p>where <code class="python">condition</code> is any operation that
-returns a <code class="python">True</code> or
-<code class="python">False</code></p></li>
-<li><p>Assert statements “expect” a condition to yield a
-<code class="python">True</code>, and if they do, nothing happens</p>
-<ul>
-<li>No news is good news in this case</li>
-</ul></li>
-<li><p>If an assert condition evaluates to
-<code class="python">False</code>, an error is raised</p></li>
-<li><p>Naming your test functions starting with the word
-<code class="python">test_</code> will make them automatically
-discoverable by other tools</p></li>
-</ul>
-</section>
-<section id="testing-example" class="slide level2">
-<h2>Testing Example</h2>
-<ul>
-<li>Suppose we wanted to write some checks of the
-<code class="python">count_letters</code> function from earlier</li>
-</ul>
-<pre ><code class="python">def test_count_letters():
+<!--
+## Iterating over sequences
+- We can also use a `for` loop to iterate directly over a sequence of values
+- We can loop through a string or list to examine each individual character or element
+- Example of looping through a word to count occurrences of a given letter:
+
+    ```python
+    def count_letters(letter, string):
+        count = 0
+        for character in string:
+            if character == letter:
+                count += 1
+        return count
+    ```
+
+## Test Yourself
+- It is easy to make mistakes when writing code
+    - Syntax mistakes
+    - Typos or operations mistakes
+    - Overall conceptual mistakes
+- Given that making mistakes is entirely natural, it is also imperative that looking for mistakes become entirely natural
+- You known what the desired goal is for basically every problem in this class. **Test your code!**
+
+
+## Way of Testing
+:::incremental
+- Run your code early and often
+    - If your code is breaking at something early, it is not going to fix itself if you continue
+- Test outputs directly
+    - Problems will generally give several example outputs of desired functions
+    - For your own functions, you should know what you want them to be outputting
+    - Run a function as isolated as you can make it after writing it, and _ensure_ that it is performing as expected
+- Write code to test code
+    - Wherever possible, I provide some automated tests that can be run
+    - You can (and should) write your own tests as well. They need not be complicated!!
+:::
+
+## Assertions
+- You can use Python's `assert` statement to write test functions, which take the form:
+  ```python
+  assert condition
+  ```
+  where `condition` is any operation that returns a `True` or `False`
+- Assert statements "expect" a condition to yield a `True`, and if they do, nothing happens
+    - No news is good news in this case
+- If an assert condition evaluates to `False`, an error is raised
+- Naming your test functions starting with the word `test_` will make them automatically discoverable by other tools
+
+
+## Testing Example
+- Suppose we wanted to write some checks of the `count_letters` function from earlier
+
+```python
+def test_count_letters():
     """ Runs several tests on the function count_letters """
     assert count_letters("z", "banana") == 0
     assert count_letters("a", "strawberry") == 1
     assert count_letters("A", "apple") == 0
-    assert count_letters("e", "eerie") == 3</code></pre>
+    assert count_letters("e", "eerie") == 3
+```
+-->
 </section>
 <section id="algorithms" class="slide level2">
 <h2>Algorithms</h2>
@@ -485,6 +453,9 @@ function individually as you go</li>
 same purpose</li>
 </ul></li>
 </ul>
+</section>
+<section id="class-activity" class="slide level2">
+<h2>Class Activity?</h2>
 <!--
 ## Assertions
 - You can use Python's `assert` statement to write test functions, which take the form:

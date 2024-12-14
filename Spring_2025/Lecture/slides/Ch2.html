@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-01-31">
+  <meta name="dcterms.date" content="2025-01-27">
   <title>Ranges &amp; Controls</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,7 +37,7 @@
 <section id="title-slide">
   <h1 class="title">Ranges &amp; Controls</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">January 31, 2024</p>
+  <p class="date">January 27, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -89,55 +89,23 @@ print(len(D))
 ::::
 :::::
 
-## Boolean Expressions
-- Python defines two types of operators that work with Boolean data: _relational operators_ and _logical operators_
-- Relational operators compare values of other types and produce a `True`/`False` result:
-
-    ---- ----------------- - - - ---- --------------------
-    `==` Equals                  `!=` Not equals
-     `<` Less than               `<=` Less than or equal too
-     `>` Greater than            `>=` Greater than or equal to
-    ---- ----------------- - - - ---- --------------------
-- Be careful! `==` _compares_ two booleans. A single `=` _assigns_ a variable. The odds are high you'll use one when you meant the other at least once this semester!
-
-
-## The Vulcan Way
-- Logical operators act on Boolean pairings
-
-    Operator | Description
-    ---|---
-    `A and B` | True if both terms True, False otherwise
-    `A or B` | True if _any_ term is True, False otherwise
-    `not A` | True if A False, False if A True (opposite)
-
-::: incremental
-- Order of operations follows parentheses and then proceeds left to right
-- Careful that `or` is still `True` if both options are `True` 
-- Similarly, careful with combining `not` with `and` and `or`
-    - "Not A or B" in common English is not the same as `not A or B`
-:::
--->
-</section>
-<section id="review-question" class="slide level2"
-data-notes="Solution: 40">
-<h2 data-notes="Solution: 40">Review Question</h2>
-<p>What is the printed value of <code class="python">A</code> in the
-code below?</p>
-<pre ><code class="idle">>>> A = 10
+## Review Question {data-notes="Solution: 40"}
+What is the printed value of `A` in the code below?
+```idle
+>>> A = 10
 >>> B = 5 % 3
 >>> C = A * B ** B
 >>> A -= B + A // 2
 >>> A, B, C = C, A, B
 >>> print(A)
-??</code></pre>
-<div class="hpoll">
-<ol>
-<li>3</li>
-<li>12</li>
-<li>30</li>
-<li>40</li>
-</ol>
-</div>
+??
+```
+:::{.hpoll}
+#. 3
+#. 12
+#. 30
+#. 40
+:::
 <!--
 ## Review Question
 What value is printed when the code to the right runs?
@@ -397,31 +365,23 @@ while i < len(word):
 </div>
 </div>
 </div>
-</section>
-<section id="running-a-program" class="slide level2">
-<h2>Running a Program</h2>
-<ul>
-<li><p>Python programs specify what part of the code is supposed to be
-executed when a program is run using a few special lines at the end of
-the program</p>
-<pre ><code class="python">if __name__ == '__main__':
-    function_to_run()</code></pre>
-<ul>
-<li><code class="python">function_to_run</code> is the name of whatever
-function you want to execute when the program is run directly</li>
-</ul></li>
-<li><p>Patterns of this sort are commonly called
-<em>boilerplate</em></p>
-<ul>
-<li>Less important to fully understand all the pieces of it now</li>
-<li>Is important to understand what it is doing and how to implement it
-correctly</li>
-</ul></li>
-</ul>
-</section>
-<section id="sample-program" class="slide level2">
-<h2>Sample Program</h2>
-<pre ><code class="python" style="max-height: 900px">
+<!--
+
+## Running a Program
+- Python programs specify what part of the code is supposed to be executed when a program is run using a few special lines at the end of the program
+
+    ```python
+    if __name__ == '__main__':
+        function_to_run()
+    ```
+    - `function_to_run` is the name of whatever function you want to execute when the program is run directly
+- Patterns of this sort are commonly called _boilerplate_
+    - Less important to fully understand all the pieces of it now
+    - Is important to understand what it is doing and how to implement it correctly
+
+## Sample Program
+```{.python style='max-height: 900px'}
+
 NUM_ODDS = 100 # Constant, so using all caps
 
 def print_odds():
@@ -435,93 +395,46 @@ def print_odds():
         value += 2
 
 if __name__ == '__main__':
-    print_odds()</code></pre>
-</section>
-<section id="visiting-the-libraryies" class="slide level2">
-<h2>Visiting the library(ies)</h2>
-<ul>
-<li>A huge strength of Python is that it offers a very large number of
-code collections called <em>libraries</em>
-<ul>
-<li>Can save you the effort from writing that code yourself!</li>
-</ul></li>
-<li>Requires you to <em>import</em> that library, which can take several
-different forms
-<ul>
-<li><p>Most common is to use <code class="python">import</code> to grab
-everything in a library</p>
-<pre ><code class="python">import math</code></pre>
-<ul>
-<li>You must then access any function in that library using its
-<em>fully qualified name</em>, which includes the library name
-(<code class="python">var = math.sqrt(4)</code>)</li>
-</ul></li>
-<li><p>Can also use <code class="python">from ... import</code> to grab
-specific functions from the library</p>
-<pre ><code class="python">from math import sqrt</code></pre>
-<ul>
-<li>You do not need to use the library name then when you call it
-(<code class="python">var = sqrt(4)</code>)</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="useful-math-definitions" class="slide level2">
-<h2>Useful <code class="python">math</code> definitions</h2>
-<div style="font-size:.9em">
-<table>
-<thead>
-<tr class="header">
-<th>Code</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code class="python">math.pi</code></td>
-<td>The mathematical constant <span
-class="math inline">\(\pi\)</span></td>
-</tr>
-<tr class="even">
-<td><code class="python">math.e</code></td>
-<td>The mathematical constant <span
-class="math inline">\(e\)</span></td>
-</tr>
-<tr class="odd">
-<td><code class="python">math.sqrt(x)</code></td>
-<td>The square root of x</td>
-</tr>
-<tr class="even">
-<td><code class="python">math.log(x)</code></td>
-<td>The natural logarithm of x</td>
-</tr>
-<tr class="odd">
-<td><code class="python">math.log10(x)</code></td>
-<td>The base 10 logarithm of x</td>
-</tr>
-<tr class="even">
-<td><code class="python">math.sin(x)</code></td>
-<td>The sine of x in radians</td>
-</tr>
-<tr class="odd">
-<td><code class="python">math.cos(x)</code></td>
-<td>The cosine of x in radians</td>
-</tr>
-<tr class="even">
-<td><code class="python">math.asin(x)</code></td>
-<td>The arcsin of x</td>
-</tr>
-<tr class="odd">
-<td><code class="python">math.degrees(x)</code></td>
-<td>Converts from radians to degrees</td>
-</tr>
-<tr class="even">
-<td><code class="python">math.radians(x)</code></td>
-<td>Converts from degrees to radians</td>
-</tr>
-</tbody>
-</table>
-</div>
+    print_odds()
+```
+
+## Visiting the library(ies)
+- A huge strength of Python is that it offers a very large number of code collections called _libraries_
+    - Can save you the effort from writing that code yourself!
+- Requires you to _import_ that library, which can take several different forms
+    - Most common is to use `import` to grab everything in a library
+
+        ```python
+        import math
+        ```
+        - You must then access any function in that library using its _fully qualified name_, which includes the library name (`var = math.sqrt(4)`)
+    - Can also use `from ... import` to grab specific functions from the library
+
+        ```python
+        from math import sqrt
+        ```
+        - You do not need to use the library name then when you call it (`var = sqrt(4)`)
+
+
+## Useful `math` definitions
+
+:::{style='font-size:.9em'}
+
+Code | Description
+--- | ---
+`math.pi` | The mathematical constant $\pi$
+`math.e` | The mathematical constant $e$
+`math.sqrt(x)` | The square root of x
+`math.log(x)` | The natural logarithm of x
+`math.log10(x)` | The base 10 logarithm of x
+`math.sin(x)` | The sine of x in radians
+`math.cos(x)` | The cosine of x in radians
+`math.asin(x)` | The arcsin of x
+`math.degrees(x)` | Converts from radians to degrees
+`math.radians(x)` | Converts from degrees to radians
+
+:::
+-->
 </section>
 <section id="extra-if-functionality" class="slide level2">
 <h2>Extra <code class="python">if</code> functionality</h2>
@@ -708,6 +621,9 @@ discoverable by other tools</p></li>
     assert count_letters("a", "strawberry") == 1
     assert count_letters("A", "apple") == 0
     assert count_letters("e", "eerie") == 3</code></pre>
+</section>
+<section id="class-activity" class="slide level2">
+<h2>Class Activity?</h2>
 <!--
 ## Showcasing Autochecks
 - When you submit code to GitHub, my pre-written tests are run

@@ -26,9 +26,18 @@ All assignment work will be done in the included template files on GitHub as per
 <br>
 
 # Problem 1
-Here your goal is to write a function named `draw_console_pyramid` which takes a single argument equating to the desired pyramid height. Your function should then print to the terminal a pyramid (constructed of `*` characters) of the specified height in rows, in which the width of each row increases by _two_ as you move downward in the console (toward the base of the pyramid). Each of the rows should be centered with respect to the others, and the bottom row should begin at the left margin. Calling `draw_console_pyramid(8)` should thus produce the following:
+Here your goal is to write a function named `draw_complex_pyramid` that takes three parameters:
+
+1. `height`: The height of the pyramid
+2. `symbol`: The character used to build the pyramid (default: `*`)
+3. `style`: Indicating the pattern (e.g., 'solid', 'hollow', 'alternating'). See each pattern below.
+
+
+Example outputs for different styles assuming the value for `height` is 8:
+
+`Solid Pattern`:
 ```python
->>> draw_console_pyramid(8)
+>>> draw_console_pyramid(8, '*', solid)
        *
       ***
      *****
@@ -39,13 +48,45 @@ Here your goal is to write a function named `draw_console_pyramid` which takes a
 ***************
 ```
 
-Notice how the bottom row of the pyramid starts immediately, with no space between it and the left margin, and that each row of the pyramid is centered on the others, increasing by 2 each time.
 
-I've already set up the template to call this function to draw a pyramid of height 8 for your testing purposes, but you should absolutely test your function with other heights as well to ensure it is working as desired in all cases.
+`Hollow Pattern`:
+```python
+>>> draw_console_pyramid(8, '*', hollow)
+       *
+      * *
+     *   *
+    *     *
+   *       *
+  *         *
+ *           *
+***************
+```
 
-:::{.hint .alert .alert-success}
-Hint: In order to keep things centered, you are going to need to add an amount of space characters to the front of most lines. Think about how you could assemble these strings, and how you'll know how many characters to add. As always, decomposing the problem into smaller problems can be helpful!
-:::
+`Alternating Pattern`:
+```python
+>>> draw_console_pyramid(8, '*', alternate)
+       *
+      @@@
+     *****
+    @@@@@@@
+   *********
+  @@@@@@@@@@@
+ *************
+***************
+```
+
+Requirements:
+
+1. The function must validate input parameters:
+- Height must be a positive integer
+- Symbol must be a single character
+- Style must be one of the predefined patterns
+
+2. Each row should be properly centered
+3. The bottom row should start at the left margin
+4. Implement error handling for invalid inputs
+5. The width of each row should still increase by 2 as you move downward
+
 
 
 # Problem 2

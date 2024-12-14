@@ -1,7 +1,7 @@
 ---
 title: Ranges & Controls
 author: Jed Rembold & Fred Agbo
-date: January 31, 2024
+date: January 27, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -53,34 +53,6 @@ print(len(D))
 ::::
 :::::
 
-## Boolean Expressions
-- Python defines two types of operators that work with Boolean data: _relational operators_ and _logical operators_
-- Relational operators compare values of other types and produce a `True`/`False` result:
-
-	---- ----------------- - - - ---- --------------------
-	`==` Equals                  `!=` Not equals
-	 `<` Less than               `<=` Less than or equal too
-	 `>` Greater than            `>=` Greater than or equal to
-	---- ----------------- - - - ---- --------------------
-- Be careful! `==` _compares_ two booleans. A single `=` _assigns_ a variable. The odds are high you'll use one when you meant the other at least once this semester!
-
-
-## The Vulcan Way
-- Logical operators act on Boolean pairings
-
-	Operator | Description
-	---|---
-	`A and B` | True if both terms True, False otherwise
-	`A or B` | True if _any_ term is True, False otherwise
-	`not A` | True if A False, False if A True (opposite)
-
-::: incremental
-- Order of operations follows parentheses and then proceeds left to right
-- Careful that `or` is still `True` if both options are `True` 
-- Similarly, careful with combining `not` with `and` and `or`
-	- "Not A or B" in common English is not the same as `not A or B`
-:::
--->
 ## Review Question {data-notes="Solution: 40"}
 What is the printed value of `A` in the code below?
 ```idle
@@ -240,6 +212,7 @@ What will the printed output of the code to the left?
 	  num = int(input('Pick a number between 1 and 10: '))
 	  ```
 
+
 ## Sentinels
 - Many programs in programming can be approached similarly by using a particular _idiom_ or _pattern_
 - A common one with repetition is to use a variable to keep track of the loop state until something particular happens (the sentinel is triggered)
@@ -280,6 +253,7 @@ What will the printed output of the code to the left?
 
 ::::
 ::::::
+<!--
 
 ## Running a Program
 - Python programs specify what part of the code is supposed to be executed when a program is run using a few special lines at the end of the program
@@ -348,7 +322,7 @@ Code | Description
 `math.radians(x)` | Converts from degrees to radians
 
 :::
-
+-->
 ## Extra `if` functionality
 ::::::cols
 ::::col
@@ -487,6 +461,10 @@ def test_count_letters():
 	assert count_letters("A", "apple") == 0
 	assert count_letters("e", "eerie") == 3
 ```
+
+## Class Activity?
+
+
 <!--
 ## Showcasing Autochecks
 - When you submit code to GitHub, my pre-written tests are run

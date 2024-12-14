@@ -201,92 +201,79 @@ the milestones!
 <li>Milestone 3: Section bouncy ball problem (this week)</li>
 </ul></li>
 </ul>
+<!--
+## Other Milestones 
+[Check the desciption here](https://agbofred.github.io/Spring_2024/Lecture/projects/Breakout_guide/Project_Breakout.html)
+-->
 </section>
-<section id="other-milestones" class="slide level2">
-<h2>Other Milestones</h2>
-<p><a
-href="https://agbofred.github.io/Spring_2024/Lecture/projects/Breakout_guide/Project_Breakout.html">Check
-the desciption here</a> <!--
-## Milestone 1
-
-<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html"></iframe>
-
-
-## Milestone 2
-
-<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout2/index.html"></iframe>
-
-
-## Milestone 3
-
-<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout3/index.html"></iframe>
-
-
-## Milestone 4
-
-<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout4/index.html"></iframe>
-
-
-## Milestone 5
-
-<iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html"></iframe>
-
-
-
-
-
-## Review Question {data-note="Solution is A"}
-::::::cols
-::::col
-Which of the below blocks of code will create the image to the right? The window measures 500 x 200 pixels and the value of `d` is 150.
-::::
-
-::::col
-![\ ](../images/GArc_RevQ.png){width=65%}
-::::
-::::::
-
-::::::cols
-::::col
-
-:::{.block name="A"}
-```{.python style='font-size:.8em; margin-left:1em;'}
-x, y = 250 - d / 2, 100 - d / 2
+<section id="milestone-1" class="slide level2">
+<h2>Milestone 1</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html">
+</iframe>
+</section>
+<section id="milestone-2" class="slide level2">
+<h2>Milestone 2</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout2/index.html">
+</iframe>
+</section>
+<section id="milestone-3" class="slide level2">
+<h2>Milestone 3</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout3/index.html">
+</iframe>
+</section>
+<section id="milestone-4" class="slide level2">
+<h2>Milestone 4</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout4/index.html">
+</iframe>
+</section>
+<section id="milestone-5" class="slide level2">
+<h2>Milestone 5</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html">
+</iframe>
+</section>
+<section id="review-question" class="slide level2"
+data-note="Solution is A">
+<h2 data-note="Solution is A">Review Question</h2>
+<div class="cols">
+<div class="col">
+<p>Which of the below blocks of code will create the image to the right?
+The window measures 500 x 200 pixels and the value of
+<code class="python">d</code> is 150.</p>
+</div>
+<div class="col">
+<figure>
+<img data-src="../images/GArc_RevQ.png" style="width:65.0%" alt=" " />
+<figcaption aria-hidden="true"> </figcaption>
+</figure>
+</div>
+</div>
+<div class="cols">
+<div class="col">
+<div class="block" name="A">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, d, 90, -180)
-gw.add(a1)
-```
-:::
-
-:::{.block name="C"}
-```{.python style='font-size:.8em; margin-left:1em;'}
-x, y = 250 - d, 100 - d
+gw.add(a1)</code></pre>
+</div>
+<div class="block" name="C">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d, 100 - d
 a1 = GArc(x, y, d, d, -180, 90)
-gw.add(a1)
-```
-:::
-
-::::
-
-::::col
-:::{.block name="B"}
-```{.python style='font-size:.8em; margin-left:1em;'}
-x, y = 250 - d / 2, 100 - d / 2
+gw.add(a1)</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block" name="B">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, d, 90, 180)
-gw.add(a1)
-```
-:::
-
-:::{.block name="D"}
-```{.python style='font-size:.8em; margin-left:1em;'}
-x, y = 250 - d / 2, 100 - d / 2
+gw.add(a1)</code></pre>
+</div>
+<div class="block" name="D">
+<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, 180, -90)
-gw.add(a1)
-```
-:::
-
-::::
-::::::
---> <!--
+gw.add(a1)</code></pre>
+</div>
+</div>
+</div>
+<!--
 ## Arrays and Lists
 - From the earliest days, programming languages have supported the idea of an _array_, or an ordered sequence of values.
 - Individual values in an array are called _elements_, and the number of elements is the _length_ of the array.
@@ -362,7 +349,8 @@ gw.add(a1)
 :::
 ::::
 ::::::
---> <!--
+-->
+<!--
 ## Understanding Check! {data-notes="Solution: None of the above, as it errors"}
 What would the below expression evaluate to?
 
@@ -376,7 +364,8 @@ What would the below expression evaluate to?
 #. `True`
 #. None of the above, or this will error
 :::
---> <!--
+-->
+<!--
 ## Mutants
 - The most important difference between strings and lists is one of _mutability_
     - Strings we have already identified as being _immutable_: you can not change the individual elements
@@ -420,7 +409,7 @@ print(other_colors)
 - I find it useful to think of a reference as the "address" in memory where that object's contents can be found
 - This undeniably complicates things, as referencing a mutable object lets you change it, which will immediately be reflected in anything _else_ that referenced that object
 - Mutable objects can be terrific to work with, as their mutability makes them very flexible, but be wary of unexpected behavior
---></p>
+-->
 </section>
 <section id="lists-as-arguments" class="slide level2">
 <h2>Lists as Arguments</h2>

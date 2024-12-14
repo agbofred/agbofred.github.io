@@ -1,7 +1,7 @@
 ---
 title: "Data Type & Functions?"
 author: Jed Rembold & Fred Agbo
-date: January 29, 2024
+date: January 22, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai

@@ -3077,8 +3077,15 @@ background: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%
 <p><br></p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>Here your goal is to write a function named <code>draw_console_pyramid</code> which takes a single argument equating to the desired pyramid height. Your function should then print to the terminal a pyramid (constructed of <code>*</code> characters) of the specified height in rows, in which the width of each row increases by <em>two</em> as you move downward in the console (toward the base of the pyramid). Each of the rows should be centered with respect to the others, and the bottom row should begin at the left margin. Calling <code>draw_console_pyramid(8)</code> should thus produce the following:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> draw_console_pyramid(<span class="dv">8</span>)</span>
+<p>Here your goal is to write a function named <code>draw_complex_pyramid</code> that takes three parameters:</p>
+<ol type="1">
+<li>height: The height of the pyramid</li>
+<li>symbol: The character used to build the pyramid (default: <code>*</code>)</li>
+<li>style: Indicating the pattern (e.g., ‘solid’, ‘hollow’, ‘alternating’). See each pattern below.</li>
+</ol>
+<p>Example outputs for different styles assuming the value for <code>height</code> is 8:</p>
+<p><code>Solid Pattern</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> draw_console_pyramid(<span class="dv">8</span>, <span class="st">&#39;*&#39;</span>, solid)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       <span class="op">*</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="op">***</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">*****</span></span>
@@ -3087,20 +3094,50 @@ background: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">***********</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="op">*************</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">***************</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Notice how the bottom row of the pyramid starts immediately, with no space between it and the left margin, and that each row of the pyramid is centered on the others, increasing by 2 each time.</p>
-<p>I’ve already set up the template to call this function to draw a pyramid of height 8 for your testing purposes, but you should absolutely test your function with other heights as well to ensure it is working as desired in all cases.</p>
-<div class="hint alert alert-success">
-<p>Hint: In order to keep things centered, you are going to need to add an amount of space characters to the front of most lines. Think about how you could assemble these strings, and how you’ll know how many characters to add. As always, decomposing the problem into smaller problems can be helpful!</p>
-</div>
+<p><code>Hollow Pattern</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> draw_console_pyramid(<span class="dv">8</span>, <span class="st">&#39;*&#39;</span>, hollow)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>       <span class="op">*</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="op">*</span> <span class="op">*</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">*</span>   <span class="op">*</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>     <span class="op">*</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   <span class="op">*</span>       <span class="op">*</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">*</span>         <span class="op">*</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a> <span class="op">*</span>           <span class="op">*</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">***************</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>Alternating Pattern</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> draw_console_pyramid(<span class="dv">8</span>, <span class="st">&#39;*&#39;</span>, alternate)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="op">*</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      <span class="op">@@@</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">*****</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">@@@@@@@</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   <span class="op">*********</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">@@@@@@@@@@@</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a> <span class="op">*************</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">***************</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Requirements:</p>
+<ol type="1">
+<li>The function must validate input parameters:</li>
+</ol>
+<ul>
+<li>Height must be a positive integer</li>
+<li>Symbol must be a single character</li>
+<li>Style must be one of the predefined patterns</li>
+</ul>
+<ol start="2" type="1">
+<li>Each row should be properly centered</li>
+<li>The bottom row should start at the left margin</li>
+<li>Implement error handling for invalid inputs</li>
+<li>The width of each row should still increase by 2 as you move downward</li>
+</ol>
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
 <section id="part-a" class="level2">
 <h2 class="anchored" data-anchor-id="part-a">Part A</h2>
 <p>As you will discover next week, implementing the Wordle project requires you to take account of the possibility that a word might contain more than one instance of the same letter. In preparation of that, your task here is to write a predicate function called <code>contains_repeated_letters(word)</code> which returns <code>True</code> if any of the characters in the word appear more than once, not necessarily consecutively. Thus,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>contains_repeated_letters(<span class="st">&quot;single&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>contains_repeated_letters(<span class="st">&quot;single&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>should return <code>False</code>, as no letter ever shows up twice. Conversely,</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>contains_repeated_letters(<span class="st">&quot;repeating&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>contains_repeated_letters(<span class="st">&quot;repeating&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>should return <code>True</code>, as the letter <code>&quot;e&quot;</code> shows up twice. Test your function against more words to ensure that it is working properly!</p>
 </section>
 <section id="part-b" class="level2">
@@ -3117,14 +3154,14 @@ background: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%
 <li>the vowel is an <em>e</em> occurring at the end of a word</li>
 </ul>
 <p>Write a function <code>to_obenglobish</code> that takes an English word as an argument and returns its Obenglobish equivalent, using the translation rules above. For example, your function should be able to output something similar to below:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;english&quot;</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>obenglobish</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;gooiest&quot;</span>))</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gobooiest</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;amaze&quot;</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>obamobaze</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;rot&quot;</span>))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>robot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;english&quot;</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>obenglobish</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;gooiest&quot;</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gobooiest</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;amaze&quot;</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>obamobaze</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(to_obenglobish(<span class="st">&quot;rot&quot;</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>robot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Don’t forget about decomposition! I found it very useful on this problem to write predicate functions to take care of checking the above special conditions.</p>
 </section>
 
