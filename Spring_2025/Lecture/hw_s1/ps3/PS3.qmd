@@ -72,7 +72,7 @@ Example outputs for different styles assuming the value for `height` is 8:
    *********
   @@@@@@@@@@@
  *************
-***************
+@@@@@@@@@@@@@@@
 ```
 
 Requirements:
