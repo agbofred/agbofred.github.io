@@ -1,6 +1,6 @@
 ---
 title: "Project 2: Breakout!"
-subtitle: "Due: March 12, 2024"
+subtitle: "Due: March 10, 2025"
 format:
   html:
     theme:
@@ -26,7 +26,7 @@ Your job in this programming project is to write the classic arcade game of Brea
 As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
 
 ```{=html}
-<a href='https://classroom.github.com/a/uRM17Mkf' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom.github.com/a/etU9rUx1' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br>
 

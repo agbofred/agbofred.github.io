@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 2"
-subtitle: "Due: February 5, 2024 at 10:00 PM"
+subtitle: "Due: February 3, 2025 at 10:00 PM"
 format:
   html:
     theme:
@@ -21,7 +21,7 @@ format:
 This problem set has one problem relating to Karel and then two problems concerning more generic Python programming. You should already be good to start working on the Karel problem, and the other problems you'll have most of the tools to solve within this week. All problems have starting templates included in the repository.
 
 ```{=html}
-<a href='https://classroom.github.com/a/VraIqpIh' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom.github.com/a/FEjSH796' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 

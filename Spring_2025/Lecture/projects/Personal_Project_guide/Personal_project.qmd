@@ -1,6 +1,6 @@
 ---
 title: "Presonal Project"
-subtitle: "Due: April 15, 2024"
+subtitle: "Due: April 14, 2025"
 format:
   html:
     theme:
@@ -25,7 +25,7 @@ As exciting as there were, the graphics projects you have completed including Br
 Each of you MUST submit one entry for the personal project, where an entry consists of a program that uses the Portable Graphics Library. You are free to use any of the capabilities in that library, including those described in the online documentation. To get started, you can grab a starting repository by clicking on the button below. Make sure you fill out the top metadata on the main program file please!
 
 ```{=html}
-<a href='https://classroom.github.com/a/kUI1AbrM' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Grab the starting repository</a>
+<a href='https://classroom.github.com/a/akLJ-Pys' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Grab the starting repository</a>
 ```
 <br>
 

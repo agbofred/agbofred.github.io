@@ -1,6 +1,6 @@
 ---
 title: "Project 1: Wordle"
-subtitle: "Due: February 19, 2024"
+subtitle: "Due: February 17, 2025"
 filters:
   - include-code-files
 format:
@@ -30,7 +30,7 @@ Welcome to the first project of CS 151! This project is designed to help you pra
 As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
 
 ```{=html}
-<a href='https://classroom.github.com/a/CaFFMwXg' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom.github.com/a/BbX4X3_M' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br>
 

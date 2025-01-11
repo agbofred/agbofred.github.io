@@ -1,6 +1,6 @@
 ---
 title: "Project 5: Adventure"
-subtitle: "Due: April 29, 2024"
+subtitle: "Due: April 27, 2025"
 format:
   html:
     theme:
@@ -28,7 +28,7 @@ As per usual, you will submit this project through GitHub Classroom, and you can
 <br/>
 
 ```{=html}
-<a href='https://classroom.github.com/a/rM-ygrfD' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom.github.com/a/jokewy3h' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br/>
 

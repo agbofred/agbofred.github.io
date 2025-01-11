@@ -1,6 +1,6 @@
 ---
 title: "Project 3: ImageShop"
-subtitle: "Due: April 8, 2024"
+subtitle: "Due: April 7, 2025"
 format:
   html:
     theme:
@@ -28,7 +28,7 @@ Performing image manipulation in Python requires the use of the Pillow library, 
 As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
 
 ```{=html}
-<a href='https://classroom.github.com/a/uTATaWCd' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom.github.com/a/isAQBFL-' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br>
 

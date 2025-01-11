@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 5"
-subtitle: "Due: March 19, 2024"
+subtitle: "Due: March 17, 2025"
 format:
   html:
     theme:
@@ -22,7 +22,7 @@ format:
 Just two questions this week! Question 1 on this problem set is about using lists for tabulation and working with `GCompound`s. Question 2 is about working with multidimensional arrays. Files are provided in the starting template linked before for both questions. Make sure you fill out the top metadata on each problem please!
 
 ```{=html}
-<a href='https://classroom.github.com/a/tRWjmOEL' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom.github.com/a/6TZTKBW3' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 
