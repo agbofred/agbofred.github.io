@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 1"
-subtitle: "Due: January 29, 2024 at 10:00 PM"
+subtitle: "Due: January 20, 2025 at 10:00 PM"
 format:
   html:
     theme:
@@ -69,6 +69,22 @@ You can test your script against these worlds be running your program, and then 
   - Really think of how you want to decompose this problem. I would argue that you are essentially trying to accomplish the same task 3 different times, so that might guide or inspire how you want to break things down.
   -  Just because loops will be useful, you don’t need to have all your code inside the loop! Frequently, you might need a line or two of code outside any loops to “reposition” Karel a bit.
   - You have lots of potential predicate functions to choose from to determine where the wall is that you are trying to paint and move along. Many of them can work, but some streamline the code more than others
+
+
+# Problem 3
+Karel, tired of painting, is thinking more abstractly, and wants to lay out a checkerboard pattern of beepers inside an empty rectangular world. An example of a before and after for an `8x8` world is shown below:
+
+![](./images/checkerb.png)
+
+
+This problem has a nice decomposition structure along with some interesting algorithmic issues. As you think about how you will solve the problem, you should make sure that your solution works with checkerboards that are different in size from the standard 8x8 checkerboard shown in the example above. Odd-sized checkerboards are trickier, and you should make sure that your program generates the following pattern in a `5x3` world:
+
+![](./images/board_2.png)
+
+
+Another special case you need to consider is that of a world which is only one column wide or one row high. The repository includes several sample worlds for you to test your program against, including: `1x8.w`, `5x3.w`, `5x5.w`, and `8x1.w`. You can safely assume that Karel always starts in the bottom left corner and facing to the east with an infinite supply of beepers in its bag. In does not matter where Karel finishes (but they should finish without erroring!) or which specific spaces have beepers, except that the world should be completely checkerboarded. To get full points on this problem, your program should show clear evidence of how you decomposed the problem and successfully recreate a checkerboard on any empty rectangular world.
+
+
 
 **Overall Checklist:** Before you submit the assignment make sure that:
 

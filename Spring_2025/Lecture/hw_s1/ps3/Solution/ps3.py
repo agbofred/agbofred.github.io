@@ -41,10 +41,10 @@ def contains_repeated_letters(word):
                 count +=1
                 return True
     return False 
-if __name__ == '__main__':
-   print(contains_repeated_letters("MreomOE"))
+#if __name__ == '__main__':
+   #print(contains_repeated_letters("MreomOE"))
 
-   #B Oart
+#B Part
 ## Ensure you import english_words from english.py (file must be in the project directory)
 from english import ENGLISH_WORDS
 def longest_no_repeats():
@@ -54,3 +54,6 @@ def longest_no_repeats():
             if len(word) > len(longest):
                 longest = word
     return longest
+
+if __name__ =="__main__":
+    print(longest_no_repeats())
