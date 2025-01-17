@@ -1,12 +1,14 @@
 import karel
 
 def main():
-    while left_is_clear():
+    while not_facing_north():
         while front_is_blocked():
-            turn_left()
-            step_up()
+            if facing_east():
+                turn_left()
+            if front_is_clear():
+                step_up()
             
-def step_up():
+def step_up(): 
     move()
     turn_right()
     move()
