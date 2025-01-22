@@ -43,30 +43,30 @@
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Problem Set 1 due tonight!
+<li>Problem Set 1 is due next week Monday!</li>
+<li>If you recently added the course:
 <ul>
-<li>A new problem set will be posted later today or tomorrow</li>
-<li>I’ll be trying to get feedback to you by early next week</li>
+<li>ensure you fill out the section form <a
+href="https://docs.google.com/forms/d/e/1FAIpQLSd_BRkODq06sAEqG2ZXMQQPMB9YLYz3PxDlARHXn1rBRiTdTQ/viewform?usp=sharing">here</a></li>
+<li>also use this link to <a href="https://discord.gg/4GYBneCU">join</a>
+the <strong><em>Discord Server</em></strong>.</li>
 </ul></li>
-<li>If you recently added the course, ensure you fill out the section
-form <a href="https://forms.gle/o8Ckec2dPboSV8bPA">here</a></li>
-<li>Also use this link to <a
-href="https://discord.gg/AnCB5NEpfw">join</a> the <strong><em>Discord
-Server</em></strong>.</li>
 <li>The last day you can <strong>add/drop</strong> a class without issue
-is <strong><em>tomorrow</em></strong></li>
-<li>Moving back into the book today, catching information and details
-from Ch 1 that we haven’t yet talked about
+is <strong><em>Monday 27th</em></strong></li>
+<li>You must have gotten a message from <strong>Prof Jed</strong>
+regarding your section meeting
+<ul>
+<li>See me after the class if there’s any concerns with the section</li>
+</ul></li>
+<li>Moving into the main textbook today, starting from Ch 1
 <ul>
 <li>Text is posted <a
-href="http://willamette.edu/~jjrembold/class_files/cs151/CS151-Reader-2023.pdf">here</a>
-and also linked on the main course webpage</li>
+href="https://willamette.instructure.com/courses/7418/files/1567072/download?download_frd=1">here</a></li>
 </ul></li>
-<li>Polling: <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+<li>Polling today! Use this <a
+href="https://www.polleverywhere.com/agbofred203">link</a>
 <ul>
-<li>Reminder: include enough of your name that I can uniquely identify
-you!</li>
+<li>Be consistent, use firstname</li>
 </ul></li>
 </ul>
 </section>
@@ -319,8 +319,8 @@ be updated as the program progresses</li>
 <li>Envision as a named box capable of storing a value
 <p><img
 data-src="../images/svg_cache/f6c6bb43f05da24ad71fc0f13983388e3f56eafe.svg"
-style="width:20.0%" data-id="box&#39;"
-alt="&#39;Will this work?" /></p></li>
+style="width:20.0%" alt="&#39;Will this work?"
+data-id="box&#39;" /></p></li>
 <li>Each variable has the following attributes:
 <ul>
 <li>A <em>name</em>: which enables you to tell variables apart</li>
@@ -410,7 +410,7 @@ start with a number</strong></li>
 </ul></li>
 <li>Capitalization matters! <code class="python">radius</code> and
 <code class="python">Radius</code> are different variable names!</li>
-<li><strong>Pick meaningful variable names!</strong></li>
+<li><strong>Use meaningful variable names!</strong></li>
 </ul>
 </div>
 </section>
@@ -853,8 +853,10 @@ include:</li>
 <h2>Python Applications</h2>
 <ul>
 <li>In Python, application programs are generally stored in files whose
-names end with <code class="python">.py</code>. Such files are called
-<em>modules</em>.</li>
+names end with <code class="python">.py</code>
+<ul>
+<li>Such files are called <em>modules</em>.</li>
+</ul></li>
 <li>Most interesting applications interact with the user
 <ul>
 <li>In modern applications, this often happens through a <em>graphical
@@ -893,113 +895,52 @@ between each when printed.</p>
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="boolean-expressions" class="slide level2">
-<h2>Boolean Expressions</h2>
-<ul>
-<li><p>Python defines two types of operators that work with Boolean
-data: <em>relational operators</em> and <em>logical
-operators</em></p></li>
-<li><p>Relational operators compare values of other types and produce a
-<code class="python">True</code>/<code class="python">False</code>
-result:</p>
-<table>
-<tbody>
-<tr class="odd">
-<td><code class="python">==</code></td>
-<td style="text-align: left;">Equals</td>
-<td></td>
-<td></td>
-<td></td>
-<td><code class="python">!=</code></td>
-<td style="text-align: left;">Not equals</td>
-</tr>
-<tr class="even">
-<td><code class="python"><</code></td>
-<td style="text-align: left;">Less than</td>
-<td></td>
-<td></td>
-<td></td>
-<td><code class="python"><=</code></td>
-<td style="text-align: left;">Less than or equal too</td>
-</tr>
-<tr class="odd">
-<td><code class="python">></code></td>
-<td style="text-align: left;">Greater than</td>
-<td></td>
-<td></td>
-<td></td>
-<td><code class="python">>=</code></td>
-<td style="text-align: left;">Greater than or equal to</td>
-</tr>
-</tbody>
-</table></li>
-<li><p>Be careful! <code class="python">==</code> <em>compares</em> two
-booleans. A single <code class="python">=</code> <em>assigns</em> a
-variable. The odds are high you’ll use one when you meant the other at
-least once this semester!</p></li>
-</ul>
-</section>
-<section id="the-vulcan-way" class="slide level2">
-<h2>The Vulcan Way</h2>
-<ul>
-<li><p>Logical operators act on Boolean pairings</p>
-<table>
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code class="python">A and B</code></td>
-<td>True if both terms True, False otherwise</td>
-</tr>
-<tr class="even">
-<td><code class="python">A or B</code></td>
-<td>True if <em>any</em> term is True, False otherwise</td>
-</tr>
-<tr class="odd">
-<td><code class="python">not A</code></td>
-<td>True if A False, False if A True (opposite)</td>
-</tr>
-</tbody>
-</table></li>
-</ul>
-<div>
-<ul>
-<li class="fragment">Order of operations follows parentheses and then
-proceeds left to right</li>
-<li class="fragment">Careful that <code class="python">or</code> is
-still <code class="python">True</code> if both options are
-<code class="python">True</code></li>
-<li class="fragment">Similarly, careful with combining
-<code class="python">not</code> with <code class="python">and</code> and
-<code class="python">or</code>
-<ul>
-<li class="fragment">“Not A or B” in common English is not the same as
-<code class="python">not A or B</code></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="understanding-check-1" class="slide level2">
-<h2>Understanding Check</h2>
-<p>What value is printed when the code to the right runs?</p>
-<div class="cols">
-<div class="col">
-<div class="poll">
-<ol>
-<li><code class="python">True</code></li>
-<li><code class="python">False</code></li>
-<li><code class="python">"4Quiz"</code></li>
-<li>This would give an error</li>
-</ol>
-</div>
-</div>
-<div class="col" style="flex-grow:2;">
-<pre ><code class="python">A = 10
+<!--
+
+## Boolean Expressions
+- Python defines two types of operators that work with Boolean data: _relational operators_ and _logical operators_
+- Relational operators compare values of other types and produce a `True`/`False` result:
+
+    ---- ----------------- - - - ---- --------------------
+    `==` Equals                  `!=` Not equals
+     `<` Less than               `<=` Less than or equal too
+     `>` Greater than            `>=` Greater than or equal to
+    ---- ----------------- - - - ---- --------------------
+- Be careful! `==` _compares_ two booleans. A single `=` _assigns_ a variable. The odds are high you'll use one when you meant the other at least once this semester!
+
+
+## The Vulcan Way
+- Logical operators act on Boolean pairings
+
+    Operator | Description
+    ---|---
+    `A and B` | True if both terms True, False otherwise
+    `A or B` | True if _any_ term is True, False otherwise
+    `not A` | True if A False, False if A True (opposite)
+
+::: incremental
+- Order of operations follows parentheses and then proceeds left to right
+- Careful that `or` is still `True` if both options are `True` 
+- Similarly, careful with combining `not` with `and` and `or`
+    - "Not A or B" in common English is not the same as `not A or B`
+:::
+
+## Understanding Check
+What value is printed when the code to the right runs?
+
+:::: cols
+::: col
+:::::{.poll}
+#. `True`
+#. `False`
+#. `"4Quiz"`
+#. This would give an error
+:::::
+:::
+
+::: {.col style="flex-grow:2;"}
+```python
+A = 10
 B = 4
 C = "Quiz"
 A *= B
@@ -1007,54 +948,40 @@ if A > 40 and C != "C":
     print(str(B)+C)
 else:
     print(A < B or not (C == "C"))
-</code></pre>
-</div>
-</div>
-</section>
-<section id="shorting-the-circuit" class="slide level2">
-<h2>Shorting the Circuit</h2>
-<ul>
-<li>Python evaluates <em>and</em> and <em>or</em> operators using a
-strategy called <em>short-circuit mode</em></li>
-<li>Only evaluates the right operand if it actually needs to
-<ul>
-<li><p>Example: if <code class="python">n=0</code>, then the
-<code class="python">x % n == 0</code> is never actually checked in the
-statement</p>
-<pre ><code class="python">n != 0 and x % n == 0</code></pre>
-<p>since <code class="python">n != 0</code> already is
-<code class="python">False</code> and
-<code class="python">False and</code> <em>anything</em> is always
-<code class="python">False</code></p></li>
-</ul></li>
-<li>Can use short-circuit to prevent errors: the above
-<code class="python">x % n == 0</code> statement would have erred out if
-<code class="python">n=0</code></li>
-</ul>
-</section>
-<section id="input-input" class="slide level2">
-<h2>Input: <code class="python">input</code></h2>
-<ul>
-<li><p>To retrieve data from a user, we can use Python’s built-in
-<code class="python">input()</code> function</p></li>
-<li><p>The form will generally look like:</p>
-<pre ><code class="python">variable = input(prompt_text)</code></pre>
-<ul>
-<li><code class="python">variable</code> is the variable name you want
-to assign the user’s typed input to</li>
-<li><code class="python">prompt_text</code> is the string that will be
-displayed on the screen to communicate to the user what they should be
-doing</li>
-</ul></li>
-<li><p>The <code class="python">input()</code> function <strong>always
-returns a string</strong></p>
-<ul>
-<li><p>If you want to get an integer from the user, you will need to
-convert it yourself after retrieving it</p>
-<pre ><code class="python">num = int(input('Pick a number between 1 and 10: '))</code></pre></li>
-</ul></li>
-</ul>
-<!--
+
+```
+:::
+::::
+
+## Shorting the Circuit
+- Python evaluates _and_ and _or_ operators using a strategy called _short-circuit mode_
+- Only evaluates the right operand if it actually needs to
+    - Example: if `n=0`, then the `x % n == 0` is never actually checked in the statement
+
+        ```python
+        n != 0 and x % n == 0
+        ```
+
+        since `n != 0` already is `False` and `False and ` _anything_ is always `False`
+- Can use short-circuit to prevent errors: the above `x % n == 0` statement would have erred out if `n=0`
+
+## Input: `input`
+- To retrieve data from a user, we can use Python's built-in `input()` function
+- The form will generally look like:
+
+  ```python
+  variable = input(prompt_text)
+  ```
+    - `variable` is the variable name you want to assign the user's typed input to
+    - `prompt_text` is the string that will be displayed on the screen to communicate to the user what they should be doing
+- The `input()` function **always returns a string**
+    - If you want to get an integer from the user, you will need to convert it yourself after retrieving it
+    
+      ```python
+      num = int(input('Pick a number between 1 and 10: '))
+      ```
+
+
 ## Running a Program
 - Python programs specify what part of the code is supposed to be when a program is run using a few special lines at the end of the program
 
@@ -1124,6 +1051,9 @@ if __name__ == '__main__':
     add_two_integers()
 ```
 -->
+</section>
+<section id="class-activity" class="slide level2">
+<h2>Class Activity</h2>
 </section>
     </div>
   </div>

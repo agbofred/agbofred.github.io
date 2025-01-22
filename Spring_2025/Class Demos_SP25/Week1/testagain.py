@@ -1,10 +1,15 @@
+def cal(length,width):
+    length = length
+    width = width
+    area = length * width
+    Parameter = 2 * (length + width)
+    print("Area of the rectangle is ", area)
+    print("Parameter of the rectangle is ", Parameter)
 
-def main():
-    def alfa(a):
-        return a%2
+cal(2,4)
 
-    def beta():
-        sum = 0+3
-        return sum
-    print(alfa(4),beta())
-    
+firstname = "Fred"
+lastname = "Agbo"
+fullname = firstname + " "+ lastname
+nameupper = fullname.upper()
+print(f'{firstname} \n {lastname} \n {fullname}\n {nameupper}')
