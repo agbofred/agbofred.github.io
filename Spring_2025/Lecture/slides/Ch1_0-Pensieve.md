@@ -498,13 +498,13 @@ Code | Description
 
 ## Class Activity
 - I'm introducing ***Pensieve AI Tutor*** in this class to:
-	- try out how an intelligent tool can better facilitate your understanding
-	- give you more hands on experience through class engagement 
+    - try out how an intelligent tool can better facilitate your understanding
+    - give you more hands on experience through class engagement 
 
 ![Pensieve Tutor - CS151](../../Lecture/images/pensieve_welcome.png){width=70%}
 
 ## Class Activity
 - Use this invited [link](https://tutor.pensieve.co/student/join/willamette_cs151/willamette_cs151_sp25) to access your ***Pensieve Tutor*** student page 
-	- If prompted, login with your __willamette.edu__ email
+    - If prompted, login with your __willamette.edu__ email
 
 ![Pensieve Tutor - Activity Page](../../Lecture/images/Pensieve_mainpage.png){width=70%}
