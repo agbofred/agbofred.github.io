@@ -15,16 +15,16 @@ history: false
 
 
 ## Announcements
-- Problem Set 2 is posted and due on Monday next week ***at 10 pm***
-	- Feedback for PS1 will be ready by next week! 
+- Problem set 1 is due today at 10pm
 - I will strongly recommend making your submission as is on due dates
-- Policy for unexcussed late submissions will attract losing points as follows:
-	- 10%  for 24 hours late submission.
-	- 20%  for 48 hours late submission.
-	- 50%  for a week late submission.
-	- Beyound 1 week may not earn points
-- We will be concluding chapter 2 of the text today. Hope eveyone is reading the text along
-- Link to Polling [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Recall, there's no late submissions in this class!
+	- Read the policy for excussed late submissions in the syllabus and keep to the terms 
+- __Problem Set 2__ is posted and due on Monday next week ***at 10 pm***
+	- Published via the traditional GitHub classroom and also in ***Pensieve Tutor*** for class engagement 
+	- You could make your submission through either systems (more info in next class)
+- Invitation to Willamette University [Civic Commons event](https://my.willamette.edu/site/civic-commons)
+	- Date: ***4th February 2025***. Check the [Schedule here](https://my.willamette.edu/site/civic-commons/schedule)
+<!-- - Link to polling [here](https://www.polleverywhere.com/agbofred203) -->
 
 
 <!--
@@ -162,7 +162,7 @@ What will the printed output of the code to the left?
 
 	---- ----------------- - - - ---- --------------------
 	`==` Equals                  `!=` Not equals
-	 `<` Less than               `<=` Less than or equal too
+	 `<` Less than               `<=` Less than or equal to
 	 `>` Greater than            `>=` Greater than or equal to
 	---- ----------------- - - - ---- --------------------
 - Be careful! `==` _compares_ two booleans. A single `=` _assigns_ a variable. The odds are high you'll use one when you meant the other at least once this semester!
