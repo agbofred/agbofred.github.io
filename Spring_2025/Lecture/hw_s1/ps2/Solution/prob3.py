@@ -19,7 +19,7 @@ def total_shaded_area(A, B, d):
     area_B = B**2
     
     # Calculate the overlap area
-    overlap_area = d**2
+    overlap_area = d*(min(A,B))
     
     # Calculate the total shaded area
     total_area = area_A + area_B - overlap_area
