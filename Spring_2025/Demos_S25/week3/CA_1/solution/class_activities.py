@@ -11,24 +11,26 @@ def atm():
     ending = False
     while not ending:
         choice = input("Enter: 1 to Check Balance; 2 to Withdraw; 3 to Deposit; 0 to Exit : ")
-        if int(choice)== 1:
-            print("Your current balance is ", bal)
-        elif int(choice)== 2 and bal>=0:
-            amount = int(input("How much do you want to withdraw?  "))
-            if amount <= bal:
-                print("Withdrawal of ", amount, "successful!")
-                bal -=amount
-            else:
-                 print("Sorry! You do not have sufficient balance to withdraw ", amount)
-        elif int(choice)== 3:
-            deposit =int(input("Enter the amount you want to deposit: "))
-            bal +=deposit
-            print("Your current balance is  ", bal)
-        elif int(choice)== 0:
-            return 
-        else:
-            choice =""
+        if choice =="":
             ending = True
+        else:
+            if int(choice)== 1:
+                print("Your current balance is ", bal)
+            elif int(choice)== 2 and bal>=0:
+                amount = int(input("How much do you want to withdraw?  "))
+                if amount <= bal:
+                    print("Withdrawal of ", amount, "successful!")
+                    bal -=amount
+                else:
+                    print("Sorry! You do not have sufficient balance to withdraw ", amount)
+            elif int(choice)== 3:
+                deposit =int(input("Enter the amount you want to deposit: "))
+                bal +=deposit
+                print("Your current balance is  ", bal)
+            elif int(choice)== 0:
+                return 
+            else:
+                ending = True
 
 
 # Problem 2
@@ -51,9 +53,9 @@ def word_count():
     # Count vowels (optional feature)
    
     # Display statistics
-    print("\n=== Text Statistics ===")
-    print(f"Total characters (excluding spaces): {char_count}")
-    print(f"Total words: {word_c}")
+    print("\n=== Text Statistics ===\n")
+    print("Total characters (excluding spaces): ", char_count)
+    print("Total words: ", word_c,"\n")
 
 #Problem 3
 """Grade Calculator"""
@@ -103,4 +105,4 @@ def compute_grade():
         
 
 if __name__ =='__main__':
-    compute_grade()
+    word_count()
