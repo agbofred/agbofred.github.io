@@ -21,7 +21,7 @@ format:
 All assignment work will be done in the included template files on GitHub as per usual. _Please_ do not forget to fill out the metadata at the top of each template! At the very least fill out if you worked alongside anyone to give them proper credit.
 
 ```{=html}
-<a href='https://classroom.github.com/a/oEq9jydD' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom.github.com/a/0wzcZhFk' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 

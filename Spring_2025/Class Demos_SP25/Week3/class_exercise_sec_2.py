@@ -53,6 +53,7 @@ def compute_grade ():
 
     print("\n============== Result Summary ======================= \n")
     print("Your assignment weighted average is ", round(weighted_score), 'out of', 70)
+    
 
 
 
