@@ -53,7 +53,20 @@ def compute_grade ():
 
     print("\n============== Result Summary ======================= \n")
     print("Your assignment weighted average is ", round(weighted_score), 'out of', 70)
-    
+    weighted_percent = (weighted_score*100)/70
+
+    if weighted_percent<= 50:
+        print("\n WARNING! Your current score is below the average in the assignment. You will need to work harder to earn A grade")
+    elif weighted_percent <70:
+        print("\n Your current score is", round(weighted_percent), "=> D." "You need ", 70 - weighted_score + (100*0.3), " to earn A grade")
+    elif weighted_percent <80:
+        print("\n Your current score is", round(weighted_percent), "=> C." "You need ", 70 - weighted_score + (100*0.3), " to earn A grade")
+    elif weighted_percent <90:
+        print("\n Your current score is", weighted_percent, "=> B." "You need ", 70 - weighted_score + (100*0.3), " to earn A grade")
+    else:
+        print("\n Your current score is", weighted_percent, "=> A." "You need ", 70 - weighted_score + (100*0.3), " to retain A grade")
+
+
 
 
 
