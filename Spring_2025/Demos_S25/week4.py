@@ -1,8 +1,9 @@
 # A = 1000000
-# B ="*"
-# for i in range(10):
-#     star = 2*i +1
-#     print(f"The value of A is {B*star:0^40}")
+B ="*"
+for i in range(10):
+    star = 2*i +1
+    #print(f"The value of A is {B*star:^40}")
+    #print(f"The value of A is {B*star:0^40}")
 
 from english import ENGLISH_WORDS
 
@@ -15,4 +16,4 @@ def tenletterwords():
             count +=1
     return count
 
-print(f"{tenletterwords():,}")
+#print(f"{tenletterwords():,}")
