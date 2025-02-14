@@ -46,6 +46,11 @@ def draw_smilly(): # Function to draw a smilly face
     mouth.set_line_width(10)
     gw.add(mouth)
 
+    caption = GLabel("This is a smilly face from CS151",80, 320)
+    caption.set_color("blue")
+    caption.set_line_width(10)
+    gw.add(caption)
+
 
 
 if __name__ =="__main__":
