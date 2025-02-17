@@ -130,7 +130,7 @@ print("Unique values in ascending order:", unique_values)
 Write Python program that uses the PGL library to achieve the following:
  i. Draw an 8X8 checkerboard to the center of the canvas.
  ii. Add a caption or lable directly below the checkerboard 
-Note that the checkerboard and its label must be placed at the center of the canvas and you are free to choose any color aside from black and while as shown in an example below.
+Note that the checkerboard and its label must be placed at the center of the canvas and you are free to choose any color aside from black and white as shown in an example below.
 You should assume that all the neccessary PGL library for this program have been imported.
 
 
