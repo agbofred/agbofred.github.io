@@ -7,22 +7,22 @@ ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 """and has the internal representation shown below, where I have ve labeled both positive and negative indices.<br>
 ![](./Alphabet.png)"""
 
-"""(1a).  (9 - 3)  + 25 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 23 // 7 """
+"""(1a).  (13 - 3)  + 24 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 23 // 3 """
 
-(9 - 3)  + 25 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 23 // 7 
-# Ans: 39
+(13 - 3)  + 24 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 23 // 3
+# Ans: 51
 
-"""(1b).  2 + 3 ** 2 * 2 // 2 ** 2 - 2 % 2 """
-2 + 3 ** 2 * 2 // 2 ** 2 - 2 % 2 
-# And: 6
+"""(1b).  2 + 3 ** 2 * 2 // 2 ** 2 - 2 % 2 + 4**1  """
+2 + 3 ** 2 * 2 // 2 ** 2 - 2 % 2 + 4**1 
+# And: 10
 
-"""(1c). not (12 < 6 - 5 or 9 // 3 == 3) """
-not (12 < 6 - 5 or 9 // 3 == 3)
-# Ans: False
+"""(1c). not (12 < 6 - 5 or 9 // 3 != 3) """
+not (12 < 6 - 5 or 9 // 3 != 3)
+# Ans: True
 
-"""(1d). ALPHABET [12:15:2] + ALPHABET[18::5] + ALPHABET[-8] """
-ALPHABET [12:15:2] + ALPHABET[18::5] + ALPHABET[-8] 
-# Ans: MOSXI
+"""(1d). ALPHABET [12:15:2] + ALPHABET[18::5] + ALPHABET[2-10::6] """
+ALPHABET [12:15:2] + ALPHABET[18::5] + ALPHABET[2-10::6] 
+# Ans: MOSXSY
 
 
 
@@ -32,18 +32,18 @@ ALPHABET [12:15:2] + ALPHABET[18::5] + ALPHABET[-8]
 def problem1(s):
     r = ""
     for i in range(len(s)):
-     if i % 2 != 0:
-         r += s[i]
-    else :
-        r = s[i] + r
+        if i % 2 != 0:
+            r += s[i]
+        else :
+            r = s[i] + r
     return r
 
 if __name__ == '__main__ ':
-    print(problem1("ressets"))
+    print(problem1("neosots"))
 
 """What will be printed to the terminal after the program execute?"""
 
-# Ans: sesrest
+# Ans: soonest
 
 """(2b). Consider the function below. What value will be printed to the terminal?"""
 
@@ -93,9 +93,8 @@ The below would be one example of some output:
 """
 print(one_off("monkey"))
 
-donkey
-
-honkey
+lively
+lonely
 
 2
 
@@ -118,4 +117,4 @@ def one_off(word):
     return counter
             
 if __name__ == "__main__":
-    print(one_off("monkey"))
+    print(one_off("lovely"))
