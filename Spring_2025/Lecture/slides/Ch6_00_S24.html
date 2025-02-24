@@ -468,72 +468,7 @@ function, you’ll notice that nothing happens</li>
 make your program behave as desired</li>
 </ul>
 <pre ><code class="python">gw.add_event_listener("click", click_action)
-gw.add_event_listener("dblclk", dblclk_action)</code></pre>
-</section>
-<section id="line-drawing" class="slide level2">
-<h2>Line Drawing</h2>
-<ul>
-<li>Say we wanted to write a simple program that allows the user to draw
-lines by clicking and dragging the mouse</li>
-<li>Using two event listeners would be useful:
-<ul>
-<li>“mousedown” could start drawing a zero-length line at the current
-mouse position (and add it to the window)</li>
-<li>“drag” could update the end-point of that line</li>
-</ul></li>
-<li>The strategy would allow the user to have visual feedback as they
-drag around, helping them to position the line
-<ul>
-<li>Since the line stretches and contracts as you move the cursor
-around, the technique is commonly called <em>rubber-banding</em></li>
-</ul></li>
-</ul>
-</section>
-<section id="attempt-1" class="slide level2">
-<h2>Attempt #1</h2>
-<pre ><code class="python badcode" style="max-height:800px;">from pgl import GWindow, GLine
-
-WIDTH = 500
-HEIGHT = 500
-
-def draw_lines():
-    def mousedown_event(e):
-        x = e.get_x()
-        y = e.get_y()
-        line = GLine(x,y,x,y)
-        gw.add(line)
-
-    def drag_action(e):
-        line.set_end_point(e.get_x(), e.get_y())
-
-    gw = GWindow(WIDTH, HEIGHT)
-    line = None
-    gw.add_event_listener("mousedown", mousedown_event)
-    gw.add_event_listener("drag", drag_action)
-
-if __name__ == '__main__':
-    draw_lines()</code></pre>
-</section>
-<section id="what-happened" class="slide level2">
-<h2>What Happened?</h2>
-<ul>
-<li>Remember that if you define a variable in a function, that variable
-is assumed to be local!
-<ul>
-<li>Keeps you from accidentally overwriting variables you may not have
-meant to</li>
-<li>It works against us here, since we WANT to override the original
-value</li>
-</ul></li>
-<li>We can’t pass in the info as a parameter, since it is not part of
-the event information</li>
-<li>Python <em>does</em> have a <code class="python">nonlocal</code>
-keyword, which allows you to state that a specific variable is
-<em>not</em> local, but it tends to just confuse students</li>
-</ul>
-</section>
-<section id="midterm-exam-1-instructions" class="slide level2">
-<h2>Midterm Exam #1 Instructions</h2>
+gw.add_event_listener("dblclick", dblclk_action)</code></pre>
 </section>
     </div>
   </div>

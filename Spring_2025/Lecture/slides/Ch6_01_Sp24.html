@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-02-21">
+  <meta name="dcterms.date" content="2025-02-24">
   <title>Windows &amp; Clicky Clicky</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,53 +37,37 @@
 <section id="title-slide">
   <h1 class="title">Windows &amp; Clicky Clicky</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">February 21, 2024</p>
+  <p class="date">February 24, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Grading for PS3 is returned! Ask me questions if you’ve got one
-regarding it</li>
+<li>Grading of midterm 1 is still ongoing</li>
 <li>We are in Ch6 of the text this week, which is interactive
 graphics</li>
-<li>Remember the <strong>1st midterm exam is this Friday Feb 23</strong>
-in this hall
-<ul>
-<li>Test objectives and first practice questions were sent on
-Monday</li>
-<li>Second practice questions will be opened today: <strong><em>Canvas
-demo, in-clase today</em></strong>!</li>
-<li>Those with accommodations with <strong>Testing Center</strong>
-should contact them to make arrangement NOW! and cc me in the email</li>
-</ul></li>
+<li>Problem sets #4 is being posted, <strong>due next week Monday at 10
+pm</strong></li>
 <li>Polling continues <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
+href="https://www.polleverywhere.com/agbofred203">here</a></li>
 </ul>
-</section>
-<section id="review-question" class="slide level2">
-<h2>Review Question</h2>
-<div class="cols">
-<div class="col">
-<p>Which of the below images is the mostly likely output of the code to
-the right?</p>
+<!-- 
+## Review Question
+::::::cols
+::::col
+Which of the below images is the mostly likely output of the code to the right?
+
 <div style="display: flex; flex-wrap: wrap; justify-content:center;">
-<div>
-<img src="../images/random_revq1.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
+<div><img src="../images/random_revq1.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
+<div><img src="../images/random_revq2.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
+<div><img src="../images/random_revq3.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
+<div><img src="../images/random_revq4.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/></div>
 </div>
-<div>
-<img src="../images/random_revq2.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
-</div>
-<div>
-<img src="../images/random_revq3.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
-</div>
-<div>
-<img src="../images/random_revq4.png" style="flex-grow:1; object-fit:cover; height:330px; border:solid white 2px;"/>
-</div>
-</div>
-</div>
-<div class="col" style="flex-grow:1.2;">
-<pre ><code class="python" style="max-height:950px; font-size:.75em;">def make_circle(x,y,r):
+::::
+
+::::{.col style='flex-grow:1.2;'}
+```{.python style='max-height:950px; font-size:.75em;'}
+def make_circle(x,y,r):
     c = GOval(x-r, y-r, 2*r, 2*r)
     c.set_filled(True)
     if randint(1, 100) > 75:
@@ -99,9 +83,98 @@ for i in range(50):
             randint(50,450), 
             randint(5,50)
             )
-          )</code></pre>
-</div>
-</div>
+          )
+```
+::::
+:::::: -->
+</section>
+<section id="bubble-event" class="slide level2">
+<h2>Bubble Event</h2>
+<pre ><code class="python" style="max-height:800px;">from pgl import GWindow, GOval
+import random
+def do_buble():
+    def make_circle(x,y,r):
+        c = GOval(x-r, y-r, 2*r, 2*r)
+        c.set_filled(True)
+        if random.randint(1, 100) > 75:
+            c.set_color("#F92672") #pink
+        else:
+            c.set_color("#66D9EF") #blue
+        return c
+    def make_buble_action(e):
+        for i in range(50):
+            gw.add(make_circle(
+                    random.randint(50,450), 
+                    random.randint(50,450), 
+                    random.randint(5,50)
+                    )
+                )
+    gw = GWindow(500, 500)
+    gw.add_event_listener("dblclick",make_buble_action)
+do_buble()
+</code></pre>
+</section>
+<section id="line-drawing" class="slide level2">
+<h2>Line Drawing</h2>
+<ul>
+<li>Say we wanted to write a simple program that allows the user to draw
+lines by clicking and dragging the mouse</li>
+<li>Using two event listeners would be useful:
+<ul>
+<li>“mousedown” could start drawing a zero-length line at the current
+mouse position (and add it to the window)</li>
+<li>“drag” could update the end-point of that line</li>
+</ul></li>
+<li>The strategy would allow the user to have visual feedback as they
+drag around, helping them to position the line
+<ul>
+<li>Since the line stretches and contracts as you move the cursor
+around, the technique is commonly called <em>rubber-banding</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="attempt-1" class="slide level2">
+<h2>Attempt #1</h2>
+<pre ><code class="python badcode" style="max-height:800px;">from pgl import GWindow, GLine
+
+WIDTH = 500
+HEIGHT = 500
+
+def draw_lines():
+    def mousedown_event(e):
+        x = e.get_x()
+        y = e.get_y()
+        line = GLine(x,y,x,y)
+        gw.add(line)
+
+    def drag_action(e):
+        line.set_end_point(e.get_x(), e.get_y())
+
+    gw = GWindow(WIDTH, HEIGHT)
+    line = None
+    gw.add_event_listener("mousedown", mousedown_event)
+    gw.add_event_listener("drag", drag_action)
+
+if __name__ == '__main__':
+    draw_lines()</code></pre>
+</section>
+<section id="what-happened" class="slide level2">
+<h2>What Happened?</h2>
+<ul>
+<li>Remember that if you define a variable in a function, that variable
+is assumed to be local!
+<ul>
+<li>Keeps you from accidentally overwriting variables you may not have
+meant to</li>
+<li>It works against us here, since we WANT to override the original
+value</li>
+</ul></li>
+<li>We can’t pass in the info as a parameter, since it is not part of
+the event information</li>
+<li>Python <em>does</em> have a <code class="python">nonlocal</code>
+keyword, which allows you to state that a specific variable is
+<em>not</em> local, but it tends to just confuse students</li>
+</ul>
 </section>
 <section id="in-the-window" class="slide level2">
 <h2>In the Window</h2>
@@ -241,50 +314,26 @@ identifies the timer, and can be stopped by invoking the
 alt="These circles are growing!" />
 <figcaption aria-hidden="true">These circles are growing!</figcaption>
 </figure>
-</section>
-<section id="mid-term-test" class="slide level2">
-<h2>Mid-term test</h2>
-<ul>
-<li>Test will take place during the <strong>class time 0n
-Friday</strong>.</li>
-<li>Those with accommodations should already contact the testing center
-and cc me.</li>
-<li>Practice questions are posted on this week’s module</li>
-<li>Basic things to keep in mind:
-<ul>
-<li>The test contain detailed information to guide on what to expect.
-<strong><em>Read it carefully</em></strong></li>
-<li>The exam is partially open, and thus you are free to utilize:
-<ul>
-<li>The text</li>
-<li>Your notes</li>
-<li>Class slides</li>
-<li>Any past work you have done as part of sections, problem sets, or
-projects, provided it has been uploaded, and you access it through
-GitHub.</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="mid-term-test-1" class="slide level2">
-<h2>Mid-term test</h2>
-<ul>
-<li>You are allowed to use a computer for ease of typing and accessing
-the above resources,</li>
-<li>You are <strong>prohibited</strong> from accessing and using any
-editor or terminal to run your code.
-<ul>
-<li>Visual Studio Code or any similar editor should
-<strong>never</strong> be open on your computer during this exam.</li>
-</ul></li>
-<li>Additionally, you are <strong>prohibited</strong> from accessing
-outside internet resources beyond the webpages described above.</li>
-<li>practice questions (2 at least) will be posted today and Wednesday
-<ul>
-<li>first practice questions would be sent in PDF</li>
-<li>second practice questions would be on canvas</li>
-</ul></li>
-</ul>
+<!-- ## Mid-term test
+- Test will take place during the **class time 0n Friday**.
+- Those with accommodations should already contact the testing center and cc me.
+- Practice questions are posted on this week's module
+- Basic things to keep in mind:
+    - The test contain detailed information to guide on what to expect. ***Read it carefully***
+    - The exam is partially open, and thus you are free to utilize:
+        - The text
+        - Your notes
+        - Class slides
+        - Any past work you have done as part of sections, problem sets, or projects, provided it has been uploaded, and you access it through GitHub.
+
+## Mid-term test        
+- You are allowed to use a computer for ease of typing and accessing the above resources, 
+- You are **prohibited** from accessing and using any editor or terminal to run your code. 
+    - Visual Studio Code or any similar editor should **never** be open on your computer during this exam. 
+- Additionally, you are **prohibited** from accessing outside internet resources beyond the webpages described above.
+- practice questions (2 at least) will be posted today and Wednesday
+    - first practice questions would be sent in PDF
+    - second practice questions would be on canvas -->
 </section>
     </div>
   </div>

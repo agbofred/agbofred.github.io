@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-02-23">
+  <meta name="dcterms.date" content="2025-02-26">
   <title>Getting Animated</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,7 +37,7 @@
 <section id="title-slide">
   <h1 class="title">Getting Animated</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">February 23, 2024</p>
+  <p class="date">February 26, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
@@ -220,7 +220,7 @@ def random_color():
     return color
 
 def create_filled_circle(x, y, r, color="black"):
-    circ = Goval(x-r, y-r, 2*r, 2*r)
+    circ = GOval(x-r, y-r, 2*r, 2*r)
     circ.set_filled(True)
     circ.set_color(color)
     return circ
@@ -340,58 +340,58 @@ def two_body():
 
 if __name__ == '__main__':
     two_body()</code></pre>
-</section>
-<section id="something-to-smile-about" class="slide level2">
-<h2>Something to smile about</h2>
-<div class="cols">
-<div class="col" style="font-size:.9em">
-<!--- Up until now, we haven't had a way to draw an arc!-->
-<ul>
-<li>The <code class="python">GArc</code> class represents an arc formed
-by taking a section of the perimeter of an oval.</li>
-<li>3 things necessary:
-<ul>
-<li>The bounding rectangle geometry (upper left corner and width and
-height)</li>
-<li>The <em>starting angle</em> (in degrees)</li>
-<li>The <em>sweep angle</em> (in degrees) which is how far the arc
-extends</li>
-</ul></li>
-<li>Negative angles move in the clockwise direction</li>
-</ul>
-</div>
-<div class="col">
-<p><img
-data-src="../images/svg_cache/568c4310834f76d9a4b710159f6c6cd65c6a7d0b.svg"
-style="width:100.0%" /></p>
-</div>
-</div>
-</section>
-<section id="fillable-arcs" class="slide level2">
-<h2>Fillable Arcs</h2>
-<ul>
-<li>The <code class="python">GArc</code> class is a
-<code class="python">GFillableObject</code>, and so you can call
-<code class="python">.set_filled()</code> on a
-<code class="python">GArc</code> object</li>
-<li>Filled like a pie-shaped wedge formed between the center of the
-bounding box and the starting and end points of the arc</li>
-</ul>
-<div class="cols">
-<div class="col">
-<pre ><code class="python">def filled_arc():
+<!-- ## Something to smile about
+
+::::::cols
+::::{.col style='font-size:.9em'}
+- Up until now, we haven't had a way to draw an arc!
+- The `GArc` class represents an arc formed by taking a section of the perimeter of an oval.
+- 3 things necessary:
+    - The bounding rectangle geometry (upper left corner and width and height)
+    - The _starting angle_ (in degrees)
+    - The _sweep angle_ (in degrees) which is how far the arc extends
+- Negative angles move in the clockwise direction
+::::
+
+::::col
+
+\begin{tikzpicture}%%width=100%
+\draw[MPurple] (-2,0) -- (2,0) (0,-2) -- (0,2);
+\draw[dashed, MBlue] (-1.5,-1.5) rectangle (1.5, 1.5);
+\draw[ultra thick, MRed, line cap=round] (45:1.5) arc (45:270:1.5);
+
+\draw[MOrange, dashed] (0,0) -- (45:1.5);
+\draw[MOrange, thick, -stealth] (0:1) arc (0:45:1) node[midway,right,font=\scriptsize\sf] {start};
+
+\draw[MGreen, thick, -stealth] (45:0.5) arc (45:270:0.5) node[midway, left, font=\scriptsize\sf] {sweep};
+\end{tikzpicture}
+
+::::
+::::::
+
+
+## Fillable Arcs
+- The `GArc` class is a `GFillableObject`, and so you can call `.set_filled()` on a `GArc` object
+- Filled like a pie-shaped wedge formed between the center of the bounding box and the starting and end points of the arc
+
+::::::cols
+::::col
+```python
+def filled_arc():
     gw = GWindow(400, 400)
     arc = GArc(50, 50, 
                350, 350, 
                90, 135)
     arc.set_color("orange")
     arc.set_filled(True)
-    gw.add(arc)</code></pre>
-</div>
-<div class="col">
-<p><img data-src="../images/FilledArc.png" style="width:50.0%" /></p>
-</div>
-</div>
+    gw.add(arc)
+```
+::::
+
+::::col
+![](../images/FilledArc.png){width=50%}
+::::
+:::::: -->
 </section>
     </div>
   </div>
