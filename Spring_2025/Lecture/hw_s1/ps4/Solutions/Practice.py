@@ -161,12 +161,12 @@ def longest_word():
 
 if __name__ == '__main__':
     pass
-    # print(is_prime(47))
+    #print(is_prime())
     # print(odd_sum(10))
-    # cube_pyramid()
+    cube_pyramid()
     # print(to_obenglobish("rot"))
     # longest_obenglobish()
-    key = "pyfgcrlaoeuidhtnsqjkxbmwvz"
-    print(encrypt("Hello??", key))
+    #key = "pyfgcrlaoeuidhtnsqjkxbmwvz"
+    #print(encrypt("Hello??", key))
     # longest_word()
 
