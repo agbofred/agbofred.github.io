@@ -58,7 +58,7 @@ def two_body():
     gw.add(planet1)
     gw.add(planet2)
 
-    gw.set_interval(step, 30)
+    gw.set_interval(step, 10)
 
 if __name__ == '__main__':
     two_body()

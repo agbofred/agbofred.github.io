@@ -1,3 +1,5 @@
+from pgl import GWindow, GOval
+import random
 def do_buble():
     def make_circle(x,y,r):
         c = GOval(x-r, y-r, 2*r, 2*r)

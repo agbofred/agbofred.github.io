@@ -26,10 +26,7 @@ def growing_circles():
         r = random.uniform(MIN_RADIUS, MAX_RADIUS)
         x = random.uniform(r, GWIDTH - r)
         y = random.uniform(r, GHEIGHT - r)
-        gw.circle = create_filled_circle(
-                            x, y, 
-                            0, random_color()
-                        )
+        gw.circle = create_filled_circle(x, y,0, random_color())
         gw.desired_size = 2 * r
         gw.current_size = 0
         gw.circles_created += 1
@@ -41,11 +38,7 @@ def growing_circles():
             gw.current_size += DELTA_SIZE
             x = gw.circle.get_x() - DELTA_SIZE / 2
             y = gw.circle.get_y() - DELTA_SIZE / 2
-            gw.circle.set_bounds(
-                            x, y, 
-                            gw.current_size,
-                            gw.current_size
-                        )
+            gw.circle.set_bounds(x,y,gw.current_size,gw.current_size)
         # or add a circle if you can
         elif gw.circles_created < N_CIRCLES:
             gw.add(start_new_circle())
