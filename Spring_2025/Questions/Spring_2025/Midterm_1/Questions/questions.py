@@ -91,7 +91,7 @@ The below would be one example of some output:
 """
 
 """
-print(one_off("monkey"))
+print(one_off("lovely"))
 
 lively
 lonely

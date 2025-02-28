@@ -28,21 +28,21 @@ ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 and has the internal representation shown below, where I’ve labeled both positive and negative indices.<br>
 ![](./Alphabet.png)
 
-(1a).    ```(9 - 3)  +  25  %  5  +  3  *  4  -  1  *  (4  -  3  **  3  +  5)  +  23  //  7```
+(1a).    ```(13 - 3)  + 24 % 5 + 3 * 4 - 1 * (4 - 3 ** 3 + 5) + 23 // 3```
 
-`Ans: 39`
+`Ans: 51`
 
-(1b).    2  +  3 ** 2  *  2  //  2  **  2  -  2  %  2
+(1b).   ``` 2 + 3 ** 2 * 2 // 2 ** 2 - 2 % 2 + 4**1 ```
 
-`And: 6`
+`And: 10`
 
-(1c).  not (12  <  6  -  5  or  9 //  3  ==  3)
+(1c).  ```not (12 < 6 - 5 or 9 // 3 != 3)```
 
-`Ans: False`
+`Ans: True`
 
-(1d).  ALPHABET [12:15:2]  +  ALPHABET[18::5]  +  ALPHABET[-8]
+(1d).  ```ALPHABET [12:15:2] + ALPHABET[18::5] + ALPHABET[2-10::6]```
 
-`Ans: MOSXI`
+`Ans: MOSXSY`
 
 
 
@@ -50,27 +50,28 @@ and has the internal representation shown below, where I’ve labeled both posit
 (2a).     Given the program
 ``` python
 def problem1(s):
-    r = ""
-    for i in range(len(s)):
-        if i % 2 != 0:
-            r += s[i]
-        else :
-            r = s[i] + r
-    return r
+    r = ""
+    for i in range(len(s)):
+        if i % 2 != 0:
+            r += s[i]
+        else :
+            r = s[i] + r
+    return r
 
 if __name__ == '__main__ ':
-    print(problem1("ressets"))
+    print(problem1("neosots"))
 ```
 What will be printed to the terminal after the program execute?
-`Ans: sesrest`
+
+`Ans: soonest`
 
 (2b).      Consider the function below. What value will be printed to the terminal?
 ```python
-def func(a, b=5, c= True): 
-    if c:
-        return a + c
-    else:
-        return a * b
+def func(a, b=5, c= True):
+    if c:
+        return a + c
+    else:
+        return a * b
 print(func(5,True,False))
 ```
 `Ans: 5`
@@ -78,25 +79,25 @@ print(func(5,True,False))
 (2c). Determine what will be printed to the terminal after the program below executes
 ```python
 def prob2a(s):
-    r = 0
-    new = ""
-    for i in range(len(s)):
-        if s[i].isspace() and is_english_word(s[r:i]):
-            new += prob2b(s[r:i])
-            r = i + 1
-    new += prob2b(s[r:])
-    return new
+    r = 0
+    new = ""
+    for i in range(len(s)):
+        if s[i].isspace() and is_english_word(s[r:i]):
+            new += prob2b(s[r:i])
+            r = i + 1
+    new += prob2b(s[r:])
+    return new
 
 def prob2b(y):
-    done = False
-    for r in y[:: -1]:
-        if done :
-            return r
-        if r. lower() in "aeiou":
-            done = True
-    return " "
+    done = False
+    for r in y[:: -1]:
+        if done :
+            return r
+        if r. lower() in "aeiou":
+            done = True
+    return " "
 if __name__ == "__main__":
-    print(prob2a("Hit tie why wish noon rip lord ding"))
+    print(prob2a("Hit tie why wish noon rip lord ding"))
 ```
 `Ans: Hi world`
 
@@ -109,13 +110,14 @@ Here your task is to write a function called one_off that takes a single argumen
 The below would be one example of some output:
 
 
->>> print(one_off("monkey"))
+>>> print(one_off("lovely"))
 
-donkey
+lively
 
-honkey
+lonely
 
 2
+
 
 
 You are free to assume that list of ENGLISH_WORDS are already imported from english.py
@@ -136,5 +138,5 @@ def one_off(word):
     return counter
             
 if __name__ == "__main__":
-    print(one_off("monkey"))
+    print(one_off("lovely"))
 ```
