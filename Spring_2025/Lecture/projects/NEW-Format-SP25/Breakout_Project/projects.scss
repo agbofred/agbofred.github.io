@@ -1,0 +1,18 @@
+/*-- scss:defaults --*/
+$code-color: black;
+
+
+/*-- scss:rules --*/
+
+caption, .table-caption {
+    text-align: left;
+}
+
+.navbar {
+    background: linear-gradient(90deg, rgba(255,128,128,1) 0%, rgba(255, 210,128,1) 25%, rgba(128, 255,128,1) 50%, rgba(128,255,255,1) 75%, rgba(128,128,255,1) 100%);
+    font-weight: bold;
+}
+
+code {
+    font-weight: bold;
+}

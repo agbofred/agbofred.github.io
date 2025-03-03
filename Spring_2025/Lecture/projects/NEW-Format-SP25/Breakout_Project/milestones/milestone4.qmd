@@ -1,0 +1,10 @@
+---
+title: "Milestone 4: Finishing up"
+---
+If you've gotten here, you've done all the hard parts! There are just a few more details you need to take into account.
+
+- You have to take care of the case when the ball hits the bottom wall. In the prototype you've been building, the ball just bounces off this wall like all the others, but that makes the game impossible to lose. You need to modify your program structure so that it tests for hitting the bottom wall and takes the proper actions when that happens.
+- You have to give the user three chances to remove the bricks. When the ball falls through the bottom of the window, you should remove the ball from the window, create a new ball just as you did at the beginning, and then wait for a click to start the ball moving. If the user has already had three chances, the game is over, and you should not respawn the ball.
+- You have to check for the other terminating condition, which is hitting the last brick. How do you know when you've done so? Although there are other ways to do it, one of the easiest is to have your program keep track of the number of bricks remaining. Every time you hit one, subtract one from that counter. When the count reaches zero, you must be done!
+- You need to test your program to see that it works! Play for a while and make sure that as many parts of it as you can check are working. If you think everything is working, here is something to try: Just before the ball is going to pass the paddle level, move the paddle quickly so that the paddle collides with the ball from the side. Does everything still work, or does your ball seem to get "glued" to the paddle? If you get this error, try to understand why it occurs and how you might fix it.
+

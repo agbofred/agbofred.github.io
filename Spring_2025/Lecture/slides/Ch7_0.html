@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-02-28">
+  <meta name="dcterms.date" content="2025-03-03">
   <title>Arrays and Lists</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,24 +37,32 @@
 <section id="title-slide">
   <h1 class="title">Arrays and Lists</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">February 28, 2024</p>
+  <p class="date">March 3, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Midterm Exam now on <strong><em>Friday this week</em></strong>.</li>
-<li>Problem Set 4 is posted and will be due <strong>next week Tuesday at
-10pm</strong></li>
-<li>Section Leaders are working on Project 1 feedback</li>
-<li><strong>TechByte</strong> talk tomorrow at 11:30 in Ford 102
-<ul>
-<li>I will be talking on <strong><em>Broadening Participation in
-Computing for Adults</em></strong></li>
-</ul></li>
+<li>Curving on Midterm #1 completed.</li>
+<li>Problem Set 4 is due <strong>today at 10pm</strong></li>
+<li>Project 2 <strong>Breakout</strong> will be released today and due
+next week Monday at 10pm</li>
 <li>Polling continues <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
+href="https://www.polleverywhere.com/agbofred203">here</a></li>
 </ul>
+</section>
+<section id="quick-general-poll" class="slide level2">
+<h2>Quick General Poll</h2>
+<p>Comparatively speaking, how would you say you are doing in absorbing
+and keeping up with the material in this class?</p>
+<div class="poll">
+<ol>
+<li>“Probably better than the majority of my peers”</li>
+<li>“Probably about the same as the majority of my peers”</li>
+<li>“Probably worse than the majority of my peers”</li>
+<li>“Probably way worse than the majority of my peers”</li>
+</ol>
+</div>
 <!--
 ## Review Question {data-notes="Solution: C, as it has the wrong data types for x and y"}
 All the functions below would print out all valid two letter words from the English language *at least once* except for 1. Which does not?
@@ -107,50 +115,61 @@ def func_D():
 
 ::::
 ::::::
--->
-</section>
-<section id="review-question" class="slide level2"
-data-note="Solution is A">
-<h2 data-note="Solution is A">Review Question</h2>
-<div class="cols">
-<div class="col">
-<p>Which of the below blocks of code will create the image to the right?
-The window measures 500 x 200 pixels and the value of
-<code class="python">d</code> is 150.</p>
-</div>
-<div class="col">
-<figure>
-<img data-src="../images/GArc_RevQ.png" style="width:65.0%" alt=" " />
-<figcaption aria-hidden="true"> </figcaption>
-</figure>
-</div>
-</div>
-<div class="cols">
-<div class="col">
-<div class="block" name="A">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+
+
+
+## Review Question {data-note="Solution is A"}
+::::::cols
+::::col
+Which of the below blocks of code will create the image to the right? The window measures 500 x 200 pixels and the value of `d` is 150.
+::::
+
+::::col
+![\ ](../images/GArc_RevQ.png){width=65%}
+::::
+::::::
+
+::::::cols
+::::col
+
+:::{.block name="A"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, d, 90, -180)
-gw.add(a1)</code></pre>
-</div>
-<div class="block" name="C">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d, 100 - d
+gw.add(a1)
+```
+:::
+
+:::{.block name="C"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d, 100 - d
 a1 = GArc(x, y, d, d, -180, 90)
-gw.add(a1)</code></pre>
-</div>
-</div>
-<div class="col">
-<div class="block" name="B">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+gw.add(a1)
+```
+:::
+
+::::
+
+::::col
+:::{.block name="B"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, d, 90, 180)
-gw.add(a1)</code></pre>
-</div>
-<div class="block" name="D">
-<pre ><code class="python" style="font-size:.8em; margin-left:1em;">x, y = 250 - d / 2, 100 - d / 2
+gw.add(a1)
+```
+:::
+
+:::{.block name="D"}
+```{.python style='font-size:.8em; margin-left:1em;'}
+x, y = 250 - d / 2, 100 - d / 2
 a1 = GArc(x, y, d, 180, -90)
-gw.add(a1)</code></pre>
-</div>
-</div>
-</div>
+gw.add(a1)
+```
+:::
+
+::::
+::::::
+-->
 </section>
 <section id="arrays-and-lists" class="slide level2">
 <h2>Arrays and Lists</h2>
@@ -262,83 +281,17 @@ Check!</h2>
 </ol>
 </div>
 </section>
-<section id="mutants" class="slide level2">
-<h2>Mutants</h2>
-<ul>
-<li>The most important difference between strings and lists is one of
-<em>mutability</em>
-<ul>
-<li>Strings we have already identified as being <em>immutable</em>: you
-can not change the individual elements</li>
-<li>Lists, in contrast, are <em>mutable</em>, which means that we
-<strong>can</strong> change or assign new values to the elements of a
-list</li>
-</ul></li>
-<li>Immutable objects have many advantages in programming:
-<ul>
-<li>You don’t have to worry about if the values will change</li>
-<li>Immutable values can be more easily shared</li>
-<li>Immutable objects are easier to use with concurrent programs</li>
-</ul></li>
-<li>In some situations though, mutable objects are the perfect tool for
-the job</li>
-</ul>
-</section>
-<section id="a-tutorial-on-lists" class="slide level2">
-<h2>A Tutorial on Lists</h2>
-<div class="cols">
-<div class="col">
-<ul>
-<li>Thinking about mutable objects requires a shift in how we visualize
-our code interacting with the objects in memory</li>
-<li><a
-href="https://pythontutor.com/render.html#code=cool%20%3D%20%5B&#39;blue&#39;,%20&#39;violet&#39;%5D%0Awarm%20%3D%20%5B&#39;red&#39;,%20&#39;orange&#39;%5D%0A%0Acolors%20%3D%20%5Bcool,%20warm%5D%0Aother_colors%20%3D%20%5B%5B&#39;blue&#39;,%20&#39;violet&#39;%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B&#39;red&#39;,%20&#39;orange&#39;%5D%5D%0A%0Aprint%28colors%20%3D%3D%20other_colors%29%0Aprint%28colors%20is%20other_colors%29%0A%0Acool%5B0%5D%20%3D%20&#39;indigo&#39;%0Awarm%20%3D%20%5B&#39;orange&#39;,%20&#39;yellow&#39;%5D%0A%0Aprint%28colors%29%0Aprint%28other_colors%29&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Link
-here</a></li>
-</ul>
-</div>
-<div class="col" style="flex-grow:2;">
-<pre ><code class="python" style="max-height:900px; font-size:0.8em;">cool = ['blue', 'violet']
-warm = ['red', 'orange']
-
-colors = [cool, warm]
-other_colors = [['blue', 'violet'],
-                ['red', 'orange']]
-
-print(colors == other_colors)
-print(colors is other_colors)
-
-cool[0] = 'indigo'
-warm = ['orange', 'yellow']
-
-print(colors)
-print(other_colors)</code></pre>
-</div>
-</div>
-</section>
-<section id="for-reference" class="slide level2">
-<h2>For Reference</h2>
-<ul>
-<li>When working with mutable objects, it is better to think of the
-variable as holding a <em>reference</em> to the object, rather than the
-actual contents of the object</li>
-<li>I find it useful to think of a reference as the “address” in memory
-where that object’s contents can be found</li>
-<li>This undeniably complicates things, as referencing a mutable object
-lets you change it, which will immediately be reflected in anything
-<em>else</em> that referenced that object</li>
-<li>Mutable objects can be terrific to work with, as their mutability
-makes them very flexible, but be wary of unexpected behavior</li>
-</ul>
-</section>
 <section id="project-2-breakout" class="slide level2">
 <h2>Project 2: Breakout!</h2>
 <div class="cols" style="align-items:center">
 <div class="col">
 <ul>
-<li>Project 2 is recreating the classic arcade game Breakout!</li>
-<li>Guide will be posted tomorrow, not due until March 12</li>
-<li>Focus on the midterm initially, but then consider getting a start
-this weekend</li>
+<li>Project 2 is recreating the classic arcade game
+<strong><em>Breakout</em></strong>!</li>
+<li>Guide is posted <a
+href="https://jrembold.github.io/Website_Backup/class_files/cs151/Projects/Project_Breakout/">here</a>,
+and due by <strong>Monday March 10 at 10 PM</strong></li>
+<li>Start early to have more time to learn and try out things!</li>
 </ul>
 </div>
 <div class="col">
@@ -411,12 +364,69 @@ the milestones!
 <li>Milestone 3: Section bouncy ball problem (this week)</li>
 </ul></li>
 </ul>
+<!--
+## Other Milestones 
+[Check the desciption here](https://agbofred.github.io/Spring_2024/Lecture/projects/Breakout_guide/Project_Breakout.html)
+-->
 </section>
-<section id="other-milestones" class="slide level2">
-<h2>Other Milestones</h2>
-<p><a
-href="https://agbofred.github.io/Spring_2024/Lecture/projects/Breakout_guide/Project_Breakout.html">Check
-the desciption here</a> <!--
+<section id="milestone-1" class="slide level2">
+<h2>Milestone 1</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html">
+</iframe>
+</section>
+<section id="milestone-2" class="slide level2">
+<h2>Milestone 2</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout2/index.html">
+</iframe>
+</section>
+<section id="milestone-3" class="slide level2">
+<h2>Milestone 3</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout3/index.html">
+</iframe>
+</section>
+<section id="milestone-4" class="slide level2">
+<h2>Milestone 4</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout4/index.html">
+</iframe>
+</section>
+<section id="milestone-5" class="slide level2">
+<h2>Milestone 5</h2>
+<iframe width="60%" height="800px" src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html">
+</iframe>
+<!-- ## Breakout History
+> - The popular Breakout arcade game was released by Atari in 1976
+> - Atari founder Nolan Bushnell wanted a new game that would build on the success of the earlier game Pong. He assigned Steve Jobs to develop the game, promising a bonus if the game required a small number of chips.
+> - As Wikipedia tells the story, "Jobs had little specialized knowledge of circuit board design but knew [his friend Steve] Wozniak was capable of producing designs with a small number of chips. He convinced Wozniak to work with him, promising to split the fee evenly between them."
+> - Wozniak completed the game design in four days, but Jobs never told him about the bonus offer. Jobs was paid $\$5,000$, but Wozniak received only $\$350$.
+> - Jobs and Wozniak co-founded Apple Computer the following year, which has grown to be the largest corporation in the world by market capitalization.
+
+
+## Breakout Basics
+::::::{.cols style='align-items: center'}
+::::{.col style='font-size:.9em'}
+- Breakout is a game in which the player attempts to break all the colored bricks by causing a bouncing ball to collide with them
+- The player controls a paddle at the bottom of the screen which the ball will bounce off
+    - The paddle can only move left and right
+- If the ball makes it past the paddle to the bottom of the screen, the player loses a life
+    - Lose 3 lives and it is game over!
+::::
+
+::::col
+
+![Breakout!](../video/project1_demo.webm){width=50%}
+
+::::
+::::::
+
+## Breakout Milestones
+- Breakout is broken up over 5 milestones
+- You have already seen or written pieces of similar code to many of the milestones!
+    - Milestone 1: PS4 brick pyramid
+    - Milestone 3: Section bouncy ball problem (this week)
+
+## Other Milestones 
+[Check the desciption here](https://agbofred.github.io/Spring_2024/Lecture/projects/Breakout_guide/Project_Breakout.html)
+<!--
 ## Milestone 1
 
 <iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html"></iframe>
@@ -442,7 +452,7 @@ the desciption here</a> <!--
 <iframe width='60%' height='800px' src="https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout5/index.html"></iframe>
 
 
---></p>
+ -->
 </section>
     </div>
   </div>

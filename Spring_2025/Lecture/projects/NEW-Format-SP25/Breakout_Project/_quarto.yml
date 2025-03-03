@@ -1,0 +1,55 @@
+project:
+  type: website
+
+website:
+  title: "Project 2: Breakout"
+  page-navigation: true
+  favicon: "favicon.png"
+  navbar:
+    foreground: black
+    left:
+      - sidebar:introduction
+      - sidebar:milestones
+      - href: extensions.qmd
+        text: "Extensions"
+
+  sidebar:
+    - title: "Introduction"
+      style: "floating"
+      id: introduction
+      contents:
+        - ./introduction/the_game.qmd
+        - ./introduction/starting_template.qmd
+
+    - title: "Milestones"
+      id: milestones
+      contents:
+        - milestones.qmd
+        - milestones/milestone0.qmd
+        - milestones/milestone1.qmd
+        - milestones/milestone2.qmd
+        - milestones/milestone3.qmd
+        - milestones/milestone4.qmd
+
+    - title: "Extensions"
+      contents:
+        - extensions.qmd
+
+format:
+  html:
+    lightbox: true
+    theme: 
+      - cosmo
+      - projects.scss
+    page-layout: article
+    smooth-scroll: true
+    fontsize: 1.2em
+    highlight-style: atom-one
+    grid:
+      sidebar-width: 350px
+    html-math-method: katex
+    #title-block-banner: linear-gradient(90deg, rgba(102,187,102,1) 0%, rgba(204,187,102,1) 100%)
+    #title-block-banner-color: white
+
+
+
