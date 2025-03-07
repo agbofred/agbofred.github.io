@@ -1,0 +1,1 @@
+print([i*2 for i in range(0,20,2) if i % 3 != 0 and i%4==0])
