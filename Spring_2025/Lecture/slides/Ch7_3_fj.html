@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-03-08">
+  <meta name="dcterms.date" content="2025-03-10">
   <title>GImage and Pixels</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -37,22 +37,22 @@
 <section id="title-slide">
   <h1 class="title">GImage and Pixels</h1>
   <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">March 8, 2024</p>
+  <p class="date">March 10, 2025</p>
 </section>
 
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Project 2: <strong>Breakout</strong> is due <strong><em>next week
-Tuesday at 10pm!</em></strong></li>
-<li>Midterm grading posted
+<li>Project 2: <strong>Breakout</strong> is due <strong><em>today at
+10pm!</em></strong></li>
+<li>Problem set #4 grading posted
 <ul>
 <li>any concern? Reach out to me.</li>
-<li>My version of the solution will be shared when all folks takes the
-exam Grading for Problem Set 4 will be returned next week!</li>
 </ul></li>
+<li>Problem set #5 is posted and due next week <strong>Monday 17 at 10
+pm</strong></li>
 <li>Polling continues on this link <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a></li>
+href="https://www.polleverywhere.com/agbofred203">here</a></li>
 </ul>
 </section>
 <section id="review" class="slide level2"
@@ -3436,138 +3436,137 @@ the pixel</td>
 </table>
 </div>
 </section>
-<section id="reading" class="slide level2">
-<h2>Reading</h2>
+<section id="image-thresholding" class="slide level2">
+<h2>Image Thresholding</h2>
+<div class="cols">
+<div class="col">
 <ul>
-<li>Programs often need to work with collections of data that are too
-large to reasonably exist typed all out in the code
-<ul>
-<li>Easier to read in the values of a list from some external data
-file</li>
-</ul></li>
-<li>A <em>file</em> is the generic name for any named collection of data
-maintained on some permanent storage media attached to a computer</li>
-<li>Files can contain information encoded in many different ways
-<ul>
-<li>Most common is the <em>text file</em></li>
-<li>Contains character data like you’d find in a string</li>
-</ul></li>
+<li>As an example of reading and manipulating pixel values, lets look at
+how we could threshold the image to the right</li>
+<li>Thresholding is when you take a grayscale image and convert it to a
+black and white image, where a pixel is set to be white if it is above a
+certain threshold in brightness</li>
+<li>Grayscale, so each RGB component is the same Let’s threshold at a
+value of 30</li>
 </ul>
-</section>
-<section id="strings-vs-text-files" class="slide level2">
-<h2>Strings vs Text Files</h2>
-<ul>
-<li>While strings and text files both store characters, there are some
-important differences:
-<ul>
-<li><strong>The longevity of the data stored</strong>
-<ul>
-<li>The value of a string variable lasts only as long as the string
-exists, is not overridden, or is not thrown out when a function
-completes</li>
-<li>Information in a text file exists until the file is deleted</li>
-</ul></li>
-<li><strong>How data is read in</strong>
-<ul>
-<li>You have access to all the characters in a string variable pretty
-much immediately</li>
-<li>Data from text files is generally read in sequentially, starting
-from the beginning and proceeding until the end of the file is
-reached</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="reading-text-files" class="slide level2">
-<h2>Reading Text Files</h2>
-<ul>
-<li><p>The general approach for reading a text file is to first
-<em>open</em> the file and associate that file with a variable, commonly
-called its <em>file handle</em></p></li>
-<li><p>We will also use the <em>with</em> keyword to ensure that Python
-cleans up after itself (closes the file) when we are done with it (Many
-of us could use a <code class="python">with</code> irl)</p>
-<pre ><code class="python">with open(filename) as file_handle:
-  # Code to read the file using the file_handle</code></pre></li>
-<li><p>Python gives you several ways to actually read in the data</p>
-<ul>
-<li><code class="python">read</code> reads the entire file in as a
-string</li>
-<li><code class="python">readline</code> or
-<code class="python">readlines</code> reads a single line or lines from
-the file</li>
-<li><code class="python">read</code> alongside
-<code class="python">splitlines</code> gets you a list of line
-strings</li>
-<li>Can use the file handle as an iterator to loop over</li>
-</ul></li>
-</ul>
-</section>
-<section id="entire-file-string" class="slide level2">
-<h2>Entire file ⟶ String</h2>
-<ul>
-<li><p>The <code class="python">read</code> method reads the entire file
-into a string, with includes newline characters
-(<code class="python">\n</code>) to mark the end of lines</p></li>
-<li><p>Simple, but can be cumbersome to work with the newline
-characters, and, for large files, it can take a large amount of
-memory</p></li>
-<li><p>As an example, the file:<br><br></p>
-<div class="block" name="Seuss.txt"
-style="width:40%; margin-left: auto; margin-right: auto;">
-<p>One fish<br> two fish<br> red fish<br> blue fish</p>
 </div>
-<p>would get read as</p></li>
-</ul>
-<p><code class="python" style="display: block; margin: auto; text-align: center;">"One fish\ntwo fish\nred fish\nblue fish"</code></p>
+<div class="col">
+<figure>
+<img data-src="../images/Moon.png" style="width:80.0%"
+alt="Blurry Moon by Jed" />
+<figcaption aria-hidden="true">Blurry Moon by Jed</figcaption>
+</figure>
+</div>
+</div>
 </section>
-<section id="line-by-line" class="slide level2">
-<h2>Line by Line</h2>
-<ul>
-<li><p>Of the ways to read the file in a string at a time, using the
-file handler as an iterator and looping is probably best and certainly
-most flexible</p></li>
-<li><p>Leads to code that looks like:</p>
-<pre ><code class="python">with open(filename) as f:
-    for line in f:
-        # Do something with the line</code></pre></li>
-<li><p>Note that <strong>most</strong> strategies preserve the newline
-character, which you very likely do not want, so be ready to strip them
-out before doing more processing</p></li>
-</ul>
-</section>
-<section id="powers-combined" class="slide level2">
-<h2>Powers Combined</h2>
-<ul>
-<li><p>So long as your files are not gigantic, using
-<code class="python">read</code> and then the
-<code class="python">splitlines</code> method can be a good
-option</p></li>
-<li><p>This <strong>does</strong> remove the newline characters, since
-it splits the string at them</p>
-<pre ><code class="python">with open(filename) as f:
-    lines = f.read().splitlines()
-# Then you can do whatever you want with the list of lines</code></pre></li>
-</ul>
-</section>
-<section id="example-name-mangling" class="slide level2">
-<h2>Example: Name Mangling</h2>
-<ul>
-<li>Let’s look at an example with some more meat to it</li>
-<li>I have a text file with all your first names. I’d like to:
-<ul>
-<li>Read in the names</li>
-<li>Select two at random</li>
-<li>Combine the first half of one name with the second half of the
-other</li>
-<li>Print out both potential hybrid names</li>
-</ul></li>
-<li>We’ll practice breaking a problem into steps along the way here</li>
-</ul>
-</section>
-<section id="example-code" class="slide level2">
-<h2>Example Code:</h2>
-<pre ><code class="python" style="font-size:.6em; max-height:800px; width=100%;">import random
+<section id="image-thresholding-example" class="slide level2">
+<h2>Image Thresholding Example</h2>
+<pre ><code class="python" style="min-height:980px; width=100%;">
+from pgl import GWindow, GOval, GImage
+
+gw =GWindow(600,400)
+image = GImage("Moon.png", 0,0)
+image.scale(gw.get_width()/image.get_width())
+gw.add(image)
+
+def imagetreshold(e):
+    TRESHOLD = 130
+    pixel = image.get_pixel_array()
+    #print(pixel)
+    for r in range(len(pixel)):
+        for c in range(len(pixel[0])):
+            value = pixel[r][c]
+            red =GImage.get_red(value)
+            if red< TRESHOLD:
+                pixel[r][c]= GImage.create_rgb_pixel(0,0,0)
+            else:
+                pixel[r][c] = GImage.create_rgb_pixel(255,255,255)
+    # You must create a new Gimage
+    new_image = GImage(pixel)
+    gw.add(new_image)
+gw.add_event_listener("click", imagetreshold)
+</code></pre>
+<!-- ## Reading
+- Programs often need to work with collections of data that are too large to reasonably exist typed all out in the code
+    - Easier to read in the values of a list from some external data file
+- A _file_ is the generic name for any named collection of data maintained on some permanent storage media attached to a computer
+- Files can contain information encoded in many different ways
+    - Most common is the _text file_
+    - Contains character data like you'd find in a string
+
+
+## Strings vs Text Files
+- While strings and text files both store characters, there are some important differences:
+    - **The longevity of the data stored**
+        - The value of a string variable lasts only as long as the string exists, is not overridden, or is not thrown out when a function completes
+        - Information in a text file exists until the file is deleted
+    - **How data is read in**
+        - You have access to all the characters in a string variable pretty much immediately
+        - Data from text files is generally read in sequentially, starting from the beginning and proceeding until the end of the file is reached
+
+## Reading Text Files
+- The general approach for reading a text file is to first _open_ the file and associate that file with a variable, commonly called its _file handle_
+- We will also use the _with_ keyword to ensure that Python cleans up after itself (closes the file) when we are done with it (Many of us could use a `with` irl)
+  ```python
+  with open(filename) as file_handle:
+    # Code to read the file using the file_handle
+  ```
+- Python gives you several ways to actually read in the data
+    - `read` reads the entire file in as a string
+    - `readline` or `readlines` reads a single line or lines from the file
+    - `read` alongside `splitlines` gets you a list of line strings
+    - Can use the file handle as an iterator to loop over
+
+## Entire file ⟶ String
+- The `read` method reads the entire file into a string, with includes newline characters (`\n`) to mark the end of lines
+- Simple, but can be cumbersome to work with the newline characters, and, for large files, it can take a large amount of memory
+
+- As an example, the file:<br><br>
+
+  :::{.block name="Seuss.txt" style='width:40%; margin-left: auto; margin-right: auto;'}
+    One fish<br>
+    two fish<br>
+    red fish<br>
+    blue fish
+  :::
+
+  would get read as
+
+`"One fish\ntwo fish\nred fish\nblue fish"`{style="display: block; margin: auto; text-align: center;"}
+
+## Line by Line
+- Of the ways to read the file in a string at a time, using the file handler as an iterator and looping is probably best and certainly most flexible
+- Leads to code that looks like:
+  ```python
+  with open(filename) as f:
+      for line in f:
+          # Do something with the line
+  ```
+- Note that **most** strategies preserve the newline character, which you very likely do not want, so be ready to strip them out before doing more processing
+
+
+## Powers Combined
+- So long as your files are not gigantic, using `read` and then the `splitlines` method can be a good option
+- This **does** remove the newline characters, since it splits the string at them
+  ```python
+  with open(filename) as f:
+      lines = f.read().splitlines()
+  # Then you can do whatever you want with the list of lines
+  ```
+
+## Example: Name Mangling
+- Let's look at an example with some more meat to it
+- I have a text file with all your first names. I'd like to:
+    - Read in the names
+    - Select two at random
+    - Combine the first half of one name with the second half of the other
+    - Print out both potential hybrid names
+- We'll practice breaking a problem into steps along the way here
+
+
+## Example Code:
+```{.python style='font-size:.6em; max-height:800px; width=100%;'}
+import random
 
 def name_mangler(filename):
     """
@@ -3607,7 +3606,8 @@ def name_mangler(filename):
     slice_and_combine(chosen[0], chosen[1])
 
 if __name__ == '__main__':
-    name_mangler('class_first_names.csv')</code></pre>
+    name_mangler('class_first_names.csv')
+``` -->
 </section>
     </div>
   </div>

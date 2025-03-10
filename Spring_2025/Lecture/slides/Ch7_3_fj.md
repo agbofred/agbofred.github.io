@@ -1,7 +1,7 @@
 ---
 title: "GImage and Pixels "
 author: Jed Rembold & Fred Agbo
-date: March 8, 2024
+date: March 10, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,12 +15,11 @@ history: false
 
 
 ## Announcements
-- Project 2: __Breakout__ is due ***next week Tuesday at 10pm!***
-- Midterm grading posted
+- Project 2: __Breakout__ is due ***today at 10pm!***
+- Problem set #4 grading posted
 	- any concern? Reach out to me.
-	- My version of the solution will be shared when all folks takes the exam
-Grading for Problem Set 4 will be returned next week!
-- Polling continues on this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Problem set #5 is posted and due next week __Monday 17 at 10 pm__
+- Polling continues on this link [here](https://www.polleverywhere.com/agbofred203)
 
 
 
@@ -199,7 +198,54 @@ Function | Description
 
 :::
 
-## Reading
+
+## Image Thresholding
+::::::cols
+::::col
+- As an example of reading and manipulating pixel values, lets look at how we could threshold the image to the right
+- Thresholding is when you take a grayscale image and convert it to a black and white image, where a pixel is set to be white if it is above a certain threshold in brightness
+- Grayscale, so each RGB component is the same
+Let’s threshold at a value of 30
+::::
+
+::::col
+![Blurry Moon by Jed](../images/Moon.png){width=80%}
+::::
+::::::
+
+
+## Image Thresholding Example 
+
+
+```{.python style='min-height:980px; width=100%;'}
+
+from pgl import GWindow, GOval, GImage
+
+gw =GWindow(600,400)
+image = GImage("Moon.png", 0,0)
+image.scale(gw.get_width()/image.get_width())
+gw.add(image)
+
+def imagetreshold(e):
+    TRESHOLD = 130
+    pixel = image.get_pixel_array()
+    #print(pixel)
+    for r in range(len(pixel)):
+        for c in range(len(pixel[0])):
+            value = pixel[r][c]
+            red =GImage.get_red(value)
+            if red< TRESHOLD:
+                pixel[r][c]= GImage.create_rgb_pixel(0,0,0)
+            else:
+                pixel[r][c] = GImage.create_rgb_pixel(255,255,255)
+    # You must create a new Gimage
+    new_image = GImage(pixel)
+    gw.add(new_image)
+gw.add_event_listener("click", imagetreshold)
+
+```
+
+<!-- ## Reading
 - Programs often need to work with collections of data that are too large to reasonably exist typed all out in the code
 	- Easier to read in the values of a list from some external data file
 - A _file_ is the generic name for any named collection of data maintained on some permanent storage media attached to a computer
@@ -320,4 +366,4 @@ def name_mangler(filename):
 
 if __name__ == '__main__':
     name_mangler('class_first_names.csv')
-```
+``` -->

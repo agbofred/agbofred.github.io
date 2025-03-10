@@ -1,7 +1,7 @@
 ---
 title: "Reading and Writing"
 author: Jed Rembold & Fred Agbo
-date: March 11, 2024
+date: March 12, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -112,6 +112,7 @@ print(count)
 ```
 - List generated contains random values, it changes every time it executes
 -->
+<!-- 
 ## Breaking out the Pixel Colors
 - You do not need to convert the pixel values yourself! PGL has built-in ways to extract the various colors
 
@@ -172,9 +173,8 @@ def imagetreshold(e):
     gw.add(new_image)
 gw.add_event_listener("click", imagetreshold)
 
-```
+``` -->
 
-<!--
 ## Reading
 - Programs often need to work with collections of data that are too large to reasonably exist typed all out in the code
 	- Easier to read in the values of a list from some external data file
@@ -242,7 +242,7 @@ gw.add_event_listener("click", imagetreshold)
 	  lines = f.read().splitlines()
   # Then you can do whatever you want with the list of lines
   ```
--->
+
 ## Aren't you Exceptional
 - When opening a file for reading, it is possible the file does not exist!
 	- Python handles this (and many other potential errors that can arise) using a mechanism called _exception handling_
