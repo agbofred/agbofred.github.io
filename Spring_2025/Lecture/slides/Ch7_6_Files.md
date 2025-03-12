@@ -15,10 +15,9 @@ history: false
 
 
 ## Announcements
-- Project 2: __Breakout__ is due ***tomorrow at 10pm!***
-- Problem set 5 will be posted tomorrow: To be due next week Tuesday
-- Grading for Problem Set 4 will be returned this week!
-- Polling continues on this link [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Problem set #4 is due ***on Monday 17th at 10pm!***
+- Read chapter 10 of the text for Friday's class and for next week
+- Polling continues on this link [here](https://www.polleverywhere.com/agbofred203)
 
 
 <!--
