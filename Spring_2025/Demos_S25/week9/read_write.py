@@ -14,4 +14,18 @@ try:
 
 except IOError:
     print("File does not exist")
+    
+    
+################### CLASS REVIEW ###############
+# A=[[i+j for i in range(3)] for j in range(4)]
+# print([A[i][2] for i in range(len(A))])
+
+A=[]
+for j in range(4):
+    a=[]
+    for i in range(3):
+        a.append(i+j)  
+    A.append(a)
+        
+print(A)
         

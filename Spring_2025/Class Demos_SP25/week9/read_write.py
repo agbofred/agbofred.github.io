@@ -1,2 +1,7 @@
-A = [[i+j for i in range(3)] for j in range(4)]
-print([A[i][2] for i in range(len(A))])
+from filechooser import choose_input_file, choose_output_file
+filename= choose_output_file()
+try:
+    with open(filename, "a") as fh:
+        fh.write("\n I'M USING FILE SHOOSER INSTEAD")
+except IOError:
+    print("The file location is not correct")
