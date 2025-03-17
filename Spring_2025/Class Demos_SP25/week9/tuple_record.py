@@ -1,4 +1,2 @@
-emp =("Fred Agbo","Room 209",23200)
-name, office, salary = emp
-for i, value in enumerate(emp):
-    print(f"{i}-----> {value}")
+for x,y,z in zip((1,2,3),(4,5,6), (29,45,2)):
+    print(f"X: {x} -------- Y: {y} --------- X: {z}")

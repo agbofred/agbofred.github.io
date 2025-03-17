@@ -1,2 +1,1 @@
-New stuffNew stuff with appended text
- I'M USING FILE SHOOSER INSTEAD
+Here is a new text

@@ -26,10 +26,12 @@ def sine_file(filename, A, T, symbol, padding=" "):
         return padding * placement + symbol
 
     with open(filename, 'w') as fh:
-        for x in range(3 * T): # write 10 periods worth of lines
+        for x in range(10 * T): # write 10 periods worth of lines
             v = compute_symb_placement(A, T, x)
             line = construct_line(v, symbol, padding)
             fh.write(line + '\n') # need the newline character at the end!
+        fh.write("This is a sine oscilation")
 
 if __name__ == '__main__':
     sine_file('sine_test.txt', A=30, T=50, symbol='X')
+    
