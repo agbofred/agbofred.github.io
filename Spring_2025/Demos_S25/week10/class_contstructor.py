@@ -94,3 +94,32 @@ account.deposit(account.get_balance()+500)
 account.withdraw(200)
 print("--------------------------")
 account.display_info()
+
+
+
+######### FIRST CLASS DEMO #####################
+class Employee:
+    def __init__(self, name, salary, title):
+        self.sal = salary
+        self.name = name
+        self.title = title
+        
+    def change_title(self, t):
+        return self.title
+    
+    def increase_sal(self, salary): # Setter function
+        newSal = self.sal + salary
+        return newSal
+    
+    def __str__(self):
+        return f"{self.name} ----{self.title} ---- {self.sal}"
+
+    
+clerk = Employee("Fred", 2000, "Instructor")
+
+# print(f"{clerk.name}: {clerk.title} {clerk.sal}")
+
+# print("-------------------")
+# print(f"{clerk.name}: {clerk.change_title("Professor")} {clerk.increase_sal(1000)}")
+
+print(clerk)

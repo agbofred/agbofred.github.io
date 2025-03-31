@@ -1,7 +1,7 @@
 ---
 title: "Definitely Not Photoshop"
 author: Jed Rembold & Fred Agbo
-date: April 1, 2024
+date: March 31, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,18 +15,18 @@ history: false
 
 
 ## Announcements
-- Problem Sets 5 and Midterm #2 grading were posted last week
-- Although the majority did well, I'm considering curving the grades across by 10% 
-- Grading of project 1 to be published soon on canvas
-	- It appears you've got some feedback already.
-- My version of solution to Midterm #1 exam is posted in this week module
+- Midterm #2 was graded and posted last week
+	- In general, performance was better than Midterm #1.
+	- Mostly, everyone got the first part while about 80% did well on the second part
+- Grading of project 3 (Breakout) was published last week as well
 - Feeling that things are not going as expected and need to discuss?
 	- Please come and see me to discuss.
 	- From my assessment, almost everyone ***turning in assignments*** are doing okay
-- Project #3 **ImageShop** is posted and is __due next week Monday 8th Apr at 10pm__
-
-- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
-
+- Project #3 **ImageShop** is posted and is __due next week Monday 7th Apr at 10pm__
+- This week, we are in Chapter 11 ***Dictionaries and Sets***
+- Feedback on CS 151 Section Leader Program by Prof. Heather KS
+	- Email sent to all. [Link to the survey here](https://docs.google.com/forms/d/e/1FAIpQLSclYX6ezsMnvmGP2c50N8YQqZ8-TXeqO3EeQm-8__BhZZCmJA/viewform). Closes on ***Wednesday April 2nd***
+- Polling [here](https://www.polleverywhere.com/agbofred203). 
 
 <!--
 ## What if it didn't go well?
@@ -244,6 +244,7 @@ print(f'{dog.name}, {dog.color}, {dog.age}')
 ::::col
 - While you are refreshed from spring break, the next project is starting today and will be due next week Monday
 - Taking a moment today to introduce Imageshop, and the guide is already posted
+	- [Here is the link to the assignment, also posted on canvas -> Module 12](https://jrembold.github.io/Website_Backup/class_files/cs151/Projects/Project_ImageShop/)
 ::::
 
 ::::col

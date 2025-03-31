@@ -2,7 +2,7 @@ def create_histogram_array(imax, list):
     table = [0]*imax
     [[table [i]+1 for i in range(imax)] for item in range(len(list)) if i == list[item]]
     print(table)             
-    #return table 
+    return table 
 
     
     
