@@ -18,7 +18,7 @@ history: false
 - Midterm #2 was graded and posted last week
 	- In general, performance was better than Midterm #1.
 	- Mostly, everyone got the first part while about 80% did well on the second part
-- Grading of project 3 (Breakout) was published last week as well
+- Grading of project 2 (Breakout) was published last week as well
 - Feeling that things are not going as expected and need to discuss?
 	- Please come and see me to discuss.
 	- From my assessment, almost everyone ***turning in assignments*** are doing okay

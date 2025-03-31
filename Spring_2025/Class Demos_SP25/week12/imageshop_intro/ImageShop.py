@@ -1,5 +1,5 @@
 ######################################################################
-# Name:
+# Name: 
 # Collaborators (if any):
 # Section leader's name:
 # List of extensions made (if any):
@@ -13,6 +13,7 @@ implements the "Load" and "Flip Vertical" buttons.
 from filechooser import choose_input_file
 from pgl import GWindow, GImage, GRect
 from button import GButton
+
 
 # Constants
 
