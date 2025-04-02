@@ -70,25 +70,28 @@ def image_shop():
     
     # Flip Horizontal call back function
     def flip_horizontal_action():
-        """Callback function for the Flip Vertical button"""
+        """Callback function for the Flip Horizontal button"""
         if gw.current_image is not None:
             set_image(flip_horizontal(gw.current_image))
             
     # Rotate right call back function
     def rotate_right_action():
-        """Callback function for the Flip Vertical button"""
         if gw.current_image is not None:
             set_image(rotate_right(gw.current_image))
             
     # Rotate right call back function
     def rotate_left_action():
-        """Callback function for the Flip Vertical button"""
         if gw.current_image is not None:
             set_image(rotate_left(gw.current_image))
             
     # Rotate right call back function
     def grayscale_action():
-        """Callback function for the Flip Vertical button"""
+        if gw.current_image is not None:
+            set_image(create_grayscale_image(gw.current_image))
+            
+    # Green Screen function
+    def greenscreen_action():
+        old_overlay = choose_input_file()
         if gw.current_image is not None:
             set_image(create_grayscale_image(gw.current_image))
     
@@ -106,6 +109,7 @@ def image_shop():
     add_button("Rotate Left", rotate_left_action)
     add_button("Rotate right", rotate_right_action)
     add_button("Grayscale", grayscale_action)
+    add_button("Green Screen", greenscreen_action)
 
 # Creates a new GImage from the original one by flipping it vertically.
 
@@ -115,9 +119,10 @@ def flip_vertical(image):
 
 def flip_horizontal(image): # Flip horinzontal method
     array= image.get_pixel_array()
-    for r in range(len(array)):
-        array[r]= array[r][::-1]
-    return GImage(array)
+    flipped_arr= [row[::-1] for row in array ]
+    # for r in range(len(array)):
+    #     array[r]= array[r][::-1]
+    return GImage(flipped_arr)
 
 def rotate_right(image):  # Rotate right function
     array = image.get_pixel_array()
@@ -125,7 +130,7 @@ def rotate_right(image):  # Rotate right function
     col = len(array[0])
    
     #new_arr_right= [[array[i][col-1-j] for i in range(row)] for j in range(col)]
-    new_arr_right= [[array[j][i] for j in range(row-1,-1,-1)] for i in range(col)]
+    new_arr_right= [[array[i][j] for i in range(row-1,-1,-1)] for j in range(col)]
     
     #Line 131 - 134 is an alternative was to do the same thing on line 28
     # new_arr= [[0 for _ in range(row)] for _ in range(col)]
@@ -139,13 +144,26 @@ def rotate_left(image):  # Rotate left function
     row = len(array)
     col = len(array[0])
     #new_arrleft= [[array[j][i] for j in range(row-1,-1,-1)] for i in range(col)]
-    new_arrleft= [[array[j][i] for j in range(row)] for i in range(col-1,-1,-1)]
+    new_arrleft= [[array[i][j] for i in range(row)] for j in range(col-1,-1,-1)]
     
     # new_arr= [[0 for _ in range(row)] for _ in range(col)]
     # for i in range(row):
     #     for j in range(col):
     #         new_arr[i][col - 1 - j] = array[i][j]
     return GImage(new_arrleft)
+    
+def greenScreen(Img1, Img2):
+    """greenscreen function to paste image on another image"""
+    background = Img1.get_pixel_array()
+    foreground = Img2.get_pixel_array()
+    for row in range(Img1.get_height()):
+        for col in range(Img1.get_width()):
+            if row < Img2.get_height() and col < Img2.get_width():
+                pix = foreground[row][col]
+                r,g,b = GImage.get_red(pix), GImage.get_green(pix), GImage.get_blue(pix)
+                if not((g > 2 * r)and (g > 2 * b)):
+                    background[row][col] = foreground[row][col]
+    return GImage(background)
 # Startup code
 
 if __name__ == "__main__":
