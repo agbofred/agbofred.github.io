@@ -57,6 +57,7 @@ def breakout():
                 brick = GRect(BRICK_WIDTH, BRICK_HEIGHT)
                 brick.set_filled(True)
                 brick.set_color(color)
+                print(color)
                 gw.add(brick, x, y)
                 bricks.append(brick)
         

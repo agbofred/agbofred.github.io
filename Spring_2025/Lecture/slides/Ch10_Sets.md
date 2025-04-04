@@ -1,7 +1,7 @@
 ---
 title: "Sets"
 author: Jed Rembold & Fred Agbo
-date: April 5, 2024
+date: April 4, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -16,10 +16,7 @@ history: false
 
 ## Announcements
 - Project ImageShop is due __next week Monday at 10pm__.
-- You are welcome to attend a guest talk today by ***Dr Devrim Bilgili*** related to Data Science
-    - Lecture Topic: ***first lecture in Hypothesis Testing*** at Ford 202 (10-11 am)
-    - Research Topic: ***SIZE AND SHAPE ANALYSIS OF SILICA (SIO2) AND GOLD (AU) NANOPARTICLES*** at Ford 101 (11:30-12:20 am) 
-- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Polling [here](https://www.polleverywhere.com/agbofred203)
 
 <!--
 ## Review Question {data-notes="Solution: [125,167,204]"}

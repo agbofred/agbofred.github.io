@@ -91,9 +91,11 @@ def image_shop():
             
     # Green Screen function
     def greenscreen_action():
-        old_overlay = choose_input_file()
-        if gw.current_image is not None:
-            set_image(create_grayscale_image(gw.current_image))
+        new_overlay = choose_input_file()
+        if new_overlay !="":
+            overlay=GImage(new_overlay)
+            sync = greenScreen(gw.current_image,overlay)
+            set_image((sync))
     
         
     gw = GWindow(GWINDOW_WIDTH, GWINDOW_HEIGHT)

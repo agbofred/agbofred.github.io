@@ -101,29 +101,30 @@ def breakout():
         gw.ball.set_filled(True)
         gw.add(gw.ball)
 
-        gw.ball_moving = False
+        
         gw.vy = INITIAL_Y_VELOCITY
         gw.vx= random.uniform(MIN_X_VELOCITY, MAX_X_VELOCITY)
+        gw.ball_moving = False
         if random.uniform(0,1) < 0.5:
             gw.vx *= -1 
 
     # Call back function to uodate the valocity of ball movement upon clicking
     def update_ball():
-        if gw.ball_moving:
-            if gw.ball.get_x() + gw.vx < 0:
-                gw.vx *= -1
-            elif gw.ball.get_x() + BALL_DIAMETER > GWINDOW_WIDTH:
-                gw.vx *= -1
-            
-            if gw.ball.get_y() + gw.vy < 0:
-                gw.vy *= -1
-            elif gw.ball.get_y() + BALL_DIAMETER > GWINDOW_HEIGHT:
-                gw.ball_moving = False
-                gw.remove(gw.ball)
-                gw.lives -= 1
-                if gw.lives:
-                    create_ball()
-            gw.ball.move(gw.vx, gw.vy)
+            if gw.ball_moving:
+                if gw.ball.get_x() + gw.vx < 0:
+                    gw.vx *= -1
+                elif gw.ball.get_x() + BALL_DIAMETER > GWINDOW_WIDTH:
+                    gw.vx *= -1
+                
+                if gw.ball.get_y() + gw.vy < 0:
+                    gw.vy *= -1
+                elif gw.ball.get_y() + BALL_DIAMETER > GWINDOW_HEIGHT:
+                    gw.ball_moving = False
+                    gw.remove(gw.ball)
+                    gw.lives -= 1
+                    if gw.lives:
+                        create_ball()
+                gw.ball.move(gw.vx, gw.vy)
             
             check_collision()
             if gw.lives < 1 or gw.brick_count < 1:
