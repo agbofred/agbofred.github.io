@@ -1,7 +1,7 @@
 ---
-title: "Adventure"
-author: Jed Rembold & Fred Agbo
-date: April 12, 2024
+title: "Welcome to Adventure"
+author: Eric Roberts, Jed Rembold & Fred Agbo
+date: April 14, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -15,12 +15,14 @@ history: false
 
 
 ## Announcements
-- Personal Project is due on Monday night next week!
-	- Try not to ask for extension becuase the next week project is a bit extensive
-- Project 5 __Adventure__ guidelines will be posted this weekend 
-	- Due on ***Monday 29th of April***  (i.e., 2 weeks +)
+- Current Project is due ***today at 10:00pm***
+	- Try not to ask for extension becuase the next project is a bit extensive
+- Project 5 __Adventure__ guidelines will be posted during the class 
+	- Due on ***Monday April 28th***  (i.e., 2 weeks)
 	- You __Can__ work with a partner on this project. Both partners will earn the same grade. 
-- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- No class on Wednesday this week! __Go to SSRD talks!__
+- Polling: [here](https://www.polleverywhere.com/agbofred203)
+
 
 <!-- - Graphics Contest result will be announced in class today
 - I will dedicate next week to:
@@ -40,9 +42,9 @@ Three of the below expressions are valid; one is not. Which one would return an 
 
 
 
-<!--
-## Beginning the Adventure
-- One of the first computer games I ever played was Riven: The Sequel to Myst
+
+## Introducing the Adventure Project
+<!--- One of the first computer games I ever played was Riven: The Sequel to Myst
 
 ::::::cols
 ::::col
@@ -56,10 +58,10 @@ Three of the below expressions are valid; one is not. Which one would return an 
 -->
 
 ## Teaching the Adventure
-- The TeachingMachine program can process and run _any_ data file that has the correct format
+- __Recall__, the TeachingMachine program can process and run _any_ data file that has the correct format
 	- Does not need to technically be a series of educational questions
 	- This is part of the strength of the data driven model: data is easy to change, programs less so
-- Could make a sort of "Choose your own adventure" game out of it!
+- Could make a sort of ***"Choose your own adventure"*** game out of it!
 
 
 ## Life among Wizards

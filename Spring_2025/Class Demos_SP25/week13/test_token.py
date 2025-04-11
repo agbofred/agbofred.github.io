@@ -1,5 +1,5 @@
-from tokenscanner import TokenScanner
 from PigLatin import word_to_pig_latin
+from tokenscanner import TokenScanner
 
 def to_pig_latin(text):
     translation = ""
@@ -12,5 +12,4 @@ def to_pig_latin(text):
             pass
         translation += token
     return translation
-
-print(to_pig_latin("word of wisdom is enough"))
+print(to_pig_latin("Today is Wednesday and it is sunny"))
