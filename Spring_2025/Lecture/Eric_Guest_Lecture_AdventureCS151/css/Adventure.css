@@ -1,0 +1,306 @@
+.reveal .GetLamp {
+    width: 1000px;
+    border-radius: 0px;
+}
+
+.reveal .ArpanetEarlyDesigns {
+    vertical-align: top;
+    text-align: center;
+    font: bold 0.8em 'Helvetica Neue',sans-serif;
+    color: white;
+}
+
+.reveal .ArpanetDirectory {
+    width: 700px;
+    border: solid 2px black;
+    border-radius: 0px;
+}
+
+.reveal .EricRobertsOval {
+    position: absolute;
+    left: 530px;
+    top: 885px;
+    width: 500px;
+    height: 100px;
+    border: solid 4px red;
+    border-top-left-radius: 250px 50px;
+    border-top-right-radius: 250px 50px;
+    border-bottom-left-radius: 250px 50px;
+    border-bottom-right-radius: 250px 50px;
+}
+
+.reveal .LarryRobertsOval {
+    position: absolute;
+    left: 900px;
+    top: 577px;
+    width: 500px;
+    height: 100px;
+    border: solid 4px red;
+    border-top-left-radius: 250px 50px;
+    border-top-right-radius: 250px 50px;
+    border-bottom-left-radius: 250px 50px;
+    border-bottom-right-radius: 250px 50px;
+}
+
+.reveal .AdventureScriptTable {
+    margin: auto;
+}
+
+.reveal .AdventureScriptTable > tbody > tr > td {
+    padding: 0px;
+    margin: 0px;
+}
+
+.reveal .AdventureScriptBanner {
+    width: 1705px;
+    height: 1.6em;
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    background-color: #DDDDDD;
+    color: black;
+    border: none;
+    font: bold 0.65em 'Lucida Grande',sans-serif;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.reveal .CrowtherConsole {
+    width: 1700px;
+    height: 900px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.75em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .SlowMachineConsole {
+    width: 1700px;
+    height: 900px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.75em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .SlowMark2 {
+    position: absolute;
+    left: 800px;
+    top: 620px;
+    color: black;
+    font: italic 0.65em 'Times New Roman',serif;
+}
+
+.reveal .Milestone1Console {
+    width: 1700px;
+    height: 570px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone2Console {
+    width: 1700px;
+    height: 480px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone3Console {
+    width: 1700px;
+    height: 620px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone4Console {
+    width: 1700px;
+    height: 280px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone5Console {
+    width: 1700px;
+    height: 745px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone6Console {
+    width: 1700px;
+    height: 690px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone7Console {
+    width: 1700px;
+    height: 570px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .Milestone8Console {
+    width: 1700px;
+    height: 460px;
+    background-color: white;
+    text-align: left;
+    margin: 0px;
+    overflow: hidden;
+    font: 0.7em 'Menlo','Courier New','Courier',monospace;
+    color: black;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.reveal .DandDBackground {
+    background-color: #222;
+}
+
+.reveal .WizardExcerpts {
+    width: 1000px;
+    vertical-align: top;
+    background-color: white;
+    color: black;
+    font: 0.85em "Times New Roman",serif;
+    border: solid 1px black;
+    padding: 20px;
+}
+
+.reveal .WizardExcerpts p {
+    text-align: justify;
+    color: black;
+}
+
+.reveal .DaveWaldenCircle {
+    position: absolute;
+    left: 612px;
+    top: 366px;
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    border: solid 4px red;
+}
+
+.reveal .DaveWaldenLabel {
+    position: absolute;
+    left: 40px;
+    top: 380px;
+    color: #FF3333;
+}
+
+.reveal .WillieCrowtherCircle {
+    position: absolute;
+    left: 1175px;
+    top: 362px;
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    border: solid 4px red;
+}
+
+.reveal .WillieCrowtherLabel {
+    position: absolute;
+    right: 30px;
+    top: 380px;
+    color: #FF3333;
+}
+
+.reveal .AdventureClass {
+    width: 500px;
+    height: 300px;
+}
+
+.reveal .AdventureClassNotes {
+    font-size: 0.8em;
+    color: black;
+}
+
+.reveal .LockedPassageOval {
+    position: absolute;
+    left: -35px;
+    top: 537px;
+    width: 550px;
+    height: 120px;
+    border: solid 4px red;
+    border-top-left-radius: 275px 60px;
+    border-top-right-radius: 275px 60px;
+    border-bottom-left-radius: 275px 60px;
+    border-bottom-right-radius: 275px 60px;
+}
+
+.reveal .ForcedMotionOval {
+    position: absolute;
+    left: -15px;
+    top: 832px;
+    width: 430px;
+    height: 70px;
+    border: solid 4px red;
+    border-top-left-radius: 215px 35px;
+    border-top-right-radius: 215px 35px;
+    border-bottom-left-radius: 215px 35px;
+    border-bottom-right-radius: 215px 35px;
+}
