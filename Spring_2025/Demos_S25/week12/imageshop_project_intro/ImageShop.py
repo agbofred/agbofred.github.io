@@ -134,6 +134,7 @@ def rotate_right(image):  # Rotate right function
     #         new_arr[j][i] = array[i][j]
     return GImage(new_arr_right)
 
+
 def rotate_left(image):  # Rotate left function
     array = image.get_pixel_array()
     row = len(array)
