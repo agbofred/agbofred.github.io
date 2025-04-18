@@ -16,8 +16,8 @@ history: false
 ## Announcements
 - Final Project __Adventure__ guidelines is posted. Due on ***Monday 28th at 10 pm*** 
 	- You __Can__ work with a partner on this project. Both partners will earn the same grade. 
-	- To accept this project, ***you must great a team even if you are not working with a partner***
-	- If you are working with a partner, One person creates the term, the second will join 
+	- To accept this project, ***you must create a team even if you are not working with a partner***
+	- If you are working with a partner, One person creates the team, the second will join 
 	- Otherwise, use your regular GitHub username as the team name
 - This week reading is __chapter 9 (Searching and Sorting)__
 - We will spend 10 minutes to fill out course evaluation form:
