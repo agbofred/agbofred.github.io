@@ -1,7 +1,7 @@
 ---
 title: "Searching Algorithm"
 author: Jed Rembold and Fred Agbo
-date: April 15, 2024
+date: April 18, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -14,17 +14,15 @@ history: false
 ---
 
 ## Announcements
-- Personal Project is due tonight at 10 pm!
-	- If you are asking for extension, send me an email. 
-		- I will check to see you have not used your 3 chances before granting it.
-- Project 5 __Adventure__ guidelines is posted. Due on ***Monday 29th April at 10 pm*** 
+- Final Project __Adventure__ guidelines is posted. Due on ***Monday 28th at 10 pm*** 
 	- You __Can__ work with a partner on this project. Both partners will earn the same grade. 
-	- To accept this project, __you must great a team__ ***even if you are not working with a partner***
-	- If you are working with a partner, One person create the term, the second will join 
+	- To accept this project, ***you must great a team even if you are not working with a partner***
+	- If you are working with a partner, One person creates the term, the second will join 
 	- Otherwise, use your regular GitHub username as the team name
-- __NO CLASS on Wednesday this week__ due to SSRD program 
-	- However, the section meeting will hold. Please try to attend!
-- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- This week reading is __chapter 9 (Searching and Sorting)__
+- We will spend 10 minutes to fill out course evaluation form:
+	- Check for an email from ***kstrawn@willamette.edu*** sent on Monday, 4/14, at 8 am
+- Polling: [here](https://www.polleverywhere.com/agbofred203)
 
 
 ## Review Question!
