@@ -1,7 +1,7 @@
 ---
-title: "Chapters 1-3,7 Review "
+title: "Chapters 1-4,7 Review"
 author: Fred Agbo
-date: April 24, 2024
+date: April 25, 2025
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -14,15 +14,15 @@ history: false
 ---
 
 ## Announcements
-- Project 5 is due on ***Monday April 29th***. 
-- Final exam is **Monday 6th May** ***at 2pm - 5pm***
-    - Venue is this same hall
-	- More about the final on Monday next week
-    - For those concerned, arrange with testing center ASAP & cc me
-    - Arrange to take the exam within that same week of May 7th
-- __Course Evaluation__, email from Kelley Strawn is sent to everyone
-    - 15 minutes is reserved today to fill out the form.
-- - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+- Project 5 is due on ***Monday April 28th***. 
+- Schedules for __finals__:
+	- 10:20 – 11:20 M/W/F -> ***Friday 2nd May (8:00am – 11am)***
+	- 12:00 – 1:00 M/W/F -> ***Wednesday 7th May (2:00pm - 5pm)***
+    	- Venue is this same hall
+		- More about the final on Monday next week
+   	- For those concerned, arrange with testing center ASAP & cc me
+    - If possible, arrange to take the exam within that same week
+- Polling [here](https://www.polleverywhere.com/agbofred203)
 
 
 ## Review Question {data-notes="Solution: B"} 
@@ -469,3 +469,80 @@ Method | Description
 `char.isidentifier()` | Returns `True` if `char` is a legal Python identifier
 :::
 
+## CH-4: The Portable Graphics Library
+- Built atop Tkinter
+- The library (`pgl.py`) is available on the Canvas website [here](https://willamette.instructure.com/courses/3703/modules/items/160252)
+	- Put it in the same folder as your code, and then you can import it
+- Operates on the idea of a collage or cork-board
+
+![Test](../images/CorkBoard.svg)
+
+- Note that newer objects can obscure older objects. This layering arrangement is called the _stacking order_.
+- The window (or felt-board/cork-board)
+	- Created with the `GWindow` function
+	- Takes two arguments: a width and a height in pixels
+
+## Other Simple Objects
+Functions to create simple geometric objects:
+<br>
+
+- Rectangles!
+	- `GRect( x, y, width, height )`
+	- Creates a rectangle whose upper left corner is at (x,y) of the specified size
+- Circles/Ovals!
+	- `GOval( x, y, width, height )`
+	- Creates an oval that fits inside the rectangle with the same dimensions
+	- Placement based on the upper left corner of that enclosing rectangle
+- Lines!
+	- `GLine( x1, y1, x2, y2 )`
+	- Creates a line extending from (x1, y1) to (x2, y2)
+
+## The `GObject` Hierarchy
+- The types of graphical objects form a hierarchy:
+
+![](../images/GObject_Hierarchy.svg)
+
+- The `GObject` class represents the collection of all graphical objects
+- The `GFillableObject` class represents those that have a fillable interior
+
+## Interacting with the `GWindow`
+- We've already shown creation:
+
+```python
+gw = GWindow(width, height)
+```
+- You have several more operations that you can apply to the `GWindow` object:
+
+-------------------------------------- -------------------------------------
+       `gw.add(object)`{.no-highlight} Adds an object to the window
+ `gw.add(object, x, y)`{.no-highlight} Adds an object to the window after moving it to (x,y)
+    `gw.remove(object)`{.no-highlight} Removes an object from the window
+       `gw.get_width()`{.no-highlight} Returns the width of the graphics window in pixels
+      `gw.get_height()`{.no-highlight} Returns the height of the graphics window in pixels
+-------------------------------------- -------------------------------------
+
+
+## Interacting with `GObject`s
+- The following operations apply to all GObjects,  where `object`{.no-highlight} is the name of any specific instance.
+
+---------------------------------------- ----------------------------
+         `object.get_x()`{.no-highlight} Returns the x coordinate of this object
+         `object.get_y()`{.no-highlight} Returns the y coordinate of this object
+     `object.get_width()`{.no-highlight} Returns the width of this object
+    `object.get_height()`{.no-highlight} Returns the height of this object
+`object.set_color(color)`{.no-highlight} Sets the color of the object to the specified color
+---------------------------------------- ----------------------------
+
+- All coordinates and distances are measured in pixels
+
+
+## Interacting with `GFillableObject`s
+- Fillable GObjects have a smaller subset of commands that also apply to them.
+- Initially the only fillable objects available to you are rectangles and ovals
+
+--------------------------------------------- ----------------------------
+     `object.set_filled(bool)`{.no-highlight} Sets the fill state of the object
+`object.set_fill_color(color)`{.no-highlight} Sets the color to be used to fill the interior, otherwise same as the outer line
+     `object.get_fill_color()`{.no-highlight} Gets the current color used to display the object interior
+          `object.is_filled()`{.no-highlight} Returns True or False depending on whether the object is currently filled
+--------------------------------------------- ----------------------------

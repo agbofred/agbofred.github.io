@@ -1,26 +1,29 @@
 """
 Question 1.
 
-Consider the Kilburn’s algorithm for finding the factor of a number 
-using brute-force strategy is shown below. 
+Consider the program for finding the factor of a number 
+using brute-force strategy as shown below. 
 
 """
+
 def largest_factor(n):
-    factor = n - 1
-    while n % factor != 0:
-        factor -= 1
-    return factor
+    for i in range(n - 1, 0, -1):      
+        for j in range(1, n):          
+            pass                       
+        if n % i == 0:
+            return i
 
 if __name__ == '__main__':
-    print(largest_factor(36))
+    print(largest_factor(27))
+
 
 """
 A) What output will the code above print? 
-Ans: 18
+Ans: 9
 
 B) What is the asymptotic time complexity of the algorithm?
 
-Ans: O(n)
+Ans: O(n^2)
 
 --------  
 """
@@ -29,12 +32,12 @@ Ans: O(n)
 Q2:
 Consider the program below
 """
-# Answer is ('a', (8, 16, 32, 8, 16, 32), 'M_byte') >>>>>Note! if line 34 is  a concatenation say C = B + ('b', ), then it returns error of not able to concetnate string and tuple
+# Answer is ('a', 'M_byte'), 'M_byte') >>>>>Note! if line 34 is  a concatenation say C = B + ('b', ), then it returns error of not able to concetnate string and tuple
 var_A = (8, 16, 32, )
 var_B = (2*var_A, ('bits', ) )
 var_C = var_B , ('M_byte', 'G_byte', 'T_byte')
 var_D = ("a",)
-for v in var_C[1:3]:
+for v in var_C[1:]:
     var_D += v[:1]
 print(var_D)
 
@@ -51,16 +54,16 @@ Ans: tuple
 
 """
 Q3. 
-A)    If the ASCII code of charater 'G' is represented as 0X47 in hexadecimal, 
-    what is the base 10 integer value representation of 'G'?
+A)    If the ASCII code of charater 'H' is represented as 0X48 in hexadecimal, 
+    what is the base 10 integer value representation of 'H'?
 
-    ANS:71
+    ANS:72
 
-B) If ASCII code of character 'g' is reprented as OX67 in hexadecimal, 
+B) If ASCII code of character 'h' is reprented as 0X68 in hexadecimal, 
     what will be the octal representation value of 'g' in base 8?
 
 
-ANS: 0o147
+ANS: 0o150
 """
 #-----------------------------------------------
 
