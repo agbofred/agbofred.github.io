@@ -31,8 +31,10 @@ def puzzle(t):
     return y(x)+ y() + y(s=8)
 print(puzzle("phsyahdpya"))
 
-# Question 1D Amswer: y= mystery(t,x=x) 
-                    #return y(x)+ y() + y(s=8)
+# Question 1D Amswer: 
+                    #   return enigma
+                    #   y= mystery(t,x=x) 
+                    #   return y(x)+ y() + y(s=8)
 """
 Functions in Python are said to be first-class functions where you can assign
 them to a variable, pass it as a parameter, or return it as a result. 

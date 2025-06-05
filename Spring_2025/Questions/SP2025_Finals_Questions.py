@@ -1,26 +1,29 @@
 """
 Question 1.
 
-Consider the Kilburn’s algorithm for finding the factor of a number 
-using brute-force strategy is shown below. 
+Consider the program for finding the factor of a number 
+using brute-force strategy as shown below. 
 
 """
+
 def largest_factor(n):
-    factor = n - 1
-    while n % factor != 0:
-        factor -= 1
-    return factor
+    for i in range(n - 1, 0, -1):      
+        for j in range(1, n):          
+            pass                       
+        if n % i == 0:
+            return i
 
 if __name__ == '__main__':
-    print(largest_factor(36))
+    print(largest_factor(27))
+
 
 """
 A) What output will the code above print? 
-Ans: 18
+Ans: 9
 
 B) What is the asymptotic time complexity of the algorithm?
 
-Ans: O(n)
+Ans: O(n^2)
 
 --------  
 """
@@ -29,12 +32,12 @@ Ans: O(n)
 Q2:
 Consider the program below
 """
-# Answer is ('a', (8, 16, 32, 8, 16, 32), 'M_byte') >>>>>Note! if line 34 is  a concatenation say C = B + ('b', ), then it returns error of not able to concetnate string and tuple
+# Answer is ('a', 'M_byte'), 'M_byte') >>>>>Note! if line 34 is  a concatenation say C = B + ('b', ), then it returns error of not able to concetnate string and tuple
 var_A = (8, 16, 32, )
 var_B = (2*var_A, ('bits', ) )
 var_C = var_B , ('M_byte', 'G_byte', 'T_byte')
 var_D = ("a",)
-for v in var_C[1:3]:
+for v in var_C[1:]:
     var_D += v[:1]
 print(var_D)
 
@@ -51,16 +54,16 @@ Ans: tuple
 
 """
 Q3. 
-A)    If the ASCII code of charater 'G' is represented as 0X47 in hexadecimal, 
-    what is the base 10 integer value representation of 'G'?
+A)    If the ASCII code of charater 'H' is represented as 0X48 in hexadecimal, 
+    what is the base 10 integer value representation of 'H'?
 
-    ANS:71
+    ANS:72
 
-B) If ASCII code of character 'g' is reprented as OX67 in hexadecimal, 
-    what will be the octal representation value of 'g' in base 8?
+B) If ASCII code of character 'h' is reprented as 0X68 in hexadecimal, 
+    what will be the octal representation value of 'h' in base 8?
 
 
-ANS: 0o147
+ANS: 0o150
 """
 #-----------------------------------------------
 
@@ -68,7 +71,6 @@ ANS: 0o147
 Q4.
 Consider the program below
 """
-
 def puzzle(t): 
     def mystery(r,x): 
         x+=2 
@@ -86,51 +88,19 @@ A) What output will the program print?
 Ans: happyday
 
 
-B)  Write a function 'summarize_letters" that receives a string 'mystring' and return a list of tuples containing the unique letters and their frequencies in the string. 
-    Display the list to the terminal showing each letter with its frequency on a new line. Your function should ignore case sensitivity (that is, 'a' and 'A' are the same).
-    Assume ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+B)
 
-For example: mystring = 'Welcome to Final Exam' then summarize_letters(mystring) will output:
-a: 2
-c: 1
-e: 3
-f: 1
-i: 1
-l: 2
-m: 2
-n: 1
-o: 2
-t: 1
-w: 1
-x: 1
+Functions in Python are said to be first-class functions where you can assign
+them to a variable, pass it as a parameter, or return it as a result. 
+Observe the program in question 4A above, which line(s) of code depicts example of first-class function?
+
+# Ans: 
+    #   return enigma
+    #   y= mystery(t,x=x) 
+    #   return y(x)+ y() + y(s=8)
+
+
 """
-
-#One sample solution to Q2A is below
-ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-
-def summarize_letters(string):
-    letters = []
-    counts = []
-    
-    for letter in string.lower():
-        if letter in ALPHABET:
-            if letter in letters:
-                index = letters.index(letter)
-                counts[index] += 1
-            else:
-                letters.append(letter)
-                counts.append(1)
-           
-    tuples = list(zip(letters, counts))
-    tuples.sort()
-    return tuples
-
-mystring = 'Welcome to Final Exam'
-summary = summarize_letters(mystring)
-
-# display counts
-for char, count in summary:
-    print(f'{char}: {count}')
 
 
 #-----------------------------------------------------
