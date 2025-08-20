@@ -1,0 +1,40 @@
+---
+title: "Sample Slide Deck"
+author: "Your Name"
+format:
+  revealjs:
+    theme: moon
+    highlight-style: github
+---
+
+# Slide 1 Title
+
+- Welcome to the first slide!
+- __I am testting__ **Something** 
+- While
+    - We do not
+    ***agree***
+
+[Profile](images/fredprofile.jpg)
+
+
+# Slide 2 Title
+
+- Here is a bullet point
+- Another bullet point
+- 🚩 This is flagged
+- ✅ This is approved
+
+
+# Slide 3 Title
+```{python}
+#| echo: true
+#| number-lines: true
+def main():
+    i = 100
+    while i > 90:
+        print(i)
+        i -= 1
+    return
+```
+- Printing here

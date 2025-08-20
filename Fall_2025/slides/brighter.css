@@ -1,0 +1,6 @@
+/* Make non-title text brighter */
+.brighter-text {
+  color: #f8f8ff;
+  font-weight: 500;
+  font-size: 1.15em;
+}

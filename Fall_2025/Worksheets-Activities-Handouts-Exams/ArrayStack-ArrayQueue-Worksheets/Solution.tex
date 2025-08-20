@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, graphicx}
+\usepackage[a4paper, margin=1in]{geometry}
+
+\title{\textbf{Answer Sheet: Data Structures Worksheet - Array-Based Stack \& Circular Queue}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Part 1: Array-Based Stack}
+
+\subsection*{Conceptual Questions}
+\begin{enumerate}
+    \item \textbf{LIFO (Last-In-First-Out)} means that the last element added to the stack is the first one to be removed. This is useful in scenarios like function calls, undo operations, and backtracking algorithms.
+    
+    \item \textbf{Stack Operations:}
+    \begin{itemize}
+        \item \texttt{push(value)} - Adds an element to the top of the stack. Complexity: $O(1)$.
+        \item \texttt{pop()} - Removes the top element from the stack. Complexity: $O(1)$.
+        \item \texttt{peek()} - Returns the top element without removing it. Complexity: $O(1)$.
+    \end{itemize}
+    
+    \item If a stack is full, attempting to push another element results in an \textbf{overflow}. To handle this, we can either dynamically resize the array (if possible) or return an error message.
+    
+    \item \textbf{Stack State After Operations:}
+    
+    \begin{tabular}{|c|c|}
+    \hline
+    Operation & Stack State (Top \textrightarrow{} Bottom) \\
+    \hline
+    push(5) & [5] \\
+    push(10) & [10, 5] \\
+    push(15) & [15, 10, 5] \\
+    pop() & [10, 5] \\
+    push(20) & [20, 10, 5] \\
+    push(25) & [25, 20, 10, 5] \\
+    push(30) & Stack Overflow (No space left) \\
+    \hline
+    \end{tabular}
+    
+    \item Stacks manage function calls by storing return addresses and local variables in a call stack. When a function is called, its details are pushed onto the stack. When it returns, the details are popped.
+    
+    \item \textbf{Postfix Expression Evaluation:} Using a stack:
+    \begin{itemize}
+        \item Push 5
+        \item Push 3
+        \item Encounter `+`: Pop 3 and 5, compute $5+3=8$, push 8
+        \item Push 8
+        \item Encounter `*`: Pop 8 and 8, compute $8 \times 8 = 64$, push 64
+        \item Push 2
+        \item Encounter `-`: Pop 2 and 64, compute $64 - 2 = 62$, push 62
+    \end{itemize}
+    Final result: \textbf{62}.
+
+\end{enumerate}
+
+\newpage
+
+\section*{Part 2: Array-Based Circular Queue}
+
+\subsection*{Conceptual Questions}
+\begin{enumerate}
+    \item A circular queue uses a fixed-size array where the rear pointer wraps around to the beginning when it reaches the array’s end, unlike a standard queue which shifts elements.
+    
+    \item Modular arithmetic is used to calculate the next available index efficiently: $\text{new position} = (\text{current position} + 1) \mod \text{capacity}$.
+    
+    \item A circular queue is full when $(\text{rear} + 1) \mod \text{size} = \text{front}$. An empty queue has front and rear both set to -1 or equal.
+    
+    \item \textbf{Circular Queue State:}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Operation & Queue State (Front \textrightarrow{} Rear) & Front Index & Rear Index \\
+    \hline
+    enqueue(1) & [1] & 0 & 0 \\
+    enqueue(2) & [1, 2] & 0 & 1 \\
+    enqueue(3) & [1, 2, 3] & 0 & 2 \\
+    enqueue(4) & [1, 2, 3, 4] & 0 & 3 \\
+    enqueue(5) & [1, 2, 3, 4, 5] & 0 & 4 \\ 
+    dequeue() & [_, 2, 3, 4, 5] & 1 & 4 \\
+    dequeue() & [_, _, 3, 4, 5] & 2 & 4 \\
+    enqueue(6) & [6, _, 3, 4, 5] & 2 & 0 \\
+    enqueue(7) & [6, 7, 3, 4, 5] & 2 & 1 \\
+    dequeue() & [6, 7, _, 4, 5] & 3 & 1 \\
+    enqueue(8) & [6, 7, 8, 4, 5] & 3 & 2 \\
+    enqueue(9) & Queue Overflow & - & - \\
+    \hline
+    \end{tabular}
+    
+    \item \textbf{Queue State for Size 6:}
+    \begin{itemize}
+        \item enqueue(10), enqueue(20), enqueue(30) → [10, 20, 30, _, _, _] (front=0, rear=2)
+        \item dequeue() → [_, 20, 30, _, _, _] (front=1, rear=2)
+        \item enqueue(40), enqueue(50), enqueue(60), enqueue(70) → [_, 20, 30, 40, 50, 60] (front=1, rear=5)
+        \item dequeue(), dequeue() → [_, _, 30, 40, 50, 60] (front=3, rear=5)
+        \item enqueue(80), enqueue(90) → [90, _, 30, 40, 50, 60] (front=3, rear=0)
+        \item enqueue(100) results in queue overflow because the queue is full.
+    \end{itemize}
+    
+    \item Circular queues are used in scheduling algorithms (e.g., round-robin CPU scheduling) where processes are assigned in a cyclic order.
+\end{enumerate}
+
+\end{document}
+
