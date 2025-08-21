@@ -1,0 +1,43 @@
+/* Custom Reveal.js slide styles for Quarto */
+
+.reveal section {
+  color: #f8f8ff;
+  font-size: 1.15em;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  color: #ffd700;
+  text-shadow: 1px 1px 8px #222;
+}
+
+.reveal pre code {
+  background: #232323;
+  color: #fffbf0;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.reveal .poll, .reveal .hpoll {
+  background: #222;
+  color: #ffd700;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.reveal img {
+  box-shadow: 0 2px 12px #222;
+  border-radius: 8px;
+}
+
+.reveal .block {
+  background: #333;
+  color: #ffd700;
+  border-left: 6px solid #ffd700;
+  padding: 10px 16px;
+  margin: 12px 0;
+  border-radius: 6px;
+}
+
+.reveal .incremental {
+  color: #f8f8ff;
+}

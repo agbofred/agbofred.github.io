@@ -1,6 +1,317 @@
-/* Make non-title text brighter */
-.brighter-text {
+/* Global styles for Quarto Reveal.js slides */
+
+body, .reveal {
+  background: #23272e;
   color: #f8f8ff;
-  font-weight: 500;
-  font-size: 1.15em;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  font-size: 1.7em;
+  line-height: 1.7;
+}
+
+/* Custom bullet style */
+.reveal ul li {
+  list-style-type: square;
+  margin-bottom: 0.8em;
+  padding-left: 1.2em;
+  border-left: 6px solid #00bcd4;
+  background: linear-gradient(90deg, #263238 80%, #00bcd4 100%);
+  border-radius: 8px;
+  color: #f8f8ff;
+  box-shadow: 2px 2px 8px rgba(0,188,212,0.08);
+}
+.reveal ul li::marker {
+  color: #e91e63;
+  font-size: 1.3em;
+}
+.reveal ol li {
+  list-style-type: decimal-leading-zero;
+  margin-bottom: 0.8em;
+  padding-left: 1.2em;
+  border-left: 6px solid #ff9800;
+  background: linear-gradient(90deg, #263238 80%, #ff9800 100%);
+  border-radius: 8px;
+  color: #f8f8ff;
+  box-shadow: 2px 2px 8px rgba(255,152,0,0.08);
+}
+.reveal ol li::marker {
+  color: #4caf50;
+  font-size: 1.3em;
+}
+}
+
+.reveal h1 {
+  color: #ffd700;
+  font-size: 2.5em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 1px 1px 8px #222;
+  margin-bottom: 0.8em;
+}
+.reveal h2 {
+  color: #ffd700;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
+.reveal h3 {
+  color: #ffd700;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+}
+.reveal h4 {
+  color: #ffd700;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.reveal strong, .reveal b {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.18);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #ffd700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.12);
+}
+.reveal em, .reveal i {
+  color: #00bcd4;
+  background: rgba(0, 188, 212, 0.18);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #00bcd4;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,188,212,0.12);
+/* Slide number style */
+.reveal .slide-number {
+  color: #ffd700 !important;
+  background: rgba(35,39,46,0.85);
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.12);
+}
+}
+
+.reveal em, .reveal i {
+  color: #ff69b4;
+  background: rgba(255, 105, 180, 0.08);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #ff69b4;
+  text-decoration: none;
+}
+
+.reveal ul, .reveal ol {
+  color: #f8f8ff;
+  font-size: 1.2em;
+  margin-left: 1.5em;
+  padding-left: 0.5em;
+}
+
+.reveal ul li {
+  margin-bottom: 0.8em;
+  padding-left: 1.2em;
+  border-left: 6px solid #00bcd4;
+  background: linear-gradient(90deg, #263238 80%, #00bcd4 100%);
+  border-radius: 8px;
+  color: #f8f8ff;
+  box-shadow: 2px 2px 8px rgba(0,188,212,0.08);
+}
+
+.reveal ol li {
+  margin-bottom: 0.8em;
+  padding-left: 1.2em;
+  border-left: 6px solid #ff9800;
+  background: linear-gradient(90deg, #263238 80%, #ff9800 100%);
+  border-radius: 8px;
+  color: #f8f8ff;
+  box-shadow: 2px 2px 8px rgba(255,152,0,0.08);
+}
+
+.reveal ul li::marker {
+  color: #00bcd4;
+  font-size: 1.3em;
+}
+.reveal ol li::marker {
+  color: #ff9800;
+  font-size: 1.3em;
+}
+/* Global styles for Quarto Reveal.js slides */
+
+body, .reveal {
+  background: #23272e !important;
+  color: #f8f8ff !important;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  color: #ffd700;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 1px 1px 8px #222;
+}
+
+.reveal strong, .reveal b {
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.08);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #ffd700;
+}
+
+.reveal em, .reveal i {
+  color: #ff69b4;
+  background: rgba(255, 105, 180, 0.08);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #ff69b4;
+}
+
+.reveal ul, .reveal ol {
+  color: #f8f8ff;
+  font-size: 1.1em;
+}
+
+.reveal ul li {
+  margin-bottom: 0.5em;
+  padding-left: 0.5em;
+  border-left: 4px solid #00bcd4;
+  background: #263238;
+  border-radius: 3px;
+  color: #f8f8ff;
+}
+
+.reveal ol li {
+  margin-bottom: 0.5em;
+  padding-left: 0.5em;
+  border-left: 4px solid #ff9800;
+  background: #263238;
+  border-radius: 3px;
+  color: #f8f8ff;
+}
+
+.reveal ul li::marker {
+  color: #00bcd4;
+}
+.reveal ol li::marker {
+  color: #ff9800;
+}
+
+.reveal code, .reveal pre {
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  font-size: 1em;
+  background: #1e1e1e;
+  color: #f8f8ff;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  overflow-x: auto;
+}
+
+.reveal pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* Monokai-like Python syntax highlighting */
+.reveal code.language-python .k { color: #f92672; } /* keyword */
+.reveal code.language-python .s { color: #e6db74; } /* string */
+.reveal code.language-python .c { color: #75715e; font-style: italic; } /* comment */
+.reveal code.language-python .n { color: #a6e22e; } /* name */
+.reveal code.language-python .o { color: #f8f8f2; } /* operator */
+.reveal code.language-python .mi { color: #ae81ff; } /* number */
+
+.reveal a {
+  color: #ffd700;
+  text-decoration: underline;
+}
+.reveal a:focus, .reveal button:focus, .reveal input:focus {
+  outline: 3px solid #00bcd4;
+  outline-offset: 2px;
+}
+
+.reveal .brighter-text {
+  color: #ffd700;
+  background: #333;
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Columns and layout */
+.layout-columns, .cols {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+}
+.column, .col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.reveal img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.reveal .controls {
+  background: #333;
+  color: #ffd700;
+  padding: 2px 8px;
+.reveal strong, .reveal b {
+  color: #1565c0;
+  background: #e3f2fd;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #ffb300;
+}
+.reveal em, .reveal i {
+  color: #c62828;
+  background: #ffebee;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: 2px solid #ffb300;
+}
+.reveal strong em, .reveal em strong {
+  color: #00ff99;
+  background: rgba(0, 255, 153, 0.10);
+  border-radius: 3px;
+  padding: 0 4px;
+}
+  border-radius: 3px;
+  padding: 0 4px;
+.layout-columns, .cols {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+}
+.column, .col {
+  flex: 1;
+  min-width: 200px;
+}
+}
+.reveal strong em, .reveal em strong {
+.reveal pre {
+  scrollbar-width: thin;
+  scrollbar-color: #90caf9 #23272e;
+}
+.reveal pre::-webkit-scrollbar {
+  height: 8px;
+  background: #23272e;
+}
+.reveal pre::-webkit-scrollbar-thumb {
+  background: #90caf9;
+  border-radius: 4px;
+}
+  color: #00ff99;
+  background: rgba(0, 255, 153, 0.10);
+  border-radius: 3px;
+  padding: 0 4px;
 }

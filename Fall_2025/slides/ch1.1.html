@@ -6,12 +6,12 @@
 <script src="ch1.1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="ch1.1_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="ch1.1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="ch1.1_files/libs/quarto-html/quarto-syntax-highlighting-dark-e911475f2142359e4a24afe1fcada8dd.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="ch1.1_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Fred Agbo">
   <meta name="dcterms.date" content="2025-08-25">
-  <title>Kickoff: Course Overview</title>
+  <title>CS 152 Kickoff &amp; Course Overview</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,12 +29,80 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="ch1.1_files/libs/revealjs/dist/theme/quarto-a8ebab573175e6678165fc8c8b8e4994.css">
-  <link rel="stylesheet" href="brighter.css">
+  <link rel="stylesheet" href="ch1.1_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="minimal.css">
   <link href="ch1.1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="ch1.1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="ch1.1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="ch1.1_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="ch1.1_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="ch1.1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -47,7 +115,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -125,12 +192,12 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Kickoff: Course Overview</h1>
+  <h1 class="title">CS 152 Kickoff &amp; Course Overview</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -145,34 +212,393 @@ Fred Agbo
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Welcome to CS151: Intro to Programming with Python!</li>
+<li>Welcome to CS152: Data Structure</li>
 <li>Things to do:
 <ul>
 <li>Access the course webpage on Canvas and read over the full syllabus carefully</li>
 <li>Class communication/announcements: on Canvas &amp; <strong><em>Discord Server</em></strong>. <a href="https://discord.gg/AnCB5NEpfw">Join</a> now!</li>
-<li>Fill out the section availability form <a href="https://forms.gle/o8Ckec2dPboSV8bPA">here</a>. Last day to fill it out is Friday</li>
-<li>Fill out this CS/DS/Math Program Assessment Survey <a href="https://docs.google.com/forms/d/e/1FAIpQLSddTdhTRc-UBjm1UudGQ_jyS1ShOjY--I28Jyu6wVbXMsvV2Q/viewform?usp=pp_url&amp;entry.230021585=SPRING&amp;entry.1118900056=2024">here</a>.</li>
 </ul></li>
-<li>Bring phone or computer to the class for polling questions in the future</li>
-<li>Watch the vidoes prepared by <strong>Professor Jed</strong> under <strong><em>Course Guide</em></strong> on Canvas and follow the instructions to:
-<ul>
-<li>setup your computer with tools needed in this class.<br>
-</li>
-<li>learn how to use GitHub Classroom for the homework implementation in this class</li>
-</ul></li>
-<li>Homework: <strong><em>Problem Set 1</em></strong> will be posted before the end of this week and due <strong>Jan 29 at 10pm</strong></li>
 </ul>
+</section>
+<section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+<p>Let’s get to know one another…</p>
 </section>
 <section id="my-vitals" class="slide level2">
 <h2>My Vitals</h2>
 <div class="layout-columns">
 <div class="column">
-<p><span class="brighter-text"> <strong>Name:</strong> Professor/Dr Fred Agbo <br> <strong>Office:</strong> Ford 209 <br> <strong>Office Hours:</strong> T, TH 10:30-12:00pm<br>Online or anytime I’m around <br> <strong>Email:</strong> fjagbo at willamette.edu <br> <strong>Office Phone:</strong> 503-370-6862 </span></p>
+<p><span class="brighter-text"> <strong>Name:</strong> Professor/Dr Fred Agbo <br> <strong>Office:</strong> Ford 209 <br> <strong>Office Hours:</strong> T, TH 10:30-12:00pm Online or anytime I’m around <br> <strong>Email:</strong> fjagbo at willamette.edu <br> <strong>Office Phone:</strong> 503-370-6862 </span></p>
 </div><div class="column">
 <p><img data-src="../../images/fredprofile.jpg" style="width:70.0%"></p>
 </div></div>
+</section></section>
+<section>
+<section id="syllabus-check" class="title-slide slide level1 center">
+<h1>Syllabus Check</h1>
 
 </section>
+<section id="grading" class="slide level2">
+<h2>Grading</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Standard 90/80/70 etc grade cut-offs
+<ul>
+<li>Top 2% get +’s</li>
+<li>Bottom 2% get -’s</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Participation</td>
+<td style="text-align: center;">5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5 Problem Sets</td>
+<td style="text-align: center;">20%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4 Defined-Projects</td>
+<td style="text-align: center;">20%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1 Personal-Project</td>
+<td style="text-align: center;">15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2 Midterms</td>
+<td style="text-align: center;">20%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A Final Exam</td>
+<td style="text-align: center;">20%</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</section>
+<section id="homework" class="slide level2">
+<h2>Homework</h2>
+<ul>
+<li>Falls into two categories:
+<ul>
+<li><em>Problem Sets:</em> smaller, more focused assignments
+<ul>
+<li>Graded on standard, numeric scales</li>
+</ul></li>
+<li><em>Projects</em>: larger, more integrative assignments
+<ul>
+<li>Graded on a more qualitative scale (next slide)</li>
+</ul></li>
+</ul></li>
+<li>All will be due on Mondays at 10:00pm</li>
+<li>Submissions of <em>both</em> will be handled through Github Classroom
+<ul>
+<li>Learn how to do this from Jed’s <strong>videos</strong>. Or meet me during my office hours if something is not working as expected!</li>
+</ul></li>
+<li><em>3 cumulative late days (24 hours max) over the entire semester without penalty</em> then penalties enacted for each subsequent day late.</li>
+<li>Extensions for any reason need to be requested and approved by myself before the due date</li>
+</ul>
+</section>
+<section id="why-studying-data-structures-matters" class="slide level2">
+<h2>Why Studying Data Structures Matters</h2>
+<ul>
+<li>Data structures are fundamental to efficient problem solving in computer science</li>
+<li>They help organize, manage, and store data for optimal access and modification</li>
+<li>Choosing the right data structure can dramatically improve program performance</li>
+<li>Many real-world applications (search engines, databases, games) rely on effective use of data structures</li>
+<li>Understanding data structures prepares you for technical interviews and advanced coursework</li>
+</ul>
+</section>
+<section id="why-studying-data-strecture" class="slide level2">
+<h2>Why Studying Data Strecture</h2>
+<ul>
+<li>Data Structures often provide a model of the real-world problem they help solve</li>
+<li>Examples:
+<ul>
+<li>People waiting in line to buy tickets</li>
+<li>Issuing lottery tickets then picking and finding the winner</li>
+<li>Maintaining a group of contacts with changing attributes like phone numbers, app handles, residences, and even names</li>
+<li>Tracking stars, asteroids, comets, and other phenomena in space and updating them as more is learned about them</li>
+<li>The data structure must make the most common operations efficient for that problem domain</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-a-data-structure" class="slide level2">
+<h2>What is a Data Structure?</h2>
+<ul>
+<li>A data structure is a representation of the logical relationship existing among elements of data.</li>
+<li>It provides a way to organize, store, and manage data efficiently.</li>
+<li>Examples include <strong>arrays</strong>, <strong><em>linked lists</em></strong>, <strong>stacks</strong>, <strong>queues</strong>, <strong>trees</strong>, and <strong><em>graphs</em></strong>.</li>
+<li>The choice of data structure impacts how you access, modify, and process data in your programs.</li>
+</ul>
+</section>
+<section id="primitive-and-non-primitive-data-structures" class="slide level2">
+<h2>Primitive and Non-Primitive Data Structures</h2>
+<ul>
+<li>Primitive Data Structures
+<ul>
+<li>Directly operated upon by machine instructions</li>
+<li>Examples: <code>int</code>, <code>float</code>, <code>char</code>, <code>boolean</code></li>
+<li>Simple, single-value containers</li>
+</ul></li>
+<li>Non-Primitive Data Structures
+<ul>
+<li>Built using primitive data types</li>
+<li>Can store multiple values and complex relationships</li>
+<li>Examples: <code>arrays</code>, <code>lists</code>, <code>stacks</code>, <code>queues</code>, <code>trees</code>, <code>graphs</code></li>
+<li>Enable efficient data organization and manipulation</li>
+</ul></li>
+</ul>
+</section>
+<section id="non-primitive-data-structure" class="slide level2">
+<h2>Non-Primitive Data Structure</h2>
+<div class="layout-columns">
+<div class="column">
+<ul>
+<li>Arrays
+<ul>
+<li>Single Dimension Arrays
+<ul>
+<li>Store elements in a linear sequence</li>
+<li>Example in Python:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>numbers <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li>Multi-Dimensional Arrays
+<ul>
+<li>Store elements in a grid or matrix (e.g., 2D, 3D)</li>
+<li>Example in Python (2D array):</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>matrix <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<ul>
+<li>Lists
+<ul>
+<li>Linear
+<ul>
+<li>Stack</li>
+<li>Queue</li>
+<li>Linked List</li>
+</ul></li>
+<li>None Linear
+<ul>
+<li>Trees</li>
+<li>Graphs</li>
+</ul></li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="the-four-primary-operations" class="slide level2">
+<h2>The Four Primary Operations</h2>
+<ul>
+<li>Insertion:
+<ul>
+<li>Add a new element to the data structure.</li>
+</ul></li>
+<li>Deletion:
+<ul>
+<li>Remove an existing element from the data structure.</li>
+</ul></li>
+<li>Traversal:
+<ul>
+<li>Access each element of the data structure systematically.</li>
+</ul></li>
+<li>Searching:
+<ul>
+<li>Find the location of a specific element within the data structure.</li>
+</ul></li>
+<li>These operations are fundamental to working with any data structure and their efficiency depends on the type of structure used.</li>
+</ul>
+</section>
+<section id="so-many-data-structures-why-care" class="slide level2">
+<h2>So Many Data Structures: Why Care?</h2>
+<ul>
+<li>Different data structures excel at different things.
+<ul>
+<li>Some are highly specialized, while others (like arrays) are more generally used.</li>
+</ul></li>
+<li>The more time you spend as a developer, the more likely you’ll need to use one of these data structures</li>
+<li>You’ve already worked with many of them knowingly or unknowingly 🤓</li>
+<li><em>Job interviews</em> often include data structure questions.
+<ul>
+<li>For example, you might be asked to implement a stack or explain when to use a hash table.</li>
+<li>Knowing the strengths and weaknesses of each data structure helps you solve these problems efficiently and impress interviewers.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="there-is-no-one-best-data-structure" class="title-slide slide level1 center">
+<h1>THERE IS NO ONE “BEST” DATA STRUCTURE</h1>
+<p>😎</p>
+</section>
+<section id="data-structure-selection-cheat-sheet" class="slide level2">
+<h2>Data Structure Selection Cheat Sheet</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 23%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Data Structure</th>
+<th style="text-align: left;">Best For</th>
+<th style="text-align: left;">Example Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Array</td>
+<td style="text-align: left;">Fast access by index, fixed size</td>
+<td style="text-align: left;">Storing scores, pixel data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Linked List</td>
+<td style="text-align: left;">Frequent insertions/deletions</td>
+<td style="text-align: left;">Undo history, playlist</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Stack</td>
+<td style="text-align: left;">Last-in, first-out (LIFO)</td>
+<td style="text-align: left;">Function calls, browser history</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Queue</td>
+<td style="text-align: left;">First-in, first-out (FIFO)</td>
+<td style="text-align: left;">Print jobs, task scheduling</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tree</td>
+<td style="text-align: left;">Hierarchical data</td>
+<td style="text-align: left;">File systems, organization charts</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Graph</td>
+<td style="text-align: left;">Relationships/networks</td>
+<td style="text-align: left;">Social networks, maps</td>
+</tr>
+</tbody>
+</table>
+<p><em>Choose based on your problem’s needs: speed, memory, and operations!</em></p>
+</section>
+<section id="important-functions-in-random" class="slide level2">
+<h2>Important Functions in <code>random</code></h2>
+<div style="font-size: 80%">
+<ul>
+<li>Random Integers</li>
+</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 63%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>randint(minv, maxv)</code></td>
+<td style="text-align: left;">Returns an integer between minv and maxv, inclusive</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>randrange(limit)</code></td>
+<td style="text-align: left;">Returns an integer from 0 up to but not including limit</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>randrange(start,limit)</code></td>
+<td style="text-align: left;">Returns an integer from start up to but not including limit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>random()</code></td>
+<td style="text-align: left;">Returns a random float between 0 and 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>uniform(minv, maxv)</code></td>
+<td style="text-align: left;">Returns a random float between minv and maxv</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>choice(a_list)</code></td>
+<td style="text-align: left;">Returns a random element from <code>a_list</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sample(a_list, k)</code></td>
+<td style="text-align: left;">Returns a list of <code>k</code> elements from <code>a_list</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>shuffle(a_list)</code></td>
+<td style="text-align: left;">Randomly reorders the elements of <code>a_list</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="random-examples" class="slide level2">
+<h2>Random Examples</h2>
+<div class="sourceCode" id="cb3" style="min-height:300px; font-size:34px"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a><span class="kw">def</span> random_redblue():</span>
+<span id="cb3-4"><a href=""></a>    <span class="cf">if</span> random.random() <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb3-5"><a href=""></a>        <span class="cf">return</span> <span class="st">"red"</span></span>
+<span id="cb3-6"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb3-7"><a href=""></a>        <span class="cf">return</span> <span class="st">"blue"</span></span>
+<span id="cb3-8"><a href=""></a></span>
+<span id="cb3-9"><a href=""></a><span class="kw">def</span> random_color():</span>
+<span id="cb3-10"><a href=""></a>    color_string <span class="op">=</span> <span class="st">"#"</span></span>
+<span id="cb3-11"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):</span>
+<span id="cb3-12"><a href=""></a>        color_string <span class="op">+=</span> random.choice(<span class="st">"0123456789ABCDEF"</span>)</span>
+<span id="cb3-13"><a href=""></a>    <span class="cf">return</span> color</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-portable-graphics-library" class="slide level2">
+<h2>The Portable Graphics Library</h2>
+<ul>
+<li>Built atop Tkinter</li>
+<li>The library (<code>pgl.py</code>) is available on the Canvas website <a href="https://willamette.instructure.com/courses/3703/modules/items/160252">here</a>
+<ul>
+<li>Put it in the same folder as your code, and then you can import it</li>
+</ul></li>
+<li>Operates on the idea of a collage or cork-board</li>
+</ul>
+<p><a href="../images/CorkBoard.svg">Test</a></p>
+<ul>
+<li>Note that newer objects can obscure older objects. This layering arrangement is called the <em>stacking order</em>.</li>
+</ul>
+</section>
+<section id="the-pieces" class="slide level2">
+<h2>The Pieces</h2>
+<ul>
+<li>At its simplest then, we have two main parts:
+<ul>
+<li>The window (or felt-board/cork-board)
+<ul>
+<li>Created with the <code>GWindow</code> function</li>
+<li>Takes two arguments: a width and a height in pixels</li>
+</ul></li>
+<li>The contents
+<ul>
+<li>A wide assortment of shapes and lines that can be added to the scene</li>
+<li>Control over where they are placed, how large they are, what color they are, etc</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="blue-rectangle" class="slide level2">
+<h2>Blue Rectangle!</h2>
+<div class="sourceCode" id="cb4" data-line-numbers="1|3,4|6|7|8|9|10|11" style="font-size:34px;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">from</span> pgl <span class="im">import</span> GWindow, GRect</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>GW_WIDTH <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb4-4"><a href=""></a>GW_HEIGHT <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb4-5"><a href=""></a></span>
+<span id="cb4-6"><a href=""></a>gw <span class="op">=</span> GWindow(GW_WIDTH, GW_HEIGHT)</span>
+<span id="cb4-7"><a href=""></a>rect <span class="op">=</span> GRect(<span class="dv">150</span>, <span class="dv">50</span> ,<span class="dv">200</span>, <span class="dv">100</span>)</span>
+<span id="cb4-8"><a href=""></a>rect.set_color(<span class="st">"Blue"</span>)</span>
+<span id="cb4-9"><a href=""></a>rect.set_filled(<span class="va">True</span>)</span>
+<span id="cb4-10"><a href=""></a>gw.add(rect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -187,6 +613,7 @@ Fred Agbo
   <script src="ch1.1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="ch1.1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="ch1.1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="ch1.1_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="ch1.1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -208,7 +635,8 @@ Fred Agbo
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -229,7 +657,7 @@ Fred Agbo
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: true,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -245,7 +673,7 @@ Fred Agbo
         respondToHashChanges: true,
 
         // Push each slide change to the browser history
-        history: false,
+        history: true,
 
         // Enable keyboard shortcuts for navigation
         keyboard: true,
@@ -297,7 +725,7 @@ Fred Agbo
         showNotes: false,
 
         // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: true,
+        autoPlayMedia: null,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
         preloadIframes: null,
@@ -334,7 +762,7 @@ Fred Agbo
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -354,9 +782,9 @@ Fred Agbo
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1920,
+        width: 1050,
 
-        height: 1200,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -379,7 +807,7 @@ Fred Agbo
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

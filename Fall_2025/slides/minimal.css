@@ -1,0 +1,179 @@
+/* Minimal, modern, and aesthetic Quarto Reveal.js slide CSS */
+
+body, .reveal {
+  background: #042b36;
+  color: #fff;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  font-size: clamp(1.1em, 2vw, 1.6em);
+  line-height: 1.7;
+  margin-bottom: 2em;
+}
+
+.reveal {
+  height: 100vh;
+  min-height: 600px;
+  max-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.reveal ul, .reveal ol {
+  margin-bottom: 1.2em !important;
+  margin-top: 0.6em !important;
+  padding-left: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reveal ul li, .reveal ol li {
+  list-style: none;
+  margin-bottom: 0.7em;
+  padding-left: 0.5em;
+  color: #fff;
+  font-size: clamp(1em, 1.8vw, 1.2em);
+  position: relative;
+}
+/* All levels: greater-than, color by indent */
+.reveal ul > li::before, .reveal ol > li::before {
+  content: "> ";
+  color: #ffd700;
+  font-weight: bold;
+  margin-right: 0.3em;
+}
+.reveal ul ul > li::before, .reveal ol ol > li::before {
+  content: "> ";
+  color: #7dd51a;
+  font-weight: bold;
+  margin-right: 0.3em;
+}
+.reveal ul ul ul > li::before, .reveal ol ol ol > li::before {
+  content: "> ";
+  color: #ab30ce;
+  font-weight: bold;
+  margin-right: 0.3em;
+}
+.reveal ul li::marker, .reveal ol li::marker {
+  color: transparent;
+}
+
+.reveal h1 {
+  color: #ffd700;
+  font-size: clamp(2em, 4vw, 2.8em);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 1px 1px 8px #222;
+  margin-bottom: 0.7em;
+}
+.reveal h2 {
+  color: #44dc4c;
+  font-size: clamp(1.5em, 3vw, 2.2em);
+  font-weight: 700;
+  margin-bottom: 0.6em;
+}
+.reveal h3 {
+  color: #8e24aa;
+  font-size: clamp(1.2em, 2vw, 1.7em);
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+.reveal h4 {
+  color: #ffd700;
+  font-size: clamp(1em, 1.5vw, 1.3em);
+  font-weight: 700;
+  margin-bottom: 0.4em;
+}
+
+.reveal strong, .reveal b {
+  color: #ffd700;
+  background: none;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: none;
+  text-decoration: none;
+  box-shadow: none;
+}
+.reveal em, .reveal i {
+  color: #e23fc7;
+  background: none;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: none;
+  text-decoration: none;
+  box-shadow: none;
+}
+.reveal u {
+  color: #24ebe7;
+  background: none;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  border-bottom: none;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+/* Table styling for global consistency */
+.reveal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  background: #181818;
+  color: #fff;
+  font-size: clamp(1em, 1.8vw, 1.2em);
+}
+.reveal th, .reveal td {
+  border: 1px solid #ffd700;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+.reveal th {
+  background: #ffd700;
+  color: #181818;
+  font-weight: bold;
+}
+.reveal tr:nth-child(even) td {
+  background: #232323;
+}
+
+/* Override default code color for Reveal.js */
+.reveal code {
+  color: #24ebe7 !important;
+}
+
+.reveal .slide-number {
+  position: fixed;
+  bottom: 24px;
+  right: 32px;
+  color: #ffd700;
+  background: rgba(35,39,46,0.85);
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.12);
+  z-index: 1000;
+}
+
+.reveal .next-arrow {
+  position: fixed;
+  bottom: 24px;
+  right: 80px;
+  width: 48px;
+  height: 48px;
+  background: #ffd700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.18);
+  transition: background 0.2s;
+}
+.reveal .next-arrow:hover {
+  background: #43a047;
+}
+.reveal .next-arrow svg {
+  width: 28px;
+  height: 28px;
+  fill: #181818;
+}
