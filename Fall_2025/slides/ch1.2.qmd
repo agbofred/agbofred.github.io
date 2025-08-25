@@ -1,0 +1,24 @@
+---
+title: "CS 152 Kickoff & Course Overview"
+author: "Fred Agbo"
+date: August 25, 2025
+format:
+  revealjs:
+    # css: minimal.css
+    chalkboard: true
+    slide-number: true
+    theme: [simple, night]
+    respect-user-color-scheme: true
+    width: 1400
+---
+
+## Announcements
+- Welcome to CS152: Data Structure
+- Things to do:
+    - Access the course webpage on Canvas 
+    - Eead over the full syllabus carefully
+    - [Join](https://discord.gg/AnCB5NEpfw) the class communication/announcements on  ***Discord Server***.!
+    - Use the instruction on the __Resources__ menu in week 1 to setup your environments
+        - We will go over them briefly in class
+
+## Welcome to Lecture 2
