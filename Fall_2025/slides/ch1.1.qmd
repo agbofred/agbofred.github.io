@@ -16,8 +16,8 @@ format:
 - Welcome to CS152: Data Structure
 - Things to do:
     - Access the course webpage on Canvas 
-    - Eead over the full syllabus carefully
-    - [Join](https://discord.gg/AnCB5NEpfw) the class communication/announcements on  ***Discord Server***.!
+    - Read over the full syllabus carefully
+    - [Join](https://discord.gg/5Pc6fEdn) the class communication/announcements on  ***Discord Server***.!
     - Use the instruction on the __Resources__ menu in week 1 to setup your environments
         - We will go over them briefly in class
 
