@@ -1,7 +1,7 @@
 ---
-title: "CS 152 Kickoff & Course Overview"
+title: "Collections Overview"
 author: "Fred Agbo"
-date: August 25, 2025
+date: August 27, 2025
 format:
   revealjs:
     # css: minimal.css
@@ -13,12 +13,45 @@ format:
 ---
 
 ## Announcements
-- Welcome to CS152: Data Structure
-- Things to do:
-    - Access the course webpage on Canvas 
-    - Eead over the full syllabus carefully
+- Welcome to the class
+- Report any issues with practicing PS0 assignment
+- If you have not:
+    - Read over the full syllabus carefully
     - [Join](https://discord.gg/AnCB5NEpfw) the class communication/announcements on  ***Discord Server***.!
-    - Use the instruction on the __Resources__ menu in week 1 to setup your environments
-        - We will go over them briefly in class
+    
+## Built-In Python Collections and Their Operations
+- Modern programming languages include several types of collections
+- They allow the programmer to organize and manipulate several data values at once
+- This section explores the built-in collections in Python
 
-## Welcome to Lecture 2
+## Built-In Python Collection `List`
+
+- A sequence of zero or more Python objects
+- Commonly called items
+- Has a literal representation
+- Uses square brackets `[]`to enclose items separated by commas
+- Ordered, mutable collection.
+    -  Example: ``
+    ```{.python}
+    []	                      # An empty list
+    ["greater"]	            # A list of one string
+    ["greater", "less"]	  # A list of two strings
+    ["greater", "less", 10]	  # A list of two strings and an int
+    ["greater", ["less", 10]]  # A list with a nested list
+    my_list = [1, 2, 3] # A list of interger numbers 
+    
+    ```
+- Operations: append, remove, indexing, slicing.
+
+## Built-In Python Collection `Tuple`
+- Ordered, immutable collection.
+    - Example: `my_tuple = (1, 2, 3)`
+    - Operations: indexing, slicing.
+
+    - **Set**: Unordered, mutable collection of unique elements.
+        - Example: `my_set = {1, 2, 3}`
+        - Operations: add, remove, union, intersection.
+
+    - **Dictionary**: Unordered, mutable collection of key-value pairs.
+        - Example: `my_dict = {'a': 1, 'b': 2}`
+        - Operations: access by key, update, keys(), values().

@@ -55,13 +55,13 @@ __Office Phone:__ 503-370-6862
 ## Textbook Materials for this course
 ::: {.columns}
 ::: {.column width="50%"}
-![](../images/lambert.jpg){width=40%} 
+![](../images/Lambert.jpg){width=40%} 
 
 - Fundamentals of Python Data Structures (2nd Ed) by Kenneth Lambert
 :::
 
 ::: {.column width="50%"}
-![](../images/john2.jpg){width=40%}
+![](../images/John2.jpg){width=40%}
 
 - Data Structures & Algorithms in Python (1st Ed) by John Canning, Alan Broder, and Robert Lafore
 :::
