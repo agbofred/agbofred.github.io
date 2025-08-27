@@ -1,0 +1,50 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 1.2 Knowledge Check
+# author: "Fred Agbo"
+# date: August 27, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these qustions and write your answers in the space provided below it.
+
+1. How can you tell if a `def` statement in Python defines a function or class method?
+
+\vspace{3cm} 
+
+
+2. What are constructors used for? What special name does Python use for them?
+
+\vspace{3cm}
+
+## Discuss these questions and tick the option you think is correct
+3. The `==` operation for two lists must:
+    (a) Compare pairs of items at each position for equality
+    (b) Merely verify that each item in one list is also in the other list
+
+\vspace{.2cm}
+
+4. The `==` operation for two sets must:
+    (a) Compare pairs of items at each position for equality
+    (b) Verify that the sets are of the same size and that each item in one set is also in the other set
+
+## Short pair programming problem:
+Statisticians would like to have a set of functions to compute the median and mode of a list of numbers. The median is the number that would appear at the midpoint of a list if it were sorted. The mode is the number that appears most frequently in the list. Define these functions in a module named `stats.py`. Also include a function named `mean`, which computes the average of a set of numbers. Each function expects a list of numbers as an argument and returns a single number.

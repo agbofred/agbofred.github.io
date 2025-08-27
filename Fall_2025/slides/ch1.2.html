@@ -220,55 +220,334 @@ Fred Agbo
 </ul></li>
 </ul>
 </section>
-<section id="built-in-python-collections-and-their-operations" class="slide level2">
-<h2>Built-In Python Collections and Their Operations</h2>
+<section>
+<section id="collections" class="title-slide slide level1 center">
+<h1>Collections</h1>
+
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
 <ul>
-<li>Modern programming languages include several types of collections</li>
-<li>They allow the programmer to organize and manipulate several data values at once</li>
-<li>This section explores the built-in collections in Python</li>
+<li>Define the four general categories of collections – <code>linear</code>, <code>hierarchical</code>, <code>graph</code>, and <code>unordered</code></li>
+<li>List the specific types of collections that belong to each of the four categories of collections</li>
+<li>Recognize which collections are appropriate for given applications</li>
+<li>Describe the commonly used operations on every type of collection</li>
+<li>Describe the difference between an abstract collection type and its implementations</li>
 </ul>
 </section>
-<section id="built-in-python-collection-list" class="slide level2">
-<h2>Built-In Python Collection <code>List</code></h2>
+<section id="collection" class="slide level2">
+<h2>Collection</h2>
 <ul>
-<li>A sequence of zero or more Python objects</li>
-<li>Commonly called items</li>
+<li>A group of zero or more items that can be treated as a conceptual unit</li>
+<li>All collections have the same fundamental purposes:
+<ul>
+<li>They help programmers effectively organize data in programs</li>
+</ul></li>
+<li>Collections can be viewed from two perspectives:
+<ul>
+<li>Users or clients of collections are concerned with what they do in various applications</li>
+<li>Developers or implementers are concerned with how they can best perform as general-purpose resources</li>
+</ul></li>
+<li>Collections are typically dynamic rather than static:
+<ul>
+<li>Can grow or shrink with the needs of the problem</li>
+</ul></li>
+</ul>
+</section>
+<section id="collection-types" class="slide level2">
+<h2>Collection Types</h2>
+<ul>
+<li>Built-in collection types include
+<ul>
+<li><code>string</code>, <code>list</code>, <code>tuple</code>, <code>set</code>, and <code>dictionary</code>
+<ul>
+<li>These are Python built-in collections</li>
+</ul></li>
+<li><strong>String</strong> and <strong>list</strong> are the most common and fundamental types</li>
+<li>They allow the programmer to organize and manipulate several data values at once</li>
+</ul></li>
+<li>Other important types of collections include <code>stacks</code>, <code>queues</code>, <code>priority queues</code>, <code>binary search trees</code>, <code>heaps</code>, <code>graphs</code>, <code>bags</code>, and other various types of sorted collections</li>
+</ul>
+</section>
+<section id="collection-types-1" class="slide level2">
+<h2>Collection Types</h2>
+<ul>
+<li>Collections can be
+<ul>
+<li>Homogeneous
+<ul>
+<li>all items in the collection must be of the same type</li>
+</ul></li>
+<li>Heterogeneous
+<ul>
+<li>items can be of different types</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="built-in-python-collection-lists" class="slide level2">
+<h2>Built-In Python Collection: <code>Lists</code></h2>
+<ul>
+<li>A sequence of zero or more Python objects, commonly called items</li>
 <li>Has a literal representation</li>
 <li>Uses square brackets <code>[]</code>to enclose items separated by commas</li>
 <li>Ordered, mutable collection.
 <ul>
 <li>Example: ``</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>[]                        <span class="co"># An empty list</span></span>
-<span id="cb1-2"><a href=""></a>[<span class="st">"greater"</span>]             <span class="co"># A list of one string</span></span>
-<span id="cb1-3"><a href=""></a>[<span class="st">"greater"</span>, <span class="st">"less"</span>]   <span class="co"># A list of two strings</span></span>
-<span id="cb1-4"><a href=""></a>[<span class="st">"greater"</span>, <span class="st">"less"</span>, <span class="dv">10</span>]   <span class="co"># A list of two strings and an int</span></span>
-<span id="cb1-5"><a href=""></a>[<span class="st">"greater"</span>, [<span class="st">"less"</span>, <span class="dv">10</span>]]  <span class="co"># A list with a nested list</span></span>
-<span id="cb1-6"><a href=""></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="co"># A list of interger numbers </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>[]                                  <span class="co"># An empty list</span></span>
+<span id="cb1-2"><a href=""></a>[<span class="st">"greater"</span>]                         <span class="co"># A list of one string</span></span>
+<span id="cb1-3"><a href=""></a>[<span class="st">"greater"</span>, <span class="st">"less"</span>]                 <span class="co"># A list of two strings</span></span>
+<span id="cb1-4"><a href=""></a>[<span class="st">"greater"</span>, <span class="st">"less"</span>, <span class="dv">10</span>]             <span class="co"># A list of two strings and an int</span></span>
+<span id="cb1-5"><a href=""></a>[<span class="st">"greater"</span>, [<span class="st">"less"</span>, <span class="dv">10</span>]]           <span class="co"># A list with a nested list</span></span>
+<span id="cb1-6"><a href=""></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]                 <span class="co"># A list of interger numbers </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li>Operations: append, remove, indexing, slicing.</li>
 </ul>
 </section>
+<section id="built-in-python-collection-lists-1" class="slide level2">
+<h2>Built-In Python Collection: <code>Lists</code></h2>
+<ul>
+<li>Most commonly used list mutator methods:
+<ul>
+<li><code>append</code>, <code>insert</code>, <code>pop</code>, <code>remove</code>, and <code>sort</code></li>
+</ul></li>
+<li>Examples:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>    testList <span class="op">=</span> []                       <span class="co"># testList is []</span></span>
+<span id="cb2-2"><a href=""></a>    testList.append(<span class="dv">34</span>)                 <span class="co"># testList is [34]</span></span>
+<span id="cb2-3"><a href=""></a>    testList.append(<span class="dv">22</span>)                 <span class="co"># testList is [34, 22]</span></span>
+<span id="cb2-4"><a href=""></a>    testList.sort()                     <span class="co"># testList is [22, 34]</span></span>
+<span id="cb2-5"><a href=""></a>    testList.pop()                      <span class="co"># Returns 22; testList is [34]</span></span>
+<span id="cb2-6"><a href=""></a>    testList.insert(<span class="dv">0</span>, <span class="dv">22</span>)              <span class="co"># testList is [22, 34]</span></span>
+<span id="cb2-7"><a href=""></a>    testList.insert(<span class="dv">1</span>, <span class="dv">55</span>)              <span class="co"># testList is [22, 55, 34]</span></span>
+<span id="cb2-8"><a href=""></a>    testList.pop(<span class="dv">1</span>)                     <span class="co"># Returns 55; testList is [22, 34]</span></span>
+<span id="cb2-9"><a href=""></a>    testList.remove(<span class="dv">22</span>)                 <span class="co"># testList is [34]</span></span>
+<span id="cb2-10"><a href=""></a>    testList.remove(<span class="dv">55</span>)                 <span class="co"># raises ValueError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="built-in-python-collection-tuple" class="slide level2">
-<h2>Built-In Python Collection <code>Tuple</code></h2>
+<h2>Built-In Python Collection: <code>Tuple</code></h2>
 <ul>
-<li>Ordered, immutable collection.
+<li>Tule is a collection of an ordered, immutable sequence of items</li>
+<li>Tuple literals enclose items in parentheses</li>
+<li>Essentially like a list without mutator methods</li>
+<li>A tuple with one item must still include a comma:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>    (<span class="dv">34</span>)</span>
+<span id="cb3-2"><a href=""></a>    <span class="op">&gt;&gt;&gt;</span> <span class="dv">34</span>                          <span class="co">#The data type here is integer</span></span>
+<span id="cb3-3"><a href=""></a>    (<span class="dv">34</span>,)</span>
+<span id="cb3-4"><a href=""></a>    <span class="op">&gt;&gt;&gt;</span> (<span class="dv">34</span>)                        <span class="co">#The data type here is tuple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><p>Example: <code>my_tuple = (1, 2, 3)</code></p></li>
-<li><p>Operations: indexing, slicing.</p></li>
-<li><p><strong>Set</strong>: Unordered, mutable collection of unique elements.</p>
+<li>Operations: indexing, slicing.</li>
+</ul>
+</section>
+<section id="built-in-python-collection-dictionaries" class="slide level2">
+<h2>Built-In Python Collection: <code>Dictionaries</code></h2>
+<ul>
+<li>Contains zero or more entries, Unordered, mutable collection of key-value pairs</li>
+<li>Keys are typically string or integers. Can also be an object but must not be <code>mutable</code></li>
+<li>Values are any Python objects</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>    {}                                                  <span class="co"># An empty dictionary</span></span>
+<span id="cb4-2"><a href=""></a>    {<span class="st">"name"</span>:<span class="st">"Ken"</span>}                                      <span class="co"># One entry</span></span>
+<span id="cb4-3"><a href=""></a>    {<span class="st">"name"</span>:<span class="st">"Ken"</span>, <span class="st">"age"</span>:<span class="dv">67</span>}                            <span class="co"># Two entries</span></span>
+<span id="cb4-4"><a href=""></a>    {<span class="st">"hobbies"</span>:[<span class="st">"reading"</span>, <span class="st">"running"</span>]}                  <span class="co"># One entry, value is a list</span></span>
+<span id="cb4-5"><a href=""></a>    Num <span class="op">=</span> {<span class="st">"name"</span>:<span class="st">"Ken"</span>, <span class="st">"age"</span>:<span class="dv">67</span>}</span>
+<span id="cb4-6"><a href=""></a>    <span class="cf">for</span> key <span class="kw">in</span>  Num:</span>
+<span id="cb4-7"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>Num[key]<span class="sc">}</span><span class="ss"> "</span>) </span>
+<span id="cb4-8"><a href=""></a>    <span class="op">&gt;&gt;&gt;</span> name: Ken</span>
+<span id="cb4-9"><a href=""></a>    <span class="op">&gt;&gt;&gt;</span> age: <span class="dv">67</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="built-in-python-collection-sets" class="slide level2">
+<h2>Built-In Python Collection: <code>Sets</code></h2>
+<ul>
+<li>Sets are unordered, mutable collection of unique elements.
 <ul>
 <li>Example: <code>my_set = {1, 2, 3}</code></li>
 <li>Operations: add, remove, union, intersection.</li>
 </ul></li>
-<li><p><strong>Dictionary</strong>: Unordered, mutable collection of key-value pairs.</p>
+</ul>
+</section>
+<section id="linear-collections" class="slide level2">
+<h2>Linear Collections</h2>
 <ul>
-<li>Example: <code>my_dict = {'a': 1, 'b': 2}</code></li>
-<li>Operations: access by key, update, keys(), values().</li>
-</ul></li>
+<li>Items in a linear collection are ordered by position</li>
+<li>Each item (except the first) has a unique predecessor</li>
+<li>Each item (except the last) has a unique successor</li>
+<li>Items are accessed by their position (index) in the collection</li>
+<li>Traversal is typically from first to last (or vice versa)</li>
+<li>Supports operations like insertion, deletion, and searching by position</li>
+</ul>
+
+<img data-src="../images/lenear_collection.png" width="400" class="r-stretch quarto-figure-center"><p class="caption">Examples include arrays, lists, stacks, and queues</p></section>
+<section id="hierarchical-collections" class="slide level2">
+<h2>Hierarchical Collections</h2>
+<ul>
+<li>Data items are ordered in a structure resembling an upside-down tree:</li>
+<li>Each data item (except the top) has just one predecessor, called its parent, but potentially many successors, called its children
+<ul>
+<li>The top item is called the root; items with no children are called leaves</li>
 </ul></li>
 </ul>
 
+<img data-src="../images/hierarchical.png" width="400" class="r-stretch quarto-figure-center"><p class="caption">Examples include binary trees, heaps, and general trees</p></section>
+<section id="graph-collections" class="slide level2">
+<h2>Graph Collections</h2>
+<ul>
+<li>Data items are organized as nodes connected by edges, forming a network structure.</li>
+<li>Each node can have zero or more connections (edges) to other nodes.</li>
+<li>Unlike hierarchical collections, nodes can have multiple predecessors and successors.</li>
+</ul>
+
+<img data-src="../images/graph_collection.png" width="400" class="r-stretch quarto-figure-center"><p class="caption">Examples include undirected graphs, directed graphs, and weighted graphs</p></section>
+<section id="unordered-collections" class="slide level2">
+<h2>Unordered Collections</h2>
+<ul>
+<li>Items are stored without any specific order or position.</li>
+<li>Access to items is typically based on their value or key, not their position.</li>
+<li>Common operations include insertion, deletion, and membership testing.</li>
+</ul>
+
+<img data-src="../images/unordered_collection.png" width="400" class="r-stretch quarto-figure-center"><p class="caption">Examples include sets, dictionaries, and bags</p></section>
+<section id="a-taxonomy-of-collection-types" class="slide level2">
+<h2>A Taxonomy of Collection Types</h2>
+<div class="center" style="text-align:center;">
+<p><img data-src="../images/taxonomy.png" style="display:inline-block; min-width:400px; height:auto; align:center" width="400"></p>
+</div>
 </section>
+<section id="fundamental-operations-on-all-collection-types" class="slide level2">
+<h2>Fundamental Operations on All Collection Types</h2>
+<ul>
+<li><strong>Insertion</strong>: Add a new item to the collection.</li>
+<li><strong>Deletion</strong>: Remove an item from the collection.</li>
+<li><strong>Traversal</strong>: Visit each item in the collection, often in a specific order.</li>
+<li><strong>Searching</strong>: Find an item in the collection based on a value or key.</li>
+<li><strong>Access</strong>: Retrieve an item from the collection, either by position, key, or value.</li>
+<li><strong>Update</strong>: Modify an existing item in the collection (if the collection is mutable).</li>
+</ul>
+</section>
+<section id="fundamental-operations-on-all-collection-types-1" class="slide level2">
+<h2>Fundamental Operations on All Collection Types</h2>
+<ul>
+<li>Several of the operations are associated with Python operators, functions, or control statements: <code>in</code>, <code>+</code>, <code>len</code>, <code>str</code>, and the <code>for</code> loop</li>
+<li>There is no single name for insertion, removal, replacement, or access operations in Python</li>
+<li>There are a few standard variations:</li>
+<li>The method <code>pop</code> is used to remove items at given positions from a Python list or values at given keys from a Python dictionary</li>
+<li>The method <code>remove</code> is used to remove given items from a Python set or a Python list</li>
+</ul>
+</section>
+<section id="type-conversion" class="slide level2">
+<h2>Type Conversion</h2>
+<ul>
+<li>You might already know about type conversion from its use in the input of numbers:
+<ul>
+<li>Convert a string of digits from the keyboard to an <strong><em>int</em></strong> or <strong><em>float</em></strong> by applying the int or float function to the input string</li>
+</ul></li>
+<li>You can convert one type of collection to another type of collection in a similar manner:
+<ul>
+<li>Converting a Python <code>string</code> to a <code>list</code> and a <code>list</code> to a <code>tuple</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>message <span class="op">=</span> <span class="st">"Hi there!"</span></span>
+<span id="cb5-2"><a href=""></a>lyst <span class="op">=</span> <span class="bu">list</span>(message)</span>
+<span id="cb5-3"><a href=""></a><span class="bu">print</span>(lyst)                     <span class="co"># &gt;&gt;&gt; ['H', 'i', ' ', 't', 'h', 'e', 'r', 'e', '!']</span></span>
+<span id="cb5-4"><a href=""></a>toople <span class="op">=</span> <span class="bu">tuple</span>(lyst)</span>
+<span id="cb5-5"><a href=""></a><span class="bu">print</span>(toople)                   <span class="co"># &gt;&gt;&gt; ('H', 'i', ' ', 't', 'h', 'e', 'r', 'e', '!')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="clonning-and-equality" class="slide level2">
+<h2>Clonning and Equality</h2>
+<ul>
+<li>Cloning
+<ul>
+<li>A special case of type conversion</li>
+<li>Returns an exact copy of the argument to the conversion function</li>
+<li>Example
+<ul>
+<li>this code segment makes a copy of a list and then compares the two lists using the <code>is</code> and <code>==</code> operators:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>lyst1 <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>]</span>
+<span id="cb6-2"><a href=""></a>lyst2 <span class="op">=</span> <span class="bu">list</span>(lyst1)</span>
+<span id="cb6-3"><a href=""></a>lyst1 <span class="kw">is</span> lyst2</span>
+<span id="cb6-4"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="va">False</span></span>
+<span id="cb6-5"><a href=""></a>lyst1 <span class="op">==</span> lyst2</span>
+<span id="cb6-6"><a href=""></a><span class="op">&gt;&gt;&gt;</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="clonning-and-equality-1" class="slide level2">
+<h2>Clonning and Equality</h2>
+<ul>
+<li>The <code>list</code> function makes a <strong><em>shallow copy</em></strong> of its argument list</li>
+<li>The items in the previous code are not themselves cloned before being added to the new list:
+<ul>
+<li>Instead, references to these objects are copied</li>
+</ul></li>
+<li>When collections share mutable items,
+<ul>
+<li>Side effects can occur</li>
+<li>To prevent this from happening, the programmer can create a <strong><em>deep copy</em></strong> by writing a <code>for</code> loop over the source collection</li>
+<li>This explicitly clones its items before adding them to the new collection</li>
+</ul></li>
+</ul>
+</section>
+<section id="iterators-and-higher-order-functions" class="slide level2">
+<h2>Iterators and Higher-Order Functions</h2>
+<ul>
+<li>Each type of collection supports an iterator or <code>for</code> loop:
+<ul>
+<li>The order in which the <code>for</code> loop serves up a collection’s items depends on the manner in which the collection is organized</li>
+</ul></li>
+<li>The <code>for</code> loop plays a useful role in the implementation of several other basic collection operations, such as <code>+</code>, <code>str</code>, and type conversions</li>
+<li>And also supports the use of higher-order functions, such as <code>map</code>, <code>filter</code>, and <code>reduce</code></li>
+<li>These functions can be used with any type of collection, not just <code>lists</code></li>
+</ul>
+</section>
+<section id="implementations-of-collections" class="slide level2">
+<h2>Implementations of Collections</h2>
+<ul>
+<li>Programmers who use collections need to know how to instantiate and use each type of collection</li>
+<li>From a user’s perspective, a collection is an <code>abstraction</code>:
+<ul>
+<li>For this reason, collections are also called abstract data types (ADTs)</li>
+</ul></li>
+<li>Developers of collections
+<ul>
+<li>Are concerned with implementing a collection’s behavior in the most efficient manner possible</li>
+</ul></li>
+<li>Some programming languages provide only one implementation of each of the available collection types:
+<ul>
+<li><strong>Python</strong> has one implementation while <strong>Java</strong> provides several</li>
+</ul></li>
+</ul>
+</section>
+<section id="implementations-of-collections-1" class="slide level2">
+<h2>Implementations of Collections</h2>
+<ul>
+<li>For each category of collection,
+<ul>
+<li>You’ll see one or more abstract collection types and one or more implementations of each type</li>
+</ul></li>
+<li><strong>Abstract Collection Types</strong> define the behavior and operations of a collection without specifying how they are implemented.</li>
+<li><strong>Implementations</strong> provide concrete ways to realize these abstract types using data structures and algorithms.</li>
+<li>A software system is often built layer by layer
+<ul>
+<li>With each layer treated as an abstraction by the layers above that utilize it</li>
+</ul></li>
+</ul>
+</section>
+<section id="implementations-of-collections-2" class="slide level2">
+<h2>Implementations of Collections</h2>
+<ul>
+<li>In Python,
+<ul>
+<li>Functions and methods are the smallest units of abstraction</li>
+<li>Classes are next in size</li>
+<li>Modules are the largest</li>
+</ul></li>
+<li>We will implement abstract collection types as classes or sets of related classes in modules</li>
+<li>General techniques for organizing these classes are covered in later chapters 5 &amp; 6</li>
+</ul>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
