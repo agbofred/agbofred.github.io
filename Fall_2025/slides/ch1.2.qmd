@@ -266,4 +266,11 @@ print(toople)                   # >>> ('H', 'i', ' ', 't', 'h', 'e', 'r', 'e', '
 - We will implement abstract collection types as classes or sets of related classes in modules
 - General techniques for organizing these classes are covered in later chapters 5 & 6
 
+## A Few Things to Note!
 
+- No Class on Monday September 1. [It's Labour Day]
+- Reading for next week:
+    - Fundamentals of Python Data Structures (FDS) - Lambert: ,
+        -  Chapters 3 & 9
+    - Data Structures & Algorithms in Python (DS&A) - John et al.:
+        - Chapter 3 & 7
