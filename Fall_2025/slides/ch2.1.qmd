@@ -370,7 +370,17 @@ def binarySearch(target, sortedLyst):
     - Thus, the overall time complexity remains O(n²).
 
 ## A Few Things to Note!
+:::{.smaller style="font-size: 35px;"}
+- Bubble sort, selection sort, and insertion sort are all `O(n²)`
+- As we will see later, we can do much better than this with somewhat more complicated sorting algorithms
+- Within O(n²), 
+    - Bubble sort is very slow, and should probably never be used for anything
+    - Selection sort is intermediate in speed
+    - Insertion sort is usually the fastest of the three--in fact, for small arrays (say, 10 or 15 elements), insertion sort is faster than more complicated sorting algorithms
+- Selection sort and insertion sort are “good enough” for small arrays
+:::
 
+## Next week!
 - Reading for next week:
     <!-- - Fundamentals of Python Data Structures (FDS) - Lambert: ,
         -  Chapters 3 & 9 -->
