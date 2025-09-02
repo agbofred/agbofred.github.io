@@ -1,0 +1,207 @@
+---
+title: "Problem Set 1"
+subtitle: "Due: September  8, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+The question on this first problem set 0 is to get you started to be sure you are good with all the installations and ready for the main assignments. It also allow you to run through the process of submitting assignments in this class through GitHub Classroom.  The question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/Z30ZONPb' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+# Problem 1
+A sequential search of a sorted list can halt when the target is less than a given element in the list. Define a modified version of this algorithm and state the computational complexity, using big-O notation, of its best-, worst-, and average-case performances.
+```{.python}
+"""
+Project 3.1
+
+Optimizes linear search for sorted lists.
+The complexity is O(n) in the worst case and O(1) in the best case.
+The average case is less than n / 2, because there are many lists
+for which the search for an absent target can stop early.  But the
+average case is still approximately O(n).
+"""
+
+def linearSearch(target, lyst):
+    """Returns the position of the target item if found,
+    or -1 otherwise.
+    The lyst is assumed to be sorted in ascending order."""
+    position = 0
+    while position < len(lyst):
+        if target == lyst[position]:
+            return position
+        elif target < lyst[position]:  # Target less, so it
+            return -1                  # can't be in sorted list
+        position += 1
+    return -1
+
+def main():
+    """Tests with three lists."""
+    print(linearSearch(3, [0, 1, 2, 3, 4]))
+    print(linearSearch(3, [0, 1, 2]))
+    # Will stop at second position.
+    print(linearSearch(3, [0, 4, 5, 6]))
+
+if __name__ == "__main__":
+    main()
+    
+
+
+```
+
+
+# Problem 2
+The list method `reverse` reverses the elements in the list. Define a function named `reverse` that reverses the elements in its list argument (without using the method Python's `reverse`). Try to make this function as efficient as possible, and state its computational complexity using big-O notation.
+
+```{.python}
+"""
+Project 3.2
+
+Defines a function to reverse the elements in a list.
+The complexity is O(n).
+"""
+
+def reverse(lyst):
+    """Reverses the elements in a list in linear time."""
+    # Use indexes to the first and last element
+    # and move them toward each other.
+    left = 0
+    right = len(lyst) - 1
+    while left < right:
+        swap(lyst, left, right)
+        left += 1
+        right -= 1
+
+def swap(lyst, x, y):
+    """Exchanges the elements at positions x and y."""
+    lyst[x], lyst[y] = lyst[y], lyst[x]
+
+def main():
+    """Tests with two lists."""
+    lyst = list(range(4))
+    reverse(lyst)
+    print(lyst)
+    lyst = list(range(3))
+    reverse(lyst)
+    print(lyst)
+
+if __name__ == "__main__":
+    main()
+
+```
+
+
+# Problem 3
+Python’s `pow` function returns the result of raising a number to a given power. Define a function expo that performs this task and state its computational complexity using big-O notation. The first argument of this function is the number, and the second argument is the exponent (nonnegative numbers only). You can use either a loop or a recursive function in your implementation, but do not use
+Python’s `**` operator or Python's `pow` function.
+
+```{.python}
+"""
+Project 3.3
+
+Defines a function to raise a number to a given power.
+The complexity is O(n), where n is the exponent.
+"""
+
+def expo(base, exponent):
+    """Raises base to exponent."""
+    if exponent == 0:
+        return 1
+    else:
+        return base * expo(base, exponent - 1)
+
+
+def main():
+    """Tests with powers of 2."""
+    for exponent in range (5):
+        print(exponent, expo(2, exponent))
+
+if __name__ == "__main__":
+    main()   
+
+```
+
+# Problem 4
+Python’s `list` method `sort` includes the keyword argument `reverse`, whose default value is `False`. The programmer can override this value to sort a list in descending order. Modify the `selectionSort` function discussed in this chapter so that it allows the programmer to supply this additional argument to redirect the sort.
+
+```{.python}
+"""
+Project 3.5
+
+Allows the user to specify the direction of a selection sort.
+"""
+
+def selectionSort(lyst, reverse = False):
+    """Sorts the list items in ascending order if
+    reverse is False; otherwise, sorts 'em in
+    descending order."""
+    if not reverse:
+        # Sort in ascending order, counting up
+        i = 0
+        while i < len(lyst) - 1:         # Do n - 1 searches
+            minIndex = i                 # for the largest
+            j = i + 1                    
+            while j < len(lyst):         # Start a search
+                if lyst[j] < lyst[minIndex]:
+                    minIndex = j
+                j += 1
+            if minIndex != i:            # Exchange if needed
+                swap(lyst, minIndex, i)
+            i += 1
+    else:
+        # Sort in descending order, counting down
+        i = len(lyst) - 1
+        while i > 0:                     # Do n - 1 searches
+            minIndex = i                 # for the largest
+            j = i - 1                    
+            while j >= 0:                # Start a search
+                if lyst[j] < lyst[minIndex]:
+                    minIndex = j
+                j -= 1
+            if minIndex != i:            # Exchange if needed
+                swap(lyst, minIndex, i)
+            i -= 1
+
+def swap(lyst, x, y):
+    """Exchanges the elements at positions x and y."""
+    lyst[x], lyst[y] = lyst[y], lyst[x]
+
+
+def main():
+    """Tests with four lists."""
+    lyst = [2, 4, 3, 0, 1, 5]
+    selectionSort(lyst)
+    print(lyst)
+    lyst = list(range(6))
+    selectionSort(lyst)
+    print(lyst)
+    lyst = [2, 4, 3, 0, 1, 5]
+    selectionSort(lyst, reverse = True)
+    print(lyst)
+    lyst = list(range(6))
+    selectionSort(lyst, reverse = True)
+    print(lyst)
+
+if __name__ == "__main__":
+    main()
+    
+
+
+
+```
