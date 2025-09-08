@@ -18,7 +18,7 @@ format:
     title-block-banner-color: white
 ---
 
-The question on this first problem set 0 is to get you started to be sure you are good with all the installations and ready for the main assignments. It also allow you to run through the process of submitting assignments in this class through GitHub Classroom.  The question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+  The question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
 
 ```{=html}
 <a href='https://classroom.github.com/a/Z30ZONPb' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>

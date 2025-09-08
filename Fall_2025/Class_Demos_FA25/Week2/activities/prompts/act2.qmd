@@ -30,19 +30,19 @@ format:
 performed by an algorithm for a problem size of _n_. Point out the dominant term of
 each algorithm and use __big-O notation__ to classify it.
 
-a. 2n² - 4n² + 5n
+a. 2^n^ - 4n² + 5n
 b. 3n² + 6
-c. n^3 + n^2 - n
+c. n^3^ + n^2^ - n
 
 \vspace{3cm}
 
 
-2. For problem size n, algorithms __A__ and __B__ perform __n^2__ and __1/2(n^2) + 1/2(n)__ instructions, respectively. Which algorithm does more work? Are there particular problem sizes for which one algorithm performs significantly better than the other? Are there particular problem sizes for which both algorithms perform approximately the same amount of work?
+2. For problem size n, algorithms __A__ and __B__ perform __n^2^__ and __1/2(n^2^) + 1/2(n)__ instructions, respectively. Which algorithm does more work? Are there particular problem sizes for which one algorithm performs significantly better than the other? Are there particular problem sizes for which both algorithms perform approximately the same amount of work?
 
 \vspace{3cm}
 
 
-3. At what point does an **n^4** algorithm begin to perform better than a **2^n** algorithm?
+3. At what point does an **n^4^** algorithm begin to perform better than a **2^n^** algorithm?
 
 \vspace{3cm}
 
@@ -50,11 +50,11 @@ c. n^3 + n^2 - n
 
 For example, tabulate your traces as shown below:
 
-| __left__ | __right__ | __midpoint__ |
-|----------|-----------|--------------|
-|          |           |              |
-|          |           |              |
-|          |           |              |
-|          |           |              |
-|          |           |              |
+| __left__      | __right__ | __midpoint__ |
+|---------------|-----------|--------------|
+|               |           |              |
+|               |           |              |
+|               |           |              |
+|               |           |              |
+|               |           |              |
 \vspace{3cm}

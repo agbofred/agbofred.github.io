@@ -16,8 +16,8 @@ def selectionsort(lyst):
         lyst[i], lyst[small_index]= lyst[small_index], lyst[i]        
         
 l =[34,6,77,9,10]
-selectionsort(l)
-print(l)
+bubble(l)
+# print(l)
 
 """
 Prints the running times for problem sizes that double, using a single loop.
