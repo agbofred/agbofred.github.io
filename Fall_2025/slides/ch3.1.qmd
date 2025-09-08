@@ -1,7 +1,7 @@
 ---
-title: "Algorithms and Complexity Review & Recursion"
+title: "Algorithm Complexity Review & Recursion"
 author: "Fred Agbo"
-date: September 3, 2025
+date: September 8, 2025
 format:
   revealjs:
     # css: minimal.css
@@ -14,9 +14,14 @@ format:
 
 ## Announcements
 - Welcome back!
-- Report any issues with practicing PS0 assignment
-- Assignment for the week is posted and will be due next week Monday
-    - Read over the full syllabus carefully
+- - Reading for this week:
+    - Data Structures & Algorithms in Python (DS&A) - John et al.:
+        - Chapter 6
+        - Due on Wednesday
+- PS1 assignment is due today at 10pm
+    - A few hitches in accepting the assignment from Github classroom
+    - Contact me if you need some help on how to complete the assignment
+- First mini-project (MP1) to be published by tomorrow Tuesday
 
 
 # Algorithms Complexity Review [class activity]
@@ -218,19 +223,7 @@ Insights and Lessons
 
 ![](../images/fact5.png){style="background-color:white;margin-top: 5px; width: 80%;"}
 
-<!-- ## Accurate Prediction but Problematic?
-- This method permits accurate predictions of running times of many algorithms `with only two problems`:
-    - Different hardware platforms have different processing speeds, so the running times of an algorithm differ from machine to machine
-    - It is impractical to determine the running time for some algorithms with very large data sets
-
-# Complexity Analysis
-
-## Complexity Analysis
-- This section focuses on developing a method of determining the efficiency of algorithms that allows you to rate them 
-    - Independently of platform-dependent timings or impractical instruction counts
-- This method is called complexity analysis:
-    - Entails reading the algorithm and using pencil and paper to work out some simple algebra
-
+<!-- 
 ## Orders of Complexity 
 
 A graph of the amounts of work done in the tester programs
@@ -264,233 +257,10 @@ A graph of some sample orders of complexity
 
 :::
 
-## Big-O-Notation
-- One notation used to express the efficiency or computational complexity of an algorithm is called `big-O notation`:
-    - “`O`” stands for “***on the order of***,” a reference to the order of complexity of the work of the algorithm
-- Big-O notation formalizes our discussion of orders of complexity
-- It describes the upper bound of an algorithm’s running time or space requirements as the input size grows.
-- It provides a way to classify algorithms according to their worst-case performance, relative to the input size (n), ignoring constant factors.
-
-## Big-O-Notation
-
-- Common Big-O complexities include:
-    - O(1): Constant time – does not depend on input size.
-    - O(log n): Logarithmic time – grows slowly as input increases.
-    - O(n): Linear time – grows directly with input size.
-    - O(n²): Quadratic time – grows with the square of input size.
-    - O(2ⁿ): Exponential time – grows very rapidly with input size.
-- Big-O helps compare algorithms and choose the most efficient one for large data sets.
-- It is used in both time and space analysis to predict scalability.
-
-## Searching and Sorting Algorithms
-
-- This section covers several algorithms that can be used for searching and sorting lists/arrays
-- You will
-    - Learn the design of an algorithm
-    - See its implementation as a Python function
-    - See an analysis of the algorithm’s computational complexity
-
-## `Search` Algorithms 
-::: {.columns}
-:::{.column style="width: 48%; padding-right:2px;"}
-`indexOfMin` Algorithm:
-
-```{.python}
-def indexOfMin(lyst):
-    """Returns the index of the minimum item."""
-    minIndex = 0
-    currentIndex = 1
-    while currentIndex < len(lyst):
-        if lyst[currentIndex] < lyst[minIndex]:
-            minIndex = currentIndex
-        currentIndex += 1
-   return minIndex
-
-```
-:::
-:::{.column style="width: 47%; padding-left:2px;"}
-
-`Sequential search` algorithm:
-
-```{.python}
-def sequentialSearch(target, lyst):
-    """Returns the position of the target item if found,
-    or -1 otherwise."""
-    position = 0
-    while position < len(lyst):
-        if target == lyst[position]:
-            return position
-        position += 1
-   return -1
-
-```
-:::
-:::
 
 
-# IS THERE A BEST CASE?
+-->
 
-## Best-Case, Worst-Case, and Average-Case Performance
-- The performance of some algorithms depends on the placement of the data processed:
-    - The sequential search algorithm does less work to find a target at the beginning of a list than at the end of the list
-- Analysis of a sequential search considers three cases:
-    - In the worst case, the target item is at the end of the list or not in the list at all:
-        - Algorithm must visit every item and perform n iterations for a list of size n. Thus, the worst-case complexity of a sequential search is O(n)
-
-## Best-Case, Worst-Case, and Average-Case Performance
-- In the best case, the algorithm finds the target at the first position, after making one iteration, for an O(1) complexity
-    - To determine the average case, add the number of iterations required to find the target at each possible position and divide the sum by n:
-    - Thus, the algorithm performs ![](../images/formular1.png){style="background-color:white;margin-top: 5px;"}
-
-## Binary Search of a Sorted List 
-::: {.columns}
-:::{.column style="width: 48%; padding-right:2px;"}
-
-![](../images/binarySort.png){width="100%"}
-:::
-:::{.column style="width: 47%; padding-left:2px;"}
-
-`Binary search` algorithm:
-
-```{.python}
-def binarySearch(target, sortedLyst):
-    left = 0
-    right = len(sortedLyst) - 1
-    while left <= right:
-        midpoint = (left + right) // 2
-        if target == sortedLyst[midpoint]:
-            return midpoint
-        elif target < sortedLyst[midpoint]:
-            right = midpoint - 1
-        else:
-            left = midpoint + 1
-   return -1
-
-```
-:::
-:::
-
-## Sorting Lists or Arrays
-
-- What: 
-    - Functions that put a list/array of elements into order
-    - Numerical, lexical, or more complex relationships
-- Why:
-    - A fundamental data processing operation
-    - Usually done at very large scale, so efficiency matters
-    - A precursor to other types of calculations 
-    - Aggregations, uniqification, search
-
-## Simple approach: `Bubble sort`
-:::{.smaller style="font-size: 30px;"}
-- Compare each element (except the last one)with its neighbor to the right
-    - If they are out of order, swap them
-    - This puts the largest element at the very end
-    - The last element is now in the correct and final place
-- Compare each element (except the last two) with its neighbor to the right
-    - If they are out of order, swap them
-    - This puts the second largest element next to last
-    - The last two elements are now in their correct and final places
-- Compare each element (except the last three) with its neighbor to the right
-- Continue as above until you have no unsorted elements on the left
-:::
-
-## Example of Bubble sort
-
-![](../images/buubleSort.png){width="100%" style="background-color:white;"}
-
-## `Bubble sort` algorithm:
-
-![](../images/bubbleSort_code.png){width="100%"}
-
-## `Bubble sort` algorithm analysis
-
-- Let n = nItems = number of items stored in the Array
-- The 1st time through the outer loop, n-1 comparisons are done
-- The 2nd time through the outer loop, n-2 comparisons are done
-- The 3rd time through the outer loop, n-3 comparisons are done
-- The final time through the outer loop 1 comparison is done
-- Sum of 1 + 2 + 3 + … (n-3) + (n-2) + (n-1) ?
-    - (n-1) * n / 2
-- Result is O(n2) comparisons
-
-## Performance of `Bubble Sort` Algorithm
-![](../images/bubbleSortBigO.png){width="100%" style="background-color:white;"}
-
-## `Selection Sort` Algorithm
-:::{.smaller style="font-size: 35px;"}
-- Given a `list` of length n,
-    - Search elements 0 through n-1 and select the smallest
-        - Swap it with the element in location 0
-    - Search elements 1 through n-1 and select the smallest
-        - Swap it with the element in location 1
-    - Search elements 2 through n-1 and select the smallest
-        - Swap it with the element in location 2
-    - Search elements 3 through n-1 and select the smallest
-        - Swap it with the element in location 3
-    - Continue in this fashion until there’s nothing left to search
-:::
-
-## Selection Sort example and analysis 
-::: {.columns}
-:::{.column style="width: 28%; padding-right:2px;"}
-
-![](../images/selectionSort.png){width="70%" style="background-color:white;"}
-:::
-:::{.column style="width: 67%; padding-left:2px;"}
-
-- The selection sort might swap an array element with itself--this is harmless, and not worth checking for
-    __Analysis:__
-    - 1st time through the outer loop, we do n-1 comparisons
-    - 2nd time through the outer loop we do (n-2) comparisons
-    - And so on… resulting in roughly 
-        - (1 + 2 + 3 + 4 + …  + n-1) comparisons
-    - You should recognize this as O(n²)
-
-:::
-:::
-
-## `Selection sort` algorithm:
-
-![](../images/selectionSortCode.png){width="100%"}
-
-## `Insertion Sort` Algorithm
-- For each element in the list (starting with the 2nd)
-    - Find the first location to the left of the element that is less than or equal
-    - Move everything to the right of that element one space and insert the element
-
-## One step of `Insertion sort` algorithm:
-
-![](../images/insertionSort.png){width="100%" style="background-color:white;"}
-
-## `Insertion Sort` Algorithm
-![](../images/insertSortCode.png){width="100%"}
-
-## Big O analysis of `Insertion sort`
-:::{.smaller style="font-size: 35px;"}
-- The 1st time through the outer loop we do one comparison. 
-- The 2nd time through the outer loop we do one or two comparisons
-- The 3rd time through the outer loop we do one, or two, or three comparisons
-- The Nth time through the outer loop we do one, two, … or N comparisons, but on average about N/2 comparisons. 
-- So, the total amount of work (numbers of comparisons and moves) is roughly:
-    - (1 + 2 + 3 + 4 + … + N) / 2, or 
-    - N * (N + 1) / 4
-- Discarding constants, we find that insertion sort is O(n²)
-:::
-
-## Big O analysis of `Insertion sort`
-
-- What would the Big-O of insertion sort be, if we were to use binary search to find the insertion point? 
-    - Using binary search reduces the search for the insertion point to O(log n) per insertion.
-    - However, shifting elements to make room for the new item still takes O(n) time per insertion.
-    - Thus, the overall time complexity remains O(n²). -->
-
-
-
-## Next week!
-- Reading for next week:
-    <!-- - Fundamentals of Python Data Structures (FDS) - Lambert: ,
-        -  Chapters 3 & 9 -->
-    - Data Structures & Algorithms in Python (DS&A) - John et al.:
-        - Chapter 6
-
+## Next class!
+- To discuss some application of recursion
+- Read ahead!

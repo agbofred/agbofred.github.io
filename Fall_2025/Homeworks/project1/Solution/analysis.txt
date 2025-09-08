@@ -1,0 +1,28 @@
+#########################################################
+#    Justification, Analysis, and Reflection            #
+#########################################################
+
+
+1. Why do you choose the particular python datastructure for your bad implementation?
+
+
+
+
+2. What is the time complexity (Big-O notation) for the key operations:
+    (a) add
+    
+    (b) remove
+    
+    (c) count
+    
+    (d) length 
+    
+    (e) contains
+
+3. Reflect and describe two real-world use cases or scenarios where a Bag data structure would be a more suitable choice than a standard list, set, or dictionary.
+
+
+4. Suggest one or two additional features or methods that would enhance the functionality of your Bag class (e.g., a method to find the most frequent item, a way to combine two bags, etc). Describe how would you implement your suggestion(s).
+
+
+

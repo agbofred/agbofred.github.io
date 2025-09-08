@@ -1,16 +1,5 @@
-from Bag import Bag
+from bag import Bag
 
-def test_bag_repr():
-    bag = Bag()
-    bag.add("apple")
-    bag.add("banana")
-    bag.add("apple")
-    expected = "Bag([apple, banana, apple])"
-    assert repr(bag) == expected, f"Expected {expected}, got {repr(bag)}"
-    print("__repr__ test passed!")
-
-if __name__ == "__main__":
-    test_bag_repr()
 
 def test_bag():
     bag = Bag()
@@ -20,6 +9,10 @@ def test_bag():
     bag.add("apple")
     assert bag.count("apple") == 2, "Should count two apples"
     assert bag.count("banana") == 1, "Should count one banana"
+    # Test __repr__
+    expected = "Bag([apple, banana, apple])"
+    assert repr(bag) == expected, f"Expected {expected}, got {repr(bag)}"
+    #print("__repr__ test passed!")
     # Test remove
     bag.remove("apple")
     assert bag.count("apple") == 1, "Should count one apple after removal"
@@ -32,6 +25,5 @@ def test_bag():
     items = bag.__iter__()
     assert sorted(items) == sorted(["apple", "banana"]), "Bag should have apple and banana"
     print("All tests passed!")
-
 if __name__ == "__main__":
     test_bag()

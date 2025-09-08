@@ -2,8 +2,10 @@
 
 class Bag(object):
     # contructor method
-    def __init__(self):
+    def __init__(self, iterable=None):
         self.collection =[]
+        if iterable != None:
+            self.collection=iterable
     
     # method to add without using any python methods
     def add(self, item):
@@ -76,17 +78,15 @@ class Bag(object):
         return f"Bag([{', '.join(items)}])"
         
 
-# bag = Bag()
+bag = Bag([3,4,5,6,3,455])
 
-# bag.add("Fred")
-# bag.add("444")   
+bag.add("Somethring")
+bag.add("Fred")
+bag.add([3,4,5])
+print(bag.__iter__())
+bag.remove("Fred")
 
-# print(bag.length())
-# print(bag.__iter__())
-# bag.add(100)
-  
-# print(bag.__iter__())
-# bag.add("Gbe")
-# bag.remove("444")  
-# print(bag.__iter__())
-# print(bag.contain(100))
+print(bag.length())
+print(bag.__iter__())
+
+print(bag.__repr__())
