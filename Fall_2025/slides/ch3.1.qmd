@@ -18,10 +18,10 @@ format:
     - Data Structures & Algorithms in Python (DS&A) - John et al.:
         - Chapter 6
         - Due on Wednesday
-- PS1 assignment is due today at 10pm
+- PS1 assignment is due on Wednesday at 10pm. Extention because:
     - A few hitches in accepting the assignment from Github classroom
     - Contact me if you need some help on how to complete the assignment
-- First mini-project (MP1) to be published by tomorrow Tuesday
+- First mini-project (MP1) to be published on Wednesday
 
 
 # Algorithms Complexity Review [class activity]
