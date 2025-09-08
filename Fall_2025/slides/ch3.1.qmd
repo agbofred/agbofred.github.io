@@ -261,7 +261,7 @@ A graph of some sample orders of complexity
 
 -->
 # Conceptual Exercises
-- `recursiveMax takes` a not-sorted list of numbers as input, and recursively finds and returns the largest number in the list
+- `recursiveMax` takes a not-sorted list of numbers as input, and recursively finds and returns the largest number in the list
 - `recursiveFind` takes two inputs: a number x to search for, and a not-sorted list of numbers nums to search within, and recursively finds and returns the index of the first instance of x within nums.
 - `reverseString` takes a string as input, and using recursion returns the reverse of the string. 
 - `isPrime` takes an int as input, and recursively determines if the number is prime, return True if the number is prime, and False otherwise.
