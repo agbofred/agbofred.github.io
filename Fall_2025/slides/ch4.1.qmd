@@ -1,0 +1,29 @@
+---
+title: "My Presentation"
+format:
+  revealjs:
+    code-line-numbers: true   # optional global numbering
+---
+
+## Fenced
+
+```{.python code-line-numbers="1-2|4-5|8|10-11"}
+#| echo: true
+#| eval: false
+
+def reverseString(s):
+    # Base case
+    if len(s) <= 1:
+        return s
+    
+    # Recursive step
+    last_char = s[-1]
+    rest_of_string = s[:-1]
+    
+    return last_char + reverseString(rest_of_string)
+
+# Example:
+reversed_hello = reverseString("hello")
+print(reversed_hello)
+
+```
