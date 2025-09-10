@@ -27,3 +27,63 @@ reversed_hello = reverseString("hello")
 print(reversed_hello)
 
 ```
+
+## Introducing Object-Oriented Programming (OOP) in Python
+
+- OOP is a programming paradigm based on the concept of "objects".
+- Objects are instances of classes, which can contain data (attributes) and functions (methods).
+- For example, a `Car` object could have attributes like `color` and `speed`, and methods like `drive()` or `brake()`.
+- Similarly, a `Student` object might store a name and grade, and have methods to enroll in courses or update grades.
+
+---
+
+## Why Use OOP?
+
+- Organizes code for complex data structures.
+- Makes code reusable and easier to maintain.
+- Models real-world entities.
+
+---
+
+## Example: Defining Student Class
+```{.python}
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def enroll(self, course):
+        print(f"{self.name} enrolled in {course}")
+
+    def update_grade(self, new_grade):
+        self.grade = new_grade
+        print(f"{self.name}'s grade updated to {self.grade}")
+
+    def display_info(self):
+        print(f"Name: {self.name}, Grade: {self.grade}")
+
+# Example usage:
+student1 = Student("Alice", "A")
+student1.enroll("Math")
+student1.update_grade("A+")
+student1.display_info()
+```
+
+## Example: Defining Car Class
+```{.python}
+class Car(object):
+    def __init__(self, color, speed):
+        self.color = color
+        self.speed = speed
+
+    def drive(self):
+        print(f"The {self.color} car is driving at {self.speed} mph.")
+
+    def brake(self):
+        print(f"The {self.color} car is braking.")
+
+# Example usage:
+car1 = Car("red", 60)
+car1.drive()
+car1.brake()
+```

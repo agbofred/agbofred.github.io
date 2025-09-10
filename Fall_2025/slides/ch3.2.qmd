@@ -37,35 +37,36 @@ format:
 
 
 ## Recursion in Puzzles and Games
-
+:::{.incremental}
 - Recursion is widely used to solve puzzles and games that involve repeated, similar steps.
 - Examples include:
     - Maze solving
     - Tic-Tac-Toe 
     - Tower of Hanoi
     - Sudoku solvers
-
+:::
 
 ## Developing a Recursive Puzzle Solver
-
+:::{.incremental}
 - Steps to create a recursive puzzle solver:
     1. Identify the base case (when to stop recursion).
     2. Define the recursive case (how to break the problem into smaller parts).
     3. Ensure each recursive call moves closer to the base case.
-
+:::
 
 ## Case Study 1: `Maze Puzzle`
-
+:::{.incremental}
 - Problem: Find a path from the start to the end of a maze.
 - Recursive approach:
     - At each position, try moving in all possible directions.
     - Mark visited positions to avoid cycles.
     - If the end is reached, return success.
     - If all paths are blocked, backtrack.
+:::
 
 ## Walk through a Maze Example in Python
 
-```{.Python code-line-numbers="1|2|3-6|7-8|9-10|11-12|13|14-17|18" style="height:700px;"}
+```{.Python code-line-numbers="1|2|3-6|7-8|9-10|11-12|13|14-17|18" style="height:500px;"}
 # Recursive function to solve a maze
 def solve_maze(maze, x, y, path):
     # Base case: reached the end
@@ -111,7 +112,7 @@ Let's walk through your solvemaze function step by step, focusing on how recursi
 
 ## Walk through a Maze Example in Python
 
-```{.Python style="height:700px;"}
+```{.Python style="height:500px;"}
 
 # Example usage:
 maze = [
@@ -156,7 +157,7 @@ print("Path to exit:", path[::-1])
     - Write a function to detect a winner or draw on the current board.
 
 ## Your Approach
-
+:::{.smaller style="font-size: 28px;"}
 - Step 3: Define the Recursive Case
     - For the current player’s turn:
     - Generate all possible next moves (empty cells).
@@ -167,10 +168,11 @@ print("Path to exit:", path[::-1])
     - Maximize the current player’s outcome while minimizing the opponent's chance of winning.
 
 -  Aggregate results to decide the best move for the current player.
+:::
 
 ## Tic-Tac-Toe Walkthrough Pseudocode
 
-```
+```{.python style="height:500px;"}
 function minimax(board, player):
     if winner(board) or board full:
         return score of board (1 for win, -1 for loss, 0 for draw)
@@ -201,8 +203,7 @@ function minimax(board, player):
 
 - ![](../images/toh1.png){style="margin-top: 5px; width: 60%;"}
 
-- All the disks start out on one rod, stacked in order of diameter, which gives the
-appearance of a tower
+- All the disks start out on one rod, stacked in order of diameter, which gives the appearance of a tower
 :::
 
 ## ToH Rules
@@ -225,18 +226,19 @@ appearance of a tower
 :::
 
 ## How to solve ToH 
+:::{.incremental}
 - The problem can be solved recursively:
     - Move n-1 disks from source to auxiliary rod.
     - Move the largest disk to destination rod.
     - Move n-1 disks from auxiliary to destination rod.
-
+:::
 
 ## ToH with disk (n)=3
 
 ![](../images/toh3.png){style="margin-top: 5px; width: 90%;"}
 
 
-## Visualizing ToH Solutions 
+## Visualize ToH Solutions & play more!
 
 - [Link to the online visualization](https://datastructures.live/view/)
 
@@ -320,6 +322,77 @@ stacks, labels = create_tower_of_hanoi(n_disks)
 print(tower_str(stacks, labels))
 solve(stacks, labels, show=True)
 
+```
+
+# OOP Preview
+
+## Use Classes Before the Bag Mini-Project?
+:::{.incremental}
+- Object-Oriented Programming (OOP) lets you model real-world entities as objects.
+- For the upcoming [Bag mini-project](https://agbofred.github.io/Fall_2025/Homeworks/project1/prompts/Project1.html), you'll use classes to:
+    - Represent a Bag as an object with attributes (like items) and methods (like add, remove).
+    - Encapsulate logic and state, making your code modular and reusable.
+    - Easily extend functionality (e.g., support for different types of Bags).
+- Example class structure:
+:::
+
+
+## Introducing Object-Oriented Programming (OOP) in Python
+:::{.incremental}
+- OOP is a programming paradigm based on the concept of "objects".
+- Objects are instances of classes, which can contain data (attributes) and functions (methods).
+- Organizes code for complex data structures.
+- Makes code reusable and easier to maintain.
+- Models real-world entities.
+:::
+
+## Example: Real World Objects
+:::{.incremental}
+- For example, a `Car` object could have attributes like `color` and `speed`, and methods like `drive()` or `brake()`.
+- Similarly, a `Student` object might store a name and grade, and have methods to enroll in courses or update grades.
+:::
+
+## Example: Defining Student Class
+```{.python}
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def enroll(self, course):
+        print(f"{self.name} enrolled in {course}")
+
+    def update_grade(self, new_grade):
+        self.grade = new_grade
+        print(f"{self.name}'s grade updated to {self.grade}")
+
+    def display_info(self):
+        print(f"Name: {self.name}, Grade: {self.grade}")
+
+# Example usage:
+student1 = Student("Alice", "A")
+student1.enroll("Math")
+student1.update_grade("A+")
+student1.display_info()
+```
+
+## Example: Defining Car Class
+```{.python}
+class Car(object):
+    def __init__(self, color, speed):
+        self.color = color
+        self.speed = speed
+
+    def drive(self):
+        print(f"The {self.color} car is driving at {self.speed} mph.")
+
+    def brake(self):
+        print(f"The {self.color} car is braking.")
+
+# Example usage:
+car1 = Car("red", 60)
+car1.drive()
+car1.brake()
 ```
 
 ## Next week!

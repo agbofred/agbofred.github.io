@@ -239,43 +239,43 @@ Fred Agbo
 <section id="recursion-in-puzzles-and-games" class="slide level2">
 <h2>Recursion in Puzzles and Games</h2>
 <ul>
-<li>Recursion is widely used to solve puzzles and games that involve repeated, similar steps.</li>
-<li>Examples include:
+<li class="fragment">Recursion is widely used to solve puzzles and games that involve repeated, similar steps.</li>
+<li class="fragment">Examples include:
 <ul>
-<li>Maze solving</li>
-<li>Tic-Tac-Toe</li>
-<li>Tower of Hanoi</li>
-<li>Sudoku solvers</li>
+<li class="fragment">Maze solving</li>
+<li class="fragment">Tic-Tac-Toe</li>
+<li class="fragment">Tower of Hanoi</li>
+<li class="fragment">Sudoku solvers</li>
 </ul></li>
 </ul>
 </section>
 <section id="developing-a-recursive-puzzle-solver" class="slide level2">
 <h2>Developing a Recursive Puzzle Solver</h2>
 <ul>
-<li>Steps to create a recursive puzzle solver:
+<li class="fragment">Steps to create a recursive puzzle solver:
 <ol type="1">
-<li>Identify the base case (when to stop recursion).</li>
-<li>Define the recursive case (how to break the problem into smaller parts).</li>
-<li>Ensure each recursive call moves closer to the base case.</li>
+<li class="fragment">Identify the base case (when to stop recursion).</li>
+<li class="fragment">Define the recursive case (how to break the problem into smaller parts).</li>
+<li class="fragment">Ensure each recursive call moves closer to the base case.</li>
 </ol></li>
 </ul>
 </section>
 <section id="case-study-1-maze-puzzle" class="slide level2">
 <h2>Case Study 1: <code>Maze Puzzle</code></h2>
 <ul>
-<li>Problem: Find a path from the start to the end of a maze.</li>
-<li>Recursive approach:
+<li class="fragment">Problem: Find a path from the start to the end of a maze.</li>
+<li class="fragment">Recursive approach:
 <ul>
-<li>At each position, try moving in all possible directions.</li>
-<li>Mark visited positions to avoid cycles.</li>
-<li>If the end is reached, return success.</li>
-<li>If all paths are blocked, backtrack.</li>
+<li class="fragment">At each position, try moving in all possible directions.</li>
+<li class="fragment">Mark visited positions to avoid cycles.</li>
+<li class="fragment">If the end is reached, return success.</li>
+<li class="fragment">If all paths are blocked, backtrack.</li>
 </ul></li>
 </ul>
 </section>
 <section id="walk-through-a-maze-example-in-python" class="slide level2">
 <h2>Walk through a Maze Example in Python</h2>
-<div class="sourceCode" id="cb1" style="height:700px;" data-code-line-numbers="1|2|3-6|7-8|9-10|11-12|13|14-17|18"><pre class="sourceCode numberSource Python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Recursive function to solve a maze</span></span>
+<div class="sourceCode" id="cb1" style="height:500px;" data-code-line-numbers="1|2|3-6|7-8|9-10|11-12|13|14-17|18"><pre class="sourceCode numberSource Python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Recursive function to solve a maze</span></span>
 <span id="cb1-2"><a href=""></a><span class="kw">def</span> solve_maze(maze, x, y, path):</span>
 <span id="cb1-3"><a href=""></a>    <span class="co"># Base case: reached the end</span></span>
 <span id="cb1-4"><a href=""></a>    <span class="cf">if</span> maze[x][y] <span class="op">==</span> <span class="st">'E'</span>:</span>
@@ -337,7 +337,7 @@ Fred Agbo
 </section>
 <section id="walk-through-a-maze-example-in-python-1" class="slide level2">
 <h2>Walk through a Maze Example in Python</h2>
-<div class="sourceCode" id="cb2" style="height:700px;"><pre class="sourceCode numberSource Python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a></span>
+<div class="sourceCode" id="cb2" style="height:500px;"><pre class="sourceCode numberSource Python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a></span>
 <span id="cb2-2"><a href=""></a><span class="co"># Example usage:</span></span>
 <span id="cb2-3"><a href=""></a>maze <span class="op">=</span> [</span>
 <span id="cb2-4"><a href=""></a>    [<span class="st">'S'</span>, <span class="st">' '</span>, <span class="st">' '</span>, <span class="st">'#'</span>, <span class="st">' '</span>, <span class="st">' '</span>, <span class="st">' '</span>],</span>
@@ -403,6 +403,7 @@ Fred Agbo
 </section>
 <section id="your-approach-1" class="slide level2">
 <h2>Your Approach</h2>
+<div class="smaller" style="font-size: 28px;">
 <ul>
 <li>Step 3: Define the Recursive Case
 <ul>
@@ -420,30 +421,30 @@ Fred Agbo
 </ul></li>
 <li>Aggregate results to decide the best move for the current player.</li>
 </ul>
+</div>
 </section>
 <section id="tic-tac-toe-walkthrough-pseudocode" class="slide level2">
 <h2>Tic-Tac-Toe Walkthrough Pseudocode</h2>
-<pre><code>function minimax(board, player):
-    if winner(board) or board full:
-        return score of board (1 for win, -1 for loss, 0 for draw)
-    
-    if player is maximizing:
-        bestScore = -∞
-        for each valid move:
-            make move
-            score = minimax(board, opponent)
-            undo move
-            bestScore = max(score, bestScore)
-        return bestScore
-    else: # minimizing player
-        bestScore = +∞
-        for each valid move:
-            make move
-            score = minimax(board, opponent)
-            undo move
-            bestScore = min(score, bestScore)
-        return bestScore
-</code></pre>
+<div class="sourceCode" id="cb3" style="height:500px;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>function minimax(board, player):</span>
+<span id="cb3-2"><a href=""></a>    <span class="cf">if</span> winner(board) <span class="kw">or</span> board full:</span>
+<span id="cb3-3"><a href=""></a>        <span class="cf">return</span> score of board (<span class="dv">1</span> <span class="cf">for</span> win, <span class="op">-</span><span class="dv">1</span> <span class="cf">for</span> loss, <span class="dv">0</span> <span class="cf">for</span> draw)</span>
+<span id="cb3-4"><a href=""></a>    </span>
+<span id="cb3-5"><a href=""></a>    <span class="cf">if</span> player <span class="kw">is</span> maximizing:</span>
+<span id="cb3-6"><a href=""></a>        bestScore <span class="op">=</span> <span class="op">-</span>∞</span>
+<span id="cb3-7"><a href=""></a>        <span class="cf">for</span> each valid move:</span>
+<span id="cb3-8"><a href=""></a>            make move</span>
+<span id="cb3-9"><a href=""></a>            score <span class="op">=</span> minimax(board, opponent)</span>
+<span id="cb3-10"><a href=""></a>            undo move</span>
+<span id="cb3-11"><a href=""></a>            bestScore <span class="op">=</span> <span class="bu">max</span>(score, bestScore)</span>
+<span id="cb3-12"><a href=""></a>        <span class="cf">return</span> bestScore</span>
+<span id="cb3-13"><a href=""></a>    <span class="cf">else</span>: <span class="co"># minimizing player</span></span>
+<span id="cb3-14"><a href=""></a>        bestScore <span class="op">=</span> <span class="op">+</span>∞</span>
+<span id="cb3-15"><a href=""></a>        <span class="cf">for</span> each valid move:</span>
+<span id="cb3-16"><a href=""></a>            make move</span>
+<span id="cb3-17"><a href=""></a>            score <span class="op">=</span> minimax(board, opponent)</span>
+<span id="cb3-18"><a href=""></a>            undo move</span>
+<span id="cb3-19"><a href=""></a>            bestScore <span class="op">=</span> <span class="bu">min</span>(score, bestScore)</span>
+<span id="cb3-20"><a href=""></a>        <span class="cf">return</span> bestScore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="case-study-3-tower-of-hanoi" class="slide level2">
 <h2>Case Study 3: <code>Tower of Hanoi</code></h2>
@@ -483,11 +484,11 @@ Fred Agbo
 <section id="how-to-solve-toh" class="slide level2">
 <h2>How to solve ToH</h2>
 <ul>
-<li>The problem can be solved recursively:
+<li class="fragment">The problem can be solved recursively:
 <ul>
-<li>Move n-1 disks from source to auxiliary rod.</li>
-<li>Move the largest disk to destination rod.</li>
-<li>Move n-1 disks from auxiliary to destination rod.</li>
+<li class="fragment">Move n-1 disks from source to auxiliary rod.</li>
+<li class="fragment">Move the largest disk to destination rod.</li>
+<li class="fragment">Move n-1 disks from auxiliary to destination rod.</li>
 </ul></li>
 </ul>
 </section>
@@ -495,8 +496,8 @@ Fred Agbo
 <h2>ToH with disk (n)=3</h2>
 
 <img data-src="../images/toh3.png" style="margin-top: 5px; width: 90%;" class="r-stretch"></section>
-<section id="visualizing-toh-solutions" class="slide level2">
-<h2>Visualizing ToH Solutions</h2>
+<section id="visualize-toh-solutions-play-more" class="slide level2">
+<h2>Visualize ToH Solutions &amp; play more!</h2>
 <ul>
 <li><a href="https://datastructures.live/view/">Link to the online visualization</a></li>
 </ul>
@@ -577,6 +578,82 @@ Fred Agbo
 <span id="cb4-71"><a href=""></a>stacks, labels <span class="op">=</span> create_tower_of_hanoi(n_disks)</span>
 <span id="cb4-72"><a href=""></a><span class="bu">print</span>(tower_str(stacks, labels))</span>
 <span id="cb4-73"><a href=""></a>solve(stacks, labels, show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="oop-preview" class="title-slide slide level1 center">
+<h1>OOP Preview</h1>
+
+</section>
+<section id="use-classes-before-the-bag-mini-project" class="slide level2">
+<h2>Use Classes Before the Bag Mini-Project?</h2>
+<ul>
+<li class="fragment">Object-Oriented Programming (OOP) lets you model real-world entities as objects.</li>
+<li class="fragment">For the upcoming <a href="https://agbofred.github.io/Fall_2025/Homeworks/project1/prompts/Project1.html">Bag mini-project</a>, you’ll use classes to:
+<ul>
+<li class="fragment">Represent a Bag as an object with attributes (like items) and methods (like add, remove).</li>
+<li class="fragment">Encapsulate logic and state, making your code modular and reusable.</li>
+<li class="fragment">Easily extend functionality (e.g., support for different types of Bags).</li>
+</ul></li>
+<li class="fragment">Example class structure:</li>
+</ul>
+</section>
+<section id="introducing-object-oriented-programming-oop-in-python" class="slide level2">
+<h2>Introducing Object-Oriented Programming (OOP) in Python</h2>
+<ul>
+<li class="fragment">OOP is a programming paradigm based on the concept of “objects”.</li>
+<li class="fragment">Objects are instances of classes, which can contain data (attributes) and functions (methods).</li>
+<li class="fragment">Organizes code for complex data structures.</li>
+<li class="fragment">Makes code reusable and easier to maintain.</li>
+<li class="fragment">Models real-world entities.</li>
+</ul>
+</section>
+<section id="example-real-world-objects" class="slide level2">
+<h2>Example: Real World Objects</h2>
+<ul>
+<li class="fragment">For example, a <code>Car</code> object could have attributes like <code>color</code> and <code>speed</code>, and methods like <code>drive()</code> or <code>brake()</code>.</li>
+<li class="fragment">Similarly, a <code>Student</code> object might store a name and grade, and have methods to enroll in courses or update grades.</li>
+</ul>
+</section>
+<section id="example-defining-student-class" class="slide level2">
+<h2>Example: Defining Student Class</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="kw">class</span> Student:</span>
+<span id="cb5-2"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, grade):</span>
+<span id="cb5-3"><a href=""></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb5-4"><a href=""></a>        <span class="va">self</span>.grade <span class="op">=</span> grade</span>
+<span id="cb5-5"><a href=""></a></span>
+<span id="cb5-6"><a href=""></a>    <span class="kw">def</span> enroll(<span class="va">self</span>, course):</span>
+<span id="cb5-7"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss"> enrolled in </span><span class="sc">{</span>course<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a>    <span class="kw">def</span> update_grade(<span class="va">self</span>, new_grade):</span>
+<span id="cb5-10"><a href=""></a>        <span class="va">self</span>.grade <span class="op">=</span> new_grade</span>
+<span id="cb5-11"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">'s grade updated to </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>grade<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-12"><a href=""></a></span>
+<span id="cb5-13"><a href=""></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb5-14"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Grade: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>grade<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-15"><a href=""></a></span>
+<span id="cb5-16"><a href=""></a><span class="co"># Example usage:</span></span>
+<span id="cb5-17"><a href=""></a>student1 <span class="op">=</span> Student(<span class="st">"Alice"</span>, <span class="st">"A"</span>)</span>
+<span id="cb5-18"><a href=""></a>student1.enroll(<span class="st">"Math"</span>)</span>
+<span id="cb5-19"><a href=""></a>student1.update_grade(<span class="st">"A+"</span>)</span>
+<span id="cb5-20"><a href=""></a>student1.display_info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-defining-car-class" class="slide level2">
+<h2>Example: Defining Car Class</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="kw">class</span> Car(<span class="bu">object</span>):</span>
+<span id="cb6-2"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, color, speed):</span>
+<span id="cb6-3"><a href=""></a>        <span class="va">self</span>.color <span class="op">=</span> color</span>
+<span id="cb6-4"><a href=""></a>        <span class="va">self</span>.speed <span class="op">=</span> speed</span>
+<span id="cb6-5"><a href=""></a></span>
+<span id="cb6-6"><a href=""></a>    <span class="kw">def</span> drive(<span class="va">self</span>):</span>
+<span id="cb6-7"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"The </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>color<span class="sc">}</span><span class="ss"> car is driving at </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>speed<span class="sc">}</span><span class="ss"> mph."</span>)</span>
+<span id="cb6-8"><a href=""></a></span>
+<span id="cb6-9"><a href=""></a>    <span class="kw">def</span> brake(<span class="va">self</span>):</span>
+<span id="cb6-10"><a href=""></a>        <span class="bu">print</span>(<span class="ss">f"The </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>color<span class="sc">}</span><span class="ss"> car is braking."</span>)</span>
+<span id="cb6-11"><a href=""></a></span>
+<span id="cb6-12"><a href=""></a><span class="co"># Example usage:</span></span>
+<span id="cb6-13"><a href=""></a>car1 <span class="op">=</span> Car(<span class="st">"red"</span>, <span class="dv">60</span>)</span>
+<span id="cb6-14"><a href=""></a>car1.drive()</span>
+<span id="cb6-15"><a href=""></a>car1.brake()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="next-week" class="slide level2">
 <h2>Next week!</h2>
