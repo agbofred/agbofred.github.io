@@ -47,7 +47,7 @@ Implement a class named `Bag` that adheres to the following specifications. Your
 
 #### Student Choice (Internal Data Structure)
 
-You must choose one of Python's built-in collections (`list` or `dict`) to store the items inside your Bag class. For example, if you choose a list, your Bag object would have a member variable like `self._items = []`. If you choose a dict, you might have `self._counts = {}`.
+You must choose one of Python's built-in collections (`list` or `dict`) to store the items inside your Bag class. For example, if you choose a list, your Bag object would have a member variable like `items = []`. If you choose a dict, you might have `counts = {}`.
 
 
 
@@ -96,7 +96,7 @@ You may use Python data structure methods if their sole purpose is to help you s
 ### Part 2: Design and Analysis
 
 **Justification, Analysis, and Reflection:**  
-In a separate text file named `analysis.md`, you must provide the following:
+In a separate text file named `analysis.txt`, you must provide the following:
 
 - **Justification of data structure:**  a clear justification for your chosen internal data structure (`list` or `dict`) in a short section; 
 - **Time complexity analysis:** an analysis of the time complexity for the key operations (`add`, `remove`, `count`, `length`, `contains`);
