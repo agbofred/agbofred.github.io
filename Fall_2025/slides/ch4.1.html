@@ -9,7 +9,9 @@
 <link href="ch4.1_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.33">
 
-  <title>My Presentation</title>
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2025-09-10">
+  <title>ARRAYS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -98,6 +100,8 @@
   <link href="ch4.1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="ch4.1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="ch4.1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="ch4.1_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="ch4.1_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="ch4.1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -192,33 +196,619 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">My Presentation</h1>
+  <h1 class="title">ARRAYS</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Fred Agbo 
+</div>
+</div>
 </div>
 
+  <p class="date">2025-09-10</p>
 </section>
-<section id="fenced" class="slide level2">
-<h2>Fenced</h2>
-<div class="sourceCode" id="cb1" data-code-line-numbers="1-2|4-5|8|10-11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co">#| echo: true</span></span>
-<span id="cb1-2"><a href=""></a><span class="co">#| eval: false</span></span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="kw">def</span> reverseString(s):</span>
-<span id="cb1-5"><a href=""></a>    <span class="co"># Base case</span></span>
-<span id="cb1-6"><a href=""></a>    <span class="cf">if</span> <span class="bu">len</span>(s) <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb1-7"><a href=""></a>        <span class="cf">return</span> s</span>
-<span id="cb1-8"><a href=""></a>    </span>
-<span id="cb1-9"><a href=""></a>    <span class="co"># Recursive step</span></span>
-<span id="cb1-10"><a href=""></a>    last_char <span class="op">=</span> s[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb1-11"><a href=""></a>    rest_of_string <span class="op">=</span> s[:<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb1-12"><a href=""></a>    </span>
-<span id="cb1-13"><a href=""></a>    <span class="cf">return</span> last_char <span class="op">+</span> reverseString(rest_of_string)</span>
-<span id="cb1-14"><a href=""></a></span>
-<span id="cb1-15"><a href=""></a><span class="co"># Example:</span></span>
-<span id="cb1-16"><a href=""></a>reversed_hello <span class="op">=</span> reverseString(<span class="st">"hello"</span>)</span>
-<span id="cb1-17"><a href=""></a><span class="bu">print</span>(reversed_hello)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li>Welcome back!</li>
+<li>First Mini-project (MP1) is due on Wednesday at 10pm</li>
+<li>Reading for this week is due on Wednesday</li>
+</ul>
+</section>
+<section>
+<section id="arrays" class="title-slide slide level1 center">
+<h1>Arrays</h1>
 
 </section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Create arrays</li>
+<li>Perform various operations on arrays</li>
+<li>Determine the running times and memory usage of array operations</li>
+<li>Describe how costs and benefits of array operations depend on how arrays are represented in computer memory</li>
+</ul>
+</section>
+<section id="array-data-structure" class="slide level2">
+<h2>Array Data Structure</h2>
+<ul>
+<li class="fragment"><code>Array</code> – represents a sequence of items that can be accessed or replaced at given index positions:
+<ul>
+<li class="fragment">Data structure underlying a Python list is an <code>array</code></li>
+<li class="fragment">It is the primary implementing structure in the collections of Python</li>
+<li class="fragment">In Python we call them lists</li>
+<li class="fragment">In other languages, all values in an array must have the same type (e.g., integers, strings), which are more memory-efficient and faster for numeric operations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="array-data-structure-1" class="slide level2">
+<h2>Array Data Structure</h2>
+<ul>
+<li>A programmer can:
+<ul>
+<li>Access and replace an array’s items at given positions</li>
+<li>Examine an array’s length</li>
+<li>Obtain its string representation</li>
+</ul></li>
+<li>A programmer cannot
+<ul>
+<li>Add or remove positions</li>
+<li>Make the length of the array larger or smaller (length of an array is fixed when created)</li>
+</ul></li>
+</ul>
+</section>
+<section id="array-review" class="slide level2">
+<h2>Array review</h2>
+<ul>
+<li>The values are accessed by a numerical index between 0 and array size minus 1</li>
+<li>To reference a single array/list element, use <code>arrayName[index]</code></li>
+<li>The array index is sometimes called a subscript.</li>
+</ul>
+
+<img data-src="../images/arrayIndex.png" style="width:80%" class="r-stretch"></section>
+<section id="python-arrays-list" class="slide level2">
+<h2>Python Arrays: <code>List[]</code></h2>
+<ul>
+<li class="fragment">In Python, the term “<code>array</code>” usually refers to either a <code>list</code> or the array module’s array type. Here are the main characteristics:
+<ul>
+<li class="fragment">Python lists are dynamic arrays: they can store elements of different types, grow or shrink in size, and support indexing, slicing, and iteration.</li>
+<li class="fragment">Lists are not memory-efficient for large numeric data; for that, use the array module or <code>NumPy arrays</code>.</li>
+</ul></li>
+<li class="fragment">The array module provides arrays that store elements of a single type (e.g., all integers or all floats)</li>
+</ul>
+</section>
+<section id="python-arrays-vs-traditional-arrays" class="slide level2">
+<h2>Python Arrays vs Traditional Arrays</h2>
+<ul>
+<li class="fragment"><p>Both types support random access (O(1) time for getting/setting elements by index).</p></li>
+<li class="fragment"><p>Lists and arrays are mutable: you can change, add, or remove elements.</p></li>
+<li class="fragment"><p>Type Consistency:</p>
+<ul>
+<li class="fragment">Traditional arrays (e.g., in C, Java) store elements of a single, fixed type.</li>
+<li class="fragment">Python lists (often called “arrays”) can store elements of different types in the same list.</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-arrays-vs-traditional-arrays-1" class="slide level2">
+<h2>Python Arrays vs Traditional Arrays</h2>
+<ul>
+<li class="fragment">Memory Layout:
+<ul>
+<li class="fragment">Traditional arrays use contiguous memory, making them efficient for random access and low-level operations.</li>
+<li class="fragment">Python lists are dynamic and store references to objects, not the objects themselves, so memory is less compact.</li>
+</ul></li>
+<li class="fragment">Size:
+<ul>
+<li class="fragment">Traditional arrays have a fixed size; you cannot change their length after creation.</li>
+<li class="fragment">Python lists are dynamic; you can add or remove elements at any time.</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-arrays-vs-traditional-arrays-2" class="slide level2">
+<h2>Python Arrays vs Traditional Arrays</h2>
+<ul>
+<li class="fragment">Performance:
+<ul>
+<li class="fragment">Traditional arrays are faster for numeric operations and use less memory.</li>
+<li class="fragment">Python lists are flexible but slower and less memory-efficient for large numeric data.</li>
+</ul></li>
+<li class="fragment">Built-in Support:
+<ul>
+<li class="fragment">Python has a built-in list type (dynamic array) and an array module for fixed-type arrays.</li>
+<li class="fragment">For scientific computing, NumPy arrays provide efficient, fixed-type arrays similar to traditional arrays.</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-array-class" class="slide level2">
+<h2>Python Array Class</h2>
+<ul>
+<li class="fragment">Python’s <code>array</code> model includes an <code>array</code> class:</li>
+<li class="fragment">You will define a new class named <code>Array</code> that adheres to the restrictions mentioned earlier but can hold items of any type</li>
+<li class="fragment">This <code>Array</code> class uses a Python list to hold its items</li>
+<li class="fragment">The class defines methods that allow clients to use
+<ul>
+<li class="fragment">The subscript operator <code>[]</code></li>
+<li class="fragment">The <code>len</code> function</li>
+<li class="fragment">The <code>str</code> function</li>
+<li class="fragment">The <code>for</code> loop with array objects</li>
+</ul></li>
+</ul>
+</section>
+<section id="operations-and-methods-of-python-array-class" class="slide level2">
+<h2>Operations and methods of Python Array Class</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>User’s Array Operation</th>
+<th>Method in the Array Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a = Array(10)</td>
+<td><strong>init</strong>(capacity, fillValue=None)</td>
+</tr>
+<tr class="even">
+<td>len(a)</td>
+<td><strong>len</strong>()</td>
+</tr>
+<tr class="odd">
+<td>str(a)</td>
+<td><strong>str</strong>()</td>
+</tr>
+<tr class="even">
+<td>for item in a:</td>
+<td><strong>iter</strong>()</td>
+</tr>
+<tr class="odd">
+<td>a[index]</td>
+<td><strong>getitem</strong>(index)</td>
+</tr>
+<tr class="even">
+<td>a[index] = newitem</td>
+<td><strong>setitem</strong>(index, newItem)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-array-class-implementation" class="slide level2">
+<h2>Python Array Class Implementation</h2>
+<div class="sourceCode" id="cb1" data-code-line-numbers="1-11|12-14|15-21|22-25|26-29|30-33|34-37|38-40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co">"""</span></span>
+<span id="cb1-2"><a href=""></a><span class="co">File: arrays.py</span></span>
+<span id="cb1-3"><a href=""></a><span class="co">An Array is like a list, but the client can use</span></span>
+<span id="cb1-4"><a href=""></a><span class="co">only [], len, iter, and str.</span></span>
+<span id="cb1-5"><a href=""></a><span class="co">&nbsp;</span></span>
+<span id="cb1-6"><a href=""></a><span class="co">To instantiate, use</span></span>
+<span id="cb1-7"><a href=""></a><span class="co">&lt;variable&gt; = Array(&lt;capacity&gt;, &lt;optional fill value&gt;)</span></span>
+<span id="cb1-8"><a href=""></a><span class="co">&nbsp;</span></span>
+<span id="cb1-9"><a href=""></a><span class="co">The fill value is None by default.</span></span>
+<span id="cb1-10"><a href=""></a><span class="co">"""</span></span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a><span class="kw">class</span> Array(<span class="bu">object</span>):</span>
+<span id="cb1-13"><a href=""></a>    <span class="co">"""Represents an array."""</span></span>
+<span id="cb1-14"><a href=""></a>&nbsp;</span>
+<span id="cb1-15"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, capacity, fillValue <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb1-16"><a href=""></a>        <span class="co">"""Capacity is the static size of the array.</span></span>
+<span id="cb1-17"><a href=""></a><span class="co">        fillValue is placed at each position."""</span></span>
+<span id="cb1-18"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb1-19"><a href=""></a>        <span class="cf">for</span> count <span class="kw">in</span> <span class="bu">range</span>(capacity):</span>
+<span id="cb1-20"><a href=""></a>            <span class="va">self</span>.items.append(fillValue)</span>
+<span id="cb1-21"><a href=""></a></span>
+<span id="cb1-22"><a href=""></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb1-23"><a href=""></a>        <span class="co">"""-&gt; The capacity of the array."""</span></span>
+<span id="cb1-24"><a href=""></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.items)</span>
+<span id="cb1-25"><a href=""></a>    &nbsp;</span>
+<span id="cb1-26"><a href=""></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb1-27"><a href=""></a>        <span class="co">"""-&gt; The string representation of the array."""</span></span>
+<span id="cb1-28"><a href=""></a>        <span class="cf">return</span> <span class="bu">str</span>(<span class="va">self</span>.items)</span>
+<span id="cb1-29"><a href=""></a>    &nbsp;</span>
+<span id="cb1-30"><a href=""></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
+<span id="cb1-31"><a href=""></a>        <span class="co">"""Supports traversal with a for loop."""</span></span>
+<span id="cb1-32"><a href=""></a>        <span class="cf">return</span> <span class="bu">iter</span>(<span class="va">self</span>.items)</span>
+<span id="cb1-33"><a href=""></a>    &nbsp;</span>
+<span id="cb1-34"><a href=""></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
+<span id="cb1-35"><a href=""></a>        <span class="co">"""Subscript operator for access at index."""</span></span>
+<span id="cb1-36"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.items[index]</span>
+<span id="cb1-37"><a href=""></a>    &nbsp;</span>
+<span id="cb1-38"><a href=""></a>    <span class="kw">def</span> <span class="fu">__setitem__</span>(<span class="va">self</span>, index, newItem):</span>
+<span id="cb1-39"><a href=""></a>        <span class="co">"""Subscript operator for replacement at index."""</span></span>
+<span id="cb1-40"><a href=""></a>        <span class="va">self</span>.items[index] <span class="op">=</span> newItem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sample-use-of-array-class" class="slide level2">
+<h2>Sample use of Array class</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> arrays <span class="im">import</span> Array</span>
+<span id="cb2-2"><a href=""></a></span>
+<span id="cb2-3"><a href=""></a>a <span class="op">=</span> Array(<span class="dv">5</span>)    <span class="co"># Create an array with 5 positions</span></span>
+<span id="cb2-4"><a href=""></a><span class="bu">len</span>(a)  <span class="co"># Show the number of positions</span></span>
+<span id="cb2-5"><a href=""></a><span class="dv">5</span></span>
+<span id="cb2-6"><a href=""></a><span class="bu">print</span>(a)    <span class="co"># Show the contents</span></span>
+<span id="cb2-7"><a href=""></a>[<span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>]</span>
+<span id="cb2-8"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a)): <span class="co"># Replace contents with 1..5</span></span>
+<span id="cb2-9"><a href=""></a>    a[i] <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-10"><a href=""></a>a[<span class="dv">0</span>]    <span class="co"># Access the first item</span></span>
+<span id="cb2-11"><a href=""></a><span class="dv">1</span></span>
+<span id="cb2-12"><a href=""></a><span class="cf">for</span> item <span class="kw">in</span> a:  <span class="co"># Traverse the array to print all</span></span>
+<span id="cb2-13"><a href=""></a><span class="bu">print</span>(item)</span>
+<span id="cb2-14"><a href=""></a><span class="dv">1</span></span>
+<span id="cb2-15"><a href=""></a><span class="dv">2</span></span>
+<span id="cb2-16"><a href=""></a><span class="dv">3</span></span>
+<span id="cb2-17"><a href=""></a><span class="dv">4</span></span>
+<span id="cb2-18"><a href=""></a><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="developing-a-class-called-array" class="title-slide slide level1 center">
+<h1>Developing a class called <code>Array</code></h1>
+
+</section>
+<section id="why-is-this-needed" class="slide level2">
+<h2>Why is this needed?</h2>
+<ul>
+<li>Can’t we use Python’s <code>list</code> type instead?
+<ul>
+<li>We want to study the performance and behavior of fundamental (traditional) data structures</li>
+<li>The built-in list type is a class that contains too much complexity and hides what is really happening</li>
+</ul></li>
+<li>We will create a simple class that models the behavior of a simple array, and that suppresses (hides) the features of Python’s <code>list</code></li>
+</ul>
+</section>
+<section id="fundamental-array-class-design" class="slide level2">
+<h2>Fundamental Array class design</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li>Attributes (see in the next slides):
+<ul>
+<li>A list <code>__a</code> to store the elements of the array</li>
+<li>A number <code>__nItems</code> to keep track of how many elements of <code>a</code> have been used so far.</li>
+</ul></li>
+<li>Some of the methods:
+<ul>
+<li><code>__init__</code> - constructor</li>
+<li><code>insert</code> – insert an item at end of the Array</li>
+<li><code>get</code> – retrieves the i’th element of the Array</li>
+<li><code>find</code> – find an item in the Array</li>
+<li><code>delete</code> – removes an item from the Array</li>
+<li><code>__str__</code> – return a string representation of the Array</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="unordered-array-class" class="slide level2">
+<h2>Unordered array class</h2>
+<ul>
+<li><p>Implementation <img data-src="../images/unorderedArray.png" style="background-color:white;;width:100.0%"></p></li>
+<li><p>Client uses the class to create a new array:</p></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co"># Create an Array with room for 100 elements</span></span>
+<span id="cb3-2"><a href=""></a>x <span class="op">=</span> Array(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="unordered-array-insert-find-an-item" class="slide level2">
+<h2>Unordered array: <code>insert</code>, <code>find</code> an item</h2>
+
+<img data-src="../images/unordered_array_in_fi.png" style="background-color:white;;width:100.0%" class="r-stretch"></section>
+<section id="unordered-array-delete-an-item" class="slide level2">
+<h2>Unordered array: <code>delete</code> an item</h2>
+
+<img data-src="../images/unordered_array_del.png" style="background-color:white;;width:100.0%" class="r-stretch"></section>
+<section id="ordered-array-class-design" class="slide level2">
+<h2>Ordered Array class design</h2>
+<ul>
+<li>Attributes (see in the next slide):
+<ul>
+<li>A list <code>__a</code> to store the elements of the array</li>
+<li>A number <code>__nItems</code> to keep track of how many elements of <code>a</code> have been used so far.</li>
+</ul></li>
+<li>Methods:
+<ul>
+<li>Same as for Unordered Array, except <strong><em>insert</em></strong> and <strong><em>find</em></strong></li>
+<li><code>insert</code> – insert an item at the correct place in array</li>
+<li><code>find</code> – more efficiently find where an item is (or where it should be) by taking advantage of the sorted order of the items in the <strong>OrderedArray</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="ordered-array-binary-search-to-find" class="slide level2">
+<h2>Ordered Array: Binary search to <code>find</code></h2>
+
+<img data-src="../images/orderedArray.png" style="background-color:white;;width:100.0%" class="r-stretch"></section>
+<section id="ordered-array-insert-an-item" class="slide level2">
+<h2>Ordered array: <code>insert</code> an item</h2>
+
+<img data-src="../images/orderedArray_insert.png" style="background-color:white;;width:100.0%" class="r-stretch"></section>
+<section id="ordered-array-delete-an-item" class="slide level2">
+<h2>Ordered array: <code>delete</code> an item</h2>
+
+<img data-src="../images/orderedArray_del.png" style="background-color:white;;width:100.0%" class="r-stretch"><ul>
+<li>Notice: <code>if j == self.__nItems</code> then the insertion point returned by <code>self.find()</code> is after the last element in the <code>OrderedArray</code></li>
+</ul>
+</section></section>
+<section>
+<section id="more-on-the-traditional-arrays" class="title-slide slide level1 center">
+<h1>More on the Traditional Arrays</h1>
+
+</section>
+<section id="random-access-and-contiguous-memory" class="slide level2">
+<h2>Random Access and Contiguous Memory</h2>
+<ul>
+<li class="fragment">Array indexing is a <strong>random access</strong> operation:
+<ul>
+<li class="fragment">The computer obtains the location of the <code>ith</code> item by performing a constant number of steps</li>
+<li class="fragment">No matter how large the array, it takes the same amount of time to access the first item as it does to access the last item</li>
+</ul></li>
+<li class="fragment">The computer supports <strong>random access</strong> for arrays by allocating a block of <strong>contiguous memory</strong> cells for the array’s items (See in the next slide)</li>
+</ul>
+</section>
+<section id="a-block-of-contiguous-memory" class="slide level2">
+<h2>A block of contiguous memory</h2>
+<ul>
+<li class="fragment"><p>This means you can compute the address of any element directly using its index, without scanning through the array.</p>
+<ul>
+<li class="fragment">Just adding the <code>base address</code> and the item’s <code>offset</code>
+<ul>
+<li class="fragment">Base address is the address of the first item</li>
+<li class="fragment">Offset is <code>index</code> multiplied by the <code>size_of_each_element</code></li>
+</ul></li>
+</ul></li>
+<li class="fragment"><p>Thus:</p></li>
+<li class="fragment"><p><code>address_of_element = base_address + (index * size_of_each_element)</code></p></li>
+<li class="fragment"><p>For Python, the <code>size_of_each_element</code> is 1</p></li>
+</ul>
+</section>
+<section id="block-of-contiguous-memory" class="slide level2">
+<h2>Block of Contiguous Memory</h2>
+
+<img data-src="../images/contigiousMemory.png" style="width:80.0%" class="r-stretch"></section>
+<section id="revisiting-static-vs.-dynamic-memory" class="slide level2">
+<h2>Revisiting Static vs.&nbsp;Dynamic Memory</h2>
+<div style="font-size:32px;">
+<ul>
+<li class="fragment">Arrays in older languages were static data structures</li>
+<li class="fragment">Modern languages allow dynamic arrays:
+<ul>
+<li class="fragment">Occupies a contiguous block of memory and supports random access</li>
+</ul></li>
+<li class="fragment">The Python <code>Array</code> class allows the programmer to specify the length of a dynamic array during instantiation</li>
+<li class="fragment">Ways that programmers can read just an array’s length
+<ul>
+<li class="fragment">Create an array with a reasonable default size at program start-up</li>
+<li class="fragment">When the array cannot hold more data, create a new, larger array and transfer the data items from the old array</li>
+<li class="fragment">When the array seems to be wasting memory, decrease its length in a similar manner</li>
+</ul></li>
+<li class="fragment">These adjustments happen automatically with a Python list</li>
+</ul>
+</div>
+</section>
+<section id="physical-size-and-logical-size" class="slide level2">
+<h2>Physical Size and Logical Size</h2>
+<div style="font-size:34px;">
+<ul>
+<li class="fragment">Physical size of an array
+<ul>
+<li class="fragment">Its total number of array cells or the number used to specify its capacity when the array is created</li>
+</ul></li>
+<li class="fragment">Logical size of an array
+<ul>
+<li class="fragment">The number of items in it that should be currently available to the application</li>
+</ul></li>
+<li class="fragment">Logical and physical size tell you several things:
+<ul>
+<li class="fragment">If the logical size is 0, the array is empty</li>
+<li class="fragment">Otherwise, at any given time, the index of the last item in the array is the logical size minus 1</li>
+<li class="fragment">If the logical size equals the physical size, there is no more room for data in the array</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="physical-size-and-logical-size-1" class="slide level2">
+<h2>Physical Size and Logical Size</h2>
+<ul>
+<li>Arrays with different logical sizes</li>
+</ul>
+
+<img data-src="../images/logicalsizes.png" style="width:80.0%" class="r-stretch"></section>
+<section id="hidden-operations-on-arrays" class="slide level2">
+<h2>Hidden Operations on Arrays</h2>
+<ul>
+<li>This section shows the implementation of several operations on arrays that are hidden from users</li>
+<li>In these examples, assume the following data settings:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>DEFAULT_CAPACITY <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-2"><a href=""></a>logicalSize <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-3"><a href=""></a>a <span class="op">=</span> Array(DEFAULT_CAPACITY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="increasing-the-size-of-an-array" class="slide level2">
+<h2>Increasing the Size of an Array</h2>
+<ul>
+<li>The resizing process consists of three steps:
+<ul>
+<li>Create a new, larger array</li>
+<li>Copy the data from the old array to the new array</li>
+<li>Reset the old array variable to the new array object</li>
+</ul></li>
+<li>See Code:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="cf">if</span> logicalSize <span class="op">==</span> <span class="bu">len</span>(a):</span>
+<span id="cb5-2"><a href=""></a>    temp <span class="op">=</span> Array(<span class="bu">len</span>(a) <span class="op">+</span> <span class="dv">1</span>)    <span class="co"># Create a new array</span></span>
+<span id="cb5-3"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(logicalSize):<span class="co"># Copy data from the old</span></span>
+<span id="cb5-4"><a href=""></a>        temp [i] <span class="op">=</span> a[i]         <span class="co"># array to the new array</span></span>
+<span id="cb5-5"><a href=""></a>    a <span class="op">=</span> temp                    <span class="co"># Reset the old array variable</span></span>
+<span id="cb5-6"><a href=""></a>                                <span class="co"># to the new array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="decreasing-the-size-of-an-array" class="slide level2">
+<h2>Decreasing the Size of an Array</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li>The process of decreasing the size of an array is the inverse of increasing it</li>
+<li>Steps:
+<ul>
+<li>Create a new, smaller array</li>
+<li>Copy the data from the old array to the new array</li>
+<li>Reset the old array variable to the new array object</li>
+</ul></li>
+<li>See Code:</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="cf">if</span> logicalSize <span class="op">&lt;=</span> <span class="bu">len</span>(a) <span class="op">//</span> <span class="dv">4</span> <span class="kw">and</span> <span class="bu">len</span>(a) <span class="op">&gt;=</span> DEFAULT_CAPACITY <span class="op">*</span> <span class="dv">2</span>:</span>
+<span id="cb6-2"><a href=""></a>    temp <span class="op">=</span> Array(<span class="bu">len</span>(a) <span class="op">//</span> <span class="dv">2</span>)       <span class="co"># Create new array</span></span>
+<span id="cb6-3"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(logicalSize):    <span class="co"># Copy data from old array</span></span>
+<span id="cb6-4"><a href=""></a>        temp [i] <span class="op">=</span> a [i]            <span class="co"># to new array</span></span>
+<span id="cb6-5"><a href=""></a>    a <span class="op">=</span> temp                        <span class="co"># Reset old array variable to</span></span>
+<span id="cb6-6"><a href=""></a>                                    <span class="co"># new array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inserting-an-item-into-an-array-that-grows" class="slide level2">
+<h2>Inserting an Item into an Array That Grows</h2>
+<div style="font-size:34px;">
+<ul>
+<li class="fragment">In the case of an insertion, the programmer must do four things:
+<ul>
+<li class="fragment">Check for available space before attempting an insertion and increase the physical size of the array, if necessary, as described earlier</li>
+<li class="fragment">Shift the items from the logical end of the array to the target index position down by one:
+<ul>
+<li class="fragment">This process opens a hole for the new item at the target index</li>
+</ul></li>
+<li class="fragment">Assign the new item to the target index position</li>
+<li class="fragment">Increment the logical size by one</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="inserting-an-item-into-an-array-that-grows-1" class="slide level2">
+<h2>Inserting an Item into an Array That Grows</h2>
+<ul>
+<li>Steps for the insertion of the item D5 at position 1 <img data-src="../images/insertArray.png" style="width:80.0%"></li>
+</ul>
+</section>
+<section id="inserting-an-item-into-an-array-that-grows-2" class="slide level2">
+<h2>Inserting an Item into an Array That Grows</h2>
+<ul>
+<li>Python code for the insertion operation:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="co"># Increase physical size of array if necessary</span></span>
+<span id="cb7-2"><a href=""></a><span class="co"># Shift items down by one position</span></span>
+<span id="cb7-3"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(logicalSize, targetIndex, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb7-4"><a href=""></a>    a[i] <span class="op">=</span> a[i <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb7-5"><a href=""></a><span class="co"># Add new item and increment logical size</span></span>
+<span id="cb7-6"><a href=""></a>a[targetIndex] <span class="op">=</span> newItem</span>
+<span id="cb7-7"><a href=""></a>logicalSize <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="removing-an-item-from-an-array" class="slide level2">
+<h2>Removing an Item from an Array</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li>Steps for removing an item from an array
+<ul>
+<li>Shift the items from the one following the target index position to the logical end of the array up by one. This process closes the hole left by the removed item at the target index</li>
+<li>Decrement the logical size by one</li>
+<li>Check for wasted space and decrease the physical size of the array, if necessary</li>
+</ul></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="co"># Shift items up by one position</span></span>
+<span id="cb8-2"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(targetIndex, logicalSize <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb8-3"><a href=""></a>    a[i] <span class="op">=</span> a[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb8-4"><a href=""></a><span class="co"># Decrement logical size</span></span>
+<span id="cb8-5"><a href=""></a>logicalSize <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb8-6"><a href=""></a><span class="co"># Decrease size of array if necessary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="removing-an-item-from-an-array-1" class="slide level2">
+<h2>Removing an Item from an Array</h2>
+<ul>
+<li>Steps for the removal of an item at position 1 <img data-src="../images/removeArray.png" style="width:80.0%"></li>
+</ul>
+</section>
+<section id="analyzing-performance-unordered-array" class="slide level2">
+<h2>Analyzing performance: Unordered Array</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li>Insertion of 1 item at end of array: constant time
+<ul>
+<li>Amount of work (number of steps) does not depend on number of items in the array.</li>
+<li>This is referred to as <code>O(1)</code> time</li>
+</ul></li>
+<li>Find or delete an item in an array of N items
+<ul>
+<li>On average, we expect to compare the key to N/2 array items before success, N items before failure.</li>
+<li>Then we have to move on average N/2 items to the left</li>
+<li><code>N/2</code> compares + <code>N/2</code> moves</li>
+<li><code>O(N)</code> time</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="analyzing-performance-ordered-array" class="slide level2">
+<h2>Analyzing performance: Ordered Array</h2>
+<div class="smaller" style="font-size:30px;">
+<ul>
+<li>Find a key in an array of <code>N</code> items: how many iterations/comparisons?
+<ul>
+<li><code>log2(N)</code>, usually known as <code>O(log N)</code></li>
+<li>Why?
+<ul>
+<li>Every iteration of the binary search cuts the array of <code>N</code> elements in half</li>
+<li>You can cut <code>N</code> in half <code>log2(N)</code> times until you get to 1</li>
+<li>For example: <code>61, 30, 15, 7,  3, 1</code></li>
+</ul></li>
+</ul></li>
+<li>Insert or remove an item from an array of <code>N</code> items
+<ul>
+<li>Use binary search to find the location takes about <code>log2(N)</code></li>
+<li>But, we have to move on average <code>N/2</code> items</li>
+<li>Total operations are proportional to <code>N/2 + log2(N)</code></li>
+<li>Therefore, complexity is <code>O(N)</code> since N dominates the - <code>log N</code> term.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="summary-table" class="slide level2">
+<h2>Summary Table:</h2>
+<div class="smaller" style="font-size:35px;">
+<ul>
+<li>Array Operations and Running Times</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>Running Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Access at ith position</td>
+<td>O(1), best and worst cases</td>
+</tr>
+<tr class="even">
+<td>Replacement at ith position</td>
+<td>O(1), best and worst cases</td>
+</tr>
+<tr class="odd">
+<td>Insert at logical end</td>
+<td>O(1), average case</td>
+</tr>
+<tr class="even">
+<td>Insert at ith position</td>
+<td>O(n), average case</td>
+</tr>
+<tr class="odd">
+<td>Remove from ith position</td>
+<td>O(n), average case</td>
+</tr>
+<tr class="even">
+<td>Increase capacity</td>
+<td>O(n), best and worst cases</td>
+</tr>
+<tr class="odd">
+<td>Decrease capacity</td>
+<td>O(n), best and worst cases</td>
+</tr>
+<tr class="even">
+<td>Remove from logical end</td>
+<td>O(1), average case</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -233,6 +823,7 @@
   <script src="ch4.1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="ch4.1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="ch4.1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="ch4.1_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="ch4.1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -254,7 +845,8 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -275,7 +867,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -425,7 +1017,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
