@@ -1,4 +1,4 @@
-from bag import Bag
+from newbag import Bag
 
 
 def test_bag():
@@ -10,8 +10,13 @@ def test_bag():
     assert bag.count("apple") == 2, "Should count two apples"
     assert bag.count("banana") == 1, "Should count one banana"
     # Test __repr__
-    expected = "Bag([apple, banana, apple])"
-    assert repr(bag) == expected, f"Expected {expected}, got {repr(bag)}"
+    actual = repr(bag)
+    expected1 = "Bag([apple, banana, apple])"
+    expected2 = "Bag([banana, apple, apple])"
+    expected3 = "Bag([apple, apple, banana])"
+    assert actual == expected1 or actual == expected2 or actual == expected3, f"Expected {expected1} or {expected2} or {expected3}, got {actual}"
+    # expected = "Bag([apple, banana, apple])"
+    # assert repr(bag) == expected, f"Expected {expected}, got {repr(bag)}"
     #print("__repr__ test passed!")
     # Test remove
     bag.remove("apple")

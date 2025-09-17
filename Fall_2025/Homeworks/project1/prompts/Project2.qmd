@@ -1,0 +1,110 @@
+---
+title: "Mini-project 2#"
+subtitle: "Due: September  24, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(24, 141, 164, 1) 100%)
+    title-block-banner-color: white
+---
+
+This mini-project question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/Err36T8b' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Mini Project</a>
+```
+<br>
+
+# Project Title: Tower of Hanoi Puzzle
+
+## Project Overview
+
+## Assignment: Tower of Hanoi with OOP and Array Structure
+
+### Background
+
+You have previously solved the Tower of Hanoi puzzle using simple Python functions and lists. Now, apply your knowledge of Object-Oriented Programming (OOP) and array-based data structures to this classic problem!
+
+---
+
+### Your Task
+
+Redesign and implement the Tower of Hanoi puzzle using OOP and your own array-based stack structure.  
+**Avoid using Python’s built-in list methods** (`append`, `pop`, `insert`, etc.) except where absolutely necessary for your array implementation.
+
+---
+
+### Requirements
+
+#### 1. Create an `ArrayStack` Class
+
+- Implement a stack using an array (not Python’s list methods for stack operations).
+- Include methods: `push`, `pop`, `peek`, `is_empty`, and `__str__`.
+- The stack should have a fixed capacity (set at initialization).
+
+#### 2. Create a `TowerOfHanoi` Class
+
+- Manage three stacks (spindles) and the disks.
+- Include methods to:
+  - Initialize the puzzle with a given number of disks.
+  - Move disks between spindles (with error checking).
+  - Print the current state of the towers.
+  - Solve the puzzle recursively.
+
+#### 3. Avoid Python List Shortcuts
+
+- Do **not** use Python’s built-in list stack/queue methods in your stack logic.
+- You may use a Python list as the underlying array, but all stack operations must be done through your own methods.
+
+#### 4. Demonstrate Your Solution
+
+- In your main program:
+  - Create a `TowerOfHanoi` object with 3 or more disks.
+  - Print the initial state.
+  - Show each move as the puzzle is solved.
+  - Print the final state and a “Puzzle complete!” message.
+
+---
+
+### Example Output 
+```{.python} 
+L: [3, 2, 1]
+M: []
+R: []
+Move disk 1 from L to R
+...
+Puzzle complete! 
+```
+
+## Hints
+
+- Use your Bag or similar array-based class as a starting point for your stack.
+- Think about how to represent each spindle as a stack of disks.
+- Use OOP principles: encapsulation, methods, and clear class responsibilities.
+- Your recursive solution should call stack methods, not manipulate lists directly.
+
+---
+
+## Stretch Challenge (Optional)
+
+- Allow the user to specify the number of disks.
+- Add a method to reset the puzzle.
+- Add error handling for invalid moves.
+
+---
+
+## Deliverables
+
+- Your `ArrayStack` and `TowerOfHanoi` class implementations.
+- A main program that demonstrates the solution.
+- Well-commented code.
