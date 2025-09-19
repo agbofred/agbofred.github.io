@@ -1,0 +1,98 @@
+---
+title: "Problem Set 2: Unpacking Array Architectures and Performance"
+subtitle: "Due: September  24, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+  The question contains two starter files in the repository. One of the starter files - `ps2_code.py` - is the template where your code snippets for your answers should be written. The second file - `ps2_explanation.txt` is the template where all your explanations and answers for each question should be written. 
+  You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/1cl1scuH' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+## Goal
+This assignment will challenge you to apply and synthesize your understanding of array data structures, their different implementations in Python, and the critical performance implications of various design choices. You will analyze real-world scenarios, justify technical decisions, and demonstrate a comprehensive grasp of the material presented in the "ARRAYS" lectures.
+
+**Instructions:** Please submit your solutions using the `ps2_code.py` and `ps2_explanation.txt` starter files provided. Collaboration on understanding concepts is encouraged, but all submitted work must be your own original effort. Ensure all code is runnable and explanations are clear and concise.
+
+---
+
+## **Part 1: Foundational Concepts and Architectural Trade-offs**
+
+**(Focus: Conceptual understanding, comparison, and justification of array characteristics)**
+
+1.  **The Invisible Mechanics of Python Lists:**
+    Python lists are described as "dynamic arrays" that can store elements of different types and grow or shrink in size. However, the lecture also states that they "store references to objects, not the objects themselves, so memory is less compact".
+    *   **a.** Explain in detail *how* this "list of pointers" memory layout impacts the performance of operations like iterating through a list of 10 million integers compared to a hypothetical scenario where Python could store these integers directly in a contiguous block of memory (like a traditional array). Specifically, discuss the role of "de-referencing each pointer" and "type checking on each element".
+    *   **b.** Consider the `len()` function when applied to a custom `Array` class that you might implement (as discussed in lectures). How is the length of such an array determined? Is this operation typically efficient (O(1)) or does its running time depend on the size of the array (O(n))? Justify your answer by referencing how `__nItems` or `capacity` might be used.
+
+2.  **Strategic Resizing for Efficiency:**
+    The lecture materials detail how dynamic arrays handle resizing when they cannot hold more data, involving creating a new, larger array and copying elements. Similarly, arrays might decrease in size to avoid wasting memory.
+    *   **a.** Describe a specific real-world application or system where it would be *more efficient* to allow an array to become "wasting memory" (i.e., `physicalSize` significantly larger than `logicalSize`) for some duration, rather than immediately decreasing its capacity to fit the logical size. Explain the trade-offs involved and why the immediate resizing might be detrimental in your chosen scenario.
+    *   **b.** Conversely, identify a scenario where proactive **decreasing** of an array's physical size is crucial for system performance or resource management. Explain why this specific scenario demands strict memory management and how the decrease capacity operation helps.
+
+---
+
+## **Part 2: Deep Dive into Array Operations & Performance Analysis**
+
+**(Focus: Applied understanding of Big O notation, internal array mechanics, and coding simulation)**
+
+3.  **Simulating the "Hidden" Operations:**
+    In the lecture for week 4, it provided Python code snippets demonstrating the internal logic for increasing/decreasing array size, and for inserting/removing items.
+    *   **a.** Imagine you are tasked with implementing the `insert` method for an `Array` class where the underlying storage is a fixed-size Python list (simulating a traditional array, similar to the `Array` class discussed in the lectures). Write a Python function called `custom_insert(arr_data, logical_size, target_index, new_item, default_capacity)` that simulates the insertion of an item into such an array. Your function should:
+        *   Take `arr_data` (a Python list representing the array's internal storage), `logical_size`, `target_index`, `new_item`, and `default_capacity` as inputs.
+        *   First, check if an increase in `physicalSize` is necessary before insertion (i.e., `logical_size == len(arr_data)`). If so, it should simulate the creation of a new, larger array, copy existing data, and update `arr_data` to this new array. You can assume a simple `len(arr_data) + 1` for the new capacity.
+        *   Then, shift items down from the logical end to the `target_index` to open a "hole".
+        *   Place the `new_item` at `target_index` and increment `logical_size`.
+        *   Return the modified `arr_data` and the new `logical_size`.
+        *   **Demonstrate your function** with an example: Start with `arr_data = [1, 2, 3, None, None]` and `logical_size = 3`. Insert the value `99` at `target_index = 1`. Then, insert `100` at `target_index = 3` (this second insertion should trigger a capacity increase). Print the array and `logical_size` after each operation.
+    *   **b.** Analyze the time complexity of your `custom_insert` function in the worst-case scenario (insertion at index 0 when resizing is also required). Break down the Big O of each major step (resizing, shifting) and derive the overall worst-case complexity.
+
+---
+
+## **Part 3: Beyond Lists - Embracing NumPy for Performance**
+
+**(Focus: Applied usage of NumPy, critical evaluation of data structures for specific tasks)**
+
+4.  **The Data Scientist's Toolkit: Choosing the Right Array:**
+    You're building an image processing application.
+    *   **Scenario 1: Image Pixel Data:** You need to store the pixel intensity values of a grayscale image, represented as a 2D grid of floating-point numbers. The image dimensions are fixed (e.g., 1920x1080 pixels), and you will frequently perform mathematical operations (e.g., brightening, blurring, edge detection) across all pixels.
+    *   **Scenario 2: Image Metadata:** You need to store various metadata associated with each image, such as filename (string), capture date (string), camera settings (dictionary), and a list of detected objects (list of strings). The number of metadata fields might vary, and their types are heterogeneous.
+
+    *   **a.** For **Scenario 1 (Image Pixel Data)**, would you choose a standard Python list of lists or a NumPy `ndarray`? Justify your choice by highlighting **at least three specific benefits** of your chosen structure that are critical for this application, referencing concepts like "homogeneity," "contiguous memory," "vectorization," and "performance" from the lectures.
+    *   **b.** For **Scenario 2 (Image Metadata)**, would you choose a standard Python list or a NumPy `ndarray`? Justify your choice by referencing **at least two characteristics or limitations** of the structures discussed, explaining why one is more suitable for storing heterogeneous and potentially complex metadata than the other.
+    *   **c.** For **Scenario 1**, write a Python code snippet using your chosen data structure to:
+        *   Create a small 3x3 array (or list of lists) representing a grayscale image with arbitrary pixel values.
+        *   "Brighten" the image by adding 50 to every pixel value.
+        *   Calculate the average pixel intensity of the brightened image.
+        *   Print the original, brightened image, and its average intensity. *Your code should demonstrate the performance advantages of the chosen structure if applicable.*
+
+---
+
+## **Part 4: Real-World Challenge and Design Thinking**
+
+**(Focus: Synthesis of all concepts, critical thinking, and problem-solving with array limitations)**
+
+5.  **Designing a High-Performance Log Buffer:**
+    You are designing a critical component for a server that processes millions of requests per minute. This component needs to maintain a buffer of the most recent 10,000 request IDs (which are all integers) for debugging and analytical purposes. When a new request ID comes in, it's added to the buffer, and if the buffer is full, the oldest request ID is discarded to maintain the fixed size of 10,000. Accessing any request ID in the buffer by its "relative position" (e.g., the 500th most recent) must be extremely fast.
+
+    *   **a.** Discuss the suitability of using a traditional fixed-size array (as conceptually modeled by our `Array` class) for this task. What are its primary advantages and disadvantages given the requirements of fixed size and fast random access, and continuous insertion/removal?.
+    *   **b.** Given the requirements (fixed size, fast random access, continuous "add oldest/remove newest"), and considering the performance characteristics discussed in the lectures, propose a detailed strategy for implementing this "recent 10,000 request IDs" buffer. You can use either a Python list or a NumPy array as your primary internal data store, but you must justify your choice. Explain how you would handle the **"add new and discard oldest"** operation efficiently to ensure fast performance and avoid the O(n) costs associated with shifting elements or constant resizing. *Hint: Think about how indices can be managed in a fixed-size structure to simulate dynamic behavior.* You do not need to write code, but clearly describe the data structure and the operational logic.
+
+---
