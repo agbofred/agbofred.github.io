@@ -4,6 +4,7 @@ head = None
 for count in range(1, 6):
     head = Node(count, head)
 # Print the contents of the structure
-while head != None:
+searchTarget = 2
+while head != None and searchTarget !=head.data:
     print(head.data, "----", head.next)
     head = head.next

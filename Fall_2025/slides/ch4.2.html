@@ -11,7 +11,7 @@
 
   <meta name="author" content="Fred Agbo">
   <meta name="dcterms.date" content="2025-09-17">
-  <title>LINKED STRUCTURES</title>
+  <title>Beyond the Python List</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -196,7 +196,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">LINKED STRUCTURES</h1>
+  <h1 class="title">Beyond the Python List</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -212,378 +212,272 @@ Fred Agbo
 <h2>Announcements</h2>
 <ul>
 <li>Welcome back!</li>
-<li>First Mini-project (MP1) is due on Wednesday at 10pm</li>
-<li>Reading for this week is due on Wednesday</li>
+<li>First Mini-project (MP1) is due today at 10pm</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<!-- ## title: "An Introduction to NumPy for Data Structures" subtitle: "Beyond the Python List" author: "Your Name/University" date: "Fall 2025" format: revealjs: slide-number: true css: styles.css theme: simple footer: "Data Structures - NumPy Lesson" logo: "logo.png" -->
 </section>
 <section>
-<section id="linked-structures" class="title-slide slide level1 center">
-<h1>Linked Structures</h1>
+<section id="introducing-python-numpy-for-data-structures" class="title-slide slide level1 center">
+<h1>Introducing Python NumPy for Data Structures</h1>
 
 </section>
-<section id="learning-objectives" class="slide level2">
-<h2>Learning Objectives</h2>
+<section id="whats-the-problem" class="slide level2">
+<h2>What’s the Problem?</h2>
 <ul>
-<li>Create linked structures using singly linked nodes</li>
-<li>Perform various operations on linked structures with singly linked nodes</li>
-<li>Describe how costs and benefits of operations on linked structures depend on how they are represented in computer memory</li>
-<li>Compare the trade-offs in running time and memory usage of linked structures</li>
-</ul>
-</section>
-<section id="linked-structures-1" class="slide level2">
-<h2>Linked Structures</h2>
+<li class="fragment">You’re a data scientist analyzing a massive dataset.</li>
+<li class="fragment">Your data contains a million numerical values.</li>
+<li class="fragment">You need to perform a simple operation on all of them,
 <ul>
-<li class="fragment">A <strong>linked structure</strong> is another way to organize data in your program</li>
-<li class="fragment">Just like array, it is a commonly used data structure to implement many types of collections</li>
-<li class="fragment">This section covers characteristics that programmers must keep in mind when using linked. structures to implement any type of collection.</li>
-</ul>
-</section>
-<section id="linked-structures-2" class="slide level2">
-<h2>Linked Structures</h2>
-<ul>
-<li class="fragment">Each element in a linked structure is called a <strong>node</strong>.</li>
-<li class="fragment">Every node contains:
-<ul>
-<li class="fragment">The <code>data</code> (or value) it stores.</li>
-<li class="fragment">A <code>reference</code> (or pointer/link) to the next node in the sequence.</li>
+<li class="fragment">for example, squaring each number.</li>
 </ul></li>
-<li class="fragment">The first node is called the <strong>head</strong> of the list.</li>
-<li class="fragment">The last node points to <code>None</code> (or null), indicating the end of the structure.</li>
+<li class="fragment">How would you do this in standard Python?</li>
 </ul>
 </section>
-<section id="linked-structures-3" class="slide level2">
-<h2>Linked Structures</h2>
+<section id="python-lists-the-swiss-army-knife" class="slide level2">
+<h2>Python Lists: The Swiss Army Knife</h2>
 <ul>
-<li class="fragment">Linked structures do not require contiguous memory; nodes can be scattered throughout memory.</li>
-<li class="fragment">Linked structures allow for efficient insertion and removal of elements at arbitrary positions, without shifting other elements.</li>
-<li class="fragment">Insertion and deletion operations are efficient, especially at the beginning of the structure.</li>
-<li class="fragment">Accessing an element by position requires traversing the structure from the head node.</li>
+<li class="fragment">A standard Python list is a highly flexible, general-purpose container.</li>
+<li class="fragment">It can store different data types (integers, floats, strings, even other lists) within the same structure.</li>
+<li class="fragment">It’s a “list of pointers” to objects stored in various memory locations.</li>
+<li class="fragment">This flexibility comes at a cost…</li>
 </ul>
 </section>
-<section id="types-of-linked-structure" class="slide level2">
-<h2>Types of Linked Structure</h2>
+<section id="code-example-the-list-approach" class="slide level2">
+<h2>Code Example: The List Approach</h2>
+<div class="non-stretch-slide">
+<p>Let’s see the standard way to handle this.</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> time</span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a><span class="co"># Create a large list of integers</span></span>
+<span id="cb1-4"><a href=""></a>my_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10000000</span>))</span>
+<span id="cb1-5"><a href=""></a></span>
+<span id="cb1-6"><a href=""></a><span class="co"># Time the operation</span></span>
+<span id="cb1-7"><a href=""></a>start_time <span class="op">=</span> time.time()</span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a><span class="co"># Square each element using a list comprehension</span></span>
+<span id="cb1-10"><a href=""></a>squared_list <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> my_list]</span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a>list_time <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
+<span id="cb1-13"><a href=""></a><span class="bu">print</span>(<span class="ss">f"List comprehension time: </span><span class="sc">{</span>list_time<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="why-is-it-so-slow" class="slide level2">
+<h2>Why is it so slow?</h2>
 <ul>
-<li class="fragment">Common types of linked structures include:
+<li class="fragment">Python has to “de-reference” each pointer one by one.</li>
+<li class="fragment">The <code>for</code> loop is an interpreted operation.</li>
+<li class="fragment">Python has to perform type checking on each element.</li>
+<li class="fragment">Each calculation is done separately.</li>
+</ul>
+</section>
+<section id="enter-numpy-the-specialized-toolbox" class="slide level2">
+<h2>Enter NumPy: The Specialized Toolbox</h2>
+<div style="font-size:35px;">
 <ul>
-<li class="fragment">Singly linked lists</li>
-<li class="fragment">Doubly linked lists</li>
-<li class="fragment">Circular linked lists</li>
+<li class="fragment"><strong>NumPy</strong> (Numerical Python) is the foundational library for scientific computing in Python.</li>
+<li class="fragment">Its core object is the <code>ndarray</code> (n-dimensional array).</li>
+<li class="fragment">Unlike a list, a NumPy array is:
+<ul>
+<li class="fragment"><strong>Homogeneous:</strong> All elements must be of the same data type.</li>
+<li class="fragment"><strong>Contiguous:</strong> Stored in one single, continuous block of memory.</li>
+<li class="fragment"><strong>Optimized:</strong> Operations are performed by fast C/Fortran code “under the hood.”</li>
 </ul></li>
-<li class="fragment">The most basic linked structure is the <strong>singly linked list</strong>, where each node points to the next node.</li>
-<li class="fragment">Linked structures are fundamental for implementing other data structures such as stacks, queues, and more complex structures like trees and graphs.</li>
-</ul>
-</section>
-<section id="singly-linked-structure" class="slide level2">
-<h2>Singly Linked Structure</h2>
-<div style="font-size:30px;">
-<ul>
-<li class="fragment">It is useful to draw diagrams of linked structures using a box and pointer notation</li>
-<li class="fragment">A user of a singly linked structure accesses the first item by following a single external head link:
-<ul>
-<li class="fragment">User then accesses other items by chaining through the single links that emanate from the items</li>
-<li class="fragment">Easy to get the successor of an item</li>
-<li class="fragment">Not so easy to get to the predecessor of an item</li>
-</ul></li>
-<li class="fragment"><img data-src="../images/singlyLinked.png"></li>
+<li class="fragment">This design makes it perfect for numerical operations.</li>
 </ul>
 </div>
 </section>
-<section id="doubly-linked-structure" class="slide level2">
-<h2>Doubly Linked Structure</h2>
-<div style="font-size:30px;">
+<section id="code-example-creating-a-numpy-array" class="slide level2">
+<h2>Code Example: Creating a NumPy Array</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href=""></a></span>
+<span id="cb2-3"><a href=""></a><span class="co"># Create an array from a Python list</span></span>
+<span id="cb2-4"><a href=""></a>my_np_array <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb2-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Array: </span><span class="sc">{</span>my_np_array<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-6"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Type: </span><span class="sc">{</span><span class="bu">type</span>(my_np_array)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-7"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>my_np_array<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Notice the single data type</span></span>
+<span id="cb2-8"><a href=""></a></span>
+<span id="cb2-9"><a href=""></a><span class="co"># NumPy forces homogeneity - it will upcast types</span></span>
+<span id="cb2-10"><a href=""></a>hetero_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">3.5</span>, <span class="dv">4</span>]</span>
+<span id="cb2-11"><a href=""></a>hetero_array <span class="op">=</span> np.array(hetero_list)</span>
+<span id="cb2-12"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Upcast array: </span><span class="sc">{</span>hetero_array<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-13"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Data type: </span><span class="sc">{</span>hetero_array<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-power-of-vectorization" class="slide level2">
+<h2>The Power of Vectorization</h2>
 <ul>
-<li class="fragment">A doubly linked structure contains links running in both directions:
+<li class="fragment"><strong>Vectorization</strong> is the ability to perform operations on entire arrays at once, without explicit Python loops.</li>
+<li class="fragment">NumPy functions and operators are “vectorized” by default.</li>
+<li class="fragment">This is where the massive speed gains come from.</li>
+</ul>
+</section>
+<section id="code-example-numpy-performance-test" class="slide level2">
+<h2>Code Example: NumPy Performance Test</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href=""></a><span class="im">import</span> time</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="co"># Create a large NumPy array</span></span>
+<span id="cb3-5"><a href=""></a>large_np_array <span class="op">=</span> np.arange(<span class="dv">10000000</span>)</span>
+<span id="cb3-6"><a href=""></a></span>
+<span id="cb3-7"><a href=""></a><span class="co"># Time the NumPy operation</span></span>
+<span id="cb3-8"><a href=""></a>start_time <span class="op">=</span> time.time()</span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a><span class="co"># Perform the vectorized operation</span></span>
+<span id="cb3-11"><a href=""></a>squared_np_array <span class="op">=</span> large_np_array<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-12"><a href=""></a></span>
+<span id="cb3-13"><a href=""></a>np_time <span class="op">=</span> time.time() <span class="op">-</span> start_time</span>
+<span id="cb3-14"><a href=""></a><span class="bu">print</span>(<span class="ss">f"NumPy vectorization time: </span><span class="sc">{</span>np_time<span class="sc">:.4f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb3-15"><a href=""></a></span>
+<span id="cb3-16"><a href=""></a><span class="co"># Compare with our previous result</span></span>
+<span id="cb3-17"><a href=""></a><span class="co"># List time was ~ 2.0 seconds</span></span>
+<span id="cb3-18"><a href=""></a><span class="bu">print</span>(<span class="st">"NumPy is orders of magnitude faster!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="benefits-of-numpy" class="slide level2">
+<h2>Benefits of NumPy</h2>
 <ul>
-<li class="fragment">A second external link, called the <code>tail link</code>, allows the user of a doubly linked structure to access the last item directly</li>
-</ul></li>
-<li class="fragment">The last item in either type of linked structure has no link to the next item:
+<li class="fragment"><strong>Performance:</strong> Vectorized operations are implemented in highly optimized C and Fortran code, making them significantly faster than Python loops.</li>
+<li class="fragment"><strong>Memory Efficiency:</strong> Storing homogeneous data in contiguous memory blocks uses far less memory than a Python list. This is crucial for large datasets.</li>
+<li class="fragment"><strong>Rich Functionality:</strong> NumPy includes a vast library of built-in mathematical, statistical, and linear algebra functions.</li>
+</ul>
+</section>
+<section id="code-example-built-in-functions" class="slide level2">
+<h2>Code Example: Built-in Functions</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>data <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Original Array: </span><span class="sc">{</span>data<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-6"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Sum of elements: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>(data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-7"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Mean of elements: </span><span class="sc">{</span>np<span class="sc">.</span>mean(data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-8"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Standard deviation: </span><span class="sc">{</span>np<span class="sc">.</span>std(data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-9"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Maximum value: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a><span class="co"># Or for a 2D array (matrix)</span></span>
+<span id="cb4-12"><a href=""></a>matrix <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb4-13"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Sum of each column: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">sum</span>(matrix, axis<span class="op">=</span><span class="dv">0</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="pitfalls-and-limitations" class="slide level2">
+<h2>Pitfalls and Limitations</h2>
+<div style="font-size:35px;">
 <ul>
-<li class="fragment">Figure indicates the absence of a link, called an <code>empty link</code>, by means of a slash instead of an arrow</li>
-</ul></li>
-<li class="fragment"><img data-src="../images/doublyLinked.png" style="width:100%"></li>
+<li class="fragment"><strong>Homogeneity:</strong> While a benefit for performance, it means NumPy is not suitable for data that must contain mixed types. For that, use a Python list or a Pandas DataFrame.</li>
+<li class="fragment"><strong>Fixed Size:</strong> Resizing a NumPy array is a costly operation. If your data size changes frequently, a Python list’s <code>append()</code> and <code>pop()</code> methods might be more efficient for those specific tasks.</li>
+<li class="fragment"><strong>Overhead for Small Data:</strong> For small arrays (e.g., a few hundred elements), the overhead of creating a NumPy array might not be worth the speed gain.</li>
+<li class="fragment"><strong>Requires Installation:</strong> It is a third-party library and must be installed separately.</li>
 </ul>
 </div>
 </section>
-<section id="doubly-linked-structure-1" class="slide level2">
-<h2>Doubly Linked Structure</h2>
-<div style="font-size:32px;">
-<ul>
-<li class="fragment">A programmer who uses a linked structure <strong>cannot</strong> immediately access an item by specifying its index position:
-<ul>
-<li class="fragment">Programmer must start at one end of the structure and follow the links until the desired position (item) is reached</li>
-</ul></li>
-<li class="fragment">The way in which memory is allocated for linked structures is unlike that of arrays and has two important consequences for insertion and removal operations:
-<ul>
-<li class="fragment">Once an insertion or removal point has been found, the insertion or removal can take place with no shifting of data items in memory</li>
-<li class="fragment">The linked structure can be resized during each insertion or removal with no extra memory cost and no copying of data items</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="noncontiguous-memory-and-nodes" class="slide level2">
-<h2>Noncontiguous Memory and Nodes</h2>
-<div class="smaller" style="font-size:30px;">
-<ul>
-<li>A linked structure decouples the logical sequence of items in the structure from any ordering in memory:
-<ul>
-<li><strong>Noncontiguous memory</strong>: The cell for a given item in a linked structure can be found anywhere in memory.</li>
-</ul></li>
-<li>Basic unit of representation in a linked structure is a <code>node</code>
-<ul>
-<li>A singly linked node contains the following components or fields:
-<ul>
-<li>A data item</li>
-<li>A link to the next node in the structure (a doubly linked node contains a link to the previous node in the structure as well)</li>
-<li><img data-src="../images/nodes.png" style="width:25%"></li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="linked-structure-and-array-rep" class="slide level2">
-<h2>Linked Structure and Array Rep</h2>
-<ul>
-<li>This figure shows a linked structure and its array representation <img data-src="../images/linkedArray.png" style="width:100%"></li>
-</ul>
-</section>
-<section id="memory-address" class="slide level2">
-<h2>Memory Address</h2>
-<ul>
-<li>In more modern languages the programmer has direct access to the addresses of data in the form of <strong><em>pointers</em></strong>:
-<ul>
-<li>A <code>node</code> in a singly linked structure contains a data item and a pointer value</li>
-</ul></li>
-<li>Python programmers set up nodes and linked structures by using references to objects:
-<ul>
-<li>Programmers define a singly linked node by defining an object that contains two fields: a reference to a data item and a reference to another node</li>
-</ul></li>
-</ul>
-</section>
-<section id="singly-linked-node-class" class="slide level2">
-<h2>Singly Linked Node Class</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># Code for a singly linked node class:</span></span>
-<span id="cb1-2"><a href=""></a><span class="kw">class</span> Node(<span class="bu">object</span>):</span>
-<span id="cb1-3"><a href=""></a>    <span class="co">"""Represents a singly linked node."""</span></span>
-<span id="cb1-4"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb1-5"><a href=""></a>        <span class="co">"""Instantiates a Node with a default next of None."""</span></span>
-<span id="cb1-6"><a href=""></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
-<span id="cb1-7"><a href=""></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Node variables are initialized to either the None value or a new Node object</li>
-<li>Code segment that shows some variations on these two options:</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="co"># Using the Singly Linked Node Class </span></span>
-<span id="cb2-2"><a href=""></a>node1 <span class="op">=</span> <span class="va">None</span>                <span class="co"># Just an empty link    </span></span>
-<span id="cb2-3"><a href=""></a>node2 <span class="op">=</span> Node(<span class="st">"A"</span>, <span class="va">None</span>)     <span class="co"># A node containing data and an empty link</span></span>
-<span id="cb2-4"><a href=""></a>node3 <span class="op">=</span> Node(<span class="st">"B"</span>, node2)    <span class="co"># A node containing data and a link to node2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="using-the-singly-linked-node-class" class="slide level2">
-<h2>Using the Singly Linked Node Class</h2>
-<ul>
-<li>Figure below show the state of the three variables after the code in previous slide is run
-<ul>
-<li>Three external links</li>
-</ul></li>
-</ul>
-
-<img data-src="../images/coderun.png" style="width:100%" class="r-stretch"></section>
-<section id="using-the-singly-linked-node-class-1" class="slide level2">
-<h2>Using the Singly Linked Node Class</h2>
-<ul>
-<li>Suppose you attempt to place the first node at the beginning of the linked structure that already contains <code>node2</code> and <code>node3</code> by running the following statement: <code>node1.next = node3</code></li>
-<li>Python responds by raising an <code>AttributeError</code></li>
-<li>To create the desired link, you could run either</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>node1 <span class="op">=</span> Node(<span class="st">"C"</span>, node3) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>node1 <span class="op">=</span> Node(<span class="st">"C"</span>, <span class="va">None</span>)</span>
-<span id="cb4-2"><a href=""></a>node1.<span class="bu">next</span> <span class="op">=</span> node3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="using-the-singly-linked-node-class-2" class="slide level2">
-<h2>Using the Singly Linked Node Class</h2>
-<div class="smaller" style="font-size:37px;">
-<aside class="notes">
-<ul>
-<li>Note the following points about this program:</li>
-<li>One pointer, <code>head</code>, generates the linked structure. This pointer is manipulated in such a
-<ul>
-<li>way that the most recently inserted item is always at the beginning of the structure.</li>
-</ul></li>
-<li>Thus, when the data are displayed, they appear in the reverse order of their insertion.</li>
-<li>Also, when the data are displayed, the head pointer is reset to the next node, until the head pointer becomes None. Thus, at the end of this process, the nodes are effectively deleted from the linked structure. They are no longer available to the program and are recycled during the next garbage collection.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<ul>
-<li>Linked structures are processed with loops: Use loops to create a linked structure and visit each node in it</li>
-<li>Code to create a singly linked structure and print its contents:</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co">"""</span></span>
-<span id="cb5-2"><a href=""></a><span class="co">File: testnode.py</span></span>
-<span id="cb5-3"><a href=""></a><span class="co">Tests the Node class.</span></span>
-<span id="cb5-4"><a href=""></a><span class="co">"""</span></span>
-<span id="cb5-5"><a href=""></a><span class="im">from</span> node <span class="im">import</span> Node</span>
-<span id="cb5-6"><a href=""></a>head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-7"><a href=""></a><span class="co"># Add five nodes to the beginning of the linked structure</span></span>
-<span id="cb5-8"><a href=""></a><span class="cf">for</span> count <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
-<span id="cb5-9"><a href=""></a>    head <span class="op">=</span> Node(count, head)</span>
-<span id="cb5-10"><a href=""></a><span class="co"># Print the contents of the structure</span></span>
-<span id="cb5-11"><a href=""></a><span class="cf">while</span> head <span class="op">!=</span> <span class="va">None</span>:</span>
-<span id="cb5-12"><a href=""></a>    <span class="bu">print</span>(head.data)</span>
-<span id="cb5-13"><a href=""></a>    head <span class="op">=</span> head.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="knowledge-check" class="slide level2">
-<h2>Knowledge Check!</h2>
-<aside class="notes">
-<ul>
-<li><p>if the programmer attempts to access a node’s data when the node reference variable is refers to Noon, Python will flag <code>AttributeError</code>.</p></li>
-<li><p>How to fix, <code>if nodeVariable != None:</code> <code>&lt;access a field in nodeVariable&gt;</code></p></li>
-<li><p>to copy full array into a linked structure:</p></li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>head <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb6-2"><a href=""></a>i <span class="op">=</span> <span class="bu">len</span>(array) <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb6-3"><a href=""></a><span class="cf">while</span> i <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
-<span id="cb6-4"><a href=""></a>    head <span class="op">=</span> Node(array[i], head)</span>
-<span id="cb6-5"><a href=""></a>    i <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<ol type="1">
-<li class="fragment">Using box and pointer notation, draw a picture of the nodes created by the first loop in the tester program.</li>
-<li class="fragment">What happens when a programmer attempts to access a node’s data fields when the node variable refers to None? How do you guard against it?</li>
-<li class="fragment">Write a code segment that transfers items from a full array to a singly linked structure. The operation should preserve the ordering of the items.</li>
-</ol>
-</section>
-<section id="operations-on-singly-linked-structures" class="slide level2">
-<h2>Operations on Singly Linked Structures</h2>
-<ul>
-<li>The programmer must emulate index-based operations on a linked structure by manipulating links within the structure</li>
-<li>This section covers how these manipulations are performed in common operations, such as
-<ul>
-<li>Traversals</li>
-<li>Insertions</li>
-<li>Removals</li>
-</ul></li>
-</ul>
-</section>
-<section id="traversals-linked-structures" class="slide level2">
-<h2>Traversals Linked Structures</h2>
-<ul>
-<li>Traversal
-<ul>
-<li>Uses a temporary pointer variable named probe</li>
-<li>This variable is initialized to the linked structure’s head pointer and then controls a loop as follows:</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>probe <span class="op">=</span> head</span>
-<span id="cb7-2"><a href=""></a><span class="cf">while</span> probe <span class="op">!=</span> <span class="va">None</span>:</span>
-<span id="cb7-3"><a href=""></a>  <span class="op">&lt;</span>use <span class="kw">or</span> modify probe.data<span class="op">&gt;</span></span>
-<span id="cb7-4"><a href=""></a>probe <span class="op">=</span> probe.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-<section id="traversal-linked-structures" class="slide level2">
-<h2>Traversal Linked Structures</h2>
-<ul>
-<li>Figure shows the state of the pointer variables probe and head during each pass of the loop
-<ul>
-<li><p>Traversing a linked structure</p>
-<ul>
-<li><img data-src="../images/traversal.png" style="width:50%"></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="searching-linked-structures" class="slide level2">
-<h2>Searching Linked Structures</h2>
-<ul>
-<li>The sequential search of a linked structure resembles a traversal:
-<ul>
-<li>You must start at the first node and follow the links until you reach a sentinel</li>
-</ul></li>
-<li>Two possible sentinels
-<ul>
-<li>The empty link, indicating there are no more data items to examine</li>
-<li>A data item that equals the target item, indicating a successful search</li>
-</ul></li>
-</ul>
-</section>
-<section id="searching-linked-structures-1" class="slide level2">
-<h2>Searching Linked Structures</h2>
+<section id="summary-when-to-use-what" class="slide level2">
+<h2>Summary: When to Use What</h2>
 <div class="smaller" style="font-size:35px;">
-<ul>
-<li>The form of the search for a given item:</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>probe <span class="op">=</span> head</span>
-<span id="cb8-2"><a href=""></a><span class="cf">while</span> probe <span class="op">!=</span> <span class="va">None</span> <span class="kw">and</span> targetItem <span class="op">!=</span> probe.data:</span>
-<span id="cb8-3"><a href=""></a>    probe <span class="op">=</span> probe.<span class="bu">next</span></span>
-<span id="cb8-4"><a href=""></a><span class="cf">if</span> probe <span class="op">!=</span> <span class="va">None</span>:</span>
-<span id="cb8-5"><a href=""></a>    <span class="op">&lt;</span>targetItem has been found<span class="op">&gt;</span></span>
-<span id="cb8-6"><a href=""></a><span class="cf">else</span>:</span>
-<span id="cb8-7"><a href=""></a>    <span class="op">&lt;</span>targetItem <span class="kw">is</span> <span class="kw">not</span> <span class="kw">in</span> the linked structure<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Accessing the ith item of a linked structure is also a sequential search operation</li>
-<li>Here is the form for accessing the ith item:</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="co"># Assumes 0 &lt;= index &lt; n</span></span>
-<span id="cb9-2"><a href=""></a>probe <span class="op">=</span> head</span>
-<span id="cb9-3"><a href=""></a><span class="cf">while</span> index <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb9-4"><a href=""></a>    probe <span class="op">=</span> probe.<span class="bu">next</span></span>
-<span id="cb9-5"><a href=""></a>    index <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb9-6"><a href=""></a><span class="cf">return</span> probe.data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Python List</th>
+<th style="text-align: left;">NumPy Array</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Data Type</strong></td>
+<td style="text-align: left;">Heterogeneous (mixed)</td>
+<td style="text-align: left;">Homogeneous (uniform)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Size</strong></td>
+<td style="text-align: left;">Dynamic (can grow/shrink)</td>
+<td style="text-align: left;">Fixed (expensive to resize)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Memory</strong></td>
+<td style="text-align: left;">High (stores pointers)</td>
+<td style="text-align: left;">Low (stores raw data)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Speed</strong></td>
+<td style="text-align: left;">Slower (interpreted loop)</td>
+<td style="text-align: left;">Faster (vectorized, compiled code)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Best For</strong></td>
+<td style="text-align: left;">General-purpose data, collections of mixed types</td>
+<td style="text-align: left;">Large-scale numerical computation, linear algebra</td>
+</tr>
+</tbody>
+</table>
 </div>
-<!-- ## Replacement Operations of Linked Structures
-- Replacement operations also employ the traversal pattern:
-    - Search for a given item or position in the linked structure and replace the item with a new item
-- The form of the operation:
-```{.python}
-# Assumes 0 <= index < n
-probe = head
-while probe != None and targetItem != probe.data:
-    probe = probe.next
-if probe != None:
-    probe.data = newItem
-    return True
-else:
-    return False
-```
+</section>
+<section id="in-class-challenge" class="slide level2">
+<h2>In-Class Challenge</h2>
+<div class="non-stretch-slide">
+<p>Let’s put your new knowledge to the test.</p>
+</div>
+<p>Write a short Python program that:</p>
+<ol type="1">
+<li>Imports the NumPy library.</li>
+<li>Creates a 2D NumPy array (a 3x4 matrix) of all zeros. Hint: <code>np.zeros()</code>.</li>
+<li>Calculates the average of the elements in the array and prints it.</li>
+<li>Calculates the sum of the elements along each column and prints it.</li>
+</ol>
+<aside class="notes">
+<ul>
+<li><p>Give students a few minutes to work on this independently or in pairs.</p></li>
+<li><p>Walk around and provide hints as needed.</p></li>
+<li><p>Solutions can be presented on the board afterward.</p></li>
+<li><p>Solution to Challenge</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a><span class="co"># 1. Create a 3x4 matrix of zeros</span></span>
+<span id="cb5-4"><a href=""></a>my_matrix <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">4</span>))</span>
+<span id="cb5-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Matrix:</span><span class="ch">\n</span><span class="sc">{</span>my_matrix<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="co"># 2. Calculate the average of all elements</span></span>
+<span id="cb5-8"><a href=""></a>matrix_mean <span class="op">=</span> np.mean(my_matrix)</span>
+<span id="cb5-9"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Average of all elements: </span><span class="sc">{</span>matrix_mean<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-10"><a href=""></a></span>
+<span id="cb5-11"><a href=""></a><span class="co"># 3. Calculate the sum of elements along each column (axis=0)</span></span>
+<span id="cb5-12"><a href=""></a>column_sums <span class="op">=</span> np.<span class="bu">sum</span>(my_matrix, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-13"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Sum of each column: </span><span class="sc">{</span>column_sums<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
 
-## Replacement Operations of Linked Structures
-The operation to replace the ith item assumes that 0 <= i < n
-Here is the form:
-```{.python}
-# Assumes 0 <= index < n
-probe = head
-while index > 0:
-    probe = probe.next
-    index -= 1
-probe.data = newItem
+<!-- ## Solution to Challenge
 
-```
+```python
+import numpy as np
 
-## Inserting at the Beginning
-- The form:
-    `head = Node(newItem, head)`
-- Figure below traces this operation for two cases:
-    - The pointer is None in the first case, so the item is inserted into the structure
-    - In the second case, the second item is inserted at the beginning of the same structure
-        - ![](../images/traversal.png){style="width:50%"} -->
+# 1. Create a 3x4 matrix of zeros
+my_matrix = np.zeros((3, 4))
+print(f"Matrix:\n{my_matrix}")
+
+# 2. Calculate the average of all elements
+matrix_mean = np.mean(my_matrix)
+print(f"Average of all elements: {matrix_mean}")
+
+# 3. Calculate the sum of elements along each column (axis=0)
+column_sums = np.sum(my_matrix, axis=0)
+print(f"Sum of each column: {column_sums}")
+``` -->
 
 </section></section>
     </div>

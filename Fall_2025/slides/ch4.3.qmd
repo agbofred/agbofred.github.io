@@ -1,5 +1,5 @@
 ---
-title: "Beyond the Python List"
+title: "Two-Dimensional Array"
 author: "Fred Agbo"
 date: September 17, 2025
 format:
@@ -10,256 +10,102 @@ format:
 ---
 ## Announcements
 - Welcome back!
-- First Mini-project (MP1) is due today at 10pm 
+- We briefly revisit Arrays: 2D
 
------
 
 <!-- ## title: "An Introduction to NumPy for Data Structures" subtitle: "Beyond the Python List" author: "Your Name/University" date: "Fall 2025" format: revealjs: slide-number: true css: styles.css theme: simple footer: "Data Structures - NumPy Lesson" logo: "logo.png" -->
 
-# Introducing Python NumPy for Data Structures
-
-## What's the Problem?
-
+## Introducing Two-Dimensional Arrays
 :::{.incremental}
 
-  - You're a data scientist analyzing a massive dataset.
-  - Your data contains a million numerical values.
-  - You need to perform a simple operation on all of them, 
-    - for example, squaring each number.
-  - How would you do this in standard Python?
+- So far, we've worked with one-dimensional arrays (lists or NumPy arrays).
+- But real-world data often comes in tables, grids, or matrices.
+- A **two-dimensional array** (2D array) is like a spreadsheet: rows and columns.
+- In Python, you can represent a 2D array as a "list of lists" or, more efficiently, as a NumPy array with two dimensions.
 :::
 
------
+## Example of 2D Array
+- A two-dimensional array or grid with four rows and five columns
 
-## Python Lists: The Swiss Army Knife
+![](../images/twoDArray.png){style="width:80%"}
 
-:::{.incremental}
+## Defining a 2D Array Class 
+- A 2D array also called `Grid` here  must recognize two methods that return the number of rows and the number of columns:
+- For purposes of discussion, these methods are named `getHeight` and `getWidth`
+Techniques for manipulating one-dimensional arrays are easily extended to grids
+- Code for the Grid class is shown in the next slide
 
-  - A standard Python list is a highly flexible, general-purpose container.
-  - It can store different data types (integers, floats, strings, even other lists) within the same structure.
-  - It's a "list of pointers" to objects stored in various memory locations.
-  - This flexibility comes at a cost...
-:::
+<!-- 
+The following code segment computes the sum of all the numbers in the variable grid: -->
 
------
-
-## Code Example: The List Approach
+## Code Example: Grid Class 
 
 ::: {.non-stretch-slide}
-Let's see the standard way to handle this.
 :::
 
 ```python
-import time
+from arrays import Array
 
-# Create a large list of integers
-my_list = list(range(10000000))
+class Grid(object):
+    """Represents a two-dimensional array."""
 
-# Time the operation
-start_time = time.time()
-
-# Square each element using a list comprehension
-squared_list = [x**2 for x in my_list]
-
-list_time = time.time() - start_time
-print(f"List comprehension time: {list_time:.4f} seconds")
+    def __init__(self, rows, columns, fillValue = None):
+        self.data = Array(rows) # recall that we previously defined the Array class which is imported  
+        for row in range (rows):
+            self.data[row] = Array(columns, fillValue)
+    
+    def getHeight(self):
+        """Returns the number of rows."""
+        return len(self.data)
+    
+    def getWidth(self):
+        "Returns the number of columns."""
+        return len(self.data[0])
+    
+    def __getitem__(self, index):
+        """Supports two-dimensional indexing
+        with [row][column]."""
+        return self.data[index]
+    
+    def __str__(self):
+        """Returns a string representation of the grid."""
+        result = ""
+        for row in range (self.getHeight()):
+            for col in range (self.getWidth()):
+                result += str(self.data[row][col]) + " "
+            result += "\n"
+        return result
 ```
 
------
+## Creating and Initializing a Grid 
 
-## Why is it so slow?
+-The following code segment traverses the grid to reset its cells to the values shown in next slide:
 
-:::{.incremental}
+```{.python}
+f# Go through rows
+for row in range(grid.getHeight()):
+    # Go through columns
+    for column in range(grid.getWidth()):
+        grid[row][column] = int(str(row) + str(column))
 
-  - Python has to "de-reference" each pointer one by one.
-  - The `for` loop is an interpreted operation.
-  - Python has to perform type checking on each element.
-  - Each calculation is done separately.
-:::
-
------
-
-## Enter NumPy: The Specialized Toolbox
-
-:::{.incremental style="font-size:35px;"}
-
-  - **NumPy** (Numerical Python) is the foundational library for scientific computing in Python.
-  - Its core object is the `ndarray` (n-dimensional array).
-  - Unlike a list, a NumPy array is:
-      - **Homogeneous:** All elements must be of the same data type.
-      - **Contiguous:** Stored in one single, continuous block of memory.
-      - **Optimized:** Operations are performed by fast C/Fortran code "under the hood."
-  - This design makes it perfect for numerical operations.
-:::
-
------
-
-## Code Example: Creating a NumPy Array
-
-```python
-import numpy as np
-
-# Create an array from a Python list
-my_np_array = np.array([1, 2, 3, 4, 5])
-print(f"Array: {my_np_array}")
-print(f"Type: {type(my_np_array)}")
-print(f"Data type: {my_np_array.dtype}") # Notice the single data type
-
-# NumPy forces homogeneity - it will upcast types
-hetero_list = [1, 2, 3.5, 4]
-hetero_array = np.array(hetero_list)
-print(f"Upcast array: {hetero_array}")
-print(f"Data type: {hetero_array.dtype}")
 ```
 
------
+## Creating and Initializing a Grid 
+:::{.smaller style="font-size:38px;"}
+- To create a Grid object,
+    - Run the `Grid` constructor with three arguments: height = 4, width = 5, and an initial fill value = 0:
 
-## The Power of Vectorization
+```{.python}
+from grid import Grid
+grid = Grid(4, 5, 0)
+print(grid)
 
-:::{.incremental}
-
-  - **Vectorization** is the ability to perform operations on entire arrays at once, without explicit Python loops.
-  - NumPy functions and operators are "vectorized" by default.
-  - This is where the massive speed gains come from.
-:::
-
------
-
-## Code Example: NumPy Performance Test
-
-```python
-import numpy as np
-import time
-
-# Create a large NumPy array
-large_np_array = np.arange(10000000)
-
-# Time the NumPy operation
-start_time = time.time()
-
-# Perform the vectorized operation
-squared_np_array = large_np_array**2
-
-np_time = time.time() - start_time
-print(f"NumPy vectorization time: {np_time:.4f} seconds")
-
-# Compare with our previous result
-# List time was ~ 2.0 seconds
-print("NumPy is orders of magnitude faster!")
+# >>> Output
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
 ```
-
------
-
-## Benefits of NumPy
-
-:::{.incremental}
-
-  - **Performance:** Vectorized operations are implemented in highly optimized C and Fortran code, making them significantly faster than Python loops.
-  - **Memory Efficiency:** Storing homogeneous data in contiguous memory blocks uses far less memory than a Python list. This is crucial for large datasets.
-  - **Rich Functionality:** NumPy includes a vast library of built-in mathematical, statistical, and linear algebra functions.
+- This was easier to acheive with Numpy as you did last week!
+- Worth seeing how traditonal array class implements 2D arrays
 :::
-
------
-
-## Code Example: Built-in Functions
-
-```python
-import numpy as np
-
-data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-
-print(f"Original Array: {data}")
-print(f"Sum of elements: {np.sum(data)}")
-print(f"Mean of elements: {np.mean(data)}")
-print(f"Standard deviation: {np.std(data)}")
-print(f"Maximum value: {np.max(data)}")
-
-# Or for a 2D array (matrix)
-matrix = np.array([[1, 2], [3, 4]])
-print(f"Sum of each column: {np.sum(matrix, axis=0)}")
-```
-
------
-
-## Pitfalls and Limitations
-
-:::{.incremental style="font-size:35px;"}
-
-  - **Homogeneity:** While a benefit for performance, it means NumPy is not suitable for data that must contain mixed types. For that, use a Python list or a Pandas DataFrame.
-  - **Fixed Size:** Resizing a NumPy array is a costly operation. If your data size changes frequently, a Python list's `append()` and `pop()` methods might be more efficient for those specific tasks.
-  - **Overhead for Small Data:** For small arrays (e.g., a few hundred elements), the overhead of creating a NumPy array might not be worth the speed gain.
-  - **Requires Installation:** It is a third-party library and must be installed separately.
-:::
-
------
-
-## Summary: When to Use What
-:::{.smaller style="font-size:35px;"}
-| Feature | Python List | NumPy Array |
-| :--- | :--- | :--- |
-| **Data Type** | Heterogeneous (mixed) | Homogeneous (uniform) |
-| **Size** | Dynamic (can grow/shrink) | Fixed (expensive to resize) |
-| **Memory** | High (stores pointers) | Low (stores raw data) |
-| **Speed** | Slower (interpreted loop) | Faster (vectorized, compiled code) |
-| **Best For** | General-purpose data, collections of mixed types | Large-scale numerical computation, linear algebra |
-:::
------
-
-## In-Class Challenge
-
-::: {.non-stretch-slide}
-Let's put your new knowledge to the test.
-:::
-
-Write a short Python program that:
-
-1.  Imports the NumPy library.
-2.  Creates a 2D NumPy array (a 3x4 matrix) of all zeros. Hint: `np.zeros()`.
-3.  Calculates the average of the elements in the array and prints it.
-4.  Calculates the sum of the elements along each column and prints it.
-
-::: {.notes}
-
-  - Give students a few minutes to work on this independently or in pairs.
-  - Walk around and provide hints as needed.
-  - Solutions can be presented on the board afterward.
-
-  - Solution to Challenge
-
-```python
-import numpy as np
-
-# 1. Create a 3x4 matrix of zeros
-my_matrix = np.zeros((3, 4))
-print(f"Matrix:\n{my_matrix}")
-
-# 2. Calculate the average of all elements
-matrix_mean = np.mean(my_matrix)
-print(f"Average of all elements: {matrix_mean}")
-
-# 3. Calculate the sum of elements along each column (axis=0)
-column_sums = np.sum(my_matrix, axis=0)
-print(f"Sum of each column: {column_sums}")
-```
-:::
-
------
-
-<!-- ## Solution to Challenge
-
-```python
-import numpy as np
-
-# 1. Create a 3x4 matrix of zeros
-my_matrix = np.zeros((3, 4))
-print(f"Matrix:\n{my_matrix}")
-
-# 2. Calculate the average of all elements
-matrix_mean = np.mean(my_matrix)
-print(f"Average of all elements: {matrix_mean}")
-
-# 3. Calculate the sum of elements along each column (axis=0)
-column_sums = np.sum(my_matrix, axis=0)
-print(f"Sum of each column: {column_sums}")
-``` -->
-
