@@ -377,17 +377,52 @@ Fred Agbo
 </section>
 <section id="a-circular-linked-structure-with-a-dummy-header-node-1" class="slide level2">
 <h2>A Circular Linked Structure with a Dummy Header Node</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="kw">class</span> Node:</span>
+<span id="cb3-2"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data<span class="op">=</span><span class="va">None</span>, <span class="bu">next</span><span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb3-3"><a href=""></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb3-4"><a href=""></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
+<span id="cb3-5"><a href=""></a></span>
+<span id="cb3-6"><a href=""></a><span class="kw">class</span> CircularLinkedList:</span>
+<span id="cb3-7"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-8"><a href=""></a>        <span class="co"># Create a dummy header node that points to itself</span></span>
+<span id="cb3-9"><a href=""></a>        <span class="va">self</span>.header <span class="op">=</span> Node()</span>
+<span id="cb3-10"><a href=""></a>        <span class="va">self</span>.header.<span class="bu">next</span> <span class="op">=</span> <span class="va">self</span>.header</span>
+<span id="cb3-11"><a href=""></a></span>
+<span id="cb3-12"><a href=""></a>    <span class="kw">def</span> insert(<span class="va">self</span>, data):</span>
+<span id="cb3-13"><a href=""></a>        <span class="co"># Insert new node at the end (before header)</span></span>
+<span id="cb3-14"><a href=""></a>        new_node <span class="op">=</span> Node(data, <span class="va">self</span>.header)</span>
+<span id="cb3-15"><a href=""></a>        probe <span class="op">=</span> <span class="va">self</span>.header</span>
+<span id="cb3-16"><a href=""></a>        <span class="cf">while</span> probe.<span class="bu">next</span> <span class="op">!=</span> <span class="va">self</span>.header:</span>
+<span id="cb3-17"><a href=""></a>            probe <span class="op">=</span> probe.<span class="bu">next</span></span>
+<span id="cb3-18"><a href=""></a>        probe.<span class="bu">next</span> <span class="op">=</span> new_node</span>
+<span id="cb3-19"><a href=""></a></span>
+<span id="cb3-20"><a href=""></a>    <span class="kw">def</span> remove(<span class="va">self</span>, data):</span>
+<span id="cb3-21"><a href=""></a>        <span class="co"># Remove first node with matching data</span></span>
+<span id="cb3-22"><a href=""></a>        probe <span class="op">=</span> <span class="va">self</span>.header</span>
+<span id="cb3-23"><a href=""></a>        <span class="cf">while</span> probe.<span class="bu">next</span> <span class="op">!=</span> <span class="va">self</span>.header <span class="kw">and</span> probe.<span class="bu">next</span>.data <span class="op">!=</span> data:</span>
+<span id="cb3-24"><a href=""></a>            probe <span class="op">=</span> probe.<span class="bu">next</span></span>
+<span id="cb3-25"><a href=""></a>        <span class="cf">if</span> probe.<span class="bu">next</span> <span class="op">!=</span> <span class="va">self</span>.header:</span>
+<span id="cb3-26"><a href=""></a>            probe.<span class="bu">next</span> <span class="op">=</span> probe.<span class="bu">next</span>.<span class="bu">next</span></span>
+<span id="cb3-27"><a href=""></a></span>
+<span id="cb3-28"><a href=""></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
+<span id="cb3-29"><a href=""></a>        probe <span class="op">=</span> <span class="va">self</span>.header.<span class="bu">next</span></span>
+<span id="cb3-30"><a href=""></a>        <span class="cf">while</span> probe <span class="op">!=</span> <span class="va">self</span>.header:</span>
+<span id="cb3-31"><a href=""></a>            <span class="cf">yield</span> probe.data</span>
+<span id="cb3-32"><a href=""></a>            probe <span class="op">=</span> probe.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="a-circular-linked-structure-with-a-dummy-header-node-2" class="slide level2">
+<h2>A Circular Linked Structure with a Dummy Header Node</h2>
 <ul>
 <li>Code for insertions at the ith position using the new representation of a linked structure:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="co">## Search for node at position index - 1 or the last position</span></span>
-<span id="cb3-2"><a href=""></a>probe <span class="op">=</span> head</span>
-<span id="cb3-3"><a href=""></a><span class="cf">while</span> index <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> probe.<span class="bu">next</span> <span class="op">!=</span> head:</span>
-<span id="cb3-4"><a href=""></a>    probe <span class="op">=</span> probe.<span class="bu">next</span></span>
-<span id="cb3-5"><a href=""></a>    index <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb3-6"><a href=""></a><span class="co"># Insert new node after node at position index - 1 or</span></span>
-<span id="cb3-7"><a href=""></a><span class="co"># last position</span></span>
-<span id="cb3-8"><a href=""></a>probe.<span class="bu">next</span> <span class="op">=</span> Node(newItem, probe.<span class="bu">next</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="co">## Search for node at position index - 1 or the last position</span></span>
+<span id="cb4-2"><a href=""></a>probe <span class="op">=</span> head</span>
+<span id="cb4-3"><a href=""></a><span class="cf">while</span> index <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> probe.<span class="bu">next</span> <span class="op">!=</span> head:</span>
+<span id="cb4-4"><a href=""></a>    probe <span class="op">=</span> probe.<span class="bu">next</span></span>
+<span id="cb4-5"><a href=""></a>    index <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb4-6"><a href=""></a><span class="co"># Insert new node after node at position index - 1 or</span></span>
+<span id="cb4-7"><a href=""></a><span class="co"># last position</span></span>
+<span id="cb4-8"><a href=""></a>probe.<span class="bu">next</span> <span class="op">=</span> Node(newItem, probe.<span class="bu">next</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><img data-src="../images/circular_node.png" style="width:45%;"></li>
 </ul>
@@ -421,44 +456,11 @@ Fred Agbo
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- class Node:
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
-
-class CircularLinkedList:
-    def __init__(self):
-        # Create a dummy header node that points to itself
-        self.header = Node()
-        self.header.next = self.header
-
-    def insert(self, data):
-        # Insert new node at the end (before header)
-        new_node = Node(data, self.header)
-        probe = self.header
-        while probe.next != self.header:
-            probe = probe.next
-        probe.next = new_node
-
-    def remove(self, data):
-        # Remove first node with matching data
-        probe = self.header
-        while probe.next != self.header and probe.next.data != data:
-            probe = probe.next
-        if probe.next != self.header:
-            probe.next = probe.next.next
-
-    def __iter__(self):
-        probe = self.header.next
-        while probe != self.header:
-            yield probe.data
-            probe = probe.next
-
-## More
+<!-- ## More
 :::{.smaller style="font-size: 35px;"}
 - Inserting an item at the end of a linked structure
     - ![](../images/insertAnyposition.png){style="width:75%"}
-::: -->
+:::  -->
 </section></section>
 <section>
 <section id="doubly-linked-structures" class="title-slide slide level1 center">
@@ -487,19 +489,19 @@ class CircularLinkedList:
 </section>
 <section id="doubly-linked-structures-implementation" class="slide level2">
 <h2>Doubly Linked Structures Implementation</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="kw">class</span> Node(<span class="bu">object</span>):</span>
-<span id="cb4-2"><a href=""></a>&nbsp;</span>
-<span id="cb4-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb4-4"><a href=""></a>        <span class="co">"""Instantiates a Node with default next of None"""</span></span>
-<span id="cb4-5"><a href=""></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
-<span id="cb4-6"><a href=""></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
-<span id="cb4-7"><a href=""></a>&nbsp;</span>
-<span id="cb4-8"><a href=""></a><span class="kw">class</span> TwoWayNode(Node):</span>
-<span id="cb4-9"><a href=""></a>&nbsp;</span>
-<span id="cb4-10"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, previous <span class="op">=</span> <span class="va">None</span>, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb4-11"><a href=""></a>        <span class="co">"""Instantiates a TwoWayNode."""</span></span>
-<span id="cb4-12"><a href=""></a>        Node.<span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span>)</span>
-<span id="cb4-13"><a href=""></a>        <span class="va">self</span>.previous <span class="op">=</span> previous</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="kw">class</span> Node(<span class="bu">object</span>):</span>
+<span id="cb5-2"><a href=""></a>&nbsp;</span>
+<span id="cb5-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb5-4"><a href=""></a>        <span class="co">"""Instantiates a Node with default next of None"""</span></span>
+<span id="cb5-5"><a href=""></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb5-6"><a href=""></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
+<span id="cb5-7"><a href=""></a>&nbsp;</span>
+<span id="cb5-8"><a href=""></a><span class="kw">class</span> TwoWayNode(Node):</span>
+<span id="cb5-9"><a href=""></a>&nbsp;</span>
+<span id="cb5-10"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, previous <span class="op">=</span> <span class="va">None</span>, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb5-11"><a href=""></a>        <span class="co">"""Instantiates a TwoWayNode."""</span></span>
+<span id="cb5-12"><a href=""></a>        Node.<span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span>)</span>
+<span id="cb5-13"><a href=""></a>        <span class="va">self</span>.previous <span class="op">=</span> previous</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="inserting-an-item-at-the-end-of-a-doubly-linked" class="slide level2">
 <h2>Inserting an Item at the End of a Doubly Linked</h2>

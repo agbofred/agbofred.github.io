@@ -110,6 +110,45 @@ return removedItem
 
 :::
 
+
+## A Circular Linked Structure with a Dummy Header Node 
+
+```{.python}
+class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+class CircularLinkedList:
+    def __init__(self):
+        # Create a dummy header node that points to itself
+        self.header = Node()
+        self.header.next = self.header
+
+    def insert(self, data):
+        # Insert new node at the end (before header)
+        new_node = Node(data, self.header)
+        probe = self.header
+        while probe.next != self.header:
+            probe = probe.next
+        probe.next = new_node
+
+    def remove(self, data):
+        # Remove first node with matching data
+        probe = self.header
+        while probe.next != self.header and probe.next.data != data:
+            probe = probe.next
+        if probe.next != self.header:
+            probe.next = probe.next.next
+
+    def __iter__(self):
+        probe = self.header.next
+        while probe != self.header:
+            yield probe.data
+            probe = probe.next
+
+```
+
 ## A Circular Linked Structure with a Dummy Header Node 
 - Code for insertions at the ith position using the new representation of a linked structure:
 
@@ -146,44 +185,11 @@ probe.next = Node(newItem, probe.next)
 :::
 
 
-<!-- class Node:
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
-
-class CircularLinkedList:
-    def __init__(self):
-        # Create a dummy header node that points to itself
-        self.header = Node()
-        self.header.next = self.header
-
-    def insert(self, data):
-        # Insert new node at the end (before header)
-        new_node = Node(data, self.header)
-        probe = self.header
-        while probe.next != self.header:
-            probe = probe.next
-        probe.next = new_node
-
-    def remove(self, data):
-        # Remove first node with matching data
-        probe = self.header
-        while probe.next != self.header and probe.next.data != data:
-            probe = probe.next
-        if probe.next != self.header:
-            probe.next = probe.next.next
-
-    def __iter__(self):
-        probe = self.header.next
-        while probe != self.header:
-            yield probe.data
-            probe = probe.next
-
-## More
+<!-- ## More
 :::{.smaller style="font-size: 35px;"}
 - Inserting an item at the end of a linked structure
     - ![](../images/insertAnyposition.png){style="width:75%"}
-::: -->
+:::  -->
 
 # Doubly Linked Structures
 
