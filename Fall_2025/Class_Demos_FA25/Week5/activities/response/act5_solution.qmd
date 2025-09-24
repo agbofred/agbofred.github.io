@@ -1,0 +1,68 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 5 Knowledge Check Solutions
+# author: "Fred Agbo"
+# date: August 27, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these qustions and write your answers in the space provided below it.
+
+
+1. Assume that the position of an item to be removed from a singly linked structure
+has been located. State the run-time complexity for completing the removal operation
+from that point.
+
+## Ans:
+- The run-time complexity for removing an item from a singly linked structure after that item has been located is O(1).
+
+\vspace{0.1cm}
+
+
+2. Can a binary search be performed on items that are in sorted order within a singly
+linked structure? If not, why not?
+
+## Ans:
+-   It is not practical to perform a binary search for an item on a singly linked structure. The runtime cost of locating the midpoint would be linear, so the running time of such a search would be worse than that of a sequential search.
+
+\vspace{0.1cm}
+
+
+3. Suggest a good reason that Python list uses an array rather than a linked structure
+to hold its items
+
+## Ans:
+- A Python list uses an array rather than a linked structure to hold its items because the running times of the access and replacement operations are O(1), and the memory usage is better when more than half of the array’s positions are occupied.
+
+\vspace{0.1cm}
+
+4. What advantage does a circular linked structure with a dummy header node give
+the programmer?
+
+## Ans:
+- A circular linked structure with a dummy header node enables the programmer to avoid special cases in the code for inserting or removing items at the head and tail of the structure.
+
+\vspace{0.1cm}
+
+5. Describe one benefit and one cost of a doubly linked structure, as compared to a
+singly linked structure.
+
+## Ans:
+-   One benefit of a doubly linked structure is that the operation to move to a previous item runs in constant time. One cost is that an extra memory cell is required for the second link in each node.

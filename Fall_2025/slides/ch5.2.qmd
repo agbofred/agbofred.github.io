@@ -1,0 +1,301 @@
+---
+title: "LINKED STRUCTURES: Part 2"
+author: "Fred Agbo"
+date: September 24, 2025
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+## Announcements
+- Welcome back!
+- Mini-Project #1 was graded. 
+    - Visit me if you have any questions on it
+    - My grading style nowadays is more of qualitative than quantitative 
+- Week 5 assignment (Problem set 2) was due today but __extended until next week Wednesday at 10pm__
+
+# Inserting and Removing Items at any Position
+
+## Inserting at Any Position   
+- The case of an insertion at the beginning uses the code presented earlier
+- In the case of an insertion at some other position i,
+- The operation must first find the node at position ***i − 1 (if i < n)*** or the node at position ***n − 1 (if i >= n)***
+- There are two cases to consider:
+    - That node’s next pointer is None
+    - That node’s next pointer is not None
+
+## Inserting at Any Position   
+```{.python}
+if head is None or index <= 0:
+    head = Node(newItem, head)
+else:
+    # Search for node at position index - 1 or the last position
+    probe = head
+    while index > 1 and probe.next != None:
+        probe = probe.next
+        index -= 1
+    # Insert new node after node at position index - 1
+    # or last position
+probe.next = Node(newItem, probe.next)
+
+```
+
+## Inserting at Any Position 
+:::{.smaller style="font-size: 30px;"}
+- Inserting an item between two items in a linked structure
+    - ![](../images/insertAnyposition.png){style="width:70%"}
+:::
+
+## Removing at Any Position 
+
+- The removal of the ith item from a linked structure has three cases:
+    - ***i <= 0***—You use the code to remove the first item
+    - ***0 < i < n***—You search for the node at position i – 1, as in insertion, and remove the following node
+    - ***i >= n***—You remove the last node
+
+## Removing at Any Position   
+```{.python}
+# Assumes that the linked structure has at least one item
+if index <= 0 or head.next is None:
+    removedItem = head.data
+    head = head.next
+    return removedItem
+else:
+    # Search for node at position index - 1 or
+    # the next to last position
+    probe = head
+    while index > 1 and probe.next.next != None:
+        probe = probe.next
+        index -= 1
+    removedItem = probe.next.data
+    probe.next = probe.next.next
+return removedItem
+
+```
+
+## Removing at Any Position 
+- Removing an item between two items in a linked structure
+    - ![](../images/removingAnyposition.png){style="width:50%"}
+
+
+## Complexity Trade-Off: Singly Linked Structures
+:::{.smaller style="font-size:23px;"}
+- The Running Times of Operations on Singly Linked Structures
+
+| Operation                | Running Time |
+|--------------------------|-------------|
+| Access (by position)     | O(n)        |
+| Search (by value)        | O(n)        |
+| Insertion at beginning   | O(1)        |
+| Insertion at end         | O(n)        |
+| Insertion at position i  | O(n)        |
+| Removal at beginning     | O(1)        |
+| Removal at end           | O(n)        |
+| Removal at position i    | O(n)        |
+
+- **Access/Search:** Must traverse from the head to the desired node.
+- **Insert/Remove at beginning:** Only requires updating the head pointer.
+- **Insert/Remove at end or position i:** Requires traversal to the appropriate node.
+:::
+
+## A Circular Linked Structure with a Dummy Header Node 
+:::{.smaller style="font-size: 28px;"}
+- The insertion and the removal of the first node are special cases of the insert ith and remove ith operations on singly linked structures:
+    - These cases are special because the head pointer must be reset
+- You can simplify these operations by using a circular linked structure with a dummy header node:
+    - A circular linked structure contains a link from the last node back to the first node in the structure
+    - This node, the dummy header node, contains no data but serves as a marker for the beginning and the end of the linked structure
+        - ![](../images/circularEmpty.png){style="width:40%;"}
+
+:::
+
+## A Circular Linked Structure with a Dummy Header Node 
+- Code for insertions at the ith position using the new representation of a linked structure:
+
+```{.python}
+## Search for node at position index - 1 or the last position
+probe = head
+while index > 0 and probe.next != head:
+    probe = probe.next
+    index -= 1
+# Insert new node after node at position index - 1 or
+# last position
+probe.next = Node(newItem, probe.next)
+
+```
+- ![](../images/circular_node.png){style="width:45%;"}
+
+:::{.notes}
+- A circular linked structure with a dummy header node is a variation of a linked list where:
+
+    - The list is circular: the last node points back to the first node (or, more precisely, to the dummy header node).
+    - There is a special node at the start called the dummy header node, which does not store user data. It simplifies edge cases (like insertions and deletions at the head or tail).
+
+- Key Features:
+
+    - The dummy header node’s next pointer always points to the first real node (or to itself if the list is empty).
+    - The last real node’s next pointer points back to the dummy header node, making the structure circular.
+    - This design eliminates the need for special-case code when inserting or deleting at the beginning or end of the list.
+    
+- Why use it?
+
+    - Simplifies code for insertion and deletion, as you never have to check for None or handle empty list cases separately.
+    - Traversal can start at header.next and continue until you reach the header again.
+
+:::
+
+
+<!-- class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+class CircularLinkedList:
+    def __init__(self):
+        # Create a dummy header node that points to itself
+        self.header = Node()
+        self.header.next = self.header
+
+    def insert(self, data):
+        # Insert new node at the end (before header)
+        new_node = Node(data, self.header)
+        probe = self.header
+        while probe.next != self.header:
+            probe = probe.next
+        probe.next = new_node
+
+    def remove(self, data):
+        # Remove first node with matching data
+        probe = self.header
+        while probe.next != self.header and probe.next.data != data:
+            probe = probe.next
+        if probe.next != self.header:
+            probe.next = probe.next.next
+
+    def __iter__(self):
+        probe = self.header.next
+        while probe != self.header:
+            yield probe.data
+            probe = probe.next
+
+## More
+:::{.smaller style="font-size: 35px;"}
+- Inserting an item at the end of a linked structure
+    - ![](../images/insertAnyposition.png){style="width:75%"}
+::: -->
+
+# Doubly Linked Structures
+
+
+## Doubly Linked Structures
+
+- A doubly linked structure has the advantages of a singly linked structure
+- In addition, it allows the user to do the following:
+    - Move left, to the previous node, from a given node
+    - Move immediately to the last node
+    - The figure in the next slide shows a doubly linked structure that contains three nodes:
+
+## Doubly Linked Structures
+- ![](../images/doubleLinked1.png){style="width:75%"}
+
+- Note the presence of two pointers, conventionally known as next and previous, in each node
+- Note also the presence of a second external tail pointer that allows direct access to the last node in the structure
+
+## Doubly Linked Structures Implementation
+
+```{.python}
+class Node(object):
+ 
+    def __init__(self, data, next = None):
+        """Instantiates a Node with default next of None"""
+        self.data = data
+        self.next = next
+ 
+class TwoWayNode(Node):
+ 
+    def __init__(self, data, previous = None, next = None):
+        """Instantiates a TwoWayNode."""
+        Node.__init__(self, data, next)
+        self.previous = previous
+
+```
+
+## Inserting an Item at the End of a Doubly Linked 
+![](../images/insertDoublyLink.png){style="width:85%"}
+
+## Summary: Linked Structures
+:::{.incremental style="font-size:27px"}
+- **Singly Linked Structures**
+    - Nodes contain data and a reference to the next node.
+    - Efficient insertion/removal at the beginning (O(1)), but O(n) for access, search, or operations at arbitrary positions.
+    - Insertion/removal at the end or at position i requires traversal.
+
+- **Circular Linked Structures with Dummy Header**
+    - Last node points back to the header node.
+    - Dummy header simplifies edge cases for insertion/removal.
+    - Useful for applications needing circular traversal.
+        - Example: Implementing a round-robin scheduler in operating systems.
+
+- **Doubly Linked Structures**
+    - Nodes have references to both next and previous nodes.
+    - Allows bidirectional traversal and efficient insertions/removals at both ends.
+    - Slightly more complex due to extra pointers.
+
+:::
+
+## Key Takeaways
+:::{.incremental}
+
+- Linked structures provide flexibility for dynamic data management.
+- Choice of structure (singly, circular, doubly) depends on required operations and efficiency.
+- Dummy header nodes simplify boundary cases.
+- Trade-offs exist between operation efficiency and implementation complexity.
+:::
+
+<!-- ### Full implementation of Doubly Linked
+```{.python}
+class Node(object):
+    def __init__(self, data, next=None):
+        """Instantiates a Node with default next of None"""
+        self.data = data
+        self.next = next
+
+class TwoWayNode(Node):
+    def __init__(self, data, previous=None, next=None):
+        """Instantiates a TwoWayNode."""
+        Node.__init__(self, data, next)
+        self.previous = previous
+
+class DoublyLinkedList(object):
+    def __init__(self):
+        # Create a dummy header node
+        self.header = TwoWayNode(None)
+        self.header.next = self.header
+        self.header.previous = self.header
+
+    def insert(self, data):
+        # Insert new node at the end (before header)
+        new_node = TwoWayNode(data, self.header.previous, self.header)
+        self.header.previous.next = new_node
+        self.header.previous = new_node
+
+    def remove(self, data):
+        # Remove first node with matching data
+        probe = self.header.next
+        while probe != self.header and probe.data != data:
+            probe = probe.next
+        if probe != self.header:
+            probe.previous.next = probe.next
+            probe.next.previous = probe.previous
+
+    def __iter__(self):
+        probe = self.header.next
+        while probe != self.header:
+            yield probe.data
+            probe = probe.next
+``` -->
+
+# Next week Reading:
+- FDS - Lambert 
+    - Chapters 5 & 6

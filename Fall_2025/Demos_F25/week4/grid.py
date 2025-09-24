@@ -29,8 +29,6 @@ class Grid(object):
                 result += str(self.data[row][col]) + " "
             result += "\n"
         return result
-
-grid = Grid(4, 5, 0)
-# Go through rows
-
+    
+grid = Grid(4, 5,0)
 print(grid)

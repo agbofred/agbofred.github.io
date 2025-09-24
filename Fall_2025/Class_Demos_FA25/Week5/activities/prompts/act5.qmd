@@ -1,0 +1,59 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 5 Knowledge Check
+# author: "Fred Agbo"
+# date: September 3, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+1. Assume that the position of an item to be removed from a singly linked structure
+has been located. State the run-time complexity for completing the removal operation
+from that point.
+
+
+
+\vspace{2cm}
+
+
+2. Can a binary search be performed on items that are in sorted order within a singly
+linked structure? If not, why not?
+
+\vspace{2.5cm}
+
+
+3. Suggest a good reason that Python list uses an array rather than a linked structure
+to hold its items
+
+\vspace{2cm}
+
+4. What advantage does a circular linked structure with a dummy header node give
+the programmer?
+
+
+\vspace{2cm}
+
+5. Describe one benefit and one cost of a doubly linked structure, as compared to a
+singly linked structure.
+
+
+\vspace{2cm}
