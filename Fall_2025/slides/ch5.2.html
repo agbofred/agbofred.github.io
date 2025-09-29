@@ -360,22 +360,57 @@ Fred Agbo
 <h2>A Circular Linked Structure with a Dummy Header Node</h2>
 <div class="smaller" style="font-size: 28px;">
 <ul>
-<li>The insertion and the removal of the first node are special cases of the insert ith and remove ith operations on singly linked structures:
+<li><p>The insertion and the removal of the first node are special cases of the insert ith and remove ith operations on singly linked structures:</p>
 <ul>
 <li>These cases are special because the head pointer must be reset</li>
 </ul></li>
-<li>You can simplify these operations by using a circular linked structure with a dummy header node:
+<li><p>You can simplify these operations by using a circular linked structure with a dummy header node:</p></li>
+<li><p>A circular linked structure with a dummy header node is a variation of a linked list where:</p>
 <ul>
-<li>A circular linked structure contains a link from the last node back to the first node in the structure</li>
-<li>This node, the dummy header node, contains no data but serves as a marker for the beginning and the end of the linked structure
-<ul>
-<li><img data-src="../images/circularEmpty.png" style="width:40%;"></li>
-</ul></li>
+<li>The list is circular: the last node points back to the first node (or, more precisely, to the dummy header node).</li>
+<li>There is a special node at the start called the dummy header node, which does not store user data. It simplifies edge cases (like insertions and deletions at the head or tail).</li>
 </ul></li>
 </ul>
 </div>
 </section>
 <section id="a-circular-linked-structure-with-a-dummy-header-node-1" class="slide level2">
+<h2>A Circular Linked Structure with a Dummy Header Node</h2>
+<div class="smaller" style="font-size: 30px;">
+<ul>
+<li><p>A circular linked structure contains a link from the last node back to the first node in the structure</p>
+<ul>
+<li><img data-src="../images/circularEmpty.png" style="width:40%;"></li>
+</ul></li>
+<li><p>Key Features:</p>
+<ul>
+<li>The dummy header node’s next pointer always points to the first real node (or to itself if the list is empty).</li>
+<li>The last real node’s next pointer points back to the dummy header node, making the structure circular.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="relevance-of-dommy-header-node" class="slide level2">
+<h2>Relevance of Dommy Header Node</h2>
+<div class="smaller" style="font-size: 30px;">
+<ul>
+<li><p>Why use it?</p>
+<ul>
+<li>Simplifies code for insertion and deletion, as you never have to check for None or handle empty list cases separately.</li>
+<li>Traversal can start at header.next and continue until you reach the header again.
+<ul>
+<li>This mean <code>head link</code> is always pointed to the header</li>
+</ul></li>
+</ul></li>
+<li><p>Why keep a tail pointer?</p>
+<ul>
+<li>The tail pointer allows constant-time (O(1)) access to the last node.</li>
+<li>Without it, inserting at the end or removing the last node would require traversing the entire list (O(n)).</li>
+<li>In circular lists with a dummy header, the tail pointer is especially useful for efficient end operations, even though the structure is circular.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="a-circular-linked-structure-with-a-dummy-header-node-2" class="slide level2">
 <h2>A Circular Linked Structure with a Dummy Header Node</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="kw">class</span> Node:</span>
 <span id="cb3-2"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data<span class="op">=</span><span class="va">None</span>, <span class="bu">next</span><span class="op">=</span><span class="va">None</span>):</span>
@@ -430,22 +465,37 @@ Fred Agbo
 <span id="cb3-51"><a href=""></a>clist.remove(<span class="dv">60</span>)</span>
 <span id="cb3-52"><a href=""></a>clist.print_last()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="a-circular-linked-structure-with-a-dummy-header-node-2" class="slide level2">
-<h2>A Circular Linked Structure with a Dummy Header Node</h2>
+<section id="a-circular-linked-structure" class="slide level2">
+<h2>A Circular Linked Structure</h2>
+<div class="smaller" style="font-size: 30px;">
 <ul>
-<li>Code for insertions at the ith position using the new representation of a linked structure:</li>
+<li>Code for insertions at the ith position using the new representation of a linked structure</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="co">## Search for node at position index - 1 or the last position</span></span>
-<span id="cb4-2"><a href=""></a>probe <span class="op">=</span> head</span>
-<span id="cb4-3"><a href=""></a><span class="cf">while</span> index <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> probe.<span class="bu">next</span> <span class="op">!=</span> head:</span>
-<span id="cb4-4"><a href=""></a>    probe <span class="op">=</span> probe.<span class="bu">next</span></span>
-<span id="cb4-5"><a href=""></a>    index <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb4-6"><a href=""></a><span class="co"># Insert new node after node at position index - 1 or</span></span>
-<span id="cb4-7"><a href=""></a><span class="co"># last position</span></span>
-<span id="cb4-8"><a href=""></a>probe.<span class="bu">next</span> <span class="op">=</span> Node(newItem, probe.<span class="bu">next</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- # ## Search for node at position index - 1 or the last position
+# probe = head
+# while index > 0 and probe.next != head:
+#     probe = probe.next
+#     index -= 1
+# # Insert new node after node at position index - 1 or
+# # last position
+# probe.next = Node(newItem, probe.next) -->
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="co"># Assuming we are using already existing header </span></span>
+<span id="cb4-2"><a href=""></a><span class="kw">def</span> insert_at(<span class="va">self</span>, index, data):</span>
+<span id="cb4-3"><a href=""></a>    <span class="co"># Insert a new node with 'data' at position 'index'</span></span>
+<span id="cb4-4"><a href=""></a>    probe <span class="op">=</span> <span class="va">self</span>.header</span>
+<span id="cb4-5"><a href=""></a>    <span class="cf">while</span> index <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> probe.<span class="bu">next</span> <span class="op">!=</span> <span class="va">self</span>.header:</span>
+<span id="cb4-6"><a href=""></a>        probe <span class="op">=</span> probe.<span class="bu">next</span></span>
+<span id="cb4-7"><a href=""></a>        index <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb4-8"><a href=""></a>    <span class="co"># Insert new node after probe</span></span>
+<span id="cb4-9"><a href=""></a>    new_node <span class="op">=</span> Node(data, probe.<span class="bu">next</span>)</span>
+<span id="cb4-10"><a href=""></a>    probe.<span class="bu">next</span> <span class="op">=</span> new_node</span>
+<span id="cb4-11"><a href=""></a>    <span class="co"># Update tail if inserted at the end</span></span>
+<span id="cb4-12"><a href=""></a>    <span class="cf">if</span> new_node.<span class="bu">next</span> <span class="op">==</span> <span class="va">self</span>.header:</span>
+<span id="cb4-13"><a href=""></a>        <span class="va">self</span>.tail <span class="op">=</span> new_node</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><img data-src="../images/circular_node.png" style="width:45%;"></li>
 </ul>
+</div>
 <aside class="notes">
 <ul>
 <li><p>A circular linked structure with a dummy header node is a variation of a linked list where:</p>
@@ -457,13 +507,16 @@ Fred Agbo
 <ul>
 <li>The dummy header node’s next pointer always points to the first real node (or to itself if the list is empty).</li>
 <li>The last real node’s next pointer points back to the dummy header node, making the structure circular.</li>
-<li>This design eliminates the need for special-case code when inserting or deleting at the beginning or end of the list.</li>
 </ul></li>
 <li><p>Why use it?</p>
 <ul>
 <li>Simplifies code for insertion and deletion, as you never have to check for None or handle empty list cases separately.</li>
 <li>Traversal can start at header.next and continue until you reach the header again.</li>
 </ul></li>
+<li><p>Why keep a tail pointer?</p>
+<pre><code>  - The tail pointer allows constant-time (O(1)) access to the last node.
+  - Without it, inserting at the end or removing the last node would require traversing the entire list (O(n)).
+  - In circular lists with a dummy header, the tail pointer is especially useful for efficient end operations, even though the structure is circular.</code></pre></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -476,11 +529,61 @@ Fred Agbo
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- ## More
-:::{.smaller style="font-size: 35px;"}
-- Inserting an item at the end of a linked structure
-    - ![](../images/insertAnyposition.png){style="width:75%"}
-:::  -->
+</section>
+<section id="knowledge-check" class="slide level2">
+<h2>Knowledge Check:</h2>
+<div class="smaller" style="font-size: 30px;">
+<ul>
+<li>Suppose you have a circular linked list with a dummy header node and four data nodes containing the values 10, 20, 30, and 40 (in that order). The structure is as follows:</li>
+</ul>
+<p><code>header → 10 → 20 → 30 → 40 → (back to header)</code></p>
+<ul>
+<li><p>If you call the <strong><em>remove(30)</em></strong> method, draw the circular linked structure before and after the removal.</p></li>
+<li><p>Clearly label the header node, all data nodes, and show the direction of all next pointers.</p></li>
+<li><p>Indicate which node is the header and which is the tail after the removal.</p></li>
+</ul>
+</div>
+<aside class="notes">
+<ul>
+<li>Before removal
+<pre style="font-size: 16px; line-height: 1.2;">+--------+      +-----+      +-----+      +-----+      +-----+
+| header | --&gt;  | 10  | --&gt;  | 20  | --&gt;  | 30  | --&gt;  | 40  |
++--------+      +-----+      +-----+      +-----+      +-----+
+  ^                                                    |
+  |____________________________________________________|
+</pre>
+<ul>
+<li>header.next → 10</li>
+<li>10.next → 20</li>
+<li>20.next → 30</li>
+<li>30.next → 40</li>
+<li>40.next → header</li>
+<li>tail points to 40</li>
+</ul></li>
+<li>After removal
+<pre style="font-size: 16px; line-height: 1.2;">+--------+      +-----+      +-----+      +-----+
+| header | --&gt;  | 10  | --&gt;  | 20  | --&gt;  | 40  |
++--------+      +-----+      +-----+      +-----+
+   ^                                      |
+   |______________________________________|
+</pre></li>
+<li>header.next → 10</li>
+<li>10.next → 20</li>
+<li>20.next → 40</li>
+<li>40.next → header</li>
+<li>tail still points to 40</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="doubly-linked-structures" class="title-slide slide level1 center">
@@ -503,25 +606,28 @@ Fred Agbo
 <h2>Doubly Linked Structures</h2>
 <ul>
 <li><p><img data-src="../images/doubleLinked1.png" style="width:75%"></p></li>
-<li><p>Note the presence of two pointers, conventionally known as next and previous, in each node</p></li>
-<li><p>Note also the presence of a second external tail pointer that allows direct access to the last node in the structure</p></li>
+<li><p>Note the presence of two pointers, conventionally known as <code>next</code> and <code>previous</code>, in each node</p></li>
+<li><p>Note also the presence of a second external <code>tail pointer</code> that allows direct access to the last node in the structure</p>
+<ul>
+<li>Tail pointer use is similar to the circular linked structure.</li>
+</ul></li>
 </ul>
 </section>
 <section id="doubly-linked-structures-implementation" class="slide level2">
 <h2>Doubly Linked Structures Implementation</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="kw">class</span> Node(<span class="bu">object</span>):</span>
-<span id="cb5-2"><a href=""></a>&nbsp;</span>
-<span id="cb5-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb5-4"><a href=""></a>        <span class="co">"""Instantiates a Node with default next of None"""</span></span>
-<span id="cb5-5"><a href=""></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
-<span id="cb5-6"><a href=""></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
-<span id="cb5-7"><a href=""></a>&nbsp;</span>
-<span id="cb5-8"><a href=""></a><span class="kw">class</span> TwoWayNode(Node):</span>
-<span id="cb5-9"><a href=""></a>&nbsp;</span>
-<span id="cb5-10"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, previous <span class="op">=</span> <span class="va">None</span>, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb5-11"><a href=""></a>        <span class="co">"""Instantiates a TwoWayNode."""</span></span>
-<span id="cb5-12"><a href=""></a>        Node.<span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span>)</span>
-<span id="cb5-13"><a href=""></a>        <span class="va">self</span>.previous <span class="op">=</span> previous</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="kw">class</span> Node(<span class="bu">object</span>):</span>
+<span id="cb6-2"><a href=""></a>&nbsp;</span>
+<span id="cb6-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb6-4"><a href=""></a>        <span class="co">"""Instantiates a Node with default next of None"""</span></span>
+<span id="cb6-5"><a href=""></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb6-6"><a href=""></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
+<span id="cb6-7"><a href=""></a>&nbsp;</span>
+<span id="cb6-8"><a href=""></a><span class="kw">class</span> TwoWayNode(Node):</span>
+<span id="cb6-9"><a href=""></a>&nbsp;</span>
+<span id="cb6-10"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, previous <span class="op">=</span> <span class="va">None</span>, <span class="bu">next</span> <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb6-11"><a href=""></a>        <span class="co">"""Instantiates a TwoWayNode."""</span></span>
+<span id="cb6-12"><a href=""></a>        Node.<span class="fu">__init__</span>(<span class="va">self</span>, data, <span class="bu">next</span>)</span>
+<span id="cb6-13"><a href=""></a>        <span class="va">self</span>.previous <span class="op">=</span> previous</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="inserting-an-item-at-the-end-of-a-doubly-linked" class="slide level2">
 <h2>Inserting an Item at the End of a Doubly Linked</h2>

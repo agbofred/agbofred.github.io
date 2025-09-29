@@ -104,11 +104,38 @@ return removedItem
 - The insertion and the removal of the first node are special cases of the insert ith and remove ith operations on singly linked structures:
     - These cases are special because the head pointer must be reset
 - You can simplify these operations by using a circular linked structure with a dummy header node:
-    - A circular linked structure contains a link from the last node back to the first node in the structure
-    - This node, the dummy header node, contains no data but serves as a marker for the beginning and the end of the linked structure
-        - ![](../images/circularEmpty.png){style="width:40%;"}
+- A circular linked structure with a dummy header node is a variation of a linked list where:
+
+    - The list is circular: the last node points back to the first node (or, more precisely, to the dummy header node).
+    - There is a special node at the start called the dummy header node, which does not store user data. It simplifies edge cases (like insertions and deletions at the head or tail).
+
 
 :::
+
+## A Circular Linked Structure with a Dummy Header Node 
+:::{.smaller style="font-size: 30px;"}
+- A circular linked structure contains a link from the last node back to the first node in the structure
+    - ![](../images/circularEmpty.png){style="width:40%;"}
+- Key Features:
+
+    - The dummy header node’s next pointer always points to the first real node (or to itself if the list is empty).
+    - The last real node’s next pointer points back to the dummy header node, making the structure circular.
+:::
+
+## Relevance of Dommy Header Node
+:::{.smaller style="font-size: 30px;"}
+- Why use it?
+
+    - Simplifies code for insertion and deletion, as you never have to check for None or handle empty list cases separately.
+    - Traversal can start at header.next and continue until you reach the header again.
+        - This mean `head link` is always pointed to the header 
+
+- Why keep a tail pointer?
+
+    - The tail pointer allows constant-time (O(1)) access to the last node.
+    - Without it, inserting at the end or removing the last node would require traversing the entire list (O(n)).
+    - In circular lists with a dummy header, the tail pointer is especially useful for efficient end operations, even though the structure is circular.
+:::    
 
 
 ## A Circular Linked Structure with a Dummy Header Node 
@@ -169,23 +196,40 @@ clist.print_last()
 
 ```
 
-## A Circular Linked Structure with a Dummy Header Node 
-- Code for insertions at the ith position using the new representation of a linked structure:
+## A Circular Linked Structure
+:::{.smaller style="font-size: 30px;"}
+- Code for insertions at the ith position using the new representation of a linked structure 
+
+<!-- # ## Search for node at position index - 1 or the last position
+# probe = head
+# while index > 0 and probe.next != head:
+#     probe = probe.next
+#     index -= 1
+# # Insert new node after node at position index - 1 or
+# # last position
+# probe.next = Node(newItem, probe.next) -->
 
 ```{.python}
-## Search for node at position index - 1 or the last position
-probe = head
-while index > 0 and probe.next != head:
-    probe = probe.next
-    index -= 1
-# Insert new node after node at position index - 1 or
-# last position
-probe.next = Node(newItem, probe.next)
-
+# Assuming we are using already existing header 
+def insert_at(self, index, data):
+    # Insert a new node with 'data' at position 'index'
+    probe = self.header
+    while index > 0 and probe.next != self.header:
+        probe = probe.next
+        index -= 1
+    # Insert new node after probe
+    new_node = Node(data, probe.next)
+    probe.next = new_node
+    # Update tail if inserted at the end
+    if new_node.next == self.header:
+        self.tail = new_node
 ```
 - ![](../images/circular_node.png){style="width:45%;"}
 
+:::
+
 :::{.notes}
+
 - A circular linked structure with a dummy header node is a variation of a linked list where:
 
     - The list is circular: the last node points back to the first node (or, more precisely, to the dummy header node).
@@ -195,21 +239,65 @@ probe.next = Node(newItem, probe.next)
 
     - The dummy header node’s next pointer always points to the first real node (or to itself if the list is empty).
     - The last real node’s next pointer points back to the dummy header node, making the structure circular.
-    - This design eliminates the need for special-case code when inserting or deleting at the beginning or end of the list.
     
 - Why use it?
 
     - Simplifies code for insertion and deletion, as you never have to check for None or handle empty list cases separately.
     - Traversal can start at header.next and continue until you reach the header again.
 
+- Why keep a tail pointer?
+
+        - The tail pointer allows constant-time (O(1)) access to the last node.
+        - Without it, inserting at the end or removing the last node would require traversing the entire list (O(n)).
+        - In circular lists with a dummy header, the tail pointer is especially useful for efficient end operations, even though the structure is circular.
+    
 :::
 
+## Knowledge Check:
+:::{.smaller style="font-size: 30px;"}
+- Suppose you have a circular linked list with a dummy header node and four data nodes containing the values 10, 20, 30, and 40 (in that order). The structure is as follows:
 
-<!-- ## More
-:::{.smaller style="font-size: 35px;"}
-- Inserting an item at the end of a linked structure
-    - ![](../images/insertAnyposition.png){style="width:75%"}
-:::  -->
+`header → 10 → 20 → 30 → 40 → (back to header)`
+
+- If you call the ***remove(30)*** method, draw the circular linked structure before and after the removal.
+
+- Clearly label the header node, all data nodes, and show the direction of all next pointers.
+- Indicate which node is the header and which is the tail after the removal.
+:::
+:::{.notes}
+- Before removal
+<pre style="font-size: 16px; line-height: 1.2;">
++--------+      +-----+      +-----+      +-----+      +-----+
+| header | -->  | 10  | -->  | 20  | -->  | 30  | -->  | 40  |
++--------+      +-----+      +-----+      +-----+      +-----+
+    ^                                                    |
+    |____________________________________________________|
+</pre>
+
+
+    - header.next → 10
+    - 10.next → 20
+    - 20.next → 30
+    - 30.next → 40
+    - 40.next → header
+    - tail points to 40
+
+- After removal
+<pre style="font-size: 16px; line-height: 1.2;">
++--------+      +-----+      +-----+      +-----+
+| header | -->  | 10  | -->  | 20  | -->  | 40  |
++--------+      +-----+      +-----+      +-----+
+     ^                                      |
+     |______________________________________|
+</pre>
+
+- header.next → 10
+- 10.next → 20
+- 20.next → 40
+- 40.next → header
+- tail still points to 40
+
+:::
 
 # Doubly Linked Structures
 
@@ -225,8 +313,9 @@ probe.next = Node(newItem, probe.next)
 ## Doubly Linked Structures
 - ![](../images/doubleLinked1.png){style="width:75%"}
 
-- Note the presence of two pointers, conventionally known as next and previous, in each node
-- Note also the presence of a second external tail pointer that allows direct access to the last node in the structure
+- Note the presence of two pointers, conventionally known as `next` and `previous`, in each node
+- Note also the presence of a second external `tail pointer` that allows direct access to the last node in the structure
+    - Tail pointer use is similar to the circular linked structure.
 
 ## Doubly Linked Structures Implementation
 

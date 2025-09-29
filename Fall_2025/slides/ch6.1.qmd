@@ -1,0 +1,385 @@
+---
+title: "INTERFACES"
+author: "Fred Agbo"
+date: September 29, 2025
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+## Announcements
+- Welcome to week 6!
+- Week 5 assignment (Problem set 2) will be due on __Wednesday at 10pm__
+
+## Learning Objectives
+
+- Develop an interface for a given collection type
+- Implement multiple classes that conform to the interface of a collection type
+- Assess the tradeoffs in running time and memory usage of multiple implementations of a given collection type
+- Implement a basic iterator
+
+
+## Developing an Interface
+:::{.smaller style="font-size: 33px;"}
+
+- An **interface** defines a set of methods and behaviors that a class must implement, without specifying how these methods are implemented.
+<!-- - In Python, interfaces are often represented using abstract base classes (ABCs) from the `abc` module. -->
+- When you run Python’s help function to obtain information about a module, data type, method, or function,
+    - You are accessing documentation about that resource’s interface
+- Interfaces are concise and informative:
+    - They allow you to grasp the behavior of a resource
+- In this section, you will develop the interface for a simple collection type called a `bag`:
+    - A bag interface allows clients to use bags effectively and allows implementers to produce new classes that implement this interface
+:::
+
+## Designing the Bag Interface
+:::{.incremental style="font-size: 33px;"}
+- Derive an interface from thinking about what bags can do in a real-world situation:
+    - A bag can contain any objects
+- You will want to know the following:
+    - How many things are in a bag
+    - How to add things to it or remove them from it
+    - Whether a bag is empty
+    - How to empty a bag in a single operation
+    - How to determine whether a given item is in a bag
+    - How to view each item in a bag without emptying it
+    - How to create a bag
+:::
+
+## Designing the Bag Interface
+:::{.smaller style="font-size: 33px;"}
+- The next step is to draw up a list of function names, method names, and operator symbols that meet the descriptions of these operations
+- Examples include:
+
+        - add
+        - clear
+        - count
+        - for ...
+        - in
+        - isEmpty
+        - len
+        - remove
+        - str
+        - +
+        - ==
+
+:::
+
+## Specifying Arguments and Return Values 
+:::{.smaller style="font-size: 30px;"}
+- Next, add arguments to the operations in the interface
+    - And think about what values, if any, they return
+- Below, variables `b` and `c` refer to bags
+
+```{.python}
+b.clear()	  		        # Make the bag empty
+for item in range(10):	    # Add 10 numbers to it
+    b.add(item)
+print(b)	  		        # Print the contents (a string)
+print(4 in b)	     		# Is 4 in the bag?
+print(b.count(2))	    	# 1 instance of 2 in the bag
+c = b + b	 		        # Contents replicated in a new bag
+print(len(c))	     		# 20 numbers
+for item in c:	    		# Print them all individually
+    print(item)
+for item in range(10):      # Remove half of them
+    c.remove(item)
+print(c == b)	  		    #Should be the same contents now
+
+```
+:::
+
+## Arguments for Bag Operations and Their Methods
+:::{.smaller style="font-size: 23px;"}
+
+| User’s Bag Operation      | Method in a Bag Class                      |
+|--------------------------|--------------------------------------------|
+| b = <class name>(<optional collection>) | __init__(self, sourceCollection=None)   |
+| b.add(item)              | `add(self, item)`                            |
+| b.clear()                | `clear(self)`                                |
+| b.count(item)            | `count(self, item) `                         |
+| b.isEmpty()              | `isEmpty(self) `                             |
+| b.remove(item)           | `remove(self, item) `                        |
+| len(b)                   | `__len__(self)`                              |
+| str(b)                   | `__str__(self)`                              |
+| for item in b            | `__iter__(self)`.                             |
+| item in b                | `__contains__(self, item)`       Not needed if `__iter__` is included             |
+| b1 + b2                  | `__add__(self, other) `                      |
+| b == anyObject           | `__eq__(self, other)`                        |
+
+:::
+
+## Constructors and Implementing Classes
+:::{.smaller style="font-size: 30px;"}
+- The first row in table above shows an operation that is the constructor for the particular type of bag being created
+- The syntactic form `<class name>` is used in the table to indicate that this can be the name of any implementing bag class:
+    - The method in the right column is always named `_init_`
+- An example of code segment that creates an empty linked bag and an array bag that contains the numbers in a given list is as shown:
+
+```{.python}
+from arraybag import ArrayBag
+from linkedbag import LinkedBag
+ 
+bag1 = LinkedBag()
+bag2 = ArrayBag([20, 60, 100, 43])
+```
+:::
+
+## Constructors and Implementing Classes
+:::{.smaller style="font-size: 30px;"}
+-   Final step before expressing an interface in code:
+    - describe clearly and concisely what each method does
+    - include not only what you expect to occur under normal conditions but also what will happen when something abnormal, such as an error, occurs
+- A more detailed form of documentation can include __preconditions__ and __postconditions__:
+    -  Precondition is a statement of what must be true for a method to perform its actions correctly
+    - Postcondition states what will be true after the method completes execution, assuming that its preconditions are also true:
+        - Usually included in __mutator methods__, which modify the internal state of an object
+
+:::
+
+## Exceptions and Documentation 
+
+- Documentation in an interface should include a statement of any exceptions that could be raised:
+    - Example, a bag’s `remove` method might raise a `KeyError` if the target item is not in the bag
+- A Python method header for the `remove` method:
+```{.python}
+def remove(self, item):
+"""Precondition: item is in self.
+Raises: KeyError if item in  not in self.
+   Postcondition: item is removed from self."""
+
+```
+
+## Coding an Interface in Python 
+- To create an interface, list each of the method headers with its documentation and complete each method with a single `pass` or `return` statement:
+    - A `pass` statement is used in the mutator methods that return no value, whereas each accessor method returns a simple default value, such as `False`, `0`, or `None`
+- So method headers can be checked with the compiler
+    - You may place them within a class whose suffix is “Interface”
+
+## BagInterface in Python 
+```{.python}
+"""
+File: baginterface.py
+Author: Ken Lambert
+"""
+ 
+class BagInterface(object):
+    """Interface for all bag types."""
+ 
+    # Constructor
+    def __init__(self, sourceCollection = None):
+        """Sets the initial state of self, which includes the
+        contents of sourceCollection, if it’s present."""
+        pass
+ 
+    # Accessor methods
+    def isEmpty(self):
+        """Returns True if len(self) == 0,
+        or False otherwise."""
+        return True
+ 
+    def __len__(self):
+        """Returns the number of items in self."""
+        return 0
+ 
+    def __str__(self):
+        """Returns the string representation of self."""
+        return ""
+ 
+    def __iter__(self):
+        """Supports iteration over a view of self."""
+        return None
+    def __add__(self, other):
+        """Returns a new bag containing the contents
+        of self and other."""
+        return None
+ 
+    def __eq__(self, other):
+        """Returns True if self equals other,
+        or False otherwise."""
+        return False
+     
+    def count(self, item):
+        """Returns the number of instances of item in self."""
+        return 0
+ 
+    # Mutator methods
+    def clear(self):
+        """Makes self become empty."""
+        pass
+ 
+    def add(self, item):
+        """Adds item to self."""
+        pass
+ 
+    def remove(self, item):
+        """Precondition: item is in self.
+        Raises: KeyError if item in not in self.
+        Postcondition: item is removed from self."""
+        pass
+
+```
+
+
+<!--
+## Inserting at Any Position 
+:::{.smaller style="font-size: 30px;"}
+- Inserting an item between two items in a linked structure
+    - ![](../images/insertAnyposition.png){style="width:70%"}
+:::
+
+## Removing at Any Position 
+
+- The removal of the ith item from a linked structure has three cases:
+    - ***i <= 0***—You use the code to remove the first item
+    - ***0 < i < n***—You search for the node at position i – 1, as in insertion, and remove the following node
+    - ***i >= n***—You remove the last node
+
+## Removing at Any Position   
+```{.python}
+# Assumes that the linked structure has at least one item
+if index <= 0 or head.next is None:
+    removedItem = head.data
+    head = head.next
+    return removedItem
+else:
+    # Search for node at position index - 1 or
+    # the next to last position
+    probe = head
+    while index > 1 and probe.next.next != None:
+        probe = probe.next
+        index -= 1
+    removedItem = probe.next.data
+    probe.next = probe.next.next
+return removedItem
+
+```
+
+## Removing at Any Position 
+- Removing an item between two items in a linked structure
+    - ![](../images/removingAnyposition.png){style="width:50%"}
+
+
+## Complexity Trade-Off: Singly Linked Structures
+:::{.smaller style="font-size:23px;"}
+- The Running Times of Operations on Singly Linked Structures
+
+| Operation                | Running Time |
+|--------------------------|-------------|
+| Access (by position)     | O(n)        |
+| Search (by value)        | O(n)        |
+| Insertion at beginning   | O(1)        |
+| Insertion at end         | O(n)        |
+| Insertion at position i  | O(n)        |
+| Removal at beginning     | O(1)        |
+| Removal at end           | O(n)        |
+| Removal at position i    | O(n)        |
+
+- **Access/Search:** Must traverse from the head to the desired node.
+- **Insert/Remove at beginning:** Only requires updating the head pointer.
+- **Insert/Remove at end or position i:** Requires traversal to the appropriate node.
+:::
+
+## A Circular Linked Structure with a Dummy Header Node 
+:::{.smaller style="font-size: 28px;"}
+- The insertion and the removal of the first node are special cases of the insert ith and remove ith operations on singly linked structures:
+    - These cases are special because the head pointer must be reset
+- You can simplify these operations by using a circular linked structure with a dummy header node:
+- A circular linked structure with a dummy header node is a variation of a linked list where:
+
+    - The list is circular: the last node points back to the first node (or, more precisely, to the dummy header node).
+    - There is a special node at the start called the dummy header node, which does not store user data. It simplifies edge cases (like insertions and deletions at the head or tail).
+
+
+:::
+
+## A Circular Linked Structure with a Dummy Header Node 
+:::{.smaller style="font-size: 30px;"}
+- A circular linked structure contains a link from the last node back to the first node in the structure
+    - ![](../images/circularEmpty.png){style="width:40%;"}
+- Key Features:
+
+    - The dummy header node’s next pointer always points to the first real node (or to itself if the list is empty).
+    - The last real node’s next pointer points back to the dummy header node, making the structure circular.
+:::
+
+## Relevance of Dommy Header Node
+:::{.smaller style="font-size: 30px;"}
+- Why use it?
+
+    - Simplifies code for insertion and deletion, as you never have to check for None or handle empty list cases separately.
+    - Traversal can start at header.next and continue until you reach the header again.
+        - This mean `head link` is always pointed to the header 
+
+- Why keep a tail pointer?
+
+    - The tail pointer allows constant-time (O(1)) access to the last node.
+    - Without it, inserting at the end or removing the last node would require traversing the entire list (O(n)).
+    - In circular lists with a dummy header, the tail pointer is especially useful for efficient end operations, even though the structure is circular.
+:::    
+
+
+## A Circular Linked Structure with a Dummy Header Node 
+
+```{.python}
+class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+class CircularLinkedList:
+    def __init__(self):
+        # Create a dummy header node that points to itself
+        self.header = Node()
+        self.header.next = self.header
+        self.tail = self.header 
+
+    def insert(self, data):
+        # Insert new node at the end (before header)
+        new_node = Node(data, self.header)
+        probe = self.header
+        while probe.next != self.header:
+            probe = probe.next
+        probe.next = new_node
+        self.tail = new_node
+
+    def remove(self, data):
+        # Remove first node with matching data
+        probe = self.header
+        while probe.next != self.header and probe.next.data != data:
+            probe = probe.next
+        if probe.next != self.header:
+            to_remove = probe.next
+            probe.next = to_remove.next
+            # If removing the tail, update tail
+            if to_remove == self.tail:
+                if probe == self.header:
+                    # List is now empty
+                    self.tail = self.header
+                else:
+                    self.tail = probe
+
+    def print_last(self):
+        if self.tail == self.header:
+            print("List is empty")
+        else:
+            print(self.tail.data)
+
+            
+clist = CircularLinkedList()
+clist.insert(10)
+clist.insert(20)
+clist.insert(30)
+clist.insert(50)
+clist.insert(60)
+clist.remove(60)
+clist.print_last()
+
+```
+
+
+
+# Next week Reading:
+- FDS - Lambert 
+    - Chapters 5 & 6 -->
