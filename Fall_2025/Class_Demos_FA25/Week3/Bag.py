@@ -46,7 +46,7 @@ class Bag(object):
                 j +=1
         self.collection = new_collection
     
-    #manuelly count the number of coocurenxe of an item        
+    #manually count the number of coocurences of an item        
     def count(self, item):
         cnt = 0
         for i in range(self.length()):
