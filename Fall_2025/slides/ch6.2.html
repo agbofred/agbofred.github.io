@@ -445,8 +445,8 @@ Fred Agbo
 <span id="cb4-15"><a href=""></a>    <span class="co">"""Returns True if self equals other,</span></span>
 <span id="cb4-16"><a href=""></a><span class="co">    or False otherwise."""</span></span>
 <span id="cb4-17"><a href=""></a>    <span class="cf">if</span> <span class="va">self</span> <span class="kw">is</span> other: <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb4-18"><a href=""></a>        <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other) <span class="kw">or</span> <span class="op">\</span></span>
-<span id="cb4-19"><a href=""></a>            <span class="bu">len</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">len</span>(other):</span>
+<span id="cb4-18"><a href=""></a>    <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb4-19"><a href=""></a>        <span class="bu">len</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">len</span>(other):</span>
 <span id="cb4-20"><a href=""></a>        <span class="cf">return</span> <span class="va">False</span></span>
 <span id="cb4-21"><a href=""></a>    <span class="cf">for</span> item <span class="kw">in</span> <span class="va">self</span>:</span>
 <span id="cb4-22"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.count(item) <span class="op">!=</span> other.count(item):</span>
@@ -582,7 +582,7 @@ Fred Agbo
 <span id="cb8-3"><a href=""></a>    cursor <span class="op">=</span> <span class="va">self</span>.items</span>
 <span id="cb8-4"><a href=""></a>    <span class="cf">while</span> cursor <span class="op">!=</span> <span class="va">None</span>:</span>
 <span id="cb8-5"><a href=""></a>        <span class="cf">yield</span> cursor.data</span>
-<span id="cb8-6"><a href=""></a>            cursor <span class="op">=</span> cursor.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href=""></a>        cursor <span class="op">=</span> cursor.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="linkedbag-complete-the-methods-clear-and-add" class="slide level2">
 <h2>LinkedBag: Complete the Methods <code>clear</code> and <code>add</code></h2>
