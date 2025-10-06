@@ -1,0 +1,184 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 7 Knowledge Check - Stack Applications
+# author: "Fred Agbo"
+# date: September 3, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+1. Following the example given in the slides, evaluate by hand the following postfix expressions: Show your working in the table below each expression.
+
+a. 10 5 4 +*
+b. 10 5 * 6 -
+c. 22 2 4 * /
+d. 33 6 + 3 4 / +
+
+### a. 10 5 4 +*
+| Step | Stack State         | Operation / Explanation         |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                                  |
+|  4   |                     |                                 |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+
+
+### b. 10 5 * 6 -
+| Step | Stack State         | Operation / Explanation         |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+
+
+\vspace{0.5cm}
+### c. 22 2 4 * /
+| Step | Stack State         | Operation / Explanation         |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+
+
+### d. 33 6 + 3 4 / +
+| Step | Stack State         | Operation / Explanation         |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+
+
+\vspace{0.5cm}
+
+2. What would be the complexity analysis for postfix evaluation?
+
+
+\vspace{1cm}
+
+
+3. Translate by hand the following infix expressions to postfix form: Show your working in the table below each expression.
+
+a. 33 - 2 15 * 6
+b. 11 * (6 + 2)
+c. 17 + 3 - 5
+d. 22 - 6 + 33 / 4
+
+
+#### a. 33 - 2 15 * 6
+
+| Step | Stack (Operators)   | Output (Postfix)                |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+|  8   |                     |                                 |
+|  9   |                     |                                 |
+|  10  |                     |                                 |
+
+
+**Postfix:** 
+
+---
+
+#### b. 11 * (6 + 2)
+
+| Step | Stack (Operators)   | Output (Postfix)                |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+|  8   |                     |                                 |
+|  9   |                     |                                 |
+|  10  |                     |                                 |
+
+**Postfix:** 
+
+---
+
+#### c. 17 + 3 - 5
+
+| Step | Stack (Operators)   | Output (Postfix)                |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+|  8   |                     |                                 |
+|  9   |                     |                                 |
+|  10  |                     |                                 |
+
+**Postfix:** 
+
+---
+
+#### d. 22 - 6 + 33 / 4
+
+| Step | Stack (Operators)   | Output (Postfix)                |
+|------|---------------------|---------------------------------|
+|  1   |                     |                                 |
+|  2   |                     |                                 |
+|  3   |                     |                                 |
+|  4   |                     |                                                  |
+|  5   |                     |                                 |
+|  6   |                     |                                 |
+|  7   |                     |                                 |
+|  8   |                     |                                 |
+|  9   |                     |                                 |
+|  10  |                     |                                 |
+
+
+**Postfix:** 
+
+\vspace{0.5cm}
+
+
+2. Perform a complexity analysis for a conversion of infix to postfix.
+
+\vspace{2.5cm}
+
+
