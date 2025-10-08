@@ -1,140 +1,265 @@
 ---
-title: "Midterm-1 Review"
-subtitle: "2024"
+title: "Midterm Examination: Data Structures and Algorithms"
+subtitle: "CS 152 Fall, 2025"
 format:
   html:
     theme:
       light: 
         - cosmo
-        - ../projects_light.scss
-      dark: 
-        - darkly
-        - ../projects_dark.scss
-    smooth-scroll: true
+        - psets.scss
+      dark: darkly
     fontsize: 1.2em
     highlight-style: atom-one
     toc: true
     toc-depth: 2
     html-math-method: katex
     embed-resources: true
-    title-block-banner: ./Images/banner.png
-    title-block-banner-color: black
+    title-block-banner: linear-gradient(90deg, rgba(12, 202, 139, 1) 0%, rgba(102, 46, 128, 1) 100%)
+    title-block-banner-color: white
 ---
-## Questions 1a-1d
-For each of the below expressions, write out both the value of the expression in the box provided. If the expression results in an error, simply type "Error" in the box. You can assume that the constant ALPHABET has already been defined earlier in the code as
+ The following is a midterm examination comprising 30 multiple-choice questions and 10 short-answer questions, developed exclusively from the previous topics covered in our data structure class. <!--Questions are organized sequentially by topic week. -->
 
-ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-
-and has the internal representation shown below, where I’ve labeled both positive and negative indices.<br>
-![](./Alphabet.png)
-
-(1a).    ```(9 - 3)  +  25  %  5  +  3  *  4  -  1  *  (4  -  3  **  3  +  5)  +  23  //  7```
-
-`Ans: 39`
-
-(1b).    2  +  3 ** 2  *  2  //  2  **  2  -  2  %  2
-
-`And: 6`
-
-(1c).  not (12  <  6  -  5  or  9 //  3  ==  3)
-
-`Ans: False`
-
-(1d).  ALPHABET [12:15:2]  +  ALPHABET[18::5]  +  ALPHABET[-8]
-
-`Ans: MOSXI`
+***
 
 
+### Part I: Multiple Choice Questions (30 Questions)
 
-# Questions 2a-2c
-(2a).     Given the program
-``` python
-def problem1(s):
-    r = ""
-    for i in range(len(s)):
-        if i % 2 != 0:
-            r += s[i]
-        else :
-            r = s[i] + r
-    return r
+Please select the best answer for each question. The correct answer is highlighted in **bold**.
 
-if __name__ == '__main__ ':
-    print(problem1("ressets"))
-```
-What will be printed to the terminal after the program execute?
-`Ans: sesrest`
+#### Week 1: Collections Overview
 
-(2b).      Consider the function below. What value will be printed to the terminal?
-```python
-def func(a, b=5, c= True): 
-    if c:
-        return a + c
-    else:
-        return a * b
-print(func(5,True,False))
-```
-`Ans: 5`
+1.  Which category of collection describes items ordered by position, where each non-endpoint item has a unique predecessor and successor?  
+  A. Graph Collection  
+  B. Hierarchical Collection  
+  C. Unordered Collection  
+  D. **Linear Collection**
 
-(2c). Determine what will be printed to the terminal after the program below executes
-```python
-def prob2a(s):
-    r = 0
-    new = ""
-    for i in range(len(s)):
-        if s[i].isspace() and is_english_word(s[r:i]):
-            new += prob2b(s[r:i])
-            r = i + 1
-    new += prob2b(s[r:])
-    return new
+2.  Which Python built-in collection type is described as an ordered, immutable sequence of items that lacks mutator methods like `append` or `sort`?  
+  A. List  
+  B. Dictionary  
+  C. Set  
+  D. **Tuple**
 
-def prob2b(y):
-    done = False
-    for r in y[:: -1]:
-        if done :
-            return r
-        if r. lower() in "aeiou":
-            done = True
-    return " "
-if __name__ == "__main__":
-    print(prob2a("Hit tie why wish noon rip lord ding"))
-```
-`Ans: Hi world`
+3.  In the context of collection organization, what are the successors of a data item in a hierarchical collection called?  
+  A. Parents  
+  B. Roots  
+  C. Leaves  
+  D. **Children**
 
-## Question 3
+4.  Which of the following operations is supported on *all* fundamental collection types?  
+  A. Slicing  
+  B. Binary Search  
+  C. **Traversal**  
+  D. Mutating (resizing)
 
-(3).  In many word puzzles or games, it is frequently desirable or useful to come up with new words which differ from a current word by only a single letter. For instance, if the starting word was boat, then words like moat, boot, and boar all would differ by only a single letter. The resulting word must be the same length as the original: imagine that you could just change a single letter to a different letter.
+5.  A collection where all items must be of the same data type is defined as:  
+  A. Dynamic  
+  B. **Homogeneous**  
+  C. Contiguous  
+  D. Abstract
 
-Here your task is to write a function called one_off that takes a single argument which will be the word as a string. Your function should then print out every word in the English language which differs from the input word by a single letter. At the end, it should return the number of words that were found.
+#### Week 2.1: Algorithms and Complexity
 
-The below would be one example of some output:
+6. What is the process of using a computer's clock to obtain the actual run time of an algorithm called?  
+    A. Complexity Analysis  
+    B. Rate of Growth Determination  
+    C. **Benchmarking or Profiling**  
+    D. Big-O Notation
+
+7.  Which complexity class describes the rate of growth of work that is proportional to the $\log_2$ of the problem size, meaning the work grows very slowly as input increases?  
+  A. Constant $O(1)$  
+  B. Linear $O(n)$  
+  C. **Logarithmic $O(\log n)$**  
+  D. Quadratic $O(n^2)$
+
+8.  In Big-O notation, what does the "O" stand for, referencing the order of complexity of the work of the algorithm?  
+  A. Optimal  
+  B. Output  
+  C. **On the order of**  
+  D. Overall
+
+9.  What is the best-case time complexity for the `sequentialSearch` algorithm?  
+  A. $O(n)$  
+  B. $O(\log n)$  
+  C. **O(1)**  
+  D. $O(n^2)$
+
+10. Which of the following sorting algorithms is generally considered the fastest among the $O(n^2)$ sorting methods for small arrays (e.g., 10 or 15 elements)?  
+  A. Selection Sort  
+  B. Bubble Sort  
+  C. **Insertion Sort**  
+  D. Quick Sort
+
+11. The complexity analysis for Bubble Sort determines that the total number of comparisons is calculated by the sum of $1 + 2 + 3 + \dots + (n-1)$, resulting in which Big-O notation?  
+  A. $O(n)$  
+  B. $O(\log n)$  
+  C. $O(n \log n)$  
+  D. **O(n^2)**
+
+#### Week 3.1: Recursion Applications and OOP
+
+12. When developing a recursive puzzle solver, which critical step ensures that the process eventually stops?  
+  A. Generating all possible next moves  
+  B. Defining the recursive case  
+  C. **Identifying the base case (when to stop recursion)**  
+  D. Marking visited positions
+
+13. The recursive approach used in the Tic-Tac-Toe case study to maximize the current player’s outcome while minimizing the opponent’s chance of winning is known as the:  
+  A. Depth-First Search Algorithm  
+  B. Tower of Hanoi Algorithm  
+  C. **Minimax Algorithm**  
+  D. Backtracking Algorithm
+
+14. According to the rules for the Tower of Hanoi puzzle, what is the main constraint regarding placing disks?  
+  A. Disks can only move to adjacent rods  
+  B. Only one disk can be moved per minute  
+  C. **No disk may be placed on top of a smaller disk**  
+  D. The largest disk must be moved first
+
+15. In Object-Oriented Programming (OOP), what is an **Object** defined as?  
+  A. A specialized type of array used for large data sets  
+  B. A list of pointers to data items  
+  C. **An instance of a class, containing data (attributes) and functions (methods)**  
+  D. A module containing only abstract method definitions
+
+#### Week 4: Arrays and NumPy
+
+16. Which characteristic of traditional arrays ensures that accessing the $i^{th}$ item takes $O(1)$ time?  
+  A. Mutability  
+  B. Heterogeneous content  
+  C. **Contiguous memory allocation**  
+  D. Dynamic size
+
+17. When a dynamic array needs to increase its physical size, which single step is responsible for the overall $O(n)$ running time complexity of the resizing operation?  
+  A. Incrementing the logical size  
+  B. Checking for available space  
+  C. Creating a new, larger array object  
+  D. **Copying the data from the old array to the new array**
+
+18. What is the fundamental, core object in the NumPy library that is homogeneous and optimized for mathematical operations?  
+  A. Python list  
+  B. Pandas DataFrame  
+  C. Array module's array type   
+  D. **`ndarray`**
+
+19. NumPy achieves significant speed performance benefits over standard Python lists for numerical calculations primarily through the use of:  
+  A. Multithreading  
+  B. Dynamic resizing  
+  C. **Vectorization**  
+  D. Interpreted loops
+
+20. What is the running time complexity for **Insert at the logical end** of a dynamic array, assuming capacity management is optimized for average case performance?  
+  A. $O(n)$  
+  B. $O(\log n)$  
+  C. **O(1)**
+  D. $O(n^2)$
+
+21. Which characteristic differentiates **traditional arrays** (e.g., in C or Java) from Python lists?  
+     A. They are mutable (elements can be changed).  
+     B. They support random access.  
+     C. **They have a fixed size; you cannot change their length after creation**.  
+     D. They store references to objects.
+
+#### Week 5: Linked Structures
+
+22. What characteristic related to memory allocation gives linked structures an advantage over arrays regarding insertion and removal operations?  
+  A. $O(1)$ random access  
+  B. **Nodes are scattered throughout memory (noncontiguous)**  
+  C. Fixed size  
+  D. Homogeneous data requirement
+
+23. When traversing a singly linked structure, why is it easy to access the successor of an item but difficult to access its predecessor?  
+  A. Only the head link is external  
+  B. **Nodes contain a reference only to the next node**  
+  C. The tail link is always `None`  
+  D. Traversal must be sequential
+
+24. What are the two possible sentinels that terminate a sequential search operation in a linked structure?  
+  A. The head node or the tail node  
+  B. The index position or the data item  
+  C. **The empty link (`None`) or a data item that equals the target item**  
+  D. The cursor reaching the head or the cursor reaching the tail
+
+25. What is the running time complexity for **Insertion at the end** of a singly linked structure, assuming traversal begins at the head link?  
+  A. $O(1)$  
+  B. **O(n)**  
+  C. $O(\log n)$  
+  D. $O(n^2)$
+
+26. Which structural feature is explicitly designed to simplify edge cases related to insertions and deletions at the beginning or end of a linked list?  
+  A. The use of a tail pointer  
+  B. The two-way node structure  
+  C. The noncontiguous memory allocation  
+  D. **A dummy header node**
+
+27. A **doubly linked structure** provides which operational advantage over a singly linked structure?  
+  A. $O(1)$ access by index  
+  B. **Ability to move to the previous node from a given node**  
+  C. $O(1)$ search by value  
+  D. Elimination of the `None` sentinel
+
+#### Week 6: Interfaces and Implementations (Bags)
+
+28. The core difference between an **Abstract Collection Type** and its **Implementations** is that the Abstract Type defines the collection's:  
+  A. Data structure (e.g., array or linked structure)  
+  B. Time complexity for all operations  
+  C. **Behavior and operations without specifying *how* they are implemented**  
+  D. Memory usage characteristics (space trade-offs)
+
+29. In the `LinkedBag` class, the `add` method achieves $O(1)$ complexity by performing insertion where?  
+  A. At the logical end  
+  B. After traversing to the second-to-last node  
+  C. **At the head of the linked structure**  
+  D. After a binary search for the correct position
+
+30. In the `ArrayBag` implementation, the `remove` method is challenging because, after finding the item, it requires which $O(n)$ operation?  
+  A. Reversing the array  
+  B. Re-creating the array with default capacity  
+  C. Searching the array again for the target item  
+  D. **Shifting the items to the left to close the hole**
+
+***
+
+### Part II: Short Answer Questions (10 Questions)
+
+Please answer the following questions clearly and concisely, drawing only on the provided source materials.
+
+1. Explain the key difference between a Python **list** and a Python **tuple** regarding mutability and methods.  
+    **Answer:** A Python list is an ordered, **mutable** collection that supports mutator methods like `append`, `insert`, `pop`, `remove`, and `sort`. A Python tuple is an ordered, **immutable** sequence of items and is essentially like a list but **without mutator methods**.
+
+2. List three fundamental operations supported on *all* collection types, as defined in the source material.  
+    **Answer:** Fundamental operations include **Insertion** (Add a new item), **Deletion** (Remove an item), **Traversal** (Visit each item), **Searching** (Find an item), **Access** (Retrieve an item), and **Update** (Modify an existing item, if mutable). (Any three of these are acceptable).
+   
+3. What is **complexity analysis**, and what is its primary advantage over platform-dependent timings (benchmarking or profiling)?  
+    **Answer:** Complexity analysis is a method of determining the efficiency of algorithms by reading the algorithm and using pencil and paper to work out simple algebra. Its advantage is that it allows rating algorithms **independently of platform-dependent timings** or impractical instruction counts.
+
+4.  List the three **end conditions (base cases)** that terminate the recursive function calls in the Tic-Tac-Toe solver using the Minimax algorithm.  
+  **Answer:** Recursion ends if: 1. **There is a winner** (three in a row). 2. **The board is full** (draw). 3. The function **returns the score of the board** (1 for win, -1 for loss, 0 for draw).
+
+5.  Contrast the **memory layout** difference between a **traditional/NumPy array** and a standard **Python list**.  
+  **Answer:** Traditional/NumPy arrays use **contiguous memory** (stored in one single block of memory). Python lists are dynamic and store **references (pointers) to objects** scattered throughout memory.
+
+6. Name and define three complexity classes (rates of growth) besides constant $O(1)$ and exponential $O(2^n)$.  
+    **Answer:**  
+    1. **Logarithmic $O(\log n)$:** The amount of work is proportional to the $\log_2$ of the problem size, growing slowly as input increases.  
+    2. **Linear $O(n)$:** The work grows in direct proportion to the size of the problem.  
+    3. **Quadratic $O(n^2)$:** The work grows as a function of the square of the problem size.  
+    *(Alternatively, Polynomial time $O(n^k)$, where $k$ is a constant $> 1$).*
+7. When **inserting** an item into a dynamic array at a specific `targetIndex` (not the logical end), what operation takes $O(n)$ time?  
+     **Answer:** The $O(n)$ operation is **shifting the items** from the logical end of the array to the target index position down by one, in order to open a hole for the new item.
+
+8. What are the two possible sentinels used in a **sequential search** of a linked structure?  
+     **Answer:**  
+     1. The **empty link** (`None`), indicating there are no more data items to examine.  
+     2. A data item that **equals the target item**, indicating a successful search.
+
+9.  What is the primary purpose of introducing a **dummy header node** in a circular linked structure?  
+  **Answer:** The dummy header node simplifies the code for insertion and deletion because it **eliminates the need to check for `None`** or **handle empty list cases separately** (edge cases).
+
+10. What specific role does the Python keyword **`yield`** play in the `__iter__` method of the `ArrayBag` or `LinkedBag` class implementation?  
+  **Answer:** The `yield` keyword is used to make the method a **generator**. It allows the object to be used in a **`for` loop**, serving up the collection's items one by one and supporting iteration.
 
 
->>> print(one_off("monkey"))
-
-donkey
-
-honkey
-
-2
 
 
-You are free to assume that list of ENGLISH_WORDS are already imported from english.py
 
-```python
-# Here is my version of the solution
-def one_off(word):
-    counter=0
-    for w in ENGLISH_WORDS:
-        if len(word)== len(w):
-            count = 0
-            for i in range(len(w)):
-                if w[i]== word[i]:
-                    count +=1
-            if count == len(word)-1:
-                print(w)
-                counter +=1
-    return counter
-            
-if __name__ == "__main__":
-    print(one_off("monkey"))
-```
