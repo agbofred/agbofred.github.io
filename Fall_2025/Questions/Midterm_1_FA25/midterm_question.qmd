@@ -222,22 +222,22 @@ Please select the best answer for each question.
 
 Please answer the following questions clearly and concisely, drawing only on the provided source materials.
 
-1. List the four general categories of collections defined in the learning objectives for Week 1.
+1. Explain the key difference between a Python **list** and a Python **tuple** regarding mutability and methods.
 
-2. Define the space/time trade-off in algorithm design.
+2. List three fundamental operations supported on *all* collection types.
 
-3. If Insertion Sort were modified to use binary search to find the insertion point, why would the overall time complexity remain $O(n^2)$?
+3. What is **complexity analysis**, and what is its primary advantage over platform-dependent timings (benchmarking or profiling)?
 
-4. List the three end conditions (base cases) that terminate the recursive function calls in the Tic-Tac-Toe solver using the Minimax algorithm.
+4. List the three **end conditions (base cases)** that terminate the recursive function calls in the Tic-Tac-Toe solver using the Minimax algorithm.
 
-5. Contrast the memory layout difference between a traditional/NumPy array and a standard Python list.
+5. Contrast the **memory layout** difference between a **traditional/NumPy array** and a standard **Python list**.
 
-6. Explain what Vectorization is in the context of NumPy and why it provides massive speed gains over standard Python lists for numerical operations.
+6. Name and define three complexity classes (rates of growth) besides constant $O(1)$ and exponential $O(2^n)$.
 
-7. In a singly linked structure, what are the running time complexities for Access by position and Insertion at the beginning?
+7. When **inserting** an item into a dynamic array at a specific `targetIndex` (not the logical end), what operation takes $O(n)$ time?
 
-8. What is the primary purpose of introducing a dummy header node in a circular linked structure?
+8. What are the two possible sentinels used in a **sequential search** of a linked structure?
 
-9. When comparing the memory usage of a full ArrayBag versus a LinkedBag of the same logical size, which implementation uses less memory, and what is the approximate memory cost difference in the worst case?
+9. What is the primary purpose of introducing a **dummy header node** in a circular linked structure?
 
-10. What specific role does the Python keyword `yield` play in the `__iter__` method of the `ArrayBag` or `LinkedBag` class implementation?
+10. What specific role does the Python keyword **`yield`** play in the `__iter__` method of the `ArrayBag` or `LinkedBag` class implementation?

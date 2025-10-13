@@ -31,8 +31,9 @@ Please select the best answer for each question. The correct answer is highlight
 1.  Which category of collection describes items ordered by position, where each non-endpoint item has a unique predecessor and successor?  
   A. Graph Collection  
   B. Hierarchical Collection  
-  C. Unordered Collection  
-  D. **Linear Collection**
+  C. **Linear Collection**
+  D. Unordered Collection  
+  
 
 2.  Which Python built-in collection type is described as an ordered, immutable sequence of items that lacks mutator methods like `append` or `sort`?  
   A. List  
@@ -61,9 +62,9 @@ Please select the best answer for each question. The correct answer is highlight
 #### Week 2.1: Algorithms and Complexity
 
 6. What is the process of using a computer's clock to obtain the actual run time of an algorithm called?  
-    A. Complexity Analysis  
-    B. Rate of Growth Determination  
-    C. **Benchmarking or Profiling**  
+    A. Complexity Analysis 
+    B. **Benchmarking or Profiling**   
+    C. Rate of Growth Determination  
     D. Big-O Notation
 
 7.  Which complexity class describes the rate of growth of work that is proportional to the $\log_2$ of the problem size, meaning the work grows very slowly as input increases?  
@@ -79,9 +80,9 @@ Please select the best answer for each question. The correct answer is highlight
   D. Overall
 
 9.  What is the best-case time complexity for the `sequentialSearch` algorithm?  
-  A. $O(n)$  
+  A. **O(1)**  
   B. $O(\log n)$  
-  C. **O(1)**  
+  C. $O(n)$ 
   D. $O(n^2)$
 
 10. Which of the following sorting algorithms is generally considered the fastest among the $O(n^2)$ sorting methods for small arrays (e.g., 10 or 15 elements)?  
@@ -106,8 +107,8 @@ Please select the best answer for each question. The correct answer is highlight
 
 13. The recursive approach used in the Tic-Tac-Toe case study to maximize the current player’s outcome while minimizing the opponent’s chance of winning is known as the:  
   A. Depth-First Search Algorithm  
-  B. Tower of Hanoi Algorithm  
-  C. **Minimax Algorithm**  
+  B. **Minimax Algorithm**  
+  C. Tower of Hanoi Algorithm  
   D. Backtracking Algorithm
 
 14. According to the rules for the Tower of Hanoi puzzle, what is the main constraint regarding placing disks?  
@@ -119,8 +120,8 @@ Please select the best answer for each question. The correct answer is highlight
 15. In Object-Oriented Programming (OOP), what is an **Object** defined as?  
   A. A specialized type of array used for large data sets  
   B. A list of pointers to data items  
-  C. **An instance of a class, containing data (attributes) and functions (methods)**  
-  D. A module containing only abstract method definitions
+  C. A module containing only abstract method definitions 
+  D. **An instance of a class, containing data (attributes) and functions (methods)** 
 
 #### Week 4: Arrays and NumPy
 
