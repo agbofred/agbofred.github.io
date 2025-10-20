@@ -24,10 +24,13 @@ class ArrayStack(AbstractStack):
     def peek(self):
         if self.isEmpty():
             raise KeyError("The stack is empty") 
-        return self.items[len(self)-1]
+        return self.items[self.size -1]
     
     # Mutator functions
     
+    def add(self, item):
+        self.push(item)
+        
     def push(self, item):
         #resizing the array here if neccesary
         if self.size == len(self):
@@ -47,10 +50,12 @@ class ArrayStack(AbstractStack):
         if self.isEmpty():
             raise KeyError("The stack is empty") 
         oldItem = self.items[len(self)-1]
-        self.size -=1
+        self.size -= 1
         # resize the Array here if necessary
-        # temp = Array(len(self)-1)
-        # for i in range(self.size):
-        #     temp[i] == self.items[i]
-        # self.items = temp
+        temp = Array(len(self.items)-1)
+        # print(f"TEMP---->{len(temp)}")
+        # print(f"ITEMS---->{len(self.items)}")
+        for i in range(len(temp)):
+            temp[i] = self.items[i]
+        self.items = temp
         return oldItem

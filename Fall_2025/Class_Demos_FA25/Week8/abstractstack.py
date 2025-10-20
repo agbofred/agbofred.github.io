@@ -8,7 +8,7 @@ class AbstractStack(object):
         self.size = 0
         if sourceCollection:
             for i in sourceCollection:
-                self.push(i)
+                self.add(i)
                 
     def isEmpty(self):
         """Returns True if stack is empty. Otherwise, returns False 

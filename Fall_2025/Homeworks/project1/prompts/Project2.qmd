@@ -25,7 +25,7 @@ This mini-project question has template files in the repository. You’ll need t
 ```
 <br>
 
-# Project Title: Tower of Hanoi Puzzle
+# Project 1: Tower of Hanoi Puzzle
 
 ## Project Overview
 
@@ -108,3 +108,47 @@ Puzzle complete!
 - Your `ArrayStack` and `TowerOfHanoi` class implementations.
 - A main program that demonstrates the solution.
 - Well-commented code.
+
+
+## Infix to Postfix Converter
+
+### Project Overview
+
+Write a program that converts infix expressions to postfix expressions. This project will reinforce your understanding of stacks, tokenization, and expression parsing.
+
+---
+
+### Requirements
+
+#### 1. Use Token and Scanner Classes
+
+- Utilize the `Token` and `Scanner` classes developed in the case study.
+
+#### 2. Implement IFToPFConverter Class
+
+- Create a class named `IFToPFConverter`.
+- The constructor should accept a `Scanner` object.
+- Implement a `convert` method that converts the infix expression to postfix using the algorithm described in the chapter.
+- The `convert` method should return a list of tokens representing the postfix expression.
+
+#### 3. Update Token Class
+
+- Add a method `getPrecedence()` to the `Token` class.
+- This method should return an integer representing the precedence level of an operator.
+
+#### 4. Main Program
+
+- The main function should:
+  - Receive an input string from the user.
+  - Create a `Scanner` object with the input string.
+  - Pass the scanner to the `IFToPFConverter` constructor.
+  - Call the `convert` method to obtain the postfix expression.
+  - Display the resulting postfix string.
+
+#### 5. Assumptions
+
+- You may assume the user always enters a syntactically correct infix expression.
+
+---
+
+### Example Usage

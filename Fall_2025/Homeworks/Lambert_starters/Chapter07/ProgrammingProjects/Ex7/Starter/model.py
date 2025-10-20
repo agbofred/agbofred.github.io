@@ -17,7 +17,7 @@ class PFEvaluatorModel(object):
    
     def format(self, sourceStr):
         normalizedStr = ""
-        scanner = Scanner(sourceStr);
+        scanner = Scanner(sourceStr)
         while scanner.hasNext():
             normalizedStr += str(scanner.next()) + " "
         return normalizedStr;   
