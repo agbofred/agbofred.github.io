@@ -87,6 +87,7 @@ def main():
         if sourceStr.strip() == "":
             break
         format = pf.format(sourceStr)
+        print(format)
         eval = pf.evaluate(format) 
         print(eval)
             
