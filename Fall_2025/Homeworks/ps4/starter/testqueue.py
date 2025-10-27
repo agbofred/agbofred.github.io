@@ -4,7 +4,7 @@ A tester program for queue implementations.
 """
 
 from arrayqueue import ArrayQueue
-from linkedqueue import LinkedQueue
+#from linkedqueue import LinkedQueue
 
 def test(queueType):
     # Test any implementation with same code
@@ -46,5 +46,5 @@ def test(queueType):
         q.add(count)
     print(q)
 
-#test(ArrayQueue)
-test(LinkedQueue)
+test(ArrayQueue)
+#test(LinkedQueue)
