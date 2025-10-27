@@ -1,0 +1,148 @@
+---
+title: "Problem Set 4: Queues Structures and Its Implementation"
+subtitle: "Due: November  3, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+This assignment allow you to implement Queue structure using array collection and compare the `arrayqueues` vs `linkedqueues`.
+  
+  You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/QLPGMJ3O' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+---
+
+## ArrayQueue Implementation Worksheet
+
+### Instructions
+
+Implement the `ArrayQueue` class using the provided template (`arrayqueue_template.py`). Use your understanding of array-based queues and refer to the `ArrayStack` implementation for guidance. Your instructor will provide a `testqueue.py` file to test your code.
+
+### Tasks
+
+- Complete the `ArrayQueue` class by implementing all required methods:
+  - `__init__` (constructor)
+  - `__iter__`
+  - `peek`
+  - `add`
+  - `pop`
+  - `clear`
+- Use the `ArrayStack` as a guide for array resizing and index management.
+- Ensure your queue supports **circular array behavior** for efficient use of space.
+- After you finish, write a short comment in your file comparing the time and space complexity (Big O) of `ArrayQueue` and `LinkedQueue` for all major operations.
+
+### Submission
+
+- Edit `arrayqueue_template.py` with your implementation.
+- Add your complexity comparison comment at the end of the file.
+- Test your code using `testqueue.py`.
+- Submit your completed file as instructed.
+
+### Solution
+
+```{.python}
+from arrays import Array
+from abstractqueue import AbstractQueue
+
+class ArrayQueue(AbstractQueue):
+    "Array-based queue collections"
+    
+    # Array inital capacity
+    DEFAULT_CAPACITY = 10
+    
+    #Constructor
+    """Initializes the state of self which include any items from sourcecollector"""
+    def __init__(self, sourceCollection = None):
+        self.items = Array(ArrayQueue.DEFAULT_CAPACITY)
+        # We must inititalize the front and rear variables to also use them to trace the pop and add
+        self.front = -1
+        self.rear = -1
+        AbstractQueue.__init__(self, sourceCollection)
+    
+    # Accessors 
+    def __iter__(self):
+        """Supports iteration over self. Visits items bottom to top of stack"""
+        cursor = self.front
+        while cursor !=self.rear:
+            yield self.items[cursor]
+            if cursor == len(self.items)-1:
+                cursor = 0
+            else:
+                cursor += 1
+        if cursor == self.rear and cursor != -1:
+            yield self.items[cursor]
+    
+    def peek(self):
+        if self.isEmpty():
+            raise KeyError("The Queue is empty") 
+        return self.items[self.front]
+    
+    # Mutator functions
+        
+    def add(self, item):
+        #resizing the array here if neccesary
+        if len(self) == len(self.items):
+            temp = Array(len(self.items) *2)
+            for i in range (self.size):
+                temp[i] = self.items[i]
+            self.items = temp  
+            if not self.isEmpty():
+                self.front = 0
+                self.rear = len(self) - 1
+        if self.isEmpty():
+            self.front = self.rear = 0
+        elif self.rear == len(self.items) - 1:
+            self.rear = 0
+        else:
+            self.rear += 1  
+        self.items[self.rear] = item
+        self.size +=1
+        
+    def clear(self):
+        self.size =0
+        self.front = self.rear = -1
+        self.items = Array(ArrayQueue.DEFAULT_CAPACITY)
+        
+    def pop(self):
+        #Check the precondition that the stack is not empty
+        if self.isEmpty():
+            raise KeyError("The stack is empty") 
+        oldItem = self.items[self.front]
+        self.size -= 1
+        # resize the Array here if necessary
+        if self.isEmpty():
+            self.front = self.rear = -1
+        elif self.front == len(self.items) - 1:
+            self.front = 0
+        else:
+            self.front += 1
+        if len(self) <= 0.25 * len(self.items) \
+            and ArrayQueue.DEFAULT_CAPACITY <= len(self.items) //2:
+            temp = Array(len(self.items)// 2)
+            i = 0
+            for item in self:
+                temp[i] = item
+                i +=1
+            self.items = temp
+            if not self.isEmpty():
+                self.front = 0
+                self.rear = len(self) -1
+        return oldItem
+```

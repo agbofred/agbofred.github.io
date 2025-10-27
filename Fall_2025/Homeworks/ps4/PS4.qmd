@@ -1,0 +1,56 @@
+---
+title: "Problem Set 4: Queues Structures and Its Implementation"
+subtitle: "Due: November  3, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+This assignment allow you to implement Queue structure using array collection and compare the `arrayqueues` vs `linkedqueues`.
+  
+  You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/QLPGMJ3O' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+---
+
+## ArrayQueue Implementation Worksheet
+
+### Instructions
+
+Implement the `ArrayQueue` class using the provided template (`arrayqueue_template.py`). Use your understanding of array-based queues and refer to the `ArrayStack` implementation for guidance. Your instructor will provide a `testqueue.py` file to test your code.
+
+### Tasks
+
+- Complete the `ArrayQueue` class by implementing all required methods:
+  - `__init__` (constructor)
+  - `__iter__`
+  - `peek`
+  - `add`
+  - `pop`
+  - `clear`
+- Use the `ArrayStack` as a guide for array resizing and index management.
+- Ensure your queue supports **circular array behavior** for efficient use of space.
+- After you finish, write a short comment in your file comparing the time and space complexity (Big O) of `ArrayQueue` and `LinkedQueue` for all major operations.
+
+### Submission
+
+- Edit `arrayqueue_template.py` with your implementation.
+- Add your complexity comparison comment at the end of the file.
+- Test your code using `testqueue.py`.
+- Submit your completed file as instructed.
