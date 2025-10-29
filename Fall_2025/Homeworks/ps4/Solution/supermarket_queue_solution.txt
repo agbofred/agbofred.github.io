@@ -1,0 +1,54 @@
+Supermarket Queue Analysis Solution
+
+1. Fixed Rates
+
+a) Minimum number of cashiers required:
+- Customers arrive every 2 minutes: 30 customers per hour (60/2 = 30).
+- Each cashier can process 12 customers per hour (60/5 = 12).
+- To meet demand: 30 / 12 = 2.5 cashiers.
+- Since you can't have half a cashier, you need at least 3 cashiers.
+
+b) Will customers need to wait in line?
+- With 3 cashiers, they can process 3 × 12 = 36 customers per hour, which is more than the 30 arriving.
+- No, customers will not need to wait in line (assuming arrivals and service are perfectly regular).
+
+c) Idle time per cashier per hour:
+- Total cashier capacity: 36 customers/hour.
+- Only 30 customers arrive, so 6 "slots" are unused.
+- Idle time per cashier: 6 idle slots per hour, spread over 3 cashiers = 2 idle slots per cashier.
+- Each slot is 5 minutes: 2 × 5 = 10 minutes idle per cashier per hour.
+
+2. Average (Variable) Rates
+
+a) Effect on customer wait time:
+- With variable arrivals and service times, sometimes more than one customer may arrive close together, or a cashier may take longer than 5 minutes.
+- This variability means customers will sometimes have to wait in line, even if the average rates are balanced.
+
+b) Effect on average idle time per cashier:
+- On average, the idle time per cashier will be similar, but the distribution will be less predictable.
+- Some cashiers may be busier or more idle in a given hour, but the average idle time per cashier over many hours will remain about the same.
+
+c) Effect of changing the number of cashiers:
+- Decreasing cashiers: Fewer cashiers means each can handle fewer customers per hour. If the number of cashiers is less than 3, the system cannot keep up, and lines will grow.
+- Increasing cashiers: More cashiers means more capacity than needed, so customers will almost never wait, but each cashier will have more idle time.
+
+Summary Table:
+
+| Number of Cashiers | Customers Served/Hour | Idle Time per Cashier/Hour | Wait Time?         |
+|--------------------|----------------------|---------------------------|--------------------|
+| 2                  | 24                   | 0                         | Yes, lines grow    |
+| 3                  | 36                   | 10 min                    | No (fixed rates)   |
+| 4                  | 48                   | 22.5 min                  | No, more idle time |
+
+With variable rates, even with 3 cashiers, occasional waiting is expected, but average idle time remains similar.
+
+Reflection Question Answer:
+
+The supermarket checkout scenario is a real-world example of a queue data structure. In this context:
+- The queue represents the line of customers waiting to be checked out.
+- The "enqueue" operation occurs when a new customer arrives and joins the end of the line.
+- The "dequeue" operation happens when the customer at the front of the line is served by a cashier and leaves the queue.
+- The queue operates in a First-In-First-Out (FIFO) manner: the first customer to join the line is the first to be served and leave.
+- If the arrival rate of customers exceeds the service rate, the queue grows longer, reflecting how waiting lines form in real life.
+- If the service rate is higher than the arrival rate, the queue may be empty at times, and cashiers may be idle.
+- The properties of the queue—FIFO order, dynamic length, and the concept of waiting—are all directly modeled by the supermarket checkout process.

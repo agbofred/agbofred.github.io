@@ -1,0 +1,55 @@
+supermarket_queue.txt
+########################################
+# Your Name:
+# Indicate any collaborators or tools used to assist you including AI:
+# Estimated time spent (hrs):
+########################################
+
+Problem 1: Supermarket Queue Analysis Solution
+
+Task 1. Fixed Rates
+
+a) Minimum number of cashiers required:
+- 
+-
+-
+
+b) Will customers need to wait in line?
+- 
+-
+-
+
+c) Idle time per cashier per hour:
+- 
+-
+-
+
+Task 2. Average (Variable) Rates
+
+a) Effect on customer wait time:
+- 
+-
+-
+
+b) Effect on average idle time per cashier:
+- 
+-
+-
+
+c) Effect of changing the number of cashiers:
+- 
+-
+-
+
+
+Task 3. Reflection Question Answer:
+-
+-
+-
+
+Problem 2: Array-based Queue Implementation
+
+Task 2. Comments on time and space complexity (Big O) of ArrayQueue vs LinkedQueue
+-
+-
+-

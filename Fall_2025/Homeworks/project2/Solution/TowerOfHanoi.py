@@ -40,8 +40,15 @@ class TowerOfHanoi:
         if n == total_disks and show:
             print("Puzzle complete!")
 
+
+def fac(x):
+    if x == 0:
+        return 1
+    else:
+        return x * fac(x - 1)
+    
 if __name__ == "__main__":
-    n_disks = 6
+    n_disks = 3
     game = TowerOfHanoi(n_disks)
     game.print_towers()
     game.solve(show=True)

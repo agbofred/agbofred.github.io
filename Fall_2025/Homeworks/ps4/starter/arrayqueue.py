@@ -1,3 +1,10 @@
+# arrayqueue.py
+########################################
+# Your Name:
+# Indicate any collaborators or tools used to assist you including AI:
+# Estimated time spent (hrs):
+########################################
+
 from abstractqueue import AbstractQueue
 from arrays import Array
 
