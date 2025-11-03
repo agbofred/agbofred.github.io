@@ -122,8 +122,8 @@ format:
 
 # BST Interface
 :::{.incremental style="font-size: 30px;"}
-- To allow users to retrieve and replace items in a binary search tree, the methods  `find`  and  `replace`  are also included
-    The method  `find`  expects an item as an argument and returns the item matching it in the tree, or  `None`  otherwise
+- To allow users to retrieve and replace items in a binary search tree, the methods  `find`  and  `replace`  are also included.
+    - The method  `find`  expects an item as an argument and returns the item matching it in the tree, or  `None`  otherwise
     - The method  `replace`  expects two items as arguments
 - Because there are four ways to traverse a binary tree
     - You include methods for each one
@@ -379,7 +379,7 @@ class LinkedBST (AbstractCollection):
 ## Implementing a Linked-Based BST
 ### Step 5 & 6:
 - **Implement Traversal Methods**
-    - `Preorder`, `inorder`, `postorder`, and `level order `traversals as generator methods.
+    - `Preorder`, `inorder`, `postorder`, and `level order ` traversals as generator methods.
 
 - **Test the Implementation**
     - Create instances, add/remove/find items, and verify traversals.
