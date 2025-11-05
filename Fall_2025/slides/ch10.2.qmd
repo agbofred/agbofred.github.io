@@ -288,12 +288,11 @@ method returns `True` if the height of the tree is less than twice the $log_2$ o
         - Inorder
         - Preorder
         - Postorder
-        - Level order
-    
+        - Level order  
 :::
-
-# Next Week Reading:
+<!-- 
+## Next Week Reading:
 - FDS - Lambert 
     - Chapter 12
 - DS&A - John et al.
-    - Chapter 14
+    - Chapter 14 -->
