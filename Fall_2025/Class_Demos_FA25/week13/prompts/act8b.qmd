@@ -33,7 +33,7 @@ vertex labeled B. Write a list of the labels in the order in which they might be
 ![](directedGraph.png){style="width='50%'"}
 
 
-2. Assume that the graph in the preceding question 1 is traversed in `breadth-first` fashion, beginning with the vertex labeled A. Write a list of the labels in the order in which they are visited.
+2. Assume that the graph in the preceding question 1 is traversed in `breadth-first` fashion, beginning with the vertex labeled B. Write a list of the labels in the order in which they are visited.
 
 \vspace{1cm}
 

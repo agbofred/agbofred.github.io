@@ -1,0 +1,108 @@
+---
+title: "Mini-project 2#"
+subtitle: "Due: October  27, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(24, 141, 164, 1) 100%)
+    title-block-banner-color: white
+---
+
+## Step-by-Step Guide: Bistro Drink Ordering System Project
+
+### 1. Analyze Components and Data Structures
+
+| Component         | Recommended Data Structure      | Justification                                 |
+|-------------------|-------------------------------|-----------------------------------------------|
+| Menu              | Array (fixed size)            | Fixed list of 5 drinks, fast access by index  |
+| Customer Order    | List (Array or LinkedList)    | Variable number of drinks per order           |
+| Order Confirmation| Simple print/repeat           | No special structure needed                   |
+| Open Orders Queue | ArrayQueue or CircularQueue   | FIFO processing of orders                     |
+| Completed Orders  | Bag or List                   | Store all completed orders for summary/report |
+
+### 2. Class Design
+
+- **Drink**: name, size, price, customization
+- **OrderItem**: Drink + customization
+- **CustomerOrder**: customer name + list of OrderItems
+- **BistroSystem**: menu (Array), open orders (Queue), completed orders (Bag/List), main program logic
+
+### 3. Step-by-Step Implementation Plan
+
+**Step 1: Define Classes**
+- Drink: attributes for name, size, price
+- OrderItem: references a Drink and stores customization
+- CustomerOrder: stores customer name and a list of OrderItems
+
+**Step 2: Implement Menu**
+- Use an Array to store 5 hardcoded Drink objects.
+- Display menu by iterating over the array.
+
+**Step 3: Take New Order**
+- Prompt for customer name.
+- Use a loop to allow multiple drinks per order.
+- For each drink, prompt for customization.
+- Store drinks in a list (Array or LinkedList) within CustomerOrder.
+- Confirm order by printing summary and asking for confirmation.
+
+**Step 4: Queue Open Orders**
+- Use ArrayQueue or CircularQueue to store CustomerOrder objects.
+- When an order is confirmed, enqueue it.
+
+**Step 5: View Open Orders**
+- Iterate through the queue and display each order’s customer name and drink summary.
+
+**Step 6: Mark Next Order as Complete**
+- Dequeue the next order from the open orders queue.
+- Add it to the completed orders collection (Bag or List).
+
+**Step 7: End-of-Day Report**
+- Iterate through completed orders.
+- Use a HashMap or dictionary to count drinks and total sales per drink.
+- Calculate total revenue.
+
+**Step 8: Exit**
+- Cleanly exit the program.
+
+### 4. Data Structure Justification
+
+- **Menu**: Array is best for fixed, small lists.
+- **CustomerOrder**: List (Array or LinkedList) for variable-length drink orders.
+- **Open Orders**: Queue (ArrayQueue or CircularQueue) for FIFO order processing.
+- **Completed Orders**: Bag or List for easy iteration and summary.
+- **End-of-Day Report**: HashMap/dictionary for counting and totaling sales.
+
+### 5. Sample Class Skeletons
+
+*(Add your class definitions here as needed)*
+
+### 6. Main Program Flow
+
+1. Display menu.
+2. Take new order (create CustomerOrder, add to queue).
+3. View open orders (iterate queue).
+4. Mark next order as complete (dequeue, add to completed).
+5. View end-of-day report (iterate completed, summarize).
+6. Exit.
+
+### 7. Tips
+
+- Use clear prompts and print statements for the text interface.
+- Validate user input (drink selection, customization).
+- Modularize code: each menu option should be a method in BistroSystem.
+- Use your existing data structures for practice and justification.
+
+---
+
+**Summary:**  
+Design your classes, choose the most appropriate data structures for each component, and implement the main menu logic step by step. Use Array for the menu, Queue for open orders, and Bag/List for completed orders. HashMap/dictionary is useful for the end-of-day report.
