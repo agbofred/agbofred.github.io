@@ -22,7 +22,7 @@ class GraphDemoModel(object):
         for edge in edgeList:
             if not '>' in edge:
                 # A disconnected vertex
-                if not self._graph.containsVertex(edge):
+                if not self.graph.containsVertex(edge):
                     self.graph.addVertex(edge)
                 else:
                     self.graph = None
@@ -33,7 +33,7 @@ class GraphDemoModel(object):
                 colonPos = edge.find(':')
                 if bracketPos == -1 or colonPos == -1 or \
                    bracketPos > colonPos:
-                    self._graph = None
+                    self.graph = None
                     return "Problem with > or :"
                 fromLabel = edge[:bracketPos]
                 toLabel = edge[bracketPos + 1:colonPos]
