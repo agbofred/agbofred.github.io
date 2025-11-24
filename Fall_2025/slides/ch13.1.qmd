@@ -348,7 +348,7 @@ class LinkedEdge(object):
     - In Foundamentals of Python Data Structures (2nd Ed.)  by Lambert 
         - Chapter 12
         - Pages 391 to 397
-- Download starter code [here](https://github.com/Agbo-CS152/ps6/archive/refs/tags/PS6.zip)
+- Download starter code [here](https://github.com/Agbo-CS152/ps6/archive/refs/tags/PS6_new.zip)
 
 ## Instructions
 :::{.small style="font-size: 31px;"}
