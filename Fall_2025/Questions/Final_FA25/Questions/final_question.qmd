@@ -1,0 +1,224 @@
+---
+title: "Final Examination: Data Structures and Algorithms"
+subtitle: "CS 152 Fall, 2025"
+format:
+    html:
+        theme:
+            light: 
+                - cosmo
+                - psets.scss
+            dark: darkly
+        fontsize: 1.2em
+        highlight-style: atom-one
+        toc: true
+        toc-depth: 2
+        html-math-method: katex
+        embed-resources: true
+        title-block-banner: linear-gradient(90deg, rgba(12, 202, 139, 1) 0%, rgba(102, 46, 128, 1) 100%)
+        title-block-banner-color: white
+---
+**Note:** This final exam is developed based exclusively on the materials covered in the class so far, following the topics from Week 6 through Week 14.
+***
+
+### Part 1: Multiple Choice Questions (20 Questions)
+
+*Instructions: Select the best answer.*
+
+1. **Consider the pseudocode for evaluating a postfix expression. If the program attempts to execute the line `operand1 = stack.pop()` when the stack is empty, what type of error is guaranteed to be detected and reported by the model?**  
+    - A. Division by zero  
+    - B. Too many operands  
+    - C. Unrecognizable token  
+    - D. Too few operands  
+    <small>*pop on an empty stack implies an operator was encountered without enough preceding operands*</small>
+
+2. **A graph is considered 'dense' when:**  
+    - A. It is connected.  
+    - B. It is acyclic.  
+    - C. It has far fewer edges than possible.  
+    - D. It has nearly the maximum possible number of edges.  
+
+3. **What is the time complexity required to iterate across all neighbors of all vertices in a sparse graph using an Adjacency List, where N is vertices and M is edges?**  
+    - A. O(N²)  
+    - B. O(M)  
+    - C. O(M/N)  
+    - D. O(N)  
+    <small>*For a sparse graph, M is typically close to N, so O(max(M, N)) simplifies to O(N)*</small>
+
+4. **When implementing a Linked Queue, which pointer must be updated during the add operation, regardless of whether the queue was empty or not?**  
+    - A. self.front  
+    - B. self.size  
+    - C. oldItem  
+    - D. self.rear  
+
+5. **Which algorithm solves the all-pairs shortest path problem with a running time complexity of O(N³)?**  
+    - A. Dijkstra's Algorithm  
+    - B. Prim's Algorithm  
+    - C. Kruskal's Algorithm  
+    - D. Floyd’s Algorithm  
+
+6. **If a Binary Search Tree (BST) becomes completely vine-like (highly unbalanced), the worst-case time complexity for the find operation degrades from logarithmic time to what?**  
+    - A. O(1)  
+    - B. O(N) (Linear)  
+    - C. O(N²)  
+    - D. O(NlogN)  
+
+7. **In the context of graph implementation, which data structure supports finding all adjacent vertices to a given vertex most efficiently for a very sparse graph?**  
+    - A. Adjacency List  
+    - B. Adjacency Matrix  
+    - C. Hash Table of all Edges  
+    - D. A 2D array of distances  
+
+8. **If a graph traversal uses a stack (explicit or via recursion), what type of path exploration behavior does this process enforce?**  
+    - A. Visiting all neighbors at the current depth first.  
+    - B. Going deeply into the graph before backtracking.  
+    - C. Always choosing the shortest path.  
+    - D. Following only simple paths.  
+
+9. **During the recursive execution of a subroutine, the PVM pushes an 'activation record' onto the call stack. What critical piece of information does this record contain to allow the PVM to return to the calling routine?**  
+    - A. The object heap pointer  
+    - B. The Return Address (locationCounter's current value)  
+    - C. The size of the program bytecode  
+    - D. The current size of the stack  
+
+10. **What is the complexity of Kruskal's or Prim's algorithms for finding a Minimum Spanning Tree (MST), where E is the number of edges and V is the number of vertices?**  
+     - A. O(V²)  
+     - B. O(ElogV)  
+     - C. O(V+E)  
+     - D. O(E³)  
+
+11. **Which method in the LinkedVertex class is used to return an iterator over the vertices directly connected to it?**  
+     - A. getEdgeTo(toVertex)  
+     - B. incidentEdges()  
+     - C. neighboringVertices()  
+     - D. getLabel()  
+
+12. **When an array is used to implement a binary tree, for a node at index i, what is the index of its parent?**  
+     - A. 2*i+1  
+     - B. 2*i+2  
+     - C. i−1  
+     - D. (i−1)//2  
+
+13. **In a LinkedPriorityQueue using a sorted linked list implementation, the pop method (removal from the front) inherits its complexity from the LinkedQueue class. Assuming front and rear pointers are maintained, what is the time complexity of pop?**  
+     - A. O(N)  
+     - B. O(1)  
+     - C. O(logN)  
+     - D. O(N²)  
+
+14. **According to the EBNF grammar rules provided, which metasymbol indicates that a part of the expression is optional?**  
+     - A. {...}  
+     - B. ∣  
+     - C. (...)  
+     - D. [...]  
+
+15. **If a graph is being used to model one-way streets, which graph terminology best describes the edges used in this model?**  
+     - A. Unweighted edges  
+     - B. Undirected edges  
+     - C. Directed edges  
+     - D. Incident edges  
+
+16. **Which of the following operations is NOT provided by the LinkedDirectedGraph class but IS provided by the LinkedVertex class?**  
+     - A. addEdge(fromLabel, toLabel, weight)  
+     - B. clearMark()  
+     - C. sizeVertices()  
+     - D. containsEdge(fromLabel, toLabel)  
+     <small>*Marking/unmarking is a vertex property*</small>
+
+17. **What specialized role does the Scanner class play in the overall architecture for evaluating expressions?**  
+     - A. It handles all user input/output.  
+     - B. It performs the mathematical calculation.  
+     - C. It maintains the operand stack.  
+     - D. It performs lexical analysis, extracting tokens from the input string.  
+
+18. **What is the maximum number of nodes possible in a full binary tree of height h=3?**  
+     - A. 4  
+     - B. 7  
+     - C. 8  
+     - D. 15  
+     <small>*2^(3+1) − 1 = 15*</small>
+
+19. **Which graph traversal is specifically used to order vertices in a DAG such that for every directed edge u→v, u comes before v?**  
+     - A. Depth-First Traversal  
+     - B. Breadth-First Traversal  
+     - C. Topological Sort  
+     - D. Minimum Spanning Tree  
+
+20. **When inserting an item into a min-heap using the array implementation, the algorithm restores the heap property by moving the newly inserted item up toward the root. This process continues until the parent item is found to be:**  
+     - A. Equal to the item  
+     - B. Greater than the item  
+     - C. Less than or equal to the item  
+     <small>*parentItem <= item causes the loop to break*</small>
+
+---
+
+### Part 2: Short Answer Questions (1-2 Words) (10 Questions)
+
+*Write your answer in 1-2 words.*
+
+1. What term is used to describe the index variable that points to the logical end of an array-based queue in an implementation where items are not shifted left upon removal?  
+
+2. What is the specialized binary tree structure where interior nodes represent operators and leaf nodes represent atomic operands?  
+
+3. What specific feature of a priority queue ensures that patients with condition rank 1 (Critical) are processed before those with rank 3 (Fair)?  
+
+4. In the context of BST definition, what is another word for the "key" used for ordering comparisons?  
+
+5. What state must the stack be in, according to the backtracking algorithm, when a valid path (e.g., reaching 'T' in a maze) is found?  
+
+6. In a directed graph, if there is a directed edge from vertex u to vertex v, what is u called in relation to v?  
+
+7. What kind of graph is a connected, acyclic graph?  
+
+8. What class defines the comparison logic (`__lt__`, `__eq__`) for non-comparable items being added to a priority queue?  
+
+9. When performing a level order traversal on a binary tree, what data structure is used to manage the nodes that need to be visited next?  
+
+10. What is the complexity of the computational step in Dijkstra’s algorithm?  
+
+---
+
+### Part 3: Applied Questions (5 Questions)
+
+#### 1. Scenario: Data Processing Pipeline
+
+*A large tech company is designing a complex data processing pipeline where tasks have dependencies (e.g., Task B cannot start until Task A is complete). Some tasks are computationally expensive. The graph structure is known to have millions of nodes (tasks) and a relatively low number of edges (dependencies, M). The goal is to determine a valid sequence in which to run the tasks.*
+
+**Query:**  
+a) What specific type of graph structure must this pipeline conform to, and what specialized traversal algorithm should be applied?  
+b) Discuss the crucial storage trade-off decision (Adjacency List vs. Matrix) that must be made, justifying the choice based on the structure of the pipeline.
+
+---
+
+#### 2. Scenario: Implementing Custom BST Traversal
+
+*A programmer is implementing the inorder method for the LinkedBST class recursively. The requirement is to return an iterator over the data in sorted order.*
+
+**Query:**  
+Analyze the provided recursive pseudocode for inorder and explain the function of the internal list `lyst`. Why is it necessary to use `lyst` to collect items recursively before returning an iterator?
+
+---
+
+#### 3. Scenario: Stack-based Maze Solver
+
+*A backtracking algorithm is used to solve a maze. The stack stores the coordinates of alternative paths to explore.*
+
+**Query:**  
+If the algorithm reaches a dead end (a location with no adjacent, unvisited spaces), explain the mechanism by which the stack facilitates "backtracking" to an unexplored alternative path.
+
+---
+
+#### 4. Scenario: Heap Insertion Analysis
+
+*An engineer is evaluating the performance of the add method for a Min-Heap implementation (using an array).*
+
+**Query:**  
+Based on the provided add method pseudocode, determine the worst-case time complexity for inserting an item into a heap of size N. Describe the structural event that leads to this worst-case scenario.
+
+---
+
+#### 5. Scenario: Directed vs. Undirected Graph Conversion
+
+*A development team has modeled a road network using an Undirected Graph where each edge {u,v} represents a two-way road between city u and city v. A new requirement demands the ability to assign different weights (traffic times) to travel from u to v versus v to u.*
+
+**Query:**  
+Explain how the existing undirected graph must be conceptually converted to a Directed Graph (Diagraph) to meet this requirement. Specifically, how many directed edges are needed for every single undirected edge in the original model, and how does this impact the overall edge count (M) for the new representation?
+
