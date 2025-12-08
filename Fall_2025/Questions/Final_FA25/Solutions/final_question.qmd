@@ -234,7 +234,7 @@ b) Since the graph is sparse (millions of nodes, few edges), an **Adjacency List
 
 ---
 
-#### 2. Scenario: Implementing Custom BST Traversal
+<!-- #### 2. Scenario: Implementing Custom BST Traversal
 
 *A programmer is implementing the inorder method for the LinkedBST class recursively. The requirement is to return an iterator over the data in sorted order.*
 
@@ -242,7 +242,18 @@ b) Since the graph is sparse (millions of nodes, few edges), an **Adjacency List
 Analyze the provided recursive pseudocode for inorder and explain the function of the internal list `lyst`. Why is it necessary to use `lyst` to collect items recursively before returning an iterator?
 
 **Answer:**  
-The list `lyst` acts as a collector for node data in the correct traversal order. Since the method must return an iterator, `lyst` gathers all node data during recursion, and `iter(lyst)` provides the required iterable sequence in sorted order.
+The list `lyst` acts as a collector for node data in the correct traversal order. Since the method must return an iterator, `lyst` gathers all node data during recursion, and `iter(lyst)` provides the required iterable sequence in sorted order. -->
+
+#### 2. Scenario: Airline Route Mapping
+
+*An airline wants to find the cheapest route between its hub city (S) and all other available cities (V). The cost of flying between any two cities (edges) is always positive. The total number of cities (N) is 100.*
+
+**Query:** Which algorithm—Dijkstra’s or Floyd’s—is appropriate for this task, and what is the computational complexity of the chosen algorithm? Justify your choice based on the problem requirements and time complexity.
+
+**Answer:**  
+*Chosen Algorithm:* Dijkstra's Algorithm.  
+*Complexity:* O(N²).  
+*Justification:* The problem asks for the shortest path from a single source vertex (the hub city S) to all other vertices. Dijkstra's Algorithm is designed specifically to solve the single-source shortest path problem in a weighted graph where edge weights are non-negative. Its complexity is O(N²). Floyd’s Algorithm (Floyd-Warshall) solves the all-pairs shortest path problem, which is overkill for this scenario and has a higher complexity of O(N³). Since the task only requires paths from one hub, Dijkstra’s is more computationally efficient (O(N²) vs O(N³)) while satisfying the requirements.
 
 ---
 

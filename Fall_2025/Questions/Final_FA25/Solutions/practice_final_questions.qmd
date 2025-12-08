@@ -226,9 +226,12 @@ First, the infix expression ((4 + 5) * 6) - 3 must be converted to postfix (whic
 **Query:** Which algorithm—Dijkstra’s or Floyd’s—is appropriate for this task, and what is the computational complexity of the chosen algorithm? Justify your choice based on the problem requirements and time complexity.
 
 **Answer:**  
-*Chosen Algorithm:* Dijkstra's Algorithm.  
-*Complexity:* O(N²).  
-*Justification:* The problem asks for the shortest path from a single source vertex (the hub city S) to all other vertices. Dijkstra's Algorithm is designed specifically to solve the single-source shortest path problem in a weighted graph where edge weights are non-negative. Its complexity is O(N²). Floyd’s Algorithm (Floyd-Warshall) solves the all-pairs shortest path problem, which is overkill for this scenario and has a higher complexity of O(N³). Since the task only requires paths from one hub, Dijkstra’s is more computationally efficient (O(N²) vs O(N³)) while satisfying the requirements.
+
+- *Chosen Algorithm:*  <!-- Dijkstra's Algorithm.  -->
+
+- *Complexity:* <!-- O(N²). --> 
+
+- *Justification:* <!-- The problem asks for the shortest path from a single source vertex (the hub city S) to all other vertices. Dijkstra's Algorithm is designed specifically to solve the single-source shortest path problem in a weighted graph where edge weights are non-negative. Its complexity is O(N²). Floyd’s Algorithm (Floyd-Warshall) solves the all-pairs shortest path problem, which is overkill for this scenario and has a higher complexity of O(N³). Since the task only requires paths from one hub, Dijkstra’s is more computationally efficient (O(N²) vs O(N³)) while satisfying the requirements. -->
 
 ---
 

@@ -188,12 +188,18 @@ b) Discuss the crucial storage trade-off decision (Adjacency List vs. Matrix) th
 
 ---
 
-#### 2. Scenario: Implementing Custom BST Traversal
+<!-- #### 2. Scenario: Implementing Custom BST Traversal
 
 *A programmer is implementing the inorder method for the LinkedBST class recursively. The requirement is to return an iterator over the data in sorted order.*
 
 **Query:**  
-Analyze the provided recursive pseudocode for inorder and explain the function of the internal list `lyst`. Why is it necessary to use `lyst` to collect items recursively before returning an iterator?
+Analyze the provided recursive pseudocode for inorder and explain the function of the internal list `lyst`. Why is it necessary to use `lyst` to collect items recursively before returning an iterator? -->
+
+#### 2. Scenario: Airline Route Mapping
+
+*An airline wants to find the cheapest route between its hub city (S) and all other available cities (V). The cost of flying between any two cities (edges) is always positive. The total number of cities (N) is 100.*
+
+**Query:** Which algorithm—Dijkstra’s or Floyd’s—is appropriate for this task, and what is the computational complexity of the chosen algorithm? Justify your choice based on the problem requirements and time complexity.
 
 ---
 
