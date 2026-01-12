@@ -1,0 +1,56 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 4 Knowledge Check
+# author: "Fred Agbo"
+# date: September 3, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+1. Explain how random access works and why it is so fast.
+
+\vspace{2cm}
+
+
+2. What are the differences between an array and a Python list?
+
+\vspace{2cm}
+
+
+3. Explain the difference between the physical size and the logical size of an array.
+
+\vspace{2cm}
+
+4. Suppose you have an array of 32-bit integers with 64 elements. Compute the total memory size (in bytes) required to store this array. 
+
+
+\vspace{2cm}
+
+5. If the base address of an array is `10011101~2~` (in base 2), what is the address of the item at index position 7? Assume each element has a constant size of 1. Give your answer in base 2.
+
+\vspace{2cm}
+
+
+6. State the run-time complexity for inserting an item when the insertion point is the
+logical size of the array.
+
+\vspace{2cm}

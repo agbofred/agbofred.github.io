@@ -1,0 +1,166 @@
+---
+title: "Mini-project 2#"
+subtitle: "Due: October  27, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(24, 141, 164, 1) 100%)
+    title-block-banner-color: white
+---
+
+To begin this mini-project, download the assignment folder from the link below. Open the entire folder in VS Code for easy editing and proper library support. When you finish, upload your completed files to GitHub, overwriting the original templates. Do not rename any files.
+
+```{=html}
+<a href='https://classroom.github.com/a/TKOAChn_' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Mini Project</a>
+```
+<br>
+
+# Project 1: Tower of Hanoi Puzzle
+
+## Project Overview
+
+You have previously solved the Tower of Hanoi puzzle using simple Python functions and lists. Now, apply your knowledge of Object-Oriented Programming (OOP) and array-based data structures to this classic problem!
+You are provided with starter code in the file named `towerofhanoi.py` to help you complete this problem. This file already imports the `ArrayStack` class, which you will use to implement the stack logic for each spindle.
+
+---
+
+### Your Task
+
+Redesign and implement the Tower of Hanoi puzzle using OOP and your own array-based stack structure.  
+**Avoid using Python’s built-in list methods** (`append`, `pop`, `insert`, etc.) except where absolutely necessary for your array implementation.
+
+---
+
+#### 1. Review the `ArrayStack` Class
+
+- Examine the provided `arraystack.py` file to understand and use its stack methods: `push`, `pop`, `peek`, `is_empty`, and `__str__`.
+- You will use these methods to manage the disks on each spindle in your Tower of Hanoi implementation.
+
+#### 2. Update the `TowerOfHanoi` Class
+
+- Manage three stacks (spindles) and the disks.
+- Include methods to:
+  - Initialize the puzzle with a given number of disks.
+  - Move disks between spindles (with error checking).
+  - Print the current state of the towers.
+  - Solve the puzzle recursively.
+
+#### 3. Avoid Python List Shortcuts
+
+- You may use a Python list as the underlying array, but all stack operations must be done through your own methods.
+
+#### 4. Demonstrate Your Solution
+
+- In your main program:
+  - Create a `TowerOfHanoi` object with 3 or more disks.
+  - Print the initial state.
+  - Show each move as the puzzle is solved.
+  - Print the final state and a “Puzzle complete!” message.
+
+---
+
+### Example Output 
+```{.python} 
+L: [3, 2, 1]
+M: []
+R: []
+Move disk 1 from L to R
+...
+Puzzle complete! 
+```
+
+## Hints
+
+- Use your Bag or similar array-based class as a starting point for your stack.
+- Think about how to represent each spindle as a stack of disks.
+- Use OOP principles: encapsulation, methods, and clear class responsibilities.
+- Your recursive solution should call stack methods, not manipulate lists directly.
+
+---
+
+## Extra Points (Optional)
+
+- Allow the user to specify the number of disks.
+- Add a method to reset the puzzle.
+- Add error handling for invalid moves.
+
+
+
+
+# Project 2: Infix to Postfix Converter
+
+## Project Overview
+
+In this project, you will write a program that converts infix expressions, for example, `A + B * C` to postfix expressions `A B C * +`. This project will reinforce your understanding of stacks, tokenization, and expression parsing.
+
+---
+
+
+### 1. Use Token and Scanner Classes
+
+- Utilize the `Token` and `Scanner` classes developed in the case study and shown in the class. These files are included in the starter files names `mytoken.py` and `scanner.py` respectively.
+
+### 2. Implement IFToPFConverter Class in converter.py
+
+- Create a class named `IFToPFConverter`.
+- The constructor should accept a `Scanner` object.
+- Implement a `convert` method that converts the infix expression to postfix using the algorithm described in the textbook or class notes.
+- The `convert` method should return a list of tokens representing the postfix expression.
+
+
+### 3. Main Program
+
+- The `main` function should:
+  - Receive an input string from the user.
+  - Create a `Scanner` object with the input string.
+  - Pass the scanner to the `IFToPFConverter` constructor.
+  - Call the `convert` method to obtain the postfix expression.
+  - Display the resulting postfix string.
+
+### Hint: Review Token Class
+
+- The `getPrecedence()` method has already been provided in your Token class file.
+- Study this method in your Token implementation to understand how operator precedence is handled, as you will need this knowledge for your converter logic.
+
+### Assumptions
+
+- You may assume the user always enters a syntactically correct infix expression for the initial implementation.
+
+---
+
+<!-- ## Additional Tasks: Syntax Error Detection and Reporting
+
+### 6. Syntax Error Detection
+
+- Modify your `IFToPFConverter` class so that it checks the infix string for syntax errors as it converts to postfix.
+- Use an error-detection and recovery strategy similar to the one in the case study.
+- Add a method named `conversionStatus` to the `IFToPFConverter` class.
+  - When the converter detects a syntax error, it should raise an exception.
+  - The main function should catch this exception in a `try-except` statement.
+  - The main function can then call `conversionStatus` to obtain information to print when an error occurs.
+  - This information should include the portion of the expression scanned until the error is detected.
+  - Error messages should be as specific as possible (e.g., "Mismatched parentheses at position 5", "Unexpected operator at start of expression", etc.).
+
+### 7. Updated Main Program
+
+- In your main function:
+  - Wrap the conversion process in a `try-except` block.
+  - If an exception is raised, call `conversionStatus` and print the error message and the scanned portion of the expression.
+  - If no exception occurs, print the postfix expression as before.
+
+---
+
+## Starter Code
+
+Below is a starter file for your implementation. Complete the methods as described in the requirements.
+ -->

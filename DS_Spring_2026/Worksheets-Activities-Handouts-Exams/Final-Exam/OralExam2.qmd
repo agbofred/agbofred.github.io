@@ -1,0 +1,200 @@
+---
+format: pdf
+fontsize: 16pt
+number-sections: false
+mainfont: "Helvetica"
+header-includes:
+  - \pagestyle{empty}  # removes page numbers
+---
+
+## 📦 Array
+
+**Operations:**
+
+- Explain what happens when you insert a new element at the beginning of an array.
+- Explain what happens when you access an element at index i in an array.
+
+**Time Complexity:**
+
+- What is the time complexity of accessing an element by index?
+- What is the time complexity of inserting at the beginning?
+
+**Comparisons:**
+
+- How does an array compare to a linked list for insertions?
+- What are the benefits of using an array for fixed-size data?
+
+**Usage Scenarios:**
+
+- You are storing user-submitted comments on a social media post, and the number of comments can grow without limit. Would a fixed-size array be an appropriate choice? Why or why not?
+- You’re programming a digital clock that stores the number of seconds in each hour of the day (24 total entries). Would a fixed-size array be a good data structure to use? Why or why not?
+
+\newpage
+
+## 📐 Array2D
+
+**Operations:**
+
+- Explain how you access an element in an Array2D.
+- Explain how you would fill an entire column with a default value in an Array2D.
+
+**Time Complexity:**
+
+- What is the complexity of accessing `grid[row][column]`?
+- What is the complexity of filling the entire grid with a default value?
+
+**Comparisons:**
+
+- How does an Array2D based on a single-dimension Array differ from an Array of Arrays?
+- When would an Array2D based on a single-dimension Array be better than a flat array used for two dimensions?
+
+**Usage Scenarios:**
+
+- You are implementing a chat application where the number of messages sent in a conversation can grow indefinitely over time. Would a fixed-size array be a good data structure to store the chat messages? Why or why not?
+- You are programming a tic-tac-toe game with a 3×3 board where each cell holds either ‘X’, ‘O’, or empty. Would a fixed-size array be an appropriate data structure to represent the game board? Why or why not?
+
+\newpage
+
+## 🔁 LinkedList
+
+
+**Operations:**
+
+- Explain how you insert an element in the middle of a LinkedList.
+- Explain how you reverse a LinkedList.
+
+**Time Complexity:**
+
+- What is the time complexity of inserting an element at the head?
+- What is the time complexity of searching for a value?
+
+**Comparisons:**
+
+- How does a LinkedList compare to an Array for insertions?
+- How does a LinkedList compare to an Array for memory usage?
+
+**Usage Scenarios:**
+
+- You are building a music playlist application where users can insert or delete songs at any position in the playlist while maintaining order. Would a linked list be a good data structure choice for storing the playlist? Why or why not?
+You are developing a system that frequently needs to access elements by index, such as a leaderboard that displays the top 100 scores sorted in real time. Would a linked list be an efficient choice for storing this data? Why or why not?
+
+\newpage
+
+## 🔁 CircularQueue (Fixed Array based)
+
+**Operations:**
+
+- Explain how `enqueue` and `dequeue` work in a fixed-size Array-based CircularQueue?
+- Explain how you handle wrapping around the array?
+
+**Time Complexity:**
+
+- What is the time complexity of `enqueue` and `dequeue` in a fixed-size Array-based CircularQueue?
+- What is the complexity of checking if the queue is full?
+
+**Comparisons:**
+
+- How does a CircularQueue differ from a standard Array queue?
+- Why use a circular structure instead of shifting elements?
+
+**Usage Scenarios:**
+
+- You are programming a print spooler for a small office printer that can queue up to 10 print jobs at a time. New jobs are added at the end, and the printer removes them in the order they arrive. Would a fixed-size array-based circular queue be a good fit? Why or why not?
+- You are designing a real-time data logger for a self-driving car, where the number of sensor readings collected per second can vary unpredictably and overflow the queue size. Is a fixed-size array-based circular queue appropriate here? Why or why not?
+
+\newpage
+
+## 🧵 Deque (Double Ended Queue LinkedList-based)
+
+**Operations:**
+
+- Explain how you insert an element at both ends of a Deque?
+- Explain how you remove an element from both ends of a Deque?
+
+
+**Time Complexity:**
+
+- What is the time complexity of enqueue and dequeue operations?
+- What is the complexity of searching for a value?
+
+**Comparisons:**
+
+- How does Deque compare to CircularQueue in terms of space usage?
+- When would you prefer a LinkedList-based deque over an Array-based deque?
+
+**Usage Scenarios:**
+
+- You are building a task scheduler where tasks can be added or removed from both the front and the back depending on priority or urgency. Would a linked-list-based deque be a good choice? Why or why not?
+- You are implementing a system that requires constant-time indexed access to elements in the middle of a list, such as a real-time leaderboard showing the top 100 players. Would a linked-list-based deque be appropriate? Why or why not?
+
+\newpage
+
+## 🧱 ArrayStack (Fixed Array based)
+
+**Operations:**
+
+- Explain the `push` and `pop` operations in an fixed-size Array-based stack?
+- Explain how you determine if the stack is full or empty?
+
+**Time Complexity:**
+
+- What is the complexity of `push` and `pop`?
+- What is the complexity of checking if the stack is full?
+
+**Comparisons:**
+
+- How does a fixed-size Array-based stack compare to a LinkedList-base stack for memory use?
+- When would an ArrayStack be more efficient?
+
+**Usage Scenarios:**
+
+- You are building a calculator app that evaluates arithmetic expressions using the shunting-yard algorithm, which requires pushing and popping operators and operands. Would an array-based stack be a good fit? Why or why not?
+- You are writing a program that simulates user navigation through an infinitely long undo/redo history, where the number of actions is unbounded and can grow arbitrarily. Would a fixed-size array-based stack be a good choice? Why or why not?
+
+\newpage
+
+## 🔗 ListStack (Linked List Based)
+
+**Operations:**
+
+- Explain the `push` operation in a LinkedList-based Stack?
+- Explain the `pop` operation in a LinkedList-based Stack?
+
+**Time Complexity:**
+
+- What is the time complexity of `push`, `pop`, and `peek`?
+- What is the complexity of finding an item in the stack?
+
+**Comparisons:**
+
+- How does ListStack compare to ArrayStack for memory efficiency?
+- When is a ListStack more flexible?
+
+**Usage Scenarios:**
+
+- You’re building a text editor with an undo feature where each user action is stored as a new node, and the number of actions is unbounded. Would a linked-list-based stack be appropriate for this feature? Why or why not?
+- You are implementing a browser tab manager where each tab is assigned a numerical ID, and you frequently need to access the middle or bottom of the stack to retrieve or modify tab data. Would a linked-list-based stack be a good fit? Why or why not?
+
+\newpage
+
+## 🧠 HashMap (Array Buckets with LinkedList Chains)
+
+**Operations:**
+
+- Explain the importance of the hash function in a hash map?
+- Explain how you insert a key-value pair into the hash map?
+
+**Time Complexity:**
+
+- What is the average-case and worst-case time for `__getitem__(key: KT) --> VT`?
+- What is the worst-case time complexity of inserting a key-value pair?
+
+**Comparisons:**
+
+- How does a HashMap differ from an Array when it comes to accessing data by key or index?
+- What advantages does a HashMap have over a LinkedList for searching, and when might a LinkedList still be preferable?
+
+**Usage Scenarios:**
+
+- You’re building a student directory system that needs to store and quickly retrieve student records by unique student ID numbers. Would a hash map with array buckets and linked list chains be a good choice? Why or why not?
+- You are implementing a real-time leaderboard that needs to display all players in sorted order by score. Would a hash map with array buckets and linked list chains be a good data structure for this? Why or why not?

@@ -1,0 +1,111 @@
+---
+title: "Two-Dimensional Array"
+author: "Fred Agbo"
+date: September 17, 2025
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+## Announcements
+- Welcome back!
+- We briefly revisit Arrays: 2D
+
+
+<!-- ## title: "An Introduction to NumPy for Data Structures" subtitle: "Beyond the Python List" author: "Your Name/University" date: "Fall 2025" format: revealjs: slide-number: true css: styles.css theme: simple footer: "Data Structures - NumPy Lesson" logo: "logo.png" -->
+
+## Introducing Two-Dimensional Arrays
+:::{.incremental}
+
+- So far, we've worked with one-dimensional arrays (lists or NumPy arrays).
+- But real-world data often comes in tables, grids, or matrices.
+- A **two-dimensional array** (2D array) is like a spreadsheet: rows and columns.
+- In Python, you can represent a 2D array as a "list of lists" or, more efficiently, as a NumPy array with two dimensions.
+:::
+
+## Example of 2D Array
+- A two-dimensional array or grid with four rows and five columns
+
+![](../images/twoDArray.png){style="width:80%"}
+
+## Defining a 2D Array Class 
+- A 2D array also called `Grid` here  must recognize two methods that return the number of rows and the number of columns:
+- For purposes of discussion, these methods are named `getHeight` and `getWidth`
+Techniques for manipulating one-dimensional arrays are easily extended to grids
+- Code for the Grid class is shown in the next slide
+
+<!-- 
+The following code segment computes the sum of all the numbers in the variable grid: -->
+
+## Code Example: Grid Class 
+
+::: {.non-stretch-slide}
+:::
+
+```python
+from arrays import Array
+
+class Grid(object):
+    """Represents a two-dimensional array."""
+
+    def __init__(self, rows, columns, fillValue = None):
+        self.data = Array(rows) # recall that we previously defined the Array class which is imported  
+        for row in range (rows):
+            self.data[row] = Array(columns, fillValue)
+    
+    def getHeight(self):
+        """Returns the number of rows."""
+        return len(self.data)
+    
+    def getWidth(self):
+        "Returns the number of columns."""
+        return len(self.data[0])
+    
+    def __getitem__(self, index):
+        """Supports two-dimensional indexing
+        with [row][column]."""
+        return self.data[index]
+    
+    def __str__(self):
+        """Returns a string representation of the grid."""
+        result = ""
+        for row in range (self.getHeight()):
+            for col in range (self.getWidth()):
+                result += str(self.data[row][col]) + " "
+            result += "\n"
+        return result
+```
+
+## Creating and Initializing a Grid 
+
+-The following code segment traverses the grid to reset its cells to the values shown in next slide:
+
+```{.python}
+f# Go through rows
+for row in range(grid.getHeight()):
+    # Go through columns
+    for column in range(grid.getWidth()):
+        grid[row][column] = int(str(row) + str(column))
+
+```
+
+## Creating and Initializing a Grid 
+:::{.smaller style="font-size:38px;"}
+- To create a Grid object,
+    - Run the `Grid` constructor with three arguments: height = 4, width = 5, and an initial fill value = 0:
+
+```{.python}
+from grid import Grid
+grid = Grid(4, 5, 0)
+print(grid)
+
+# >>> Output
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+```
+- This was easier to acheive with Numpy as you did last week!
+- Worth seeing how traditonal array class implements 2D arrays
+:::

@@ -1,0 +1,88 @@
+---
+title: "Problem Set 4: Queues Structures and Its Implementation"
+subtitle: "Due: November  3, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+This assignment allows you to apply your understanding of queue structure to analyze a real-life scenario and implement Queue structure using an array collection, and also compare the `arrayqueues` vs `linkedqueues`.
+
+  You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/DZNB_1eD' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+---
+
+## Queue understanding and ArrayQueue Implementation
+
+### Instructions
+
+There are two main starter files that require you to provide your answers in. Use the `supermarket_problem.txt` to provide text-based answers (problem 1) and `arrayqueue.py` for the code-based answers (problem 2). Use your understanding of array-based queues discussed in the class and refer to the `ArrayStack` implementation for guidance. I have provided a `testqueue.py` file to test your code.
+
+## Problem 1: Supermarket Queue Analysis
+
+### Task 1. 
+In a 24-hour supermarket, customers arrive at the checkout at a steady rate of one customer every two minutes. Each cashier takes exactly five minutes to process one customer.
+
+**a)** Calculate the minimum number of cashiers required to ensure all customers are served as they arrive, without creating a waiting line.
+
+**b)** Will customers need to wait in line with this number of cashiers? Explain your reasoning.
+
+**c)** Determine how much idle time (in minutes per hour) each cashier will have under these conditions.
+
+### Task 2
+Now assume that the arrival rate (one customer every two minutes) and the service time (five minutes per customer) are only averages, not exact values.
+
+**a)** Qualitatively discuss how this variability might affect customer wait times.
+
+**b)** Will the average idle time per cashier change? Explain your answer.
+
+**c)** For both the fixed and average-rate scenarios, describe what would happen to customer wait times and cashier idle times if the number of cashiers is either decreased or increased.
+
+### Task 3
+Explain how the supermarket checkout scenario models a queue data structure. In your answer, describe what represents the `add` and `pop` operations, and how the queue's properties (FIFO, waiting line, etc.) are reflected in this real-world example.
+
+
+## Problem 2: Array-based Queue Implementation
+
+### Task 1
+- Complete the `ArrayQueue` class by implementing all required methods:
+
+  - `__init__` (constructor)
+  - `__iter__`
+  - `peek`
+  - `add`
+  - `pop`
+  - `clear`
+
+- Ensure your queue supports **circular array behavior** for efficient use of space.
+
+### Hints
+- Use the `ArrayStack` as a guide for array resizing and index management.
+
+### Task 2
+After you finish task 1, write a short comment in your file comparing the time and space complexity (Big O) of `ArrayQueue` and `LinkedQueue` for all major operations.
+
+### Submission
+
+- Edit/update `supermarket_problem.txt` to provide text-based explanations.
+- Edit `arrayqueue.py` with your code implementation.
+- Add your complexity comparison comments at the end of the `.txt` file.
+- Test your code using `testqueue.py`.
+- Submit your completed files as usual by uploading them back to the GitHub repository.

@@ -1,0 +1,119 @@
+---
+title: "Mini-project 1#"
+subtitle: "Due: September  17, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(24, 141, 164, 1) 100%)
+    title-block-banner-color: white
+---
+
+This mini-project question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/Z30ZONPb' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+# Project Title: Build Your Own Bag: A Custom Collection Class
+
+## Project Overview
+
+You are tasked with designing and implementing a Bag (also known as a multiset) data structure in Python. A Bag is a collection where items can appear more than once, and the order of the items does not matter. Unlike a standard set, adding an item that is already in the Bag simply increases its count, rather than doing nothing. This project challenges you to apply your knowledge of fundamental data structures and object-oriented programming to create a robust and efficient custom collection class. A key constraint of this project is that you are not allowed to use any built-in methods of the internal Python collection you choose for implementation. You must build the logic for each method from scratch using basic Python types, loops, and conditional statements.
+
+## Learning Goals
+
+- **Understand the concept of a Bag/Multiset:** Grasp the core properties and behaviors of a collection that allows duplicates and is unordered.
+- **Practice Object-Oriented Programming (OOP):** Implement a class with methods that encapsulate behavior and data, and understand the role of "dunder" (double underscore) methods.
+- **Explore Trade-offs in Data Structure Design:** Analyze the time and space complexity of different internal storage options and justify your choice.
+- **Develop Problem-Solving and Testing Skills:** Write clear, concise, and comprehensive program and test your implementation for correctness.
+- **Analyze and Reflect:** Articulate your design decisions and relate your data structure to real-world applications.
+
+## Requirements
+
+### Part 1: The Bag Class
+
+Implement a class named `Bag` that adheres to the following specifications. Your implementation must be in a single Python file, `bag.py`.
+
+#### Student Choice (Internal Data Structure)
+
+You must choose one of Python's built-in collections (`list` or `dict`) to store the items inside your Bag class. For example, if you choose a list, your Bag object would have a member variable like `self._items = []`. If you choose a dict, you might have `self._counts = {}`.
+
+
+
+**Important Constraint:** You are not allowed to use any built-in methods of your chosen internal data structure that would directly solve the problem for you. For example, if you choose a list, you cannot use `list.count()`, `list.remove()`, or `len(list)`. If you choose a dict, you cannot use `dict.get()`, `dict.keys()`, or `len(dict)`. You must implement the logic for each required method using basic loops and control flow. 
+***Caveat:***
+You may use Python data structure methods if their sole purpose is to help you store or manipulate data within your function, but not if they directly provide the solution to the problem. 
+
+#### Core Methods
+
+- `__init__(self, iterable=None)`:  
+  - Initializes an empty Bag.
+  - Optionally accepts an iterable (e.g., a list or a tuple) to initialize the Bag with a set of starting items.  
+    Example: `Bag([1, 2, 2, 3])` should create a bag with these items.
+
+- `add(self, item)`:  
+  - Adds one occurrence of an item to the Bag.
+  
+
+- `remove(self, item)`:  
+  - Removes one occurrence of an item from the Bag.
+  - If the item is not present in the Bag, raise a `ValueError` with a clear and informative message (e.g., "Item not found in the Bag").
+
+- `count(self, item)`:  
+  - Returns the number of times an item appears in the Bag.
+  - If the item is not in the bag, it should return 0.
+
+- `length(self)`:  
+  - Returns the total number of items in the Bag (including duplicates).
+  - Example: If the Bag contains `[1, 2, 2, 3]`, `length(my_bag)` should return 4.
+
+- `contains(self, item)`:  
+  - Enables the use of the `in` operator to check for membership.
+  - Returns `True` if the item is in the Bag (at least one occurrence), and `False` otherwise.
+
+#### Dunder (Magic) Methods for Standard Python Behavior
+
+- `__iter__(self)`:  
+  - Allows the Bag to be iterable, meaning you can loop through all items.
+  - The iteration should yield each item, including all of its duplicates. The order of yielded items does not matter.
+  - Example: `for item in my_bag: print(item)` should print all items in the Bag.
+
+- `__repr__(self)`:  
+  - Provides a string representation of the Bag for developers.
+  - Should return a string that could be used to recreate the object. A format like `Bag({1: 2, 2: 1})` is a good example, showing the counts of each unique item.
+
+### Part 2: Design and Analysis
+
+**Justification, Analysis, and Reflection:**  
+In a separate text file named `analysis.md`, you must provide the following:
+
+- **Justification of data structure:**  a clear justification for your chosen internal data structure (`list` or `dict`) in a short section; 
+- **Time complexity analysis:** an analysis of the time complexity for the key operations (`add`, `remove`, `count`, `length`, `contains`);
+- **Real-World Use Cases:** Describe two or three real-world scenarios where a Bag data structure would be a more suitable choice than a standard list, set, or dictionary;
+- **Future Improvements:** Suggest one or two additional features or methods that would enhance the functionality of your Bag class (e.g., a method to find the most frequent item, a way to combine two bags, etc). Describe how would you implement your suggestion(s).
+
+### Part 3: Testing
+
+You are provided with a separate file named `test_bag.py`. Do nothing to this file but just to run it to test if all your functions works. The output at the terminal should show `All tests passed!` if you completed the project and everything works. Otherwise, you will receive an error message with pointers to the error line in the `bag.py`.
+
+
+
+## Submission
+
+Your submission should include the following files:
+
+- `bag.py` (The implementation of your Bag class)
+- `test_bag.py` (Your test suite unmodified)
+- `analysis.txt` (Your justification for your data structure choice, time complexity analysis, and reflections).
+

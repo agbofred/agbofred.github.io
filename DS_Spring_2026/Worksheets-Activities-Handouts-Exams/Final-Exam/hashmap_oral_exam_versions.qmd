@@ -1,0 +1,84 @@
+---
+format: pdf
+---
+
+# Oral Exam Version A
+
+## Conceptual Questions (20 pts each)
+
+1. **Describe how collisions are handled in a hash map that uses a fixed-size array with linked list chains. Why is this method used, and what are its trade-offs?**
+
+2. **Explain what properties a good hash function should have. How might poor hash function design affect the performance of a hash map?**
+
+3. **Analyze the best-case and worst-case time complexity of searching for a key in a hash map. What conditions lead to each?**
+
+## Applied Use Case (40 pts)
+
+Imagine you're designing an app for scheduling tutoring appointments in the Academic Support Center. Would a hash map be a good choice for organizing appointments by student ID? Justify your answer.
+
+\newpage
+
+# Oral Exam Version B
+
+## Conceptual Questions (20 pts each)
+
+1. **Describe how collisions are handled in a hash map that uses a fixed-size array with linked list chains. Why is this method used, and what are its trade-offs?**
+
+2. **Explain what properties a good hash function should have. How might poor hash function design affect the performance of a hash map?**
+
+3. **Analyze the best-case, average-case, and worst-case time complexity of searching for a key in a hash map. What conditions lead to each?**
+
+## Applied Use Case (40 pts)
+
+Suppose you're building a lost-and-found database for Willamette University where items are stored by location found (e.g., Sparks, Ford, Montag). Would a hash map be effective? Explain how you’d structure the keys and values.
+
+\newpage
+
+# Oral Exam Version C
+
+## Conceptual Questions (20 pts each)
+
+1. **Describe how collisions are handled in a hash map that uses a fixed-size array with linked list chains. Why is this method used, and what are its trade-offs?**
+
+2. **Explain what properties a good hash function should have. How might poor hash function design affect the performance of a hash map?**
+
+3. **Analyze the best-case and worst-case time complexity of searching for a key in a hash map. What conditions lead to each?**
+
+## Applied Use Case (40 pts)
+
+You're creating a meal-tracking app for Goudy Commons that maps student IDs to their recent meal check-ins. Would a hash map be appropriate here? Explain how you'd use it and any challenges that might arise.
+
+\newpage
+
+# Oral Exam Version D
+
+## Conceptual Questions (20 pts each)
+
+1. **Describe how collisions are handled in a hash map that uses a fixed-size array with linked list chains. Why is this method used, and what are its trade-offs?**
+
+2. **Explain what properties a good hash function should have. How might poor hash function design affect the performance of a hash map?**
+
+3. **Analyze the best-case and worst-case time complexity of searching for a key in a hash map. What conditions lead to each?**
+
+## Applied Use Case (40 pts)
+
+If you were managing a campus-wide club registry app, where club names map to student leader contact info, how could a hash map help or hurt the system design?
+
+\newpage
+
+# Oral Exam Version E
+
+## Conceptual Questions (20 pts each)
+
+1. **Describe how collisions are handled in a hash map that uses a fixed-size array with linked list chains. Why is this method used, and what are its trade-offs?**
+
+2. **Explain what properties a good hash function should have. How might poor hash function design affect the performance of a hash map?**
+
+3. **Analyze the best-case and worst-case time complexity of searching for a key in a hash map. What conditions lead to each?**
+
+## Applied Use Case (40 pts)
+
+You are designing a system to match students to their faculty advisors. You are considering using a hash map. What benefits and potential issues would arise? Are there better alternatives?
+
+\newpage
+

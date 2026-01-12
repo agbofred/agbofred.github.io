@@ -1,0 +1,215 @@
+---
+title: "Final Exam Practice Questions: Data Structures and Algorithms"
+subtitle: "CS 152 Fall, 2025"
+format:
+     html:
+          theme:
+               light: 
+                    - cosmo
+                    - psets.scss
+               dark: darkly
+          fontsize: 1.2em
+          highlight-style: atom-one
+          toc: true
+          toc-depth: 2
+          html-math-method: katex
+          embed-resources: true
+          title-block-banner: linear-gradient(90deg, rgba(12, 202, 139, 1) 0%, rgba(102, 46, 128, 1) 100%)
+          title-block-banner-color: white
+---
+
+***
+
+> **Note:** This final exam practice questions are developed based exclusively on the materials covered in the class so far, following the topics from Week 6 through Week 14.
+
+***
+
+### Part 1: Multiple Choice Questions (20 Questions)
+
+*Instructions: Select the best answer.*
+
+1. **Which principle defines the removal protocol for a standard Queue?**  
+           A. LIFO  
+           B. LILO  
+           C. FIFO  
+           D. FILO
+
+2. **What data structure is used as the collection in the generic graph traversal algorithm to perform a Breadth-First Traversal (BFS)?**  
+           A. Stack  
+           B. List  
+           C. Dictionary  
+           D. Queue
+
+3. **In the context of graph implementation, which representation typically requires O(N²) memory, regardless of the number of edges (M)?**  
+           A. Adjacency List  
+           B. Linked List of Edges  
+           C. Adjacency Matrix  
+           D. Hash Map
+
+4. **A graph that contains no cycles is referred to as a(n):**  
+           A. Complete graph  
+           B. Connected graph  
+           C. Dense graph  
+           D. Acyclic graph
+
+5. **Which type of binary tree traversal visits the root node after visiting both the left and right subtrees?**  
+           A. Inorder  
+           B. Preorder  
+           C. Level order  
+           D. Postorder
+
+6. **If a binary tree is vine-like and contains N nodes, what is its maximum height?**  
+           A. log₂(N)  
+           B. N+1  
+           C. 1  
+           D. N−1
+
+7. **In a Priority Queue, if two items have the same priority, how are they removed?**  
+           A. Randomly  
+           B. In FIFO order  
+           C. Based on the insertion order  
+           D. Based on priority rank
+
+8. **Which operation is used to add an item to the top of a Stack?**  
+           A. Pop  
+           B. Peek  
+           C. Push  
+           D. Add
+
+9. **What is the complexity of determining whether an edge exists between two given vertices using an Adjacency Matrix representation?**  
+           A. O(N)  
+           B. O(N²)  
+           C. O(log N)  
+           D. O(1) (Constant time)
+
+10. **What is the fundamental structure used to manage function and method calls in computer memory?**  
+               A. The Object Heap  
+               B. The Data Segment  
+               C. The Instruction Pointer  
+               D. The Call Stack
+
+11. **The initialization step of Dijkstra’s shortest path algorithm is analyzed to have what time complexity, where N is the number of vertices?**  
+               A. O(N³)  
+               B. O(N)  
+               C. O(N²)  
+               D. O(M)
+
+12. **When evaluating a postfix expression using a stack, what action is taken when an operand is encountered?**  
+               A. It is ignored.  
+               B. It is applied to the two preceding operands.  
+               C. It is pushed onto the operand stack.  
+               D. It is appended to the postfix expression.
+
+13. **A Directed Acyclic Graph (DAG) is commonly used to model processes involving:**  
+               A. Mutual relationships (like road networks)  
+               B. Network cycles  
+               C. Dependencies (like scheduling tasks)  
+               D. Fully connected systems
+
+14. **In a Min-Heap, where is the smallest data item always located?**  
+               A. At the last level, leftmost position  
+               B. At the root  
+               C. Near the leaf nodes  
+               D. At the rightmost node
+
+15. **When implementing a Queue using a circular array, what is the running time complexity for both the add and pop operations?**  
+               A. O(N)  
+               B. O(logN)  
+               C. O(1)  
+               D. O(N²)
+
+16. **Which specific type of tree is defined by the property that the key in each node is greater than all keys in its left subtree and less than all keys in its right subtree?**  
+               A. Expression Tree  
+               B. Min-Heap  
+               C. Full Binary Tree  
+               D. Binary Search Tree (BST)
+
+17. **What specialized structure is used to implement a priority queue when the implementation uses a min-heap?**  
+               A. Linked List  
+               B. Array Stack  
+               C. Complete Binary Tree  
+               D. Adjacency List
+
+18. **When converting an infix expression to a postfix expression, what happens to an opening parenthesis ( when encountered?**  
+               A. It is discarded immediately.  
+               B. It is appended to the postfix expression.  
+               C. It is pushed onto the stack.  
+               D. It forces all pending operators to be popped.
+
+19. **What term is used for a subgraph that includes all the vertices of the original connected, undirected graph, and is also acyclic?**  
+               A. Connected Component  
+               B. Depth-First Search Tree  
+               C. Spanning Tree  
+               D. Directed Graph
+
+20. **A vertex in a graph that has a degree of 0 is called a(n):**  
+               A. Successor  
+               B. Neighbor  
+               C. Isolated vertex  
+               D. Root
+
+---
+
+### Part 2: Short Answer Questions (1-2 Words) (10 Questions)
+
+1. What data structure is used to implement the collection in a Depth-First Traversal (DFS)?  
+
+2. What term describes the value used to label an edge in a weighted graph?  
+
+3. What name is given to a path that does not pass through the same vertex more than once?  
+
+4. In the context of the LinkedDirectedGraph implementation, what type of Python data structure maintains the mapping between vertex labels and corresponding vertex objects?  
+
+5. What is the term for a node in a tree that has no children?  
+
+6. What type of tree structure is defined by the property that all levels are fully filled except possibly the last, which is filled from left to right?  
+
+7. What is the main technique used by operating systems for fair allocation of CPU resources among processes waiting in a queue?  
+
+8. The length of a path in a graph is defined as the number of what?  
+
+9. What is the name of the general algorithmic technique that incrementally builds candidates to solutions and abandons them as soon as they cannot lead to a valid solution?  
+
+10. Which type of queue allows items of higher rank to be removed before those of lower rank?  
+
+---
+
+### Part 3: Applied Questions (5 Questions)
+
+#### 1. Scenario: Social Media Connectivity
+
+*A software company is modeling user relationships on a new social media platform. They initially used an Adjacency Matrix to represent the "following" relationship. However, they observed that 98% of users follow less than 100 other users, but the platform has millions of users (N is very large).*
+
+**Query:** Explain the performance and storage trade-off implications of using the Adjacency Matrix in this scenario, and recommend the superior alternative representation.
+
+---
+
+#### 2. Scenario: Compiler Optimization
+
+*A compiler is processing a complex arithmetic expression: ((4 + 5) * 6) - 3.*
+
+**Query:** Describe the sequence of steps a stack-based algorithm would perform to evaluate the Postfix equivalent of this expression. Use only the operators and operands from the expression above. Explain what happens to the stack when the first operator * is encountered in the Postfix evaluation process.
+
+---
+
+#### 3. Scenario: Airline Route Mapping
+
+*An airline wants to find the cheapest route between its hub city (S) and all other available cities (V). The cost of flying between any two cities (edges) is always positive. The total number of cities (N) is 100.*
+
+**Query:** Which algorithm—Dijkstra’s or Floyd’s—is appropriate for this task, and what is the computational complexity of the chosen algorithm? Justify your choice based on the problem requirements and time complexity.
+
+---
+
+#### 4. Scenario: Emergency Room Scheduling
+
+*You are designing the ERModel for an Emergency Room Scheduler system, which must manage patients based on priority (Critical=1, Serious=2, Fair=3).*
+
+**Query:** If you use a LinkedPriorityQueue implementation based on a sorted linked list, how does the add method ensure that a new patient item is placed correctly? If the queue currently holds [Patient_A (1), Patient_B (2), Patient_C (2), Patient_D (3)], where would a new patient, Patient_E (2), be inserted, and why?
+
+---
+
+#### 5. Scenario: Tree Structure Verification
+
+*A student has implemented the LinkedBST class and wants to check its integrity by analyzing the visitation order of nodes. The tree contains nodes labeled 10, 5, 15, 3, 7, 12, 18.*
+
+**Query:** Provide the expected node visitation order for the Inorder Traversal and explain why this traversal is particularly useful for verifying a Binary Search Tree (BST).

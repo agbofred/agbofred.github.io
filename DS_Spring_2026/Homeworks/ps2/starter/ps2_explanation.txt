@@ -1,0 +1,17 @@
+Problem Set 2: Explanations and Written Answers
+==============================================
+########################################
+# Your Name:
+# Indicate any collaborators or tools used to assist you including AI:
+# Estimated time spent (hrs):
+########################################
+
+Instructions: Write your explanations and answers to all conceptual and analytical questions here. Clearly label each answer with the corresponding question number (e.g., 1a, 1b, 2a, etc.).
+
+Example:
+
+1a. [Your detailed explanation for question 1a goes here.]
+
+1b. [Your answer for question 1b goes here.]
+
+# Continue for all questions in the assignment.

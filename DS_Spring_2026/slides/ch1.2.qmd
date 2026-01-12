@@ -1,0 +1,276 @@
+---
+title: "Collections Overview"
+author: "Fred Agbo"
+date: Jan 14, 2026
+format:
+  revealjs:
+    # css: minimal.css
+    chalkboard: true
+    slide-number: true
+    theme: [simple, night]
+    respect-user-color-scheme: true
+    width: 1400
+---
+
+## Announcements
+- Welcome to the class
+- Report any issues with practicing PS0 assignment
+- If you have not:
+    - Read over the full syllabus carefully
+    - Join the class communication/announcements on  ***Discord Server***.!
+
+# Collections
+
+## Learning Objectives
+- Define the four general categories of collections – `linear`, `hierarchical`, `graph`, and `unordered`
+- List the specific types of collections that belong to each of the four categories of collections
+- Recognize which collections are appropriate for given applications
+- Describe the commonly used operations on every type of collection
+- Describe the difference between an abstract collection type and its implementations
+
+## Collection 
+
+- A group of zero or more items that can be treated as a conceptual unit
+- All collections have the same fundamental purposes:
+    - They help programmers effectively organize data in programs
+- Collections can be viewed from two perspectives:
+    - Users or clients of collections are concerned with what they do in various applications
+    - Developers or implementers are concerned with how they can best perform as general-purpose resources
+- Collections are typically dynamic rather than static:
+    - Can grow or shrink with the needs of the problem
+
+
+## Collection Types
+
+- Built-in collection types include
+    - `string`, `list`, `tuple`, `set`, and `dictionary`
+        - These are Python built-in collections
+    - __String__ and __list__ are the most common and fundamental types
+    - They allow the programmer to organize and manipulate several data values at once
+-   Other important types of collections include
+        `stacks`, `queues`, `priority queues`, `binary search trees`, `heaps`, `graphs`, `bags`, and other various types of sorted collections
+
+## Collection Types
+
+- Collections can be
+    - Homogeneous 
+        - all items in the collection must be of the same type
+    - Heterogeneous 
+        - items can be of different types
+
+## Built-In Python Collection: `Lists`
+
+- A sequence of zero or more Python objects, commonly called items
+- Has a literal representation
+- Uses square brackets `[]`to enclose items separated by commas
+- Ordered, mutable collection.
+    -  Example: ``
+    ```{.python}
+    []	                                # An empty list
+    ["greater"]	                        # A list of one string
+    ["greater", "less"]	                # A list of two strings
+    ["greater", "less", 10]	            # A list of two strings and an int
+    ["greater", ["less", 10]]           # A list with a nested list
+    my_list = [1, 2, 3]                 # A list of interger numbers 
+    
+    ```
+- Operations: append, remove, indexing, slicing.
+
+## Built-In Python Collection: `Lists`
+
+- Most commonly used list mutator methods:
+    - `append`, `insert`, `pop`, `remove`, and `sort`
+- Examples:
+```{.python}
+    testList = []                       # testList is []
+    testList.append(34)                 # testList is [34]
+    testList.append(22)                 # testList is [34, 22]
+    testList.sort()                     # testList is [22, 34]
+    testList.pop()                      # Returns 22; testList is [34]
+    testList.insert(0, 22)              # testList is [22, 34]
+    testList.insert(1, 55)              # testList is [22, 55, 34]
+    testList.pop(1)                     # Returns 55; testList is [22, 34]
+    testList.remove(22)                 # testList is [34]
+    testList.remove(55)                 # raises ValueError
+
+```
+
+## Built-In Python Collection: `Tuple`
+- Tule is a collection of an ordered, immutable sequence of items
+- Tuple literals enclose items in parentheses
+- Essentially like a list without mutator methods
+- A tuple with one item must still include a comma:
+``` {.python}
+    (34)
+    >>> 34                          #The data type here is integer
+    (34,)
+    >>> (34)                        #The data type here is tuple
+
+```
+
+- Operations: indexing, slicing.
+
+## Built-In Python Collection: `Dictionaries`
+- Contains zero or more entries, Unordered, mutable collection of key-value pairs
+- Keys are typically string or integers. Can also be an object but must not be `mutable`
+- Values are any Python objects
+``` {.python}
+    {}                                                  # An empty dictionary
+    {"name":"Ken"}                                      # One entry
+    {"name":"Ken", "age":67}                            # Two entries
+    {"hobbies":["reading", "running"]}                  # One entry, value is a list
+    Num = {"name":"Ken", "age":67}
+    for key in  Num:
+        print(f"{key}: {Num[key]} ") 
+    >>> name: Ken
+    >>> age: 67
+
+```
+
+## Built-In Python Collection: `Sets`
+- Sets are unordered, mutable collection of unique elements.
+    - Example: `my_set = {1, 2, 3}`
+    - Operations: add, remove, union, intersection.
+    
+## Linear Collections 
+- Items in a linear collection are ordered by position
+- Each item (except the first) has a unique predecessor
+- Each item (except the last) has a unique successor
+- Items are accessed by their position (index) in the collection
+- Traversal is typically from first to last (or vice versa)
+- Supports operations like insertion, deletion, and searching by position
+
+![Examples include arrays, lists, stacks, and queues](../images/lenear_collection.png){width=400px style="display:inline-block; max-width:400px; height:auto;"}
+
+## Hierarchical Collections
+
+- Data items are ordered in a structure resembling an upside-down tree:
+- Each data item (except the top) has just one predecessor, called its parent, but potentially many successors, called its children
+    - The top item is called the root; items with no children are called leaves
+    
+![Examples include binary trees, heaps, and general trees](../images/hierarchical.png){width=400px style="display:inline-block; max-width:400px; height:auto;"}
+
+
+## Graph Collections
+
+- Data items are organized as nodes connected by edges, forming a network structure.
+- Each node can have zero or more connections (edges) to other nodes.
+- Unlike hierarchical collections, nodes can have multiple predecessors and successors.
+
+![Examples include undirected graphs, directed graphs, and weighted graphs](../images/graph_collection.png){width=400px style="display:inline-block; max-width:400px; height:auto;"}
+
+## Unordered Collections
+
+- Items are stored without any specific order or position.
+- Access to items is typically based on their value or key, not their position.
+- Common operations include insertion, deletion, and membership testing.
+
+![Examples include sets, dictionaries, and bags](../images/unordered_collection.png){width=400px style="display:inline-block; max-width:400px; height:auto;"}
+
+
+## A Taxonomy of Collection Types
+:::{.center style="text-align:center;"}
+![](../images/taxonomy.png){width=400px style="display:inline-block; min-width:400px; height:auto; align:center"}
+:::
+
+## Fundamental Operations on All Collection Types
+
+- **Insertion**: Add a new item to the collection.
+- **Deletion**: Remove an item from the collection.
+- **Traversal**: Visit each item in the collection, often in a specific order.
+- **Searching**: Find an item in the collection based on a value or key.
+- **Access**: Retrieve an item from the collection, either by position, key, or value.
+- **Update**: Modify an existing item in the collection (if the collection is mutable).
+
+
+## Fundamental Operations on All Collection Types
+- Several of the operations are associated with Python operators, functions, or control statements: `in`, `+`, `len`, `str`, and the `for`  loop
+- There is no single name for insertion, removal, replacement, or access operations in Python
+- There are a few standard variations:
+- The method `pop` is used to remove items at given positions from a Python list or values at given keys from a Python dictionary 
+- The method `remove` is used to remove given items from a Python set or a Python list
+
+## Type Conversion
+
+- You might already know about type conversion from its use in the input of numbers:
+    - Convert a string of digits from the keyboard to an ***int*** or ***float*** by applying the int or float function to the input string
+-  You can convert one type of collection to another type of collection in a similar manner:
+    - Converting a Python `string` to a `list` and a `list` to a `tuple`
+
+```{.python}
+message = "Hi there!"
+lyst = list(message)
+print(lyst)                     # >>> ['H', 'i', ' ', 't', 'h', 'e', 'r', 'e', '!']
+toople = tuple(lyst)
+print(toople)                   # >>> ('H', 'i', ' ', 't', 'h', 'e', 'r', 'e', '!')
+
+```
+
+## Clonning and Equality
+- Cloning
+    - A special case of type conversion
+    - Returns an exact copy of the argument to the conversion function
+    - Example 
+        - this code segment makes a copy of a list and then compares the two lists using the `is` and `==` operators:
+        ```{.python}
+        lyst1 = [2, 4, 8]
+        lyst2 = list(lyst1)
+        lyst1 is lyst2
+        >>> False
+        lyst1 == lyst2
+        >>> True
+        ```
+
+
+## Clonning and Equality
+- The `list` function makes a ***shallow copy*** of its argument list
+- The items in the previous code are not themselves cloned before being added to the new list:
+    - Instead, references to these objects are copied
+-  When collections share mutable items,
+    - Side effects can occur
+    - To prevent this from happening, the programmer can create a ***deep copy*** by writing a `for` loop over the source collection
+    - This explicitly clones its items before adding them to the new collection
+
+## Iterators and Higher-Order Functions
+- Each type of collection supports an iterator or `for` loop:
+    - The order in which the `for` loop serves up a collection’s items depends on the manner in which the collection is organized
+- The `for` loop plays a useful role in the implementation of several other basic collection operations, such as `+`, `str`, and type conversions
+- And also supports the use of higher-order functions, such as `map`, `filter`, and `reduce`
+- These functions can be used with any type of collection, not just `lists`
+
+
+## Implementations of Collections
+- Programmers who use collections need to know how to instantiate and use each type of collection
+- From a user’s perspective, a collection is an `abstraction`:
+    - For this reason, collections are also called abstract data types (ADTs)
+- Developers of collections
+    - Are concerned with implementing a collection’s behavior in the most efficient manner possible
+- Some programming languages provide only one implementation of each of the available collection types:
+    - __Python__ has one implementation while __Java__ provides several
+
+## Implementations of Collections
+- For each category of collection,
+    - You’ll see one or more abstract collection types and one or more implementations of each type
+- __Abstract Collection Types__ define the behavior and operations of a collection without specifying how they are implemented.
+- __Implementations__ provide concrete ways to realize these abstract types using data structures and algorithms.
+- A software system is often built layer by layer
+    - With each layer treated as an abstraction by the layers above that utilize it
+
+
+## Implementations of Collections
+
+- In Python,
+    - Functions and methods are the smallest units of abstraction
+    - Classes are next in size
+    - Modules are the largest
+- We will implement abstract collection types as classes or sets of related classes in modules
+- General techniques for organizing these classes are covered in later chapters 5 & 6
+
+## A Few Things to Note!
+
+- No Class on Monday September 1. [It's Labour Day]
+- Reading for next week:
+    - Fundamentals of Python Data Structures (FDS) - Lambert: ,
+        -  Chapters 3 & 9
+    - Data Structures & Algorithms in Python (DS&A) - John et al.:
+        - Chapter 3 & 7

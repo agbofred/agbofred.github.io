@@ -1,0 +1,483 @@
+---
+title: "Weeks 7 - 14 Class Review"
+author: "Fred Agbo"
+date: December 3, 2025
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+
+## Announcements
+:::{.incremental style="font-size: 28px;"}
+- PS6 was due yesterday:
+    - Zip all the files and upload to Canvas
+    - Those who already presented on Monday during class are not obliged to upload on Canvas.
+        - However, it will be nice to reference them. Hence, still upload if you can.
+    - You haven't presented yet or made significant update after class on Monday?
+        - You `MUST` upload to Canvas.
+- Mini Project #3 grading is ongoing.
+- Have not completed the Course Evaluation yet? 
+    - Check for the menu on your course Canvas and complete it ASAP.
+- Volunteers to participate in my VR prototype for STEM education study.
+    - Visit my office between 11 am and 12pm from tomorrow Thursday 4th until Thursday 11th.
+    - I will follow up on email.
+:::
+
+## Finals: Exams and other heads up
+:::{.incremental style="font-size: 30px;"}
+- The final for this class is scheduled for `Tuesday, December 9th, from 2:00 p.m. - 5:00 p.m.`
+- Venue is here in this same class
+- Those with accommodations should notify testing center ASAP and copy me in the communications
+- What you need for the exam:
+    - Only your laptop is needed to access Canvas page.
+        - No other software - local or on the web will be allowed or opened during the exam.
+    - No access to printed or electronic materials.
+    - No use of code editor, notes from the class or your personal notes.
+    - You can bring a sheet of blank paper as worksheet.
+- In another words, the exam is totally closed.
+:::
+
+# Data Structures Review: Stacks, Queues, Trees, and Graphs
+
+
+## Stacks: Fundamentals and Operations
+:::{.smaller style="font-size: 26px;"}
+| Feature | Description |
+| :--- | :--- |
+| **Definition** | A **linear data structure** following **Last-In, First-Out (LIFO)** principle |
+| **Analogy** | Stack of clean trays in a cafeteria; new tray removed from top |
+| **Core Operations** | **`push`**: Adds item to top<br>**`pop`**: Removes and returns top item<br>**`peek`**: Returns top item without removing |
+| **Python Emulation** | Python list uses `append` for `push` and `pop` for `pop` |
+| **Implementation** | **Arrays (`ArrayStack`)** or **Linked structures (`LinkedStack`)**<br>For linked stacks, `pop`/`push` are easy—operations at one end |
+
+::::{.callout-note}
+**Reinforcement:** The `pop` operation raises a `KeyError` if the stack is empty.
+::::
+
+:::
+
+
+## Stacks: Applications
+
+### Expression Evaluation
+:::{style="font-size: 28px;"}
+| Stage | Stack Role | Key Steps |
+| :--- | :--- | :--- |
+| **Infix to Postfix** | Holds operators and left parentheses | **Operands** → appended to PE<br>**Operators** → pushed, respecting precedence<br>**Right parentheses** → pop until left parenthesis |
+| **Postfix Evaluation** | Holds operands and intermediate results | Scan left-to-right<br>**Operands** → pushed<br>**Operator** → applied to two popped operands, result pushed |
+:::
+
+## Stacks: Applications
+### Memory Management (Call Stack)
+:::{.incremental style="font-size: 30px;"}
+- PVM uses **Call Stack** for subroutine execution
+- **Activation record** pushed when subroutine called
+- Saves **Return Address** and parameters
+- **Popped** when execution finishes
+:::
+
+## Stacks: Applications
+### Backtracking
+:::{.incremental style="font-size: 30px;"}
+- Stack **remembers alternative states** at each juncture
+- On dead end, backs up to **last unexplored alternative**
+- LIFO nature facilitates backtracking
+:::
+
+
+
+## Queues: Fundamentals and Implementations
+:::{.smaller style="font-size: 26px;"}
+| Feature | Description |
+| :--- | :--- |
+| **Definition** | **Linear collection** with insertions at **rear**, removals at **front**<br>Follows **First-In, First-Out (FIFO)** protocol |
+| **Core Operations** | **`add`** (enqueue): Adds item to rear<br>**`pop`** (dequeue): Removes item from front<br>**`peek`**: Returns front item without removing |
+| **Applications** | Waiting lines, **Round-Robin CPU Scheduling**, Task scheduling, Disk/Printer access |
+| **Linked Implementation** | Uses **`front`** and **`rear`** variables<br>Both set to `None` when queue becomes empty |
+| **Array Implementation** | **Circular Array** achieves $O(1)$ for both `add` and `pop`<br>Avoids shifting items |
+:::
+
+
+## Priority Queues and the ER Model
+
+### Priority Queues (PQ)
+:::{.incremental style="font-size: 32px;"}
+- Assigns **priority** to each item
+- **Higher priority** items removed first
+- **Equal priority** items removed in **FIFO** order
+- **Implementations:** Heap-based (efficient) or Unsorted/Sorted lists
+:::
+
+### LinkedPriorityQueue Implementation
+:::{.incremental style="font-size: 32px;"}
+- Inherits from `LinkedQueue`
+- `pop` method inherited (removes head)
+- **`add` method overridden** to insert by priority
+:::
+
+<!-- ### ER Scheduler Case Study
+:::{.incremental style="font-size: 30px;"}
+- Uses **Model-View pattern**
+- **`ERModel`**: Manages **priority queue** of `Patient` objects
+- **`ERView`**: Handles user interaction
+- **`Patient`**: Stores name and condition; comparison based on condition priority
+- **`Condition`**: Defines ranks (Critical=1, Serious=2, Fair=3)
+::: -->
+
+---
+
+## Trees: Fundamentals
+
+### Tree Terminology
+| Term | Definition |
+| :--- | :--- |
+| **Root** | Topmost node (no parent) |
+| **Leaf** | Node with no children |
+| **Interior Node** | Node with at least one child |
+| **Height** | Length of longest path in tree |
+| **Depth/Level** | Length of path connecting node to root |
+
+## Trees: Binary Tree Structure
+:::{.incremental style="font-size: 36px;"}
+- Empty or consists of root + **left subtree** + **right subtree**
+- Each node has **at most two children**
+- **Vine-like:** Maximum height $N-1$ (like linked list)
+- **Full Binary Tree:** Maximum nodes for height $h$ is $2^{(h+1)} - 1$
+- **Complete Binary Tree:** All levels filled (except possibly last, filled left-to-right)
+:::
+
+## Binary Search Trees (BSTs)
+:::{.incremental style="font-size: 36px;"}
+- Each node's **key** > all keys in **left** subtree and < all keys in **right** subtree
+- Operations (Search, Insert, Delete) run in **$O(h)$** time
+- Interface: `add`, `remove`, `find`, traversal methods
+:::
+
+---
+
+## Tree Applications: Traversals
+
+### Binary Tree Traversals
+:::{.smaller style="font-size: 34px;"}
+| Traversal | Order | Utility |
+| :--- | :--- | :--- |
+| **Preorder** | Root, Left, Right | Used by tree's `__iter__` method |
+| **Inorder** | Left, Root, Right | Produces **sorted order** on BST |
+| **Postorder** | Left, Right, Root | Used in Expression Trees |
+| **Level Order** | Level-by-level | Requires **Queue** |
+:::
+
+
+## Expression Trees and Parsing
+:::{.incremental style="font-size: 36px;"}
+- Represent syntactic structure of expressions
+- **Interior nodes:** operators; **Leaf nodes:** operands
+- **Scanner:** Performs lexical analysis (produces tokens)
+- **Parser:** Syntax analyzer
+:::
+
+## Heap Structure and Complexity
+:::{.incremental style="font-size: 30px;"}
+- Specialized binary trees for Priority Queues
+- **Heap Property:** In Min-Heap, parent $\le$ children
+- Implemented as **Complete Binary Tree** (facilitates array mapping)
+- **Array Indexing:** Parent at **$(i - 1) // 2$**
+- **`add`** (heapify up): **$O(\log N)$**
+- **`pop`** (heapify down): **$O(\log N)$**
+:::
+
+---
+
+## Graphs: Features, Types, and Terminology
+
+### Graph Fundamentals
+:::{.incremental style="font-size: 36px;"}
+- Most **general category of collection**
+- **Vertices (nodes):** Entities
+- **Edges (links):** Relationships
+- **Applications:** Social networks, web pages, communication networks, scheduling
+:::
+
+## Graph Fundamentals
+### Key Terminology
+
+:::{.smaller style="font-size: 32px;"}
+| Term | Definition |
+| :--- | :--- |
+| **Weighted Graph** | Edges labeled with numbers (weights) |
+| **Path** | Sequence of edges connecting vertices |
+| **Cycle** | Path that starts and ends at same vertex |
+| **Acyclic Graph** | Contains no cycles |
+| **Tree** | Connected acyclic graph |
+| **Connected Graph** | Path exists from each vertex to every other |
+| **Complete Graph** | Edge exists from each vertex to every other |
+:::
+---
+
+## Graph Types by Edge Structure
+:::{.smaller style="font-size: 33px;"}
+| Graph Type | Description | Key Features |
+| :--- | :--- | :--- |
+| **Directed Graph (Digraph)** | Edges have direction $(u, v)$ | Direction matters (source/destination) |
+| **Directed Acyclic Graph (DAG)** | Directed graph with **no cycles** | Models **dependencies** (scheduling) |
+| **Undirected Graph** | Edges without direction $\{u, v\}$ | Mutual relationships (two-way streets) |
+:::
+---
+
+## Graph Implementations and Trade-offs
+
+### Linked Structure Implementation
+:::{.incremental style="font-size: 30px;"}
+- **`LinkedDirectedGraph`**: Main class with **dictionary** mapping labels to `LinkedVertex`
+- **`LinkedVertex`**: Represents node; maintains label, `mark`, `edgeList`
+- **`LinkedEdge`**: Represents connection; holds `vertex1`, `vertex2`, `weight`
+:::
+
+## Graph Representation Analysis
+
+| Representation | Storage | Edge Check $(i \to j)$ | Iterate Neighbors |
+| :--- | :--- | :--- | :--- |
+| **Adjacency Matrix** | **$O(N^2)$** | **$O(1)$** | $O(N)$ |
+| **Adjacency List** | **$O(N + 2M)$** | $O(\deg(i))$ | $O(\deg(v))$ |
+
+:::{.callout-tip}
+**Adjacency List** better for **sparse graphs** ($M \ll N^2$)  
+**Adjacency Matrix** faster for edge existence checks
+:::
+
+---
+
+## Graph Traversals and Connectivity
+
+### Generic Traversal Algorithm
+:::{style="font-size: 30px;"}
+Start at `startVertex`, use collection to store vertices, pop one, process it, mark as visited, add adjacent unvisited vertices
+
+| Traversal Type | Collection | Behavior | Applications |
+| :--- | :--- | :--- | :--- |
+| **DFS** | **Stack** | Goes **deeply** before backtracking | Cycle detection, pathfinding, Topological Sort |
+| **BFS** | **Queue** | Visits all adjacent vertices **first** | Shortest paths (unweighted), connectivity |
+:::
+
+
+## Spanning Trees and MSTs
+:::{.incremental style="font-size: 32px;"}
+- **Spanning Tree:** Subgraph including **all vertices**, connected and acyclic
+- **MST:** Spanning tree with **smallest total edge weight**
+- **Algorithms:** Kruskal's and Prim's
+- **Complexity:** **$O(E \log V)$**
+:::
+
+### Topological Sort
+:::{.incremental style="font-size: 32px;"}
+- Traverses **DAG** to order vertices
+- For edge $u \to v$, vertex $u$ comes before $v$
+- Used in scheduling and dependency resolution
+:::
+
+---
+
+## Shortest Path Algorithms and Complexity
+
+### Single-Source Shortest Path
+:::{.incremental style="font-size: 32px;"}
+- **Problem:** Find shortest paths from source to all other vertices
+- **Dijkstra's Algorithm:** For weighted graphs
+- **Constraint:** Requires **non-negative** edge weights
+- **Running Time:** **$O(N^2)$**
+:::
+
+## Shortest Path Algorithms and Complexity
+### All-Pairs Shortest Path
+:::{.incremental style="font-size: 32px;"}
+- **Problem:** Find shortest paths between **every pair** of vertices
+- **Floyd's Algorithm (Floyd-Warshall):** For weighted graphs
+- **Constraint:** Handles negative weights (not negative cycles)
+- **Mechanism:** Updates 2D distance matrix via intermediate vertices
+- **Running Time:** **$O(N^3)$**
+:::
+
+## Shortest Path Algorithms and Complexity
+### Time Complexity Summary
+:::{.smaller style="font-size: 32px;"}
+| Algorithm/Operation | Structure/Context | Complexity |
+| :--- | :--- | :--- |
+| Heap Insertion (`add`) | Complete Binary Tree | $O(\log N)$ |
+| BST Search (Worst) | Vine-like BST | $O(N)$ |
+| **Dijkstra's** | Single-Source Shortest Path | **$O(N^2)$** |
+| **Floyd's** | All-Pairs Shortest Path | **$O(N^3)$** |
+| **MST (Prim's/Kruskal's)** | Minimum Spanning Tree | **$O(E \log V)$** |
+
+:::
+
+
+<!-- # Developing a Graph Collection
+
+## Announcements
+:::{.incremental style="font-size: 35px;"}
+- PS6 was due yesterday:
+    - Zip all files and upload to Canvas
+    - Those who already presented on Monday during class are not obliged to upload on Canvas.
+        - However, it will be nice to reference them. Hence, still upload if you can.
+    - You haven't presented yet or made significant update after class on Monday?
+        - You `MUST` upload to Canvas.
+- Mini Project #3 grading is ongoing.
+- Have not completed the Course Evaluation yet? 
+    - Check for the menu your course Canvas and complete it ASAP
+- Volunteers to participate in my VR prototype for STEM education study
+    - Visit my office between 11 am and 12pm from tomorrow Thursday 4th until Thursday 11th.
+    - I will follow up on email
+:::
+
+## Finals: Exams and other heads up
+:::{.incremental style="font-size: 35px;"}
+- The final for this class is scheduled for `Tuesday, December 9th, from 2:00 p.m. - 5:00 p.m.`
+- Venue is here in this same class
+- Those with accommodations should notify testing center ASAP and copy me in the communications
+- What you need for the exam:
+    - Only your laptop is needed to access Canvas page.
+        - No other software - local or on the web will be allowed or opened during the exam.
+    - No access to printed or electronic materials.
+    - No use of code editor, notes from the class or your personal notes.
+    - You can bring a sheet of blank paper as worksheet.
+- In another words, the exam is totally closed.
+:::
+
+# Data Structures Review Class: Comprehensive Exam Preparation
+
+---
+
+## Linear Collections: Stacks and Queues
+
+| Feature | Stack (LIFO) | Queue (FIFO) | Priority Queue |
+| :--- | :--- | :--- | :--- |
+| **Principle** | Last in, first out | Insert rear, remove front | Highest priority out first |
+| **Operations** | `push`, `pop`, `peek` | `add`, `pop`, `peek` | `add`, `pop` (by priority) |
+| **Linked Impl.** | `push`/`pop` $O(1)$ | `add`/`pop` $O(1)$ | `pop` $O(1)$, `add` $O(N)$ |
+| **Array Impl.** | Simple, use `append`/`pop` | $O(1)$ with circular array | Min-Heap for efficiency |
+| **Applications** | Call stack, backtracking | Scheduling, simulations | ER scheduling, task queues |
+
+---
+
+## Stack Applications and System Support
+
+### Expression Evaluation (Infix to Postfix)
+- Convert infix to postfix using stack for operators.
+- Evaluate postfix: push operands, pop for operations.
+
+### Backtracking
+- Stack remembers alternative states.
+- On dead end, pop to previous state.
+
+### Call Stack (Memory Management)
+- PVM uses call stack for subroutine calls.
+- Activation record holds variables, parameters, return address.
+
+---
+
+## Hierarchical Structures: Trees and Heaps
+
+### Tree Terminology
+- **Root:** Top node.
+- **Leaf:** No children.
+- **Height:** Longest root-to-leaf path.
+- **Complete Binary Tree:** All levels filled except possibly last.
+
+### Binary Search Trees (BSTs)
+- Left < Node < Right.
+- Search/insert: $O(h)$; balanced $O(\log N)$, worst $O(N)$.
+
+### Tree Traversals
+
+| Traversal | Order | Utility |
+| :--- | :--- | :--- |
+| Preorder | Root, Left, Right | Default iteration |
+| Inorder | Left, Root, Right | BST: sorted order |
+| Postorder | Left, Right, Root | Deletion |
+| Level Order | Level by level | BFS |
+
+### Heaps (Min-Heap)
+- Root is smallest.
+- Array mapping: parent $(i-1)//2$, left $2i+1$, right $2i+2$.
+- `add`/`pop`: $O(\log N)$, `peek`: $O(1)$.
+
+---
+
+## Graph Fundamentals and Terminology
+
+- **Vertices (Nodes):** Entities.
+- **Edges (Links):** Relationships.
+- **Weighted Graph:** Edges have weights.
+- **Directed Graph:** Edges $(u, v)$, one-way.
+- **Undirected Graph:** Edges $\{u, v\}$, mutual.
+- **Cycle:** Path starts/ends at same vertex.
+- **Acyclic Graph:** No cycles.
+- **Tree:** Connected, acyclic.
+- **DAG:** Directed, acyclic (e.g., scheduling).
+
+### Linked Structure Implementation
+- **LinkedDirectedGraph:** Dict of labels to `LinkedVertex`.
+- **LinkedVertex:** Holds label, mark, edge list.
+- **LinkedEdge:** Holds from/to vertices, weight.
+
+---
+
+## Implementation Trade-offs: Matrix vs. List
+
+| Feature / Operation | Adjacency Matrix | Adjacency List | Trade-off |
+| :--- | :--- | :--- | :--- |
+| **Storage** | $O(N^2)$ | $O(N+2M)$ | Matrix wastes space for sparse graphs |
+| **Edge Check** | $O(1)$ | $O(\deg(i))$ | Matrix is faster for edge existence |
+| **Neighbors** | $O(N)$ | $O(\deg(v))$ | List is faster for sparse graphs |
+| **All Edges** | $O(N^2)$ | $O(M)$ | List is better for sparse graphs |
+
+---
+
+## Graph Traversals and Connectivity
+
+### Generic Traversal
+- Mark all unvisited.
+- Add start vertex to collection.
+- Pop, mark, process, add unvisited neighbors.
+
+| Traversal | Collection | Behavior | Applications |
+| :--- | :--- | :--- | :--- |
+| DFS | Stack | Deep before backtrack | Pathfinding, cycles, topo sort |
+| BFS | Queue | Level by level | Shortest path, connectivity |
+
+### Topological Sort
+- On DAGs: order vertices so $u \to v$ means $u$ before $v$.
+
+### Minimum Spanning Trees (MST)
+- Spanning tree with minimal total edge weight.
+- Kruskal’s/Prim’s: $O(E \log V)$.
+
+---
+
+## Shortest Path Algorithms and Complexity Summary
+
+### Dijkstra’s (Single-Source)
+- Finds shortest paths from one source.
+- Non-negative weights.
+- $O(N^2)$ overall.
+
+### Floyd’s (All-Pairs)
+- All shortest paths between pairs.
+- Handles negative weights (no negative cycles).
+- $O(N^3)$.
+
+### Time Complexity Summary
+
+| Operation | Structure | Complexity |
+| :--- | :--- | :--- |
+| Stack `push`/`pop` | Linked Stack | $O(1)$ |
+| Queue `add`/`pop` | Linked/Circular Array | $O(1)$ |
+| Heap `add`/`pop` | Min-Heap | $O(\log N)$ |
+| BST Search/Insert | Balanced | $O(\log N)$ |
+| BST Search/Insert | Vine-like | $O(N)$ |
+| Edge Check | Matrix | $O(1)$ |
+| Dijkstra’s | SSSP | $O(N^2)$ |
+| Floyd’s | APSP | $O(N^3)$ |
+| MST | Prim/Kruskal | $O(E \log V)$ | -->

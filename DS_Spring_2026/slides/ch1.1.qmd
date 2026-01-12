@@ -1,0 +1,380 @@
+---
+title: "CS 152 Kickoff & Course Overview"
+author: "Fred Agbo"
+date: Jan 12, 2026
+format:
+  revealjs:
+    # css: minimal.css
+    chalkboard: true
+    slide-number: true
+    theme: [simple, night]
+    respect-user-color-scheme: true
+    width: 1400
+---
+
+## Announcements
+- Welcome to CS152: Data Structures
+- Things to do:
+    - Access the course webpage on Canvas.
+    - Read over the full syllabus carefully.
+    - Join the class communication/announcements channel on  ***Discord Server***.!
+    - Use the instruction on the __Resources__ menu on Canvas week 1 module to setup your environments
+        - We will go over them briefly in class
+
+# Introduction
+
+Let's get to know one another...
+
+## Your Instructor
+
+::: {.columns}
+::: {.column width="65%"}
+
+**Name:** Professor/Dr Fred Agbo  <br>
+**Office:** Ford 209  <br>
+__Office Hours:__ T, TH 10:30-12:00pm Online or anytime I'm around  <br>
+**Email:** fjagbo at willamette.edu  <br>
+__Office Phone:__ 503-370-6862
+
+:::
+::: {.column width="30%"}
+![](../../images/fredprofile.jpg){width=50%}
+:::
+:::
+
+---
+
+## Your TA
+::: {.columns}
+::: {.column width="65%"}
+
+**Name:** Sam Holmes <br>
+**Email:** srholmes at willamette.edu  <br>
+
+:::
+::: {.column width="30%"}
+![](../images/samHolmes.jpg){width=50%}
+:::
+:::
+
+# Syllabus Check
+
+## Textbook Materials for this course
+- Two main textbooks are used in this course  (next slide).
+- Other supplementary resources are provided too.
+- Contact the Bookstore for help and possible discount.
+
+
+## Textbook Materials for this course
+::: {.columns}
+::: {.column width="50%"}
+![](../images/Lambert.jpg){width=40%} 
+
+- Fundamentals of Python Data Structures (2nd Ed) by Kenneth Lambert
+:::
+
+::: {.column width="50%"}
+![](../images/John2.jpg){width=40%}
+
+- Data Structures & Algorithms in Python (1st Ed) by John Canning, Alan Broder, and Robert Lafore
+:::
+:::
+
+## Weekly Reading & Book Chapter Mapping
+![](../images/syllabus.png){width=100%}
+
+- Checkout the full mapping from the [PDF version of course syllabus](https://willamette.instructure.com/courses/9710/assignments/syllabus) 
+
+
+## Grading
+
+
+- Weekly Reading, Class Attendance, and Participation in Class Activities - `40%`.
+    - This is a huge part of the course grade.
+        - Plan to be in-person in class and do not miss any inclass activities.
+        - Grade is determined at the end of the semester (after finals).
+- Assignments & Mini Projects - `25%`.      		
+- A Midterm - `15%`.
+- A Final Exam - `20%`.
+
+
+## Homework
+- All homework will be due on Wednesdays at 10:00pm.
+- Submissions will be handled through Github Classroom.
+- No late submission.
+- Extensions for any reason must be requested and approved by myself before the due date.
+    - Maximum extention possible is 24 hrs.
+
+## More on course structure and policy
+
+- Check the syllabus:
+    - [On canvas](https://willamette.instructure.com/courses/9710/assignments/syllabus)
+    - [PDF version](https://willamette.instructure.com/courses/9710/files/folder/Course%20Material?preview=2522121)
+- Pay a close attention to the course policy. 
+    - For example, the use of AI tools or GenAI in this class.
+
+## Getting to know you...
+:::{.incremental}
+- Tell us your name
+- Share a fun fact about yourself or your favorite hobby outside of CS.
+- What's one thing you hope to learn or build in this class?
+- What do you reasonably expect to remember from your courses in 20 years?
+- If you could only use one data structure for the rest of your life, which would it be? (You can guess!)
+- Python, Java, C++, or something else—what's your favorite language and why?
+
+::: 
+
+# Why Data Structures Matters
+
+
+## Why Studying Data Strecture
+
+- Data structures are fundamental to efficient problem solving in computer science
+- They help organize, manage, and store data for optimal access and modification
+- Choosing the right data structure can dramatically improve program performance
+- Many real-world applications (search engines, databases, games) rely on effective use of data structures
+- Understanding data structures prepares you for technical interviews and advanced coursework
+
+## Why Studying Data Strecture
+- Data Structures often provide a model of the real-world problem they help solve. __Examples:__
+    - People waiting in line to buy tickets
+    -  Issuing lottery tickets then picking and finding the winner
+    - Maintaining a group of contacts with changing attributes like phone numbers, app handles, residences, and even names
+- The data structure must make the most common operations efficient for that problem domain
+
+
+## What is a Data Structure?
+
+- A data structure is a representation of the logical relationship existing among elements of data.
+- It provides a way to organize, store, and manage data efficiently.
+- Examples include __arrays__, ***linked lists***, **stacks**, __queues__, **trees**, and ***graphs***.
+- The choice of data structure impacts how you access, modify, and process data in your programs.
+
+
+## Primitive and Non-Primitive Data Structures
+
+- Primitive Data Structures
+    - Directly operated upon by machine instructions
+    - Examples: `int`, `float`, `char`, `boolean`. 
+
+- Non-Primitive Data Structures
+    - Built using primitive data types
+    - Can store multiple values and complex relationships
+    - Examples: `arrays`, `lists`, `stacks`, `queues`, `trees`, `graphs`
+
+## Non-Primitive Data Structure
+
+-   Arrays
+    - Single Dimension Arrays
+        - Store elements in a linear sequence
+        - Example in Python:
+        ```python
+        numbers = [10, 20, 30, 40, 50]
+        ```
+    - Multi-Dimensional Arrays
+        - Store elements in a grid or matrix (e.g., 2D, 3D)
+        - Example in Python (2D array):
+        ```python
+        matrix = [[1, 2], [3, 4], [5, 6]]
+        ```
+
+## Non-Primitive Data Structure
+-   Lists
+    - Linear 
+        - Stack
+        - Queue 
+        - Linked List
+    - None Linear 
+        - Trees
+        - Graphs 
+
+
+## The Four Primary Operations
+
+- `Insertion:` Add a new element to the data structure.
+- `Deletion:` Remove an existing element from the data structure.
+- `Traversal:` Access each element of the data structure systematically.
+- `Searching:` Find the location of a specific element within the data structure.
+
+
+## So Many Data Structures: Why?
+- Different data structures excel at different things.  
+    - Some are highly specialized, while others (like arrays) are more generally used.
+- The more time you spend as a developer, the more likely you'll need to use one of these data structures
+- You've already worked with many of them knowingly or unknowingly 🤓
+- _Job interviews_ often include data structure questions. 
+    
+
+## So Many Data Structures: Why?
+- For example, you might be asked to implement a stack or explain when to use a hash table. 
+- Knowing the strengths and weaknesses of each data structure helps you solve these problems efficiently and impress interviewers.
+
+# THERE IS NO ONE "BEST" DATA STRUCTURE
+😎
+
+
+## Data Structure Selection Cheat Sheet
+::: {.smaller style="font-size:25px;"}
+| Data Structure | Best For | Example Use Case |
+|:-------------- |:---------|:----------------|
+| Array          | Fast access by index, fixed size | Storing scores, pixel data |
+| Linked List    | Frequent insertions/deletions | Undo history, playlist |
+| Stack          | Last-in, first-out (LIFO) | Function calls, browser history |
+| Queue          | First-in, first-out (FIFO) | Print jobs, task scheduling |
+| Tree           | Hierarchical data | File systems, organization charts |
+| Graph          | Relationships/networks | Social networks, maps |
+:::
+_Choose based on your problem's needs: speed, memory, and operations!_
+
+<!-- ## Important Functions in `random`
+
+:::{style='font-size: 80%'}
+
+- Random Integers
+
+|                          |                                                             |
+| :---                     | :------                                                     |
+| `randint(minv, maxv)`    | Returns an integer between minv and maxv, inclusive         |
+| `randrange(limit)`       | Returns an integer from 0 up to but not including limit     |
+| `randrange(start,limit)` | Returns an integer from start up to but not including limit |
+| `random()`            | Returns a random float between 0 and 1       |
+| `uniform(minv, maxv)` | Returns a random float between minv and maxv |
+| `choice(a_list)`    | Returns a random element from `a_list`       |
+| `sample(a_list, k)` | Returns a list of `k` elements from `a_list` |
+| `shuffle(a_list)`   | Randomly reorders the elements of `a_list`   |
+
+:::
+
+## Random Examples
+```{.python style='min-height:300px; font-size:34px'}
+import random
+
+def random_redblue():
+    if random.random() > 0.5:
+        return "red"
+    else:
+        return "blue"
+
+def random_color():
+    color_string = "#"
+    for i in range(6):
+        color_string += random.choice("0123456789ABCDEF")
+    return color
+```
+
+## The Portable Graphics Library
+- Built atop Tkinter
+- The library (`pgl.py`) is available on the Canvas website [here](https://willamette.instructure.com/courses/3703/modules/items/160252)
+    - Put it in the same folder as your code, and then you can import it
+- Operates on the idea of a collage or cork-board
+
+[Test](../images/CorkBoard.svg)
+
+- Note that newer objects can obscure older objects. This layering arrangement is called the _stacking order_.
+
+
+## The Pieces
+- At its simplest then, we have two main parts:
+    - The window (or felt-board/cork-board)
+        - Created with the `GWindow` function
+        - Takes two arguments: a width and a height in pixels
+    - The contents
+        - A wide assortment of shapes and lines that can be added to the scene
+        - Control over where they are placed, how large they are, what color they are, etc
+
+
+## Blue Rectangle!
+```{.python data-line-numbers="1|3,4|6|7|8|9|10|11" style="font-size:34px;"}
+from pgl import GWindow, GRect
+
+GW_WIDTH = 500
+GW_HEIGHT = 200
+
+gw = GWindow(GW_WIDTH, GW_HEIGHT)
+rect = GRect(150, 50 ,200, 100)
+rect.set_color("Blue")
+rect.set_filled(True)
+gw.add(rect)
+``` -->
+
+# Overview of Programming in Python
+
+## Why Python?
+
+- Python is widely used for teaching data structures due to its simplicity and readability.
+- It supports multiple programming paradigms: `procedural`, `object-oriented`, and `functional`.
+- Rich standard library and community support make it ideal for rapid prototyping and learning.
+
+## Programming Paradigms in Python
+
+- Programming paradigm refers to styles or approaches to programming, each with its own philosophy and techniques for organizing code. 
+- Python is a versatile language that supports several major paradigms, allowing you to choose the best approach for your problem.
+
+## 1. Procedural Programming
+
+- Focuses on procedures or routines (functions) to operate on data.
+- Code is organized as a sequence of instructions.
+- Emphasizes step-by-step execution and modularity.
+- Common in scripts and small programs.
+
+**Example:**
+```{.python}
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+```
+## 2. Object-Oriented Programming (OOP)
+:::{.small style="font-size: 35px;"}
+- Organizes code around objects, which combine data and behavior.
+- Uses classes to define blueprints for objects.
+- Supports concepts like inheritance, encapsulation, and polymorphism.
+- Useful for modeling complex systems and reusable code.
+
+**Example:**
+``` {.python}
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(f"{self.name} says woof!")
+
+my_dog = Dog("Buddy")
+my_dog.bark()
+
+# Output: Buddy says woof!
+```
+:::
+
+
+## 3. Functional Programming
+
+- Treats computation as the evaluation of mathematical functions.
+- Avoids changing state and mutable data.
+- Uses higher-order functions, map, filter, and lambda expressions.
+- Encourages concise and expressive code.
+
+**Example:**
+```{.python}
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x **2, numbers))
+print(squared)
+
+# Output: [1, 4, 9, 16, 25]
+
+```
+
+---
+## Remark
+
+- Each paradigm offers unique strengths. 
+- Python lets you mix and match these styles, so you can write code that is clear, maintainable, and efficient for your needs.
+
+## Homework & Reading Chapters Reminder
+- Complete PS0 to familiarize yourself with the GitHub Classroom assignment process
+    - It attracts class activity and participation score. 
+- Fundamentals of Python Data Structures (FDS) - Lambert:
+    - __Chapters 1 & 2__
+- Data Structures & Algorithms in Python (DS&A) - John et al.: 
+    - ***Chapter 1***

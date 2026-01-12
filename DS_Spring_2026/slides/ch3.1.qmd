@@ -1,0 +1,273 @@
+---
+title: "Algorithm Complexity Review & Recursion"
+author: "Fred Agbo"
+date: September 8, 2025
+format:
+  revealjs:
+    # css: minimal.css
+    chalkboard: true
+    slide-number: true
+    theme: [simple, night]
+    respect-user-color-scheme: true
+    width: 1400
+---
+
+## Announcements
+- Welcome back!
+- - Reading for this week:
+    - Data Structures & Algorithms in Python (DS&A) - John et al.:
+        - Chapter 6
+        - Due on Wednesday
+- PS1 assignment is due on Wednesday at 10pm. Extention because:
+    - A few hitches in accepting the assignment from Github classroom
+    - Contact me if you need some help on how to complete the assignment
+- First mini-project (MP1) to be published on Wednesday
+
+
+# Algorithms Complexity Review [class activity]
+
+## A Few Things to Note!
+:::{.smaller style="font-size: 35px;"}
+- Bubble sort, selection sort, and insertion sort are all `O(n²)`
+- As we will see later, we can do much better than this with somewhat more complicated sorting algorithms
+- Within O(n²), 
+    - Bubble sort is very slow, and should probably never be used for anything
+    - Selection sort is intermediate in speed
+    - Insertion sort is usually the fastest of the three--in fact, for small arrays (say, 10 or 15 elements), insertion sort is faster than more complicated sorting algorithms
+- Selection sort and insertion sort are “good enough” for small arrays
+:::
+
+# Other Sorting Algorithms 
+
+## Merge Sort
+
+- **Divide and conquer** algorithm that splits the list into halves, sorts each half, and merges them.
+- Time complexity: O(n log n)
+- Stable and efficient for large datasets.
+
+---
+
+## Quick Sort
+
+- Selects a "pivot" element, partitions the list into elements less than and greater than the pivot, and recursively sorts the partitions.
+- Average time complexity: O(n log n)
+- Not stable, but very fast in practice.
+
+---
+
+## Heap Sort
+
+- Builds a binary heap from the list, then repeatedly extracts the maximum (or minimum) to sort.
+- Time complexity: O(n log n)
+- Not stable, but uses no extra space beyond the input list.
+
+---
+
+## Counting Sort
+
+- Assumes input consists of integers in a fixed range.
+- Counts occurrences of each value, then reconstructs the sorted list.
+- Time complexity: O(n + k), where k is the range of input.
+- Very fast for small ranges, but not comparison-based.
+
+---
+
+## Radix Sort
+
+- Sorts numbers digit by digit, using a stable sub-sorting algorithm (like counting sort).
+- Time complexity: O(nk), where k is the number of digits.
+- Efficient for sorting large numbers or strings.
+
+# Introduction to Recursion
+
+- __“To understand recursion, you must first understand recursion.”__
+        - ***Unknown***  
+
+
+## Introduction to Recursion 
+
+![](../images/recursion_intro.png){width="50%"}
+<br>
+        A recursive action!
+
+## What is Recursion? 
+- An algorithm or function that is defined in terms of calls to itself.
+- Why bother? 
+    - A very different way of thinking
+    - Powerful programming technique
+        - Every recursive program can be written with iteration (i.e. using loops)
+        - Even so, the recursive solution to some problems is far more concise and elegant 
+
+
+## Simple example 
+
+- print a line of n stars `Iterative [loop] solution`:
+
+```{.python}
+# Prints a line containing the specified
+# number of stars.  Assume that n >= 0
+
+def printStars(n):
+    for i in range(n):
+        print("*", end="")
+    print()
+
+```
+
+## How to think recursively (very informal)
+
+- Identify the simplest possible case (the "base case") that can be solved directly.
+- Assume your function works for a smaller or simpler version of the problem.
+- Use this assumption (the "recursive case") to solve the current problem by calling the function itself.
+- Make sure each recursive call brings you closer to the base case.
+- Example: To print n stars recursively:
+    - If n == 0, do nothing (base case).
+    - Otherwise, print one star and call the function to print n-1 more stars.
+
+## Simple example 
+
+- print a line of n stars `Recursive solution`:
+
+```{.python}
+# Prints a line containing the specified
+# number of stars.
+
+def printStars(n):
+    if n == 0:
+        print()
+    else:
+        print("*", end="")
+        printStars(n-1) 
+
+
+```
+
+## Common features of all recursive algorithms
+- Base case
+    - This is how the algorithm knows when to stop going “deeper” into the recursion
+    - The base case is the simplest version of the problem, and can be solved without calling itself
+- Reduction step
+    - Reduces the current hard problem into simpler sub-problems
+    - This is where the recursive function calls happen
+
+
+## Knowledge check
+- What is the Time Complexity (i.e. `Big-O notation`) of these algorithms?
+
+::: {.columns}
+:::{.column style="width: 45%; padding-right:2px;"}
+Recursive solution:
+```{.python}
+def printStars(n):
+    if n == 0:
+        print()
+    else:
+        print("*", end="")
+        printStars(n-1) 
+
+
+```
+:::
+:::{.column style="width: 45%;"}
+Iterative solution:
+```{.python}
+def printStars(n):
+    for i in range(n):
+        print("*", end="")
+    print()
+
+```
+
+:::
+:::
+::: {.incremental}
+- **Recursive printStars**: O(n) — Each recursive call reduces n by 1 until reaching 0.
+- **Iterative printStars**: O(n) — The loop runs n times.
+:::
+
+## `What's More?` 
+- Iterative vs Recursive Approaches
+
+:::{.smaller style="font-size: 24px;"}
+| Feature         | Iterative Approach (for loop) | Recursive Approach |
+|----------------|-------------------------------|-------------------|
+| Time Complexity | O(n)                          | O(n)              |
+| Space Complexity| O(1)                          | O(n)              |
+| Readability     | Generally considered more straightforward and easier for a new programmer to follow. | Can be more elegant and concise for certain problems, but may be harder to reason about for a simple task. |
+| Performance     | Typically faster. Avoids the overhead of function calls. | Slower due to the overhead of pushing and popping function call frames onto the call stack. |
+| Memory Usage    | Very efficient. Uses a constant amount of memory for the loop counter. | Less memory efficient. Each recursive call adds a new stack frame, potentially leading to a "Stack Overflow" error for very large values of n. |
+:::
+
+:::{.notes}
+Insights and Lessons
+
+- Time vs. Space: While both approaches have the same time complexity (O(n)), they have different space complexities. The iterative approach uses constant space (O(1)) because it only needs a variable to track the loop counter. The recursive approach uses linear space (O(n)) because each function call adds a new stack frame to the call stack. For a large n, this can become a significant memory concern.
+
+- Overhead: Recursion carries an inherent performance overhead. Each recursive call involves saving the current state and pushing a new frame onto the call stack. This process is slower and more memory-intensive than simply incrementing a loop counter.
+
+- Readability and Simplicity: For a simple task like printing a series of stars, the iterative approach is much more intuitive and readable. The purpose of the loop is immediately clear. The recursive solution, while it works, is a less obvious way to solve the problem and might confuse someone not accustomed to recursion.
+
+:::
+
+## Another Example: `Facotrial (n!)`
+:::{.incremental}
+- n! (n factorial) is n * (n-1) * (n-2) * (n-3) … * 1
+
+- “I don’t know how to compute n!... 
+    - If only I had a function that could compute (n-1)!, then I could just multiply its result by n and I’d have the answer!”
+
+- ![](../images/factorial.png){style="background-color:white;margin-top: 5px; width: 60%;"}
+:::
+
+## Tracing fact(5)
+
+![](../images/fact5.png){style="background-color:white;margin-top: 5px; width: 80%;"}
+
+<!-- 
+## Orders of Complexity 
+
+A graph of the amounts of work done in the tester programs
+![](../images/growth_rate1.png){width=400px style="display:inline-block; min-width:500px; height:auto;"}
+
+
+## Orders of Complexity 
+:::{.smaller style="font-size: 35px;"}
+- Performances of these algorithms differ by an order of complexity:
+    - First algorithm is linear – work grows in direct proportion to the size of the problem
+    - Second algorithm is quadratic – work grows as a function of the square of the problem size
+    - Constant – requires the same number of operations for any problem size
+    - Logarithmic – amount of work is proportional to the log2  of the problem size
+    - Polynomial time – grows at a rate of `n^k`, `k` = constant or > 1
+    - Exponential – example rate of growth of this order is `2ⁿ`
+:::
+
+## Orders of Complexity 
+
+A graph of some sample orders of complexity
+
+![](../images/growth_rate2.png){width=400px style="display:inline-block; min-width:500px; height:auto;"}
+
+## Orders of Complexity 
+:::{.smalltable style="font-size: 28px;"}
+| n         | Logarithmic (log₂n) | Linear (n) | Quadratic (n²)      | Exponential (2ⁿ)         |
+|-----------|---------------------|------------|---------------------|--------------------------|
+| 100       | 7                   | 100        | 10,000              | Off the chart            |
+| 1,000     | 10                  | 1,000      | 1,000,000           | Off the chart            |
+| 1,000,000 | 20                  | 1,000,000  | 1,000,000,000,000   | Really off the chart     |
+
+:::
+
+
+
+-->
+
+## Conceptual Exercises
+- `recursiveMax` takes a not-sorted list of numbers as input, and recursively finds and returns the largest number in the list
+- `recursiveFind` takes two inputs: a number x to search for, and a not-sorted list of numbers nums to search within, and recursively finds and returns the index of the first instance of x within nums.
+- `reverseString` takes a string as input, and using recursion returns the reverse of the string. 
+- `isPrime` takes an int as input, and recursively determines if the number is prime, return True if the number is prime, and False otherwise.
+
+
+## Next class!
+- To discuss some application of recursion
+- Read ahead!

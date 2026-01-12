@@ -1,0 +1,147 @@
+---
+title: "Kickoff: Course Overview"
+author: "Fred Agbo"
+date: August 25, 2025
+format:
+  revealjs:
+    css: minimal.css
+    chalkboard: true
+---
+
+## Announcements
+- Welcome to CS151: Intro to Programming with Python!
+- Things to do:
+    - Access the course webpage on Canvas and read over the full syllabus carefully
+    - Class communication/announcements: on Canvas & ***Discord Server***. [Join](https://discord.gg/AnCB5NEpfw) now!
+    - Fill out the section availability form [here](https://forms.gle/o8Ckec2dPboSV8bPA). Last day to fill it out is Friday
+    - Fill out this CS/DS/Math Program Assessment Survey [here](https://docs.google.com/forms/d/e/1FAIpQLSddTdhTRc-UBjm1UudGQ_jyS1ShOjY--I28Jyu6wVbXMsvV2Q/viewform?usp=pp_url&entry.230021585=SPRING&entry.1118900056=2024).
+- Watch the vidoes prepared by __Professor Jed__ under ***Course Guide*** on Canvas and follow the instructions to:
+    - setup your computer with tools needed in this class.  
+    - learn how to use GitHub Classroom for the homework implementation in this class 
+- Homework: ***Problem Set 1*** will be posted before the end of this week and due __Jan 29 at 10pm__
+
+
+## My Vitals
+
+::: layout-columns
+::: column
+<span class="brighter-text">
+**Name:** Professor/Dr Fred Agbo  <br>
+**Office:** Ford 209  <br>
+__Office Hours:__ T, TH 10:30-12:00pm Online or anytime I'm around  <br>
+**Email:** fjagbo at willamette.edu  <br>
+__Office Phone:__ 503-370-6862
+</span>
+:::
+::: column
+![](../../images/fredprofile.jpg){width=70%}
+:::
+:::
+
+## Grading
+
+::: {.columns}
+::: {.column}
+- Standard 90/80/70 etc grade cut-offs
+    - Top 2% get +'s
+    - Bottom 2% get -'s
+:::
+
+::: {.column}
+------------------ --------------------
+Participation              		5%
+5 Problem Sets          			20%
+4 Defined-Projects 				20%
+1 Personal-Project 				15%
+2 Midterms              			20%
+A Final Exam            			20%
+----------------- --------------------
+:::
+:::
+
+## Homework
+- Falls into two categories:
+    - _Problem Sets:_ smaller, more focused assignments
+        - Graded on standard, numeric scales
+    - _Projects:_ larger, more integrative assignments
+        - Graded on a more qualitative scale (next slide)
+- All will be due on Mondays at 10:00pm
+- Submissions of _both_ will be handled through Github Classroom
+    - Learn how to do this from Jed's __videos__. Or meet me during my office hours if something is not working as expected!
+- *3 cumulative late days (24 hours max) over the entire semester without penalty* then penalties enacted for each subsequent day late.
+- Extensions for any reason need to be requested and approved by myself before the due date
+
+---
+
+
+## Important Functions in `random`
+
+:::{style='font-size: 80%'}
+
+- Random Integers
+
+|                          |                                                             |
+| :---                     | :------                                                     |
+| `randint(minv, maxv)`    | Returns an integer between minv and maxv, inclusive         |
+| `randrange(limit)`       | Returns an integer from 0 up to but not including limit     |
+| `randrange(start,limit)` | Returns an integer from start up to but not including limit |
+| `random()`            | Returns a random float between 0 and 1       |
+| `uniform(minv, maxv)` | Returns a random float between minv and maxv |
+| `choice(a_list)`    | Returns a random element from `a_list`       |
+| `sample(a_list, k)` | Returns a list of `k` elements from `a_list` |
+| `shuffle(a_list)`   | Randomly reorders the elements of `a_list`   |
+
+:::
+
+## Random Examples
+```{.python style='min-height:300px; font-size:34px'}
+import random
+
+def random_redblue():
+    if random.random() > 0.5:
+        return "red"
+    else:
+        return "blue"
+
+def random_color():
+    color_string = "#"
+    for i in range(6):
+        color_string += random.choice("0123456789ABCDEF")
+    return color
+```
+
+## The Portable Graphics Library
+- Built atop Tkinter
+- The library (`pgl.py`) is available on the Canvas website [here](https://willamette.instructure.com/courses/3703/modules/items/160252)
+    - Put it in the same folder as your code, and then you can import it
+- Operates on the idea of a collage or cork-board
+
+[Test](../images/CorkBoard.svg)
+
+- Note that newer objects can obscure older objects. This layering arrangement is called the _stacking order_.
+
+
+## The Pieces
+- At its simplest then, we have two main parts:
+    - The window (or felt-board/cork-board)
+        - Created with the `GWindow` function
+        - Takes two arguments: a width and a height in pixels
+    - The contents
+        - A wide assortment of shapes and lines that can be added to the scene
+        - Control over where they are placed, how large they are, what color they are, etc
+
+
+## Blue Rectangle!
+```{.python data-line-numbers="1|3,4|6|7|8|9|10|11" style="font-size:34px;"}
+from pgl import GWindow, GRect
+
+GW_WIDTH = 500
+GW_HEIGHT = 200
+
+gw = GWindow(GW_WIDTH, GW_HEIGHT)
+rect = GRect(150, 50 ,200, 100)
+rect.set_color("Blue")
+rect.set_filled(True)
+gw.add(rect)
+```
+
