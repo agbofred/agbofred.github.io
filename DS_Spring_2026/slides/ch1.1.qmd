@@ -127,7 +127,7 @@ __Office Phone:__ 503-370-6862
 # Why Data Structures Matters
 
 
-## Why Studying Data Strecture
+## Why Studying Data Structures
 
 - Data structures are fundamental to efficient problem solving in computer science
 - They help organize, manage, and store data for optimal access and modification
