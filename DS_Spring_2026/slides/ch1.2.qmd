@@ -268,7 +268,7 @@ print(toople)                   # >>> ('H', 'i', ' ', 't', 'h', 'e', 'r', 'e', '
 
 ## A Few Things to Note!
 
-- No Class on Monday September 1. [It's Labour Day]
+- No Class on Monday January 19. [It's MLK day]
 - Reading for next week:
     - Fundamentals of Python Data Structures (FDS) - Lambert: ,
         -  Chapters 3 & 9
