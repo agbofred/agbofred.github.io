@@ -9,12 +9,13 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Welcome to week 7!
-- Week 5-7 assignment (Problem set 3) is posted and due on __Wednesday 8__
-- Midterm exam is next week Wednesday during class hours 
-    - Those with AES accommondation should contact the testing center ASAP to book a spot for the test.
-    - Copy me in the email to the `Testing Center`
-    - Generally, I'll prefer the booking at Testing Center to be same day of the exam or within the week (Thu or Fri)
+- Welcome to the class today!
+- A short administrative staff today before we proceed.
+    - Grouping for inclass activities and mini-projects
+    - More co-teaching chapter selection to follow after the class today
+- Read the text chapters and the slides for more understandings.
+- No class next week Monday 19 January [`MKL Day`]!
+
 
 
 ## Fundamentals of Full-Stack Web Development

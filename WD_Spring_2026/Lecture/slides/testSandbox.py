@@ -1,1 +1,0 @@
-print([i * 4 for i in "Oct 21, 2022" if not i.isalpha() and not i.isspace()])
