@@ -1,0 +1,162 @@
+---
+title: "Problem Set 3: Linked Structures, Interface Implementation, & ArrayBag"
+subtitle: "Due: October  8, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+This assignment comes with several starter files but focus on the following files: `ps1.py`, `ps2.py`, `ps3_4.py`, and `testbag.py`.  
+  - Use `ps1.py` for question 1, `ps2.py` for question 2, and `ps3_4.py` for questions 3 and 4.  
+  - You can run your code for questions 1 and 2 together.  
+  - To test your answers for questions 3 and 4, run `testbag.py`.
+  
+  You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/QLPGMJ3O' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+---
+
+These questions require you to define and test functions for manipulating linked structures and array-based bags. Use the `Node` and `TwoWayNode` classes as defined in class (already included in the starter files `node.py`).
+
+### **Question 1**
+
+Define a function `length` (not `len`) that expects a singly linked structure as an argument. The function returns the number of items in the structure.
+
+### ANS
+
+```python
+rom node import Node
+
+def length(head):
+    """Returns the number of items in the linked structure
+    referred to by head."""
+    # your code here
+    probe = head
+    count = 0
+    while probe != None:
+        count += 1
+        probe = probe.next
+    return count
+    
+    
+
+def main():
+    """Tests modifications."""
+    head = None
+    print("0:", length(head))
+
+    # Add five nodes to the beginning of the linked structure
+    for count in range(1, 6):
+        head = Node(count, head)
+
+    print("5:", length(head))
+
+if __name__ == "__main__": main()
+
+
+```
+---
+
+### **Question 2**
+
+Define a function named `insert` that inserts an item into a singly linked structure at a given position. The function expects three arguments: the item, the position, and the linked structure. (The latter may be empty.) The function returns the modified linked structure. If the position is greater than or equal to the structure’s length, the function inserts the item at its end.  
+An example call of the function, where `head` is a variable that either is an empty link or refers to the first node of a structure, is:  
+`head = insert(1, data, head)`
+
+### ANS
+```python
+def insert(index, newItem, head):
+    """Inserts newItem at position is the linked structure
+    referred to by head.  Returns a reference to the new
+    structure."""
+    # Your code here
+    if index <= 0:
+        # newItem goes at the head
+        head = Node(newItem, head)
+    else:
+        # Search for node at position index - 1 or the last position
+        probe = head
+        while index > 1 and probe.next != None:   
+            probe = probe.next
+            index -= 1
+        # Insert new node after node at position index - 1 
+        # or last position
+        probe.next = Node(newItem, probe.next)
+    return head
+
+```
+---
+
+### **Question 3**
+
+Complete the code for the `ArrayBag` method `add`, so that the array is resized when necessary.
+
+### ANS
+
+```python
+def add(self, item):
+        """Adds item to self."""
+        # Check array memory here and increase it if necessary
+        if len(self) == len(self.items):
+            temp = Array(2 * len(self))
+            for i in range(len(self)):
+                temp[i] = self.items[i]
+            self.items = temp
+        self.items[len(self)] = item
+        self.size += 1
+
+
+```
+
+
+### **Question 4**
+
+Complete the code for the `ArrayBag` method `remove`, so that the array is resized when necessary.
+
+```python
+
+def remove(self, item):
+        """Precondition: item is in self.
+        Raises: KeyError if item in not in self.
+        Postcondition: item is removed from self."""
+        # Your code here
+        # Check precondition and raise if necessary
+        if not item in self:
+            raise KeyError(str(item) + " not in bag")
+        # Search for the index of the target item
+        targetIndex = 0
+        for targetItem in self:
+            if targetItem == item:
+                break
+            targetIndex += 1
+        # Shift items to the left of target up by one position
+        for i in range(targetIndex, len(self) - 1):
+            self.items[i] = self.items[i + 1]
+        # Decrement logical size
+        self.size -= 1
+        # Check array memory here and decrease it if necessary
+        if len(self) <= len(self.items) // 4 and \
+           2 * len(self) >= ArrayBag.DEFAULT_CAPACITY:
+            temp = Array(len(self.items) // 2)
+            for i in range(len(self)):
+                temp[i] = self.items[i]
+            self.items = temp
+```
+---
+

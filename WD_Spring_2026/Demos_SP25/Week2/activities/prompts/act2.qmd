@@ -1,0 +1,60 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 2 Knowledge Check
+# author: "Fred Agbo"
+# date: September 3, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+1. Assume that each of the following expressions indicates the number of operations
+performed by an algorithm for a problem size of _n_. Point out the dominant term of
+each algorithm and use __big-O notation__ to classify it.
+
+a. 2^n^ - 4n² + 5n
+b. 3n² + 6
+c. n^3^ + n^2^ - n
+
+\vspace{3cm}
+
+
+2. For problem size n, algorithms __A__ and __B__ perform __n^2^__ and __1/2(n^2^) + 1/2(n)__ instructions, respectively. Which algorithm does more work? Are there particular problem sizes for which one algorithm performs significantly better than the other? Are there particular problem sizes for which both algorithms perform approximately the same amount of work?
+
+\vspace{3cm}
+
+
+3. At what point does an **n^4^** algorithm begin to perform better than a **2^n^** algorithm?
+
+\vspace{3cm}
+
+4. Suppose that a `list` contains the values `20, 44, 48, 55, 62, 66, 74, 88, 93, 99` at index positions `0` through `9`. Trace the values of the variables `left`, `right`, and `midpoint` in a __binary search__ of this list for the target value **90**. Repeat for the target value **44**.
+
+For example, tabulate your traces as shown below:
+
+| __left__      | __right__ | __midpoint__ |
+|---------------|-----------|--------------|
+|               |           |              |
+|               |           |              |
+|               |           |              |
+|               |           |              |
+|               |           |              |
+\vspace{3cm}

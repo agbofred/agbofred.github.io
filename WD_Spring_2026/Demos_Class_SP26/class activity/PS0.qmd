@@ -1,0 +1,38 @@
+---
+title: "Problem Set 0"
+subtitle: "Due but not graded: January 20, 2025 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+The question on this first problem set 0 is to get you started to be sure you are good with all the installations and ready for the main assignments. It also allow you to run through the process of submitting assignments in this class through GitHub Classroom.  The question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/gHbZQ7L2' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+# Problem 0
+Your first tasks is to grab all the starter codes from the Github repository and try to run Karel without changing anything.
+If you are successful in rinning Karel, then the aim is achieved. Karel word before running the code is shown in the first figure
+
+![Karel world](./images/image1.png)
+
+
+Karel starts off in the northwest corner of its house, facing east, as shown in the diagram.
+
+After running the codes, Karel would have painted all its wall (north -> east -> south -> west) as shown in the second figure. 
+![Karel world](./images/image2.png)

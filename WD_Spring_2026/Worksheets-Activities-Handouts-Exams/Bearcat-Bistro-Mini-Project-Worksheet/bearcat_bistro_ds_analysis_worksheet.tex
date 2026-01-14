@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CS 152 - Data Structures}
+\lhead{Bearcat Bistro System Design Worksheet}
+\cfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+
+\begin{document}
+
+\noindent
+\textbf{Student Name(s):} \hrulefill
+
+\vspace{1em}
+
+\section*{Overview}
+
+In this mini project, you will simulate a simplified version of the Bistro’s drink ordering system. The spec includes suggested components and features, but it is your job to determine what data structures you will use to best support the desired functionality. You are encouraged to reason about how each component behaves operationally and to select your data structures accordingly. Remember: the components listed are not necessarily classes — they are pieces of the overall system.
+
+\vspace{1em}
+
+\section*{Instructions}
+For each component listed below, write:
+\begin{itemize}
+  \item Which data structure(s) you will use from your implemented set: \texttt{Bag, Array, Array2D, LinkedList, ArrayStack, ListStack, CircularQueue, Deque, HashMap}
+  \item Why this data structure is appropriate based on required operations. If the data structures we implemented do not meet the requirements, you may use a different data structure from Python or elsewhere as long as you document your justification for the decision (e.g., in terms of operations or complexity).
+  \item A short analysis of operational complexity (e.g., enqueue, search, access, insert, etc.)
+\end{itemize}
+
+\vspace{1em}
+
+\section*{Component Analysis}
+
+\subsection*{1. Menu (Fixed List of 5 Drinks)}
+\textbf{Data Structure:} \hrulefill
+
+\textbf{Why is it appropriate?} \hrulefill
+
+\vspace{1em}
+\textbf{Key Operations:} Display all drinks, lookup by index or name
+
+\vspace{1em}
+\textbf{Complexity Discussion:} \hrulefill
+
+\vspace{2em}
+
+\subsection*{2. Customer Order (Name + List of Ordered Drinks)}
+\textbf{Data Structure:} \hrulefill
+
+\textbf{Why is it appropriate?} \hrulefill
+
+\vspace{1em}
+\textbf{Key Operations:} Add new drink, iterate over drinks, confirm items
+
+\vspace{1em}
+\textbf{Complexity Discussion:} \hrulefill
+
+\vspace{2em}
+
+\subsection*{3. Order Confirmation (Repeating Order Back)}
+\textbf{Data Structure:} \hrulefill
+
+\textbf{Why is it appropriate?} \hrulefill
+
+\vspace{1em}
+\textbf{Key Operations:} Traverse and summarize current order
+
+\vspace{1em}
+\textbf{Complexity Discussion:} \hrulefill
+
+\vspace{2em}
+
+\subsection*{4. Open Orders Queue (Unfulfilled Orders)}
+\textbf{Data Structure:} \hrulefill
+
+\textbf{Why is it appropriate?} \hrulefill
+
+\vspace{1em}
+\textbf{Key Operations:} Enqueue new order, dequeue next order
+
+\vspace{1em}
+\textbf{Complexity Discussion:} \hrulefill
+
+\vspace{2em}
+
+\subsection*{5. Completed Orders (For End-of-Day Report)}
+\textbf{Data Structure:} \hrulefill
+
+\textbf{Why is it appropriate?} \hrulefill
+
+\vspace{1em}
+\textbf{Key Operations:} Add completed order, count totals, calculate revenue
+
+\vspace{1em}
+\textbf{Complexity Discussion:} \hrulefill
+
+\vspace{2em}
+
+\section*{Reflections}
+How did the choice of data structure affect your design? What trade-offs did you make in terms of complexity vs. simplicity or speed vs. flexibility?
+
+\vspace{4em}
+\hrulefill
+
+\vspace{4em}
+\hrulefill
+
+\end{document}

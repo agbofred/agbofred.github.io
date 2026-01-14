@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define code listing style
+\lstdefinestyle{mystyle}{
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true,
+    tabsize=4
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+\title{CS 152 Midterm Review Guide}
+\author{}
+\date{}
+\maketitle
+
+\section{Conceptual Questions}
+
+\textbf{1. Understanding Object-Oriented Principles}
+\begin{itemize}
+    \item What is abstraction in object-oriented programming? What is the smallest and largest unit of abstraction? How is abstraction implemented in Python?
+    \item What is encapsulation? Why is it important? How is encapsulation implemented in Python?
+    \item You are building a video game like Grand Theft Auto using object-oriented programming. One of your first tasks is to design the Vehicle representation. Describe your design using an object-oriented approach.
+\end{itemize}
+
+\textbf{2. Complexity Analysis}
+\begin{itemize}
+    \item List the complexity analysis values starting from the most efficient to the least efficient.
+    \item Why is algorithm efficiency analyzed using Big-O notation?
+    \item Describe the performance complexity of:
+    \begin{itemize}
+        \item Iterating through a two-dimensional grid of unknown size.
+        \item Iterating through an array.
+        \item Sequential search of an array.
+        \item Accessing an item in an array.
+    \end{itemize}
+\end{itemize}
+
+
+\textbf{3. Data Structure Design Scenario}
+\begin{itemize}
+    \item You are designing a sequential data structure that is fast yet flexible for storing ordered elements. You have implemented fixed-size arrays and a bag so far, and you know about stacks and queues.
+    \item Describe the internal structure of your data structure.
+    \item List the functions the ADT should support and their time complexities.
+\end{itemize}
+
+\section{Code Question}
+
+\textbf{Task:} Implement a static method to merge two Array objects as described below.
+
+\begin{lstlisting}[caption={Merge two Array objects}, label={lst:merge_arrays}]
+@staticmethod
+def merge(array1: "Array", array2: "Array") -> "Array":
+    """
+    Merges two Array objects in a single order fashion. 
+    If either array is longer, merge the items in the back of the resulting array.
+
+    Example:
+        >>> print(array1)
+        [5, 7, 17, 13, 11]
+        >>> print(array2)
+        [12, 10, 2, 4, 6]
+        >>> new_array = Array.merge(array1, array2)
+        >>> print(new_array)
+        [5, 12, 7, 10, 17, 2, 13, 4, 11, 6]
+
+    Args:
+        array1 (Array): The first array to merge.
+        array2 (Array): The second array to merge.
+
+    Returns:
+        Array: A new array containing the merged elements from array1 and array2.
+
+    Raises:
+        TypeError: If either array1 or array2 are not Array objects.
+    """
+    pass  # Implementation required
+\end{lstlisting}
+
+
+
+\end{document}
+

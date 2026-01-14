@@ -1,0 +1,243 @@
+---
+title: "Midterm Examination: Data Structures and Algorithms"
+subtitle: "CS 152 Fall, 2025"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(12, 202, 139, 1) 0%, rgba(102, 46, 128, 1) 100%)
+    title-block-banner-color: white
+---
+ The following is a midterm examination comprising 30 multiple-choice questions and 10 short-answer questions, developed exclusively from the previous topics covered in our data structure class. <!--Questions are organized sequentially by topic week. -->
+
+***
+## Multiple Choice Questions
+
+Please select the best answer for each question.
+
+### Part 1: Collections Overview
+
+1. Which category of collection describes items ordered by position, where each non-endpoint item has a unique predecessor and successor?  
+    A. Graph Collection  
+    B. Hierarchical Collection  
+    C. Unordered Collection  
+    D. Linear Collection
+
+2. Which Python built-in collection type is described as an ordered, immutable sequence of items that lacks mutator methods like `append` or `sort`?  
+    A. List  
+    B. Dictionary  
+    C. Set  
+    D. Tuple
+
+3. In the context of collection organization, what are the successors of a data item in a hierarchical collection called?  
+    A. Parents  
+    B. Roots  
+    C. Leaves  
+    D. Children
+
+4. Which of the following operations is supported on *all* fundamental collection types?  
+    A. Slicing  
+    B. Binary Search  
+    C. Traversal  
+    D. Mutating (resizing)
+
+5. A collection where all items must be of the same data type is defined as:  
+    A. Dynamic  
+    B. Homogeneous  
+    C. Contiguous  
+    D. Abstract
+
+### Part 2: Algorithms and Complexity
+
+6. What is the process of using a computer's clock to obtain the actual run time of an algorithm called?  
+    A. Complexity Analysis  
+    B. Rate of Growth Determination  
+    C. Benchmarking or Profiling 
+    D. Big-O Notation
+
+7. Which complexity class describes the rate of growth of work that is proportional to the $\log_2$ of the problem size, meaning the work grows very slowly as input increases?  
+    A. Constant $O(1)$  
+    B. Linear $O(n)$  
+    C. Logarithmic $O(\log n)$  
+    D. Quadratic $O(n^2)$
+
+8. In Big-O notation, what does the "O" stand for, referencing the order of complexity of the work of the algorithm?  
+    A. Optimal  
+    B. Output  
+    C. On the order of  
+    D. Overall
+
+9. What is the best-case time complexity for the `sequentialSearch` algorithm?  
+    A. $O(n)$  
+    B. $O(\log n)$  
+    C. $O(1)$ 
+    D. $O(n^2)$
+
+10. Which of the following sorting algorithms is generally considered the fastest among the $O(n^2)$ sorting methods for small arrays (e.g., 10 or 15 elements)?  
+    A. Selection Sort  
+    B. Bubble Sort  
+    C. Insertion Sort  
+    D. Quick Sort 
+
+11. The complexity analysis for Bubble Sort determines that the total number of comparisons is calculated by the sum of $1 + 2 + 3 + \dots + (n-1)$, resulting in which Big-O notation?  
+    A. $O(n)$  
+    B. $O(\log n)$  
+    C. $O(n \log n)$  
+    D. $O(n^2)$
+
+### Part 3: Recursion Applications and OOP
+
+12. When developing a recursive puzzle solver, which critical step ensures that the process eventually stops?  
+    A. Generating all possible next moves  
+    B. Defining the recursive case  
+    C. Identifying the base case (when to stop recursion)  
+    D. Marking visited positions
+
+13. The recursive approach used in the Tic-Tac-Toe case study to maximize the current player’s outcome while minimizing the opponent’s chance of winning is known as the:  
+    A. Depth-First Search Algorithm  
+    B. Tower of Hanoi Algorithm  
+    C. Minimax Algorithm  
+    D. Backtracking Algorithm
+
+14. According to the rules for the Tower of Hanoi puzzle, what is the main constraint regarding placing disks?  
+    A. Disks can only move to adjacent rods  
+    B. Only one disk can be moved per minute  
+    C. No disk may be placed on top of a smaller disk  
+    D. The largest disk must be moved first
+
+15. In Object-Oriented Programming (OOP), what is an **Object** defined as?  
+    A. A specialized type of array used for large data sets  
+    B. A list of pointers to data items  
+    C. An instance of a class, containing data (attributes) and functions (methods)  
+    D. A module containing only abstract method definitions
+
+### Part 4: Arrays and NumPy
+
+16. Which characteristic of traditional arrays ensures that accessing the $i^{th}$ item takes $O(1)$ time?  
+    A. Mutability  
+    B. Heterogeneous content  
+    C. Contiguous memory allocation  
+    D. Dynamic size
+
+17. When a dynamic array needs to increase its physical size, which single step is responsible for the overall $O(n)$ running time complexity of the resizing operation?  
+    A. Incrementing the logical size  
+    B. Checking for available space  
+    C. Creating a new, larger array object  
+    D. Copying the data from the old array to the new array
+
+18. What is the fundamental, core object in the NumPy library that is homogeneous and optimized for mathematical operations?  
+    A. Python list  
+    B. Pandas DataFrame  
+    C. Array module's array type  
+    D. `ndarray`
+
+19. NumPy achieves significant speed performance benefits over standard Python lists for numerical calculations primarily through the use of:  
+    A. Multithreading  
+    B. Dynamic resizing  
+    C. Vectorization  
+    D. Interpreted loops
+
+20. What is the running time complexity for **Insert at the logical end** of a dynamic array, assuming capacity management is optimized for average case performance?  
+    A. $O(n)$  
+    B. $O(\log n)$  
+    C. $O(1)$  
+    D. $O(n^2)$
+
+21. Which characteristic differentiates **traditional arrays** (e.g., in C or Java) from Python lists?  
+     A. They are mutable (elements can be changed).  
+     B. They support random access.  
+     C. They have a fixed size; you cannot change their length after creation.  
+     D. They store references to objects.
+
+### Part 5: Linked Structures
+
+22. What characteristic related to memory allocation gives linked structures an advantage over arrays regarding insertion and removal operations?  
+    A. $O(1)$ random access  
+    B. Nodes are scattered throughout memory (noncontiguous)  
+    C. Fixed size  
+    D. Homogeneous data requirement
+
+23. When traversing a singly linked structure, why is it easy to access the successor of an item but difficult to access its predecessor?  
+    A. Only the head link is external  
+    B. Nodes contain a reference only to the next node  
+    C. The tail link is always `None`  
+    D. Traversal must be sequential
+
+24. What are the two possible sentinels that terminate a sequential search operation in a linked structure?  
+    A. The head node or the tail node  
+    B. The index position or the data item  
+    C. The empty link (`None`) or a data item that equals the target item  
+    D. The cursor reaching the head or the cursor reaching the tail
+
+25. What is the running time complexity for **Insertion at the end** of a singly linked structure, assuming traversal begins at the head link?  
+    A. $O(1)$  
+    B. $O(n)$  
+    C. $O(\log n)$  
+    D. $O(n^2)$
+
+26. Which structural feature is explicitly designed to simplify edge cases related to insertions and deletions at the beginning or end of a linked list?  
+    A. The use of a tail pointer  
+    B. The two-way node structure  
+    C. The noncontiguous memory allocation  
+    D. A dummy header node
+
+27. A **doubly linked structure** provides which operational advantage over a singly linked structure?  
+    A. $O(1)$ access by index  
+    B. Ability to move to the previous node from a given node  
+    C. $O(1)$ search by value  
+    D. Elimination of the `None` sentinel
+
+### Part 6: Interfaces and Implementations (Bags)
+
+28. The core difference between an **Abstract Collection Type** and its **Implementations** is that the Abstract Type defines the collection's:  
+    A. Data structure (e.g., array or linked structure)  
+    B. Time complexity for all operations  
+    C. Behavior and operations without specifying *how* they are implemented  
+    D. Memory usage characteristics (space trade-offs)
+
+29. In the `LinkedBag` class, the `add` method achieves $O(1)$ complexity by performing insertion where?  
+    A. At the logical end  
+    B. After traversing to the second-to-last node  
+    C. At the head of the linked structure  
+    D. After a binary search for the correct position
+
+30. In the `ArrayBag` implementation, the `remove` method is challenging because, after finding the item, it requires which $O(n)$ operation?  
+    A. Reversing the array  
+    B. Re-creating the array with default capacity  
+    C. Searching the array again for the target item  
+    D. Shifting the items to the left to close the hole
+
+---
+
+## Short Answer Questions
+
+Please answer the following questions clearly and concisely, drawing only on the provided source materials.
+
+1. Explain the key difference between a Python **list** and a Python **tuple** regarding mutability and methods.
+
+2. List three fundamental operations supported on *all* collection types.
+
+3. What is **complexity analysis**, and what is its primary advantage over platform-dependent timings (benchmarking or profiling)?
+
+4. List the three **end conditions (base cases)** that terminate the recursive function calls in the Tic-Tac-Toe solver using the Minimax algorithm.
+
+5. Contrast the **memory layout** difference between a **traditional/NumPy array** and a standard **Python list**.
+
+6. Name and define three complexity classes (rates of growth) besides constant $O(1)$ and exponential $O(2^n)$.
+
+7. When **inserting** an item into a dynamic array at a specific `targetIndex` (not the logical end), what operation takes $O(n)$ time?
+
+8. What are the two possible sentinels used in a **sequential search** of a linked structure?
+
+9. What is the primary purpose of introducing a **dummy header node** in a circular linked structure?
+
+10. What specific role does the Python keyword **`yield`** play in the `__iter__` method of the `ArrayBag` or `LinkedBag` class implementation?

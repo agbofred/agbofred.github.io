@@ -1,0 +1,437 @@
+---
+title: "Introduction to Web Mechanics and HTML"
+author: "Fred Agbo"
+date: January 14, 2026
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+## Announcements
+- Welcome to week 7!
+- Week 5-7 assignment (Problem set 3) is posted and due on __Wednesday 8__
+- Midterm exam is next week Wednesday during class hours 
+    - Those with AES accommondation should contact the testing center ASAP to book a spot for the test.
+    - Copy me in the email to the `Testing Center`
+    - Generally, I'll prefer the booking at Testing Center to be same day of the exam or within the week (Thu or Fri)
+
+
+## Fundamentals of Full-Stack Web Development
+
+**Introduction to Web Mechanics and HTML**
+
+::: {.incremental style="font-size:33px"}
+- **Overview:** Understanding the journey from low-level protocols to high-level structure creates better web developers.
+- **Holistic Approach:** Modern development often blends roles (DevOps), requiring knowledge of HTML, IP addresses, servers, and browsers.
+- **Key Learning Objectives:**
+    - Fundamental internet protocols.
+    - The Domain Name System (DNS) and HTTP.
+    - How browsers interpret and render HTML.
+    - HTML5 syntax, semantic structure, and core elements.
+:::
+
+---
+
+## How the Web Works: Layered Architecture
+
+The TCP/IP internet protocols are abstracted into a **four-layer stack**:
+
+::: {.incremental}
+- **Application Layer:** Protocols for process-to-process communication (HTTP, SSH, FTP, DNS, etc.).
+- **Transport Layer:** Ensures transmissions arrive in order and error-free using **TCP** (Transmission Control Protocol). Data is broken into packets, and each requires an **ACK (acknowledgment)** to confirm arrival.
+:::
+
+## How the Web Works: Layered Architecture
+:::{.incremental}
+- **Internet Layer:** Routes packets using **IP addresses** (numeric codes identifying destinations).
+    - **IPv4:** 32-bit addresses (e.g., 192.168.123.254).
+    - **IPv6:** 128-bit addresses, necessary for future growth as IPv4 addresses were depleted in 2011.
+- **Link Layer:** The lowest layer, responsible for physical data transmission and **MAC addresses**.
+:::
+
+---
+
+## The Domain Name System (DNS)
+
+**DNS Overview:** DNS maps human-readable domain names to numeric IP addresses.
+
+::: {.incremental style="font-size:33px"}
+- **Resolution Process:** If a domain isn't in the local cache, the browser queries a primary DNS server, which may then consult Root, TLD, and Authoritative servers to find the IP.
+- **Hierarchy:** Domains consist of several levels: **Top-level domain** (TLD, e.g., .com, .uk), **Second-level domain** (SLD, e.g., funwebdev), and subdomains.
+
+**Example Domain Structure:**
+```
+www.cs.willamette.edu
+│   │  │            │
+│   │  │            └─ Top-level domain (TLD)
+│   │  └────────────── Second-level domain (SLD)
+│   └───────────────── Third-level domain
+└───────────────────── Subdomain (www)
+```
+:::
+---
+
+## Uniform Resource Locators (URL)
+
+```
+http://www.funwebdev.com:8080/index.php?page=17#article
+│      │                │    │         │        │
+│      │                │    │         │        └─ Fragment
+│      │                │    │         └────────── Query String
+│      │                │    └──────────────────── Path
+│      │                └───────────────────────── Port
+│      └────────────────────────────────────────── Domain
+└───────────────────────────────────────────────── Protocol
+```
+
+
+::: {.incremental style="font-size:33px"}
+- **Protocol:** `http`.
+- **Domain & Port:** `www.funwebdev.com` on port `8080` (Default HTTP is 80).
+- **Path:** `index.php` (The location of the file on the server).
+- **Query String:** `?page=17` (Passes information to the server via key-value pairs).
+- **Fragment:** `#article` (Requests a specific portion of a page).
+:::
+
+---
+
+## HTTP Communication
+
+**HTTP Requests:** HTTP establishes a TCP connection (usually on port 80).
+
+::: {.incremental style="font-size:33px"}
+- **Headers:** Request headers (client info like User-Agent) and Response headers (server info like Content-Type).
+- **Methods:** **GET** (retrieves resources) and **POST** (transmits data to the server via forms).
+- **Response Codes:**
+    - **200 OK:** Success.
+    - **301 Moved Permanently:** Resource has a new location.
+    - **404 Not Found:** Resource not located.
+    - **500 Internal Server Error:** General server failure.
+:::
+
+---
+
+## HTTP Request Example
+
+```http
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+Accept: text/html,application/xhtml+xml
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+```
+
+---
+
+## HTTP Response Example
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 14 Jan 2026 10:30:00 GMT
+Server: Apache/2.4.41 (Unix)
+Content-Type: text/html; charset=UTF-8
+Content-Length: 1234
+Connection: keep-alive
+
+<!DOCTYPE html>
+<html>
+<head><title>Example Page</title></head>
+<body><h1>Hello World!</h1></body>
+</html>
+```
+
+---
+
+<!-- ## Browser Rendering Performance
+
+Browsers must fetch the HTML, then parse it to find referenced files (images, CSS, JS).
+
+::: {.incremental}
+- **TTFB:** Time to First Byte.
+- **LCP:** Largest Contentful Paint (when primary content is visible).
+- **TTI:** Time to Interactive (when the user can input data).
+:::
+
+--- -->
+
+## Web Server Stacks
+
+A web server is a computer that responds to HTTP requests, often grouped in **web farms**.
+
+::: {.incremental}
+- **LAMP:** Linux, Apache, MySQL, PHP.
+- **MERN:** MongoDB, Express, React, Node.js.
+- **WISA:** Windows, IIS, SQL Server, ASP.NET.
+- **JAM:** JavaScript, APIs, and Markup.
+:::
+
+---
+
+## HTML Syntax and The DOM
+
+**HTML (Hypertext Markup Language)** annotates documents to distinguish content from structure.
+
+::: {.incremental style="font-size:33px"}
+- **Elements & Tags:** An element consists of an opening tag, content, and a closing tag.
+    - *Code Example:* `<a href="http://centralpark.com">Central Park</a>`.
+- **Attributes:** Name=value pairs (like `href` or `src`) providing extra info.
+- **Empty Elements:** Elements without text content, like `<img>` or `<br>`.
+- **Document Object Model (DOM):** A hierarchy where container elements are **parents** and contained elements are **children/descendants**.
+    - **Rule:** Proper nesting is required; a child's ending tag must occur before the parent's.
+:::
+
+---
+
+## DOM Tree Structure Example
+:::{.incremental style="font-size:33px"}
+```html
+<html>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <p>Content goes here.</p>
+    </main>
+  </body>
+</html>
+```
+
+**Correct Nesting:** `<p><strong>Text</strong></p>` ✓  
+**Incorrect Nesting:** `<p><strong>Text</p></strong>` ✗
+::: 
+---
+
+## The Importance of Semantic Markup
+
+HTML should describe **meaning and structure**, while CSS handles **visual presentation**.
+
+::: {.incremental}
+- **Maintainability:** Easier to update than presentation-heavy code.
+- **Accessibility:** Allows voice-reading software to interpret pages for users with sight disabilities.
+- **Search Engine Optimization (SEO):** Helps search engine crawlers understand content.
+- **Performance:** Quicker to author and faster to download.
+:::
+
+---
+
+## HTML5 Document Structure
+
+::: {.incremental style="font-size:33px"}
+- **DOCTYPE:** Declares the document type as HTML5.
+- **`<html>`:** The root element.
+- **`<head>`:** Contains metadata (title, character set, stylesheets, etc.).
+- **`<body>`:** Contains the visible content.
+
+**Basic HTML5 Template:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Web Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to HTML5</h1>
+    <p>This is a basic HTML5 document structure.</p>
+</body>
+</html>
+```
+:::
+---
+
+## Core HTML Elements
+
+::: {.incremental style="font-size:33px"}
+- **Headings:** Six levels (`<h1>` to `<h6>`) describing document structure.
+- **Paragraphs & Divisions:** `<p>` for paragraphs; `<div>` for block-level grouping (no intrinsic semantic value).
+- **Lists:**
+    - **Unordered (`<ul>`):** Bulleted items.
+    - **Ordered (`<ol>`):** Numbered sequence.
+    - **Description (`<dl>`):** Name/value pairs.
+- **Inline Elements:** Do not disrupt text flow (e.g., `<a>`, `<strong>`, `<em>`, `<span>`, `<time>`).
+- **Character Entities:** Used for reserved symbols (e.g., `&copy;` for ©, `&lt;` for <).
+:::
+
+---
+
+## Headings and Paragraphs Example
+
+```html
+<h1>Main Title</h1>
+<h2>Section Heading</h2>
+<p>This is a paragraph with <strong>bold text</strong> 
+   and <em>italic text</em>.</p>
+
+<h3>Subsection</h3>
+<p>Another paragraph with a <a href="#">link</a>.</p>
+
+<div class="container">
+    <p>Content inside a div element.</p>
+</div>
+```
+
+---
+
+## Lists Example
+
+```html
+<!-- Unordered List -->
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+
+<!-- Ordered List -->
+<ol>
+    <li>Learn HTML basics</li>
+    <li>Study CSS styling</li>
+    <li>Practice JavaScript</li>
+</ol>
+
+<!-- Description List -->
+<dl>
+    <dt>HTML</dt>
+    <dd>HyperText Markup Language</dd>
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets</dd>
+</dl>
+```
+
+---
+
+## Hyperlinks & Path Referencing
+
+Links are created using the anchor (`<a>`) element, requiring a destination and a label.
+
+::: {.incremental}
+- **Absolute URLs:** Required for external sites; includes protocol and domain (e.g., `https://google.com`).
+- **Relative URLs:** Used for resources on the same server.
+    - **Same Directory:** `index.html`.
+    - **Child Directory:** `images/logo.gif`.
+    - **Parent Directory:** `../about.html`.
+    - **Root Reference:** `/index.html`.
+:::
+
+---
+
+## Hyperlink Examples
+
+```html
+<!-- Absolute URL (external site) -->
+<a href="https://www.google.com">Visit Google</a>
+
+<!-- Relative URL (same directory) -->
+<a href="about.html">About Us</a>
+
+<!-- Relative URL (child directory) -->
+<a href="images/photo.jpg">View Photo</a>
+
+<!-- Relative URL (parent directory) -->
+<a href="../index.html">Back to Home</a>
+
+<!-- Root-relative URL -->
+<a href="/contact.html">Contact</a>
+
+<!-- Link to fragment (same page) -->
+<a href="#section2">Jump to Section 2</a>
+
+<!-- Email link -->
+<a href="mailto:info@example.com">Email Us</a>
+```
+
+---
+
+## HTML5 Semantic Structure Elements
+
+Modern HTML5 replaces `div` with descriptive block elements that define the page layout:
+
+::: {.incremental style="font-size:33px"}
+- **`<header>` & `<footer>`:** Page or section boundaries.
+- **`<nav>`:** Navigation links.
+- **`<main>`:** The unique primary content of the document.
+- **`<section>` & `<article>`:** Thematic groupings or self-contained compositions.
+- **`<aside>`:** Content tangentially related to surrounding content.
+- **`<figure>` & `<figcaption>`:** Essential content (like images) that could be moved elsewhere and still make sense.
+- **`<details>` & `<summary>`:** Creates interactive "accordions" without needing JavaScript.
+:::
+
+---
+
+## Semantic HTML5 Structure Example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <header>
+        <h1>My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <article>
+            <h2>Article Title</h2>
+            <p>This is the main content of the article.</p>
+            
+            <figure>
+                <img src="image.jpg" alt="Description">
+                <figcaption>Image caption here</figcaption>
+            </figure>
+        </article>
+        
+        <aside>
+            <h3>Related Links</h3>
+            <p>Additional information or sidebar content.</p>
+        </aside>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+```
+
+---
+
+## Interactive Elements Example
+
+```html
+<!-- Details and Summary (Accordion) -->
+<details>
+    <summary>Click to expand</summary>
+    <p>This content is hidden until you click the summary.</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</details>
+
+<details open>
+    <summary>This one starts expanded</summary>
+    <p>The 'open' attribute makes this visible by default.</p>
+</details>
+```

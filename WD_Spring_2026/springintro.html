@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .top-menu a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+
+  .top-menu a:hover {
+    background-color: #555;
+  }
+  .content {
+    padding-top: 60px; /* Add padding to account for fixed menu */
+    padding-left: 30px;
+    text-align: justify;
+    margin-left: 30px;
+    margin-right: 20px;
+  }
+  .two-column-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .column {
+    flex: 1;
+    padding: 20px;
+    border: 0px solid #ccc;
+    box-sizing: border-box;
+  }
+  .custom-list {
+    list-style:circle; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+    text-align: justify;
+  }
+
+  .custom-list li {
+    margin-bottom: 10px; /* Add spacing between items */
+  }
+  .container {
+    padding-top: 60px; /* Add padding to account for fixed menu */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    margin-left: 30px;
+    margin-right: 20px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px; /* Add negative margin to counteract padding */
+  }
+
+  .col {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .col:nth-child(odd) {
+    background-color: #e0e0e0;
+  }
+
+  .col:nth-child(even) {
+    background-color: #f0f0f0;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .col {
+      flex: 100%; /* Full width on smaller screens */
+    }
+  }
+  h2{ color: rgb(2, 172, 251);}
+
+</style>
+<title>Fred's page</title>
+</head>
+<body>
+  <div class="top-menu">
+    <a href="../index.html">Home</a>
+    <a href="../aboutme.html">About me</a>
+    <!--<a href="#services">Services</a>
+    <a href="#contact">Contact</a> -->
+  </div>
+
+  <div class="container">
+    <h1>Welcome to Web Development course page! </h1>
+    <h2>Spring 2026!</h2>
+    <div class="row">
+      <div class="col">
+        <h2>Week 1</h2>
+        <h3> Chapters 2 - 3</h3>
+        <p>
+        <ul>
+            <li><a href="slides/ch1.2.html" target="_blank">Chapter 2 & 3</a></li>
+            <!-- <li><a href="slides/ch1.2.html" target="_blank">Collections </a></li> -->
+            <!--<li><a href="hw_s2/ps1/PS1.html" target="_blank">S2- Problem Set 1</a></li> -->
+        </ul>
+      </p>
+      </div>
+      <div class="col">
+        <h2>Week 2</h2>
+        <h3> Chapters 4 - 5</h3>
+        <p>
+          <!-- <ul>
+            <li><a href="slides/Ch0_4.html" target="_blank">Stepwise Refinement</a></li>
+            <li><a href="slides/ch2.1.html" target="_blank">Algorithms: Searching & Sorting</a></li>
+            <li><a href="slides/Ch1_2.html" target="_blank">Ch1: Other Data types Primer</a></li>
+            <li><a href="Homeworks/ps1/PS1.html" target="_blank">Problem Set 1</a></li>
+        </ul> -->
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 3</h2>
+        <h3>Chapters 6 - 7</h3>
+        <p>
+          <!-- <ul>
+            <li><a href="slides/ch3.1.html" target="_blank">Recursion 1</a></li>
+            <li><a href="slides/ch3.2.html" target="_blank">Recursion Applications</a></li>
+            <li><a href="Homeworks/project1/prompts/Project1.html" target="_blank">Mini Project 1</a></li>
+           </ul>  -->
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 4</h2>
+        <h3>Chapters 8 - 11 </h3>
+        <p><!--This is the content of column 4.-->
+        <!-- <ul>
+          <li><a href="slides/ch4.1.html" target="_blank">Arrays 1 </a></li> 
+          <li><a href="slides/ch4.2.html" target="_blank">Arrays 2 </a></li> 
+          <li><a href="slides/ch4.3.html" target="_blank">Arrays 4 (2D) </a></li> 
+          <li><a href="Homeworks/ps2/PS2.html" target="_blank">Problem Set 2</a></li>
+          </ul> -->
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 5</h2>
+        <h3>Chapters 12 - 13</h3>
+        <p><!--This is the content of column 4.-->
+        <!-- <ul>
+          <li><a href="slides/ch5.1.html" target="_blank">Linked Structure 1</a></li> 
+          <li><a href="slides/ch5.2.html" target="_blank">Linked Structure 2</a></li> 
+        </ul>  -->
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 6</h2>
+        <h3>Chapter 14 </h3>
+        <p><!--This is the content of column 4.-->
+          <!-- <ul>
+            <li><a href="slides/ch6.1.html" target="_blank">Interfaces 1</a></li> 
+              <ul>
+                  <li><a href="hw/ps3/PS3.html" target="_blank">Mid Term 1 - Practice </a></li>
+                </ul>
+            <li><a href="slides/ch6.2.html" target="_blank">Interfaces 2 </a></li> 
+          </ul>   -->
+            
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 7</h2>
+        <h3>Chapter 14</h3>
+
+        <p><!--This is the content of column 4.-->
+        <!-- <ul>
+          <li><a href="slides/ch7.1.html" target="_blank">Stacks 1</a></li>
+          <li><a href="Homeworks/ps2/Solution/PS2_solution.html" target="_blank">Problem set 2 review</a></li> 
+          <li><a href="Homeworks/ps3/PS3.html" target="_blank">Problem sets 3 </a></li> 
+          <li><a href="Questions/Midterm_1_FA25/practice_midterm_questions.html" target="_blank">Midterm Practice Questions </a></li> 
+        </ul> -->
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 8</h2>
+        <h3>Chapter 14 </h3>
+        <p><!--This is the content of column 4.-->
+          <!-- <ul>
+          <li><a href="slides/ch7.2.html" target="_blank">Stacks Implementation </a></li> 
+          <li><a href="#" target="_blank">Midterm </a></li> 
+          <li><a href="Questions/Midterm_1_solution/practice_mideterm_solution.html" target="_blank">Solutions to practice questions</a></li>
+         <li><a href="slides/Ch6_3.html" target="_blank">Ch7: String Formatting</a></li> 
+            
+         </ul>-->
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 9</h2>
+        <h3>Chapters 15, 18</h3>
+        <p><!--This is the content of column 4.-->
+          <!--<li><a href="slides/Ch7_2_2.html" target="_blank">Ch8: Multidimensional arrays</a></li> 
+            -->
+          <!-- <ul>
+          <li><a href="slides/ch8.1.html" target="_blank"> Stack: Arithmetic Expression Model </a></li>
+          <li><a href="slides/ch8.2.html" target="_blank">Queues </a></li>   
+          <li><a href="Homeworks/project2/prompts/Project2.html" target="_blank">Mini Project 2: ToH & Stacks</a></li>
+          </ul> -->
+          
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 10</h2>
+        <h3>Laravel  </h3>
+      
+        <p>
+        <!-- <ul>
+          <li><a href="slides/ch9.1.html" target="_blank">Queues & Priority Queues </a></li>
+          <li><a href="slides/ch9.2.html" target="_blank">Intro to Trees </a></li>
+          <li><a href="Homeworks/ps4/PS4.html" target="_blank">PS4</a></li> 
+        </ul> -->
+            
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 11</h2>
+        <h3>Spring Break </h3>
+        <p><!--This is the content of column 4.-->
+           
+          <!-- <ul>
+            <li><a href="slides/ch10.1.html" target="_blank">Trees Implementation 1</a></li> 
+          <li><a href="slides/ch10.2.html" target="_blank">Trees Implementation 2</a></li> 
+          <li><a href="#" target="_blank">PS5: Inside the slides for (BT-2)</a></li> 
+          </ul> -->
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 12</h2>
+        <h3>Documentations </h3>
+        <p><!--This is the content of column 4.-->
+        <!-- <ul>
+        <li><a href="slides/ch11.1.html" target="_blank"> Intro to Graphs </a></li>
+        <li><a href="slides/" target="_blank">Graph 2</a></li> 
+        </ul> -->
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 13</h2>
+        <h3>Framework</h3>
+        <p><!--This is the content of column 4.-->
+         <!-- <ul>
+          <li><a href="slides/ch12.1.html" target="_blank">Graphs Traversal 1</a></li>
+          <li><a href="slides/ch12.2.html" target="_blank">Graphs Traversal 2</a></li>
+          
+          <li><a href="slides/Ch7_3_fj.html" target="_blank">Ch8: GImage, Pixals & File </a></li> 
+          <li><a href="slides/Ch7_6_Files.html" target="_blank">Ch8: Reading & Writing</a></li> 
+       
+          </ul>    -->
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 14</h2>
+        <h3>chapter 16 </h3>
+        <p><!--This is the content of column 4.-->
+        <!-- <ul>
+        <li><a href="slides/ch13.1.html" target="_blank">Graphs Implementation</a></li> 
+        <li><a href="https://github.com/Agbo-CS152/ps6/archive/refs/tags/PS6.zip" target="_blank"> Link to Starter Code (PS6) </a></li>
+        
+        <li><a href="hw/gamecontest/GameContest.html" target="_blank">Game Contest</a></li> 
+        <li><a href="slides/Ch_review_1.html" target="_blank">Ch_review: Review of Chapters 1-3,7</a></li> 
+        <li><a href="slides/Ch6_3.html" target="_blank">Ch7: String Formatting</a></li> 
+        
+        </ul> -->
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <h2>Week 15</h2>
+        <h3>Final Presentations</h3>
+        <p><!--This is the content of column 4.-->
+        <!-- <ul>
+        <li><a href="slides/ch14.1_review.html" target="_blank">Review of weeks 7-14</a></li> 
+        <li><a href="Questions/Final_FA25/Questions/practice_final_questions.html" target="_blank">Practice Questions</a></li> 
+        <li><a href="Questions/Final_FA25/Solutions/practice_final_questions.html" target="_blank">Practice Solutions</a></li> 
+       
+        </ul> -->
+        </p>
+      </div>
+      <div class="col">
+        <h2>Week 16</h2>
+        <h3>NO Final Exams:</h3>
+        <ul>
+        <p><!--This is the content of column 4.-->
+        <!--<li><a href="slides/Ch12_Adventure.html" target="_blank"> Adventure Project Explained </a></li>
+        -->
+        </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
