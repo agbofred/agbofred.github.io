@@ -1,7 +1,7 @@
 ---
 title: "Algorithms and Complexity"
 author: "Fred Agbo"
-date: September 3, 2025
+date: January 21, 2026
 format:
   revealjs:
     # css: minimal.css
@@ -14,9 +14,9 @@ format:
 
 ## Announcements
 - Welcome back!
-- Report any issues with practicing PS0 assignment
-- Assignment for the week is posted and will be due next week Monday
-    - Read over the full syllabus carefully
+- Problem Sets (PS0.1) was posted last week Thursday and **due on today at 10:00pm**. 
+- Reading assignment for the week is posted and will be due today.
+    - Always read the materials ahead.
 
 
 # Algorithms

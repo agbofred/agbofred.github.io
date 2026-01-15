@@ -1,0 +1,69 @@
+---
+title: "Problem Set 0.1"
+subtitle: "Due: January 21, 2026 at 10:00 PM"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+  The question has template files in the repository. You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
+
+```{=html}
+<a href='https://classroom.github.com/a/J9rkPaaD' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+## Overview
+
+Drawing on the programming paradigms and collection types discussed in the class, here are three scenario-based problems designed to help you practice **procedural, object-oriented, and functional programming** using **linear and unordered collections**.
+
+---
+
+## Problem 1: The Personal Finance Tracker
+
+**Scenario:** A financial advisor wants a tool to analyze a client's monthly spending habits. The data is provided as a simple list of transaction amounts.
+
+**Task:** Define a module named `finance.py`. In this module, implement the following functions using a **procedural programming** approach:
+
+*   `total_spending(transactions)`: Returns the sum of all values in the list.
+*   `highest_expense(transactions)`: Returns the maximum value found in the list using a **traversal**.
+*   `filter_threshold(transactions, limit)`: Returns a new list containing only transactions that exceed the specified limit.
+
+**Constraint:** Each function must expect a **list** (a linear collection) as an argument and return a single number or a new list.
+
+---
+
+## Problem 2: Student Enrollment System
+
+**Scenario:** A registrar needs to manage unique student IDs for a newly formed lab section. Because student IDs must be unique and the order of enrollment does not matter for this specific task, an **unordered collection** is required.
+
+**Task:** Design a Python class to model this system using the **Object-Oriented Programming (OOP)** paradigm.
+
+1.  **Constructor:** Define an `__init__` method (the special name Python uses for constructors) that initializes an empty **set** to store student IDs.
+2.  **Method - `enroll(student_id)`:** Implement an **insertion** operation that adds a new ID to the set.
+3.  **Method - `is_enrolled(student_id)`:** Implement a **searching** operation that returns a boolean indicating if the ID exists in the set.
+4.  **Method - `drop(student_id)`:** Implement a **deletion** operation to remove an ID from the set.
+
+---
+
+## Problem 3: The Data Analyst's Toolkit
+
+**Scenario:** A data analyst has a list of raw temperatures in Fahrenheit and needs to convert them to Celsius while removing any erroneous readings (values below absolute zero).
+
+**Task:** Use Python's **functional programming** tools to process the data.
+
+1.  **Filtering:** Use the `filter()` function and a `lambda` expression to create a new list that excludes any temperature below -459.67.
+2.  **Mapping:** Use the `map()` function and a `lambda` expression to convert the filtered Fahrenheit temperatures into Celsius using the formula $C = (F - 32) \times \frac{5}{9}$.
+3.  **Final Transformation:** Demonstrate **type conversion** by transforming the final resulting map object back into a **tuple** (an immutable linear collection) for permanent storage.
