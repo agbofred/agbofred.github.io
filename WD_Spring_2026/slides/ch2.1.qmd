@@ -1,0 +1,162 @@
+---
+title: "CSS Selectors and Box Model"
+author: "Fred Agbo"
+date: January 21, 2026
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+## Announcements
+- Welcome to the class today!
+- A short administrative staff today before we proceed.
+    - Grouping for inclass activities and mini-projects
+    - More co-teaching chapter selection to follow after the class today
+- Read the text chapters and the slides for more understandings.
+- No class next week Monday 19 January [`MKL Day`]!
+
+## Slide 1: Introduction to CSS
+- **What is CSS?** A W3C standard for describing how HTML elements should appear.
+- **Scope:** Control fonts, colors, borders, backgrounds, layouts, and animations.
+- **Location:** Apply styles inline, within `<head>`, or via external stylesheets.
+- **Visual Overview:**
+    ![Full-stack roles collaborating on CSS tasks](images/full-stack-roles.png)
+
+## Slide 2: Benefits of Using CSS
+- **Formatting Control:** Fine-grained layout and styling.
+- **Maintainability:** Shared styles enable rapid site-wide updates.
+- **Accessibility:** Clean separation of content and presentation.
+- **Performance:** Lighter HTML delivers faster pages.
+- **Responsive Design:** Adapt layouts to any device or medium.
+- **Visual Overview:**
+    ![Responsive Poseidon theme on multiple devices](images/poseidon-responsive.png)
+
+## Slide 3: CSS Syntax & Structure
+- **Rule:** Each rule targets elements and defines how they render.
+- **Selector:** Determines the HTML elements affected.
+- **Declaration Block:** Wrapped in `{}` with property-value pairs.
+- **Visual Syntax Guide:**
+    ![Annotated CSS rule showing selector and declarations](images/css-syntax-diagram.png)
+
+    ## Slide 4: Units of Measure & Colors
+    - **Color Techniques:**
+        - Named keywords such as `color: crimson;`.
+        - RGB/RGBA values like `color: rgb(255, 0, 0);`.
+        - Hexadecimal forms such as `color: #ff0000;`.
+        - HSL/HSLA hues like `color: hsl(0 100% 50%);`.
+    - **Measurement Units:**
+        - Relative units (`em`, `rem`, `%`, `vw`, `vh`) scale with surrounding context.
+        - Absolute units (`px`, `in`, `cm`, `mm`) map to fixed physical lengths.
+    - **Comments:** Use `/* note */` to clarify intent or temporarily disable rules.
+    - **Visual Overview:**
+            ![Color wheel alongside measurement icons](images/css-color-units.png)
+
+    ## Slide 5: Location of Styles
+    1. **Inline Styles:** Apply directly on an element and take top priority.
+         - Example: `<h2 style="font-size: 24pt">Description</h2>`
+    2. **Embedded Style Sheets:** Place rules inside `<style>` within the document `<head>`.
+         - Example: `<style> h1 { font-size: 24pt; } </style>`
+    3. **External Style Sheets:** Link a reusable `.css` file for site-wide consistency.
+         - Example: `<link rel="stylesheet" href="styles.css" />`
+
+    ## Slide 6: CSS Selectors (Basic & Attribute)
+    - **Element Selectors:** Target tags such as `p` or `div`.
+    - **Class Selectors:** Prefix with `.` to style reusable groups (e.g., `.badge`).
+    - **ID Selectors:** Prefix with `#` to reach unique elements (e.g., `#hero`).
+    - **Attribute Selectors:** Filter by attribute values like `a[href$=".pdf"]`.
+    - **Visual Overview:**
+            ![Diagram showing element, class, id, and attribute matches](images/css-selector-diagram.png)
+
+    ## Slide 7: Pseudo-Class & Pseudo-Element Selectors
+    - **Pseudo-Elements:** Style virtual fragments such as `::first-line`.
+    - **Pseudo-Classes:** React to state or position.
+        - Link states: `:link`, `:visited`, `:hover`, `:active`.
+        - Structural selectors: `:first-child`, `:nth-child(2n)`.
+    - **Example:**
+            ```css
+            nav a:hover { text-decoration: underline; }
+            li:first-child::marker { color: var(--accent); }
+            ```
+    - **Visual Overview:**
+            ![Hover states and first-child styling in a navigation menu](images/css-pseudo-selectors.png)
+
+    ## Slide 8: The CSS Cascade
+    The cascade resolves conflicts using:
+    1. **Inheritance:** Properties like font and color travel down the DOM tree.
+    2. **Specificity:** IDs outrank classes, which outrank elements.
+    3. **Source Order:** Later declarations override earlier ones when specificity ties.
+    - **Visual Overview:**
+            ![Hierarchy chart of inheritance, specificity, and order](images/css-cascade.png)
+
+    ## Slide 9: The CSS Box Model
+    - **Layers:** Content → Padding → Border → Margin define the element box.
+    - **Collapsing Margins:** Adjacent vertical margins combine into the larger value; horizontal margins stay separate.
+    - **Visual Overview:**
+            ![Box model highlighting margin, border, padding, and content](images/css-box-model.png)
+
+    ## Slide 10: Block vs. Inline Elements
+    - **Block Elements:** Break onto new lines and consume available width (`<p>`, `<section>`).
+    - **Inline Elements:** Flow within text (`<a>`, `<span>`, `<img>`).
+    - **Visual Overview:**
+            ![Comparison of stacked block elements and inline text flow](images/css-block-inline.png)
+
+    ## Slide 11: Box Dimensions & Sizing
+    - **Default Calculation:** Width equals content + padding + border + margin.
+    - **Border-Box Strategy:** `box-sizing: border-box;` makes width include padding and border.
+    - **Overflow Control:** `overflow` manages hidden, scrolling, or auto behavior.
+    - **Example:**
+            ```css
+            .card {
+                width: 320px;
+                box-sizing: border-box;
+                overflow: auto;
+            }
+            ```
+    - **Visual Overview:**
+            ![Content-box versus border-box comparison](images/css-sizing.png)
+
+    ## Slide 12: Text & Font Styling
+    - **Font Properties:** Tune `font-family`, `font-size`, `font-weight`, and more.
+    - **Font Stacks:** Provide fallbacks, e.g., `font-family: "Cambria", "Georgia", serif;`.
+    - **@font-face:** Load hosted fonts for consistent typography.
+    - **Paragraph Tweaks:** Adjust `line-height`, `text-align`, `text-decoration`, `letter-spacing`.
+    - **Visual Overview:**
+            ![Typography samples using various font stacks](images/css-typography.png)
+
+    ## Slide 13: CSS Variables & Frameworks
+    - **Custom Properties:** Declare once under `:root` and reuse with `var(--name)`.
+    - **Example:**
+            ```css
+            :root {
+                --bg-color-main: #431c5d;
+            }
+            header {
+                background-color: var(--bg-color-main);
+            }
+            ```
+    - **Frameworks:** Toolkits like Bootstrap or Foundation deliver grid systems, components, and utilities.
+    - **Visual Overview:**
+            ![Dashboard mockups built with CSS frameworks](images/css-frameworks.png)
+
+            ## Instructor Notes {.smaller}
+
+            ::: {.callout-note title="Slide 1 – CSS Foundations"}
+            - CSS defines how HTML content is presented within the W3C ecosystem.
+            - It governs typography, palettes, spacing, layered backgrounds, layout, and animation.
+            - Styles can be authored inline on elements, in document metadata, or in linked stylesheets.
+            - Reference the collaboration visual to connect cross-functional roles to styling tasks.
+            :::
+
+            ::: {.callout-note title="Slide 2 – Value Proposition"}
+            - Shared stylesheets deliver precise control over layout and appearance.
+            - Centralizing rules speeds maintenance and benefits from browser caching.
+            - Separating structure from presentation improves assistive technology support.
+            - Lean markup and responsive techniques enhance performance across devices.
+            - Point out the Poseidon mockup as evidence of adaptive design.
+            :::
+
+            ::: {.callout-note title="Slide 3 – Rules & Declarations"}
+            - A rule pairs selectors with a declaration block that shapes element rendering.
+            - Declarations are property/value pairs wrapped in braces.
+            - Use the syntax diagram to reinforce selector, property, and value terminology.

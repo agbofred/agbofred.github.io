@@ -14,7 +14,10 @@ format:
 
 ## Announcements
 - Welcome back!
-- Problem Sets (PS0.1) was posted last week Thursday and **due on today at 10:00pm**. 
+- PS0 was due last week. 
+    - A few students did not submit or send along their GitHub username.
+- Problem Sets (PS0.1) was posted last week Thursday and **due today at 10:00pm**. 
+    - Always ensure to fillout the top portion of the starter code.
 - Reading assignment for the week is posted and will be due today.
     - Always read the materials ahead.
 
@@ -124,12 +127,12 @@ A graph of the amounts of work done in the tester programs
 ## Orders of Complexity 
 :::{.smaller style="font-size: 35px;"}
 - Performances of these algorithms differ by an order of complexity:
-    - First algorithm is linear – work grows in direct proportion to the size of the problem
-    - Second algorithm is quadratic – work grows as a function of the square of the problem size
-    - Constant – requires the same number of operations for any problem size
-    - Logarithmic – amount of work is proportional to the log2  of the problem size
-    - Polynomial time – grows at a rate of `n^k`, `k` = constant or > 1
-    - Exponential – example rate of growth of this order is `2ⁿ`
+    - **Linear** – work grows in direct proportion to the size of the problem
+    - **Quadratic** – work grows as a function of the square of the problem size `(n²)`
+    - **Constant** – requires the same number of operations for any problem size
+    - **Logarithmic** – amount of work is proportional to the log₂ of the problem size
+    - **Polynomial time** – grows at a rate of `nᵏ`, where `k` is a constant > 1
+    - **Exponential** – example rate of growth of this order is `2ⁿ`
 :::
 
 ## Orders of Complexity 
