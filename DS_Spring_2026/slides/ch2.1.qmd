@@ -299,7 +299,7 @@ def binarySearch(target, sortedLyst):
 - The final time through the outer loop 1 comparison is done
 - Sum of 1 + 2 + 3 + … (n-3) + (n-2) + (n-1) ?
     - (n-1) * n / 2
-- Result is O(n2) comparisons
+- Result is O(n²) comparisons
 
 ## Performance of `Bubble Sort` Algorithm
 ![](../images/bubbleSortBigO.png){width="100%" style="background-color:white;"}
