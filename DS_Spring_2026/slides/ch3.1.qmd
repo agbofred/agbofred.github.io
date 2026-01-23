@@ -1,7 +1,7 @@
 ---
 title: "Algorithm Complexity Review & Recursion"
 author: "Fred Agbo"
-date: September 8, 2025
+date: January 26, 2026
 format:
   revealjs:
     # css: minimal.css
@@ -16,12 +16,9 @@ format:
 - Welcome back!
 - - Reading for this week:
     - Data Structures & Algorithms in Python (DS&A) - John et al.:
-        - Chapter 6
-        - Due on Wednesday
-- PS1 assignment is due on Wednesday at 10pm. Extention because:
-    - A few hitches in accepting the assignment from Github classroom
-    - Contact me if you need some help on how to complete the assignment
-- First mini-project (MP1) to be published on Wednesday
+        - Chapter 6; Due on Wednesday
+- PS1 assignment is due on Wednesday at 10pm.
+    - Please contact me if you have issues accepting the assignment from Github classroom
 
 
 # Algorithms Complexity Review [class activity]

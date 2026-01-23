@@ -1,7 +1,7 @@
 ---
 title: "Recursion Applications"
 author: "Fred Agbo"
-date: September 10, 2025
+date: January 28, 2026
 format:
   revealjs:
     # css: minimal.css
@@ -18,7 +18,7 @@ format:
 ## Announcements
 - Welcome back!
 - PS1 assignment is due today at 10pm 
-- First mini-project (MP1) is published today and due next week Wednesday
+- First mini-project (MP1) is to be published this weeked and due next week Wednesday
 - Remember reading for next week is due on Wednesday
 
 # Real-Life Applications of Recursive Functions

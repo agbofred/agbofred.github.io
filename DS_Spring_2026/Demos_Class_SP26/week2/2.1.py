@@ -1,14 +1,19 @@
-def indexOfMin(lyst):
-    """Returns the index of the minimum item."""
-    minIndex = 0
-    currentIndex = 1
-    while currentIndex < len(lyst):
-        if lyst[currentIndex] < lyst[minIndex]:
-            minIndex = currentIndex
-        currentIndex += 1
-    return minIndex
+# Prints the running times for problem sizes that double, using a single loop.
 
-if __name__ == "__main__":
-    l =[3,4,2,4,5,6,1,2,5]
-    min = indexOfMin(l)
-    print(min)
+import time
+
+problemSize = 10000000
+print("%12s%16s" % ("Problem Size", "Seconds"))
+for count in range(5):
+    start = time.time()
+    # The start of the algorithm
+    work = 1
+    for x in range(problemSize):
+        for i in range(problemSize):
+            work += 1
+            work -= 1
+    # The end of the algorithm
+    elapsed = time.time() - start
+    print("%12d%16.3f" % (problemSize, elapsed))
+    problemSize *= 2
+    
