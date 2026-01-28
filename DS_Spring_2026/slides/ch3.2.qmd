@@ -329,7 +329,7 @@ solve(stacks, labels, show=True)
 ## Use Classes Before the Bag Mini-Project?
 :::{.incremental}
 - Object-Oriented Programming (OOP) lets you model real-world entities as objects.
-- For the upcoming [Bag mini-project](https://agbofred.github.io/Fall_2025/Homeworks/project1/prompts/Project1.html), you'll use classes to:
+- For the upcoming `Bag mini-project`, you'll use classes to:
     - Represent a Bag as an object with attributes (like items) and methods (like add, remove).
     - Encapsulate logic and state, making your code modular and reusable.
     - Easily extend functionality (e.g., support for different types of Bags).
@@ -400,4 +400,4 @@ car1.brake()
     - Fundamentals of Python Data Structures (FDS) - Lambert: ,
         -  Chapters 4
     - Data Structures & Algorithms in Python (DS&A) - John et al.:
-        - Chapter 2 & 5
+        - Chapters 2 & 5
