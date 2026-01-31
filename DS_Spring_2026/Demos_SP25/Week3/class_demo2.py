@@ -27,5 +27,5 @@ path = []
 solve_maze(maze, 0, 0, path)
 print("Path to exit:", path[::-1])
 
-# print(len(maze))
-# print(maze[len(maze)-1][len(maze[4])-1])
+print(len(maze))
+#print(maze[len(maze)-1][len(maze[4])-1])

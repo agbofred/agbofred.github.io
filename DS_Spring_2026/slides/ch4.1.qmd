@@ -1,7 +1,7 @@
 ---
 title: "ARRAYS"
 author: "Fred Agbo"
-date: September 15, 2025
+date: February 2, 2026
 format:
   revealjs:
     chalkboard: true
@@ -200,7 +200,7 @@ print(item)
     - `__str__` – return a string representation of the Array
 :::
 
-## Unordered array class
+## Unordered/Unsorted array class
 - Implementation
 ![](../images/unorderedArray.png){width="100%" style="background-color:white;"}
 
@@ -229,7 +229,7 @@ x = Array(100)
     - `insert` – insert an item at the correct place in array
     - `find` – more efficiently find where an item is (or where it should be) by taking advantage of the sorted order of the items in the __OrderedArray__
 
-## Ordered Array: Binary search to `find`
+## Ordered/Sorted Array: Binary search to `find`
 ![](../images/orderedArray.png){width="100%" style="background-color:white;"}
 
 ## Ordered array: `insert` an item
