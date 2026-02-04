@@ -45,7 +45,7 @@ format:
 
 \vspace{2cm}
 
-5. If the base address of an array is `10011101~2~` (in base 2), what is the address of the item at index position 7? Assume each element has a constant size of 1. Give your answer in base 2.
+5. If the base address of an array is `10011101` (in base 2), what is the address of the item at index position 7? Assume each element has a constant size of 1. Give your answer in base 2.
 
 \vspace{2cm}
 

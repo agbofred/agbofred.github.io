@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Fred Agbo">
-  <meta name="dcterms.date" content="2025-09-17">
+  <meta name="dcterms.date" content="2026-02-04">
   <title>Beyond the Python List</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -206,17 +206,18 @@ Fred Agbo
 </div>
 </div>
 
-  <p class="date">2025-09-17</p>
+  <p class="date">2026-02-04</p>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
 <li>Welcome back!</li>
-<li>First Mini-project (MP1) is due today at 10pm</li>
+<li>First Mini-project (MP1) is due today at 10pm
+<ul>
+<li>Special Research Opportunity</li>
+<li><h2 id="section"><img data-src="../images/scrp_poster.png" style="background-color:white;;width:33.0%"></h2></li>
+</ul></li>
 </ul>
-</section>
-<section class="slide level2">
-
 <!-- ## title: "An Introduction to NumPy for Data Structures" subtitle: "Beyond the Python List" author: "Your Name/University" date: "Fall 2025" format: revealjs: slide-number: true css: styles.css theme: simple footer: "Data Structures - NumPy Lesson" logo: "logo.png" -->
 </section>
 <section>
@@ -417,16 +418,21 @@ Fred Agbo
 </section>
 <section id="in-class-challenge" class="slide level2">
 <h2>In-Class Challenge</h2>
-<div class="non-stretch-slide">
+<div class="non-stretch-slide" style="font-size: 35px;">
 <p>Let’s put your new knowledge to the test.</p>
-</div>
 <p>Write a short Python program that:</p>
 <ol type="1">
 <li>Imports the NumPy library.</li>
 <li>Creates a 2D NumPy array (a 3x4 matrix) of all zeros. Hint: <code>np.zeros()</code>.</li>
+</ol>
+<ul>
+<li><strong><em>Remember to add some values to the array!</em></strong>.</li>
+</ul>
+<ol start="3" type="1">
 <li>Calculates the average of the elements in the array and prints it.</li>
 <li>Calculates the sum of the elements along each column and prints it.</li>
 </ol>
+</div>
 <aside class="notes">
 <ul>
 <li><p>Give students a few minutes to work on this independently or in pairs.</p></li>
@@ -438,15 +444,18 @@ Fred Agbo
 <span id="cb5-2"><a href=""></a></span>
 <span id="cb5-3"><a href=""></a><span class="co"># 1. Create a 3x4 matrix of zeros</span></span>
 <span id="cb5-4"><a href=""></a>my_matrix <span class="op">=</span> np.zeros((<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb5-5"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Matrix:</span><span class="ch">\n</span><span class="sc">{</span>my_matrix<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-6"><a href=""></a></span>
-<span id="cb5-7"><a href=""></a><span class="co"># 2. Calculate the average of all elements</span></span>
-<span id="cb5-8"><a href=""></a>matrix_mean <span class="op">=</span> np.mean(my_matrix)</span>
-<span id="cb5-9"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Average of all elements: </span><span class="sc">{</span>matrix_mean<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-10"><a href=""></a></span>
-<span id="cb5-11"><a href=""></a><span class="co"># 3. Calculate the sum of elements along each column (axis=0)</span></span>
-<span id="cb5-12"><a href=""></a>column_sums <span class="op">=</span> np.<span class="bu">sum</span>(my_matrix, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb5-13"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Sum of each column: </span><span class="sc">{</span>column_sums<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href=""></a><span class="co">#add some data to the array </span></span>
+<span id="cb5-6"><a href=""></a>my_matrix(<span class="dv">0</span>,:) <span class="op">=</span> <span class="dv">10</span> <span class="co"># adding 10 to all row 0</span></span>
+<span id="cb5-7"><a href=""></a>my_matrix(:,<span class="dv">2</span>) <span class="op">=</span> <span class="dv">20</span> <span class="co"># adding 20 to all column 2</span></span>
+<span id="cb5-8"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Matrix:</span><span class="ch">\n</span><span class="sc">{</span>my_matrix<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-9"><a href=""></a></span>
+<span id="cb5-10"><a href=""></a><span class="co"># 2. Calculate the average of all elements</span></span>
+<span id="cb5-11"><a href=""></a>matrix_mean <span class="op">=</span> np.mean(my_matrix)</span>
+<span id="cb5-12"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Average of all elements: </span><span class="sc">{</span>matrix_mean<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-13"><a href=""></a></span>
+<span id="cb5-14"><a href=""></a><span class="co"># 3. Calculate the sum of elements along each column (axis=0)</span></span>
+<span id="cb5-15"><a href=""></a>column_sums <span class="op">=</span> np.<span class="bu">sum</span>(my_matrix, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-16"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Sum of each column: </span><span class="sc">{</span>column_sums<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -458,9 +467,6 @@ Fred Agbo
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section class="slide level2">
-
 <!-- ## Solution to Challenge
 
 ```python

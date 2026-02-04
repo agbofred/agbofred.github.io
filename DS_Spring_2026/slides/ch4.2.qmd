@@ -1,7 +1,7 @@
 ---
 title: "Beyond the Python List"
 author: "Fred Agbo"
-date: September 17, 2025
+date: February 4, 2026
 format:
   revealjs:
     chalkboard: true
@@ -11,7 +11,8 @@ format:
 ## Announcements
 - Welcome back!
 - First Mini-project (MP1) is due today at 10pm 
-
+  - Special Research Opportunity 
+  - ![](../images/scrp_poster.png){width="33%" style="background-color:white;"}
 -----
 
 <!-- ## title: "An Introduction to NumPy for Data Structures" subtitle: "Beyond the Python List" author: "Your Name/University" date: "Fall 2025" format: revealjs: slide-number: true css: styles.css theme: simple footer: "Data Structures - NumPy Lesson" logo: "logo.png" -->
@@ -207,16 +208,18 @@ print(f"Sum of each column: {np.sum(matrix, axis=0)}")
 
 ## In-Class Challenge
 
-::: {.non-stretch-slide}
+::: {.non-stretch-slide style="font-size: 35px;"}
 Let's put your new knowledge to the test.
-:::
+
 
 Write a short Python program that:
 
 1.  Imports the NumPy library.
-2.  Creates a 2D NumPy array (a 3x4 matrix) of all zeros. Hint: `np.zeros()`.
+2.  Creates a 2D NumPy array (a 3x4 matrix) of all zeros. Hint: `np.zeros()`. 
+  - ***Remember to add some values to the array!***.
 3.  Calculates the average of the elements in the array and prints it.
 4.  Calculates the sum of the elements along each column and prints it.
+:::
 
 ::: {.notes}
 
@@ -231,6 +234,9 @@ import numpy as np
 
 # 1. Create a 3x4 matrix of zeros
 my_matrix = np.zeros((3, 4))
+#add some data to the array 
+my_matrix(0,:) = 10 # adding 10 to all row 0
+my_matrix(:,2) = 20 # adding 20 to all column 2
 print(f"Matrix:\n{my_matrix}")
 
 # 2. Calculate the average of all elements
@@ -243,7 +249,6 @@ print(f"Sum of each column: {column_sums}")
 ```
 :::
 
------
 
 <!-- ## Solution to Challenge
 
