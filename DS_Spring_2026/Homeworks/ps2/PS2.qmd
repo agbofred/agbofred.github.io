@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 2: Unpacking Array Architectures and Performance"
-subtitle: "Due: September  24, 2025 at 10:00 PM"
+subtitle: "Due: February  11, 2026 at 10:00 PM"
 format:
   html:
     theme:
@@ -22,7 +22,7 @@ format:
   You’ll need to grab the assignment from the link below and download the entire folder to your computer before proceeding. I would highly suggest then opening the entire folder in VS Code, as it will make it very easy to edit the different files and is necessary for VS Code to find certain libraries. When you are finished, upload your completed templates back to GitHub. Don’t worry about changing any file names, you want to overwrite the original template files.
 
 ```{=html}
-<a href='https://classroom.github.com/a/1cl1scuH' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom.github.com/a/M9jrPdJo' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 
@@ -55,7 +55,9 @@ This assignment will challenge you to apply and synthesize your understanding of
 
 3.  **Simulating the "Hidden" Operations:**
     In the lecture for week 4, it provided Python code snippets demonstrating the internal logic for increasing/decreasing array size, and for inserting/removing items.
-    *   **a.** Imagine you are tasked with implementing the `insert` method for an `Array` class where the underlying storage is a fixed-size Python list (simulating a traditional array, similar to the `Array` class discussed in the lectures). Write a Python function called `custom_insert(arr_data, logical_size, target_index, new_item, default_capacity)` that simulates the insertion of an item into such an array. Your function should:
+    *   **a.** Imagine you are tasked with implementing the `insert` method for an `Array` class where the underlying storage is a fixed-size Python list (simulating a traditional array, similar to the `Array` class discussed in the lectures). 
+    
+    Write a Python function called `custom_insert()` that takes parameters: `arr_data`, `logical_size`, `target_index`, `new_item`, and `default_capacity` that simulates the insertion of an item into such an array. Your function should:
         *   Take `arr_data` (a Python list representing the array's internal storage), `logical_size`, `target_index`, `new_item`, and `default_capacity` as inputs.
         *   First, check if an increase in `physicalSize` is necessary before insertion (i.e., `logical_size == len(arr_data)`). If so, it should simulate the creation of a new, larger array, copy existing data, and update `arr_data` to this new array. You can assume a simple `len(arr_data) + 1` for the new capacity.
         *   Then, shift items down from the logical end to the `target_index` to open a "hole".

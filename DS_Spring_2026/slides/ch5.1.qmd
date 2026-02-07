@@ -1,7 +1,7 @@
 ---
 title: "LINKED STRUCTURES"
 author: "Fred Agbo"
-date: September 22, 2025
+date: February 09, 2026
 format:
   revealjs:
     chalkboard: true
@@ -12,7 +12,7 @@ format:
 - Welcome back!
 - Assignment for week 5 (Problem set 2) is posted and due on Wednesday at 10pm
 - This week is focused more on Linked Structure/Linked List
-    - However, we'll visit [2D arrays]() in updated in week 4 on Canvas
+    - However, we'll visit [2D arrays]() discussed last week. See slides on Canvas
 
 
 # Linked Structures 
