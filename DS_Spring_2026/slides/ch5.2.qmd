@@ -1,7 +1,7 @@
 ---
 title: "LINKED STRUCTURES: Part 2"
 author: "Fred Agbo"
-date: September 24, 2025
+date: February 11, 2026
 format:
   revealjs:
     chalkboard: true
@@ -10,10 +10,11 @@ format:
 ---
 ## Announcements
 - Welcome back!
-- Mini-Project #1 was graded. 
-    - Visit me if you have any questions on it
-    - My grading style nowadays is more of qualitative than quantitative 
-- Week 5 assignment (Problem set 2) was due today but __extended until next week Wednesday at 10pm__
+- Mini-Project #1 is due today. 
+- PS2 is due next week Wednesday
+- Grading for PS0 through PS1 is almost completed
+    - Apologies for the delays!
+- Visit Sam at QUAD Center for any help in this course
 
 # Inserting and Removing Items at any Position
 
