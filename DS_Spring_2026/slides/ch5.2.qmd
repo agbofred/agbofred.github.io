@@ -10,9 +10,8 @@ format:
 ---
 ## Announcements
 - Welcome back!
-- Mini-Project #1 is due today. 
-- PS2 is due next week Wednesday
-- Grading for PS0 through PS1 is almost completed
+- PS2 is due is due today. 
+- Grading for PS0.1 through PS1 is almost completed
     - Apologies for the delays!
 - Visit Sam at QUAD Center for any help in this course
 
