@@ -31,3 +31,5 @@ while i >= 0:
     head = Node(array[i], head)
     print(f"Node data: {head.data} -----> Node Pointer {head.next}")
     i -= 1
+    
+help(Array)

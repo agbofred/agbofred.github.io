@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Fred Agbo">
-  <meta name="dcterms.date" content="2025-09-29">
+  <meta name="dcterms.date" content="2026-02-16">
   <title>INTERFACES</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -206,13 +206,17 @@ Fred Agbo
 </div>
 </div>
 
-  <p class="date">2025-09-29</p>
+  <p class="date">2026-02-16</p>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
 <li>Welcome to week 6!</li>
-<li>Week 5 assignment (Problem set 2) will be due on <strong>Wednesday at 10pm</strong></li>
+<li>Grading for PS0.1, PS1, &amp; PS2 are all published.
+<ul>
+<li>Check in with me if you have any questions on the grades/commnets.</li>
+</ul></li>
+<li>Week 6 assignment (Problem set 3) is posted and will be due on <strong>Wednesday at 10pm</strong></li>
 </ul>
 </section>
 <section id="learning-objectives" class="slide level2">
@@ -503,6 +507,291 @@ Fred Agbo
 <span id="cb5-57"><a href=""></a><span class="co">        Raises: KeyError if item in not in self.</span></span>
 <span id="cb5-58"><a href=""></a><span class="co">        Postcondition: item is removed from self."""</span></span>
 <span id="cb5-59"><a href=""></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="array-based-baginterface-implementation" class="slide level2">
+<h2>Array-Based BagInterface Implementation</h2>
+<div style="font-size: 35px;">
+<ul>
+<li class="fragment">This section covers developing an array-based implementation of the bag interface, called <strong>ArrayBag</strong></li>
+<li class="fragment">The design and implementation of the class consists of two steps:
+<ul>
+<li class="fragment">Choose an appropriate data structure to contain the collection’s items and determine any other data that might be needed to represent the state of the collection (these data are assigned to instance variables in the <code>__init__ method</code>)</li>
+<li class="fragment">Complete the code for the methods specified in the interface</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="arraybag-implementation" class="slide level2">
+<h2>ArrayBag implementation:</h2>
+<div style="font-size: 35px;">
+<ul>
+<li class="fragment">Step 1: Choose and Initialize the Data Structures
+<ul>
+<li class="fragment">An array-based implementation
+<ul>
+<li class="fragment">Each object of type ArrayBag contains an array of the items in the bag</li>
+<li class="fragment">Can be an instance of the <code>Array</code> class or another array-based collection, such as Python’s list type</li>
+</ul></li>
+<li class="fragment">After initializing the two instance variables, the <code>__init__</code> method must deal with the possibility that its caller has provided a source collection parameter:
+<ul>
+<li class="fragment">If that is the case, all the data in the source collection must be added to the new <code>ArrayBag</code> object</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="arraybag-implementation-1" class="slide level2">
+<h2>ArrayBag implementation:</h2>
+<div style="font-size:">
+<ul>
+<li class="fragment"><p>Step 1: Choose and Initialize the Data Structures</p>
+<ul>
+<li class="fragment">The code for this part of the design is easy to create
+<ul>
+<li class="fragment">You can make a copy of the bag interface file, <code>baginterface.py</code>, and rename it to <code>arraybag.py</code></li>
+<li class="fragment">You then add an import statement for the array, rename the class to <code>ArrayBag</code>, add a class variable for the default capacity, and complete the <code>__init__</code> method</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="arraybag-implementation-2" class="slide level2">
+<h2>ArrayBag implementation:</h2>
+<ul>
+<li>Step 1: Choose and Initialize the Data Structures</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co">"""</span></span>
+<span id="cb6-2"><a href=""></a><span class="co">File: arraybag.py</span></span>
+<span id="cb6-3"><a href=""></a><span class="co">"""</span></span>
+<span id="cb6-4"><a href=""></a>&nbsp;</span>
+<span id="cb6-5"><a href=""></a><span class="im">from</span> arrays <span class="im">import</span> Array</span>
+<span id="cb6-6"><a href=""></a>&nbsp;</span>
+<span id="cb6-7"><a href=""></a><span class="kw">class</span> ArrayBag(<span class="bu">object</span>):</span>
+<span id="cb6-8"><a href=""></a><span class="co">"""An array-based bag implementation."""</span></span>
+<span id="cb6-9"><a href=""></a>&nbsp;</span>
+<span id="cb6-10"><a href=""></a>    <span class="co"># Class variable</span></span>
+<span id="cb6-11"><a href=""></a>    DEFAULT_CAPACITY <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-12"><a href=""></a>    &nbsp;</span>
+<span id="cb6-13"><a href=""></a>    <span class="co"># Constructor</span></span>
+<span id="cb6-14"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb6-15"><a href=""></a>        <span class="co">"""Sets the initial state of self, which includes the</span></span>
+<span id="cb6-16"><a href=""></a><span class="co">        contents of sourceCollection, if it’s present."""</span></span>
+<span id="cb6-17"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> Array(ArrayBag.DEFAULT_CAPACITY)</span>
+<span id="cb6-18"><a href=""></a>        <span class="va">self</span>.size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-19"><a href=""></a>        <span class="cf">if</span> sourceCollection:</span>
+<span id="cb6-20"><a href=""></a>            <span class="cf">for</span> item <span class="kw">in</span> sourceCollection:</span>
+<span id="cb6-21"><a href=""></a>                <span class="va">self</span>.add(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="complete-the-easy-methods" class="slide level2">
+<h2>Complete the Easy Methods</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li>Step 2:
+<ul>
+<li>Simplest methods in this interface: <code>IsEmpty</code>, _<code>len_</code>, <code>clear</code>, and <code>add</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="co"># Accessor methods</span></span>
+<span id="cb7-2"><a href=""></a><span class="kw">def</span> isEmpty(<span class="va">self</span>):</span>
+<span id="cb7-3"><a href=""></a>    <span class="co">"""Returns True if len(self) == 0, or False otherwise."""</span></span>
+<span id="cb7-4"><a href=""></a>    <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb7-5"><a href=""></a>    &nbsp;</span>
+<span id="cb7-6"><a href=""></a><span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb7-7"><a href=""></a>    <span class="co">"""Returns the number of items in self."""</span></span>
+<span id="cb7-8"><a href=""></a>    <span class="cf">return</span> <span class="va">self</span>.size</span>
+<span id="cb7-9"><a href=""></a>&nbsp;</span>
+<span id="cb7-10"><a href=""></a><span class="co"># Mutator methods</span></span>
+<span id="cb7-11"><a href=""></a><span class="kw">def</span> clear(<span class="va">self</span>):</span>
+<span id="cb7-12"><a href=""></a>    <span class="co">"""Makes self become empty."""</span></span>
+<span id="cb7-13"><a href=""></a>    <span class="va">self</span>.size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-14"><a href=""></a>    <span class="va">self</span>.items <span class="op">=</span> Array(ArrayBag.DEFAULT_CAPACITY)</span>
+<span id="cb7-15"><a href=""></a>&nbsp;</span>
+<span id="cb7-16"><a href=""></a><span class="kw">def</span> add(<span class="va">self</span>, item):</span>
+<span id="cb7-17"><a href=""></a>    <span class="co">"""Adds item to self."""</span></span>
+<span id="cb7-18"><a href=""></a>    <span class="co"># Check array memory here and increase it if necessary</span></span>
+<span id="cb7-19"><a href=""></a>    <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)] <span class="op">=</span> item</span>
+<span id="cb7-20"><a href=""></a>    <span class="va">self</span>.size <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="complete-the-easy-methods-1" class="slide level2">
+<h2>Complete the Easy Methods</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li><p>Step 2:</p>
+<ul>
+<li>You should call a method or function on <code>self</code> to get something done within a class definition, whenever possible</li>
+<li>For example,
+<ul>
+<li>Whenever you need to use the logical size of the bag within a class definition, run <code>len(self)</code> instead of referring directly to the instance variable <code>self.size</code></li>
+</ul></li>
+<li>The increment of size in the <code>add</code> method
+<ul>
+<li>Requires you to make the variable the target of the assignment; so you cannot avoid referring to it at that point</li>
+</ul></li>
+<li>The <code>add</code> method places the new item at the logical end of the array</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="complete-the-iterator" class="slide level2">
+<h2>Complete the Iterator</h2>
+<div class="smaller" style="font-size:34px;">
+<ul>
+<li><p>Step 3:</p>
+<ul>
+<li>The new <code>__iter__</code> method maintains a cursor that allows it to navigate through a sequence of objects:
+<ul>
+<li>The caller’s for loop drives this process</li>
+</ul></li>
+<li>On each pass through the calling for loop,
+<ul>
+<li>The item at the cursor is yielded to the caller, and then the cursor is advanced to the next object in the sequence</li>
+<li>When the cursor reaches the length of the bag, the <code>__iter__</code> method’s <strong>while</strong> loop terminates</li>
+<li>Which in turn terminates the calling for loop</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<p>The <code>__iter__</code> method in the <code>ArrayBag</code> class is responsible for making the bag iterable, so you can use it in a for loop. Inside this method, a cursor (usually an integer index) is initialized to 0. The method then enters a while loop that continues as long as the cursor is less than the logical size of the bag (<code>len(self)</code>). On each iteration, the item at the current cursor position is yielded to the caller, and the cursor is incremented by 1. When the cursor reaches the size of the bag, the while loop terminates, which also ends the iteration in the calling for loop.</p>
+<p>def <strong>iter</strong>(self): “““Supports iteration over a view of self.”“” cursor = 0 while cursor &lt; len(self): yield self.items[cursor] cursor += 1</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="complete-the-iterator-1" class="slide level2">
+<h2>Complete the Iterator</h2>
+<div class="smaller" style="font-size:34px;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
+<span id="cb8-2"><a href=""></a>    <span class="co">"""Supports iteration over a view of self."""</span></span>
+<span id="cb8-3"><a href=""></a>    cursor <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href=""></a>    <span class="cf">while</span> cursor <span class="op">&lt;</span> <span class="bu">len</span>(<span class="va">self</span>):</span>
+<span id="cb8-5"><a href=""></a>        <span class="cf">yield</span> <span class="va">self</span>.items[cursor]</span>
+<span id="cb8-6"><a href=""></a>        cursor <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The <code>yield</code> keyword in Python is used in a function to make it a generator.</li>
+<li>In this context, <code>yield</code> allows you to use the object in a <code>for</code> loop, and each iteration retrieves the next item from the collection.</li>
+</ul>
+</div>
+<aside class="notes">
+<p>The <code>yield</code> keyword in Python is used in a function to make it a generator. When the function is called, it returns an iterator object but does not execute the function body immediately. Each time <code>yield</code> is encountered, the function’s state is saved, and the yielded value is returned to the caller. The next time the iterator is advanced (e.g., by a for loop), execution resumes right after the last <code>yield</code>. This allows you to produce a sequence of values over time, rather than computing them all at once and sending them back in a list.</p>
+<p>In the context of the <code>__iter__</code> method, <code>yield</code> is used to return each item in the collection one at a time, making the object iterable. For example:</p>
+<p>def <strong>iter</strong>(self): cursor = 0 while cursor &lt; len(self): yield self.items[cursor] cursor += 1</p>
+<p>This allows you to use the object in a for loop, and each iteration retrieves the next item from the collection.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="complete-the-methods-that-use-the-iterator" class="slide level2">
+<h2>Complete the Methods That Use the Iterator</h2>
+<ul>
+<li>Step 3
+<ul>
+<li>The <code>__eq__</code> method follows the rules for the equality test discussed in Chapter 2</li>
+<li>The <code>__add__</code> method follows the rules for the concatenation of two collections discussed in Chapter 2</li>
+<li>The <code>__str__</code> method uses the <code>map</code> and <code>join</code> operations to build a string containing the string representations of the bag’s items</li>
+</ul></li>
+</ul>
+</section>
+<section id="complete-the-methods-that-use-the-iterator-1" class="slide level2">
+<h2>Complete the Methods That Use the Iterator</h2>
+<div class="smaller" style="font-size:35px;">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb9-2"><a href=""></a>    <span class="co">"""Returns the string representation of self."""</span></span>
+<span id="cb9-3"><a href=""></a>    <span class="cf">return</span> <span class="st">"{"</span> <span class="op">+</span> <span class="st">", "</span>.join(<span class="bu">map</span>(<span class="bu">str</span>, <span class="va">self</span>)) <span class="op">+</span> <span class="st">"}"</span>  </span>
+<span id="cb9-4"><a href=""></a>    <span class="co"># possible to use [] to wrap the collection instead of {} which is a set notation</span></span>
+<span id="cb9-5"><a href=""></a>&nbsp;</span>
+<span id="cb9-6"><a href=""></a><span class="kw">def</span> <span class="fu">__add__</span>(<span class="va">self</span>, other):</span>
+<span id="cb9-7"><a href=""></a>    <span class="co">"""Returns a new bag containing the contents</span></span>
+<span id="cb9-8"><a href=""></a><span class="co">    of self and other."""</span></span>
+<span id="cb9-9"><a href=""></a>    result <span class="op">=</span> ArrayBag(<span class="va">self</span>)</span>
+<span id="cb9-10"><a href=""></a>    <span class="cf">for</span> item <span class="kw">in</span> other:</span>
+<span id="cb9-11"><a href=""></a>        result.add(item)</span>
+<span id="cb9-12"><a href=""></a>    <span class="cf">return</span> result</span>
+<span id="cb9-13"><a href=""></a>&nbsp;</span>
+<span id="cb9-14"><a href=""></a><span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb9-15"><a href=""></a>    <span class="co">"""Returns True if self equals other,</span></span>
+<span id="cb9-16"><a href=""></a><span class="co">    or False otherwise."""</span></span>
+<span id="cb9-17"><a href=""></a>    <span class="cf">if</span> <span class="va">self</span> <span class="kw">is</span> other: <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb9-18"><a href=""></a>    <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb9-19"><a href=""></a>        <span class="bu">len</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">len</span>(other):</span>
+<span id="cb9-20"><a href=""></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb9-21"><a href=""></a>    <span class="cf">for</span> item <span class="kw">in</span> <span class="va">self</span>:</span>
+<span id="cb9-22"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.count(item) <span class="op">!=</span> other.count(item):</span>
+<span id="cb9-23"><a href=""></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb9-24"><a href=""></a>    <span class="cf">return</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>The line <code>return "{" + ", ".join(map(str, self)) + "}"</code> in the <code>__str__</code> method does not remove duplicates. It simply creates a string by converting each item in the bag to a string (using <code>map(str, self)</code>) and joining them with commas. The curly braces <code>{}</code> are used for display purposes to mimic set notation, but the underlying data structure is still a bag (multiset), so duplicates are included in the output. For example, if the bag contains <code>[1, 2, 2, 3]</code>, the string representation will be <code>{1, 2, 2, 3}</code>.</p>
+<p>The expression map(str, self) applies the str function to each element in self.</p>
+<p><code>map</code> is a built-in Python function that takes a function and an iterable. str is the function that converts its argument to a string. self is typically an iterable (like a list or tuple) in this context. So, map(str, self) returns an iterator where each item from self has been converted to a string.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb10-2"><a href=""></a>result <span class="op">=</span> <span class="bu">map</span>(<span class="bu">str</span>, numbers)</span>
+<span id="cb10-3"><a href=""></a><span class="bu">print</span>(<span class="bu">list</span>(result))  <span class="co"># Output: ['1', '2', '3']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Gotcha: map returns an iterator in Python 3, so you often need to wrap it with list() or another iterable consumer to see the results.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="complete-the-remove-method" class="slide level2">
+<h2>Complete the <code>remove</code> Method</h2>
+<ul>
+<li>The <code>remove</code> method is the most challenging method to complete in the bag implementation</li>
+<li>To begin with, you must check the precondition and raise an exception if it is violated</li>
+<li>Then you must search the underlying array for the target item</li>
+<li>Finally, you must shift the items in the array to the left to close the hole left by the removed item:
+<ul>
+<li>Decrement the bag’s size by one</li>
+<li>Resize the array if necessary</li>
+</ul></li>
+</ul>
+</section>
+<section id="complete-the-remove-method-1" class="slide level2">
+<h2>Complete the <code>remove</code> Method</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="kw">def</span> remove(<span class="va">self</span>, item):</span>
+<span id="cb11-2"><a href=""></a>    <span class="co">"""Precondition: item is in self.</span></span>
+<span id="cb11-3"><a href=""></a><span class="co">    Raises: KeyError if item in not in self.</span></span>
+<span id="cb11-4"><a href=""></a><span class="co">    postcondition: item is removed from self."""</span></span>
+<span id="cb11-5"><a href=""></a>    <span class="co"># 1. check precondition and raise an exception if necessary</span></span>
+<span id="cb11-6"><a href=""></a>    <span class="cf">if</span> <span class="kw">not</span> item <span class="kw">in</span> <span class="va">self</span>:</span>
+<span id="cb11-7"><a href=""></a>        <span class="cf">raise</span> <span class="pp">KeyError</span>(<span class="bu">str</span>(item) <span class="op">+</span> <span class="st">" not in bag"</span>)</span>
+<span id="cb11-8"><a href=""></a>    <span class="co"># 2. Search for index of target item</span></span>
+<span id="cb11-9"><a href=""></a>    targetIndex <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-10"><a href=""></a>    <span class="cf">for</span> targetItem <span class="kw">in</span> <span class="va">self</span>:</span>
+<span id="cb11-11"><a href=""></a>        <span class="cf">if</span> targetItem <span class="op">==</span> item:</span>
+<span id="cb11-12"><a href=""></a>            <span class="cf">break</span></span>
+<span id="cb11-13"><a href=""></a>        targetIndex <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb11-14"><a href=""></a>    <span class="co"># 3. Shift items to the right of target left by one position</span></span>
+<span id="cb11-15"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(targetIndex, <span class="bu">len</span>(<span class="va">self</span>) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb11-16"><a href=""></a>        <span class="va">self</span>.items[i] <span class="op">=</span> <span class="va">self</span>.items[i <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb11-17"><a href=""></a>    <span class="co"># 4. Decrement logical size</span></span>
+<span id="cb11-18"><a href=""></a>    <span class="va">self</span>.size <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb11-19"><a href=""></a>    <span class="co"># 5. Check array memory here and decrease it if necessary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--
 ## Inserting at Any Position 
 :::{.smaller style="font-size: 30px;"}
