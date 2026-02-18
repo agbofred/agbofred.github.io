@@ -11,7 +11,7 @@
 
   <meta name="author" content="Fred Agbo">
   <meta name="dcterms.date" content="2026-02-18">
-  <title>INTERFACES -2</title>
+  <title>INTERFACES &amp; INHERITANCE</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -196,7 +196,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">INTERFACES -2</h1>
+  <h1 class="title">INTERFACES &amp; INHERITANCE</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -211,12 +211,18 @@ Fred Agbo
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Welcome to back!</li>
+<li>Welcome back!</li>
 <li>Week 6 assignment (Problem set 3) is due <strong>today</strong></li>
+<li>Mini project 1 grade is published.
+<ul>
+<li>My main concern is the slight deviation from the requirements in your solutions.</li>
+<li>It will be good to follow the instructions and solve assignments accordingly.</li>
+</ul></li>
+<li>PS2 grading is being graded and will be published ASAP.</li>
 </ul>
 </section>
-<section id="learning-objectives" class="slide level2">
-<h2>Learning Objectives</h2>
+<section id="learning-objectives---recall" class="slide level2">
+<h2>Learning Objectives - Recall</h2>
 <ul>
 <li>Implement multiple classes that conform to the interface of a collection type</li>
 <li>Assess the tradeoffs in running time and memory usage of multiple implementations of a given collection type</li>
@@ -603,7 +609,7 @@ def remove(self, item):
 <ul>
 <li>The running times of the operations on the two implementations of bags are quite similar:
 <ul>
-<li>The in and <code>remove</code> operations take linear time in both implementations, because they incorporate a sequential search</li>
+<li>The <code>in</code> and <code>remove</code> operations take linear time in both implementations, because they incorporate a sequential search</li>
 <li>The <code>remove</code> operation in <code>ArrayBag</code> must do the additional work of shifting data items in the array, but the cumulative effect is not worse than linear</li>
 <li>The <code>+</code>, <code>str</code>, and <code>iter</code> operations are linear</li>
 </ul></li>
@@ -691,6 +697,245 @@ def remove(self, item):
 <span id="cb5-37"><a href=""></a>    b2.remove(<span class="dv">99</span>)</span>
 <span id="cb5-38"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section>
+<section id="oop-concept-inheritance" class="title-slide slide level1 center">
+<h1>OOP Concept: Inheritance</h1>
+
+</section>
+<section id="why-inheritance" class="slide level2">
+<h2>Why Inheritance?</h2>
+<ul>
+<li>This week, we will introduce …
+<ul>
+<li>Use inheritance to share code among a set of classes</li>
+<li>Customize the behavior of a class by creating a subclass</li>
+</ul></li>
+<li>Future class, we will continue to discuss …
+<ul>
+<li>How to factor the redundant data and methods of a set of classes into an abstract class</li>
+<li>Override the behavior of an inherited method by redefining it</li>
+<li>Decide where to place data and methods in a class hierarchy</li>
+</ul></li>
+</ul>
+</section>
+<section id="using-inheritance-to-customize-an-existing-class" class="slide level2">
+<h2>Using Inheritance to Customize an Existing Class</h2>
+<div style="font-size: 35px;">
+<ul>
+<li class="fragment">Easiest way to take advantage of inheritance
+<ul>
+<li class="fragment">Use it to customize an existing class</li>
+</ul></li>
+<li class="fragment">Example: sorted bag class <code>ArraySortedBag</code> (Project 3 of Chapter 5)
+<ul>
+<li class="fragment">The sorted bag behaves just like a regular bag, <code>ArrayBag</code>, but with exceptions:</li>
+<li class="fragment">The sorted bag allows the client to visit its elements in sorted order via the for loop</li>
+<li class="fragment">The sorted bag’s <code>in</code> operator runs in logarithmic time</li>
+<li class="fragment">The items added to the bag must be comparable with each other</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="inheritance-subclassing-an-existing-class" class="slide level2">
+<h2>Inheritance: Subclassing an Existing Class</h2>
+<ul>
+<li>This section covers inheritance by making the <code>ArraySortedBag</code> class a subclass of the <code>ArrayBag</code> class:
+<ul>
+<li><code>ArrayBag</code> is called the parent or superclass of <code>ArraySortedBag</code></li>
+</ul></li>
+<li>Note
+<ul>
+<li>Because the <code>ArrayBag</code> class implements <code>BagInterface</code>, the <code>ArraySortedBag</code> class also implements this <code>interface</code> via inheritance</li>
+</ul></li>
+</ul>
+</section>
+<section id="inheritance-subclassing-an-existing-class-1" class="slide level2">
+<h2>Inheritance: Subclassing an Existing Class</h2>
+<ul>
+<li><p>This diagram depicts a subclass and <code>inheritance</code> in a class diagram</p>
+<ul>
+<li><img data-src="../images/inheritance.png" style="width:40%;" alt="Class diagram showing inheritance in object-oriented programming. The diagram displays a parent class labeled ArrayBag with an arrow pointing to a subclass labeled ArraySortedBag, indicating that ArraySortedBag inherits from ArrayBag. The environment is a simple diagram with labeled boxes and connecting arrows, focusing on the relationship between the two classes. No emotional tone is present. "></li>
+</ul></li>
+</ul>
+</section>
+<section id="inheritance-subclassing-an-existing-class-2" class="slide level2">
+<h2>Inheritance: Subclassing an Existing Class</h2>
+<div style="font-size: 35px;">
+<ul>
+<li class="fragment">To create a subclass of an existing class consists the following steps:
+<ul>
+<li class="fragment">Make a copy of the parent’s class file</li>
+<li class="fragment">Begin by deleting all the methods that do not have to change:</li>
+<li class="fragment">You still need the <code>_init_</code> method in the new class</li>
+<li class="fragment">To guarantee that the inheritance happens, you must place the name of the parent class within the parentheses of the class header</li>
+<li class="fragment">Modify the code for the methods that must change</li>
+<li class="fragment">Add any new methods</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="inheritance-subclassing-an-existing-class-3" class="slide level2">
+<h2>Inheritance: Subclassing an Existing Class</h2>
+<div style="font-size: 33px;">
+<ul>
+<li class="fragment">There is one case where inheritance is not automatic
+<ul>
+<li class="fragment">From the figure above, the <code>_init_</code> method in <code>ArraySortedBag</code> must call the <code>_init_</code> method in the parent class <code>ArrayBag</code>
+<ul>
+<li class="fragment">So that it can initialize the data contained there</li>
+</ul></li>
+<li class="fragment">The syntax to call this method in the parent class is <code>ArrayBag._init_(self, sourceCollection)</code></li>
+</ul></li>
+<li class="fragment">The parent class name enables Python to select which version of the <code>_init_</code> method to run</li>
+<li class="fragment">Note the additional argument, self, at the beginning of the argument list</li>
+<li class="fragment">The optional source collection is also passed as an argument to the parent class’s <code>_init_</code> method</li>
+</ul>
+</div>
+</section>
+<section id="arraybag-and-arraysortedbag-example" class="slide level2">
+<h2>ArrayBag and ArraySortedBag Example</h2>
+<ul>
+<li>Code for the changes to ArraySortedBag so far:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">from</span> arraybag <span class="im">import</span> ArrayBag</span>
+<span id="cb6-2"><a href=""></a>&nbsp;</span>
+<span id="cb6-3"><a href=""></a><span class="kw">class</span> ArraySortedBag(ArrayBag):</span>
+<span id="cb6-4"><a href=""></a>    <span class="co">"""An array-based sorted bag implementation."""</span></span>
+<span id="cb6-5"><a href=""></a>&nbsp;</span>
+<span id="cb6-6"><a href=""></a>    <span class="co"># Constructor</span></span>
+<span id="cb6-7"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb6-8"><a href=""></a>        <span class="co">"""Sets the initial state of self, which includes the</span></span>
+<span id="cb6-9"><a href=""></a><span class="co">        contents of sourceCollection, if it’s present."""</span></span>
+<span id="cb6-10"><a href=""></a>        ArrayBag.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arraybag-and-arraysortedbag-new-methods" class="slide level2">
+<h2>ArrayBag and ArraySortedBag (New Methods)</h2>
+<div class="small" style="font-size:32px;">
+<ul>
+<li>Adding a New <code>_contains_</code> Method
+<ul>
+<li>There is no <code>_contains_</code> method in <code>ArrayBag</code>: Python automatically generates a sequential search operation, using the <code>ArrayBag</code> iterator, when the <code>in</code> operator is used on a bag</li>
+<li>To override this behavior, include a <code>_contains_</code> method in <code>ArraySortedBag</code>:
+<ul>
+<li>When Python sees the <code>in</code> operator used on a sorted bag, it also sees that bag’s <code>_contains_</code> method and calls it</li>
+</ul></li>
+<li>This method implements a binary search on the sorted bag’s array of items:
+<ul>
+<li>This array, named <code>self.items</code> is accessible in any of its subclasses</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="arraysortedbag--_contains_-method" class="slide level2">
+<h2>ArraySortedBag- <code>_contains_</code> Method</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="co"># Accessor methods</span></span>
+<span id="cb7-2"><a href=""></a><span class="kw">def</span> <span class="fu">__contains__</span>(<span class="va">self</span>, item):</span>
+<span id="cb7-3"><a href=""></a>    <span class="co">"""Returns True if item is in self, or False otherwise."""</span></span>
+<span id="cb7-4"><a href=""></a>    left <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-5"><a href=""></a>    right <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb7-6"><a href=""></a>    <span class="cf">while</span> left <span class="op">&lt;=</span> right:</span>
+<span id="cb7-7"><a href=""></a>        midPoint <span class="op">=</span> (left <span class="op">+</span> right) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb7-8"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.items[midPoint] <span class="op">==</span> item:</span>
+<span id="cb7-9"><a href=""></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb7-10"><a href=""></a>        <span class="cf">elif</span> <span class="va">self</span>.items[midPoint] <span class="op">&gt;</span> item:</span>
+<span id="cb7-11"><a href=""></a>            right <span class="op">=</span> midPoint <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb7-12"><a href=""></a>        <span class="cf">else</span>:</span>
+<span id="cb7-13"><a href=""></a>            left <span class="op">=</span> midPoint <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb7-14"><a href=""></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arraysortedbag---add-method" class="slide level2">
+<h2>ArraySortedBag - <code>add</code> Method</h2>
+<div style="font-size:33px;">
+<ul>
+<li class="fragment">The <code>add</code> method in <code>ArraySortedBag</code> must place a new item in the appropriate position in a sorted array</li>
+<li class="fragment">In most cases you have to search for this position
+<ul>
+<li class="fragment">Two cases in which this search is unnecessary:
+<ul>
+<li class="fragment">When the bag is empty</li>
+<li class="fragment">When the new item is greater than or equal to the last item</li>
+</ul></li>
+<li class="fragment">In those cases you can add the new item by passing it along to the add method in the <code>ArrayBag</code> class</li>
+<li class="fragment">If not, you must look in the array for the first item that’s greater than or equal to the new item:</li>
+<li class="fragment">Then open a hole, insert the new item, and increment the size of the bag</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="arraysortedbag---add-method-1" class="slide level2">
+<h2>ArraySortedBag - <code>add</code> Method</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="co"># Mutator methods</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">def</span> add(<span class="va">self</span>, item):</span>
+<span id="cb8-3"><a href=""></a>    <span class="co">"""Adds item to self."""</span></span>
+<span id="cb8-4"><a href=""></a>    <span class="co"># Empty or last item, call ArrayBag.add</span></span>
+<span id="cb8-5"><a href=""></a>    <span class="cf">if</span> <span class="va">self</span>.isEmpty() <span class="kw">or</span> item <span class="op">&gt;=</span> <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>) <span class="op">-</span> <span class="dv">1</span>]:</span>
+<span id="cb8-6"><a href=""></a>        ArrayBag.add(<span class="va">self</span>, item)</span>
+<span id="cb8-7"><a href=""></a>    <span class="cf">else</span>:</span>
+<span id="cb8-8"><a href=""></a>        <span class="co"># Resize the array if it is full here</span></span>
+<span id="cb8-9"><a href=""></a>        <span class="co"># Search for first item &gt;= new item</span></span>
+<span id="cb8-10"><a href=""></a>        targetIndex <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-11"><a href=""></a>        <span class="cf">while</span> item <span class="op">&gt;</span> <span class="va">self</span>.items[targetIndex]:</span>
+<span id="cb8-12"><a href=""></a>            targetIndex <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-13"><a href=""></a>        <span class="co"># Open a hole for new item</span></span>
+<span id="cb8-14"><a href=""></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(<span class="va">self</span>), targetIndex, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb8-15"><a href=""></a>            <span class="va">self</span>.items[i] <span class="op">=</span> <span class="va">self</span>.items[i <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb8-16"><a href=""></a>        <span class="co"># Insert item and update size</span></span>
+<span id="cb8-17"><a href=""></a>        <span class="va">self</span>.items[targetIndex] <span class="op">=</span> item</span>
+<span id="cb8-18"><a href=""></a>        <span class="va">self</span>.size <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-19"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arraysortedbag---add-method-2" class="slide level2">
+<h2>ArraySortedBag - <code>add</code> Method</h2>
+<ul>
+<li>Note the different prefixes used in the method call to <code>ArrayBag.add</code> and in the variable reference to <code>self.items</code>:
+<ul>
+<li>The first is a class name, and the second is a reference to an instance of a class.</li>
+<li>Because <code>ArraySortedBag</code> does not introduce a new version of the instance variable <code>items</code>, the reference to <code>self.items</code> here locates the variable directly in the <code>ArrayBag</code> class.</li>
+</ul></li>
+</ul>
+</section>
+<section id="arraysortedbag---_add_-method" class="slide level2">
+<h2>ArraySortedBag - <code>_add_</code> Method</h2>
+<div class="small" style="font-size:35px;">
+<ul>
+<li>The <code>__add__</code> method, which Python runs when it sees the <code>+</code> operator used with two bags, has practically the same code in the <code>ArrayBag</code> class and the <code>LinkedBag</code> class:</li>
+<li>The only difference is the class <code>name</code> used to create a new instance for the result bag</li>
+<li>You simply repeat this pattern for <code>__add__</code> in <code>ArraySortedBag</code>, as follows:</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="co"># Modified __add__ method</span></span>
+<span id="cb9-2"><a href=""></a><span class="kw">def</span> <span class="fu">__add__</span>(<span class="va">self</span>, other):</span>
+<span id="cb9-3"><a href=""></a>    &nbsp;<span class="st">"""Returns a new bag with the contents of self and &nbsp;other."""</span> </span>
+<span id="cb9-4"><a href=""></a>    &nbsp;result <span class="op">=</span> ArraySortedBag(<span class="va">self</span>)</span>
+<span id="cb9-5"><a href=""></a>    <span class="cf">for</span> item <span class="kw">in</span> other:</span>
+<span id="cb9-6"><a href=""></a>        result.add(item)</span>
+<span id="cb9-7"><a href=""></a>  <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-time-performance-of-arraysortedbag" class="slide level2">
+<h2>Run-Time Performance of ArraySortedBag</h2>
+<ul>
+<li>The <code>in</code> operator has a worst-case running time of <code>O(logn)</code>:
+<ul>
+<li>This is a big improvement on the linear running time of the in operator for regular bags</li>
+</ul></li>
+<li>The improved search time also has an impact on the methods that use the new <code>in</code> operator,
+<ul>
+<li>Even though these methods are still defined in <code>ArrayBag</code></li>
+</ul></li>
+<li>Although the improved search still leaves <code>remove</code> with a linear running time on average,
+<ul>
+<li>Less time is spent on the test of the precondition</li>
+</ul></li>
+</ul>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<ul>
+<li>Use the explanation with codes in the slide to implement <code>ArraySortedBag</code> which inherits the <code>ArrayBag</code> class.</li>
+<li>Write a simple tester function to test the behaviors of <code>ArraySortedBag</code>.</li>
+</ul>
+</section></section>
 <section id="next-week-reading" class="title-slide slide level1 center">
 <h1>Next week Reading:</h1>
 <ul>

@@ -403,65 +403,52 @@ Fred Agbo
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="inheritance-subclassing-an-existing-class" class="slide level2">
-<h2>Inheritance: Subclassing an Existing Class</h2>
-<ul>
-<li><p>This diagram depicts a subclass and <code>inheritance</code> in a class diagram</p>
-<ul>
-<li><img data-src="../images/inheritance.png" style="width:40%;" alt="Class diagram showing inheritance in object-oriented programming. The diagram displays a parent class labeled ArrayBag with an arrow pointing to a subclass labeled ArraySortedBag, indicating that ArraySortedBag inherits from ArrayBag. The environment is a simple diagram with labeled boxes and connecting arrows, focusing on the relationship between the two classes. No emotional tone is present. "></li>
-</ul></li>
-</ul>
-</section>
-<section id="inheritance-subclassing-an-existing-class-1" class="slide level2">
-<h2>Inheritance: Subclassing an Existing Class</h2>
-<div style="font-size: 35px;">
-<ul>
-<li class="fragment">To create a subclass of an existing class consists the following steps:
-<ul>
-<li class="fragment">Make a copy of the parent’s class file</li>
-<li class="fragment">Begin by deleting all the methods that do not have to change:</li>
-<li class="fragment">You still need the <code>_init_</code> method in the new class</li>
-<li class="fragment">To guarantee that the inheritance happens, you must place the name of the parent class within the parentheses of the class header</li>
-<li class="fragment">Modify the code for the methods that must change</li>
-<li class="fragment">Add any new methods</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="inheritance-subclassing-an-existing-class-2" class="slide level2">
-<h2>Inheritance: Subclassing an Existing Class</h2>
-<div style="font-size: 33px;">
-<ul>
-<li class="fragment">There is one case where inheritance is not automatic
-<ul>
-<li class="fragment">From the figure above, the <code>_init_</code> method in <code>ArraySortedBag</code> must call the <code>_init_</code> method in the parent class <code>ArrayBag</code>
-<ul>
-<li class="fragment">So that it can initialize the data contained there</li>
-</ul></li>
-<li class="fragment">The syntax to call this method in the parent class is <code>ArrayBag._init_(self, sourceCollection)</code></li>
-</ul></li>
-<li class="fragment">The parent class name enables Python to select which version of the <code>_init_</code> method to run</li>
-<li class="fragment">Note the additional argument, self, at the beginning of the argument list</li>
-<li class="fragment">The optional source collection is also passed as an argument to the parent class’s <code>_init_</code> method</li>
-</ul>
-</div>
-</section>
-<section id="arraybag-and-arraysortedbag-example" class="slide level2">
-<h2>ArrayBag and ArraySortedBag Example</h2>
-<ul>
-<li>Code for the changes to ArraySortedBag so far:</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">from</span> arraybag <span class="im">import</span> ArrayBag</span>
-<span id="cb3-2"><a href=""></a>&nbsp;</span>
-<span id="cb3-3"><a href=""></a><span class="kw">class</span> ArraySortedBag(ArrayBag):</span>
-<span id="cb3-4"><a href=""></a>    <span class="co">"""An array-based sorted bag implementation."""</span></span>
-<span id="cb3-5"><a href=""></a>&nbsp;</span>
-<span id="cb3-6"><a href=""></a>    <span class="co"># Constructor</span></span>
-<span id="cb3-7"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb3-8"><a href=""></a>        <span class="co">"""Sets the initial state of self, which includes the</span></span>
-<span id="cb3-9"><a href=""></a><span class="co">        contents of sourceCollection, if it’s present."""</span></span>
-<span id="cb3-10"><a href=""></a>        ArrayBag.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ## Inheritance: Subclassing an Existing Class 
+- This diagram depicts a subclass and `inheritance` in a class diagram
+
+    - ![](../images/inheritance.png){style="width:40%;" alt="Class diagram showing inheritance in object-oriented programming. The diagram displays a parent class labeled ArrayBag with an arrow pointing to a subclass labeled ArraySortedBag, indicating that ArraySortedBag inherits from ArrayBag. The environment is a simple diagram with labeled boxes and connecting arrows, focusing on the relationship between the two classes. No emotional tone is present. "}
+
+## Inheritance: Subclassing an Existing Class 
+:::{.incremental style="font-size: 35px;"}
+- To create a subclass of an existing class consists the following steps:
+    - Make a copy of the parent’s class file
+    - Begin by deleting all the methods that do not have to change:
+    - You still need the `_init_` method in the new class
+    - To guarantee that the inheritance happens, you must place the name of the parent class within the parentheses of the class header
+    - Modify the code for the methods that must change
+    - Add any new methods
+:::
+
+## Inheritance: Subclassing an Existing Class 
+:::{.incremental style="font-size: 33px;"}
+- There is one case where inheritance is not automatic
+    - From the figure above, the `_init_` method in `ArraySortedBag` must call the `_init_` method in the parent class `ArrayBag`
+        - So that it can initialize the data contained there
+    - The syntax to call this method in the parent class is
+        `ArrayBag._init_(self, sourceCollection)`
+- The parent class name enables Python to select which version of the `_init_` method to run
+- Note the additional argument, self, at the beginning of the argument list
+- The optional source collection is also passed as an argument to the parent class’s `_init_` method
+
+:::
+
+## ArrayBag and ArraySortedBag Example 
+- Code for the changes to ArraySortedBag so far:
+
+```{.python}
+from arraybag import ArrayBag
+ 
+class ArraySortedBag(ArrayBag):
+    """An array-based sorted bag implementation."""
+ 
+    # Constructor
+    def __init__(self, sourceCollection = None):
+        """Sets the initial state of self, which includes the
+        contents of sourceCollection, if it’s present."""
+        ArrayBag.__init__(self, sourceCollection)
+
+```
+-->
 </section>
 <section id="using-inheritance-to-implement-stacks" class="slide level2">
 <h2>Using Inheritance to implement Stacks</h2>
@@ -487,113 +474,113 @@ Fred Agbo
 </section>
 <section id="implementing-abtractstack" class="slide level2">
 <h2>Implementing AbtractStack</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="kw">class</span> AbstractStack(<span class="bu">object</span>):</span>
-<span id="cb4-2"><a href=""></a>    <span class="co">"""Abstract class that implements the common </span></span>
-<span id="cb4-3"><a href=""></a><span class="co">    methods for stack collections"""</span></span>
-<span id="cb4-4"><a href=""></a>    </span>
-<span id="cb4-5"><a href=""></a>    <span class="co"># Constructor</span></span>
-<span id="cb4-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb4-7"><a href=""></a>        <span class="va">self</span>.size <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-8"><a href=""></a>        <span class="cf">if</span> sourceCollection:</span>
-<span id="cb4-9"><a href=""></a>            <span class="cf">for</span> i <span class="kw">in</span> sourceCollection:</span>
-<span id="cb4-10"><a href=""></a>                <span class="va">self</span>.push(i)</span>
-<span id="cb4-11"><a href=""></a>                </span>
-<span id="cb4-12"><a href=""></a>    <span class="kw">def</span> isEmpty(<span class="va">self</span>):</span>
-<span id="cb4-13"><a href=""></a>        <span class="co">"""Returns True if stack is empty. Otherwise, returns False </span></span>
-<span id="cb4-14"><a href=""></a><span class="co">        """</span></span>
-<span id="cb4-15"><a href=""></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>) <span class="op">==</span> <span class="dv">0</span></span>
-<span id="cb4-16"><a href=""></a>    </span>
-<span id="cb4-17"><a href=""></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
-<span id="cb4-18"><a href=""></a>        <span class="co">"""Returns the number of items in stack</span></span>
-<span id="cb4-19"><a href=""></a><span class="co">        """</span></span>
-<span id="cb4-20"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.size</span>
-<span id="cb4-21"><a href=""></a>    </span>
-<span id="cb4-22"><a href=""></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb4-23"><a href=""></a>        <span class="co">"""Returns the string repsentative of S</span></span>
-<span id="cb4-24"><a href=""></a><span class="co">        """</span></span>
-<span id="cb4-25"><a href=""></a>        <span class="cf">return</span> <span class="st">"{"</span> <span class="op">+</span> <span class="st">", "</span>.join(<span class="bu">map</span>(<span class="bu">str</span>,<span class="va">self</span>)) <span class="op">+</span><span class="st">"}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="kw">class</span> AbstractStack(<span class="bu">object</span>):</span>
+<span id="cb3-2"><a href=""></a>    <span class="co">"""Abstract class that implements the common </span></span>
+<span id="cb3-3"><a href=""></a><span class="co">    methods for stack collections"""</span></span>
+<span id="cb3-4"><a href=""></a>    </span>
+<span id="cb3-5"><a href=""></a>    <span class="co"># Constructor</span></span>
+<span id="cb3-6"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb3-7"><a href=""></a>        <span class="va">self</span>.size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-8"><a href=""></a>        <span class="cf">if</span> sourceCollection:</span>
+<span id="cb3-9"><a href=""></a>            <span class="cf">for</span> i <span class="kw">in</span> sourceCollection:</span>
+<span id="cb3-10"><a href=""></a>                <span class="va">self</span>.push(i)</span>
+<span id="cb3-11"><a href=""></a>                </span>
+<span id="cb3-12"><a href=""></a>    <span class="kw">def</span> isEmpty(<span class="va">self</span>):</span>
+<span id="cb3-13"><a href=""></a>        <span class="co">"""Returns True if stack is empty. Otherwise, returns False </span></span>
+<span id="cb3-14"><a href=""></a><span class="co">        """</span></span>
+<span id="cb3-15"><a href=""></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb3-16"><a href=""></a>    </span>
+<span id="cb3-17"><a href=""></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb3-18"><a href=""></a>        <span class="co">"""Returns the number of items in stack</span></span>
+<span id="cb3-19"><a href=""></a><span class="co">        """</span></span>
+<span id="cb3-20"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.size</span>
+<span id="cb3-21"><a href=""></a>    </span>
+<span id="cb3-22"><a href=""></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb3-23"><a href=""></a>        <span class="co">"""Returns the string repsentative of S</span></span>
+<span id="cb3-24"><a href=""></a><span class="co">        """</span></span>
+<span id="cb3-25"><a href=""></a>        <span class="cf">return</span> <span class="st">"{"</span> <span class="op">+</span> <span class="st">", "</span>.join(<span class="bu">map</span>(<span class="bu">str</span>,<span class="va">self</span>)) <span class="op">+</span><span class="st">"}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="implementing-arraystacks" class="slide level2">
 <h2>Implementing ArrayStacks</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">from</span> arrays <span class="im">import</span> Array</span>
-<span id="cb5-2"><a href=""></a><span class="im">from</span> abstractstack <span class="im">import</span> AbstractStack</span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a><span class="kw">class</span> ArrayStack(AbstractStack):</span>
-<span id="cb5-5"><a href=""></a>    <span class="co">"Array-based stack collections"</span></span>
-<span id="cb5-6"><a href=""></a>    </span>
-<span id="cb5-7"><a href=""></a>    <span class="co"># Array inital capacity</span></span>
-<span id="cb5-8"><a href=""></a>    DEFAULT_CAPACITY <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb5-9"><a href=""></a>    </span>
-<span id="cb5-10"><a href=""></a>    <span class="co">#Constructor</span></span>
-<span id="cb5-11"><a href=""></a>    <span class="co">"""Initializes the state of self which include any items from sourcecollector"""</span></span>
-<span id="cb5-12"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb5-13"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> Array(ArrayStack.DEFAULT_CAPACITY)</span>
-<span id="cb5-14"><a href=""></a>        AbstractStack.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span>
-<span id="cb5-15"><a href=""></a>    </span>
-<span id="cb5-16"><a href=""></a>    <span class="co"># Accessors </span></span>
-<span id="cb5-17"><a href=""></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
-<span id="cb5-18"><a href=""></a>        <span class="co">"""Supports iteration over self. Visits items bottom to top of stack"""</span></span>
-<span id="cb5-19"><a href=""></a>        cursor <span class="op">=</span><span class="dv">0</span></span>
-<span id="cb5-20"><a href=""></a>        <span class="cf">while</span> cursor <span class="op">&lt;</span> <span class="bu">len</span>(<span class="va">self</span>):</span>
-<span id="cb5-21"><a href=""></a>            <span class="cf">yield</span> <span class="va">self</span>.items[cursor]</span>
-<span id="cb5-22"><a href=""></a>            cursor <span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb5-23"><a href=""></a>    </span>
-<span id="cb5-24"><a href=""></a>    <span class="kw">def</span> peek(<span class="va">self</span>):</span>
-<span id="cb5-25"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.isEmpty():</span>
-<span id="cb5-26"><a href=""></a>            <span class="cf">raise</span> <span class="pp">KeyError</span>(<span class="st">"The stack is empty"</span>) </span>
-<span id="cb5-27"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb5-28"><a href=""></a>    </span>
-<span id="cb5-29"><a href=""></a>    <span class="co"># Mutator functions</span></span>
-<span id="cb5-30"><a href=""></a>    <span class="kw">def</span> push(<span class="va">self</span>, item):</span>
-<span id="cb5-31"><a href=""></a>        <span class="co">#resize the array here if neccesary</span></span>
-<span id="cb5-32"><a href=""></a>        <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)] <span class="op">=</span> item</span>
-<span id="cb5-33"><a href=""></a>        <span class="va">self</span>.size <span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb5-34"><a href=""></a>        </span>
-<span id="cb5-35"><a href=""></a>    <span class="kw">def</span> clear(<span class="va">self</span>):</span>
-<span id="cb5-36"><a href=""></a>        <span class="va">self</span>.size <span class="op">=</span><span class="dv">0</span></span>
-<span id="cb5-37"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> Array(ArrayStack.DEFAULT_CAPACITY)</span>
-<span id="cb5-38"><a href=""></a>        </span>
-<span id="cb5-39"><a href=""></a>    <span class="kw">def</span> pop(<span class="va">self</span>):</span>
-<span id="cb5-40"><a href=""></a>        <span class="co">#Check the precondition that the stack is not empty</span></span>
-<span id="cb5-41"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.isEmpty():</span>
-<span id="cb5-42"><a href=""></a>            <span class="cf">raise</span> <span class="pp">KeyError</span>(<span class="st">"The stack is empty"</span>) </span>
-<span id="cb5-43"><a href=""></a>        oldItem <span class="op">=</span> <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb5-44"><a href=""></a>        <span class="va">self</span>.size <span class="op">-=</span><span class="dv">1</span></span>
-<span id="cb5-45"><a href=""></a>        <span class="co"># resize the Array here if necessary</span></span>
-<span id="cb5-46"><a href=""></a>        <span class="cf">return</span> oldItem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">from</span> arrays <span class="im">import</span> Array</span>
+<span id="cb4-2"><a href=""></a><span class="im">from</span> abstractstack <span class="im">import</span> AbstractStack</span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="kw">class</span> ArrayStack(AbstractStack):</span>
+<span id="cb4-5"><a href=""></a>    <span class="co">"Array-based stack collections"</span></span>
+<span id="cb4-6"><a href=""></a>    </span>
+<span id="cb4-7"><a href=""></a>    <span class="co"># Array inital capacity</span></span>
+<span id="cb4-8"><a href=""></a>    DEFAULT_CAPACITY <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb4-9"><a href=""></a>    </span>
+<span id="cb4-10"><a href=""></a>    <span class="co">#Constructor</span></span>
+<span id="cb4-11"><a href=""></a>    <span class="co">"""Initializes the state of self which include any items from sourcecollector"""</span></span>
+<span id="cb4-12"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb4-13"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> Array(ArrayStack.DEFAULT_CAPACITY)</span>
+<span id="cb4-14"><a href=""></a>        AbstractStack.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span>
+<span id="cb4-15"><a href=""></a>    </span>
+<span id="cb4-16"><a href=""></a>    <span class="co"># Accessors </span></span>
+<span id="cb4-17"><a href=""></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
+<span id="cb4-18"><a href=""></a>        <span class="co">"""Supports iteration over self. Visits items bottom to top of stack"""</span></span>
+<span id="cb4-19"><a href=""></a>        cursor <span class="op">=</span><span class="dv">0</span></span>
+<span id="cb4-20"><a href=""></a>        <span class="cf">while</span> cursor <span class="op">&lt;</span> <span class="bu">len</span>(<span class="va">self</span>):</span>
+<span id="cb4-21"><a href=""></a>            <span class="cf">yield</span> <span class="va">self</span>.items[cursor]</span>
+<span id="cb4-22"><a href=""></a>            cursor <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb4-23"><a href=""></a>    </span>
+<span id="cb4-24"><a href=""></a>    <span class="kw">def</span> peek(<span class="va">self</span>):</span>
+<span id="cb4-25"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.isEmpty():</span>
+<span id="cb4-26"><a href=""></a>            <span class="cf">raise</span> <span class="pp">KeyError</span>(<span class="st">"The stack is empty"</span>) </span>
+<span id="cb4-27"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-28"><a href=""></a>    </span>
+<span id="cb4-29"><a href=""></a>    <span class="co"># Mutator functions</span></span>
+<span id="cb4-30"><a href=""></a>    <span class="kw">def</span> push(<span class="va">self</span>, item):</span>
+<span id="cb4-31"><a href=""></a>        <span class="co">#resize the array here if neccesary</span></span>
+<span id="cb4-32"><a href=""></a>        <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)] <span class="op">=</span> item</span>
+<span id="cb4-33"><a href=""></a>        <span class="va">self</span>.size <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb4-34"><a href=""></a>        </span>
+<span id="cb4-35"><a href=""></a>    <span class="kw">def</span> clear(<span class="va">self</span>):</span>
+<span id="cb4-36"><a href=""></a>        <span class="va">self</span>.size <span class="op">=</span><span class="dv">0</span></span>
+<span id="cb4-37"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> Array(ArrayStack.DEFAULT_CAPACITY)</span>
+<span id="cb4-38"><a href=""></a>        </span>
+<span id="cb4-39"><a href=""></a>    <span class="kw">def</span> pop(<span class="va">self</span>):</span>
+<span id="cb4-40"><a href=""></a>        <span class="co">#Check the precondition that the stack is not empty</span></span>
+<span id="cb4-41"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.isEmpty():</span>
+<span id="cb4-42"><a href=""></a>            <span class="cf">raise</span> <span class="pp">KeyError</span>(<span class="st">"The stack is empty"</span>) </span>
+<span id="cb4-43"><a href=""></a>        oldItem <span class="op">=</span> <span class="va">self</span>.items[<span class="bu">len</span>(<span class="va">self</span>)<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-44"><a href=""></a>        <span class="va">self</span>.size <span class="op">-=</span><span class="dv">1</span></span>
+<span id="cb4-45"><a href=""></a>        <span class="co"># resize the Array here if necessary</span></span>
+<span id="cb4-46"><a href=""></a>        <span class="cf">return</span> oldItem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="testing-arraystacks" class="slide level2">
 <h2>Testing ArrayStacks</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co">"""</span></span>
-<span id="cb6-2"><a href=""></a><span class="co">A tester program for stack implementations.</span></span>
-<span id="cb6-3"><a href=""></a><span class="co">"""</span></span>
-<span id="cb6-4"><a href=""></a><span class="im">from</span> arraystack <span class="im">import</span> ArrayStack</span>
-<span id="cb6-5"><a href=""></a><span class="co">#from linkedstack import LinkedStack</span></span>
-<span id="cb6-6"><a href=""></a></span>
-<span id="cb6-7"><a href=""></a><span class="kw">def</span> test(stackType):</span>
-<span id="cb6-8"><a href=""></a>    <span class="co"># Test any implementation with the same code</span></span>
-<span id="cb6-9"><a href=""></a>    s <span class="op">=</span> stackType()</span>
-<span id="cb6-10"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Length:"</span>, <span class="bu">len</span>(s))</span>
-<span id="cb6-11"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Empty:"</span>, s.isEmpty())</span>
-<span id="cb6-12"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Push 1-12"</span>)</span>
-<span id="cb6-13"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
-<span id="cb6-14"><a href=""></a>        s.push(i <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb6-15"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Peeking:"</span>, s.peek())</span>
-<span id="cb6-16"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Items (bottom to top):"</span>, s)</span>
-<span id="cb6-17"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Length:"</span>, <span class="bu">len</span>(s))</span>
-<span id="cb6-18"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Empty:"</span>, s.isEmpty())</span>
-<span id="cb6-19"><a href=""></a>    theClone <span class="op">=</span> stackType(s)</span>
-<span id="cb6-20"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Items in clone (bottom to top):"</span>, theClone)</span>
-<span id="cb6-21"><a href=""></a>    theClone.clear()</span>
-<span id="cb6-22"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Length of clone after clear:"</span>, <span class="bu">len</span>(theClone))</span>
-<span id="cb6-23"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Push 11"</span>)</span>
-<span id="cb6-24"><a href=""></a>    s.push(<span class="dv">11</span>)</span>
-<span id="cb6-25"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Popping items (top to bottom):"</span>, end <span class="op">=</span> <span class="st">" "</span>)</span>
-<span id="cb6-26"><a href=""></a>    <span class="cf">while</span> <span class="kw">not</span> s.isEmpty(): <span class="bu">print</span>(s.pop(), end <span class="op">=</span> <span class="st">" "</span>)</span>
-<span id="cb6-27"><a href=""></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Length:"</span>, <span class="bu">len</span>(s))</span>
-<span id="cb6-28"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Empty:"</span>, s.isEmpty())</span>
-<span id="cb6-29"><a href=""></a>test(ArrayStack)</span>
-<span id="cb6-30"><a href=""></a><span class="co">#test(LinkedStack)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co">"""</span></span>
+<span id="cb5-2"><a href=""></a><span class="co">A tester program for stack implementations.</span></span>
+<span id="cb5-3"><a href=""></a><span class="co">"""</span></span>
+<span id="cb5-4"><a href=""></a><span class="im">from</span> arraystack <span class="im">import</span> ArrayStack</span>
+<span id="cb5-5"><a href=""></a><span class="co">#from linkedstack import LinkedStack</span></span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="kw">def</span> test(stackType):</span>
+<span id="cb5-8"><a href=""></a>    <span class="co"># Test any implementation with the same code</span></span>
+<span id="cb5-9"><a href=""></a>    s <span class="op">=</span> stackType()</span>
+<span id="cb5-10"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Length:"</span>, <span class="bu">len</span>(s))</span>
+<span id="cb5-11"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Empty:"</span>, s.isEmpty())</span>
+<span id="cb5-12"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Push 1-12"</span>)</span>
+<span id="cb5-13"><a href=""></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
+<span id="cb5-14"><a href=""></a>        s.push(i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb5-15"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Peeking:"</span>, s.peek())</span>
+<span id="cb5-16"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Items (bottom to top):"</span>, s)</span>
+<span id="cb5-17"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Length:"</span>, <span class="bu">len</span>(s))</span>
+<span id="cb5-18"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Empty:"</span>, s.isEmpty())</span>
+<span id="cb5-19"><a href=""></a>    theClone <span class="op">=</span> stackType(s)</span>
+<span id="cb5-20"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Items in clone (bottom to top):"</span>, theClone)</span>
+<span id="cb5-21"><a href=""></a>    theClone.clear()</span>
+<span id="cb5-22"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Length of clone after clear:"</span>, <span class="bu">len</span>(theClone))</span>
+<span id="cb5-23"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Push 11"</span>)</span>
+<span id="cb5-24"><a href=""></a>    s.push(<span class="dv">11</span>)</span>
+<span id="cb5-25"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Popping items (top to bottom):"</span>, end <span class="op">=</span> <span class="st">" "</span>)</span>
+<span id="cb5-26"><a href=""></a>    <span class="cf">while</span> <span class="kw">not</span> s.isEmpty(): <span class="bu">print</span>(s.pop(), end <span class="op">=</span> <span class="st">" "</span>)</span>
+<span id="cb5-27"><a href=""></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Length:"</span>, <span class="bu">len</span>(s))</span>
+<span id="cb5-28"><a href=""></a>    <span class="bu">print</span>(<span class="st">"Empty:"</span>, s.isEmpty())</span>
+<span id="cb5-29"><a href=""></a>test(ArrayStack)</span>
+<span id="cb5-30"><a href=""></a><span class="co">#test(LinkedStack)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="array-stacks-implementations" class="slide level2">
 <h2>Array Stacks Implementations</h2>

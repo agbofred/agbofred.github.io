@@ -152,7 +152,7 @@ def factorial(n):
 
 :::
 
-## Inheritance: Subclassing an Existing Class 
+<!-- ## Inheritance: Subclassing an Existing Class 
 - This diagram depicts a subclass and `inheritance` in a class diagram
 
     - ![](../images/inheritance.png){style="width:40%;" alt="Class diagram showing inheritance in object-oriented programming. The diagram displays a parent class labeled ArrayBag with an arrow pointing to a subclass labeled ArraySortedBag, indicating that ArraySortedBag inherits from ArrayBag. The environment is a simple diagram with labeled boxes and connecting arrows, focusing on the relationship between the two classes. No emotional tone is present. "}
@@ -197,7 +197,7 @@ class ArraySortedBag(ArrayBag):
         ArrayBag.__init__(self, sourceCollection)
 
 ```
-
+-->
 
 ## Using Inheritance to implement Stacks
 :::{.incremental style="font-size: 33px;"}
@@ -207,7 +207,7 @@ class ArraySortedBag(ArrayBag):
     - Inherit the add method from the `AbstractStack` class, the size variable, and the methods `isEmpty`, `__len__`, `__str__`, `__add__`, and `__eq__` from `AbstractCollection`	
     - The only methods that need to be implemented in `ArrayStack` and `LinkedStack` are `_init_`, `peek`, `push`, `pop`, `clear`, and `_iter_`
 
-:::
+::: 
 
 
 ## Stacks Collections Hierarchy

@@ -1,30 +1,26 @@
-"""
-File: arraybag.py
-"""
-
 from arrays import Array
 
 class ArrayBag(object):
-    """An array-based bag implementation."""
-
-    # Class variable
-    DEFAULT_CAPACITY = 10
     
+    """This implements bag collection
+    """
+    DEFAULT_CAPACITY = 10
     # Constructor
-    def __init__(self, sourceCollection = None):
+    def __init__(self, sourceCollection = None) -> None:
         """Sets the initial state of self, which includes the
         contents of sourceCollection, if it’s present."""
         self.items = Array(ArrayBag.DEFAULT_CAPACITY)
         self.size = 0
         if sourceCollection:
-            for item in sourceCollection:
-                self.add(item)
+            for i in sourceCollection:
+                self.add(i)
+                #self.size +=1
     
     # Accessor methods
     def isEmpty(self):
         """Returns True if len(self) == 0, or False otherwise."""
         return len(self) == 0
-        
+            
     def __len__(self):
         """Returns the number of items in self."""
         return self.size
@@ -41,17 +37,19 @@ class ArrayBag(object):
         self.items[len(self)] = item
         self.size += 1
         
+        
     def __iter__(self):
         """Supports iteration over a view of self."""
         cursor = 0
         while cursor < len(self):
             yield self.items[cursor]
             cursor += 1
-            
+                  
     def __str__(self):
         """Returns the string representation of self."""
         return "{" + ", ".join(map(str, self)) + "}"  
         # possible to use [] to wrap the collection instead of {} which is a set notation
+    
     def __add__(self, other):
         """Returns a new bag containing the contents
         of self and other."""
@@ -79,6 +77,7 @@ class ArrayBag(object):
             if element == item:
                 count += 1
         return count
+    
     def remove(self, item):
         """Precondition: item is in self.
         Raises: KeyError if item in not in self.
@@ -98,4 +97,3 @@ class ArrayBag(object):
         # 4. Decrement logical size
         self.size -= 1
         # 5. Check array memory here and decrease it if necessary
-    

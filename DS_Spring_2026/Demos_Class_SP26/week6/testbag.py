@@ -33,7 +33,7 @@ def test(bagType):
     for item in lyst:
         b1.remove(item)
     print("Remove all items, expect {}:", b1)
-    print("Removing nonexistent item, expect crash with KeyError:")
-    b2.remove(99)
-test(ArrayBag)
-# test(LinkedBag)
+    # print("Removing nonexistent item, expect crash with KeyError:")
+    # b2.remove(99)
+
+test(LinkedBag)

@@ -1,5 +1,5 @@
 ---
-title: "INTERFACES -2"
+title: "INTERFACES & INHERITANCE"
 author: "Fred Agbo"
 date: February 18, 2026
 format:
@@ -9,11 +9,16 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Welcome to back!
+- Welcome back!
 - Week 6 assignment (Problem set 3) is due __today__
+- Mini project 1 grade is published.
+    - My main concern is the slight deviation from the requirements in your solutions.
+    - It will be good to follow the instructions and solve assignments accordingly.
+- PS2 grading is being graded and will be published ASAP.
 
 
-## Learning Objectives
+
+## Learning Objectives - Recall
 
 - Implement multiple classes that conform to the interface of a collection type
 - Assess the tradeoffs in running time and memory usage of multiple implementations of a given collection type
@@ -389,7 +394,7 @@ def remove(self, item):
 :::{.smaller style="font-size:32px;"}
 
 - The running times of the operations on the two implementations of bags are quite similar:
-    - The in and `remove` operations take linear time in both implementations, because they incorporate a sequential search
+    - The `in` and `remove` operations take linear time in both implementations, because they incorporate a sequential search
     - The `remove` operation in `ArrayBag` must do the additional work of shifting data items in the array, but the cumulative effect is not worse than linear
     - The `+`, `str`, and `iter` operations are linear
 - The running time of the `==` operation has several cases and is left as an exercise
@@ -463,6 +468,190 @@ def test(bagType):
 
 
 ```
+# OOP Concept: Inheritance
+
+## Why Inheritance?
+- This week, we will introduce ...
+    - Use inheritance to share code among a set of classes
+    - Customize the behavior of a class by creating a subclass
+- Future class, we will continue to discuss ...
+    - How to factor the redundant data and methods of a set of classes into an abstract class
+    - Override the behavior of an inherited method by redefining it
+    - Decide where to place data and methods in a class hierarchy 
+
+## Using Inheritance to Customize an Existing Class
+:::{.incremental style="font-size: 35px;"}
+- Easiest way to take advantage of inheritance
+    - Use it to customize an existing class
+- Example: sorted bag class `ArraySortedBag` (Project 3 of Chapter 5)
+    - The sorted bag behaves just like a regular bag, `ArrayBag`, but with exceptions:
+    - The sorted bag allows the client to visit its elements in sorted order via the for loop
+    - The sorted bag’s `in` operator runs in logarithmic time
+    - The items added to the bag must be comparable with each other
+:::
+
+
+## Inheritance: Subclassing an Existing Class 
+- This section covers inheritance by making the `ArraySortedBag` class a subclass of the `ArrayBag` class:
+    - `ArrayBag` is called the parent or superclass of `ArraySortedBag`
+- Note
+    - Because the `ArrayBag` class implements `BagInterface`, the `ArraySortedBag` class also implements this `interface` via inheritance
+
+
+## Inheritance: Subclassing an Existing Class 
+- This diagram depicts a subclass and `inheritance` in a class diagram
+
+    - ![](../images/inheritance.png){style="width:40%;" alt="Class diagram showing inheritance in object-oriented programming. The diagram displays a parent class labeled ArrayBag with an arrow pointing to a subclass labeled ArraySortedBag, indicating that ArraySortedBag inherits from ArrayBag. The environment is a simple diagram with labeled boxes and connecting arrows, focusing on the relationship between the two classes. No emotional tone is present. "}
+
+## Inheritance: Subclassing an Existing Class 
+:::{.incremental style="font-size: 35px;"}
+- To create a subclass of an existing class consists the following steps:
+    - Make a copy of the parent’s class file
+    - Begin by deleting all the methods that do not have to change:
+    - You still need the `_init_` method in the new class
+    - To guarantee that the inheritance happens, you must place the name of the parent class within the parentheses of the class header
+    - Modify the code for the methods that must change
+    - Add any new methods
+:::
+
+## Inheritance: Subclassing an Existing Class 
+:::{.incremental style="font-size: 33px;"}
+- There is one case where inheritance is not automatic
+    - From the figure above, the `_init_` method in `ArraySortedBag` must call the `_init_` method in the parent class `ArrayBag`
+        - So that it can initialize the data contained there
+    - The syntax to call this method in the parent class is
+        `ArrayBag._init_(self, sourceCollection)`
+- The parent class name enables Python to select which version of the `_init_` method to run
+- Note the additional argument, self, at the beginning of the argument list
+- The optional source collection is also passed as an argument to the parent class’s `_init_` method
+
+:::
+
+## ArrayBag and ArraySortedBag Example 
+- Code for the changes to ArraySortedBag so far:
+
+```{.python}
+from arraybag import ArrayBag
+ 
+class ArraySortedBag(ArrayBag):
+    """An array-based sorted bag implementation."""
+ 
+    # Constructor
+    def __init__(self, sourceCollection = None):
+        """Sets the initial state of self, which includes the
+        contents of sourceCollection, if it’s present."""
+        ArrayBag.__init__(self, sourceCollection)
+
+```
+
+
+## ArrayBag and ArraySortedBag (New Methods)
+:::{.small style="font-size:32px;"}
+- Adding a New `_contains_` Method 
+    - There is no `_contains_` method in `ArrayBag`:
+        Python automatically generates a sequential search operation, using the `ArrayBag` iterator, when the `in` operator is used on a bag
+    - To override this behavior, include a `_contains_` method in `ArraySortedBag`:
+        - When Python sees the `in` operator used on a sorted bag, it also sees that bag’s `_contains_` method and calls it
+    - This method implements a binary search on the sorted bag’s array of items:
+        - This array, named `self.items` is accessible in any of its subclasses
+
+:::
+
+## ArraySortedBag- `_contains_` Method
+
+```{.python}
+# Accessor methods
+def __contains__(self, item):
+    """Returns True if item is in self, or False otherwise."""
+    left = 0
+    right = len(self) - 1
+    while left <= right:
+        midPoint = (left + right) // 2
+        if self.items[midPoint] == item:
+            return True
+        elif self.items[midPoint] > item:
+            right = midPoint - 1
+        else:
+            left = midPoint + 1
+    return False
+
+```
+## ArraySortedBag - `add` Method
+:::{.incremental style="font-size:33px;"}
+- The `add` method in `ArraySortedBag` must place a new item in the appropriate position in a sorted array
+- In most cases you have to search for this position
+    - Two cases in which this search is unnecessary:
+        - When the bag is empty 
+        - When the new item is greater than or equal to the last item
+    - In those cases you can add the new item by passing it along to the add method in the `ArrayBag` class
+    - If not, you must look in the array for the first item that’s greater than or equal to the new item:
+    - Then open a hole, insert the new item, and increment the size of the bag
+
+:::
+
+## ArraySortedBag - `add` Method
+
+```{.python}
+# Mutator methods
+def add(self, item):
+    """Adds item to self."""
+    # Empty or last item, call ArrayBag.add
+    if self.isEmpty() or item >= self.items[len(self) - 1]:
+        ArrayBag.add(self, item)
+    else:
+        # Resize the array if it is full here
+        # Search for first item >= new item
+        targetIndex = 0
+        while item > self.items[targetIndex]:
+            targetIndex += 1
+        # Open a hole for new item
+        for i in range(len(self), targetIndex, -1):
+            self.items[i] = self.items[i - 1]
+        # Insert item and update size
+        self.items[targetIndex] = item
+        self.size += 1
+
+
+```
+
+## ArraySortedBag - `add` Method
+- Note the different prefixes used in the method call to `ArrayBag.add` and in the variable reference to `self.items`:
+    - The first is a class name, and the second is a reference to an instance of a class. 
+    - Because `ArraySortedBag` does not introduce a new version of the instance variable `items`, the reference to `self.items` here locates the variable directly in the `ArrayBag` class.
+
+
+## ArraySortedBag - `_add_` Method
+:::{.small style="font-size:35px;"}
+-   The `__add__` method, which Python runs when it sees the `+` operator used with two bags, has practically the same code in the `ArrayBag` class and the `LinkedBag` class:
+- The only difference is the class `name` used to create a new instance for the result bag
+- You simply repeat this pattern for `__add__` in `ArraySortedBag`, as follows:
+
+
+```{.python}
+# Modified __add__ method
+def __add__(self, other):
+     """Returns a new bag with the contents of self and  other.""" 
+     result = ArraySortedBag(self)
+    for item in other:
+        result.add(item)
+  return result
+
+```
+:::
+
+## Run-Time Performance of ArraySortedBag
+
+- The `in` operator has a worst-case running time of `O(logn)`:
+    - This is a big improvement on the linear running time of the in operator for regular bags
+- The improved search time also has an impact on the methods that use the new `in` operator,
+    - Even though these methods are still defined in `ArrayBag` 
+- Although the improved search still leaves `remove` with a linear running time on average,
+    - Less time is spent on the test of the precondition
+
+## Exercise
+
+- Use the explanation with codes in the slide to implement `ArraySortedBag` which inherits the `ArrayBag` class.
+- Write a simple tester function to test the behaviors of `ArraySortedBag`.
 
 
 # Next week Reading:
