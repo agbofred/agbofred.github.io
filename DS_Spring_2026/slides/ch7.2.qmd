@@ -1,7 +1,7 @@
 ---
 title: "Stacks Application"
 author: "Fred Agbo"
-date: October 13, 2025
+date: February 25, 2025
 format:
   revealjs:
     chalkboard: true
@@ -9,8 +9,8 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Welcome to week 8!
-- Midterm exam is this week Wednesday during class hours (1:10 - 20:40 pm)
+- Welcome back!
+- Midterm exam is next week Wednesday during class hours.
     - Those with AES accommondation:
         - Contact the testing center ASAP to book a spot for the test.
         - Copy me in the email to the `Testing Center`

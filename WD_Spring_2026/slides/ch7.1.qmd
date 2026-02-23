@@ -1,0 +1,46 @@
+---
+title: "Server Scripting - PHP & MYSQL"
+author: "Fred Agbo" 
+date: February 23, 2026
+format:
+  revealjs:
+    chalkboard: true
+    slide-number: true
+    code-line-numbers: true   # optional global numbering
+---
+## Announcements
+- Welcome to the class today!
+- A few persons are yet to indicate their mode of presentation.
+- Next week Monday is the midterm presentation and review.
+- Project concept note submission is due on Canvas on Wednesday 2/25 at 10 pm.
+
+
+# Complete the Procedural PHP-MySQL connection
+- 
+## Project Continuation
+
+-   We will continue our work on the `ch12-proj2.php` project.
+-   Open the project folder
+-   The goal is to connect the HTML form to a MySQL database and save the form data.
+    ![Image of data form](../images/picture1.png)
+
+## Database and Table Creation
+:::{.small style="font-size: 35px;"}
+1.  **Create Database:** In phpMyAdmin, create a new database named `ArtStore`.
+2.  **Create Table:** Inside `ArtStore`, create a table named `ArtCollection` with the following fields:
+    -   `artID` (INT, PRIMARY KEY, AUTO_INCREMENT)
+    -   `title` (VARCHAR)
+    -   `descr` (TEXT)
+    -   `genre` (VARCHAR)
+    -   `subject` (VARCHAR)
+    -   `size` (VARCHAR)
+    -   `year` (YEAR)
+    -   `museum` (VARCHAR)
+:::
+
+## Data Insertion and Validation
+
+-   **Method:** Use the `POST` method in your HTML form.
+-   **Validation:** Implement validation for each form field using HTML5 attributes and/or PHP/JavaScript to ensure data integrity.
+-   **Query:** Use a PHP `INSERT` statement to add the validated form data into the `ArtCollection` table.
+

@@ -1,7 +1,7 @@
 ---
-title: "GRAPH STRUCTURE"
+title: "TREES STRUCTURE (3)"
 author: "Fred Agbo"
-date: November 10, 2025
+date: November 5, 2025
 format:
   revealjs:
     chalkboard: true
@@ -9,280 +9,287 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- PS5 is due today.
-- Grading of PS4 is ongoing 
-- No class this Wednesday November 12
-    - ***Prof. Agbo is away for a conference***
-- Mini Project #3 to be posted today and due on Monday November 24th
-    - Use class time on Wednesday to solve the mini-project
-    - Submission due date is long but other assignments will be givien inbetween
+- Short homework: PS5 is posted at the end of this slides
+    - Due next Monday
+    - Submission is `PDF` file and on Canvas
+- Todays Lecture:
+    - Discuss Expression Trees 
+    - Array-based Trees
+    - Heaps implementation
+    - Complete the `LinkedBST` class
 
-## Graphs: Learning Objectives
-- Describe the features of a graph
-- Describe various types of graph traversals
-- Recognize applications where it is appropriate to use a graph
-- Choose an appropriate implementation of a graph, based on its performance characteristics
-- Develop algorithms for processing graphs
 
-## Why Use Graphs? 
-:::{.incremental style="font-size: 35px;"}
-- Model relationships between entities (e.g., social networks, web pages)
-    - A roadmap
-    - A map of airline routes
-    - A layout of an adventure game world
-- Represent networks (e.g., transportation, communication, utilities)
-- Solve problems involving connectivity, paths, and cycles
-- Analyze dependencies (e.g., scheduling, project management)
-- Efficiently store and process complex data structures
+## Expression Trees
+:::{.incremental style="font-size: 32px;"}
+- A way to process sentences is to build a parse tree during parsing
+- For a language of expressions
+    - This structure is also called an expression tree
+- Points to remember:
+    - An expression tree is never empty
+    - Each interior node represents a compound expression, consisting of an operator and its operands
+    - Each leaf node represents an atomic, numeric operand
+    - Operators of higher precedence usually appear near the bottom of the tree, unless they are overridden in the source expression by parentheses
 :::
 
-## Why Use Graphs?
-:::{.incremental style="font-size: 35px;"}
-- Primary Feature of Graphs
-    - Consist of a set of objects connected by `links`
-    - Allow the user to navigate from one object to another
-- The graph is the most general category of collection:
-     - Encompasses the linear, hierarchical, and unordered collections as special cases
+## Expression Trees
+
+![](../images/someExpressionTree.png){style="width:60%;"}
+
+
+## Grammars, parsing, and a descent-parsing strategy
+- A grammar consists of a few parts:
+    - A `vocabulary` (or `dictionary` or `lexicon`) consisting of words and symbols allowed in sentences in the language
+    - A set of ***syntax rules*** that specify how symbols in the language are combined to form sentences
+    - A set of ***semantic rules*** that specify how sentences in the language should be interpreted
+        For example, the statement  `x = y` might mean “copy the value of  `y`  to the variable  `x`
+
+## Grammars: Example
+- The following grammar defines the syntax and vocabulary of a little language/expression `4 + 3 − 2`
+
+```{.python}
+expression = term [ addingOperator term ]
+term = factor [ multiplyOperator factor ]
+factor = number | "(" expression ")"
+number = digit { digit }
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+addingOperator = "+" | "-"
+multiplyingOperator = "*" | "/"
+
+```
+
+## Grammar: `BNF`
+:::{.incremental style="font-size: 30px;"}
+
+- This type of grammar above is called an ***Extended Backus-Naur Form (EBNF)*** grammar
+- An EBNF grammar uses three kinds of symbols:
+    - `Terminal symbols`—These symbols are in the vocabulary of the language and literally appear in programs in the language—for instance,  +  and  *  in the preceding examples
+    - `Nonterminal symbols`—These symbols name phrases in the language, such as  expression  or  factor  in the preceding examples
+    - `Metasymbols`—These symbols are used to organize the rules in the grammar
 :::
 
-## More Feature of Graphs
-:::{.incremental style="font-size: 35px;"}
-- **Graphs** are data structures that consist of:
-    - **Vertices (nodes):** Represent entities.
-    - **Edges (links):** Represent relationships or connections between entities.
-- Can be **directed** or **undirected**.
-- Can be **weighted** or **unweighted**.
-- Allow modeling of complex relationships and interactions.
+
+## Grammar: `Metasymbols`
+:::{.incremental style="font-size: 30px;"}
+
+| Metasymbol      | Meaning                        |
+|-----------------|-------------------------------|
+| `"..."`         | Enclose literal items          |
+| `=`             | Means “is defined as”          |
+| `[ ... ]`       | Enclose optional items         |
+| `{ ... }`       | Enclose zero or more items     |
+| `( ... )`       | Group together required choices|
+| `|`             | Indicates a choice             |
 :::
 
-## Graph Terminology (1 of 12)
-:::{.incremental style="font-size: 35px;"}
-- A graph is a set `V` of `vertices` and a set `E` of `edges`:
-- Each `edge` in `E` connects two of the `vertices` in `V`
-- `Node`
-    - Used as a synonym for `vertex`
-    - `Vertices` and `edges` can be labeled or unlabeled:
-    - When edges are labeled with numbers, the numbers can be viewed as `weights` (known as a `weighted` graph)
-:::
-
-## Graph Terminology (2 of 12)
-:::{.incremental style="font-size: 35px;"}
-- ![](../images/wightedGraph.png){style="width:80%;"}
-
-- Unlabeled, labeled, and weighted graphs
-:::
-
-## Graph Terminology (3 of 12)
+## Recognizing, Parsing, and Interpreting Sentences
 :::{.incremental style="font-size: 33px;"}
-- One vertex is `v` to another if there is an `edge` connecting the two vertices:
-    - These two vertices are also called `neighbors`
-- A `path` is a sequence of edges that allows one vertex to be reached from another vertex in a graph
-- A vertex is `reachable` from another vertex if there is a path between the two:
-    - `Length` of a path is the number of edges on the path
-- A graph is `connected` if there is a path from each vertex to every other vertex
-- A graph is `complete` if there is an edge from each vertex to every other vertex
+- To process sentences in a language you use:
+    - `Recognizer` – analyzes a string to determine if it is a sentence in a given language
+    - `Parser` – has all the features of a recognizer and returns information about the syntactic and semantic structure of a sentence
+    - `Interpreter` – carries out the actions specified by a sentence
 :::
 
-## Graph Terminology (4 of 12)
-:::{.incremental style="font-size: 35px;"}
-- ![](../images/connectedGraphs.png){style="width:80%;"}
-- Disconnected, connected but not complete, and complete graphs
-:::
-
-## Graph Terminology (5 of 12)
-:::{.incremental style="font-size: 35px;"}
-- The **degree** of a vertex is equal to the number of edges connected to it
-- Vertices with degree 0 are called **isolated vertices**
-- A **subgraph** of a given graph consists of a subset of that graph’s vertices and the edges connecting those vertices
-- Subgraphs can be used to analyze or focus on specific parts of a larger graph
-- A **spanning subgraph** contains all the vertices of the original graph and a subset of its edges
-- A connected component is a `subgraph` consisting of the set of vertices that are reachable from a given vertex
-
-:::
-
-
-## Graph Terminology (6 of 12)
-:::{.incremental style="font-size: 35px;"}  
-- A **simple path** is a path that does not pass through the same vertex more than once
-- A **cycle** is a path that starts and ends at the same vertex, with no repeated edges or vertices (except the starting/ending vertex)
-- An **acyclic graph** is a graph that contains no cycles
-- A **tree** is a connected acyclic graph
-:::
-
-
-## Graph Terminology (7 of 12)
-:::{.incremental style="font-size: 35px;"}
-- A connected component of a graph
-- ![](../images/connectedGraph.png){style="width:80%;"}
-:::
-
-## Graph Terminology (8 of 12)
-:::{.incremental style="font-size: 35px;"}
-- A simple path and a cycle
-- ![](../images/simpleCircleGraph.png){style="width:80%;"}
-:::
-
-## Graph Terminology (9 of 12)
-:::{.incremental style="font-size: 35px;"}
-- **Directed Graph (`Diagraph`):** Edges have a direction, going from one vertex to another (such as one-way streets).
-    - Each edge is an ordered pair (u, v).
-    - Useful for modeling relationships where direction matters (e.g., Twitter followers, web links).
-- **Undirected Graph:** Edges do not have direction; they simply connect two vertices (such as two-way streets).
-    - Each edge is an unordered pair {u, v}.
-    - Used when relationships are mutual (e.g., Facebook friends, road networks).
-:::
-
-## Graph Terminology (8 of 12)
-:::{.incremental style="font-size: 35px;"}
-- A simple path and a cycle
-- ![](../images/DirectedGraphs.png){style="width:80%;"}
-:::
-
-
-## Graph Terminology (9 of 12)
-:::{.incremental style="font-size: 35px;"}
-- Each edge in a digraph is called a `directed edge`
-    - It has a `source vertex` and a `destination vertex`
-- When there is only one directed edge connecting two vertices, the vertices are in the relation of a predecessor (the source vertex) and a successor (the destination vertex):
-    - The relation of adjacency between them is asymmetric
-- The edges emanating from a given source vertex are called its incident edges
-
-:::
-
-
-## Graph Terminology (10 of 12)
-:::{.incremental style="font-size: 35px;"}
-- Converting an undirected graph to a directed graph
-- ![](../images/undirectedToDirectedGraphs.png){style="width:80%;"}
-
-:::
-
-## Graph Terminology (11 of 12)
+## Parser Operation 
 :::{.incremental style="font-size: 30px;"}
-- **Directed Acyclic Graph (DAG):**  
-    - A directed graph with no cycles.
-    - Used to model processes with dependencies (e.g., scheduling tasks, version control, data processing pipelines).
-    - In a DAG, it is impossible to start at a vertex and follow a sequence of directed edges that eventually loops back to the starting vertex.
-    - Many algorithms (such as topological sorting) are designed specifically for DAGs.
-- **Dense Graph:**  
-    - Has nearly the maximum possible number of edges; most vertices are interconnected.
-- **Sparse Graph:**  
-    - Has far fewer edges than possible; most vertices are not directly connected.
-
+- When developing a parser: 
+    - It is convenient to assign the task of recognizing symbols in a string to a lower-level module called a `scanner`
+- Scanner performs `lexical analysis`
+    - In which individual words are picked out of a stream of characters
+- Output of the scanner is a stream of words called `tokens`
+    - These become the input to a `syntax analyzer` that uses the tokens and the grammar rules to  determine whether the program is syntactically correct
 :::
 
-## Graph Terminology (12 of 12)
-:::{.incremental style="font-size: 35px;"}
-- A directed graph and a directed acyclic graph (`DAG`)
-- ![](../images/DAG.png){style="width:80%;"}
+## Lexical Analysis and the Scanner
 
-:::
+![](../images/scannerOperation.png){style="width:60%;"}
 
-## Representations of Graphs
+- A scanner and parser working in tandem
+
+## Array Implementation of Binary Trees
 :::{.incremental style="font-size: 30px;"}
-- To represent graphs, you need a convenient way to store the vertices and the edges that connect them
-- Two commonly used representations of graphs are the `adjacency matrix` and `adjacency list`
-- **Adjacency Matrix:**
-    - A 2D array where each cell (i, j) indicates if there is an edge between vertex i and vertex j.
-    - Efficient for dense graphs.
-    - Space complexity: O(n²), where n is the number of vertices.
-- **Adjacency List:**
-    - Each vertex has a list of adjacent vertices.
-    - Efficient for sparse graphs.
-    - Space complexity: O(n + e), where e is the number of edges.
+###  An Attempt
+- An array-based implementation of a binary tree is also possible, but it is difficult to define and practical only in some special situations
+    - `When the tree is complete` 
+- ![](../images/completeTree.png){style="width:50%;"}
+:::
+
+## Array Implementation of Binary Trees
+:::{.incremental style="font-size: 30px; list-style-type: none; padding-left: 0;"}
+- In an array-based implementation, the elements are stored by level
+
+- ![](../images/ArrayRepofTree.png){style="width:60%;"}
+
+- We can compute locations of items on the array-based `complete binary tree`:
+
+- | Item                        | Location         |
+|-----------------------------|------------------|
+| Parent                      | (i − 1) // 2      |
+| Left sibling (if any)       | i − 1            |
+| Right sibling (if any)      | i + 1            |
+| Left child (if any)         | i * 2 + 1        |
+| Right child (if any)        | i * 2 + 2        |
+:::
+
+## Why difficult to implement array-based incomplete trees?
+:::{.incremental style="font-size: 25px;"}
+
+### Wasted Space: 
+- If the tree is not complete, many array positions will be unused (null or empty), leading to inefficient memory usage.
+
+### Indexing Complexity: 
+- The simple formulas (2*i+2) assume every possible child exists. For missing nodes, you must track which indices are valid, complicating traversal and updates.
+
+### Insertion/Deletion Issues: 
+- Adding or removing nodes can require shifting many elements or leave gaps, making the array harder to manage.
+
+### Loss of Structure: 
+- The array no longer visually represents the tree’s shape, making debugging and visualization difficult.
+:::
+
+## Heap Implementation 
+:::{.incremental style="font-size: 33px;"}
+- A heap is a type of binary tree in which smaller data items are located near the root
+- Heap implementation uses `min-heap` to design a `priority queue`
+- interface requires methods to return its `size`, `add`, `remove`,  `peek`, etc
+- The two most critical heap operations are:
+    - `add` method – expects a comparable element as an argument and inserts the element into its proper place in the heap
+    - `pop` method – deletes the topmost node in the heap, returns the element contained there, and maintains the heap property
+- The `peek` operation returns but does not remove the topmost element in a heap
+:::
+
+## Heap Interface
+:::{.incremental style="font-size: 24px;"}
+| Method                  | What It Does                                                                                          |
+|-------------------------|-------------------------------------------------------------------------------------------------------|
+| heap.isEmpty()          | Returns True if heap is empty or False otherwise.                                                     |
+| heap.__len__()          | Same as len(heap). Returns the number of items in heap.                                               |
+| heap.__iter__()         | Same as iter(heap) or for item in heap:. Visits the items from least to greatest.                     |
+| heap.__str__()          | Same as str(heap). Returns a string that shows the shape of the heap.                                 |
+| heap.__contains__(item) | Same as item in heap. Returns True if item is in the heap or False otherwise.                         |
+| heap.__add__(otherHeap) | Same as heap + otherHeap. Returns a new heap with the contents of heap and otherHeap.                 |
+| heap.__eq__(anyObject)  | Same as heap == anyObject. Returns True if heap equals anyObject or False otherwise.                  |
+| heap.peek()             | Returns the topmost item in heap. Precondition: heap is not empty.                                    |
+| heap.add(item)          | Inserts item in its proper place in heap.                                                             |
+| heap.pop()              | Removes and returns the topmost item in heap. Precondition: heap is not empty.                        |
 
 :::
 
-## Adjacency Matrix 
-:::{.incremental style="font-size: 35px;"}
-- Assume that a graph has `N` vertices labeled 0, 1, …, N − 1, and then the following applies:
-
-- The adjacency matrix for the graph is a grid G with `N` rows and `N` columns
-- The cell ***G[i][j]*** contains `1` if there is an edge from ***vertex i*** to ***vertex j*** in the graph; otherwise, there is no edge, and that cell contains `0`
+## Heap Implementation: `Note` 
+:::{.incremental style="font-size: 33px;"}
+- Heap implementation uses `min-heap` to design a `priority queue`
+- Its tructure is similar to the array represnetation of binary tree seen earlier
+    - Each node is stored at a specific index in the array:
+        - The root is at index 0 (or 1, depending on convention).
+        - For a node at index `i`:
+            - Left child is at index `2*i + 1`
+            - Right child is at index `2*i + 2`
+            - Parent is at index `(i - 1) // 2`
+- But be careful to maintain the properties of `min-heap`.
+    - Each node is less than either of its children. 
 :::
 
-## Adjacency Matrix 
-:::{.incremental style="font-size: 35px;"}
-- A directed graph and its adjacency matrix
-- ![](../images/directedAdjacency.png){style="width:80%;"}
+## Heap Implementation: `Add Method`
+```{.python}
+def add(self, item):
+    self.size += 1
+    self.heap.append(item)
+    curPos = len(self.heap) - 1
+    while curPos > 0:
+        parent = (curPos - 1) // 2	    # Integer quotient!
+        parentItem = self.heap[parent]
+        if parentItem <= item:         # Found the spot
+            break
+        else:                          # Continue walking up
+            self.heap[curPos] = self.heap[parent]
+            self.heap[parent] = item
+            curPos = parent
 
+```
+
+## Heap Implementation: `Pop Method`
+
+### Strategy for removals:
+- Begin by saving pointers to the top element and the bottom element in the heap and by moving the element from the bottom of the heap to the top
+- Walk down the heap from the top, moving the smallest child up one level, until the bottom of the heap is reached
+
+
+## Heap Implementation: `Pop Method`
+```{.python}
+def pop(self):
+    if self.isEmpty():
+        raise AttributeError("Heap is empty")
+    self.size -= 1
+    topItem = self.heap[0]
+    bottomItem = self.heap.pop(len(self.heap) - 1)
+    if self.isEmpty():
+        return bottomItem
+    self.heap[0] = bottomItem
+    lastIndex = len(self.heap) - 1
+    curPos = 0
+    while True:
+        leftChild = 2 * curPos + 1
+        rightChild = 2 * curPos + 2
+        if leftChild > lastIndex:
+            break
+     if rightChild > lastIndex:
+            maxChild = leftChild
+        else:
+            leftItem = self.heap[leftChild]
+            rightItem = self.heap[rightChild]
+        if leftItem < rightItem:
+            maxChild = leftChild
+        else:
+            maxChild = rightChild
+            maxItem = self.heap[maxChild]
+        if bottomItem <= maxItem:
+            break
+        else:
+            self.heap[curPos] = self.heap[maxChild]
+            self.heap[maxChild] = bottomItem
+            curPos = maxChild
+        return topItem
+```
+
+
+# LinkedBST Code
+- use this [link](https://github.com/Agbo-CS152/ps5/releases/download/PS5_starter_LinkedBST/PS5.zip) to download the codes.
+
+## Homework: `PS5: submission on Canvas`
+:::{.smaller style="font-size:28px;"}
+
+### Instruction:
+
+- Test the completed `LinkedBST` class implementation as discussed in the class and ensure that the codes are working as expected.
+- Complete all the tasks below
+- Submit your solution as `PDF` to Canvas page created for this homework 
+
+### Tasks 1:
+- Add the methods `height` and `isBalanced` to the `LinkedBST` class. The `height` method returns the height of the tree, as defined in this chapter. The `isBalanced`
+method returns `True` if the height of the tree is less than twice the $log_2$ of its number of nodes, or `False` otherwise.
 :::
 
-## Adjacency Matrix 
-:::{.incremental style="font-size: 35px;"}
-- An undirected graph and its adjacency matrix
-- ![](../images/undirectedAjacency.png){style="width:80%;"}
+## Homework: `PS5`
+:::{.smaller style="font-size:25px;"}
+### Tasks 2:
 
+- Analyze your binary tree program output by completing the following:
+
+    - Take a screenshot after completing Task 1 and running your program in the terminal. The screenshot should show the output starting from `========Wonder Tree:============`.
+    
+    - Using the tree shown in your screenshot, draw its hierarchical (top-to-bottom, pyramid-like) structure.
+    
+    - Describe the shape of your binary tree (e.g., perfectly balanced, unbalanced, complete, or full).
+    
+    - List all the leaf nodes in your tree.
+    
+    - List all nodes at level 2.
+    
+    - For your tree, provide the node visitation order for each of the following traversal algorithms:
+        - Inorder
+        - Preorder
+        - Postorder
+        - Level order  
 :::
-
-## Adjacency List 
-:::{.incremental style="font-size: 35px;"}
-- Assume that a graph has `N` vertices labeled 0, 1, …, N − 1, and then the following applies:
-    - The adjacency list for the graph is an array of `N` linked lists
-    - The `ith` linked list contains a node for vertex `j` if and only if there is an edge from vertex `i` to vertex `j`
-
-:::
-
-## Adjacency List 
-:::{.incremental style="font-size: 35px;"}
-- A directed graph and its adjacency list
-- ![](../images/Adirectedadjacencylist.png){style="width:80%;"}
-
-:::
-
-## Adjacency List 
-:::{.incremental style="font-size: 35px;"}
-- An undirected graph and its adjacency list
-- ![](../images/AnundirectedAdjacency_list.png){style="width:80%;"}
-
-:::
-
-## Adjacency List 
-:::{.incremental style="font-size: 35px;"}
-- A weighted, directed graph and its adjacency list
-- ![](../images/AweightedAdjacency_list.png){style="width:80%;"}
-
-:::
-
-## Analysis of the Two Representations 
-:::{.incremental style="font-size: 30px;"}
-- Regarding running time,
-    - The behavior of two commonly used graph operations illustrates the difference in computational efficiency between the adjacency matrix and the adjacency list
-- These operations are the following:
-    - Determine whether or not there is an edge between two given vertices
-    - Find all the vertices adjacent to a given vertex
-- The adjacency matrix supports the first operation in constant time:
-    - It requires just an index operation into a two-dimensional array
-- The linked adjacency list requires an index into an array of linked lists and then a search of a linked list for a target vertex
-
-:::
-
-## Analysis of the Two Representations 
-:::{.incremental style="font-size: 30px;"}
-- The adjacency list tends to support finding all the vertices adjacent to a given vertex more efficiently than the adjacency matrix
-- The linked adjacency list and the array-based adjacency list exhibit performance trade-offs for insertions of edges into the lists:
-    - The array-based insertion takes linear time, whereas the linked-based insertion requires constant time
-- Regarding memory
-    - Adjacency matrix always requires $N^2$ cells, no matter how many edges connect the vertices
-    - Adjacency list requires an array of N pointers and a number of nodes equal to twice the number of edges in the case of an undirected graph
-
-:::
-
-
-## Further Run-Time Considerations 
-:::{.incremental style="font-size: 30px;"}
-- Another commonly performed operation in graph algorithms is to iterate across all the neighbors of a given vertex
-- Let `N` = number of vertices and `M` = number of edges, then the following applies:
-    - Using an adjacency matrix to iterate across all neighbors, you must traverse a row in a time that is ***O(N)***:
-        To repeat this for all rows is $O(N^2)$
-
-- Using an adjacency list, the time to traverse across all neighbors depends on the number of neighbors:
-    - On the average, this time is ***O(M/N)***
-    - To repeat this for all vertices is ***O(max(M, N))***, which for a dense graph is $O(N^2)$ and for a sparse graph is ***O(N)***
-- Thus, adjacency lists can provide a run-time advantage when working with sparse graphs
-
-:::
-
 <!-- 
 ## Next Week Reading:
 - FDS - Lambert 

@@ -1,7 +1,7 @@
 ---
 title: "Stacks Application: PostFix"
 author: "Fred Agbo"
-date: October 20, 2025
+date: March 2, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,12 +9,12 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Welcome to week 9!
-- PS 3 and Midterm exam are all graded!
-    - Any concern about your standing or any else?
-        - Come see me to discuss it
-        - Everyone seems to do well and hoepfully, the second half will be better
-- Mini project 2 is posted and it is due on __Monday October 27__
+- Welcome to week 8!
+- Midterm exam is this week Wednesday during class hours.
+    - Those with AES accommondation:
+        - Do not forget to copy me in the email to the `Testing Center` in case you are taking the test there.
+    - Solution to `midterm practice questions` are posted on Canvas
+- Mini project 2 will be posted on Wednesday after the Midterm and it will be due on __Wednesday next week__
     
 
 # Application of Stack: Modeling Arithmetic Expression!

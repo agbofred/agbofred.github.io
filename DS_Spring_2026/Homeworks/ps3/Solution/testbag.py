@@ -35,7 +35,8 @@ def testResize():
         bag.remove(item)
     print("Removed remaining items, length of bag =", len(bag))
     print("Expect 10 as length of array =", len(bag.items))
+    print(bag)
 
-test(ArrayBag)
+#test(ArrayBag)
 testResize()
 

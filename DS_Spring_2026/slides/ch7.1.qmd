@@ -1,7 +1,7 @@
 ---
 title: "STACKS"
 author: "Fred Agbo"
-date: October 6, 2025
+date: February 23, 2026
 format:
   revealjs:
     chalkboard: true
@@ -10,7 +10,8 @@ format:
 ---
 ## Announcements
 - Welcome to week 7!
-- Week 5-7 assignment (Problem set 3) is posted and due on __Wednesday 8__
+- The Science Collaborative Research Program (SCRP) 2026 is a research opportunity in Summer
+    - If interested, [apply here](https://my.willamette.edu/site/scrp)
 - Midterm exam is next week Wednesday during class hours 
     - Those with AES accommondation should contact the testing center ASAP to book a spot for the test.
     - Copy me in the email to the `Testing Center`

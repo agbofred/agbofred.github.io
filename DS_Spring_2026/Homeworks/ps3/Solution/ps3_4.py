@@ -109,8 +109,7 @@ class ArrayBag(object):
         # Decrement logical size
         self.size -= 1
         # Check array memory here and decrease it if necessary
-        if len(self) <= len(self.items) // 4 and \
-           2 * len(self) >= ArrayBag.DEFAULT_CAPACITY:
+        if len(self) <= len(self.items) // 5:
             temp = Array(len(self.items) // 2)
             for i in range(len(self)):
                 temp[i] = self.items[i]
