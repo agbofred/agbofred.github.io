@@ -10,9 +10,9 @@ format:
 ---
 ## Announcements
 - Welcome to week 7!
-- The Science Collaborative Research Program (SCRP) 2026 is a research opportunity in Summer
-    - If interested, [apply here](https://my.willamette.edu/site/scrp)
-- Midterm exam is next week Wednesday during class hours 
+- The Science Collaborative Research Program (SCRP) 2026 is a research opportunity in summer.
+    - If you're interested, [apply here](https://my.willamette.edu/site/scrp)
+- Midterm exam is next week Wednesday during class hours.
     - Those with AES accommondation should contact the testing center ASAP to book a spot for the test.
     - Copy me in the email to the `Testing Center`
     - Generally, I'll prefer the booking at Testing Center to be same day of the exam or within the week (Thu or Fri)
