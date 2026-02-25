@@ -385,13 +385,13 @@ class LinkedStack(AbstractStack):
     def __iter__(self):
         """Supports iteration over a view of self.
         Visits items from bottom to top of stack."""
+        tempList = list()
         def visitNodes(node):
             if node != None:
                 visitNodes(node.next)
                 tempList.append(node.data)
-            tempList = list()
-            visitNodes(self.items)
-            return iter(tempList)
+        visitNodes(self.items)
+        return iter(tempList)
     
     def peek(self):
         """Returns the item at top of the stack.
@@ -420,6 +420,10 @@ class LinkedStack(AbstractStack):
         self.items = self.items.next
         self.size -= 1
         return oldItem
+    
+    def add(self, item):
+        """Adds item to the stack."""
+        self.push(item)
 
 ```
 

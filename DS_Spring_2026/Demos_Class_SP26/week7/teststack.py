@@ -10,7 +10,7 @@ def test(stackType):
     print("Length:", len(s))
     print("Empty:", s.isEmpty())
     print("Push 1-12")
-    for i in range(20):
+    for i in range(12):
         s.push(i + 1)
     print("Peeking:", s.peek())
     print("Items (bottom to top):", s)

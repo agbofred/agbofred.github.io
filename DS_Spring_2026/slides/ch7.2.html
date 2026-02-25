@@ -661,13 +661,13 @@ class ArraySortedBag(ArrayBag):
 <span id="cb6-12"><a href=""></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
 <span id="cb6-13"><a href=""></a>        <span class="co">"""Supports iteration over a view of self.</span></span>
 <span id="cb6-14"><a href=""></a><span class="co">        Visits items from bottom to top of stack."""</span></span>
-<span id="cb6-15"><a href=""></a>        <span class="kw">def</span> visitNodes(node):</span>
-<span id="cb6-16"><a href=""></a>            <span class="cf">if</span> node <span class="op">!=</span> <span class="va">None</span>:</span>
-<span id="cb6-17"><a href=""></a>                visitNodes(node.<span class="bu">next</span>)</span>
-<span id="cb6-18"><a href=""></a>                tempList.append(node.data)</span>
-<span id="cb6-19"><a href=""></a>            tempList <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb6-20"><a href=""></a>            visitNodes(<span class="va">self</span>.items)</span>
-<span id="cb6-21"><a href=""></a>            <span class="cf">return</span> <span class="bu">iter</span>(tempList)</span>
+<span id="cb6-15"><a href=""></a>        tempList <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb6-16"><a href=""></a>        <span class="kw">def</span> visitNodes(node):</span>
+<span id="cb6-17"><a href=""></a>            <span class="cf">if</span> node <span class="op">!=</span> <span class="va">None</span>:</span>
+<span id="cb6-18"><a href=""></a>                visitNodes(node.<span class="bu">next</span>)</span>
+<span id="cb6-19"><a href=""></a>                tempList.append(node.data)</span>
+<span id="cb6-20"><a href=""></a>        visitNodes(<span class="va">self</span>.items)</span>
+<span id="cb6-21"><a href=""></a>        <span class="cf">return</span> <span class="bu">iter</span>(tempList)</span>
 <span id="cb6-22"><a href=""></a>    </span>
 <span id="cb6-23"><a href=""></a>    <span class="kw">def</span> peek(<span class="va">self</span>):</span>
 <span id="cb6-24"><a href=""></a>        <span class="co">"""Returns the item at top of the stack.</span></span>
@@ -695,7 +695,11 @@ class ArraySortedBag(ArrayBag):
 <span id="cb6-46"><a href=""></a>        oldItem <span class="op">=</span> <span class="va">self</span>.items.data</span>
 <span id="cb6-47"><a href=""></a>        <span class="va">self</span>.items <span class="op">=</span> <span class="va">self</span>.items.<span class="bu">next</span></span>
 <span id="cb6-48"><a href=""></a>        <span class="va">self</span>.size <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb6-49"><a href=""></a>        <span class="cf">return</span> oldItem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-49"><a href=""></a>        <span class="cf">return</span> oldItem</span>
+<span id="cb6-50"><a href=""></a>    </span>
+<span id="cb6-51"><a href=""></a>    <span class="kw">def</span> add(<span class="va">self</span>, item):</span>
+<span id="cb6-52"><a href=""></a>        <span class="co">"""Adds item to the stack."""</span></span>
+<span id="cb6-53"><a href=""></a>        <span class="va">self</span>.push(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section id="class-activity-worksheet" class="title-slide slide level1 center">
 <h1>Class Activity Worksheet!</h1>

@@ -1,3 +1,4 @@
+
 from node import Node
 from abstractstack import AbstractStack
 
@@ -27,10 +28,6 @@ class LinkedStack(AbstractStack):
         return self.items.data
     
     # Mutators
-    def add(self, item):
-        """Adds item to the stack."""
-        self.push(item)
-    
     def clear(self):
         """Makes self become empty."""
         self.size = 0
@@ -50,3 +47,8 @@ class LinkedStack(AbstractStack):
         self.items = self.items.next
         self.size -= 1
         return oldItem
+    
+    
+    def add(self, item):
+        """Adds item to the stack."""
+        self.push(item)
