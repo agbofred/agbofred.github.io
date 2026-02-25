@@ -1,0 +1,1187 @@
+---
+title: "SQL Query Reference Guide"
+subtitle: "Geographical and Travel Data Analysis | CS 152 Spring 2026"
+author: "Practice Midterm Solutions"
+date: today
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.1em
+    highlight-style: github
+    code-block-bg: true
+    code-block-border-left: "#662E80"
+    code-copy: true
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(12, 202, 139, 1) 0%, rgba(102, 46, 128, 1) 100%)
+    title-block-banner-color: white
+    number-sections: true
+    smooth-scroll: true
+---
+
+::: {.callout-note icon=true collapse=false}
+## 📚 About This Reference Guide
+
+This comprehensive reference guide is designed for **technical students and database administrators**. It provides a structured approach to querying a geographical and travel-oriented dataset.
+
+**Key Features:**
+
+- ✅ Optimized for MySQL/MariaDB environments (phpMyAdmin)
+- ✅ Industry-standard best practices for performance
+- ✅ Referential integrity considerations
+- ✅ Real-world database scenarios
+- ✅ **Dataset:** 148 photos, 448 ratings, 10 normalized tables
+:::
+
+---
+
+# Database Schema Overview {#sec-schema}
+
+::: {.callout-tip collapse=false}
+## 🗄️ System Architecture
+
+The system is built upon **10 normalized tables** that manage the relationship between global geography, user engagement, and travel media.
+:::
+
+## Core Entity Relationships
+
+::: {.callout-important}
+## 🔑 Foreign Key (FK) to Primary Key (PK) Mappings
+
+As a developer, understanding these mappings is essential for accurate `JOIN` operations:
+
+- **Continents & Countries:** `continents.ContinentCode` (PK) → `countries.ContinentCode` (FK)
+- **Countries & Cities:** `countries.CountryCode` (PK) → `cities.CountryCode` (FK)
+- **Users & Content:** `users.UserID` (PK) → `imagedetails.UserID`, `imagerating.UserID`, `posts.UserID` (FK)
+- **Media Mapping:** `imagedetails.ImageID` (PK) → `imagerating.ImageID`, `postimages.ImageID` (FK)
+- **Geography & Media:** `countries.CountryCode` (PK) → `imagedetails.CountryCode` (FK)
+:::
+
+::: {.callout-warning}
+## 👨‍💼 Senior DBA Note
+
+Always ensure your foreign keys are **indexed**. In this dataset of **148 photos** and **448 ratings**, performance is negligible, but at scale, these indexes prevent full table scans during `JOIN` operations.
+:::
+
+---
+
+# Activity 1: Basic Data Retrieval (SELECT) {#sec-select}
+
+::: {.callout-note}
+## 🎯 Objective
+Mastering the retrieval of raw data from single tables.
+:::
+
+## Query Examples
+
+```sql
+-- Retrieve all records from continents
+SELECT * FROM continents;
+```
+
+```sql
+-- Retrieve the first 10 countries ordered alphabetically
+SELECT * FROM countries 
+ORDER BY CountryName ASC 
+LIMIT 10;
+```
+
+```sql
+-- List images from imagedetails where the location is Canada (using CountryCode 'CA')
+SELECT * FROM imagedetails 
+WHERE CountryCode = 'CA';
+```
+
+```sql
+-- Select all users from the USA (using CountryCode 'US')
+SELECT * FROM users 
+WHERE CountryCode = 'US';
+```
+
+```sql
+-- Find languages starting with 'E'
+SELECT * FROM languages 
+WHERE LanguageName LIKE 'E%';
+```
+
+```sql
+-- Display the top 10 highest-rated records from imagerating
+SELECT * FROM imagerating 
+ORDER BY Rating DESC 
+LIMIT 10;
+```
+
+---
+
+# Activity 2: Filtering with WHERE Clause {#sec-where}
+
+::: {.callout-note}
+## 🎯 Objective
+Utilizing predicates to isolate specific data subsets.
+:::
+
+## Query Examples
+
+```sql
+-- Filter countries for the 'Europe' continent (using ContinentCode 'EU')
+SELECT * FROM countries 
+WHERE ContinentCode = 'EU';
+```
+
+```sql
+-- Select imagerating records with a score > 4
+SELECT * FROM imagerating 
+WHERE Rating > 4;
+```
+
+```sql
+-- Filter countries with a population > 50,000,000
+SELECT * FROM countries 
+WHERE Population > 50000000;
+```
+
+```sql
+-- Find users who joined after 2012
+SELECT * FROM users 
+WHERE JoinDate > '2012-12-31';
+```
+
+```sql
+-- Retrieve imagedetails based on coordinate filters
+SELECT * FROM imagedetails 
+WHERE Latitude BETWEEN 40 AND 50;
+```
+
+```sql
+-- Filter countries with more than 5 neighbors
+SELECT * FROM countries 
+WHERE Neighbors > 5;
+```
+
+---
+
+# Activity 3: Sorting with ORDER BY {#sec-orderby}
+
+::: {.callout-note}
+## 🎯 Objective
+Establishing logical sequence in result sets.
+:::
+
+## Query Examples
+
+```sql
+-- Sort countries by population descending
+SELECT * FROM countries 
+ORDER BY Population DESC;
+```
+
+```sql
+-- Order users alphabetically by last name
+SELECT * FROM users 
+ORDER BY LastName ASC;
+```
+
+```sql
+-- Order countries by area ascending
+SELECT * FROM countries 
+ORDER BY Area ASC;
+```
+
+```sql
+-- Sort imagerating from highest to lowest
+SELECT * FROM imagerating 
+ORDER BY Rating DESC;
+```
+
+```sql
+-- Sort continents alphabetically by name
+SELECT * FROM continents 
+ORDER BY ContinentName ASC;
+```
+
+---
+
+# Activity 4: Aggregation Functions {#sec-aggregate}
+
+::: {.callout-note}
+## 🎯 Objective
+Calculating high-level summary statistics.
+:::
+
+## Query Examples
+
+```sql
+-- Count countries per continent (grouped by ContinentCode)
+SELECT ContinentCode, COUNT(*) AS TotalCountries 
+FROM countries 
+GROUP BY ContinentCode;
+```
+
+```sql
+-- Calculate the global average rating in imagerating
+SELECT AVG(Rating) AS GlobalAvgRating 
+FROM imagerating;
+```
+
+```sql
+-- Find the maximum population
+SELECT MAX(Population) AS MaxPopulation 
+FROM countries;
+```
+
+```sql
+-- Count users grouped by country
+SELECT CountryCode, COUNT(*) AS UserCount 
+FROM users 
+GROUP BY CountryCode;
+```
+
+```sql
+-- Calculate the average area for countries in the 'Asia' continent ('AS')
+SELECT AVG(Area) AS AvgAreaAsia 
+FROM countries 
+WHERE ContinentCode = 'AS';
+```
+
+```sql
+-- Count total images associated with each user ID
+SELECT UserID, COUNT(*) AS ImageCount 
+FROM imagedetails 
+GROUP BY UserID;
+```
+
+---
+
+# Activity 5: Grouping Data with GROUP BY {#sec-groupby}
+
+::: {.callout-note}
+## 🎯 Objective
+Organizing data into categorical buckets for analysis.
+:::
+
+## Query Examples
+
+```sql
+-- Count images per continent (requires JOIN)
+SELECT co.ContinentName, COUNT(i.ImageID) AS ImageCount
+FROM imagedetails i
+JOIN countries c ON i.CountryCode = c.CountryCode
+JOIN continents co ON c.ContinentCode = co.ContinentCode
+GROUP BY co.ContinentName;
+```
+
+```sql
+-- Calculate average rating per image ID
+SELECT ImageID, AVG(Rating) AS AvgRating 
+FROM imagerating 
+GROUP BY ImageID;
+```
+
+```sql
+-- Count users per country
+SELECT CountryCode, COUNT(*) AS TotalUsers 
+FROM users 
+GROUP BY CountryCode;
+```
+
+```sql
+-- Show the count of countries per continent
+SELECT ContinentCode, COUNT(CountryCode) AS CountryCount
+FROM countries 
+GROUP BY ContinentCode;
+```
+
+```sql
+-- Count images per city
+SELECT CityID, COUNT(*) AS PhotosPerCity 
+FROM imagedetails 
+GROUP BY CityID;
+```
+
+```sql
+-- Group ratings by image and provide the total count of ratings per image
+SELECT ImageID, COUNT(Rating) AS RatingCount 
+FROM imagerating 
+GROUP BY ImageID;
+```
+
+---
+
+# Activity 6: Filtering Groups with HAVING {#sec-having}
+
+::: {.callout-note}
+## 🎯 Objective
+Applying conditions to aggregated data.
+:::
+
+::: {.callout-tip}
+## 💡 Curriculum Insight
+
+Remember that `WHERE` filters rows **before** aggregation, while `HAVING` filters the results **after** the `GROUP BY` has been performed.
+:::
+
+## Query Examples
+
+```sql
+-- Identify continents with > 30 countries
+SELECT ContinentCode, COUNT(*) AS CountryCount
+FROM countries 
+GROUP BY ContinentCode 
+HAVING COUNT(*) > 30;
+```
+
+```sql
+-- Show images with an average rating > 4
+SELECT ImageID, AVG(Rating) AS AvgRating
+FROM imagerating 
+GROUP BY ImageID 
+HAVING AVG(Rating) > 4;
+```
+
+```sql
+-- List users who have uploaded > 5 images
+SELECT UserID, COUNT(*) AS ImageCount
+FROM imagedetails 
+GROUP BY UserID 
+HAVING COUNT(*) > 5;
+```
+
+```sql
+-- Find countries with > 3 cities recorded
+SELECT CountryCode, COUNT(*) AS CityCount
+FROM cities 
+GROUP BY CountryCode 
+HAVING COUNT(*) > 3;
+```
+
+```sql
+-- Show images that have received > 10 ratings
+SELECT ImageID, COUNT(*) AS RatingCount
+FROM imagerating 
+GROUP BY ImageID 
+HAVING COUNT(*) > 10;
+```
+
+---
+
+# Activity 7: Simple JOINs (INNER JOIN) {#sec-innerjoin}
+
+::: {.callout-note}
+## 🎯 Objective
+Combining normalized tables to produce human-readable reports.
+:::
+
+## Query Examples
+
+```sql
+-- Connect countries and continents to display continent names
+SELECT c.CountryName, con.ContinentName 
+FROM countries c
+INNER JOIN continents con ON c.ContinentCode = con.ContinentCode;
+```
+
+```sql
+-- Join imagedetails and users to display photographer names
+SELECT i.ImageID, u.FirstName, u.LastName 
+FROM imagedetails i
+INNER JOIN users u ON i.UserID = u.UserID;
+```
+
+```sql
+-- Join imagedetails, cities, and countries for full context
+SELECT i.Title, ci.CityName, co.CountryName 
+FROM imagedetails i
+INNER JOIN cities ci ON i.CityID = ci.CityID
+INNER JOIN countries co ON ci.CountryCode = co.CountryCode;
+```
+
+```sql
+-- Join countries with cities to identify capitals
+SELECT co.CountryName, ci.CityName AS CapitalName
+FROM countries co
+INNER JOIN cities ci ON co.CapitalID = ci.CityID;
+```
+
+```sql
+-- Join imagerating with imagedetails
+SELECT r.Rating, i.Title 
+FROM imagerating r
+INNER JOIN imagedetails i ON r.ImageID = i.ImageID;
+```
+
+```sql
+-- Join users with userslogin for authentication audit
+SELECT u.LastName, l.UserName, l.Password
+FROM users u
+INNER JOIN userslogin l ON u.UserID = l.UserID;
+```
+
+---
+
+# Activity 8: Complex JOINs (LEFT, RIGHT) {#sec-outerjoin}
+
+::: {.callout-note}
+## 🎯 Objective
+Preserving records from one side of a relationship even when no match exists.
+:::
+
+## Query Examples
+
+```sql
+-- Identify users with no associated images
+SELECT u.FirstName, u.LastName 
+FROM users u
+LEFT JOIN imagedetails i ON u.UserID = i.UserID 
+WHERE i.ImageID IS NULL;
+```
+
+```sql
+-- Show all images and their ratings (including those with 0 ratings)
+SELECT i.Title, r.Rating 
+FROM imagedetails i
+LEFT JOIN imagerating r ON i.ImageID = r.ImageID;
+```
+
+```sql
+-- List all countries and count of images per country (including zero counts)
+SELECT c.CountryName, COUNT(i.ImageID) AS PhotoCount
+FROM countries c
+LEFT JOIN imagedetails i ON c.CountryCode = i.CountryCode 
+GROUP BY c.CountryName;
+```
+
+```sql
+-- Find cities with no photos
+SELECT ci.CityName 
+FROM cities ci
+LEFT JOIN imagedetails i ON ci.CityID = i.CityID 
+WHERE i.ImageID IS NULL;
+```
+
+```sql
+-- Show all users and their total post count (including users with no posts)
+SELECT u.UserName, COUNT(p.PostID) AS TotalPosts
+FROM users u
+LEFT JOIN posts p ON u.UserID = p.UserID 
+GROUP BY u.UserName;
+```
+
+---
+
+# Activity 9: Subqueries {#sec-subqueries}
+
+::: {.callout-note}
+## 🎯 Objective
+Using the result of one query as the criteria for another.
+:::
+
+## Query Examples
+
+```sql
+-- Find countries with population higher than the global average
+SELECT CountryName 
+FROM countries 
+WHERE Population > (SELECT AVG(Population) FROM countries);
+```
+
+```sql
+-- List images from the photographer with the highest count of uploads
+SELECT * 
+FROM imagedetails 
+WHERE UserID = (
+    SELECT UserID 
+    FROM imagedetails 
+    GROUP BY UserID 
+    ORDER BY COUNT(*) DESC 
+    LIMIT 1
+);
+```
+
+```sql
+-- Show countries belonging to the continent with the highest country count
+SELECT CountryName 
+FROM countries 
+WHERE ContinentCode = (
+    SELECT ContinentCode 
+    FROM countries 
+    GROUP BY ContinentCode 
+    ORDER BY COUNT(*) DESC 
+    LIMIT 1
+);
+```
+
+```sql
+-- Find images taken in cities belonging to France ('FR')
+SELECT * 
+FROM imagedetails 
+WHERE CityID IN (
+    SELECT CityID 
+    FROM cities 
+    WHERE CountryCode = 'FR'
+);
+```
+
+```sql
+-- List users who have submitted more ratings than the average user
+SELECT UserID 
+FROM imagerating 
+GROUP BY UserID 
+HAVING COUNT(*) > (
+    SELECT AVG(RatingCount) 
+    FROM (
+        SELECT COUNT(*) AS RatingCount 
+        FROM imagerating 
+        GROUP BY UserID
+    ) AS AverageStats
+);
+```
+
+::: {.callout-tip}
+## 👨‍💼 DBA Note
+Using a derived table ensures accurate average calculation.
+:::
+
+---
+
+# Activity 10: String Functions {#sec-string}
+
+::: {.callout-note}
+## 🎯 Objective
+Formatting and manipulating text data for the UI.
+:::
+
+## Query Examples
+
+```sql
+-- Convert country names to uppercase
+SELECT UPPER(CountryName) AS UpperCaseName
+FROM countries;
+```
+
+```sql
+-- Extract the first 50 characters of image descriptions
+SELECT SUBSTRING(Description, 1, 50) AS ShortDesc 
+FROM imagedetails;
+```
+
+```sql
+-- Find countries containing the string 'island'
+SELECT CountryName 
+FROM countries 
+WHERE CountryName LIKE '%island%';
+```
+
+```sql
+-- Concatenate user first and last names into a single field
+SELECT CONCAT(FirstName, ' ', LastName) AS FullName 
+FROM users;
+```
+
+```sql
+-- Return the character count of country descriptions
+SELECT CountryName, LENGTH(Description) AS DescLength 
+FROM countries;
+```
+
+---
+
+# Activity 11: Date Functions {#sec-date}
+
+::: {.callout-note}
+## 🎯 Objective
+Calculating intervals and extracting temporal metadata.
+:::
+
+## Query Examples
+
+```sql
+-- Extract the year from user join dates
+SELECT YEAR(JoinDate) AS JoinYear 
+FROM users;
+```
+
+```sql
+-- Calculate registration age in years
+SELECT UserName, (YEAR(CURDATE()) - YEAR(JoinDate)) AS YearsRegistered 
+FROM users;
+```
+
+```sql
+-- Find users who joined in June
+SELECT UserName 
+FROM users 
+WHERE MONTH(JoinDate) = 6;
+```
+
+```sql
+-- Filter images taken within the last 5 years
+SELECT Title 
+FROM imagedetails 
+WHERE UploadDate > DATE_SUB(CURDATE(), INTERVAL 5 YEAR);
+```
+
+```sql
+-- Calculate the age of user accounts in days
+SELECT UserName, DATEDIFF(CURDATE(), JoinDate) AS DaysActive 
+FROM users;
+```
+
+---
+
+# Activity 12: Pattern Matching with LIKE {#sec-like}
+
+::: {.callout-note}
+## 🎯 Objective
+Advanced wildcard searching.
+:::
+
+## Query Examples
+
+```sql
+-- Find countries starting with 'New'
+SELECT CountryName 
+FROM countries 
+WHERE CountryName LIKE 'New%';
+```
+
+```sql
+-- List images with 'bridge' in the title
+SELECT Title 
+FROM imagedetails 
+WHERE Title LIKE '%bridge%';
+```
+
+```sql
+-- Find users with Gmail addresses
+SELECT UserName, Email 
+FROM users 
+WHERE Email LIKE '%@gmail.com';
+```
+
+```sql
+-- Search for countries containing 'stan'
+SELECT CountryName 
+FROM countries 
+WHERE CountryName LIKE '%stan%';
+```
+
+```sql
+-- Find cities ending in 'burg'
+SELECT CityName 
+FROM cities 
+WHERE CityName LIKE '%burg';
+```
+
+---
+
+# Activity 13: Working with NULL Values {#sec-null}
+
+::: {.callout-note}
+## 🎯 Objective
+Identifying and managing missing data.
+:::
+
+## Query Examples
+
+```sql
+-- Find countries with no description
+SELECT CountryName 
+FROM countries 
+WHERE Description IS NULL;
+```
+
+```sql
+-- List images missing GPS coordinates
+SELECT Title 
+FROM imagedetails 
+WHERE Latitude IS NULL OR Longitude IS NULL;
+```
+
+```sql
+-- Show users with incomplete address fields
+SELECT UserName 
+FROM users 
+WHERE Address IS NULL;
+```
+
+```sql
+-- Find continents with a null GeoNameId
+SELECT ContinentName 
+FROM continents 
+WHERE GeoNameId IS NULL;
+```
+
+---
+
+# Activity 14: Inserting Data {#sec-insert}
+
+::: {.callout-note}
+## 🎯 Objective
+Correctly appending records using explicit column declarations.
+:::
+
+::: {.callout-tip}
+## 👨‍💼 Senior DBA Tip
+Always list your columns in `INSERT` statements. If the table schema changes later (e.g., adding a nullable column), your code won't break.
+:::
+
+## Query Examples
+
+```sql
+-- Insert a new continent
+INSERT INTO continents (ContinentCode, ContinentName) 
+VALUES ('AN', 'Antarctica');
+```
+
+```sql
+-- Add a new user
+INSERT INTO users (FirstName, LastName, Email, JoinDate, CountryCode) 
+VALUES ('Jane', 'Smith', 'j.smith@travel.com', CURDATE(), 'US');
+```
+
+```sql
+-- Insert a rating for an image
+INSERT INTO imagerating (ImageID, UserID, Rating) 
+VALUES (148, 31, 5);
+```
+
+```sql
+-- Add a new country
+INSERT INTO countries (CountryCode, CountryName, ContinentCode, Population) 
+VALUES ('WK', 'Wakanda', 'AF', 5000000);
+```
+
+```sql
+-- Create a new image record
+INSERT INTO imagedetails (Title, UserID, CountryCode, UploadDate) 
+VALUES ('The Hidden City', 31, 'WK', CURDATE());
+```
+
+---
+
+# Activity 15: Updating Data {#sec-update}
+
+::: {.callout-note}
+## 🎯 Objective
+Modifying existing records precisely.
+:::
+
+## Query Examples
+
+```sql
+-- Change a specific user's email
+UPDATE users 
+SET Email = 'updated.user@email.com' 
+WHERE UserID = 1;
+```
+
+```sql
+-- Update a country's population count
+UPDATE countries 
+SET Population = 67000000 
+WHERE CountryCode = 'FR';
+```
+
+```sql
+-- Modify an image description
+UPDATE imagedetails 
+SET Description = 'A panoramic view of the Eiffel Tower at sunset.' 
+WHERE ImageID = 5;
+```
+
+```sql
+-- Update a user's privacy setting
+UPDATE users 
+SET PrivacySetting = 1 
+WHERE UserID = 10;
+```
+
+```sql
+-- Adjust rating values for a specific record
+UPDATE imagerating 
+SET Rating = 5 
+WHERE RatingID = 100;
+```
+
+---
+
+# Activity 16: Deleting Data {#sec-delete}
+
+::: {.callout-note}
+## 🎯 Objective
+Safe record removal and constraint awareness.
+:::
+
+::: {.callout-warning}
+## 💡 Curriculum Insight (Foreign Keys)
+
+Attempting to delete a record that is referenced by another table (e.g., deleting a User who has Photos) will trigger a **Foreign Key Constraint violation** unless `ON DELETE CASCADE` is configured. Always check dependencies before deletion.
+:::
+
+## Query Examples
+
+```sql
+-- Removing a specific rating
+DELETE FROM imagerating 
+WHERE RatingID = 50;
+```
+
+```sql
+-- Removing a specific user (CAUTION: Referential Integrity)
+DELETE FROM users 
+WHERE UserID = 31;
+```
+
+```sql
+-- Deleting all images for a specific user
+DELETE FROM imagedetails 
+WHERE UserID = 5;
+```
+
+```sql
+-- Removing low ratings
+DELETE FROM imagerating 
+WHERE Rating < 2;
+```
+
+---
+
+# Activity 17: Complex Queries with Multiple Conditions {#sec-complex}
+
+::: {.callout-note}
+## 🎯 Objective
+Combining logical operators (`AND`, `OR`, `BETWEEN`) with `JOIN`s.
+:::
+
+## Query Examples
+
+```sql
+-- Find European countries with population between 10M and 50M
+SELECT c.CountryName 
+FROM countries c
+JOIN continents con ON c.ContinentCode = con.ContinentCode
+WHERE con.ContinentName = 'Europe' 
+  AND c.Population BETWEEN 10000000 AND 50000000;
+```
+
+```sql
+-- List images from Canada or USA with rating > 4
+SELECT DISTINCT i.Title 
+FROM imagedetails i
+INNER JOIN imagerating r ON i.ImageID = r.ImageID 
+WHERE (i.CountryCode = 'CA' OR i.CountryCode = 'US') 
+  AND r.Rating > 4;
+```
+
+```sql
+-- Show European users who joined after 2013
+SELECT u.UserName 
+FROM users u
+JOIN countries c ON u.CountryCode = c.CountryCode
+JOIN continents con ON c.ContinentCode = con.ContinentCode
+WHERE con.ContinentName = 'Europe' 
+  AND u.JoinDate > '2013-12-31';
+```
+
+```sql
+-- Find Asian countries with area > 1,000,000 km²
+SELECT c.CountryName 
+FROM countries c
+JOIN continents con ON c.ContinentCode = con.ContinentCode
+WHERE con.ContinentName = 'Asia' 
+  AND c.Area > 1000000;
+```
+
+---
+
+# Activity 18: Using DISTINCT {#sec-distinct}
+
+::: {.callout-note}
+## 🎯 Objective
+Eliminating duplicate values for clean reporting.
+:::
+
+## Query Examples
+
+```sql
+-- List unique countries that have associated images
+SELECT DISTINCT CountryCode 
+FROM imagedetails;
+```
+
+```sql
+-- Show unique continents that have registered users
+SELECT DISTINCT ContinentCode 
+FROM users;
+```
+
+```sql
+-- Find unique cities that appear in the imagedetails table
+SELECT DISTINCT CityID 
+FROM imagedetails;
+```
+
+```sql
+-- List unique languages spoken in Europe
+SELECT DISTINCT l.LanguageName 
+FROM languages l
+INNER JOIN countries c ON l.LanguageCode = c.LanguageCode 
+JOIN continents con ON c.ContinentCode = con.ContinentCode
+WHERE con.ContinentName = 'Europe';
+```
+
+---
+
+# Activity 19: Limiting Results {#sec-limit}
+
+::: {.callout-note}
+## 🎯 Objective
+Implementing pagination and identifying "Top-N" records.
+:::
+
+## Query Examples
+
+```sql
+-- Show the top 5 most populous countries
+SELECT CountryName, Population 
+FROM countries 
+ORDER BY Population DESC 
+LIMIT 5;
+```
+
+```sql
+-- Display the 10 most recent user registrations
+SELECT UserName, JoinDate 
+FROM users 
+ORDER BY JoinDate DESC 
+LIMIT 10;
+```
+
+```sql
+-- Get the top 3 highest rated images (by average)
+SELECT ImageID, AVG(Rating) AS AvgRating
+FROM imagerating 
+GROUP BY ImageID 
+ORDER BY AVG(Rating) DESC 
+LIMIT 3;
+```
+
+```sql
+-- Show the first 20 countries alphabetically
+SELECT CountryName 
+FROM countries 
+ORDER BY CountryName ASC 
+LIMIT 20;
+```
+
+---
+
+# Activity 20: Creating Views {#sec-views}
+
+::: {.callout-note}
+## 🎯 Objective
+Saving complex logic as virtual tables for reuse.
+:::
+
+## Query Examples
+
+```sql
+-- Countries with their continent names
+CREATE OR REPLACE VIEW View_CountryContinents AS 
+SELECT c.CountryName, con.ContinentName 
+FROM countries c
+JOIN continents con ON c.ContinentCode = con.ContinentCode;
+```
+
+```sql
+-- Images with their average ratings
+CREATE OR REPLACE VIEW View_ImageAvgRatings AS 
+SELECT ImageID, AVG(Rating) AS AvgRating 
+FROM imagerating 
+GROUP BY ImageID;
+```
+
+```sql
+-- Users with their total image counts
+CREATE OR REPLACE VIEW View_UserImageCounts AS 
+SELECT UserID, COUNT(*) AS TotalImages 
+FROM imagedetails 
+GROUP BY UserID;
+```
+
+```sql
+-- Top-rated image per continent (Deterministic Subquery approach)
+CREATE OR REPLACE VIEW View_ContinentTopImages AS 
+SELECT co.ContinentName, i.ImageID, MAX(r.Rating) AS TopRating
+FROM imagerating r
+JOIN imagedetails i ON r.ImageID = i.ImageID
+JOIN countries c ON i.CountryCode = c.CountryCode
+JOIN continents co ON c.ContinentCode = co.ContinentCode
+GROUP BY co.ContinentName;
+```
+
+---
+
+# Activity 21: Data Analysis Project {#sec-analysis}
+
+::: {.callout-note}
+## 🎯 Objective
+Synthesis of skills to solve complex business intelligence questions.
+:::
+
+## Query Examples
+
+```sql
+-- Which continent has the most photos?
+SELECT co.ContinentName, COUNT(i.ImageID) AS PhotoCount
+FROM continents co
+JOIN countries c ON co.ContinentCode = c.ContinentCode
+JOIN imagedetails i ON c.CountryCode = i.CountryCode
+GROUP BY co.ContinentName
+ORDER BY PhotoCount DESC 
+LIMIT 1;
+```
+
+```sql
+-- What is the average rating per continent?
+SELECT co.ContinentName, AVG(r.Rating) AS AvgContinentRating
+FROM imagerating r
+JOIN imagedetails i ON r.ImageID = i.ImageID
+JOIN countries c ON i.CountryCode = c.CountryCode
+JOIN continents co ON c.ContinentCode = co.ContinentCode
+GROUP BY co.ContinentName;
+```
+
+```sql
+-- Who are the top 5 most active photographers?
+SELECT u.UserName, COUNT(i.ImageID) AS ImageCount
+FROM users u
+JOIN imagedetails i ON u.UserID = i.UserID
+GROUP BY u.UserName
+ORDER BY ImageCount DESC 
+LIMIT 5;
+```
+
+```sql
+-- Which countries have zero photos?
+SELECT c.CountryName 
+FROM countries c
+LEFT JOIN imagedetails i ON c.CountryCode = i.CountryCode 
+WHERE i.ImageID IS NULL;
+```
+
+```sql
+-- What is the distribution of ratings?
+SELECT Rating, COUNT(*) AS Frequency 
+FROM imagerating 
+GROUP BY Rating 
+ORDER BY Rating ASC;
+```
+
+```sql
+-- Which cities are most frequently photographed?
+SELECT ci.CityName, COUNT(i.ImageID) AS PhotoCount
+FROM cities ci
+JOIN imagedetails i ON ci.CityID = i.CityID
+GROUP BY ci.CityName
+ORDER BY PhotoCount DESC;
+```
+
+---
+
+# Activity 22: Database Design Analysis {#sec-design}
+
+::: {.callout-note}
+## 🎯 Objective
+Meta-data querying to understand architectural health.
+:::
+
+## Query Examples
+
+```sql
+-- Identify all foreign keys in the database schema
+SELECT 
+    TABLE_NAME, 
+    COLUMN_NAME, 
+    CONSTRAINT_NAME, 
+    REFERENCED_TABLE_NAME, 
+    REFERENCED_COLUMN_NAME 
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+WHERE REFERENCED_TABLE_SCHEMA = 'geography_db' 
+  AND REFERENCED_TABLE_NAME IS NOT NULL;
+```
+
+```sql
+-- Identify potential data redundancy (Repeating continent codes in countries)
+SELECT ContinentCode, COUNT(*) AS CountryCount
+FROM countries 
+GROUP BY ContinentCode;
+```
+
+::: {.callout-tip}
+## 👨‍💼 DBA Note
+In a normalized schema, the `ContinentName` should only exist in the `continents` table.
+:::
+
+```sql
+-- Demonstrate the many-to-many relationship between posts and images via postimages
+SELECT 
+    p.PostID, 
+    p.Title AS PostTitle, 
+    i.ImageID, 
+    i.Title AS ImageTitle
+FROM posts p
+INNER JOIN postimages pi ON p.PostID = pi.PostID 
+INNER JOIN imagedetails i ON pi.ImageID = i.ImageID;
+```
+
+---
+
+# Summary & Best Practices
+
+::: {.callout-tip collapse=false}
+## 🎓 Key Takeaways
+
+1. **Always use explicit column names** in `INSERT` and `SELECT` statements
+2. **Index your foreign keys** for optimal performance at scale
+3. **Use `WHERE` before aggregation** and `HAVING` after `GROUP BY`
+4. **Test with edge cases** including `NULL` values
+5. **Understand referential integrity** before deleting data
+6. **Create views** for frequently used complex queries
+7. **Use meaningful aliases** to improve query readability
+8. **Comment your SQL** for future maintainability
+:::
+
+::: {.callout-important}
+## 📌 Practice Makes Perfect
+
+This reference guide covers **22 major SQL activities** with real-world examples. Practice each section thoroughly to master database querying!
+:::
+
+---
+
+# Additional Resources
+
+::: {.callout-note}
+## 📚 Further Learning
+
+- [MySQL Official Documentation](https://dev.mysql.com/doc/)
+- [SQL Tutorial - W3Schools](https://www.w3schools.com/sql/)
+- [Database Normalization Guide](https://www.guru99.com/database-normalization.html)
+- [SQL Performance Tips](https://use-the-index-luke.com/)
+:::
+
+---
+
+<center>
+**Good Luck on Your Midterm! 🎉**
+
+*Questions? Review the examples above and practice with the geography database.*
+</center>

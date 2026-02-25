@@ -1,6 +1,6 @@
 ---
-title: "CS152: Data Structure"
-subtitle: Week 7 Knowledge Check - Stack Applications
+title: "CS262: Web Development"
+subtitle: Week 7 Worksheet on SQL Queries
 # author: "Fred Agbo"
 # date: September 3, 2025
 format:
