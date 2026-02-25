@@ -1,6 +1,6 @@
 ---
-title: "Midterm Examination: Data Structures and Algorithms"
-subtitle: "CS 152 Fall, 2025"
+title: "Midterm Practice Questions: Data Structures"
+subtitle: "CS 152 Spring, 2026"
 format:
   html:
     theme:
@@ -25,7 +25,7 @@ format:
 ***
 
 
-### Part I: Multiple Choice Questions (20 Questions)
+### Part I: Multiple Choice Questions (30 Questions)
 
 Please select the best answer for each question. The correct answer is highlighted in **bold**.
 
@@ -159,6 +159,69 @@ Please select the best answer for each question. The correct answer is highlight
      C. **Edge cases related to insertions and deletions at the head or tail**.  
      D. Implementing a search function
 
+21. Which organizational principle defines the behavior of a stack data structure?  
+     A. First-In, First-Out (FIFO)  
+     B. **Last-In, First-Out (LIFO)**  
+     C. First-In, Last-Out (FILO)  
+     D. Random Access  
+
+22. Which real-world analogy could be used to describe the behavior of a stack?  
+     A. A line of people waiting for a bus  
+     B. **A stack of clean trays in a cafeteria**  
+     C. A set of nested Russian dolls  
+     D. A filing cabinet organized alphabetically  
+
+23. What is the name of the operation used to add an item to the top of a stack?  
+     A. Pop  
+     B. Peek  
+     C. **Push**  
+     D. Append  
+
+24. Which operation allows a user to view the item at the top of the stack without removing it?  
+     A. Pop  
+     B. **Peek**  
+     C. Search  
+     D. Clear  
+
+25. Which of the following is NOT a common application of stacks in computer science?  
+     A. Function call management (call stack)  
+     B. Undo mechanisms in editors  
+     C. **Sequential search in unsorted lists**  
+     D. Backtracking algorithms  
+
+26. In the provided stack interface, what is the consequence of calling peek() or pop() on an empty stack?  
+     A. The methods return None.  
+     B. **They raise a KeyError.**  
+     C. The stack automatically adds a default value.  
+     D. The program enters an infinite loop.  
+
+27. In the `Matching Parentheses` algorithm, which items are pushed onto the stack?  
+     A. All characters in the expression  
+     B. Closing brackets only  
+     C. **Opening brackets only**  
+     D. Arithmetic operators  
+
+28. Why are postfix expressions considered more efficient for computer evaluation than infix expressions?  
+     A. They use fewer characters.  
+     B. **They eliminate the need for parentheses and operator precedence rules.**  
+     C. They are easier for humans to read and write.  
+     D. They allow for faster division operations.  
+
+29. During the evaluation of a postfix expression, what should happen when an operator is encountered?  
+     A. It is pushed onto the stack.  
+     B. **It is applied to the two preceding operands removed from the stack.**  
+     C. The evaluation process stops immediately.  
+     D. It is appended to the end of the expression.  
+
+30. Which region of the Python Virtual Machine (PVM) is responsible for managing computer memory in support of function calls?  
+     A. Object heap  
+     B. Unused memory  
+     C. **Call stack**  
+     D. Program bytecode  
+
+
+
+
 ***
 
 ### Part II: Short Answer Questions (20 Questions)
@@ -239,3 +302,9 @@ Please answer the following questions clearly and concisely, drawing only on the
 
 18.  When comparing the memory usage of a full **ArrayBag** versus a **LinkedBag** of the same logical size, which implementation uses less memory, and what is the approximate memory cost difference in the worst case?  
   **Answer:** When full, the **ArrayBag uses less memory**. In the worst case, a LinkedBag uses **twice as much memory** as an ArrayBag whose array is full.
+
+19. What is the specific visitation order of the __iter__ method in a stack?
+    **Answer:** It visits items from bottom to top.
+
+20. In the algorithm to convert infix to postfix, what is the required action when an operand is encountered?
+    **Answer:** Append it to the postfix expression.
