@@ -20,7 +20,7 @@ format:
 
 ***
 
-> **Note:** This midterm exam is developed based exclusively on the materials covered in the class so far, following the topics from Week 1 through Week 6.
+> **Note:** This midterm exam is developed based exclusively on the materials covered in the class so far, following the topics from Week 1 through Week 7.
 
 ***
 
@@ -301,10 +301,12 @@ Please answer the following questions clearly and concisely, drawing only on the
 
 
 18.  When comparing the memory usage of a full **ArrayBag** versus a **LinkedBag** of the same logical size, which implementation uses less memory, and what is the approximate memory cost difference in the worst case?  
-  **Answer:** When full, the **ArrayBag uses less memory**. In the worst case, a LinkedBag uses **twice as much memory** as an ArrayBag whose array is full.
+     **Answer:** When full, the **ArrayBag uses less memory**. In the worst case, a LinkedBag uses **twice as much memory** as an ArrayBag whose array is full.
 
 19. What is the specific visitation order of the __iter__ method in a stack?
+    
     **Answer:** It visits items from bottom to top.
 
 20. In the algorithm to convert infix to postfix, what is the required action when an operand is encountered?
-    **Answer:** Append it to the postfix expression.
+ 
+     **Answer:** Append it to the postfix expression.
