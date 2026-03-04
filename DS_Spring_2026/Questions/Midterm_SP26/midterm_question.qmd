@@ -220,29 +220,53 @@ Please select the best answer for each question.
 ### Part 7: Stacks
 
 31. What is the primary role of a stack in a backtracking algorithm? 
+
     A. To store the final solution 
-    B. **To remember alternative states or junk-tures to return to if a path fails** 
+
+    B. To remember alternative states or junk-tures to return to if a path fails
+
     C. To sort the possible moves in ascending order 
+
     D. To prevent the algorithm from visiting the same state twice 
+
 32. What is an "activation record" (also called a stack frame)? 
+
     A. A list of all global variables in a program 
+
     B. A record of how many times a specific function has been called 
+
     C. The compiled bytecode of a single Python method 
-    D. **A data structure pushed onto the call stack containing a subroutine's data like parameters and return addresses** 
+
+    D. A data structure pushed onto the call stack containing a subroutine's data like parameters and return addresses
+
 33. In the ArrayStack implementation, which index represents the "top" of the stack? 
+
     A. Index 0 
-    B. **len(self) - 1** 
+
+    B. len(self) - 1
+
     C. Index 1 
+
     D. A random index chosen at instantiation 
+
 34. What are the two specific fields required for the Node class in a linked stack implementation? 
+
     A. top and bottom 
+
     B. index and value 
-    C. **data and next** 
+
+    C. data and next
+
     D. head and tail 
+
 35. When pushing an item onto a linked stack, what is the first step of the internal process? 
-    A. **Set a newNode to Node(data, self.items)** 
+
+    A. Set a newNode to Node(data, self.items)
+
     B. Increment the self.size variable 
+
     C. Shift all existing items one position to the right 
+
     D. Clear the existing self.items pointer
 
 ---
@@ -270,3 +294,20 @@ Please answer the following questions clearly and concisely, drawing only on the
 9. What is the primary purpose of introducing a **dummy header node** in a circular linked structure?
 
 10. What specific role does the Python keyword **`yield`** play in the `__iter__` method of the `ArrayBag` or `LinkedBag` class implementation?
+
+<!-- Newly Added Stack Portion  -->
+11. During the infix-to-postfix conversion process, what types of items are stored on the stack?
+    
+   
+12. When converting infix to postfix, what happens to the left parenthesis once its matching right parenthesis is processed?
+    
+  
+13. What is the primary internal step required to pop an item from a linked stack?
+    
+    **Answer:** Set self.items to self.items.next.
+14. What does the AbstractStack constructor initialize when a new stack is created?
+    
+   
+15. Which two methods does the Scanner class provide to iterate through tokens in an arithmetic expression?
+    
+   

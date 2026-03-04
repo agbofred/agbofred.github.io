@@ -1,6 +1,6 @@
 ---
 title: "Mini-project 2#"
-subtitle: "Due: October  27, 2025 at 10:00 PM"
+subtitle: "Due: March  11, 2026 at 10:00 PM"
 format:
   html:
     theme:
@@ -21,7 +21,7 @@ format:
 To begin this mini-project, download the assignment folder from the link below. Open the entire folder in VS Code for easy editing and proper library support. When you finish, upload your completed files to GitHub, overwriting the original templates. Do not rename any files.
 
 ```{=html}
-<a href='https://classroom.github.com/a/TKOAChn_' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Mini Project</a>
+<a href='https://classroom.github.com/a/89VijMsT' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Mini Project</a>
 ```
 <br>
 
@@ -88,11 +88,11 @@ Puzzle complete!
 
 ---
 
-## Extra Points (Optional)
+## Extra Points (Optional 10 points)
 
-- Allow the user to specify the number of disks.
-- Add a method to reset the puzzle.
-- Add error handling for invalid moves.
+- Allow the user to specify the number of disks. (**5 points**)
+- Add a method to reset the puzzle. (**3 points**)
+- Add error handling for invalid moves. (**2 points**)
 
 
 
