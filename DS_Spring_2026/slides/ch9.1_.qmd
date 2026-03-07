@@ -1,7 +1,7 @@
 ---
 title: "Queues"
 author: "Fred Agbo"
-date: October 22, 2025
+date: March 9, 2026
 format:
   revealjs:
     chalkboard: true
@@ -10,7 +10,11 @@ format:
 ---
 ## Announcements
 - Welcome!
-- Mini project 2 is due on __next week Monday October 27__
+- We will delve into a new data structures today - `Queues`
+- Midterm exam was graded:
+    - Generally, folks did great.
+        -  Send any questions or concerns my way.
+- Mini project 2 was posted last week and due on __Wednesday this week__
 
 
 # Queues Data Structures 
@@ -41,7 +45,7 @@ format:
 ## Overview of Queues (3 of 3)
 ::: {.columns}
 ::: {.column width="55%"}
-- _The states a queue_
+- _The states of a queue_
     - ![](../images/queueState.png){style="width:75%;"}
 
 :::
@@ -190,7 +194,7 @@ format:
     - - ![](../images/LinkedQueue.png){style="width:75%;"}
 
 ## A Linked Implementation of Queues 
-- The instance variables  front  and  `rear`  of the  `LinkedQueue`  class are given an initial value of  `None` 
+- The instance variables  `front`  and  `rear`  of the  `LinkedQueue`  class are given an initial value of  `None` 
 - A variable named  `size` , already defined in the collection framework, tracks the number of elements currently in the queue
 - During an  `add`  operation,
     - Create a new node
@@ -252,7 +256,7 @@ def pop(self):
 :::{.small style="font-size: 32px;"}
 - You can avoid  `pop` ’s linear behavior by not shifting items left each time the operation is applied
 - The modified implementation maintains a second index, called  front , that points to the item at the `front` of the queue
-The  `front`  pointer starts at 0 and advances through the array as items are popped
+- The  `front`  pointer starts at 0 and advances through the array as items are popped
 - Figure below shows such a queue after five  `add`  and two  `pop`  operations
 
     - ![](../images/ArrayQueuepop.png){style="width:55%;"}

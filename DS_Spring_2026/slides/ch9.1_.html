@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Fred Agbo">
-  <meta name="dcterms.date" content="2025-10-22">
+  <meta name="dcterms.date" content="2026-03-09">
   <title>Queues</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -206,13 +206,21 @@ Fred Agbo
 </div>
 </div>
 
-  <p class="date">2025-10-22</p>
+  <p class="date">2026-03-09</p>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
 <li>Welcome!</li>
-<li>Mini project 2 is due on <strong>next week Monday October 27</strong></li>
+<li>We will delve into a new data structures today - <code>Queues</code></li>
+<li>Midterm exam was graded:
+<ul>
+<li>Generally, folks did great.
+<ul>
+<li>Send any questions or concerns my way.</li>
+</ul></li>
+</ul></li>
+<li>Mini project 2 was posted last week and due on <strong>Wednesday this week</strong></li>
 </ul>
 </section>
 <section>
@@ -260,7 +268,7 @@ Fred Agbo
 <div class="columns">
 <div class="column" style="width:55%;">
 <ul>
-<li><em>The states a queue</em>
+<li><em>The states of a queue</em>
 <ul>
 <li><img data-src="../images/queueState.png" style="width:75%;"></li>
 </ul></li>
@@ -612,7 +620,7 @@ Fred Agbo
 <section id="a-linked-implementation-of-queues-2" class="slide level2">
 <h2>A Linked Implementation of Queues</h2>
 <ul>
-<li>The instance variables front and <code>rear</code> of the <code>LinkedQueue</code> class are given an initial value of <code>None</code></li>
+<li>The instance variables <code>front</code> and <code>rear</code> of the <code>LinkedQueue</code> class are given an initial value of <code>None</code></li>
 <li>A variable named <code>size</code> , already defined in the collection framework, tracks the number of elements currently in the queue</li>
 <li>During an <code>add</code> operation,
 <ul>
@@ -690,7 +698,8 @@ Fred Agbo
 <div class="small" style="font-size: 32px;">
 <ul>
 <li><p>You can avoid <code>pop</code> ’s linear behavior by not shifting items left each time the operation is applied</p></li>
-<li><p>The modified implementation maintains a second index, called front , that points to the item at the <code>front</code> of the queue The <code>front</code> pointer starts at 0 and advances through the array as items are popped</p></li>
+<li><p>The modified implementation maintains a second index, called front , that points to the item at the <code>front</code> of the queue</p></li>
+<li><p>The <code>front</code> pointer starts at 0 and advances through the array as items are popped</p></li>
 <li><p>Figure below shows such a queue after five <code>add</code> and two <code>pop</code> operations</p>
 <ul>
 <li><img data-src="../images/ArrayQueuepop.png" style="width:55%;"></li>
