@@ -1,7 +1,7 @@
 ---
 title: "TREES STRUCTURE (2)"
 author: "Fred Agbo"
-date: November 3, 2025
+date: March 18, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,7 +9,7 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Welcome to New Month and week 11!
+- Welcome back1!
 - We continue to discuss `Trees` Structure
     - Readings:
         - FDS - Lambert: Chapter 10

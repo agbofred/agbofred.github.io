@@ -1,7 +1,7 @@
 ---
 title: "TREES STRUCTURE"
 author: "Fred Agbo"
-date: October 29, 2025
+date: March 16, 2026
 format:
   revealjs:
     chalkboard: true
@@ -14,7 +14,7 @@ format:
     - Readings:
         - FDS - Lambert: Chapter 10
         - DS&A - John et al.: Chapter 8, 9
-- Problem set 4 is posted and due __next week Monday November 3__
+- Problem set 4 is posted and due __on Wednesday this week 3/18__
 
 
 ## Learning Objectives
@@ -175,9 +175,10 @@ format:
 | 1          | 2             | 3                                |
 | 2          | 3             | 7                                |
 | 3          | 4             | 15                               |
-| h          | h + 1         | 2^(h+1) - 1                      |
+| h          | h + 1         | $2^{(h+1)}$-1                      |
 
-- In a full binary tree of height `h`, the maximum number of nodes is `2^(h+1) - 1`.
+
+- In a full binary tree of height `h`, the maximum number of nodes is $2^{(h+1)}$-1.
 - The minimum number of nodes in a binary tree of height `h` is `h + 1` (vine-like tree).
 
 :::
