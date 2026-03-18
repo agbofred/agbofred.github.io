@@ -9,7 +9,7 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Welcome back1!
+- Welcome back!
 - We continue to discuss `Trees` Structure
     - Readings:
         - FDS - Lambert: Chapter 10
