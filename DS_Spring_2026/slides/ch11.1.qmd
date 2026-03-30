@@ -1,7 +1,7 @@
 ---
 title: "TREES STRUCTURE (3)"
 author: "Fred Agbo"
-date: March 30, 2023
+date: March 30, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,9 +9,21 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
+:::{.incremental style="font-size: 30px;"}
+- Welcome back from the spring break!
+- Grading of MP2 was concluded and published.
+- PS4 grading is pending due to a mistake in publishing a wrong `.txt` starter file.
+    - Submission on GitHub encountered hitch due to the modifications made to correct the mistake.
+    - Consequently, Problem 1 of PS4 will not be graded.
+    - Only Problem 2: Array-based Queue Implementation will be graded.
+    - If you have not done so, please private message me your `arrayqueue.py` on Discord.
 - Short homework: PS5 is posted at the end of this slides
-    - Due next Monday
+    - Due this week Wednesday
     - Submission is `PDF` file and on Canvas
+:::
+
+
+## Continuation on Binary Trees Application  
 - Todays Lecture:
     - Discuss Expression Trees 
     - Array-based Trees
@@ -255,7 +267,7 @@ def pop(self):
 - use this [link](https://github.com/Agbo-CS152/ps5/releases/download/PS5_starter_LinkedBST/PS5.zip) to download the codes.
 
 ## Homework: `PS5: submission on Canvas`
-:::{.smaller style="font-size:28px;"}
+:::{.smaller style="font-size:25px;"}
 
 ### Instruction:
 
@@ -264,8 +276,11 @@ def pop(self):
 - Submit your solution as `PDF` to Canvas page created for this homework 
 
 ### Tasks 1:
-- Add the methods `height` and `isBalanced` to the `LinkedBST` class. The `height` method returns the height of the tree, as defined in this chapter. The `isBalanced`
-method returns `True` if the height of the tree is less than twice the $log_2$ of its number of nodes, or `False` otherwise.
+- Add the methods `height` and `isBalanced` to the `LinkedBST` class. The `height` method returns the height of the tree, as defined in this chapter. 
+    - The `isBalanced` method returns `True` if the height of the tree is less than twice the $log_2$ of its number of nodes, or `False` otherwise.
+- Ensure the following lines of code in the testbst.py are uncommented before running the program.
+   -  `# print("\nHeight =", tree.height())`
+   -  `# print("\nIs balanced =", tree.isBalanced())`
 :::
 
 ## Homework: `PS5`
