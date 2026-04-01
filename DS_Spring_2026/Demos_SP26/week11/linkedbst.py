@@ -245,3 +245,23 @@ class LinkedBST(AbstractCollection):
             else:
                 probe = probe.right
         return None
+
+######## Class Short Assignment##########
+    def height(self):
+        """Returns the height of the tree (the length of the longest path
+        from the root to a leaf node).
+        When len(t) < 2, t.height() == 0."""
+        def recurse(node):
+            if node == None:
+                return 0
+            else:
+                return 1 + max(recurse(node.left), recurse(node.right))
+        h = recurse(self.root)
+        if not self.isEmpty():
+            h -= 1
+        return h
+
+    def isBalanced(self):
+        """Returns True if the tree is balaned or False otherwise.
+        t is balanced iff t.height() < 2 * log2(len(t) + 1) - 1."""
+        return self.height() < 2 *log(len(self) + 1, 2) - 1
