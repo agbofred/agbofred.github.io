@@ -1,6 +1,6 @@
 ---
-title: "Mini-project 2#"
-subtitle: "Due: October  27, 2025 at 10:00 PM"
+title: "Mini-project 3#"
+subtitle: "Due: April  15, 2026 at 10:00 PM"
 format:
   html:
     theme:

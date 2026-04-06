@@ -1,7 +1,7 @@
 ---
 title: "GRAPH STRUCTURE"
 author: "Fred Agbo"
-date: November 10, 2025
+date: April 6, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,13 +9,8 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- PS5 is due today.
-- Grading of PS4 is ongoing 
-- No class this Wednesday November 12
-    - ***Prof. Agbo is away for a conference***
-- Mini Project #3 to be posted today and due on Monday November 24th
-    - Use class time on Wednesday to solve the mini-project
-    - Submission due date is long but other assignments will be givien inbetween
+- Mini Project #3 was posted last week and due next week Wednesday.
+- Grading of PS4 and PS5 are ongoing.
 
 ## Graphs: Learning Objectives
 - Describe the features of a graph

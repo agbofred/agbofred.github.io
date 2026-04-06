@@ -1,7 +1,7 @@
 ---
 title: "GRAPHS TRAVERSALS"
 author: "Fred Agbo"
-date: November 17, 2025
+date: April 8, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,8 +9,8 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Mini Project #3 is due next week Monday.
-- Grading of PS5 is ongoing 
+- Mini Project #3 was posted last week and due next week Wednesday.
+- Grading of PS4 and PS5 are ongoing.
 
 # Class Worksheet Activity: 1
 
