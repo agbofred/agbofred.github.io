@@ -1,6 +1,6 @@
 ---
 title: "CS152: Data Structure"
-subtitle: Week 13 - Graphs Worksheet (B)
+subtitle: Week 14 - Graphs Worksheet
 # author: "Fred Agbo"
 # date: November 17, 2025
 format:

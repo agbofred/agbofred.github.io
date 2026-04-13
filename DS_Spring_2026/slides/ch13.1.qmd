@@ -1,7 +1,7 @@
 ---
-title: "GRAPHS TRAVERSALS 2"
+title: "TREES WITHIN GRAPHS"
 author: "Fred Agbo"
-date: November 19, 2025
+date: April 13, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,22 +9,87 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 ## Announcements
-- Mini Project #3 is due next week Monday.
-- Grading of PS5 is ongoing 
+- Welcome to week 14! 
+    - `Be encouraged despite the challenges!`
+- Mini Project #3 due date is extended to ***next week Monday April 20 at 10 pm***.
+- Grading of PS4 and PS5 are published.
+- No class this Wednesday April 15. `It is SSRD Day!`
 
-# Class Worksheet Activity
-
-# Review of Mini Project 3
-
-## Recall Minimum Spanning Tree
-
-:::{.incremental style="font-size: 30px;"}
-- A **Minimum Spanning Tree (MST)** is a spanning tree of a weighted, connected, undirected graph with the smallest possible total edge weight.
-- MSTs are used in network design, clustering, and other optimization problems.
+## Trees within Graphs
+:::{.incremental style="font-size: 34px;"}
+- Recall the function `traverseFromVertex` shown in the Psedocode, it implicitly yields a tree rooted at the vertex from which the traversal starts and includes all the vertices reached during the traversal
+- Suppose  `dfs`  has just been called using vertex  `v`:
+    - If a recursive call using vertex  `w`  now occurs, you can consider  `w`  to be a child of  `v` 
+    The edge `(v , w)` corresponds to the parent-child relationship, or edge, between  `v`  and  `w` 
+    - The starting vertex is the root of this tree
+    - The tree is called a `depth-first search tree`
 
 :::
 
-## Recall Minimum Spanning Tree
+## Spanning Trees
+:::{.incremental style="font-size: 30px;"}
+- A **spanning tree** of a connected, undirected graph is a subgraph that includes all the vertices of the graph and is a tree.
+- Every connected graph has at least one spanning tree.
+- Spanning trees are useful for minimizing the number of edges while maintaining connectivity.
+- **Minimum Spanning Tree (MST):**
+    <!-- - A spanning tree with the smallest possible total edge weight.
+    - Common algorithms for finding MSTs include Kruskal’s and Prim’s algorithms.-->
+<!-- - Applications include network design, clustering, and approximation algorithms.  -->
+:::
+
+## Minimum Spanning Tree
+
+:::{.incremental style="font-size: 30px;"}
+- A **Minimum Spanning Tree (MST)** is a spanning tree of a weighted, connected, undirected graph with the smallest possible total edge weight.
+- MSTs are used in network design, clustering, and other optimization problems. 
+- Common algorithms for finding MSTs include Kruskal’s and Prim’s algorithms.-
+
+:::
+
+## Minimum Spanning Tree
+:::{.incremental style="font-size: 26px;"}
+- ![](../images/spanningTree2.png){style="width:80%;"}
+- The graph on the left has the maximum number of edges, `10`, for a five-vertex graph.
+- The graph on the right has the same five vertices but with the minimum number of edges necessary to connect them, `4`.
+- This constitutes a `minimum spanning tree (MST)` for the graph.
+:::
+
+:::{.notes}
+- DO YOU SEE ANY ALTERNATE PATH?
+- There are many possible minimum spanning trees (MSTs) for a given graph.
+- For example, the MST of the Figure above could include edges AC, BC, BD, and BE, or alternatively AC, CE, ED, and DB.
+- The number of edges in a minimum spanning tree is always one fewer than the number of vertices.
+- Removing any edge from a minimum spanning tree would create multiple connected components.
+
+:::
+
+## Minimum Spanning Tree Algorithms
+:::{.incremental style="font-size: 30px;"}
+- **Kruskal’s Algorithm:**
+    - Sort all edges by weight.
+    - Add edges one by one to the tree, skipping those that would form a cycle, until all vertices are connected.
+- **Prim’s Algorithm:**
+    - Start from any vertex.
+    - Grow the tree by repeatedly adding the smallest edge that connects a vertex in the tree to a vertex outside.
+- Both algorithms run in $O(E \log V)$ time, where $E$ is the number of edges and $V$ is the number of vertices.
+:::
+
+## Minimum Spanning Tree
+- Robert C. Prim’s `algorithm` for finding a minimum spanning tree
+
+```python
+minimumSpanningTree(graph):
+    mark all vertices and edges as unvisited
+    mark some vertex, say v, as visited
+    for all the vertices:
+        find the least weight edge from a visited vertex to an
+        unvisited vertex, say w
+        mark the edge and w as visited
+
+```
+
+
+## Minimum Spanning Tree
 :::{.incremental style="font-size: 26px;"}
 - Here is a weighted graph with six vertices. Each edge has a weight, shown by a number alongside the edge.
 
@@ -32,7 +97,7 @@ format:
 - How can you pick a subgraph that minimizes the cost of connecting vertices into a network?
 
 :::
-## Recall Minimum Spanning Tree
+## Minimum Spanning Tree
 - The answer is to calculate a minimum spanning tree. 
 - It will have five edges (one fewer than the number of vertices), it will connect all six vertices
 - It will minimize the total cost of the links. 
@@ -49,158 +114,39 @@ format:
 
 :::
 
-
-## The Shortest-Path Problem
-:::{.incremental}
-- It is often useful to determine the shortest path between two vertices in a graph
-- The `single-source shortest path problem` asks for a solution that contains the shortest paths from a given vertex to all other vertices:
-    - Solution by Dijkstra: $O(N^2)$
-
-- Another problem, `all-pairs shortest path problem`, asks for the set of all the shortest paths in a graph:
-    - Solution by Floyd: $O(N^3)$
+## Topological Sort 
+:::{.incremental style="font-size: 28px;"}
+- A topological sort of a directed acyclic graph (DAG) is a linear ordering of its vertices such that for every directed edge u → v, vertex u comes before v in the ordering.
+- Topological sorting is useful for scheduling tasks, resolving dependencies, and organizing data with precedence constraints.
+- **Example Scenario:**  
+    - Imagine a university course catalog where each course may have prerequisites.
+    - Each course is a vertex, and a directed edge from course A to course B means "A is a prerequisite for B."
+    - For example:
+        - `Math 101 → Math 201` (Math 101 is a prerequisite for Math 201)
+        - `CS 101 → CS 201` (CS 101 is a prerequisite for CS 201)
+        - `CS 201 → CS 301`
+        - `Math 201 → CS 301`
+- Only DAGs have valid topological orders; graphs with cycles do not.
 :::
 
-## Dijkstra’s Algorithm 
-:::{.incremental style="font-size: 30px;"}
-- Dijkstra’s algorithm finds the shortest paths from a single source vertex to all other vertices in a weighted graph with non-negative edge weights.
-- The algorithm maintains a set of visited vertices and a distance stored in `results` as 2D array.
-- At each step, it selects the unvisited vertex with the smallest known distance, updates the distances to its neighbors, and marks it as visited.
-- The algorithm uses a temporary list, `included`, of N Booleans
-    - To track whether or not a given vertex has been included in the set of vertices for which you already have determined the shortest path
-- The algorithm consists of two major steps: 
-    - An initialization step
-    - A computation step
-
-:::
-
-## Dijkstra’s Algorithm: Initialization Step 
-:::{.small style="font-size: 35px;"}
-- Initialize all the columns in the results grid and all the cells in the included list according to the following algorithm:
-
-```{.python}
-for each vertex in the graph
-    Store vertex in the current row of the results grid
-    If vertex = source vertex
-        Set the row’s distance cell to 0
-        Set the row’s parent cell to undefined
-        Set included[row] to True
-    Else if there is an edge from source vertex to vertex
-        Set the row’s distance cell to the edge’s weight
-        Set the row’s parent cell to source vertex
-        Set included[row] to False
-    Else
-        Set the row’s distance cell to infinity
-        Set the row’s parent cell to undefined
-        Set included[row] to False
-    Go to the next row in the results grid
-
-```
-:::
+## Topological Sort 
 
 
-## Dijkstra’s Algorithm: Initialization Step 
-- A graph and the initial state of the data structures used to compute the shortest paths from a given vertex
+- ![](../images/graphOfCourses.png){style="width:50%;"}
 
-- ![](../images/DijkstraInitial.png){style="width:70%;"}
+:::{.incremental style="font-size: 25px;"}
+- The first topological ordering of the graph
 
+- ![](../images/firstTopological.png){style="width:35%;"}
 
-## Dijkstra’s Algorithm: Computation Step 
-:::{.small style="font-size: 35px;"}
-- Dijkstra’s algorithm finds the shortest path from the source to a vertex, marks this vertex’s cell in the  included  list, and continues this process until all these cells are marked:
+- The second topological ordering of the graph
 
-<!-- **Pseudocode:**
-1. While there are unvisited vertices:
-    a. Select the unvisited vertex with the smallest distance value.
-    b. Mark this vertex as visited (included).
-    c. For each neighbor of this vertex:
-        i. If the neighbor is not visited and the path through the current vertex is shorter:
-            - Update the neighbor’s distance value.
-            - Update the neighbor’s parent to the current vertex.
-
-## Dijkstra’s Algorithm: Computation Step  -->
-```{.python}
-Do
-    Find the vertex F that is not yet included and has the minimal distance in the results grid
-    Mark F as included
-    For each other vertex T not included
-        If there is an edge from F to T
-            Set new distance to F’s distance + edge’s weight
-            If new distance < T’s distance in the results grid
-                Set T’s distance to new distance
-                Set T’s parent in the results grid to F
-While at least one vertex is not included
-
-```
+- ![](../images/secondTopological.png){style="width:35%;"}
 
 :::
 
 
-## Dijkstra’s Algorithm: Computation Step 
-- A graph and the final state of the data structures used to compute the shortest paths from a given vertex
-- ![](../images/DijkstraFinal.png){style="width:70%;"}
-
-
-## Dijkstra’s Algorithm: Analysis
-:::{.incremental style="font-size: 35px;"}
-- The initialization step must process every vertex
-    - So it is `O(n)`
-- The outer loop of the computation step also iterates through every vertex
-- The inner loop of this step iterates through every vertex not included thus far
-- The overall behavior of the computation step resembles that of other $O(N^2)$ algorithms, so Dijkstra’s algorithm is $O(N^2)$
-
-:::
-
-## Floyd’s Algorithm
-:::{.incremental style="font-size: 35px;"}
-- Floyd’s algorithm (Floyd-Warshall) solves the all-pairs shortest path problem for a weighted graph.
-- It works for both directed and undirected graphs, and can handle negative edge weights (but not negative cycles).
-- The algorithm uses a 2D matrix to store shortest distances between every pair of vertices.
-- It repeatedly updates the matrix by considering each vertex as an intermediate point.
-:::
-
-## Floyd’s Algorithm
-:::{.incremental style="font-size: 35px;"}
-- For each vertex v in a graph, the algorithm finds the shortest path from vertex v to any other vertex w that is reachable from v
-- Consider the weighted graph in this Figure 
-
-- ![](../images/Floyd1.png){style="width:70%;"}
-:::
-
-## Floyd’s Algorithm: In a preprocessing step
-:::{.incremental style="font-size: 35px;"}
-- Using the figure above, you will build an initial distance matrix whose cells contain the weights on the edges that connect each vertex with its neighbors 
-
-- ![](../images/FloydInitial.png){style="width:40%;"}
-
-:::
-
-## Floyd’s Algorithm: Computational step
-
-- Using the figure above, here is the modified distance matrix: 
-
-- ![](../images/FloydFinal.png){style="width:45%;"}
-
-
-
-## Floyd’s Algorithm
-
-**Pseudocode:**
-```{.python}
-for i from 0 to n - 1
-    for r from 0 to n - 1
-        for c from 0 to n - 1
-            matrix[r][c] = min(matrix[r][c],
-                              matrix[r][i] + matrix[i][c])
-
-```
-
-## Floyd’s Algorithm: Analysis
-
-- The initialization step to create the distance matrix from the graph is $O(N^2)$
-    - This matrix is actually the same as an adjacency matrix representation of the given graph
-- Because Floyd’s algorithm includes three nested loops over N vertices, the algorithm itself is $O(N^3)$
-- The overall running time of the process is bounded by $O(N^3)$
-
+# Class Worksheet Activity:
 <!-- 
 ## Next Week Reading:
 - FDS - Lambert 
