@@ -194,7 +194,7 @@ class LinkedDirectedGraph(AbstractCollection):
         result = str(len(self)) + " Vertices: "
         for vertex in self.vertices:
             result += " " + str(vertex)
-        result += "\n";
+        result += "\n"
         result += str(self.sizeEdges()) + " Edges: "
         for edge in self.edges():
             result += " " + str(edge)

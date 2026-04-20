@@ -11,7 +11,7 @@
 
   <meta name="author" content="Fred Agbo">
   <meta name="dcterms.date" content="2026-04-20">
-  <title>GRAPHS TRAVERSALS 2</title>
+  <title>GRAPHS ALGORITHMS</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -196,7 +196,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">GRAPHS TRAVERSALS 2</h1>
+  <h1 class="title">GRAPHS ALGORITHMS</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -210,19 +210,42 @@ Fred Agbo
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
+<div style="font-size: 30px;">
 <ul>
-<li>Welcome to week 14!</li>
+<li class="fragment">Welcome to week 15!</li>
+<li class="fragment">Mini Project #3 is due today.</li>
+<li class="fragment">Grading of HashTable assignment was published.
+<ul>
+<li class="fragment">Any questions or concerns, let me know or meet Sam in QUAD Center!</li>
+</ul></li>
+<li class="fragment">Last day in class will be Wednesday April 29 <strong>NOT April 27th</strong>
+<ul>
+<li class="fragment">Next week is dedicated to reviews of materials</li>
+</ul></li>
+<li class="fragment">Check for your date for final exam:
+<ul>
+<li class="fragment">Session: MW 10:20am – 11:50am: Tue., May 5th, from 8:00 a.m. - 11:00 a.m.</li>
+<li class="fragment">Session: MW 8:40am – 10:10am: Wed., May 6th, from 8:00 a.m. - 11:00 a.m.</li>
+<li class="fragment">Those with accommodation and writing the exam in testing center should communicate them and cc me to book a spot ASAP.</li>
+</ul></li>
+<li class="fragment">Checkout the <code>Course Evaluation Menu/link on your Canvas</code></li>
 </ul>
+</div>
 </section>
 <section>
-<section id="minimum-spanning-tree-application" class="title-slide slide level1 center">
-<h1>Minimum Spanning Tree Application</h1>
+<section id="pathfinding-algorithms" class="title-slide slide level1 center">
+<h1>Pathfinding Algorithms</h1>
 
 </section>
 <section id="the-shortest-path-problem" class="slide level2">
 <h2>The Shortest-Path Problem</h2>
+<div style="font-size: 33px;">
 <ul>
 <li class="fragment">It is often useful to determine the shortest path between two vertices in a graph</li>
+<li class="fragment">Consider an airline map, represented as a weighted directed graph whose weights represent miles between airports.
+<ul>
+<li class="fragment">The shortest path between two airports is the path that has the smallest sum of edge weights.</li>
+</ul></li>
 <li class="fragment">The <code>single-source shortest path problem</code> asks for a solution that contains the shortest paths from a given vertex to all other vertices:
 <ul>
 <li class="fragment">Solution by Dijkstra: <span class="math inline">\(O(N^2)\)</span></li>
@@ -232,6 +255,7 @@ Fred Agbo
 <li class="fragment">Solution by Floyd: <span class="math inline">\(O(N^3)\)</span></li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="dijkstras-algorithm" class="slide level2">
 <h2>Dijkstra’s Algorithm</h2>
@@ -317,6 +341,18 @@ Fred Agbo
 <li><img data-src="../images/DijkstraFinal.png" style="width:70%;"></li>
 </ul>
 </section>
+<section id="representing-working-with-infinity" class="slide level2">
+<h2>Representing &amp; Working with Infinity</h2>
+<div style="font-size: 30px;">
+<ul>
+<li class="fragment">Many textbooks represent infinity as a very large integer (e.g., the maximum integer value supported by the language).</li>
+<li class="fragment">This approach is inaccurate and unnecessary in Python.</li>
+<li class="fragment">In Python, you can represent infinity as a nonnumeric value, as long as you only use addition and comparisons.</li>
+<li class="fragment">In this implementation, define a constant <code>INFINITY</code> as the string value <code>"-"</code>, which prints nicely.</li>
+<li class="fragment">Arithmetic and comparison operations are handled by specialized functions.</li>
+</ul>
+</div>
+</section>
 <section id="dijkstras-algorithm-analysis" class="slide level2">
 <h2>Dijkstra’s Algorithm: Analysis</h2>
 <div style="font-size: 35px;">
@@ -386,6 +422,579 @@ Fred Agbo
 </ul></li>
 <li>Because Floyd’s algorithm includes three nested loops over N vertices, the algorithm itself is <span class="math inline">\(O(N^3)\)</span></li>
 <li>The overall running time of the process is bounded by <span class="math inline">\(O(N^3)\)</span></li>
+</ul>
+</section></section>
+<section>
+<section id="graph-implementation" class="title-slide slide level1 center">
+<h1>Graph Implementation</h1>
+
+</section>
+<section id="developing-a-graph-collection" class="slide level2">
+<h2>Developing a Graph Collection</h2>
+<div style="font-size: 32px;">
+<ul>
+<li class="fragment"><strong>To develop a graph collection, consider the following:</strong>
+<ul>
+<li class="fragment">The requirements of users</li>
+<li class="fragment">The mathematical nature of graphs</li>
+<li class="fragment">The commonly used representations, adjacency matrix, and adjacency list</li>
+</ul></li>
+<li class="fragment"><strong>Users should be able to</strong>
+<ul>
+<li class="fragment">Insert and remove vertices</li>
+<li class="fragment">Insert or remove an edge</li>
+<li class="fragment">Retrieve all the vertices and edges</li>
+<li class="fragment">Choose between directed and undirected graphs and between an adjacency matrix representation and an adjacency list representation</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="example-use-of-the-graph-collection" class="slide level2">
+<h2>Example Use of the Graph Collection</h2>
+<div class="columns">
+<div class="column" style="font-size: 28px; width: 50%;">
+<ul>
+<li>Consider constructing this weighted graph:</li>
+<li><img data-src="../images/weightedDirectedGraph.png" style="width:80%;"></li>
+</ul>
+</div><div class="column" style="font-size: 28px; width: 50%">
+<ul>
+<li>Code</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">from</span> graph <span class="im">import</span> LinkedDirectedGraph</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>g <span class="op">=</span> LinkedDirectedGraph()</span>
+<span id="cb4-4"><a href=""></a><span class="co"># Insert vertices</span></span>
+<span id="cb4-5"><a href=""></a>g.addVertex(<span class="st">"A"</span>)</span>
+<span id="cb4-6"><a href=""></a>g.addVertex(<span class="st">"B"</span>)</span>
+<span id="cb4-7"><a href=""></a>g.addVertex(<span class="st">"C"</span>)</span>
+<span id="cb4-8"><a href=""></a>g.addVertex(<span class="st">"D"</span>)</span>
+<span id="cb4-9"><a href=""></a>g.addVertex(<span class="st">"E"</span>)</span>
+<span id="cb4-10"><a href=""></a>&nbsp;</span>
+<span id="cb4-11"><a href=""></a><span class="co"># Insert weighted edges</span></span>
+<span id="cb4-12"><a href=""></a>g.addEdge(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">3</span>)</span>
+<span id="cb4-13"><a href=""></a>g.addEdge(<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="dv">2</span>)</span>
+<span id="cb4-14"><a href=""></a>g.addEdge(<span class="st">"B"</span>, <span class="st">"D"</span>, <span class="dv">1</span>)</span>
+<span id="cb4-15"><a href=""></a>g.addEdge(<span class="st">"C"</span>, <span class="st">"D"</span>, <span class="dv">1</span>)</span>
+<span id="cb4-16"><a href=""></a>g.addEdge(<span class="st">"D"</span>, <span class="st">"E"</span>, <span class="dv">2</span>)</span>
+<span id="cb4-17"><a href=""></a>&nbsp;</span>
+<span id="cb4-18"><a href=""></a><span class="bu">print</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div style="font-size: 25px;">
+<ul>
+<li class="fragment">Output:
+<ul>
+<li class="fragment"><code>5 Vertices:  A C B E D</code></li>
+<li class="fragment"><code>5 Edges: A&gt;B:3 A&gt;C:2 B&gt;D:1 C&gt;D:1 D&gt;E:2</code></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="example-use-of-the-graph-collection-1" class="slide level2">
+<h2>Example Use of the Graph Collection</h2>
+<div class="small" style="font-size: 28px;">
+<ul>
+<li><p>The next code segment displays the neighboring vertices and the incident edges of the vertex labeled <code>A</code> in this example graph:</p></li>
+<li><p>Neighboring vertices of <code>A</code></p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Neighboring vertices of A:"</span>)</span>
+<span id="cb5-2"><a href=""></a><span class="cf">for</span> vertex <span class="kw">in</span> g.neighboringVertices(<span class="st">"A"</span>):</span>
+<span id="cb5-3"><a href=""></a>    <span class="bu">print</span>(vertex)</span>
+<span id="cb5-4"><a href=""></a></span>
+<span id="cb5-5"><a href=""></a><span class="co"># Output:</span></span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>Neighboring vertices of A:</span>
+<span id="cb5-8"><a href=""></a>    B</span>
+<span id="cb5-9"><a href=""></a>    C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Incident edges of the vertex labeled <code>A</code></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Incident edges of A:"</span>)</span>
+<span id="cb6-2"><a href=""></a><span class="cf">for</span> edge <span class="kw">in</span> g.incidentEdges(<span class="st">"A"</span>):</span>
+<span id="cb6-3"><a href=""></a>    <span class="bu">print</span>(edge)</span>
+<span id="cb6-4"><a href=""></a></span>
+<span id="cb6-5"><a href=""></a><span class="co"># Output:</span></span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a>Incident edges of A:</span>
+<span id="cb6-8"><a href=""></a>    A<span class="op">&gt;</span>B:<span class="dv">3</span></span>
+<span id="cb6-9"><a href=""></a>    A<span class="op">&gt;</span>C:<span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="graph-implementation-1" class="slide level2">
+<h2>Graph Implementation</h2>
+<div style="font-size: 28px;">
+<ul>
+<li class="fragment"><strong>Paths of least resistance in the graph implementation</strong>
+<ul>
+<li class="fragment">You make a graph class a subclass of <code>AbstractCollection</code></li>
+<li class="fragment">You make a graph’s size equal to its number of vertices</li>
+<li class="fragment">The <code>add</code> method adds a vertex with the given label to a graph</li>
+<li class="fragment">You allow a graph’s iterator to visit its vertices</li>
+</ul></li>
+<li class="fragment"><strong>Consequences</strong>
+<ul>
+<li class="fragment">The <code>len</code> function returns the number of the graph’s vertices</li>
+<li class="fragment">The graph constructor’s source collection contains the labels of the new graph’s vertices</li>
+<li class="fragment">The <code>for</code> loop visits the graph’s vertices</li>
+<li class="fragment">The <code>in</code> operator returns <code>True</code> if the graph contains a given vertex</li>
+<li class="fragment">The <code>==</code> operator compares vertices in the two graph operands</li>
+<li class="fragment">The <code>+</code> operator creates a new graph that contains the vertices of its two operands</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="graph-implementation-classess-methods" class="slide level2">
+<h2>Graph Implementation: Classess &amp; Methods</h2>
+<div style="font-size: 30px;">
+<ul>
+<li class="fragment">The graph implementation described here uses a <strong>linked structure</strong>.
+<ul>
+<li class="fragment">Each vertex and edge is represented as an object (node) that contains references (links) to other vertices and edges.</li>
+<li class="fragment">This approach allows efficient traversal and modification of the graph, as each vertex maintains links to its adjacent edges and vertices.</li>
+</ul></li>
+<li class="fragment"><strong>Three Classes to model</strong>
+<ul>
+<li class="fragment">Class <code>LinkedDirectedGraph</code></li>
+<li class="fragment">Class <code>LinkedVertex</code></li>
+<li class="fragment">Class <code>LinkedEdge</code></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="class-linkeddirectedgraph12" class="slide level2">
+<h2>Class <code>LinkedDirectedGraph</code>(1/2)</h2>
+<div class="small" style="font-size: 20px;">
+<p>The <code>LinkedDirectedGraph</code> class typically provides the following methods:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Graph Creation</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>g = LinkedDirectedGraph(sourceCollection=None)</code></td>
+<td>Creates a new directed graph using an adjacency list. Optionally adds vertices from a collection of labels.</td>
+</tr>
+<tr class="odd">
+<td><strong>Clearing, Size, and String Representation</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>g.clear()</code></td>
+<td>Removes all vertices from the graph.</td>
+</tr>
+<tr class="odd">
+<td><code>g.clearEdgeMarks()</code></td>
+<td>Clears all edge marks.</td>
+</tr>
+<tr class="even">
+<td><code>g.clearVertexMarks()</code></td>
+<td>Clears all vertex marks.</td>
+</tr>
+<tr class="odd">
+<td><code>g.isEmpty()</code></td>
+<td>Returns <code>True</code> if the graph contains no vertices.</td>
+</tr>
+<tr class="even">
+<td><code>g.sizeEdges()</code></td>
+<td>Returns the number of edges in the graph.</td>
+</tr>
+<tr class="odd">
+<td><code>g.sizeVertices()</code></td>
+<td>Returns the number of vertices in the graph.</td>
+</tr>
+<tr class="even">
+<td><code>g.__str__()</code></td>
+<td>Returns a string representation of the graph.</td>
+</tr>
+<tr class="odd">
+<td><strong>Vertex-Related Methods</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>g.containsVertex(label)</code></td>
+<td>Returns <code>True</code> if the graph contains a vertex with the specified label.</td>
+</tr>
+<tr class="odd">
+<td><code>g.addVertex(label)</code></td>
+<td>Adds a vertex with the specified label.</td>
+</tr>
+<tr class="even">
+<td><code>g.getVertex(label)</code></td>
+<td>Returns the vertex with the specified label, or <code>None</code> if not found.</td>
+</tr>
+<tr class="odd">
+<td><code>g.removeVertex(label)</code></td>
+<td>Removes and returns the vertex with the specified label, or <code>None</code> if not found.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="class-linkeddirectedgraph-22" class="slide level2">
+<h2>Class <code>LinkedDirectedGraph</code> (2/2)</h2>
+<div class="small" style="font-size: 22px;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Edge-Related Methods</strong></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>g.containsEdge(fromLabel, toLabel)</code></td>
+<td>Returns <code>True</code> if an edge exists from <code>fromLabel</code> to <code>toLabel</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>g.addEdge(fromLabel, toLabel, weight=None)</code></td>
+<td>Adds an edge with the specified weight between the given vertices.</td>
+</tr>
+<tr class="even">
+<td><code>g.getEdge(fromLabel, toLabel)</code></td>
+<td>Returns the edge between the specified vertices, or <code>None</code> if not found.</td>
+</tr>
+<tr class="odd">
+<td><code>g.removeEdge(fromLabel, toLabel)</code></td>
+<td>Removes the edge and returns <code>True</code> if successful, else <code>False</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Iterators</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>g.edges()</code></td>
+<td>Returns an iterator over the edges in the graph.</td>
+</tr>
+<tr class="even">
+<td><code>g.getVertices()</code></td>
+<td>Returns an iterator over the vertices in the graph.</td>
+</tr>
+<tr class="odd">
+<td><code>g.incidentEdges(label)</code></td>
+<td>Returns an iterator over the incident edges of the vertex with the given label.</td>
+</tr>
+<tr class="even">
+<td><code>g.neighboringVertices(label)</code></td>
+<td>Returns an iterator over the neighboring vertices of the given vertex.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- - `__init__()`: Initializes an empty directed graph.
+- `addVertex(label)`: Adds a vertex with the given label.
+- `removeVertex(label)`: Removes the vertex and all its incident edges.
+- `addEdge(source, target, weight=1)`: Adds a directed edge from `source` to `target` with an optional weight.
+- `removeEdge(source, target)`: Removes the directed edge from `source` to `target`.
+- `getVertex(label)`: Returns the vertex object with the given label.
+- `neighboringVertices(label)`: Returns an iterable of labels for vertices adjacent to the given vertex.
+- `incidentEdges(label)`: Returns an iterable of edges incident from the given vertex.
+- `vertices()`: Returns an iterable of all vertex labels.
+- `edges()`: Returns an iterable of all edges in the graph.
+- `__contains__(label)`: Checks if a vertex with the given label exists.
+- `__len__()`: Returns the number of vertices.
+- `__iter__()`: Iterates over the vertex labels.
+- `__str__()`: Returns a string representation of the graph.
+
+These methods allow for flexible construction, modification, and traversal of directed graphs. -->
+</section>
+<section id="the-class-linkeddirectedgraph-adt" class="slide level2">
+<h2>The Class <code>LinkedDirectedGraph</code> ADT</h2>
+<ul>
+<li><p>The implementation of <code>LinkedDirectedGraph</code> maintains a <code>dictionary</code> whose keys are <code>labels</code> and whose values are the corresponding <code>vertices</code></p></li>
+<li><p>Code for the class header and constructor:</p></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="kw">class</span> LinkedDirectedGraph(AbstractCollection):</span>
+<span id="cb7-2"><a href=""></a>&nbsp;</span>
+<span id="cb7-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb7-4"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-5"><a href=""></a>        <span class="va">self</span>.vertices <span class="op">=</span> <span class="bu">dict</span>()   <span class="co"># Dictionary of vertices {}</span></span>
+<span id="cb7-6"><a href=""></a>        AbstractCollection.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Notice that the <code>LinkedDirectedGraph</code> class is inheriting <code>AbstractCollection</code> class</li>
+</ul>
+</section>
+<section id="the-class-linkeddirectedgraph" class="slide level2">
+<h2>The Class <code>LinkedDirectedGraph</code></h2>
+<div class="small" style="font-size: 30px;">
+<ul>
+<li><strong>Methods</strong>
+<ul>
+<li>Code for adding, accessing, and removing an edge:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="kw">def</span> addEdge(<span class="va">self</span>, fromLabel, toLabel, weight):</span>
+<span id="cb8-2"><a href=""></a>    <span class="co">"""Connects the vertices with an edge with the given weight."""</span></span>
+<span id="cb8-3"><a href=""></a>    fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
+<span id="cb8-4"><a href=""></a>    toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
+<span id="cb8-5"><a href=""></a>    fromVertex.addEdgeTo(toVertex, weight)</span>
+<span id="cb8-6"><a href=""></a>    <span class="va">self</span>.edgeCount <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb8-7"><a href=""></a>&nbsp;</span>
+<span id="cb8-8"><a href=""></a><span class="kw">def</span> getEdge(<span class="va">self</span>, fromLabel, toLabel):</span>
+<span id="cb8-9"><a href=""></a>    <span class="co">"""Returns the edge connecting the two vertices, or None if</span></span>
+<span id="cb8-10"><a href=""></a><span class="co">    no edge exists."""</span></span>
+<span id="cb8-11"><a href=""></a>    fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
+<span id="cb8-12"><a href=""></a>    toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
+<span id="cb8-13"><a href=""></a>    <span class="cf">return</span> fromVertex.getEdgeTo(toVertex)</span>
+<span id="cb8-14"><a href=""></a>&nbsp;</span>
+<span id="cb8-15"><a href=""></a><span class="kw">def</span> removeEdge(<span class="va">self</span>, fromLabel, toLabel):</span>
+<span id="cb8-16"><a href=""></a>    <span class="co">"""Returns True if the edge was removed, or False otherwise."""</span></span>
+<span id="cb8-17"><a href=""></a>    fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
+<span id="cb8-18"><a href=""></a>    toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
+<span id="cb8-19"><a href=""></a>    edgeRemovedFlg <span class="op">=</span> fromVertex.removeEdgeTo(toVertex)</span>
+<span id="cb8-20"><a href=""></a>    <span class="cf">if</span> edgeRemovedFlg:</span>
+<span id="cb8-21"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb8-22"><a href=""></a>    <span class="cf">return</span> edgeRemovedFlg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-class-linkedvertex" class="slide level2">
+<h2>The Class LinkedVertex</h2>
+<div class="small" style="font-size: 22px;">
+<ul>
+<li>The methods in the class <code>LinkedVertex</code></li>
+</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>LinkedVertex(label)</code></td>
+<td>Creates a vertex with the specified label. The vertex is initially unmarked.</td>
+</tr>
+<tr class="even">
+<td><code>clearMark()</code></td>
+<td>Unmarks the vertex.</td>
+</tr>
+<tr class="odd">
+<td><code>setMark()</code></td>
+<td>Marks the vertex.</td>
+</tr>
+<tr class="even">
+<td><code>isMarked()</code></td>
+<td>Returns <code>True</code> if the vertex is marked, or <code>False</code> otherwise.</td>
+</tr>
+<tr class="odd">
+<td><code>getLabel()</code></td>
+<td>Returns the label of the vertex.</td>
+</tr>
+<tr class="even">
+<td><code>setLabel(label, g)</code></td>
+<td>Changes the label of the vertex in graph <code>g</code> to <code>label</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>addEdgeTo(toVertex, weight)</code></td>
+<td>Adds an edge with the given weight from this vertex to <code>toVertex</code>.</td>
+</tr>
+<tr class="even">
+<td><code>getEdgeTo(toVertex)</code></td>
+<td>Returns the edge from this vertex to <code>toVertex</code>, or <code>None</code> if the edge does not exist.</td>
+</tr>
+<tr class="odd">
+<td><code>incidentEdges()</code></td>
+<td>Returns an iterator over the incident edges of the vertex.</td>
+</tr>
+<tr class="even">
+<td><code>neighboringVertices()</code></td>
+<td>Returns an iterator over the neighboring vertices of the vertex.</td>
+</tr>
+<tr class="odd">
+<td><code>__str__()</code></td>
+<td>Returns a string representation of the vertex.</td>
+</tr>
+<tr class="even">
+<td><code>__eq__(anyObject)</code></td>
+<td>Returns <code>True</code> if <code>anyObject</code> is a vertex and the two labels are the same.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-class-linkedvertex-structure" class="slide level2">
+<h2>The Class LinkedVertex: Structure</h2>
+<div class="small" style="font-size: 35px;">
+<ul>
+<li>Code segment here shows the constructor and the method setLabel:</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="kw">class</span> LinkedVertex(<span class="bu">object</span>):</span>
+<span id="cb9-2"><a href=""></a>&nbsp;</span>
+<span id="cb9-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, label):</span>
+<span id="cb9-4"><a href=""></a>        <span class="va">self</span>.label <span class="op">=</span> label</span>
+<span id="cb9-5"><a href=""></a>        <span class="va">self</span>.edgeList <span class="op">=</span> <span class="bu">list</span>()</span>
+<span id="cb9-6"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb9-7"><a href=""></a>    &nbsp;</span>
+<span id="cb9-8"><a href=""></a>    <span class="kw">def</span> setLabel(<span class="va">self</span>, label, g):</span>
+<span id="cb9-9"><a href=""></a>        <span class="co">"""Sets the vertex’s label to label."""</span></span>
+<span id="cb9-10"><a href=""></a>        g.vertices.pop(<span class="va">self</span>.label, <span class="va">None</span>)</span>
+<span id="cb9-11"><a href=""></a>        g.vertices[label] <span class="op">=</span> <span class="va">self</span></span>
+<span id="cb9-12"><a href=""></a>        <span class="va">self</span>.label <span class="op">=</span> label</span>
+<span id="cb9-13"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-class-linkededge" class="slide level2">
+<h2>The Class LinkedEdge</h2>
+<div class="small" style="font-size: 25px;">
+<ul>
+<li>The methods in the class <code>LinkedEdge</code></li>
+</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>LinkedEdge(fromVertex, toVertex, weight=None)</code></td>
+<td>Creates an edge with the specified vertices and weight. It is initially unmarked.</td>
+</tr>
+<tr class="even">
+<td><code>clearMark()</code></td>
+<td>Unmarks the edge.</td>
+</tr>
+<tr class="odd">
+<td><code>setMark()</code></td>
+<td>Marks the edge.</td>
+</tr>
+<tr class="even">
+<td><code>isMarked()</code></td>
+<td>Returns <code>True</code> if the edge is marked, or <code>False</code> otherwise.</td>
+</tr>
+<tr class="odd">
+<td><code>getWeight()</code></td>
+<td>Returns the weight of the edge.</td>
+</tr>
+<tr class="even">
+<td><code>setWeight(weight)</code></td>
+<td>Sets the edge’s weight to the specified weight.</td>
+</tr>
+<tr class="odd">
+<td><code>getOtherVertex(vertex)</code></td>
+<td>Returns the edge’s other vertex.</td>
+</tr>
+<tr class="even">
+<td><code>getToVertex()</code></td>
+<td>Returns the edge’s destination vertex.</td>
+</tr>
+<tr class="odd">
+<td><code>__str__()</code></td>
+<td>Returns the string representation of the edge.</td>
+</tr>
+<tr class="even">
+<td><code>__eq__(anyObject)</code></td>
+<td>Returns <code>True</code> if <code>anyObject</code> is an edge and the two edges are connected to the same vertices and have the same weight.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-class-linkededge-1" class="slide level2">
+<h2>The Class LinkedEdge</h2>
+<ul>
+<li>An edge maintains references to its two vertices, its weight, and a mark</li>
+<li>Although the weight can be any object labeling the edge,
+<ul>
+<li>The weight is often a number or some other comparable value</li>
+</ul></li>
+<li>Two edges are considered equal if they have the same vertices and weight</li>
+</ul>
+</section>
+<section id="the-class-linkededge-structure" class="slide level2">
+<h2>The Class LinkedEdge: Structure</h2>
+<ul>
+<li>Code for the constructor and the <code>_eq_</code> method:</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="kw">class</span> LinkedEdge(<span class="bu">object</span>):</span>
+<span id="cb10-2"><a href=""></a>&nbsp;</span>
+<span id="cb10-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, fromVertex, toVertex, weight <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb10-4"><a href=""></a>        <span class="va">self</span>.vertex1 <span class="op">=</span> fromVertex</span>
+<span id="cb10-5"><a href=""></a>        <span class="va">self</span>.vertex2 <span class="op">=</span> toVertex</span>
+<span id="cb10-6"><a href=""></a>        <span class="va">self</span>.weight <span class="op">=</span> weight</span>
+<span id="cb10-7"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb10-8"><a href=""></a>&nbsp;</span>
+<span id="cb10-9"><a href=""></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb10-10"><a href=""></a>        <span class="co">"""Two edges are equal if they connect</span></span>
+<span id="cb10-11"><a href=""></a><span class="co">        the same vertices."""</span></span>
+<span id="cb10-12"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span> <span class="kw">is</span> other: <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb10-13"><a href=""></a>        <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other): <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb10-14"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.vertex1 <span class="op">==</span> other.vertex1 <span class="kw">and</span> <span class="op">\</span></span>
+<span id="cb10-15"><a href=""></a>               <span class="va">self</span>.vertex2 <span class="op">==</span> other.vertex2 <span class="kw">and</span> <span class="op">\</span></span>
+<span id="cb10-16"><a href=""></a>               <span class="va">self</span>.weight <span class="op">==</span> other.weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="ps6-homework" class="title-slide slide level1 center">
+<h1>PS6: Homework</h1>
+<ul>
+<li>Case Study: Testing Graph Algorithms
+<ul>
+<li>In Foundamentals of Python Data Structures (2nd Ed.) by Lambert
+<ul>
+<li>Chapter 12</li>
+<li>Pages 391 to 397</li>
+</ul></li>
+</ul></li>
+<li>Download starter code <a href="https://github.com/Agbo-CS152/ps6/archive/refs/tags/PS6_new.zip">here</a></li>
+</ul>
+</section>
+<section id="instructions" class="slide level2">
+<h2>Instructions</h2>
+<div class="small" style="font-size: 31px;">
+<ul>
+<li>This case study develops a data model and user interface that allow the programmer to create graphs and use them to test graph algorithms.</li>
+<li>Use the ADT of graph implementation discussed in the class today plus other modules provided in the case study to:
+<ul>
+<li>Write a program that allows the user to test some graph-processing algorithms (see the case study for detailed implementation strategies including starter codes)</li>
+</ul></li>
+</ul>
+<p><strong>Tasks</strong></p>
+<ol type="1">
+<li><p>Complete the classes in the case study and test the operations to input a graph and display it.</p></li>
+<li><p>Complete the function <code>spanTree</code> in the case study and test it thoroughly.</p></li>
+<li><p>Complete the function <code>shortestPaths</code> in the case study and test it thoroughly</p></li>
+</ol>
+</div>
+</section>
+<section id="homework-submission" class="slide level2">
+<h2>Homework Submission</h2>
+<ul>
+<li>This home work will be discussed in the class on Monday December 1
+<ul>
+<li>Each student will take turn to <code>show-&amp;-tell</code> by demonstrating their solution</li>
+</ul></li>
 </ul>
 <!-- 
 ## Next Week Reading:
