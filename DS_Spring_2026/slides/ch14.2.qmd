@@ -1,7 +1,7 @@
 ---
 title: "GRAPHS IMPLEMENTATION"
 author: "Fred Agbo"
-date: November 24, 2025
+date: April 22, 2026
 format:
   revealjs:
     chalkboard: true
@@ -9,37 +9,38 @@ format:
     code-line-numbers: true   # optional global numbering
 ---
 
-# Developing a Graph Collection
 
 ## Announcements
-:::{.incremental style="font-size: 35px;"}
-- Mini Project #3 is due today.
-- Grading of PS5 was completed. Let me know if you have any concern about my comments.
-- Last day in class will be Wednesday December 3
-    - Make arrangement to be in class on December 1 & 3
-- Checkout the `Course Evaluation Menu/link on your Canvas`
-- I need volunteers to participate in my study
-    - Evaluation of a VR prototype for STEM education 
-    - WIll last for about 15 to 20 minutes to complete
+:::{.incremental style="font-size: 30px;"}
+- Grading of MP3 is ongoing.
+- PS6 is published and due on **Monday April 27th**. Submission is as follows:
+    - In-class show & tell by each student and then Upload to Github.
+- Last day in class is Wednesday April 29 **NOT April 27th**
+    - Next week is dedicated to reviews of materials
+- Take note of your date for final exam:
+    - Session: MW 10:20am – 11:50am: Tue., May 5th, from 8:00 a.m. - 11:00 a.m. 
+    - Session: MW 8:40am – 10:10am: Wed., May 6th, from 8:00 a.m. - 11:00 a.m.
+    - Those with accommodation and writing the exam in testing center should communicate them and cc me to book a spot ASAP.
+- Few minutes will be dedicated to filling out the `Course Evaluation Canvas` next week.
 :::
 
 ## Developing a Graph Collection 
 
 :::{.incremental style="font-size: 32px;"}
-- **To develop a graph collection, consider the following:**
+<!-- - **To develop a graph collection, consider the following:**
     - The requirements of users
     - The mathematical nature of graphs
-    - The commonly used representations, adjacency matrix, and adjacency list
+    - The commonly used representations, adjacency matrix, and adjacency list -->
 
 - **Users should be able to**
     - Insert and remove vertices
     - Insert or remove an edge
     - Retrieve all the vertices and edges
-    - Choose between directed and undirected graphs and between an adjacency matrix representation and an adjacency list representation
+    <!-- - Choose between directed and undirected graphs and between an adjacency matrix representation and an adjacency list representation -->
 
 :::
 
-
+<!-- 
 ## Example Use of the Graph Collection 
 ::: {.columns}
 :::: {.column style="font-size: 28px; width: 50%;"}
@@ -112,7 +113,7 @@ Incident edges of A:
     A>C:2
 ```
 
-:::
+::: -->
 
 
 ## Graph Implementation
@@ -182,7 +183,11 @@ The `LinkedDirectedGraph` class typically provides the following methods:
 | `g.getVertices()` | Returns an iterator over the vertices in the graph. |
 | `g.incidentEdges(label)` | Returns an iterator over the incident edges of the vertex with the given label. |
 | `g.neighboringVertices(label)` | Returns an iterator over the neighboring vertices of the given vertex. |
+
+-   The implementation of `LinkedDirectedGraph` maintains a `dictionary` whose keys are `labels` and whose values are the corresponding `vertices`
+
 :::
+
 
 <!-- - `__init__()`: Initializes an empty directed graph.
 - `addVertex(label)`: Adds a vertex with the given label.
@@ -202,53 +207,143 @@ The `LinkedDirectedGraph` class typically provides the following methods:
 These methods allow for flexible construction, modification, and traversal of directed graphs. -->
 
 ## The Class `LinkedDirectedGraph` ADT
-- The implementation of `LinkedDirectedGraph` maintains a `dictionary` whose keys are `labels` and whose values are the corresponding `vertices`
 
-- Code for the class header and constructor:
 
 ```{.python}
 class LinkedDirectedGraph(AbstractCollection):
- 
+    """A graph has a count of vertices, a count of edges,
+    and a dictionary of label/vertex pairs."""
     def __init__(self, sourceCollection = None):
         self.edgeCount = 0
-        self.vertices = dict()	 # Dictionary of vertices {}
+        self. vertices = {}
         AbstractCollection.__init__(self, sourceCollection)
+        
+    # Method for clearing, marks, sizes, string rep
+    
+    def clear(self):
+        """clears the graph"""
+        self.size = 0
+        self.edgeCount = 0
+        self.vertices = {}
+        
+    def clearEdgeMarks(self):
+        """Clear all the edge marks"""
+        for edge in self.edges():
+            edge.clearMark()
+            
+    def sizeEdges(self):
+        """Returns the number of edges """
+        return self.edgeCount
+    
+    def sizeVertices(self):
+        """Returns the number of vertices """
+        return len(self)
+    
+    def __str__(self):
+        """Returns the string respresentation of the graph """
+        result = str(len(self)) + " vertices: "
+        for vertex in self.vertices:
+            result += " " + str(vertex)
+        result += "\n"
+        result += str(self.sizeEdges()) + " Edges: "
+        for edge in self.edges():
+            result += " " + str(edge)
+        return result
+    
+    def add(self, label):
+        """For compatibility with other collections."""
+        self.addVertex(label)
+        
+    # Vertex related methods
+    
+    def addVertex(self, label):
+        """Precondition: a vertex with label must not
+        already be in the graph.
+        Raises: AttibuteError if a vertex with label
+        is already in the graph."""
+        if self.containsVertex(label):
+            raise AttributeError("Label "+ str(label) + " already in graph")
+        self.vertices[label] = LinkedVertex(label)
+        self.size += 1
+    
+    def containsVertex(self, label):
+        return label in self.vertices
+    
+    def getVertex(self, label):
+        """ pre-condition: a vetext with label must already be in the graph"""
+        if not self.containsVertex(label):
+            raise AttributeError("Label "+ str(label) + " not in graph.")
+        return self.vertices[label]
+    
+    def removeVertex(self, label):
+        """Returns True if the vertex was removed, or False otherwise."""
+        removedVertex = self.vertices.pop(label, None)
+        if removedVertex is None:
+            return False
+        # Examine all other vertices to remove edges 
+        for vertex in self.getVertices():
+            if vertex.removeEdgesTo(removedVertex):
+                self.edgeCount -= 1
+                
+        # Examine all edges from the removed vertex to others
+        for edge in removedVertex.incidentEdges():
+            self.edgeCount -= 1
+        self.size -=1
+        return True
+    
+    # Methods related to edges
+    
+    def addEdge(self, fromLabel, toLabel, weight):
+        fromVertex = self.getVertex(fromLabel)
+        toVertex = self.getVertex(toLabel)
+        if self.getEdge(fromLabel, toLabel):
+            raise AttributeError("An edge already connects " + str(fromLabel) + " and "+ str(toLabel))
+        fromVertex.addEdgeTo(toVertex, weight)
+        self.edgeCount += 1
+        
+    def containsEdge(self, fromeLabel, toLabel):
+        return self.getEdge(fromeLabel, toLabel) != None
+    
+    def getEdge(self, fromLabel, toLabel):
+        fromVertex = self.getVertex(fromLabel)
+        toVertex = self.getVertex(toLabel)
+        return fromVertex.getEdgeTo(toVertex)
+    
+    def removeEdge(self, fromLabel, toLabel):
+        fromVertex = self.getVertex(fromLabel)
+        toVertex = self.getVertex(toLabel)
+        edgeRemovedFlg = fromVertex.removeEdgeTo(toVertex)
+        if edgeRemovedFlg:
+            self.edgeCount -= 1
+        return edgeRemovedFlg
+    
+    # Iterators 
+    
+    def __iter__(self):
+        """Supports iteration over a view of self (the vertices)."""
+        return self.getVertices()
+    
+    def edges(self):
+        """Supports iteration over the edges in the graph."""
+        result = []
+        for vertex in self.getVertices():
+            result += list(vertex.incidentEdges())
+        return iter(result)
+    
+    def getVertices(self):
+        """Supports iteration over the vertices in the graph."""
+        return iter(self.vertices.values()) 
+    
+    def incidentEdges(self, label):
+        """Supports iteration over the incident edges of the
+        given verrtex."""
+        return self.getVertex(label).incidentEdges()
+    
+    def neighboringVertices(self, label):
+        return self.getVertex(label).neighboringVertices()
 
 ```
-- Notice that the `LinkedDirectedGraph` class is inheriting `AbstractCollection` class
 
-
-## The Class `LinkedDirectedGraph` 
-:::{.small style="font-size: 30px;"}
-- **Methods** 
-    - Code for adding, accessing, and removing an edge:
-
-```{.python}
-def addEdge(self, fromLabel, toLabel, weight):
-    """Connects the vertices with an edge with the given weight."""
-    fromVertex = self.getVertex(fromLabel)
-    toVertex = self.getVertex(toLabel)
-    fromVertex.addEdgeTo(toVertex, weight)
-    self.edgeCount += 1
- 
-def getEdge(self, fromLabel, toLabel):
-    """Returns the edge connecting the two vertices, or None if
-    no edge exists."""
-    fromVertex = self.getVertex(fromLabel)
-    toVertex = self.getVertex(toLabel)
-    return fromVertex.getEdgeTo(toVertex)
- 
-def removeEdge(self, fromLabel, toLabel):
-    """Returns True if the edge was removed, or False otherwise."""
-    fromVertex = self.getVertex(fromLabel)
-    toVertex = self.getVertex(toLabel)
-    edgeRemovedFlg = fromVertex.removeEdgeTo(toVertex)
-    if edgeRemovedFlg:
-        self.edgeCount -= 1
-    return edgeRemovedFlg
-
-```
-:::
 
 ## The Class LinkedVertex 
 :::{.small style="font-size: 22px;"}
@@ -273,21 +368,79 @@ def removeEdge(self, fromLabel, toLabel):
 
 ## The Class LinkedVertex: Structure 
 :::{.small style="font-size: 35px;"}
-- Code segment here shows the constructor and the method setLabel:
 
 ```{.python}
-class LinkedVertex(object):
- 
+class LinkedVertex:
+    # Constructor
     def __init__(self, label):
         self.label = label
-        self.edgeList = list()
+        self.edgeList = []
         self.mark = False
-     
+        
+          
+    def clearMark(self):
+        self.mark = False
+        
+    def isMark(self):
+        """Returns True if the vertex is marked
+        or False otherwise."""
+        return self.mark
+
+    def getLabel(self):
+        """ Return the label for the vertex"""
+        return self.label
+        
     def setLabel(self, label, g):
-        """Sets the vertex’s label to label."""
-        g.vertices.pop(self.label, None)
+        g.vertices.pop(self, label, None)
         g.vertices[label] = self
         self.label = label
+    
+    def setMark(self):
+        self.mark = True
+        
+    def __str__(self):
+        return str(self.label)
+    
+    def __eq__(self, other):
+        if self is other: return True
+        if type(self) != type(other): return False
+        return self.getLabel() == other.getLabel()
+    
+    # Methods used by LinkedGraph
+    
+    def addEdgeTo(self, toVertex, weight):
+        """Connects the vertices with an edge."""
+        edge = LinkedEdge(self, toVertex, weight)
+        self.edgeList.append(edge)
+        
+    def getEdgeTo(self, toVertex):
+        """Return the connecting edge if it exists, or None otherwise"""
+        edge = LinkedEdge(self, toVertex)
+        try:
+            return self.edgeList[self.edgeList.index(edge)]
+        except:
+            return None
+        
+    def incidentEdges(self):
+        """Returns the incident edges of this vertex."""
+        return iter(self.edgeList)
+    
+    def neighboringVertices(self):
+        """Returns the neighboring vertices of this vertex."""
+        vertices = []
+        for edge in self.edgeList:
+             vertices.append(edge.getOtherVertex(self))
+        return iter(vertices)
+    
+    def removeEdgeto(self, toVertex):
+        """Returns True if the edge exists and is removed,
+        or False otherwise."""
+        edge = LinkedEdge(self, toVertex)
+        if edge in self.edgeList:
+            self.edgeList.remove(edge)
+            return True
+        else:
+            return False
 
 
 ```
@@ -322,33 +475,97 @@ class LinkedVertex(object):
 
 
 ## The Class LinkedEdge: Structure 
-- Code for the constructor and the `_eq_` method:
 
 ```{.python}
-class LinkedEdge(object):
- 
-    def __init__(self, fromVertex, toVertex, weight = None):
+cclass LinkedEdge:
+    # Constructor
+    def __init__(self, fromVertex, toVertex, weight =None):
         self.vertex1 = fromVertex
         self.vertex2 = toVertex
         self.weight = weight
         self.mark = False
- 
+        
+    def clearMark(self):
+        pass
+    
     def __eq__(self, other):
         """Two edges are equal if they connect
         the same vertices."""
         if self is other: return True
-        if type(self) != type(other): return False
-        return self.vertex1 == other.vertex1 and \
-               self.vertex2 == other.vertex2 and \
-               self.weight == other.weight
+        if type(self) != type(other):
+            return False
+        return self.vertex1 == other.vertex1 and self.vertex2 == other.vertex2 and self.weight == other.weight  
+    
+    def getOtherVertex(self, thisVertex): 
+        if thisVertex == None or thisVertex == self.vertex2:
+            return self.vertex1
+        else:
+            return self.vertex2
+    
+    def getToVertex(self):
+        return self.vertex2
+    
+    def getWeight(self):
+        return self.weight
+    
+    def isMark(self):
+        """Returns True if the edge is marked
+        or False otherwise."""
+        return self.mark
+
+    def setMark(self):
+        self.mark = True
+    
+    def setWeight(self, weight):
+        self.weight = weight
+        
+    def __str__(self):
+        return str(self.vertex1) + ">" + str(self.vertex2) + ":" + str(self.weight)
 
 ```
-# PS6: Homework
+
+## Test LinkedDirectedGraph
+
+```{.python} 
+"""
+Tests preconditions on methods.
+"""
+
+from graph import LinkedDirectedGraph
+
+# Create a directed graph using an adjacency list
+g = LinkedDirectedGraph()
+
+# Add vertices labeled A, B, and C to the graph and print it      
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+print("Expect vertices ABC and no edges: \n" + str(g))
+
+# Insert edges with weight 2.5 and print the graph
+g.addEdge("A", "B", 2.5)
+g.addEdge("B", "C", 2.5)
+g.addEdge("C", "B", 2.5)
+print("Expect same vertices and edges AB BC CB all with weight 2.5: \n" + str(g))
+
+#g.addVertex("A") should return an error 
+#g.addEdge("A", "D", 2.5)
+#g.addEdge("A", "B", 2.5)
+
+print("Expect A: ", g.getVertex("A"))
+
+print("Edge from A to B:", g.getEdge("A", "B"))
+print("Edge from B to A:", g.getEdge("B", "A"))
+
+print("Incident edges of A:", list(map(str, g.incidentEdges("A"))))
+
+
+```
+
+# Review of PS6: Homework
 - Case Study: Testing Graph Algorithms
     - In Foundamentals of Python Data Structures (2nd Ed.)  by Lambert 
-        - Chapter 12
-        - Pages 391 to 397
-- Download starter code [here](https://github.com/Agbo-CS152/ps6/archive/refs/tags/PS6_new.zip)
+        - See Chapter 12, pages 391 to 397
 
 ## Instructions
 :::{.small style="font-size: 31px;"}
@@ -367,8 +584,10 @@ class LinkedEdge(object):
 :::
 
 ## Homework Submission
-- This home work will be discussed in the class on Monday December 1
-    - Each student will take turn to `show-&-tell` by demonstrating their solution
+- This home work will be discussed in the class on Monday April 27
+    - How?
+        - Each student will take turn to `show-&-tell` by demonstrating their solution
+        - Then upload the solution to Github
 
 <!-- 
 ## Next Week Reading:

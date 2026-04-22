@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Fred Agbo">
-  <meta name="dcterms.date" content="2025-11-24">
+  <meta name="dcterms.date" content="2026-04-22">
   <title>GRAPHS IMPLEMENTATION</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -206,122 +206,121 @@ Fred Agbo
 </div>
 </div>
 
-  <p class="date">2025-11-24</p>
-</section>
-<section>
-<section id="developing-a-graph-collection" class="title-slide slide level1 center">
-<h1>Developing a Graph Collection</h1>
-
+  <p class="date">2026-04-22</p>
 </section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
-<div style="font-size: 35px;">
+<div style="font-size: 30px;">
 <ul>
-<li class="fragment">Mini Project #3 is due today.</li>
-<li class="fragment">Grading of PS5 was completed. Let me know if you have any concern about my comments.</li>
-<li class="fragment">Last day in class will be Wednesday December 3
+<li class="fragment">Grading of MP3 is ongoing.</li>
+<li class="fragment">PS6 is published and due on <strong>Monday April 27th</strong>. Submission is as follows:
 <ul>
-<li class="fragment">Make arrangement to be in class on December 1 &amp; 3</li>
+<li class="fragment">In-class show &amp; tell by each student and then Upload to Github.</li>
 </ul></li>
-<li class="fragment">Checkout the <code>Course Evaluation Menu/link on your Canvas</code></li>
-<li class="fragment">I need volunteers to participate in my study
+<li class="fragment">Last day in class is Wednesday April 29 <strong>NOT April 27th</strong>
 <ul>
-<li class="fragment">Evaluation of a VR prototype for STEM education</li>
-<li class="fragment">WIll last for about 15 to 20 minutes to complete</li>
+<li class="fragment">Next week is dedicated to reviews of materials</li>
 </ul></li>
+<li class="fragment">Take note of your date for final exam:
+<ul>
+<li class="fragment">Session: MW 10:20am – 11:50am: Tue., May 5th, from 8:00 a.m. - 11:00 a.m.</li>
+<li class="fragment">Session: MW 8:40am – 10:10am: Wed., May 6th, from 8:00 a.m. - 11:00 a.m.</li>
+<li class="fragment">Those with accommodation and writing the exam in testing center should communicate them and cc me to book a spot ASAP.</li>
+</ul></li>
+<li class="fragment">Few minutes will be dedicated to filling out the <code>Course Evaluation Canvas</code> next week.</li>
 </ul>
 </div>
 </section>
-<section id="developing-a-graph-collection-1" class="slide level2">
+<section id="developing-a-graph-collection" class="slide level2">
 <h2>Developing a Graph Collection</h2>
 <div style="font-size: 32px;">
+<!-- - **To develop a graph collection, consider the following:**
+    - The requirements of users
+    - The mathematical nature of graphs
+    - The commonly used representations, adjacency matrix, and adjacency list -->
 <ul>
-<li class="fragment"><strong>To develop a graph collection, consider the following:</strong>
-<ul>
-<li class="fragment">The requirements of users</li>
-<li class="fragment">The mathematical nature of graphs</li>
-<li class="fragment">The commonly used representations, adjacency matrix, and adjacency list</li>
-</ul></li>
 <li class="fragment"><strong>Users should be able to</strong>
 <ul>
 <li class="fragment">Insert and remove vertices</li>
 <li class="fragment">Insert or remove an edge</li>
-<li class="fragment">Retrieve all the vertices and edges</li>
-<li class="fragment">Choose between directed and undirected graphs and between an adjacency matrix representation and an adjacency list representation</li>
+<li class="fragment">Retrieve all the vertices and edges <!-- - Choose between directed and undirected graphs and between an adjacency matrix representation and an adjacency list representation --></li>
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="example-use-of-the-graph-collection" class="slide level2">
-<h2>Example Use of the Graph Collection</h2>
-<div class="columns">
-<div class="column" style="font-size: 28px; width: 50%;">
-<ul>
-<li>Consider constructing this weighted graph:</li>
-<li><img data-src="../images/weightedDirectedGraph.png" style="width:80%;"></li>
-</ul>
-</div><div class="column" style="font-size: 28px; width: 50%">
-<ul>
-<li>Code</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">from</span> graph <span class="im">import</span> LinkedDirectedGraph</span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>g <span class="op">=</span> LinkedDirectedGraph()</span>
-<span id="cb1-4"><a href=""></a><span class="co"># Insert vertices</span></span>
-<span id="cb1-5"><a href=""></a>g.addVertex(<span class="st">"A"</span>)</span>
-<span id="cb1-6"><a href=""></a>g.addVertex(<span class="st">"B"</span>)</span>
-<span id="cb1-7"><a href=""></a>g.addVertex(<span class="st">"C"</span>)</span>
-<span id="cb1-8"><a href=""></a>g.addVertex(<span class="st">"D"</span>)</span>
-<span id="cb1-9"><a href=""></a>g.addVertex(<span class="st">"E"</span>)</span>
-<span id="cb1-10"><a href=""></a>&nbsp;</span>
-<span id="cb1-11"><a href=""></a><span class="co"># Insert weighted edges</span></span>
-<span id="cb1-12"><a href=""></a>g.addEdge(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="dv">3</span>)</span>
-<span id="cb1-13"><a href=""></a>g.addEdge(<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="dv">2</span>)</span>
-<span id="cb1-14"><a href=""></a>g.addEdge(<span class="st">"B"</span>, <span class="st">"D"</span>, <span class="dv">1</span>)</span>
-<span id="cb1-15"><a href=""></a>g.addEdge(<span class="st">"C"</span>, <span class="st">"D"</span>, <span class="dv">1</span>)</span>
-<span id="cb1-16"><a href=""></a>g.addEdge(<span class="st">"D"</span>, <span class="st">"E"</span>, <span class="dv">2</span>)</span>
-<span id="cb1-17"><a href=""></a>&nbsp;</span>
-<span id="cb1-18"><a href=""></a><span class="bu">print</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div style="font-size: 25px;">
-<ul>
-<li class="fragment">Output:
-<ul>
-<li class="fragment"><code>5 Vertices:  A C B E D</code></li>
-<li class="fragment"><code>5 Edges: A&gt;B:3 A&gt;C:2 B&gt;D:1 C&gt;D:1 D&gt;E:2</code></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="example-use-of-the-graph-collection-1" class="slide level2">
-<h2>Example Use of the Graph Collection</h2>
-<div class="small" style="font-size: 28px;">
-<ul>
-<li><p>The next code segment displays the neighboring vertices and the incident edges of the vertex labeled <code>A</code> in this example graph:</p></li>
-<li><p>Neighboring vertices of <code>A</code></p></li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Neighboring vertices of A:"</span>)</span>
-<span id="cb2-2"><a href=""></a><span class="cf">for</span> vertex <span class="kw">in</span> g.neighboringVertices(<span class="st">"A"</span>):</span>
-<span id="cb2-3"><a href=""></a>    <span class="bu">print</span>(vertex)</span>
-<span id="cb2-4"><a href=""></a></span>
-<span id="cb2-5"><a href=""></a><span class="co"># Output:</span></span>
-<span id="cb2-6"><a href=""></a></span>
-<span id="cb2-7"><a href=""></a>Neighboring vertices of A:</span>
-<span id="cb2-8"><a href=""></a>    B</span>
-<span id="cb2-9"><a href=""></a>    C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Incident edges of the vertex labeled <code>A</code></li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Incident edges of A:"</span>)</span>
-<span id="cb3-2"><a href=""></a><span class="cf">for</span> edge <span class="kw">in</span> g.incidentEdges(<span class="st">"A"</span>):</span>
-<span id="cb3-3"><a href=""></a>    <span class="bu">print</span>(edge)</span>
-<span id="cb3-4"><a href=""></a></span>
-<span id="cb3-5"><a href=""></a><span class="co"># Output:</span></span>
-<span id="cb3-6"><a href=""></a></span>
-<span id="cb3-7"><a href=""></a>Incident edges of A:</span>
-<span id="cb3-8"><a href=""></a>    A<span class="op">&gt;</span>B:<span class="dv">3</span></span>
-<span id="cb3-9"><a href=""></a>    A<span class="op">&gt;</span>C:<span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<!-- 
+## Example Use of the Graph Collection 
+::: {.columns}
+:::: {.column style="font-size: 28px; width: 50%;"}
+- Consider constructing this weighted graph:
+- ![](../images/weightedDirectedGraph.png){style="width:80%;"}
+::::
+
+:::: {.column style="font-size: 28px; width: 50%"}
+- Code
+```{.python}
+from graph import LinkedDirectedGraph
+
+g = LinkedDirectedGraph()
+# Insert vertices
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+ 
+# Insert weighted edges
+g.addEdge("A", "B", 3)
+g.addEdge("A", "C", 2)
+g.addEdge("B", "D", 1)
+g.addEdge("C", "D", 1)
+g.addEdge("D", "E", 2)
+ 
+print(g)
+
+```
+::::
+
+:::
+:::{.incremental style="font-size: 25px;"}
+- Output:
+    - `5 Vertices:  A C B E D`
+    - `5 Edges: A>B:3 A>C:2 B>D:1 C>D:1 D>E:2`
+:::
+
+
+
+
+## Example Use of the Graph Collection 
+
+::: {.small style="font-size: 28px;"}
+- The next code segment displays the neighboring vertices and the incident edges of the vertex labeled `A` in this example graph:
+
+-   Neighboring vertices of `A`
+```{.python}
+print("Neighboring vertices of A:")
+for vertex in g.neighboringVertices("A"):
+    print(vertex)
+
+# Output:
+
+Neighboring vertices of A:
+    B
+    C
+```
+- Incident edges of the vertex labeled `A`
+```{.python}
+print("Incident edges of A:")
+for edge in g.incidentEdges("A"):
+    print(edge)
+
+# Output:
+
+Incident edges of A:
+    A>B:3
+    A>C:2
+```
+
+::: -->
 </section>
 <section id="graph-implementation" class="slide level2">
 <h2>Graph Implementation</h2>
@@ -501,6 +500,9 @@ Fred Agbo
 </tr>
 </tbody>
 </table>
+<ul>
+<li>The implementation of <code>LinkedDirectedGraph</code> maintains a <code>dictionary</code> whose keys are <code>labels</code> and whose values are the corresponding <code>vertices</code></li>
+</ul>
 </div>
 <!-- - `__init__()`: Initializes an empty directed graph.
 - `addVertex(label)`: Adds a vertex with the given label.
@@ -521,52 +523,137 @@ These methods allow for flexible construction, modification, and traversal of di
 </section>
 <section id="the-class-linkeddirectedgraph-adt" class="slide level2">
 <h2>The Class <code>LinkedDirectedGraph</code> ADT</h2>
-<ul>
-<li><p>The implementation of <code>LinkedDirectedGraph</code> maintains a <code>dictionary</code> whose keys are <code>labels</code> and whose values are the corresponding <code>vertices</code></p></li>
-<li><p>Code for the class header and constructor:</p></li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="kw">class</span> LinkedDirectedGraph(AbstractCollection):</span>
-<span id="cb4-2"><a href=""></a>&nbsp;</span>
-<span id="cb4-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb4-4"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-5"><a href=""></a>        <span class="va">self</span>.vertices <span class="op">=</span> <span class="bu">dict</span>()   <span class="co"># Dictionary of vertices {}</span></span>
-<span id="cb4-6"><a href=""></a>        AbstractCollection.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Notice that the <code>LinkedDirectedGraph</code> class is inheriting <code>AbstractCollection</code> class</li>
-</ul>
-</section>
-<section id="the-class-linkeddirectedgraph" class="slide level2">
-<h2>The Class <code>LinkedDirectedGraph</code></h2>
-<div class="small" style="font-size: 30px;">
-<ul>
-<li><strong>Methods</strong>
-<ul>
-<li>Code for adding, accessing, and removing an edge:</li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="kw">def</span> addEdge(<span class="va">self</span>, fromLabel, toLabel, weight):</span>
-<span id="cb5-2"><a href=""></a>    <span class="co">"""Connects the vertices with an edge with the given weight."""</span></span>
-<span id="cb5-3"><a href=""></a>    fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
-<span id="cb5-4"><a href=""></a>    toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
-<span id="cb5-5"><a href=""></a>    fromVertex.addEdgeTo(toVertex, weight)</span>
-<span id="cb5-6"><a href=""></a>    <span class="va">self</span>.edgeCount <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-7"><a href=""></a>&nbsp;</span>
-<span id="cb5-8"><a href=""></a><span class="kw">def</span> getEdge(<span class="va">self</span>, fromLabel, toLabel):</span>
-<span id="cb5-9"><a href=""></a>    <span class="co">"""Returns the edge connecting the two vertices, or None if</span></span>
-<span id="cb5-10"><a href=""></a><span class="co">    no edge exists."""</span></span>
-<span id="cb5-11"><a href=""></a>    fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
-<span id="cb5-12"><a href=""></a>    toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
-<span id="cb5-13"><a href=""></a>    <span class="cf">return</span> fromVertex.getEdgeTo(toVertex)</span>
-<span id="cb5-14"><a href=""></a>&nbsp;</span>
-<span id="cb5-15"><a href=""></a><span class="kw">def</span> removeEdge(<span class="va">self</span>, fromLabel, toLabel):</span>
-<span id="cb5-16"><a href=""></a>    <span class="co">"""Returns True if the edge was removed, or False otherwise."""</span></span>
-<span id="cb5-17"><a href=""></a>    fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
-<span id="cb5-18"><a href=""></a>    toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
-<span id="cb5-19"><a href=""></a>    edgeRemovedFlg <span class="op">=</span> fromVertex.removeEdgeTo(toVertex)</span>
-<span id="cb5-20"><a href=""></a>    <span class="cf">if</span> edgeRemovedFlg:</span>
-<span id="cb5-21"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb5-22"><a href=""></a>    <span class="cf">return</span> edgeRemovedFlg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="kw">class</span> LinkedDirectedGraph(AbstractCollection):</span>
+<span id="cb1-2"><a href=""></a>    <span class="co">"""A graph has a count of vertices, a count of edges,</span></span>
+<span id="cb1-3"><a href=""></a><span class="co">    and a dictionary of label/vertex pairs."""</span></span>
+<span id="cb1-4"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb1-5"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href=""></a>        <span class="va">self</span>. vertices <span class="op">=</span> {}</span>
+<span id="cb1-7"><a href=""></a>        AbstractCollection.<span class="fu">__init__</span>(<span class="va">self</span>, sourceCollection)</span>
+<span id="cb1-8"><a href=""></a>        </span>
+<span id="cb1-9"><a href=""></a>    <span class="co"># Method for clearing, marks, sizes, string rep</span></span>
+<span id="cb1-10"><a href=""></a>    </span>
+<span id="cb1-11"><a href=""></a>    <span class="kw">def</span> clear(<span class="va">self</span>):</span>
+<span id="cb1-12"><a href=""></a>        <span class="co">"""clears the graph"""</span></span>
+<span id="cb1-13"><a href=""></a>        <span class="va">self</span>.size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-14"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-15"><a href=""></a>        <span class="va">self</span>.vertices <span class="op">=</span> {}</span>
+<span id="cb1-16"><a href=""></a>        </span>
+<span id="cb1-17"><a href=""></a>    <span class="kw">def</span> clearEdgeMarks(<span class="va">self</span>):</span>
+<span id="cb1-18"><a href=""></a>        <span class="co">"""Clear all the edge marks"""</span></span>
+<span id="cb1-19"><a href=""></a>        <span class="cf">for</span> edge <span class="kw">in</span> <span class="va">self</span>.edges():</span>
+<span id="cb1-20"><a href=""></a>            edge.clearMark()</span>
+<span id="cb1-21"><a href=""></a>            </span>
+<span id="cb1-22"><a href=""></a>    <span class="kw">def</span> sizeEdges(<span class="va">self</span>):</span>
+<span id="cb1-23"><a href=""></a>        <span class="co">"""Returns the number of edges """</span></span>
+<span id="cb1-24"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.edgeCount</span>
+<span id="cb1-25"><a href=""></a>    </span>
+<span id="cb1-26"><a href=""></a>    <span class="kw">def</span> sizeVertices(<span class="va">self</span>):</span>
+<span id="cb1-27"><a href=""></a>        <span class="co">"""Returns the number of vertices """</span></span>
+<span id="cb1-28"><a href=""></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>)</span>
+<span id="cb1-29"><a href=""></a>    </span>
+<span id="cb1-30"><a href=""></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb1-31"><a href=""></a>        <span class="co">"""Returns the string respresentation of the graph """</span></span>
+<span id="cb1-32"><a href=""></a>        result <span class="op">=</span> <span class="bu">str</span>(<span class="bu">len</span>(<span class="va">self</span>)) <span class="op">+</span> <span class="st">" vertices: "</span></span>
+<span id="cb1-33"><a href=""></a>        <span class="cf">for</span> vertex <span class="kw">in</span> <span class="va">self</span>.vertices:</span>
+<span id="cb1-34"><a href=""></a>            result <span class="op">+=</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(vertex)</span>
+<span id="cb1-35"><a href=""></a>        result <span class="op">+=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb1-36"><a href=""></a>        result <span class="op">+=</span> <span class="bu">str</span>(<span class="va">self</span>.sizeEdges()) <span class="op">+</span> <span class="st">" Edges: "</span></span>
+<span id="cb1-37"><a href=""></a>        <span class="cf">for</span> edge <span class="kw">in</span> <span class="va">self</span>.edges():</span>
+<span id="cb1-38"><a href=""></a>            result <span class="op">+=</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(edge)</span>
+<span id="cb1-39"><a href=""></a>        <span class="cf">return</span> result</span>
+<span id="cb1-40"><a href=""></a>    </span>
+<span id="cb1-41"><a href=""></a>    <span class="kw">def</span> add(<span class="va">self</span>, label):</span>
+<span id="cb1-42"><a href=""></a>        <span class="co">"""For compatibility with other collections."""</span></span>
+<span id="cb1-43"><a href=""></a>        <span class="va">self</span>.addVertex(label)</span>
+<span id="cb1-44"><a href=""></a>        </span>
+<span id="cb1-45"><a href=""></a>    <span class="co"># Vertex related methods</span></span>
+<span id="cb1-46"><a href=""></a>    </span>
+<span id="cb1-47"><a href=""></a>    <span class="kw">def</span> addVertex(<span class="va">self</span>, label):</span>
+<span id="cb1-48"><a href=""></a>        <span class="co">"""Precondition: a vertex with label must not</span></span>
+<span id="cb1-49"><a href=""></a><span class="co">        already be in the graph.</span></span>
+<span id="cb1-50"><a href=""></a><span class="co">        Raises: AttibuteError if a vertex with label</span></span>
+<span id="cb1-51"><a href=""></a><span class="co">        is already in the graph."""</span></span>
+<span id="cb1-52"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.containsVertex(label):</span>
+<span id="cb1-53"><a href=""></a>            <span class="cf">raise</span> <span class="pp">AttributeError</span>(<span class="st">"Label "</span><span class="op">+</span> <span class="bu">str</span>(label) <span class="op">+</span> <span class="st">" already in graph"</span>)</span>
+<span id="cb1-54"><a href=""></a>        <span class="va">self</span>.vertices[label] <span class="op">=</span> LinkedVertex(label)</span>
+<span id="cb1-55"><a href=""></a>        <span class="va">self</span>.size <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-56"><a href=""></a>    </span>
+<span id="cb1-57"><a href=""></a>    <span class="kw">def</span> containsVertex(<span class="va">self</span>, label):</span>
+<span id="cb1-58"><a href=""></a>        <span class="cf">return</span> label <span class="kw">in</span> <span class="va">self</span>.vertices</span>
+<span id="cb1-59"><a href=""></a>    </span>
+<span id="cb1-60"><a href=""></a>    <span class="kw">def</span> getVertex(<span class="va">self</span>, label):</span>
+<span id="cb1-61"><a href=""></a>        <span class="co">""" pre-condition: a vetext with label must already be in the graph"""</span></span>
+<span id="cb1-62"><a href=""></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="va">self</span>.containsVertex(label):</span>
+<span id="cb1-63"><a href=""></a>            <span class="cf">raise</span> <span class="pp">AttributeError</span>(<span class="st">"Label "</span><span class="op">+</span> <span class="bu">str</span>(label) <span class="op">+</span> <span class="st">" not in graph."</span>)</span>
+<span id="cb1-64"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.vertices[label]</span>
+<span id="cb1-65"><a href=""></a>    </span>
+<span id="cb1-66"><a href=""></a>    <span class="kw">def</span> removeVertex(<span class="va">self</span>, label):</span>
+<span id="cb1-67"><a href=""></a>        <span class="co">"""Returns True if the vertex was removed, or False otherwise."""</span></span>
+<span id="cb1-68"><a href=""></a>        removedVertex <span class="op">=</span> <span class="va">self</span>.vertices.pop(label, <span class="va">None</span>)</span>
+<span id="cb1-69"><a href=""></a>        <span class="cf">if</span> removedVertex <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-70"><a href=""></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-71"><a href=""></a>        <span class="co"># Examine all other vertices to remove edges </span></span>
+<span id="cb1-72"><a href=""></a>        <span class="cf">for</span> vertex <span class="kw">in</span> <span class="va">self</span>.getVertices():</span>
+<span id="cb1-73"><a href=""></a>            <span class="cf">if</span> vertex.removeEdgesTo(removedVertex):</span>
+<span id="cb1-74"><a href=""></a>                <span class="va">self</span>.edgeCount <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb1-75"><a href=""></a>                </span>
+<span id="cb1-76"><a href=""></a>        <span class="co"># Examine all edges from the removed vertex to others</span></span>
+<span id="cb1-77"><a href=""></a>        <span class="cf">for</span> edge <span class="kw">in</span> removedVertex.incidentEdges():</span>
+<span id="cb1-78"><a href=""></a>            <span class="va">self</span>.edgeCount <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb1-79"><a href=""></a>        <span class="va">self</span>.size <span class="op">-=</span><span class="dv">1</span></span>
+<span id="cb1-80"><a href=""></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-81"><a href=""></a>    </span>
+<span id="cb1-82"><a href=""></a>    <span class="co"># Methods related to edges</span></span>
+<span id="cb1-83"><a href=""></a>    </span>
+<span id="cb1-84"><a href=""></a>    <span class="kw">def</span> addEdge(<span class="va">self</span>, fromLabel, toLabel, weight):</span>
+<span id="cb1-85"><a href=""></a>        fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
+<span id="cb1-86"><a href=""></a>        toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
+<span id="cb1-87"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span>.getEdge(fromLabel, toLabel):</span>
+<span id="cb1-88"><a href=""></a>            <span class="cf">raise</span> <span class="pp">AttributeError</span>(<span class="st">"An edge already connects "</span> <span class="op">+</span> <span class="bu">str</span>(fromLabel) <span class="op">+</span> <span class="st">" and "</span><span class="op">+</span> <span class="bu">str</span>(toLabel))</span>
+<span id="cb1-89"><a href=""></a>        fromVertex.addEdgeTo(toVertex, weight)</span>
+<span id="cb1-90"><a href=""></a>        <span class="va">self</span>.edgeCount <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-91"><a href=""></a>        </span>
+<span id="cb1-92"><a href=""></a>    <span class="kw">def</span> containsEdge(<span class="va">self</span>, fromeLabel, toLabel):</span>
+<span id="cb1-93"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.getEdge(fromeLabel, toLabel) <span class="op">!=</span> <span class="va">None</span></span>
+<span id="cb1-94"><a href=""></a>    </span>
+<span id="cb1-95"><a href=""></a>    <span class="kw">def</span> getEdge(<span class="va">self</span>, fromLabel, toLabel):</span>
+<span id="cb1-96"><a href=""></a>        fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
+<span id="cb1-97"><a href=""></a>        toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
+<span id="cb1-98"><a href=""></a>        <span class="cf">return</span> fromVertex.getEdgeTo(toVertex)</span>
+<span id="cb1-99"><a href=""></a>    </span>
+<span id="cb1-100"><a href=""></a>    <span class="kw">def</span> removeEdge(<span class="va">self</span>, fromLabel, toLabel):</span>
+<span id="cb1-101"><a href=""></a>        fromVertex <span class="op">=</span> <span class="va">self</span>.getVertex(fromLabel)</span>
+<span id="cb1-102"><a href=""></a>        toVertex <span class="op">=</span> <span class="va">self</span>.getVertex(toLabel)</span>
+<span id="cb1-103"><a href=""></a>        edgeRemovedFlg <span class="op">=</span> fromVertex.removeEdgeTo(toVertex)</span>
+<span id="cb1-104"><a href=""></a>        <span class="cf">if</span> edgeRemovedFlg:</span>
+<span id="cb1-105"><a href=""></a>            <span class="va">self</span>.edgeCount <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb1-106"><a href=""></a>        <span class="cf">return</span> edgeRemovedFlg</span>
+<span id="cb1-107"><a href=""></a>    </span>
+<span id="cb1-108"><a href=""></a>    <span class="co"># Iterators </span></span>
+<span id="cb1-109"><a href=""></a>    </span>
+<span id="cb1-110"><a href=""></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
+<span id="cb1-111"><a href=""></a>        <span class="co">"""Supports iteration over a view of self (the vertices)."""</span></span>
+<span id="cb1-112"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.getVertices()</span>
+<span id="cb1-113"><a href=""></a>    </span>
+<span id="cb1-114"><a href=""></a>    <span class="kw">def</span> edges(<span class="va">self</span>):</span>
+<span id="cb1-115"><a href=""></a>        <span class="co">"""Supports iteration over the edges in the graph."""</span></span>
+<span id="cb1-116"><a href=""></a>        result <span class="op">=</span> []</span>
+<span id="cb1-117"><a href=""></a>        <span class="cf">for</span> vertex <span class="kw">in</span> <span class="va">self</span>.getVertices():</span>
+<span id="cb1-118"><a href=""></a>            result <span class="op">+=</span> <span class="bu">list</span>(vertex.incidentEdges())</span>
+<span id="cb1-119"><a href=""></a>        <span class="cf">return</span> <span class="bu">iter</span>(result)</span>
+<span id="cb1-120"><a href=""></a>    </span>
+<span id="cb1-121"><a href=""></a>    <span class="kw">def</span> getVertices(<span class="va">self</span>):</span>
+<span id="cb1-122"><a href=""></a>        <span class="co">"""Supports iteration over the vertices in the graph."""</span></span>
+<span id="cb1-123"><a href=""></a>        <span class="cf">return</span> <span class="bu">iter</span>(<span class="va">self</span>.vertices.values()) </span>
+<span id="cb1-124"><a href=""></a>    </span>
+<span id="cb1-125"><a href=""></a>    <span class="kw">def</span> incidentEdges(<span class="va">self</span>, label):</span>
+<span id="cb1-126"><a href=""></a>        <span class="co">"""Supports iteration over the incident edges of the</span></span>
+<span id="cb1-127"><a href=""></a><span class="co">        given verrtex."""</span></span>
+<span id="cb1-128"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.getVertex(label).incidentEdges()</span>
+<span id="cb1-129"><a href=""></a>    </span>
+<span id="cb1-130"><a href=""></a>    <span class="kw">def</span> neighboringVertices(<span class="va">self</span>, label):</span>
+<span id="cb1-131"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.getVertex(label).neighboringVertices()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="the-class-linkedvertex" class="slide level2">
 <h2>The Class LinkedVertex</h2>
@@ -641,22 +728,78 @@ These methods allow for flexible construction, modification, and traversal of di
 <section id="the-class-linkedvertex-structure" class="slide level2">
 <h2>The Class LinkedVertex: Structure</h2>
 <div class="small" style="font-size: 35px;">
-<ul>
-<li>Code segment here shows the constructor and the method setLabel:</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="kw">class</span> LinkedVertex(<span class="bu">object</span>):</span>
-<span id="cb6-2"><a href=""></a>&nbsp;</span>
-<span id="cb6-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, label):</span>
-<span id="cb6-4"><a href=""></a>        <span class="va">self</span>.label <span class="op">=</span> label</span>
-<span id="cb6-5"><a href=""></a>        <span class="va">self</span>.edgeList <span class="op">=</span> <span class="bu">list</span>()</span>
-<span id="cb6-6"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb6-7"><a href=""></a>    &nbsp;</span>
-<span id="cb6-8"><a href=""></a>    <span class="kw">def</span> setLabel(<span class="va">self</span>, label, g):</span>
-<span id="cb6-9"><a href=""></a>        <span class="co">"""Sets the vertex’s label to label."""</span></span>
-<span id="cb6-10"><a href=""></a>        g.vertices.pop(<span class="va">self</span>.label, <span class="va">None</span>)</span>
-<span id="cb6-11"><a href=""></a>        g.vertices[label] <span class="op">=</span> <span class="va">self</span></span>
-<span id="cb6-12"><a href=""></a>        <span class="va">self</span>.label <span class="op">=</span> label</span>
-<span id="cb6-13"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="kw">class</span> LinkedVertex:</span>
+<span id="cb2-2"><a href=""></a>    <span class="co"># Constructor</span></span>
+<span id="cb2-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, label):</span>
+<span id="cb2-4"><a href=""></a>        <span class="va">self</span>.label <span class="op">=</span> label</span>
+<span id="cb2-5"><a href=""></a>        <span class="va">self</span>.edgeList <span class="op">=</span> []</span>
+<span id="cb2-6"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-7"><a href=""></a>        </span>
+<span id="cb2-8"><a href=""></a>          </span>
+<span id="cb2-9"><a href=""></a>    <span class="kw">def</span> clearMark(<span class="va">self</span>):</span>
+<span id="cb2-10"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-11"><a href=""></a>        </span>
+<span id="cb2-12"><a href=""></a>    <span class="kw">def</span> isMark(<span class="va">self</span>):</span>
+<span id="cb2-13"><a href=""></a>        <span class="co">"""Returns True if the vertex is marked</span></span>
+<span id="cb2-14"><a href=""></a><span class="co">        or False otherwise."""</span></span>
+<span id="cb2-15"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.mark</span>
+<span id="cb2-16"><a href=""></a></span>
+<span id="cb2-17"><a href=""></a>    <span class="kw">def</span> getLabel(<span class="va">self</span>):</span>
+<span id="cb2-18"><a href=""></a>        <span class="co">""" Return the label for the vertex"""</span></span>
+<span id="cb2-19"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.label</span>
+<span id="cb2-20"><a href=""></a>        </span>
+<span id="cb2-21"><a href=""></a>    <span class="kw">def</span> setLabel(<span class="va">self</span>, label, g):</span>
+<span id="cb2-22"><a href=""></a>        g.vertices.pop(<span class="va">self</span>, label, <span class="va">None</span>)</span>
+<span id="cb2-23"><a href=""></a>        g.vertices[label] <span class="op">=</span> <span class="va">self</span></span>
+<span id="cb2-24"><a href=""></a>        <span class="va">self</span>.label <span class="op">=</span> label</span>
+<span id="cb2-25"><a href=""></a>    </span>
+<span id="cb2-26"><a href=""></a>    <span class="kw">def</span> setMark(<span class="va">self</span>):</span>
+<span id="cb2-27"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-28"><a href=""></a>        </span>
+<span id="cb2-29"><a href=""></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb2-30"><a href=""></a>        <span class="cf">return</span> <span class="bu">str</span>(<span class="va">self</span>.label)</span>
+<span id="cb2-31"><a href=""></a>    </span>
+<span id="cb2-32"><a href=""></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb2-33"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span> <span class="kw">is</span> other: <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb2-34"><a href=""></a>        <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other): <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-35"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.getLabel() <span class="op">==</span> other.getLabel()</span>
+<span id="cb2-36"><a href=""></a>    </span>
+<span id="cb2-37"><a href=""></a>    <span class="co"># Methods used by LinkedGraph</span></span>
+<span id="cb2-38"><a href=""></a>    </span>
+<span id="cb2-39"><a href=""></a>    <span class="kw">def</span> addEdgeTo(<span class="va">self</span>, toVertex, weight):</span>
+<span id="cb2-40"><a href=""></a>        <span class="co">"""Connects the vertices with an edge."""</span></span>
+<span id="cb2-41"><a href=""></a>        edge <span class="op">=</span> LinkedEdge(<span class="va">self</span>, toVertex, weight)</span>
+<span id="cb2-42"><a href=""></a>        <span class="va">self</span>.edgeList.append(edge)</span>
+<span id="cb2-43"><a href=""></a>        </span>
+<span id="cb2-44"><a href=""></a>    <span class="kw">def</span> getEdgeTo(<span class="va">self</span>, toVertex):</span>
+<span id="cb2-45"><a href=""></a>        <span class="co">"""Return the connecting edge if it exists, or None otherwise"""</span></span>
+<span id="cb2-46"><a href=""></a>        edge <span class="op">=</span> LinkedEdge(<span class="va">self</span>, toVertex)</span>
+<span id="cb2-47"><a href=""></a>        <span class="cf">try</span>:</span>
+<span id="cb2-48"><a href=""></a>            <span class="cf">return</span> <span class="va">self</span>.edgeList[<span class="va">self</span>.edgeList.index(edge)]</span>
+<span id="cb2-49"><a href=""></a>        <span class="cf">except</span>:</span>
+<span id="cb2-50"><a href=""></a>            <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb2-51"><a href=""></a>        </span>
+<span id="cb2-52"><a href=""></a>    <span class="kw">def</span> incidentEdges(<span class="va">self</span>):</span>
+<span id="cb2-53"><a href=""></a>        <span class="co">"""Returns the incident edges of this vertex."""</span></span>
+<span id="cb2-54"><a href=""></a>        <span class="cf">return</span> <span class="bu">iter</span>(<span class="va">self</span>.edgeList)</span>
+<span id="cb2-55"><a href=""></a>    </span>
+<span id="cb2-56"><a href=""></a>    <span class="kw">def</span> neighboringVertices(<span class="va">self</span>):</span>
+<span id="cb2-57"><a href=""></a>        <span class="co">"""Returns the neighboring vertices of this vertex."""</span></span>
+<span id="cb2-58"><a href=""></a>        vertices <span class="op">=</span> []</span>
+<span id="cb2-59"><a href=""></a>        <span class="cf">for</span> edge <span class="kw">in</span> <span class="va">self</span>.edgeList:</span>
+<span id="cb2-60"><a href=""></a>             vertices.append(edge.getOtherVertex(<span class="va">self</span>))</span>
+<span id="cb2-61"><a href=""></a>        <span class="cf">return</span> <span class="bu">iter</span>(vertices)</span>
+<span id="cb2-62"><a href=""></a>    </span>
+<span id="cb2-63"><a href=""></a>    <span class="kw">def</span> removeEdgeto(<span class="va">self</span>, toVertex):</span>
+<span id="cb2-64"><a href=""></a>        <span class="co">"""Returns True if the edge exists and is removed,</span></span>
+<span id="cb2-65"><a href=""></a><span class="co">        or False otherwise."""</span></span>
+<span id="cb2-66"><a href=""></a>        edge <span class="op">=</span> LinkedEdge(<span class="va">self</span>, toVertex)</span>
+<span id="cb2-67"><a href=""></a>        <span class="cf">if</span> edge <span class="kw">in</span> <span class="va">self</span>.edgeList:</span>
+<span id="cb2-68"><a href=""></a>            <span class="va">self</span>.edgeList.remove(edge)</span>
+<span id="cb2-69"><a href=""></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb2-70"><a href=""></a>        <span class="cf">else</span>:</span>
+<span id="cb2-71"><a href=""></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-72"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-class-linkededge" class="slide level2">
@@ -738,39 +881,97 @@ These methods allow for flexible construction, modification, and traversal of di
 </section>
 <section id="the-class-linkededge-structure" class="slide level2">
 <h2>The Class LinkedEdge: Structure</h2>
-<ul>
-<li>Code for the constructor and the <code>_eq_</code> method:</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="kw">class</span> LinkedEdge(<span class="bu">object</span>):</span>
-<span id="cb7-2"><a href=""></a>&nbsp;</span>
-<span id="cb7-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, fromVertex, toVertex, weight <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb7-4"><a href=""></a>        <span class="va">self</span>.vertex1 <span class="op">=</span> fromVertex</span>
-<span id="cb7-5"><a href=""></a>        <span class="va">self</span>.vertex2 <span class="op">=</span> toVertex</span>
-<span id="cb7-6"><a href=""></a>        <span class="va">self</span>.weight <span class="op">=</span> weight</span>
-<span id="cb7-7"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb7-8"><a href=""></a>&nbsp;</span>
-<span id="cb7-9"><a href=""></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
-<span id="cb7-10"><a href=""></a>        <span class="co">"""Two edges are equal if they connect</span></span>
-<span id="cb7-11"><a href=""></a><span class="co">        the same vertices."""</span></span>
-<span id="cb7-12"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span> <span class="kw">is</span> other: <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb7-13"><a href=""></a>        <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other): <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb7-14"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.vertex1 <span class="op">==</span> other.vertex1 <span class="kw">and</span> <span class="op">\</span></span>
-<span id="cb7-15"><a href=""></a>               <span class="va">self</span>.vertex2 <span class="op">==</span> other.vertex2 <span class="kw">and</span> <span class="op">\</span></span>
-<span id="cb7-16"><a href=""></a>               <span class="va">self</span>.weight <span class="op">==</span> other.weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>cclass LinkedEdge:</span>
+<span id="cb3-2"><a href=""></a>    <span class="co"># Constructor</span></span>
+<span id="cb3-3"><a href=""></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, fromVertex, toVertex, weight <span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb3-4"><a href=""></a>        <span class="va">self</span>.vertex1 <span class="op">=</span> fromVertex</span>
+<span id="cb3-5"><a href=""></a>        <span class="va">self</span>.vertex2 <span class="op">=</span> toVertex</span>
+<span id="cb3-6"><a href=""></a>        <span class="va">self</span>.weight <span class="op">=</span> weight</span>
+<span id="cb3-7"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-8"><a href=""></a>        </span>
+<span id="cb3-9"><a href=""></a>    <span class="kw">def</span> clearMark(<span class="va">self</span>):</span>
+<span id="cb3-10"><a href=""></a>        <span class="cf">pass</span></span>
+<span id="cb3-11"><a href=""></a>    </span>
+<span id="cb3-12"><a href=""></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb3-13"><a href=""></a>        <span class="co">"""Two edges are equal if they connect</span></span>
+<span id="cb3-14"><a href=""></a><span class="co">        the same vertices."""</span></span>
+<span id="cb3-15"><a href=""></a>        <span class="cf">if</span> <span class="va">self</span> <span class="kw">is</span> other: <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb3-16"><a href=""></a>        <span class="cf">if</span> <span class="bu">type</span>(<span class="va">self</span>) <span class="op">!=</span> <span class="bu">type</span>(other):</span>
+<span id="cb3-17"><a href=""></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb3-18"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.vertex1 <span class="op">==</span> other.vertex1 <span class="kw">and</span> <span class="va">self</span>.vertex2 <span class="op">==</span> other.vertex2 <span class="kw">and</span> <span class="va">self</span>.weight <span class="op">==</span> other.weight  </span>
+<span id="cb3-19"><a href=""></a>    </span>
+<span id="cb3-20"><a href=""></a>    <span class="kw">def</span> getOtherVertex(<span class="va">self</span>, thisVertex): </span>
+<span id="cb3-21"><a href=""></a>        <span class="cf">if</span> thisVertex <span class="op">==</span> <span class="va">None</span> <span class="kw">or</span> thisVertex <span class="op">==</span> <span class="va">self</span>.vertex2:</span>
+<span id="cb3-22"><a href=""></a>            <span class="cf">return</span> <span class="va">self</span>.vertex1</span>
+<span id="cb3-23"><a href=""></a>        <span class="cf">else</span>:</span>
+<span id="cb3-24"><a href=""></a>            <span class="cf">return</span> <span class="va">self</span>.vertex2</span>
+<span id="cb3-25"><a href=""></a>    </span>
+<span id="cb3-26"><a href=""></a>    <span class="kw">def</span> getToVertex(<span class="va">self</span>):</span>
+<span id="cb3-27"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.vertex2</span>
+<span id="cb3-28"><a href=""></a>    </span>
+<span id="cb3-29"><a href=""></a>    <span class="kw">def</span> getWeight(<span class="va">self</span>):</span>
+<span id="cb3-30"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.weight</span>
+<span id="cb3-31"><a href=""></a>    </span>
+<span id="cb3-32"><a href=""></a>    <span class="kw">def</span> isMark(<span class="va">self</span>):</span>
+<span id="cb3-33"><a href=""></a>        <span class="co">"""Returns True if the edge is marked</span></span>
+<span id="cb3-34"><a href=""></a><span class="co">        or False otherwise."""</span></span>
+<span id="cb3-35"><a href=""></a>        <span class="cf">return</span> <span class="va">self</span>.mark</span>
+<span id="cb3-36"><a href=""></a></span>
+<span id="cb3-37"><a href=""></a>    <span class="kw">def</span> setMark(<span class="va">self</span>):</span>
+<span id="cb3-38"><a href=""></a>        <span class="va">self</span>.mark <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-39"><a href=""></a>    </span>
+<span id="cb3-40"><a href=""></a>    <span class="kw">def</span> setWeight(<span class="va">self</span>, weight):</span>
+<span id="cb3-41"><a href=""></a>        <span class="va">self</span>.weight <span class="op">=</span> weight</span>
+<span id="cb3-42"><a href=""></a>        </span>
+<span id="cb3-43"><a href=""></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb3-44"><a href=""></a>        <span class="cf">return</span> <span class="bu">str</span>(<span class="va">self</span>.vertex1) <span class="op">+</span> <span class="st">"&gt;"</span> <span class="op">+</span> <span class="bu">str</span>(<span class="va">self</span>.vertex2) <span class="op">+</span> <span class="st">":"</span> <span class="op">+</span> <span class="bu">str</span>(<span class="va">self</span>.weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="test-linkeddirectedgraph" class="slide level2">
+<h2>Test LinkedDirectedGraph</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="co">"""</span></span>
+<span id="cb4-2"><a href=""></a><span class="co">Tests preconditions on methods.</span></span>
+<span id="cb4-3"><a href=""></a><span class="co">"""</span></span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a><span class="im">from</span> graph <span class="im">import</span> LinkedDirectedGraph</span>
+<span id="cb4-6"><a href=""></a></span>
+<span id="cb4-7"><a href=""></a><span class="co"># Create a directed graph using an adjacency list</span></span>
+<span id="cb4-8"><a href=""></a>g <span class="op">=</span> LinkedDirectedGraph()</span>
+<span id="cb4-9"><a href=""></a></span>
+<span id="cb4-10"><a href=""></a><span class="co"># Add vertices labeled A, B, and C to the graph and print it      </span></span>
+<span id="cb4-11"><a href=""></a>g.addVertex(<span class="st">"A"</span>)</span>
+<span id="cb4-12"><a href=""></a>g.addVertex(<span class="st">"B"</span>)</span>
+<span id="cb4-13"><a href=""></a>g.addVertex(<span class="st">"C"</span>)</span>
+<span id="cb4-14"><a href=""></a><span class="bu">print</span>(<span class="st">"Expect vertices ABC and no edges: </span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(g))</span>
+<span id="cb4-15"><a href=""></a></span>
+<span id="cb4-16"><a href=""></a><span class="co"># Insert edges with weight 2.5 and print the graph</span></span>
+<span id="cb4-17"><a href=""></a>g.addEdge(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="fl">2.5</span>)</span>
+<span id="cb4-18"><a href=""></a>g.addEdge(<span class="st">"B"</span>, <span class="st">"C"</span>, <span class="fl">2.5</span>)</span>
+<span id="cb4-19"><a href=""></a>g.addEdge(<span class="st">"C"</span>, <span class="st">"B"</span>, <span class="fl">2.5</span>)</span>
+<span id="cb4-20"><a href=""></a><span class="bu">print</span>(<span class="st">"Expect same vertices and edges AB BC CB all with weight 2.5: </span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="bu">str</span>(g))</span>
+<span id="cb4-21"><a href=""></a></span>
+<span id="cb4-22"><a href=""></a><span class="co">#g.addVertex("A") should return an error </span></span>
+<span id="cb4-23"><a href=""></a><span class="co">#g.addEdge("A", "D", 2.5)</span></span>
+<span id="cb4-24"><a href=""></a><span class="co">#g.addEdge("A", "B", 2.5)</span></span>
+<span id="cb4-25"><a href=""></a></span>
+<span id="cb4-26"><a href=""></a><span class="bu">print</span>(<span class="st">"Expect A: "</span>, g.getVertex(<span class="st">"A"</span>))</span>
+<span id="cb4-27"><a href=""></a></span>
+<span id="cb4-28"><a href=""></a><span class="bu">print</span>(<span class="st">"Edge from A to B:"</span>, g.getEdge(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb4-29"><a href=""></a><span class="bu">print</span>(<span class="st">"Edge from B to A:"</span>, g.getEdge(<span class="st">"B"</span>, <span class="st">"A"</span>))</span>
+<span id="cb4-30"><a href=""></a></span>
+<span id="cb4-31"><a href=""></a><span class="bu">print</span>(<span class="st">"Incident edges of A:"</span>, <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">str</span>, g.incidentEdges(<span class="st">"A"</span>))))</span>
+<span id="cb4-32"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section>
-<section id="ps6-homework" class="title-slide slide level1 center">
-<h1>PS6: Homework</h1>
+<section id="review-of-ps6-homework" class="title-slide slide level1 center">
+<h1>Review of PS6: Homework</h1>
 <ul>
 <li>Case Study: Testing Graph Algorithms
 <ul>
 <li>In Foundamentals of Python Data Structures (2nd Ed.) by Lambert
 <ul>
-<li>Chapter 12</li>
-<li>Pages 391 to 397</li>
+<li>See Chapter 12, pages 391 to 397</li>
 </ul></li>
 </ul></li>
-<li>Download starter code <a href="https://github.com/Agbo-CS152/ps6/archive/refs/tags/PS6_new.zip">here</a></li>
 </ul>
 </section>
 <section id="instructions" class="slide level2">
@@ -794,9 +995,13 @@ These methods allow for flexible construction, modification, and traversal of di
 <section id="homework-submission" class="slide level2">
 <h2>Homework Submission</h2>
 <ul>
-<li>This home work will be discussed in the class on Monday December 1
+<li>This home work will be discussed in the class on Monday April 27
+<ul>
+<li>How?
 <ul>
 <li>Each student will take turn to <code>show-&amp;-tell</code> by demonstrating their solution</li>
+<li>Then upload the solution to Github</li>
+</ul></li>
 </ul></li>
 </ul>
 <!-- 

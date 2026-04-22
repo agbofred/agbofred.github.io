@@ -5,126 +5,7 @@ This module complete the class for linked directed graph
 
 from abstractcollection import AbstractCollection
 
-class LinkedEdge:
-    # Constructor
-    def __init__(self, fromVertex, toVertex, weight =None):
-        self.vertex1 = fromVertex
-        self.vertex2 = toVertex
-        self.weight = weight
-        self.mark = False
-        
-    def clearMark(self):
-        pass
-    
-    def __eq__(self, other):
-        """Two edges are equal if they connect
-        the same vertices."""
-        if self is other: return True
-        if type(self) != type(other):
-            return False
-        return self.vertex1 == other.vertex1 and self.vertex2 == other.vertex2
-        
-    
-    def getOtherVertex(self, thisVertex):
-        if thisVertex == None or thisVertex == self.vertex2:
-            return self.vertex1
-        else:
-            return self.vertex2
-    
-    def getToVertex(self):
-        return self.vertex2
-    
-    def getWeight(self):
-        return self.weight
-    
-    def isMark(self):
-        """Returns True if the edge is marked
-        or False otherwise."""
-        return self.mark
-
-    def setMark(self):
-        self.mark = True
-    
-    def setWeight(self, weight):
-        self.weight = weight
-        
-    def __str__(self):
-        return str(self.vertex1) + ">" + str(self.vertex2) + ":" + str(self.weight)
-    
-    
-class LinkedVertex:
-    # Constructor
-    def __init__(self, label):
-        self.label = label
-        self.edgeList = []
-        self.mark = False
-        
-          
-    def clearMark(self):
-        self.mark = False
-        
-    def isMark(self):
-        """Returns True if the vertex is marked
-        or False otherwise."""
-        return self.mark
-
-    def getLabel(self):
-        """ Return the label for the vertex"""
-        return self.label
-        
-    def setLabel(self, label, g):
-        g.vertices.pop(self, label, None)
-        g.vertices[label] = self
-        self.label = label
-    
-    def setMark(self):
-        self.mark = True
-        
-    def __str__(self):
-        return str(self.label)
-    
-    def __eq__(self, other):
-        if self is other: return True
-        if type(self) != type(other): return False
-        return self.getLabel() == other.getLabel()
-    
-    # Methods used by LinkedGraph
-    
-    def addEdgeTo(self, toVertex, weight):
-        """Connects the vertices with an edge."""
-        edge = LinkedEdge(self, toVertex, weight)
-        self.edgeList.append(edge)
-        
-    def getEdgeTo(self, toVertex):
-        """Return the connecting edge if it exists, or None otherwise"""
-        edge = LinkedEdge(self, toVertex)
-        try:
-            return self.edgeList[self.edgeList.index(edge)]
-        except:
-            return None
-        
-    def incidentEdges(self):
-        """Returns the incident edges of this vertex."""
-        return iter(self.edgeList)
-    
-    def neighboringVertices(self):
-        """Returns the neighboring vertices of this vertex."""
-        vertices = []
-        for edge in self.edgeList:
-             vertices.append(edge.getOtherVertex(self))
-        return iter(vertices)
-    
-    def removeEdgeto(self, toVertex):
-        """Returns True if the edge exists and is removed,
-        or False otherwise."""
-        edge = LinkedEdge(self, toVertex)
-        if edge in self.edgeList:
-            self.edgeList.remove(edge)
-            return True
-        else:
-            return False
-    
-        
+# Class LinkedDirectedGraph
 class LinkedDirectedGraph(AbstractCollection):
     """A graph has a count of vertices, a count of edges,
     and a dictionary of label/vertex pairs."""
@@ -256,4 +137,128 @@ class LinkedDirectedGraph(AbstractCollection):
     
     def neighboringVertices(self, label):
         return self.getVertex(label).neighboringVertices()
+    
+
+# LinkedVertices
+
+class LinkedVertex:
+    # Constructor
+    def __init__(self, label):
+        self.label = label
+        self.edgeList = []
+        self.mark = False
+        
+          
+    def clearMark(self):
+        self.mark = False
+        
+    def isMark(self):
+        """Returns True if the vertex is marked
+        or False otherwise."""
+        return self.mark
+
+    def getLabel(self):
+        """ Return the label for the vertex"""
+        return self.label
+        
+    def setLabel(self, label, g):
+        g.vertices.pop(self, label, None)
+        g.vertices[label] = self
+        self.label = label
+    
+    def setMark(self):
+        self.mark = True
+        
+    def __str__(self):
+        return str(self.label)
+    
+    def __eq__(self, other):
+        if self is other: return True
+        if type(self) != type(other): return False
+        return self.getLabel() == other.getLabel()
+    
+    # Methods used by LinkedGraph
+    
+    def addEdgeTo(self, toVertex, weight):
+        """Connects the vertices with an edge."""
+        edge = LinkedEdge(self, toVertex, weight)
+        self.edgeList.append(edge)
+        
+    def getEdgeTo(self, toVertex):
+        """Return the connecting edge if it exists, or None otherwise"""
+        edge = LinkedEdge(self, toVertex)
+        try:
+            return self.edgeList[self.edgeList.index(edge)]
+        except:
+            return None
+        
+    def incidentEdges(self):
+        """Returns the incident edges of this vertex."""
+        return iter(self.edgeList)
+    
+    def neighboringVertices(self):
+        """Returns the neighboring vertices of this vertex."""
+        vertices = []
+        for edge in self.edgeList:
+             vertices.append(edge.getOtherVertex(self))
+        return iter(vertices)
+    
+    def removeEdgeto(self, toVertex):
+        """Returns True if the edge exists and is removed,
+        or False otherwise."""
+        edge = LinkedEdge(self, toVertex)
+        if edge in self.edgeList:
+            self.edgeList.remove(edge)
+            return True
+        else:
+            return False
+    
+
+# LinkedEdges
+class LinkedEdge:
+    # Constructor
+    def __init__(self, fromVertex, toVertex, weight =None):
+        self.vertex1 = fromVertex
+        self.vertex2 = toVertex
+        self.weight = weight
+        self.mark = False
+        
+    def clearMark(self):
+        pass
+    
+    def __eq__(self, other):
+        """Two edges are equal if they connect
+        the same vertices."""
+        if self is other: return True
+        if type(self) != type(other):
+            return False
+        return self.vertex1 == other.vertex1 and self.vertex2 == other.vertex2
+        
+    
+    def getOtherVertex(self, thisVertex):
+        if thisVertex == None or thisVertex == self.vertex2:
+            return self.vertex1
+        else:
+            return self.vertex2
+    
+    def getToVertex(self):
+        return self.vertex2
+    
+    def getWeight(self):
+        return self.weight
+    
+    def isMark(self):
+        """Returns True if the edge is marked
+        or False otherwise."""
+        return self.mark
+
+    def setMark(self):
+        self.mark = True
+    
+    def setWeight(self, weight):
+        self.weight = weight
+        
+    def __str__(self):
+        return str(self.vertex1) + ">" + str(self.vertex2) + ":" + str(self.weight)
+    
     
