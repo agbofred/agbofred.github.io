@@ -1,4 +1,4 @@
-from node import Node
+from week16.node import Node
 from abstractqueue import AbstractQueue
 
 class LinkedQueue(AbstractQueue):

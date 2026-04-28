@@ -2,7 +2,7 @@
 A tester program for stack implementations.
 """
 from arraystack import ArrayStack
-from linkedstack import LinkedStack
+from week16.linkedstack import LinkedStack
 
 def test(stackType):
     # Test any implementation with the same code

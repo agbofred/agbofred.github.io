@@ -2,8 +2,8 @@
 File: linkedqueue.py
 """
 
-from node import Node
-from abstractcollection import AbstractCollection
+from week16.node import Node
+from week16.abstractcollection import AbstractCollection
 
 class LinkedQueue(AbstractCollection):
     """A link-based queue implementation."""

@@ -2,7 +2,7 @@
 File: abstractstack.py
 """
 
-from abstractcollection import AbstractCollection
+from week16.abstractcollection import AbstractCollection
 
 class AbstractStack(AbstractCollection):
     """An abstract stack implementation."""

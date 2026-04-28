@@ -1,5 +1,5 @@
 from arrays import Array
-from abstractstack import AbstractStack
+from week16.abstractstack import AbstractStack
 
 class ArrayStack(AbstractStack):
     "Array-based stack collections"

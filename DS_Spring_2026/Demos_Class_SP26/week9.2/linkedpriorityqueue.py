@@ -1,7 +1,7 @@
 """
 File: linkedpriorityqueue.py
 """
-from node import Node
+from week16.node import Node
 from linkedqueue import LinkedQueue
 
 class LinkedPriorityQueue(LinkedQueue):

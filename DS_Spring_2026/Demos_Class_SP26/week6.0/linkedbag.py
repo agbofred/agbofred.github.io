@@ -1,7 +1,7 @@
 """
 File: linkedbag.py
 """
-from node import Node
+from week16.node import Node
 class LinkedBag(object):
     """A Linked-based bag implementation."""
 

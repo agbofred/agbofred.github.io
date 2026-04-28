@@ -1,7 +1,7 @@
 ---
 title: "Weeks 9 - 15 Class Review"
 author: "Fred Agbo"
-date: April 27, 2026
+date: April 29, 2026
 format:
   revealjs:
     chalkboard: true
@@ -10,39 +10,54 @@ format:
 ---
 
 ## Announcements
-:::{.incremental style="font-size: 28px;"}
-- PS6 was due yesterday:
-    - Zip all the files and upload to Canvas
-    - Those who already presented on Monday during class are not obliged to upload on Canvas.
-        - However, it will be nice to reference them. Hence, still upload if you can.
-    - You haven't presented yet or made significant update after class on Monday?
-        - You `MUST` upload to Canvas.
-- Mini Project #3 grading is ongoing.
+:::{.incremental style="font-size: 33px;"}
+- Welcome to the very last class for this semester!
+- PS6 was due and being graded
 - Have not completed the Course Evaluation yet? 
-    - Check for the menu on your course Canvas and complete it ASAP.
-- Volunteers to participate in my VR prototype for STEM education study.
-    - Visit my office between 11 am and 12pm from tomorrow Thursday 4th until Thursday 11th.
-    - I will follow up on email.
+    - Kindly do that now!
+- Want to discuss anything related to the class,
+    - Please visit my office on Tuesdays and Thursdays
+    - For other days, send me an email to book appointment.
 :::
 
 ## Finals: Exams and other heads up
-:::{.incremental style="font-size: 30px;"}
-- The final for this class is scheduled for `Tuesday, December 9th, from 2:00 p.m. - 5:00 p.m.`
-- Venue is here in this same class
-- Those with accommodations should notify testing center ASAP and copy me in the communications
+:::{.incremental style="font-size: 33px;"}
+- The final exam for this class is scheduled as follows:
+    - Session: MW 10:20am – 11:50am: Tue., May 5th, from 8:00 a.m. - 11:00 a.m. 
+    - Session: MW 8:40am – 10:10am: Wed., May 6th, from 8:00 a.m. - 11:00 a.m.
+- Those with accommodation and writing the exam in testing center, booking a spot is almost too late.
+- Venue for the exam is this same classroom (Smullin Hall, 119)
+
+:::
+
+## Finals: Exams and other heads up
+:::{.incremental style="font-size: 33px;"}
 - What you need for the exam:
     - Only your laptop is needed to access Canvas page.
-        - No other software - local or on the web will be allowed or opened during the exam.
+        - No other software - local or on the web - will be allowed or opened during the exam.
     - No access to printed or electronic materials.
-    - No use of code editor, notes from the class or your personal notes.
+    - No use of code editor, 
+    - No use of notes from the class or your personal notes.
     - You can bring a sheet of blank paper as worksheet.
 - In another words, the exam is totally closed.
+:::
+
+## Finals: Exams and other heads up
+:::{.incremental style="font-size: 33px;"}
+- Exam Structure:
+    - To be completed on Canvas.
+    - Three Sections:
+        - multi-choice questions 
+        - short-answer questions
+        - applied/scenario-based questions 
+- Time allowed for the exam is 3 hours 
+    - Those with accommodations will have their extra time programmed into the exam.
 :::
 
 # Data Structures Review: Queues, Trees, Hash Tables, and Graphs
 
 
-## Stacks: Fundamentals and Operations
+<!-- ## Stacks: Fundamentals and Operations
 :::{.smaller style="font-size: 26px;"}
 | Feature | Description |
 | :--- | :--- |
@@ -84,7 +99,7 @@ format:
 - Stack **remembers alternative states** at each juncture
 - On dead end, backs up to **last unexplored alternative**
 - LIFO nature facilitates backtracking
-:::
+::: -->
 
 
 

@@ -3,10 +3,10 @@ File: linkedbst.py
 Completes the LinkedBST class.
 """
 
-from abstractcollection import AbstractCollection
+from week16.abstractcollection import AbstractCollection
 from bstnode import BSTNode
 from math import log
-from linkedstack import LinkedStack
+from week16.linkedstack import LinkedStack
 from linkedqueue import LinkedQueue
 
 class LinkedBST(AbstractCollection):

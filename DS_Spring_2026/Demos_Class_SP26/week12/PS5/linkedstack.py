@@ -2,8 +2,8 @@
 File: linkedstack.py
 """
 
-from node import Node
-from abstractstack import AbstractStack
+from week16.node import Node
+from week16.abstractstack import AbstractStack
 
 class LinkedStack(AbstractStack):
     """A link-based stack implementation."""

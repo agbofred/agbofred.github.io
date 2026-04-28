@@ -17,7 +17,7 @@
     
     
 from arrays import Array
-from node import Node
+from week16.node import Node
 
 array = Array(10)
 for i in range(10): 

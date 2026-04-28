@@ -2,7 +2,7 @@
 File: linkedbst.py
 Author: Ken Lambert
 """
-from abstractcollection import AbstractCollection
+from week16.abstractcollection import AbstractCollection
 from bstnode import BSTNode
 
 class LinkedBST (AbstractCollection):
