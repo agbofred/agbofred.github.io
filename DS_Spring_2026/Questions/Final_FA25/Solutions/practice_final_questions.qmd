@@ -1,6 +1,6 @@
 ---
 title: "Final Exam Practice Questions: Data Structures and Algorithms"
-subtitle: "CS 152 Fall, 2025"
+subtitle: "CS 152 Spring, 2026"
 format:
   html:
     theme:
@@ -20,7 +20,7 @@ format:
 
 ***
 
-> **Note:** This final exam practice questions are developed based exclusively on the materials covered in the class so far, following the topics from Week 6 through Week 14.
+> **Note:** This final exam practice questions are developed based exclusively on the materials covered in the class so far, following the topics from Week 8 through Week 15.
 
 ***
 

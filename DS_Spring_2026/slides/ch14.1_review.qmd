@@ -46,10 +46,11 @@ format:
 :::{.incremental style="font-size: 33px;"}
 - Exam Structure:
     - To be completed on Canvas.
+    - Covers chapters 7 - 12 (mainly covered from week 8 through 15)
     - Three Sections:
-        - multi-choice questions 
-        - short-answer questions
-        - applied/scenario-based questions 
+        - multi-choice questions (about 30)
+        - short-answer questions (about 10)
+        - applied/scenario-based questions (between 5 - 10)
 - Time allowed for the exam is 3 hours 
     - Those with accommodations will have their extra time programmed into the exam.
 :::

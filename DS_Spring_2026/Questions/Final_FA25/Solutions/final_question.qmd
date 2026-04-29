@@ -1,6 +1,6 @@
 ---
 title: "Final Examination: Data Structures and Algorithms"
-subtitle: "CS 152 Fall, 2025"
+subtitle: "CS 152 Spring, 2026"
 format:
   html:
     theme:
@@ -170,6 +170,77 @@ format:
      **Correct Answer:** **C. Less than or equal to the item**  
      <small>*parentItem <= item causes the loop to break*</small>
 
+
+    21. **Compared to Arrays and Binary Search Trees, what is the average search time complexity provided by a Hash Table?**  
+        - A. O(N)  
+        - B. O(logN)  
+        - C. O(1)  
+        - D. O(N^2)  
+        **Correct Answer:** **C. O(1)**
+
+    22. **In the context of hash functions, what term describes the set of all possible input finite length byte strings?**  
+        - A. Domain  
+        - B. Codomain  
+        - C. Range  
+        - D. Load Factor  
+        **Correct Answer:** **A. Domain**
+
+    23. **What property of a hash function is most desirable to ensure that elements are distributed roughly equally across buckets in a hash map?**  
+        - A. Cryptographic security  
+        - B. Uniform distribution (Equidistributed)  
+        - C. Sequential ordering  
+        - D. High memory usage  
+        **Correct Answer:** **B. Uniform distribution (Equidistributed)**
+
+    24. **A security checksum uses a hash function property where small changes to an input lead to large, unpredictable changes in the output. This is known as the:**  
+        - A. Collision strategy  
+        - B. Modulo effect  
+        - C. Avalanche effect  
+        - D. Loading threshold  
+        **Correct Answer:** **C. Avalanche effect**
+
+    25. **Which of the following is a characteristic of a Bloom Filter?**  
+        - A. It provides a guaranteed O(1) removal time.  
+        - B. It can tell you whether something is NOT in a list, but it cannot guarantee something IS in the list.  
+        - C. It requires a sorted linked list to function.  
+        - D. It never experiences collisions.  
+        **Correct Answer:** **B. It can tell you whether something is NOT in a list, but it cannot guarantee something IS in the list.**
+
+    26. **According to the "Birthday Paradox," what is the minimum number of people needed in a room to have a greater than 50% chance that two share a birthday?**  
+        - A. 183  
+        - B. 50  
+        - C. 23  
+        - D. 365  
+        **Correct Answer:** **C. 23**
+
+    27. **What mathematical operation is used to "wrap" a large unique code into a specific range of array indices (e.g., mapping a huge number to an index between 0 and 99,999)?**  
+        - A. Multiplication by powers of 27  
+        - B. Modulo operator (%)  
+        - C. Addition of character digits  
+        - D. Logarithmic scaling  
+        **Correct Answer:** **B. Modulo operator (%)**
+
+    28. **What is the standard "rule of thumb" for the array size and load factor when designing a hash table to balance space and collisions?**  
+        - A. Array size = Number of items; Load factor = 1.0  
+        - B. Array size = Half the number of items; Load factor = 2.0  
+        - C. Array size = Twice the number of items; Load factor = 0.5  
+        - D. Array size = Trillion cells; Load factor = 0.0001  
+        **Correct Answer:** **C. Array size = Twice the number of items; Load factor = 0.5**
+
+    29. **Which collision resolution strategy involves storing multiple items at the same index using a linked list?**  
+        - A. Linear Probing  
+        - B. Open Addressing  
+        - C. Separate Chaining  
+        - D. Double Hashing  
+        **Correct Answer:** **C. Separate Chaining**
+
+    30. **Algorithms like Bucket Sort or Probabilistic Min Cut, which are not guaranteed to be correct but find good solutions quickly, are known as:**  
+        - A. Deterministic algorithms  
+        - B. Randomized algorithms  
+        - C. Exhaustive searches  
+        - D. Static algorithms  
+        **Correct Answer:** **B. Randomized algorithms**
+
 ---
 
 ### Part 2: Short Answer Questions (1-2 Words) (10 Questions)
@@ -290,3 +361,22 @@ Explain how the existing undirected graph must be conceptually converted to a Di
 
 **Answer:**  
 Each undirected edge {u,v} must be replaced by **two directed edges**: (u,v) and (v,u), each with its own weight. The total number of edges in the directed graph will be **twice** the original number of undirected edges (2M).
+
+---
+
+#### 6. Scenario: The Cybersecurity Architect
+
+**Question:**
+You are building a secure file-transfer system. You decide to use a hash function that is **equidistributed** to verify file integrity (checksums). However, your lead engineer warns that your hash function lacks the **avalanche effect**. Explain the security risk of using a function without this property for this specific application.
+
+**Concise Answer:** Without the **avalanche effect**, small changes to the input do not lead to large, unpredictable changes in the output. This makes the system vulnerable because an attacker could intercept a file, modify it, and then "pack" additional bits into the file to force it to hash back to the original value, making the tampering undetectable.
+
+---
+
+#### 7. Scenario: The Data Engineer’s Surprise
+
+**Question:**
+A developer is managing a hash table with an array size of 366 cells. They have only inserted 23 items (a load factor of approximately 6.3%), yet they are frustrated to find that they are already experiencing performance-degrading collisions. What mathematical principle explains why collisions are occurring so early, and what is the "rule of thumb" for array sizing to minimize this issue?
+
+**Concise Answer:** This is explained by the **Birthday Paradox**, which demonstrates that collisions are much more likely than intuition suggests; with 23 items in 366 cells, there is already a **50.7% chance of a collision**. To mitigate this, the standard **rule of thumb** is to design the array size to be **twice the number of expected items** (maintaining a load factor of 0.5).
+
