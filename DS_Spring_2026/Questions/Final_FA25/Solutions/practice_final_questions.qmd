@@ -208,14 +208,23 @@ format:
 **Answer:**  
 First, the infix expression ((4 + 5) * 6) - 3 must be converted to postfix (which is `4 5 + 6 * 3 -`).  
 **Postfix Evaluation Steps:**
+
 1. Scan 4: Push 4 onto the stack.
+
 2. Scan 5: Push 5 onto the stack.
+
 3. Scan +: Pop 5, Pop 4. Calculate 4+5=9. Push 9.
+
 4. Scan 6: Push 6 onto the stack.
+
 5. Scan *: Pop 6, Pop 9. Calculate 9*6=54. Push 54.
+
 6. Scan 3: Push 3 onto the stack.
+
 7. Scan -: Pop 3, Pop 54. Calculate 54−3=51. Push 51.
+
 8. End of expression: The result (51) is the final item on the stack.
+
 
 ---
 
