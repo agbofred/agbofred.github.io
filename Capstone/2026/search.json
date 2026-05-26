@@ -1,0 +1,499 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "",
+    "text": "Computer Science Capstone Course"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "Welcome",
+    "text": "Welcome\nWelcome to the Senior Capstone Project sequence! This two-semester course represents the culmination of your computer science education, where you’ll design, develop, and deploy a significant software project from concept to completion."
+  },
+  {
+    "objectID": "index.html#course-overview",
+    "href": "index.html#course-overview",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "Course Overview",
+    "text": "Course Overview\nThis capstone experience provides an opportunity to demonstrate your mastery of software engineering principles through the creation of a substantial application. You’ll engage in all phases of the software development lifecycle, applying industry-standard practices including requirements analysis, system design, implementation, testing, and deployment.\nThroughout this journey, you’ll work independently on your chosen project while receiving guidance through regular consultations and peer collaboration. The course emphasizes not only technical excellence but also professional skills including project management, documentation, and effective communication of complex technical concepts."
+  },
+  {
+    "objectID": "index.html#quick-links",
+    "href": "index.html#quick-links",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nCourse Syllabus\nSchedule an Appointment"
+  },
+  {
+    "objectID": "index.html#instructor",
+    "href": "index.html#instructor",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "Instructor",
+    "text": "Instructor\n\nProfessor Fred Agbo, PhD\nAssistant Professor of Computer Science\nOffice: Ford Hall 209\nEmail: fjagbo@willamette.edu\nWillamette Profile | Website | Google Scholar"
+  },
+  {
+    "objectID": "index.html#key-information",
+    "href": "index.html#key-information",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "Key Information",
+    "text": "Key Information\n\nDuration: Two semesters (Fall 2025 - Spring 2026)\nCredits: 8 total (4 per semester)\nFormat: Individual project with weekly meetings"
+  },
+  {
+    "objectID": "index.html#course-goals",
+    "href": "index.html#course-goals",
+    "title": "CS 480W/481: Senior Capstone Project",
+    "section": "Course Goals",
+    "text": "Course Goals\nBy the end of this sequence, you will have:\n\nCompleted a full-stack application from initial concept through deployment\nDemonstrated proficiency in modern software development practices\nCreated comprehensive technical documentation\nPresented your work to technical and general audiences\nBuilt a portfolio piece showcasing your capabilities\n\n\nGet Started: Review the complete syllabus to understand course requirements, grading criteria, and semester timelines."
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html",
+    "href": "assets/THEME-DOCUMENTATION.html",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "This custom color theme is inspired by Professor Fred Agbo’s professional website (fredagbo.com) and designed specifically for the CS 481W/482 Senior Capstone Project course materials.\n\n\n\nThe theme combines modern educational technology aesthetics with professional polish, reflecting: - Academic Excellence: Deep professional blues convey trust and expertise - Innovation Focus: Vibrant orange accents represent creativity and energy - Educational Technology: Teal secondary colors symbolize growth and learning - Accessibility: High contrast ratios and responsive design ensure inclusivity\n\n\n\n\n\n\n--primary-dark: #0A4C6D - Deep ocean blue for headings and emphasis\n--primary-main: #1E5A7D - Main brand color for primary elements\n--primary-light: #2C6B8E - Lighter shade for interactive elements\n--primary-lighter: #4A8FAF - Subtle accents and hover states\n\n\n\n\n\n--accent-main: #FF6B35 - Bold orange for calls-to-action\n--accent-dark: #E65A25 - Deeper shade for active states\n--accent-light: #FF8558 - Lighter variant for highlights\n\n\n\n\n\n--secondary-main: #16A085 - Teal for success and growth indicators\n--secondary-dark: #138D75 - Darker teal for emphasis\n--secondary-light: #1ABC9C - Light teal for subtle accents\n\n\n\n\n\n--text-primary: #2C3E50 - Main body text (dark slate)\n--text-secondary: #5D6D7E - Secondary text (medium gray)\n--text-light: #7F8C8D - Tertiary text (light gray)\n--text-white: #FFFFFF - White text for dark backgrounds\n\n\n\n\n\n--bg-primary: #FFFFFF - Main content background\n--bg-secondary: #F8F9FA - Subtle gray for sections\n--bg-tertiary: #ECF0F1 - Lighter gray for nested elements\n--bg-dark: #34495E - Dark background for code blocks\n\n\n\n\n\n\n\n\nHeader borders use gradient transitions from accent orange to teal\nButtons feature gradient backgrounds for visual depth\nWelcome section has a sophisticated gradient overlay\n\n\n\n\n\nClean sans-serif font stack for optimal readability\nHierarchical heading styles with visual indicators\nColor-coded headings for quick content scanning\n\n\n\n\n\nSmooth transitions on all interactive components\nHover effects with subtle transforms and shadows\nCustom-styled links with animated underlines\n\n\n\n\n\nWCAG 2.1 AA compliant color contrasts\nFocus indicators for keyboard navigation\nReduced motion support for users with vestibular disorders\nHigh contrast mode support\n\n\n\n\n\nMobile-first approach with breakpoints\nFluid typography and spacing\nTouch-friendly interactive elements\n\n\n\n\n\nLeft-border accents on headings (gradient bars)\nSection cards with hover effects\nColor-coded list items with custom bullets\nStyled tables with gradient headers\n\n\n\n\n\n\n\nThe theme is automatically applied through: 1. _quarto.yml configuration file 2. YAML frontmatter in markdown files 3. Direct CSS links in HTML files\n\n\n\nTo customize specific elements, add inline styles or create additional CSS files that load after custom-theme.css.\n\n\n\n\n2026/\n├── assets/\n│   ├── custom-theme.css         # Main theme file\n│   └── THEME-DOCUMENTATION.md   # This file\n├── _quarto.yml                  # Quarto configuration\n├── index.md                     # Homepage source\n├── syllabi.md                   # Syllabus source\n├── index.html                   # Rendered homepage\n└── syllabi.html                 # Rendered syllabus\n\n\n\nDesigner/Developer: Professor Fred Agbo, PhD\nInspiration: fredagbo.com\nDate: May 2026\nVersion: 1.0\n\nFor questions or customization requests, contact: fjagbo@willamette.edu"
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#overview",
+    "href": "assets/THEME-DOCUMENTATION.html#overview",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "This custom color theme is inspired by Professor Fred Agbo’s professional website (fredagbo.com) and designed specifically for the CS 481W/482 Senior Capstone Project course materials."
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#design-philosophy",
+    "href": "assets/THEME-DOCUMENTATION.html#design-philosophy",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "The theme combines modern educational technology aesthetics with professional polish, reflecting: - Academic Excellence: Deep professional blues convey trust and expertise - Innovation Focus: Vibrant orange accents represent creativity and energy - Educational Technology: Teal secondary colors symbolize growth and learning - Accessibility: High contrast ratios and responsive design ensure inclusivity"
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#color-palette",
+    "href": "assets/THEME-DOCUMENTATION.html#color-palette",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "--primary-dark: #0A4C6D - Deep ocean blue for headings and emphasis\n--primary-main: #1E5A7D - Main brand color for primary elements\n--primary-light: #2C6B8E - Lighter shade for interactive elements\n--primary-lighter: #4A8FAF - Subtle accents and hover states\n\n\n\n\n\n--accent-main: #FF6B35 - Bold orange for calls-to-action\n--accent-dark: #E65A25 - Deeper shade for active states\n--accent-light: #FF8558 - Lighter variant for highlights\n\n\n\n\n\n--secondary-main: #16A085 - Teal for success and growth indicators\n--secondary-dark: #138D75 - Darker teal for emphasis\n--secondary-light: #1ABC9C - Light teal for subtle accents\n\n\n\n\n\n--text-primary: #2C3E50 - Main body text (dark slate)\n--text-secondary: #5D6D7E - Secondary text (medium gray)\n--text-light: #7F8C8D - Tertiary text (light gray)\n--text-white: #FFFFFF - White text for dark backgrounds\n\n\n\n\n\n--bg-primary: #FFFFFF - Main content background\n--bg-secondary: #F8F9FA - Subtle gray for sections\n--bg-tertiary: #ECF0F1 - Lighter gray for nested elements\n--bg-dark: #34495E - Dark background for code blocks"
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#key-features",
+    "href": "assets/THEME-DOCUMENTATION.html#key-features",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "Header borders use gradient transitions from accent orange to teal\nButtons feature gradient backgrounds for visual depth\nWelcome section has a sophisticated gradient overlay\n\n\n\n\n\nClean sans-serif font stack for optimal readability\nHierarchical heading styles with visual indicators\nColor-coded headings for quick content scanning\n\n\n\n\n\nSmooth transitions on all interactive components\nHover effects with subtle transforms and shadows\nCustom-styled links with animated underlines\n\n\n\n\n\nWCAG 2.1 AA compliant color contrasts\nFocus indicators for keyboard navigation\nReduced motion support for users with vestibular disorders\nHigh contrast mode support\n\n\n\n\n\nMobile-first approach with breakpoints\nFluid typography and spacing\nTouch-friendly interactive elements\n\n\n\n\n\nLeft-border accents on headings (gradient bars)\nSection cards with hover effects\nColor-coded list items with custom bullets\nStyled tables with gradient headers"
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#usage",
+    "href": "assets/THEME-DOCUMENTATION.html#usage",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "The theme is automatically applied through: 1. _quarto.yml configuration file 2. YAML frontmatter in markdown files 3. Direct CSS links in HTML files\n\n\n\nTo customize specific elements, add inline styles or create additional CSS files that load after custom-theme.css."
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#file-structure",
+    "href": "assets/THEME-DOCUMENTATION.html#file-structure",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "2026/\n├── assets/\n│   ├── custom-theme.css         # Main theme file\n│   └── THEME-DOCUMENTATION.md   # This file\n├── _quarto.yml                  # Quarto configuration\n├── index.md                     # Homepage source\n├── syllabi.md                   # Syllabus source\n├── index.html                   # Rendered homepage\n└── syllabi.html                 # Rendered syllabus"
+  },
+  {
+    "objectID": "assets/THEME-DOCUMENTATION.html#credits",
+    "href": "assets/THEME-DOCUMENTATION.html#credits",
+    "title": "Custom Color Theme Documentation",
+    "section": "",
+    "text": "Designer/Developer: Professor Fred Agbo, PhD\nInspiration: fredagbo.com\nDate: May 2026\nVersion: 1.0\n\nFor questions or customization requests, contact: fjagbo@willamette.edu"
+  },
+  {
+    "objectID": "syllabi.html",
+    "href": "syllabi.html",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "Course Numbers\nCS 480W (Fall 2026) / CS 481 (Spring 2027)\n\n\nCredits\n4 credits per semester (8 total)\n\n\nDuration\nTwo semesters (30 weeks)\n\n\nMeeting Format\nWeekly individual meetings (30 minutes)\n\n\nPrerequisites\nSenior standing; completion of core CS curriculum\n\n\n\n\n\n\nProfessor Fred Agbo, PhD\nEmail: fjagbo@willamette.edu\nOffice: Ford Hall 209 (Salem)\n\n\n\nOffice hours are available by 15-minute appointments or on a drop-in basis when available. Multiple modalities are offered (in-person, phone, Google Meet). If the scheduled times do not align with your availability, please contact the instructor.\n\n\n\nA two-semester culminating experience where students apply their cumulative knowledge to design, develop, and deploy a full-stack or similar-type application. Students will follow industry-standard software development lifecycle (SDLC) practices, from initial conception through final deployment and documentation. The course emphasizes professional software engineering methodology, project management, technical communication, and collaborative development practices.\n\n\n\nUpon completion of this course sequence, students will be able to:\n\nDesign and implement a complete full-stack or similar-type application from conception to deployment\nApply software engineering principles and best practices throughout the development lifecycle\nDemonstrate proficiency in project management and agile methodologies\nCreate comprehensive technical documentation\nPresent technical work to both technical and non-technical audiences\nCollaborate effectively using version control and project management tools\nConduct meaningful peer reviews and incorporate feedback\n\n\n\n\n\n\n\n\n\n\n\n\nSoftware Engineering: A Modern Approach\nMarco Tulio Valente. Free, open textbook. Available at engsoftmoderna.info\nRequired\n\n\nHandbook of Software Engineering Methods\nLara Letaw. Free OER via Open Textbook Library. Available at open.umn.edu\nRequired\n\n\n\nSoftware Engineering: A Modern Approach provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. Handbook of Software Engineering Methods complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access."
+  },
+  {
+    "objectID": "syllabi.html#table-of-contents",
+    "href": "syllabi.html#table-of-contents",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Course Information\nDevelopment Methodology\nSemester Schedule\nPeer Collaboration\nGrading and Assessment\nTools and Resources\nProject Guidelines\nCourse Policies\nAdditional Resources"
+  },
+  {
+    "objectID": "syllabi.html#course-information",
+    "href": "syllabi.html#course-information",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Item\nDetails\n\n\n\n\nCourse Code\nCS 481W (Fall 2025) / CS 482 (Spring 2026)\n\n\nCredit Hours\n4 credits each semester (8 total)\n\n\nPrerequisites\nSenior standing in Computer Science\n\n\nMeeting Format\nWeekly individual consultations (30 minutes)\n\n\nCourse Duration\nTwo consecutive semesters\n\n\n\n\n\n\nProfessor Fred Agbo, PhD\nAssistant Professor of Computer Science\nEmail: fjagbo@willamette.edu\nOffice: Ford Hall 209\nOffice Hours: Available by appointment or drop-in during scheduled hours. Multiple formats available (in-person, virtual). Contact instructor if scheduled times don’t work with your schedule.\n\n\n\nThis two-semester capstone course provides the opportunity to apply your accumulated computer science knowledge to a substantial software development project. You’ll take a project from initial conception through deployment, following professional software engineering practices throughout the entire development lifecycle.\nThe course emphasizes practical application of software engineering principles, including requirements gathering, system architecture, iterative development, testing strategies, and deployment practices. You’ll also develop essential professional skills in project management, technical communication, and collaborative development.\n\n\n\nStudents who successfully complete this course will be able to:\n\nDesign and implement a complete software system from initial concept to production deployment\nApply software engineering best practices throughout the development process\nUtilize version control and collaborative development tools effectively\nCreate clear and comprehensive technical documentation for multiple audiences\nPresent and defend technical decisions to peers and stakeholders\nManage project scope, timeline, and resources effectively\nProvide constructive technical feedback through peer review processes\n\n\n\n\nPrimary Texts (Free and open-access): - Software Engineering: A Modern Approach by Marco Tulio Valente (Available at engsoftmoderna.info) - Handbook of Software Engineering Methods by Lara Letaw (Available via Open Textbook Library)\nThese texts provide comprehensive coverage of software engineering topics and practical methodologies that align with industry practices."
+  },
+  {
+    "objectID": "syllabi.html#development-methodology",
+    "href": "syllabi.html#development-methodology",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "This course uses an agile-inspired methodology adapted for academic settings. The approach combines iterative development with structured academic milestones.\nCore Principles: - Iterative Progress: Build features incrementally with regular feedback - Regular Cadence: Weekly development cycles aligned with instructor meetings - Continuous Integration: Regular code integration and automated testing - Flexible Planning: Adapt requirements based on learning and feedback - Active Engagement: Regular communication with instructor and peers\n\n\n\n\n\n\nPhase\nActivities\nDeliverables\n\n\n\n\nStart of Week\nPlan sprint tasks\nTask list with time estimates\n\n\nMid-Week\nActive development\nCode commits and progress updates\n\n\nEnd of Week\nReview and testing\nPull requests for review\n\n\nWeekly Meeting\nDemo and discussion\nProgress demonstration\n\n\n\n\n\n\nVersion Control Standards: - Commit frequently (minimum daily when actively developing) - Use meaningful commit messages following conventional formats - Work in feature branches, merge via pull requests - Maintain a clean main branch with working code\nTesting Requirements: - Write unit tests for core functionality - Implement integration tests for key workflows - Maintain reasonable code coverage (60%+ in Semester 2) - Document test cases and expected outcomes\nDocumentation Standards: - Maintain up-to-date README with setup instructions - Document API endpoints and data structures - Include inline code comments for complex logic - Keep a development journal tracking decisions and progress"
+  },
+  {
+    "objectID": "syllabi.html#semester-schedule",
+    "href": "syllabi.html#semester-schedule",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Week 1: Course introduction and project ideation\nDeliverable: Three project concepts with brief descriptions\nWeek 2: Project selection and feasibility analysis\nDeliverable: Selected project with technical feasibility assessment\nWeek 3: Requirements and scope definition\nDeliverable: Initial project proposal draft\nWeek 4: Finalize project plan\nDeliverable: Complete project proposal document (5-7 pages)\n\n\n\nWeek 5: System architecture planning\nDeliverable: High-level architecture diagram and component breakdown\nWeek 6: User interface and experience design\nDeliverable: Wireframes and user flow diagrams\nWeek 7: Technical design documentation\nDeliverable: API specifications and data models\nWeek 8: Mid-semester progress review\nDeliverable: Design presentation (15 minutes)\n\n\n\nWeek 9: Development environment and infrastructure setup\nWeek 10: Database schema implementation\nWeek 11: Backend API development begins\nWeek 12: Frontend foundation development\nWeek 13: Integration of frontend and backend\nWeek 14: Initial testing and documentation\n\n\n\nDeliverable: Working prototype demonstration and semester reflection\n\n\n\n\n\n\n\nFocus on implementing core features with weekly sprints and regular testing.\nDeliverable: Functional features with test coverage\n\n\n\nWeek 7: Comprehensive testing strategy implementation\nWeek 8: Mid-semester technical demonstration\nWeek 9: User testing with external participants\nWeek 10: Refinement based on feedback\n\n\n\nWeek 11: Production environment configuration\nWeek 12: Deployment and monitoring setup\nWeek 13: Final documentation completion\n\n\n\nWeek 14: Final presentation preparation\nWeek 15: Public showcase and project handoff"
+  },
+  {
+    "objectID": "syllabi.html#peer-collaboration",
+    "href": "syllabi.html#peer-collaboration",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Each student engages in peer review activities throughout both semesters, providing feedback on two assigned projects while receiving feedback on their own.\n\n\n\nPartnerships are established at the beginning of Fall semester and continue through Spring. This consistency allows reviewers to develop deep familiarity with each project.\n\n\n\nFall Semester Reviews: - Early draft feedback (proposal stage) - Architecture and design review - Code review sessions (backend and frontend) - Prototype evaluation\nSpring Semester Reviews: - Feature implementation feedback - Testing strategy review - Deployment assessment - Final documentation review\n\n\n\nEffective peer reviews include: - Specific feedback with examples - Constructive suggestions for improvement - Recognition of strengths - Questions that promote deeper thinking - Timely submission"
+  },
+  {
+    "objectID": "syllabi.html#grading-and-assessment",
+    "href": "syllabi.html#grading-and-assessment",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Range\nGrade\nRange\nGrade\n\n\n\n\n93-100\nA\n73-76\nC\n\n\n90-92\nA-\n70-72\nC-\n\n\n87-89\nB+\n67-69\nD+\n\n\n83-86\nB\n63-66\nD\n\n\n80-82\nB-\n60-62\nD-\n\n\n77-79\nC+\nBelow 60\nF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nProject Proposal\n15%\nComplete and well-researched proposal\n\n\nDesign Documents\n15%\nArchitecture and technical design\n\n\nWeekly Progress\n20%\nConsistent progress and meeting engagement\n\n\nMid-Semester Presentation\n10%\nDesign presentation and Q&A\n\n\nWorking Prototype\n25%\nFunctional minimum viable product\n\n\nFinal Presentation\n10%\nSemester summary and demo\n\n\nPeer Review Participation\n5%\nQuality and timeliness of peer reviews\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nFeature Implementation\n25%\nComplete implementation of planned features\n\n\nTesting and Quality\n15%\nTest coverage and bug resolution\n\n\nDeployment\n15%\nSuccessful production deployment\n\n\nDocumentation\n15%\nComprehensive user and technical docs\n\n\nWeekly Progress\n15%\nConsistent development throughout semester\n\n\nFinal Showcase\n10%\nPublic presentation of completed project\n\n\nPeer Review Participation\n5%\nQuality and timeliness of peer reviews"
+  },
+  {
+    "objectID": "syllabi.html#tools-and-resources",
+    "href": "syllabi.html#tools-and-resources",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Version Control: Git and GitHub (required)\nProject Management: GitHub Projects, Jira, Trello, or similar\nCommunication: Slack, Discord, or approved alternative\nCI/CD: GitHub Actions or similar automation tools\nCloud Services: Student credits available for major cloud platforms\n\n\n\n\nStudents are responsible for maintaining a functional development environment appropriate for their chosen technology stack. Minimum requirements vary by project but typically include:\n\nCurrent version of chosen programming language(s)\nDatabase system (local or cloud-based)\nCode editor or IDE\nTesting frameworks\nDeployment tools"
+  },
+  {
+    "objectID": "syllabi.html#project-guidelines",
+    "href": "syllabi.html#project-guidelines",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "Your project proposal should include:\nExecutive Summary (1 page): - Project title and brief description - Problem being addressed - Proposed solution overview - Target users or audience\nTechnical Details (2-3 pages): - Functional requirements (at least 10) - Non-functional requirements (performance, security, etc.) - Technology stack with justification - System architecture overview\nProject Management (1-2 pages): - Development approach and methodology - Timeline with key milestones - Risk analysis and mitigation strategies - Success criteria\nResearch and References (1 page): - Analysis of similar existing solutions - Key technical resources - New technologies or skills to be learned"
+  },
+  {
+    "objectID": "syllabi.html#course-policies",
+    "href": "syllabi.html#course-policies",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "All submitted work must be your own or properly attributed. Use of AI tools must be documented. Plagiarism or academic dishonesty will result in serious consequences including possible course failure. Consult your institution’s academic integrity policy for complete details.\n\n\n\nStudents have a cumulative bank of 72 hours (3 days) for late submissions throughout both semesters. These hours can be allocated across any deliverables as needed. Once this bank is exhausted, late work receives a 20% penalty per 24-hour period. Work more than 5 days late receives no credit. Contact the instructor immediately if extenuating circumstances arise.\n\n\n\nIncomplete grades are granted only in cases of serious illness, family emergency, or other circumstances beyond student control that prevent completion of coursework. Incompletes are not granted for time management difficulties or falling behind. Students experiencing challenges should contact the instructor early to develop a support plan.\n\n\n\nThis is an intensive course requiring substantial work outside of scheduled meetings. Expect to dedicate 8-12 hours per week to project development, documentation, and related activities. Consistent weekly effort is essential for success.\n\n\n\nStudents requiring academic accommodations should provide appropriate documentation from your institution’s accessibility office within the first two weeks of the semester. The instructor will work with you to ensure appropriate support.\n\n\n\n\nWeekly meetings are mandatory except in case of emergency\nUse approved communication channels for questions and updates\nResponse time: instructor will respond within 24-48 hours during business days\nFor urgent issues, use designated emergency contact method"
+  },
+  {
+    "objectID": "syllabi.html#additional-resources",
+    "href": "syllabi.html#additional-resources",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "The Pragmatic Programmer by Hunt and Thomas\nClean Code by Robert Martin\n\nDesign Patterns: Elements of Reusable Object-Oriented Software\n\n\n\n\n\nGitHub Documentation: https://docs.github.com/\nMozilla Developer Network: https://developer.mozilla.org/\nStack Overflow: https://stackoverflow.com/\nYour chosen framework/language official documentation\n\n\n\n\n\nStart Early: Begin thinking about and working on tasks as soon as they’re assigned\nCommit Regularly: Make frequent, small commits rather than infrequent large ones\nAsk for Help: Reach out when blocked for more than a couple of hours\nCome Prepared: Have specific questions and progress updates for weekly meetings\nTake Peer Review Seriously: Both giving and receiving feedback helps everyone learn\nDocument Continuously: Keep notes and documentation current throughout development"
+  },
+  {
+    "objectID": "syllabi.html#university-policies",
+    "href": "syllabi.html#university-policies",
+    "title": "CS 481W/482: Course Syllabus",
+    "section": "",
+    "text": "All students should feel welcome and supported in this course. Please inform the instructor of your preferred name and pronouns. If you experience any barriers to full participation, please reach out to discuss accommodations.\n\n\n\nContact your institution’s accessibility services office early in the semester to arrange any needed accommodations. The instructor is committed to ensuring all students have equal access to course materials and activities.\n\n\n\nMaintain professional and respectful behavior in all course interactions. Disruptive or inappropriate behavior will not be tolerated. This includes but is not limited to: harassment, discrimination, dishonesty, or interference with others’ learning.\n\n\n\nFamiliarize yourself with campus emergency procedures. In case of emergency during a meeting or class session, follow instructor directions and campus protocols.\n\nNote: This syllabus is subject to change with reasonable notice. Students will be informed of any significant changes via official communication channels.\n\nLast updated: August 2025"
+  },
+  {
+    "objectID": "syllabi.html#basic-information",
+    "href": "syllabi.html#basic-information",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "Course Numbers\nCS 480W (Fall 2026) / CS 481 (Spring 2027)\n\n\nCredits\n4 credits per semester (8 total)\n\n\nDuration\nTwo semesters (30 weeks)\n\n\nMeeting Format\nWeekly individual meetings (30 minutes)\n\n\nPrerequisites\nSenior standing; completion of core CS curriculum"
+  },
+  {
+    "objectID": "syllabi.html#professor",
+    "href": "syllabi.html#professor",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "Professor Fred Agbo, PhD\nEmail: fjagbo@willamette.edu\nOffice: Ford Hall 209 (Salem)"
+  },
+  {
+    "objectID": "syllabi.html#office-hours",
+    "href": "syllabi.html#office-hours",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "Office hours are available by 15-minute appointments or on a drop-in basis when available. Multiple modalities are offered (in-person, phone, Google Meet). If the scheduled times do not align with your availability, please contact the instructor."
+  },
+  {
+    "objectID": "syllabi.html#course-description",
+    "href": "syllabi.html#course-description",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "A two-semester culminating experience where students apply their cumulative knowledge to design, develop, and deploy a full-stack or similar-type application. Students will follow industry-standard software development lifecycle (SDLC) practices, from initial conception through final deployment and documentation. The course emphasizes professional software engineering methodology, project management, technical communication, and collaborative development practices."
+  },
+  {
+    "objectID": "syllabi.html#learning-objectives",
+    "href": "syllabi.html#learning-objectives",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "Upon completion of this course sequence, students will be able to:\n\nDesign and implement a complete full-stack or similar-type application from conception to deployment\nApply software engineering principles and best practices throughout the development lifecycle\nDemonstrate proficiency in project management and agile methodologies\nCreate comprehensive technical documentation\nPresent technical work to both technical and non-technical audiences\nCollaborate effectively using version control and project management tools\nConduct meaningful peer reviews and incorporate feedback"
+  },
+  {
+    "objectID": "syllabi.html#textbooks-and-materials",
+    "href": "syllabi.html#textbooks-and-materials",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "",
+    "text": "Software Engineering: A Modern Approach\nMarco Tulio Valente. Free, open textbook. Available at engsoftmoderna.info\nRequired\n\n\nHandbook of Software Engineering Methods\nLara Letaw. Free OER via Open Textbook Library. Available at open.umn.edu\nRequired\n\n\n\nSoftware Engineering: A Modern Approach provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. Handbook of Software Engineering Methods complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access."
+  },
+  {
+    "objectID": "syllabi.html#modified-agile-with-academic-milestones",
+    "href": "syllabi.html#modified-agile-with-academic-milestones",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Modified Agile with Academic Milestones",
+    "text": "Modified Agile with Academic Milestones\nThis course employs a Modified Agile methodology that combines industry-standard Agile practices with academic milestone requirements.\n\nCore Principles\n\nIterative Development: Features built incrementally with regular feedback loops\nWeekly Sprints: One-week development cycles aligned with instructor meetings\nContinuous Integration: Code integrated and tested regularly\nAdaptive Planning: Requirements evolve based on feedback and learning\nStakeholder Engagement: Instructor as product owner (or external customer in certain situations) and peers as stakeholders"
+  },
+  {
+    "objectID": "syllabi.html#development-cycle-structure",
+    "href": "syllabi.html#development-cycle-structure",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Development Cycle Structure",
+    "text": "Development Cycle Structure\n\nWeekly Sprint Cycle\nThe following provides a high-level overview of the weekly sprint cycle. The precise schedule may vary based on project needs and progress.\n\n\n\nMonday\nSprint planning\nSprint backlog\n\n\nTuesday–Thursday\nDevelopment work\nCode commits\n\n\nFriday\nCode review and testing\nPull requests\n\n\nWeekend\nDocumentation and reflection\nUpdated docs\n\n\nWeekly Meeting\nSprint review with instructor\nDemo\n\n\n\n\n\nScrum Artifacts (Academic Adaptation)\n\nProduct Backlog: Living document in GitHub Issues\nSprint Backlog: Weekly task list with estimates\nBurndown Charts: Visual progress tracking\nDefinition of Done: Explicit completion criteria"
+  },
+  {
+    "objectID": "syllabi.html#required-development-practices",
+    "href": "syllabi.html#required-development-practices",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Required Development Practices",
+    "text": "Required Development Practices\n\nVersion Control Requirements\n\nDaily commits minimum (including research/documentation days)\nCommit format: Conventional commits (feat:, fix:, docs:, etc.)\nWorkflow: Feature branch with pull requests\nProtection: Main branch requires review\n\n\n\nTesting Strategy\n\n\n\nUnit Tests\nAll public methods\n60% minimum (Semester 2)\n\n\nIntegration Tests\nAll API endpoints\n100%\n\n\nEnd-to-End Tests\nCritical user paths\nCore features\n\n\nPerformance Tests\nDatabase queries\n&lt; 100ms response\n\n\n\n\n\nCI/CD Pipeline\nA continuous integration and continuous deployment (CI/CD) pipeline will be established to automate testing and deployment processes, ensuring rapid and reliable delivery of software updates. The implementation will vary based on the project’s technical stack.\nExample workflow configuration for GitHub Actions:\nname: CI/CD Pipeline\non: [push, pull_request]\njobs:\n  test:\n    - run: npm test\n    - run: npm run coverage\n  deploy:\n    - staging: automatic\n    - production: manual approval"
+  },
+  {
+    "objectID": "syllabi.html#agile-ceremonies",
+    "href": "syllabi.html#agile-ceremonies",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Agile Ceremonies",
+    "text": "Agile Ceremonies\n\nSprint Planning (Weekly – 10 min)\n\nReview velocity\nSelect backlog items\nBreak down tasks\nCommit to goals\n\n\n\nDaily Standup (Asynchronous)\nPost daily by 10 AM in Discord/Slack:\n\nYesterday’s completions\nToday’s plan\nCurrent blockers\n\n\n\nSprint Review (Weekly – 15 min)\n\nDemo features\nGather feedback\nDiscuss incomplete items\n\n\n\nSprint Retrospective (Bi-weekly – 5 min)\n\nWhat went well\nAreas for improvement\nAction items"
+  },
+  {
+    "objectID": "syllabi.html#semester-1-planning-design-and-foundation-cs-481w-fall-2025",
+    "href": "syllabi.html#semester-1-planning-design-and-foundation-cs-481w-fall-2025",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 1: Planning, Design, and Foundation (CS 481W – Fall 2025)",
+    "text": "Semester 1: Planning, Design, and Foundation (CS 481W – Fall 2025)\n\nMilestone 1: Project Initiation and Planning (Weeks 1–4)\n\n\n\n\n\n\n\n\nWeek\nTopic\nDeliverable\n\n\n\n\n1\nCourse Introduction and Project Brainstorming: course overview, SDLC methodologies review, project ideation workshop\nThree project ideas (one page each)\n\n\n2\nProject Selection and Feasibility: technology stack research, feasibility analysis, market research\nProject selection with justification\n\n\n3\nProject Proposal Development: scope definition, user stories, risk assessment\nDraft project proposal\n\n\n4\nProposal Finalization: proposal refinement, timeline planning, methodology selection\nFinal project proposal (5–7 pages)\n\n\n\n\n\nMilestone 2: Design and Architecture (Weeks 5–8)\n\n\n\n\n\n\n\n\nWeek\nTopic\nDeliverable\n\n\n\n\n5\nSystem Architecture Design: high-level architecture, component diagrams, database schema\nArchitecture diagram\n\n\n6\nUI/UX Design: wireframes, user flows, accessibility planning\nComplete wireframe set\n\n\n7\nDetailed Design: API specifications, data flow diagrams, security architecture\nTechnical design document\n\n\n8\nMid-Semester Presentation: present to instructor and peers, peer feedback, Q&A\n15-minute presentation\n\n\n\n\n\nMilestone 3: Foundation Development (Weeks 9–14)\n\n\n\nWeek\nFocus Area\nDeliverable\n\n\n\n\n9\nEnvironment Setup\nCI/CD pipeline\n\n\n10\nDatabase Implementation\nSchema with test data\n\n\n11\nBackend Foundation\nAuth system and core APIs\n\n\n12\nFrontend Foundation\nBasic UI with routing\n\n\n13\nIntegration\nWorking prototype\n\n\n14\nDocumentation\nComplete code docs\n\n\n\n\n\nMilestone 4: Semester 1 Wrap-up (Week 15)\n\nWorking prototype demonstration\nSemester retrospective\nSemester 2 planning\nDeliverable: Prototype demo and reflection paper"
+  },
+  {
+    "objectID": "syllabi.html#semester-2-development-testing-and-deployment-cs-482-spring-2026",
+    "href": "syllabi.html#semester-2-development-testing-and-deployment-cs-482-spring-2026",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 2: Development, Testing, and Deployment (CS 482 – Spring 2026)",
+    "text": "Semester 2: Development, Testing, and Deployment (CS 482 – Spring 2026)\n\nMilestone 5: Feature Development (Weeks 1–6)\n\nWeek 1: Sprint planning and setup\nWeeks 2–3: Core Feature Sprint 1\nWeeks 4–5: Core Feature Sprint 2\nWeek 6: Integration testing and fixes\n\n\n\nMilestone 6: Testing and QA (Weeks 7–10)\n\n\n\nWeek\nFocus\nDeliverable\n\n\n\n\n7\nTest Planning\nTest cases, scripts\n\n\n8\nMid-Semester Presentation\nTechnical demo\n\n\n9\nUser Acceptance Testing\n5+ user sessions\n\n\n10\nRefinement Sprint\nPriority fixes\n\n\n\n\n\nMilestone 7: Deployment and Documentation (Weeks 11–13)\n\nWeek 11: Production environment setup\nWeek 12: Deployment and monitoring\nWeek 13: Final documentation package\n\n\n\nMilestone 8: Project Closure (Weeks 14–15)\n\nWeek 14: Showcase preparation\nWeek 15: Public presentation and handoff"
+  },
+  {
+    "objectID": "syllabi.html#overview",
+    "href": "syllabi.html#overview",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Overview",
+    "text": "Overview\nEach student serves as a peer reviewer for two projects throughout both semesters, developing critical evaluation skills and exposure to different approaches."
+  },
+  {
+    "objectID": "syllabi.html#review-partnerships",
+    "href": "syllabi.html#review-partnerships",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Review Partnerships",
+    "text": "Review Partnerships\nReview partnerships are assigned at the start of Semester 1 and remain consistent throughout both semesters. Each student provides constructive feedback and support to their assigned peers."
+  },
+  {
+    "objectID": "syllabi.html#review-schedule",
+    "href": "syllabi.html#review-schedule",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Review Schedule",
+    "text": "Review Schedule\n\nSemester 1 Reviews\n\nWeek 3: Proposal Draft\nWeek 6: Architecture\nWeek 8: Design Docs\nWeek 11: Backend Code\nWeek 13: Frontend Code\nWeek 15: Prototype\n\n\n\nSemester 2 Reviews\n\nWeek 2: Sprint Planning\nWeek 5: Features\nWeek 8: Presentation\nWeek 9: Testing\nWeek 11: Deployment\nWeek 12: Documentation\nWeek 14: Final Code\nWeek 15: Showcase"
+  },
+  {
+    "objectID": "syllabi.html#review-rubric",
+    "href": "syllabi.html#review-rubric",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Review Rubric",
+    "text": "Review Rubric\n\n\n\nGrade\nDescription\nRange\n\n\n\n\nA\nSpecific, actionable feedback with code examples\n90–100%\n\n\nB\nIdentifies major issues with useful suggestions\n80–89%\n\n\nC\nMeets requirements with basic feedback\n70–79%\n\n\nD\nMinimal effort, vague feedback\n60–69%\n\n\nF\nMissing or non-constructive\nBelow 60%"
+  },
+  {
+    "objectID": "syllabi.html#grade-scale",
+    "href": "syllabi.html#grade-scale",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Grade Scale",
+    "text": "Grade Scale\n\n\n\n≥ 92.00\nA\n72.00 – 77.99\nC\n\n\n90.00 – 91.99\nA-\n70.00 – 71.99\nC-\n\n\n88.00 – 89.99\nB+\n68.00 – 69.99\nD+\n\n\n82.00 – 87.99\nB\n62.00 – 67.99\nD\n\n\n80.00 – 81.99\nB-\n60.00 – 61.99\nD-\n\n\n78.00 – 79.99\nC+\n≤ 59.99\nF"
+  },
+  {
+    "objectID": "syllabi.html#semester-1-grade-distribution-cs-481w",
+    "href": "syllabi.html#semester-1-grade-distribution-cs-481w",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 1 Grade Distribution (CS 481W)",
+    "text": "Semester 1 Grade Distribution (CS 481W)\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nProject Proposal\n15%\nComplete proposal document\n\n\nDesign Documentation\n15%\nArchitecture and design docs\n\n\nWeekly Progress\n20%\nMeeting attendance and progress\n\n\nMid-Semester Presentation\n10%\nDesign presentation\n\n\nWorking Prototype\n25%\nFunctional MVP\n\n\nFinal Presentation\n10%\nSemester wrap-up\n\n\nPeer Reviews\n5%\nQuality of reviews provided"
+  },
+  {
+    "objectID": "syllabi.html#semester-2-grade-distribution-cs-482",
+    "href": "syllabi.html#semester-2-grade-distribution-cs-482",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 2 Grade Distribution (CS 482)",
+    "text": "Semester 2 Grade Distribution (CS 482)\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nFeature Completion\n25%\nAll planned features implemented\n\n\nTesting and Quality\n15%\nTest coverage and bug fixes\n\n\nDeployment Success\n15%\nProduction deployment\n\n\nDocumentation\n15%\nUser and technical docs\n\n\nWeekly Progress\n15%\nConsistent development\n\n\nFinal Presentation\n10%\nProject showcase\n\n\nPeer Reviews\n5%\nQuality of reviews provided"
+  },
+  {
+    "objectID": "syllabi.html#technology-stack",
+    "href": "syllabi.html#technology-stack",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Technology Stack",
+    "text": "Technology Stack\n\nVersion Control: Git/GitHub (required)\nProject Management: Jira, Trello, or GitHub Projects\nCommunication: Discord or Slack\nCI/CD: GitHub Actions, Jenkins, or CircleCI\nCloud: Student credits for AWS/Azure/GCP\nDocumentation: Markdown, JSDoc, or Sphinx"
+  },
+  {
+    "objectID": "syllabi.html#development-environment",
+    "href": "syllabi.html#development-environment",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Development Environment",
+    "text": "Development Environment\n# Minimum required setup\ngit --version      # 2.0+\nnode --version     # 14.0+ (if using Node.js)\ndocker --version   # 20.0+ (recommended)"
+  },
+  {
+    "objectID": "syllabi.html#executive-summary-1-page",
+    "href": "syllabi.html#executive-summary-1-page",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Executive Summary (1 page)",
+    "text": "Executive Summary (1 page)\n\nProject name and tagline\nProblem statement\nProposed solution\nTarget users"
+  },
+  {
+    "objectID": "syllabi.html#technical-specifications-23-pages",
+    "href": "syllabi.html#technical-specifications-23-pages",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Technical Specifications (2–3 pages)",
+    "text": "Technical Specifications (2–3 pages)\n\nFunctional requirements (minimum 10)\nNon-functional requirements\nTechnology stack justification\nSystem architecture overview"
+  },
+  {
+    "objectID": "syllabi.html#project-management-12-pages",
+    "href": "syllabi.html#project-management-12-pages",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Project Management (1–2 pages)",
+    "text": "Project Management (1–2 pages)\n\nDevelopment methodology\nTimeline with milestones\nRisk analysis matrix\nSuccess metrics"
+  },
+  {
+    "objectID": "syllabi.html#references-and-research-1-page",
+    "href": "syllabi.html#references-and-research-1-page",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "References and Research (1 page)",
+    "text": "References and Research (1 page)\n\nSimilar solutions analysis\nTechnical resources\nLearning requirements"
+  },
+  {
+    "objectID": "syllabi.html#academic-integrity",
+    "href": "syllabi.html#academic-integrity",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Academic Integrity",
+    "text": "Academic Integrity\nAll code must be original or properly attributed. AI tool usage must be documented. Plagiarism results in course failure. For details, consult Willamette’s academic integrity policy."
+  },
+  {
+    "objectID": "syllabi.html#late-work",
+    "href": "syllabi.html#late-work",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Late Work",
+    "text": "Late Work\nStudents are allotted 72 cumulative hours (3 days) of late submissions across all deliverables without penalty. Hours may be distributed across assignments as needed. Once exhausted, late submissions incur a 20% penalty per 24 hours on a continuous scale; deliverables submitted more than 5 days late receive no credit. Extenuating circumstances should be discussed with the instructor promptly."
+  },
+  {
+    "objectID": "syllabi.html#incomplete-grades",
+    "href": "syllabi.html#incomplete-grades",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Incomplete Grades",
+    "text": "Incomplete Grades\nIncomplete grades are granted only for prolonged illness or family emergencies that remove a student from the learning environment for an extended period. Incompletes are not granted for falling behind due to motivation, comprehension, or time management difficulties. Students experiencing academic difficulties should consult with the instructor to develop an improvement plan."
+  },
+  {
+    "objectID": "syllabi.html#time-commitment",
+    "href": "syllabi.html#time-commitment",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Time Commitment",
+    "text": "Time Commitment\nPer Willamette’s Credit Hour Policy, each hour of class time requires 2–3 hours of work outside class. The advanced nature of this course requires consistent effort throughout the semester. Expect 6–9 hours per week of outside engagement including development, documentation, and project work."
+  },
+  {
+    "objectID": "syllabi.html#classroom-conduct",
+    "href": "syllabi.html#classroom-conduct",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Classroom Conduct",
+    "text": "Classroom Conduct\nConstructive classroom behavior supports an environment of trust, respect, and collaborative learning. Disruptive behaviors include but are not limited to: interrupting others, distracting from course content, unauthorized recordings, and any form of harassment or abuse. Such behaviors will not be tolerated."
+  },
+  {
+    "objectID": "syllabi.html#accommodations",
+    "href": "syllabi.html#accommodations",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Accommodations",
+    "text": "Accommodations\nStudents requiring accommodations should provide documentation from Accessible Education Services (Smullin 155, 503-370-6737, accessible-info@willamette.edu) within the first two weeks."
+  },
+  {
+    "objectID": "syllabi.html#office-hours-1",
+    "href": "syllabi.html#office-hours-1",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Office Hours",
+    "text": "Office Hours\n\nBy Appointment: Project-specific consultations\nOnline: Discord server for async questions"
+  },
+  {
+    "objectID": "syllabi.html#recommended-reading",
+    "href": "syllabi.html#recommended-reading",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Recommended Reading",
+    "text": "Recommended Reading\n\nThe Pragmatic Programmer by Hunt and Thomas\nClean Code by Robert Martin\nDesign Patterns by the Gang of Four"
+  },
+  {
+    "objectID": "syllabi.html#online-resources",
+    "href": "syllabi.html#online-resources",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Online Resources",
+    "text": "Online Resources\n\nGitHub Docs\nMDN Web Docs\nStack Overflow\nDevDocs"
+  },
+  {
+    "objectID": "syllabi.html#success-tips",
+    "href": "syllabi.html#success-tips",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Success Tips",
+    "text": "Success Tips\n\nStart early and iterate often\nCommit code daily, even small changes\nAsk for help when stuck for more than 2 hours\nAttend all weekly meetings prepared\nEngage meaningfully in peer reviews\nDocument as you go, not at the end"
+  },
+  {
+    "objectID": "syllabi.html#inclusive-classroom",
+    "href": "syllabi.html#inclusive-classroom",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Inclusive Classroom",
+    "text": "Inclusive Classroom\nStudents are addressed by their affirmed name and pronouns upon request. Notify the instructor at any point to update records accordingly."
+  },
+  {
+    "objectID": "syllabi.html#accessibility-and-accommodations",
+    "href": "syllabi.html#accessibility-and-accommodations",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Accessibility and Accommodations",
+    "text": "Accessibility and Accommodations\nWillamette University is committed to creating inclusive learning environments. Students experiencing barriers to inclusion or achievement should notify the instructor promptly. Students with disabilities are encouraged to contact Accessible Education Services (Smullin 155, 503-370-6737, accessible-info@willamette.edu) to discuss accommodations."
+  },
+  {
+    "objectID": "syllabi.html#title-ix",
+    "href": "syllabi.html#title-ix",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Title IX",
+    "text": "Title IX\nWillamette University prohibits discrimination and harassment based on sex or gender. As a mandatory reporter, the instructor is required to report any incidents of sexual misconduct disclosed to them to Willamette’s Title IX Coordinator. For confidential support, contact:\n\nConfidential advocate: confidential-advocate@willamette.edu\nWUTalk crisis line: 503-375-5353\nCampus Safety (emergency): 503-370-6911"
+  },
+  {
+    "objectID": "syllabi.html#religious-accommodations",
+    "href": "syllabi.html#religious-accommodations",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Religious Accommodations",
+    "text": "Religious Accommodations\nStudents requiring accommodations for religious observances should notify the instructor within the first two weeks of the semester."
+  },
+  {
+    "objectID": "syllabi.html#land-acknowledgement",
+    "href": "syllabi.html#land-acknowledgement",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Land Acknowledgement",
+    "text": "Land Acknowledgement\nWe respectfully acknowledge that Willamette University is located on the ancestral lands of the Kalapuya people, who today are represented by the Confederated Tribes of the Grand Ronde and the Confederated Tribes of the Siletz Indians. We honor their deep connection to this land and recognize the ongoing contributions of Indigenous peoples to our academic community.\n\nCourse materials structure adapted from Dr. Lucas P. Cordova’s CS Capstone course. Special thanks to Lucas for the excellent organizational framework to capstone education.\n\nNote: This syllabus is subject to change with reasonable notice. Students will be informed of any significant changes via official communication channels.\n\nLast updated: August 2025"
+  },
+  {
+    "objectID": "syllabi.html#semester-1-planning-design-and-foundation-cs-480w-fall-2026",
+    "href": "syllabi.html#semester-1-planning-design-and-foundation-cs-480w-fall-2026",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 1: Planning, Design, and Foundation (CS 480W – Fall 2026)",
+    "text": "Semester 1: Planning, Design, and Foundation (CS 480W – Fall 2026)\n\nMilestone 1: Project Initiation and Planning (Weeks 1–4)\n\n\n\n\n\n\n\n\nWeek\nTopic\nDeliverable\n\n\n\n\n1\nCourse Introduction and Project Brainstorming: course overview, SDLC methodologies review, project ideation workshop\nThree project ideas (one page each)\n\n\n2\nProject Selection and Feasibility: technology stack research, feasibility analysis, market research\nProject selection with justification\n\n\n3\nProject Proposal Development: scope definition, user stories, risk assessment\nDraft project proposal\n\n\n4\nProposal Finalization: proposal refinement, timeline planning, methodology selection\nFinal project proposal (5–7 pages)\n\n\n\n\n\nMilestone 2: Design and Architecture (Weeks 5–8)\n\n\n\n\n\n\n\n\nWeek\nTopic\nDeliverable\n\n\n\n\n5\nSystem Architecture Design: high-level architecture, component diagrams, database schema\nArchitecture diagram\n\n\n6\nUI/UX Design: wireframes, user flows, accessibility planning\nComplete wireframe set\n\n\n7\nDetailed Design: API specifications, data flow diagrams, security architecture\nTechnical design document\n\n\n8\nMid-Semester Presentation: present to instructor and peers, peer feedback, Q&A\n15-minute presentation\n\n\n\n\n\nMilestone 3: Foundation Development (Weeks 9–14)\n\n\n\nWeek\nFocus Area\nDeliverable\n\n\n\n\n9\nEnvironment Setup\nCI/CD pipeline\n\n\n10\nDatabase Implementation\nSchema with test data\n\n\n11\nBackend Foundation\nAuth system and core APIs\n\n\n12\nFrontend Foundation\nBasic UI with routing\n\n\n13\nIntegration\nWorking prototype\n\n\n14\nDocumentation\nComplete code docs\n\n\n\n\n\nMilestone 4: Semester 1 Wrap-up (Week 15)\n\nWorking prototype demonstration\nSemester retrospective\nSemester 2 planning\nDeliverable: Prototype demo and reflection paper"
+  },
+  {
+    "objectID": "syllabi.html#semester-2-development-testing-and-deployment-cs-481-spring-2027",
+    "href": "syllabi.html#semester-2-development-testing-and-deployment-cs-481-spring-2027",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 2: Development, Testing, and Deployment (CS 481 – Spring 2027)",
+    "text": "Semester 2: Development, Testing, and Deployment (CS 481 – Spring 2027)\n\nMilestone 5: Feature Development (Weeks 1–6)\n\nWeek 1: Sprint planning and setup\nWeeks 2–3: Core Feature Sprint 1\nWeeks 4–5: Core Feature Sprint 2\nWeek 6: Integration testing and fixes\n\n\n\nMilestone 6: Testing and QA (Weeks 7–10)\n\n\n\nWeek\nFocus\nDeliverable\n\n\n\n\n7\nTest Planning\nTest cases, scripts\n\n\n8\nMid-Semester Presentation\nTechnical demo\n\n\n9\nUser Acceptance Testing\n5+ user sessions\n\n\n10\nRefinement Sprint\nPriority fixes\n\n\n\n\n\nMilestone 7: Deployment and Documentation (Weeks 11–13)\n\nWeek 11: Production environment setup\nWeek 12: Deployment and monitoring\nWeek 13: Final documentation package\n\n\n\nMilestone 8: Project Closure (Weeks 14–15)\n\nWeek 14: Showcase preparation\nWeek 15: Public presentation and handoff"
+  },
+  {
+    "objectID": "syllabi.html#semester-1-grade-distribution-cs-480w",
+    "href": "syllabi.html#semester-1-grade-distribution-cs-480w",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 1 Grade Distribution (CS 480W)",
+    "text": "Semester 1 Grade Distribution (CS 480W)\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nProject Proposal\n15%\nComplete proposal document\n\n\nDesign Documentation\n15%\nArchitecture and design docs\n\n\nWeekly Progress\n20%\nMeeting attendance and progress\n\n\nMid-Semester Presentation\n10%\nDesign presentation\n\n\nWorking Prototype\n25%\nFunctional MVP\n\n\nFinal Presentation\n10%\nSemester wrap-up\n\n\nPeer Reviews\n5%\nQuality of reviews provided"
+  },
+  {
+    "objectID": "syllabi.html#semester-2-grade-distribution-cs-481",
+    "href": "syllabi.html#semester-2-grade-distribution-cs-481",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Semester 2 Grade Distribution (CS 481)",
+    "text": "Semester 2 Grade Distribution (CS 481)\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nFeature Completion\n25%\nAll planned features implemented\n\n\nTesting and Quality\n15%\nTest coverage and bug fixes\n\n\nDeployment Success\n15%\nProduction deployment\n\n\nDocumentation\n15%\nUser and technical docs\n\n\nWeekly Progress\n15%\nConsistent development\n\n\nFinal Presentation\n10%\nProject showcase\n\n\nPeer Reviews\n5%\nQuality of reviews provided"
+  }
+]

@@ -277,6 +277,22 @@ If the algorithm reaches a dead end (a location with no adjacent, unvisited spac
 
 *An engineer is evaluating the performance of the add method for a Min-Heap implementation (using an array).*
 
+```{.python}
+def add(self, item):
+    self.size += 1
+    self.heap.append(item)
+    curPos = len(self.heap) - 1
+    while curPos > 0:
+        parent = (curPos - 1) // 2      # Integer quotient!
+        parentItem = self.heap[parent]
+        if parentItem <= item:         # Found the spot
+            break
+        else:                          # Continue walking up
+            self.heap[curPos] = self.heap[parent]
+            self.heap[parent] = item
+            curPos = parent
+
+```
 **Query:**  
 Based on the provided add method pseudocode, determine the worst-case time complexity for inserting an item into a heap of size N. Describe the structural event that leads to this worst-case scenario.
 

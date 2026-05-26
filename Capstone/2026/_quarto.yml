@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: .
+
+format:
+  html:
+    theme: cosmo
+    css: assets/custom-theme.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-fold: false
+    link-external-icon: true
+    link-external-newwindow: true
+    
+website:
+  title: "CS Capstone 2026"
+  page-navigation: true
+  
+editor: visual

@@ -347,6 +347,25 @@ The stack holds coordinates of alternative paths. When a dead end is reached, th
 **Query:**  
 Based on the provided add method pseudocode, determine the worst-case time complexity for inserting an item into a heap of size N. Describe the structural event that leads to this worst-case scenario.
 
+
+
+```{.python}
+def add(self, item):
+    self.size += 1
+    self.heap.append(item)
+    curPos = len(self.heap) - 1
+    while curPos > 0:
+        parent = (curPos - 1) // 2      # Integer quotient!
+        parentItem = self.heap[parent]
+        if parentItem <= item:         # Found the spot
+            break
+        else:                          # Continue walking up
+            self.heap[curPos] = self.heap[parent]
+            self.heap[parent] = item
+            curPos = parent
+
+```
+
 **Answer:**  
 Worst-case time complexity is **O(logN)**. The worst case occurs when the new item is smaller than all existing items, requiring it to "bubble up" from the leaf to the root, performing swaps at each level.
 
