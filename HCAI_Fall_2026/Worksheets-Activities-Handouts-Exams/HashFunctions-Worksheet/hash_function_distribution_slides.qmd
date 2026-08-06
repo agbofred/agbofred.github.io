@@ -1,0 +1,205 @@
+---
+title: "Evaluating Hash Function Distribution"
+format: 
+  revealjs:
+    theme: [cosmo]
+    transition: fade
+    slide-number: true
+    toc: true
+    toc-depth: 2
+jupyter: python3
+---
+
+## Introduction
+
+- Hash functions map data to fixed-size integers
+- Used in:
+  - Hash tables
+  - Sets
+  - Bloom filters
+- **Goal:** Distribute keys *uniformly* across buckets
+
+---
+
+## Desirable Properties of a Hash Function
+
+- **Deterministic**: Same input always yields same output  
+- **Uniform**: Spreads input evenly over output range  
+- **Efficient**: Fast to compute  
+- **Low collision rate**: Different inputs produce different hashes
+
+---
+
+## Python's Built-in `hash()` Function
+
+::: {.columns}
+::: {.column width="60%"}
+
+```python
+print(hash("apple"))
+print(hash("banana"))
+print(hash("cherry"))
+```
+
+> Note: Python's `hash()` is salted by default — values vary per session.
+
+To make it reproducible:
+
+```bash
+PYTHONHASHSEED=0 python script.py
+```
+
+:::
+::: {.column width="40%"}
+![Hash Function Process](/images/hashfunction_process.svg)
+:::
+:::
+
+---
+
+## Simulating Bucket Distribution
+
+```python
+import matplotlib.pyplot as plt
+from collections import defaultdict
+
+def bucket_distribution(data, num_buckets, hash_fn):
+    buckets = defaultdict(list)
+    for item in data:
+        bucket = hash_fn(item) % num_buckets
+        buckets[bucket].append(item)
+    return buckets
+```
+
+---
+
+## Dataset and Plotting Utility
+
+```python
+data = [f"key{i}" for i in range(1000)]
+num_buckets = 10
+
+def plot_distribution(title, counts):
+    plt.bar(range(len(counts)), counts)
+    plt.title(title)
+    plt.xlabel("Bucket")
+    plt.ylabel("# of Keys")
+    plt.show()
+```
+
+---
+
+## Example 1: Built-in `hash()`
+
+```python
+buckets = bucket_distribution(data, num_buckets, hash)
+counts = [len(buckets[i]) for i in range(num_buckets)]
+plot_distribution("Bucket Distribution with Built-in hash()", counts)
+```
+
+![Placeholder for Built-in hash() plot](/images/hash_builtin_placeholder.svg)
+
+---
+
+## Poor Hash Function: `len(key)`
+
+```python
+def poor_hash(key):
+    return len(key)
+
+buckets = bucket_distribution(data, num_buckets, poor_hash)
+counts = [len(buckets[i]) for i in range(num_buckets)]
+plot_distribution("Poor Hash Function", counts)
+```
+
+![Placeholder for Poor Hash plot](/images/hash_poor_placeholder.svg)
+
+---
+
+## Custom ASCII Sum Hash Function
+
+```python
+def simple_ascii_sum(key):
+    return sum(ord(char) for char in key)
+
+buckets = bucket_distribution(data, num_buckets, simple_ascii_sum)
+counts = [len(buckets[i]) for i in range(num_buckets)]
+plot_distribution("Simple ASCII Sum Hash Function", counts)
+```
+
+![Placeholder for ASCII Sum plot](/images/hash_ascii_placeholder.svg)
+
+---
+
+## SHA-256 Hash Function
+
+```python
+import hashlib
+
+def hash_sha256(key):
+    return int(hashlib.sha256(key.encode()).hexdigest(), 16)
+
+buckets = bucket_distribution(data, num_buckets, hash_sha256)
+counts = [len(buckets[i]) for i in range(num_buckets)]
+plot_distribution("SHA-256 Hash Function", counts)
+```
+
+![Placeholder for SHA-256 plot](/images/hash_sha256_placeholder.svg)
+
+---
+
+## Distribution Metrics
+
+```python
+import statistics
+
+std_dev = statistics.stdev(counts)
+max_bucket = max(counts)
+collisions = sum(count - 1 for count in counts if count > 1)
+
+print("Standard Deviation:", std_dev)
+print("Max Bucket Size:", max_bucket)
+print("Collisions:", collisions)
+```
+
+---
+
+## Metrics to Consider
+
+- **Load Factor**  
+  keys / buckets
+
+- **Standard Deviation**  
+  measures variance in bucket sizes
+
+- **Max Bucket Size**  
+  worst-case lookup time
+
+- **Number of Collisions**  
+  total items that shared a bucket
+
+---
+
+## Summary Table
+
+| Use Case           | Recommended Approach               |
+|--------------------|------------------------------------|
+| General dict/set   | Built-in `hash()` is fine          |
+| Custom structures  | Use a good mixing function         |
+| Security-critical  | Use `hashlib` or salted hashes     |
+| Consistent hashing | Use libraries like `mmh3`, `xxhash`|
+
+---
+
+## Final Takeaways
+
+- Uniform distribution is critical for performance
+- Visualize your bucket usage
+- Understand your key space and hash interaction
+- Always check for collisions and variance
+
+---
+
+## Questions?
+
+🧠 Try visualizing hash distributions for your own data!

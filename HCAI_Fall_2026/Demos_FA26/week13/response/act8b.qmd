@@ -1,0 +1,46 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 13 - Graphs Worksheet (B)
+# author: "Fred Agbo"
+# date: November 17, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+
+1. Assume that the following graph is traversed in `depth-first` fashion, beginning with the
+vertex labeled B. Write a list of the labels in the order in which they might be visited.
+
+![](directedGraph.png){style="width='50%'"}
+
+- ANS: DFS from B: B, A, D, E, C
+
+2. Assume that the graph in the preceding question 1 is traversed in `breadth-first` fashion, beginning with the vertex labeled A. Write a list of the labels in the order in which they are visited.
+
+
+BFS from B would visit: B, A, C, D, E
+
+3.  Describe, informally without pseudocode, a strategy for performing a `breadth-first` traversal of a graph.
+    
+
+\vspace{4cm}
+

@@ -1,0 +1,57 @@
+---
+title: "Oral Exam Rubric"
+format: pdf
+---
+
+# Oral Exam Rubric
+
+This rubric outlines the evaluation criteria for the oral exam based on four key learning outcomes.
+
+---
+
+## Criteria 1: Operations (25 pts)
+
+| Rating | Point Range | Description |
+|--------|-------------|-------------|
+| **Exceeds Expectations** | 22–25 pts | Thoroughly and accurately describes operation with clear examples. |
+| **Meets Expectations** | 17–21 pts | Explains operation with example and minimal prompting. |
+| **Partially Meets Expectations** | 11–16 pts | Mentions some aspects of operation but lacks detail or clarity or example. |
+| **Does Not Meet Expectations** | 0–10 pts | Cannot describe operation or gives incorrect information. |
+
+---
+
+## Criteria 2: Time Complexity (25 pts)
+
+| Rating | Point Range | Description |
+|--------|-------------|-------------|
+| **Exceeds Expectations** | 22–25 pts | Clearly explains complexity and can justify it. |
+| **Meets Expectations** | 17–21 pts | Explains time complexity for operation(s) with some justification and minimal prompting. |
+| **Partially Meets Expectations** | 11–16 pts | Provides vague or partially correct time complexity description. |
+| **Does Not Meet Expectations** | 0–10 pts | Does not know or incorrectly states time complexities. |
+
+---
+
+## Criteria 3: Comparisons (25 pts)
+
+| Rating | Point Range | Description |
+|--------|-------------|-------------|
+| **Exceeds Expectations** | 22–25 pts | Provides insightful, accurate comparison with clear reasoning, identifying relevant trade-offs and use cases or examples that justify the comparison. |
+| **Meets Expectations** | 17–21 pts | Provides a generally accurate comparison with basic reasoning and identifies at least one relevant trade-off or use case. |
+| **Partially Meets Expectations** | 11–16 pts | Provides a limited or partially accurate comparison with unclear reasoning and minimal reference to trade-offs or use cases. |
+| **Does Not Meet Expectations** | 0–10 pts | Provides an inaccurate or missing comparison with no clear reasoning or relevant trade-offs. |
+
+---
+
+## Criteria 4: Usage Scenarios (25 pts)
+
+| Rating | Point Range | Description |
+|--------|-------------|-------------|
+| **Exceeds Expectations** | 22–25 pts | Accurately evaluates multiple usage scenarios with clear justification, explaining when the structure is appropriate or inappropriate with supporting reasoning. |
+| **Meets Expectations** | 17–21 pts | Correctly identifies appropriate or inappropriate use cases with basic justification. |
+| **Partially Meets Expectations** | 11–16 pts | Identifies use cases but offers vague, incomplete, or partially correct reasoning. |
+| **Does Not Meet Expectations** | 0–10 pts | Gives incorrect or no reasoning about when or why the data structure should be used. |
+
+---
+
+**Total Points: 100**
+

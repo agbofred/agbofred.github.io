@@ -1,0 +1,195 @@
+---
+format: pdf
+---
+
+## 🧺 Bag (Multi-Set)
+
+**Operations:**
+
+- What typical operations does a Bag support?
+- Speak to the mutability of the items in a Bag.
+
+**Complexity:**
+
+- What is the time complexity of a `get()` method in an array-based Bag?
+- What is the complexity of checking if a Bag contains an item?
+
+**Comparisons:**
+
+- How is a Bag different from a Set or List?
+- When would you use a Bag instead of a List?
+
+**Scenarios:**
+
+- Is a Bag a good choice if you need to keep items sorted? 
+- Would a Bag be useful for counting duplicate votes? 
+
+
+\newpage 
+
+## 📦 Array
+
+**Operations:**
+
+- How do you insert an item at index i in an array?
+- What happens when you access an index out of range?
+
+**Complexity:**
+
+- What is the time complexity of accessing an array element? (O(1))
+- What is the complexity of inserting at the beginning of an array? (O(n))
+
+**Comparisons:**
+
+- Why is an array faster for access than a linked list?
+- What are the drawbacks of fixed-size arrays?
+
+**Scenarios:**
+
+- Is an array a good choice for a list of student IDs? (Yes, if fixed)
+- Would you use an array for a dynamic playlist? (No, unless resizable)
+
+\newpage 
+
+## 📐 Array2D
+
+**Operations:**
+
+- How would you access or update a cell in a 2D array?
+- How could you initialize a 2D grid with default values?
+
+**Complexity:**
+
+- What is the time complexity of accessing a single cell? 
+- What is the complexity of filling an entire grid? 
+
+**Comparisons:**
+
+- When would you use an Array2D over a flat array?
+
+**Scenarios:**
+
+- Is Array2D good for representing game boards? (Yes)
+- Would Array2D be efficient for sparse data? (No)
+
+\newpage 
+
+## 🔗 Doubly LinkedList
+
+**Operations:**
+
+- Describe the append process.
+- Descrbe the process of inserting a node in the middle.
+
+
+**Complexity:**
+
+- What is the time complexity of inserting at the front? 
+- What is the complexity of searching for a value? 
+
+**Comparisons:**
+
+- How does LinkedList compare to Array for insertions?
+- If a LinkedList supported bracket operators, what is the complexity of accessing an element compared to an Array?
+
+**Scenarios:**
+
+- Is LinkedList a good choice for a large, frequently modified list? 
+- Is it good for random access?
+
+\newpage 
+
+
+## 🥞 Stacks
+
+**Operations:**
+
+- Describe what `push()` and `pop()` do in a stack?
+- How would you implement `peek()`?
+
+**Complexity:**
+
+- What is the time complexity of `push` and `pop`?
+
+**Comparisons:**
+
+- Why would you choose a Linked List stack over an Array-based stack?
+- Which is more memory efficient: array stack or linked list stack?
+
+**Scenarios:**
+
+- Describe an everyday use case for a stack.
+- 
+
+\newpage 
+
+
+## Queues
+
+**Operations:**
+
+- How does `enqueue` work in a CircularQueue?
+- How do you detect if the queue is full or empty?
+
+**Complexity:**
+
+- What is the time complexity of `enqueue` and `dequeue` in a CircularQueue?
+- What is the time complexity of `enqueue` and `dequeue` in an Array-based Queue?
+
+**Comparisons:**
+
+- Why is modulo used in fixed-size circular structures?
+
+
+**Scenarios:**
+
+- Would a CircularQueue be good for a printer queue?
+- Is a Queue a good choice for implementing Undo functionality? 
+
+\newpage 
+
+
+## 🌀 Deque (Linked List-based)
+
+**Operations:**
+
+- 
+
+**Complexity:**
+
+- What is the time complexity of operations at both ends? 
+
+**Comparisons:**
+
+- Why is a Deque more flexible than a Stack or Queue?
+- Is a linked list Deque better than an array Deque for many insertions? 
+
+**Scenarios:**
+
+- Should Deques be used for fast random access?
+- Is a Deque a good choice for implementing a browser history?
+
+
+\newpage 
+
+
+## 🧠 HashMap (Array[LinkedList[Tuple]])
+
+**Operations:**
+
+- Explain the purpose of a hash function and what makes a hash function `good`?
+
+**Complexity:**
+
+- What is the average time complexity of `__getitem__()`? 
+- What is the worst-case time for a badly distributed hash function?
+
+**Comparisons:**
+
+- How does a HashMap compare to a list for lookup?
+
+**Scenarios:**
+
+- Is a HashMap good for storing and retrieving user accounts by ID? 
+- Should you use a HashMap when maintaining insertion order matters?
+

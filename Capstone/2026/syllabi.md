@@ -4,6 +4,7 @@ author: "Professor Fred Agbo, PhD"
 date: "August 2026"
 format:
   html:
+    include-after-body: assets/toc-scrollspy-fix.html
     css: assets/custom-theme.css
     toc: true
     toc-depth: 3

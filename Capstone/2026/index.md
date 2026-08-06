@@ -3,6 +3,7 @@ title: "CS 480W/481: Senior Capstone Project"
 format:
   html:
     css: assets/custom-theme.css
+    include-after-body: assets/toc-scrollspy-fix.html
 ---
 
 <!-- ![Course Icon](assets/images/icon.jpg)

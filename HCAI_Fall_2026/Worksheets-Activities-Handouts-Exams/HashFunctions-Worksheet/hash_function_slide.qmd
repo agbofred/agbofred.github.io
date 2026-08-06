@@ -1,0 +1,28 @@
+## Python's Built-in `hash()` Function
+
+::: {.columns}
+::: {.column width="60%"}
+
+```python
+print(hash("apple"))
+print(hash("banana"))
+print(hash("cherry"))
+```
+
+> Note: Python's `hash()` is salted by default — values vary per session.
+
+To make it reproducible:
+
+```bash
+PYTHONHASHSEED=0 python script.py
+```
+
+:::
+
+::: {.column width="40%"}
+![Hash Function Process](/images/hashfunction_process.svg)
+
+<!-- Or use a placeholder -->
+<!-- ![](https://via.placeholder.com/250x150.png?text=Hash+Diagram) -->
+:::
+:::

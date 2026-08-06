@@ -1,0 +1,127 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\setlist{nosep}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CS 152: Data Structures}
+\lhead{Recursive Functions Worksheet}
+\rfoot{\thepage}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  tabsize=4,
+  language=Python
+}
+
+\begin{document}
+
+\begin{center}
+    \Large \textbf{CS 152 Data Structures}\\
+    \large Recursive Functions Worksheet
+\end{center}
+
+\vspace{1em}
+
+\textbf{Name:} \rule{10cm}{0.4pt}
+
+\vspace{1em}
+
+\section*{Background}
+
+Recursive functions are functions that call themselves to solve a problem. A recursive function typically has:
+\begin{itemize}
+    \item A \textbf{base case} that stops the recursion.
+    \item A \textbf{recursive case} that reduces the problem and calls the function again.
+\end{itemize}
+
+Understanding recursive functions is a key skill for solving problems like traversing trees, generating permutations, and many others.
+
+\section*{Part 1: Predicting Output}
+
+\textbf{Problem 1.} What does the following function return when called with \texttt{mystery(4)}?
+
+\begin{lstlisting}
+def mystery(n):
+    if n == 0:
+        return 1
+    else:
+        return n * mystery(n - 1)
+\end{lstlisting}
+
+\vspace{4em}
+
+\textbf{Problem 2.} What does the following function return when called with \texttt{countdown(3)}?
+
+\begin{lstlisting}
+def countdown(n):
+    if n == 0:
+        return "Liftoff!"
+    else:
+        return str(n) + " " + countdown(n - 1)
+\end{lstlisting}
+
+\vspace{4em}
+
+\section*{Part 2: Convert to Iteration}
+
+Rewrite the \texttt{mystery} function from Problem 1 using a \texttt{while} loop instead of recursion.
+
+\textbf{Your Solution Below:}
+
+\vspace{8em}
+
+\section*{Part 3: Recursive Function Practice}
+
+Write a recursive function called \texttt{next\_prime\_after\_double(n)} that takes an integer \texttt{n}, doubles it, and returns the next prime number that is greater than the doubled value.
+
+\textbf{Steps:}
+\begin{itemize}
+    \item Write a helper function \texttt{is\_prime(num)} to check if a number is prime.
+    \item Double the input \texttt{n}.
+    \item Recursively find the next prime number greater than \texttt{2 * n}.
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{Algorithm for \texttt{is\_prime(num)}}:
+\begin{itemize}
+    \item Any number less than 2 is not prime.
+    \item A number is prime if it has no divisors other than 1 and itself.
+    \item To check this efficiently, try dividing the number by all integers from 2 up to the square root of the number.
+    \item If any of these divisions results in a remainder of 0, the number is not prime.
+\end{itemize}
+
+\vspace{10em}
+
+\textbf{Optional:} Try writing an iterative version of the same function.
+
+\vspace{4em}
+
+\section*{Part 4: Reflection}
+
+In your own words, reflect on the usefulness of recursive functions. When are they helpful, and when might they be harder to work with than loops?
+
+\textbf{Prompt:} What did you learn about recursion from this worksheet? When might you prefer a recursive solution over an iterative one, and what are some possible downsides?
+
+\vspace{10em}
+
+\textit{End of Worksheet}
+
+\end{document}

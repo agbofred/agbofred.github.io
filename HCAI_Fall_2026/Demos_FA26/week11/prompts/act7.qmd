@@ -1,0 +1,82 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 11 Worksheet
+# author: "Fred Agbo"
+# date: September 3, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+
+1. What is the difference between a perfectly balanced binary tree and a complete binary tree?
+
+\vspace{2cm}
+
+
+2. What is the difference between a complete binary tree and a full binary tree?
+
+\vspace{2cm}
+
+
+3. A full binary tree has a height of 5. How many nodes does it contain?
+
+\vspace{2cm}
+
+4. A complete binary tree contains 125 nodes. What is its height?
+
+
+\vspace{2cm}
+
+5. How many nodes are on a given level L in a full binary tree? Express your answer in terms of L.
+
+\vspace{2cm}
+
+
+6. What is the heap property for a min-heap?
+
+\vspace{2cm}
+
+7. How is a binary search tree different from a binary tree?
+
+\vspace{2cm}
+
+8. Write the expression represented by the following expression tree in `infix`, `prefix`, and `postfix` notations. (__Hint__: Use the `inorder`, `preorder`, and `postorder` traversals discussed in the last class to obtain your answers.)
+
+![](../exc7.png){style="width:60%;"}
+
+a) `infix`:
+b) `prefix`:
+c) `postfix`:
+
+\vspace{0.2cm}
+
+
+
+9. Draw diagrams of the expression trees for the following expressions:
+
+a. 3 * 5 + 6
+\vspace{3cm}
+
+b. 3 + 5 * 6
+\vspace{3cm}
+
+c. 3 * 5 ** 6

@@ -1,0 +1,356 @@
+---
+title: "Building Assistive Conversational Agents with Rasa Pro (CALM)"
+author: "Fred Agbo"
+date: February 9, 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: true
+    code-line-numbers: true
+    preview-links: auto
+---
+
+## 👋 Welcome + Lab Kickoff
+
+**Course:** Human-AI Interaction — Willamette University  
+**Format:** Hands-on lab (CLI/IDE workflow, no Rasa Studio required)  
+**Outcome:** Build, train, test, and locally deploy **two working assistants**
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/640px-Git-logo.svg.png){fig-alt="Git logo" width="220"}
+
+---
+
+## 🎯 Lab Overview
+
+By the end of lab, you will:
+
+1. Install Rasa Pro and set up Python environment
+2. Initialize the CALM tutorial starter project
+3. Build **Scenario 1: Course FAQ Assistant**
+4. Build **Scenario 2: IT Help-Desk Ticket Assistant**
+5. Diagnose and fix common YAML and flow errors
+
+---
+
+## 🧠 Why CLI/IDE Instead of Studio?
+
+- Makes **flows, slots, triggers, and branching explicit** as text
+- Better for learning how CALM actually works under the hood
+- Strong foundation before moving to visual/no-code tooling
+
+> In this lab, we optimize for conceptual understanding, not just click-through completion.
+
+---
+
+## 🧰 Part 0 — Prerequisites & Installation
+
+### 0.1 Check Python version (3.10–3.13)
+
+```bash
+python3 --version
+```
+
+### 0.2 Create + activate venv
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Windows: `.venv\Scripts\activate`
+
+---
+
+## 🔐 Install + License
+
+### 0.3 Install Rasa Pro
+```bash
+pip install rasa-pro
+```
+
+### 0.4 Request free educational/dev license
+[rasa.com/rasa-pro-developer-edition-license-key-request](https://rasa.com/rasa-pro-developer-edition-license-key-request)
+
+### 0.5 Export license
+```bash
+export RASA_LICENSE="<the license string emailed to you>"
+```
+
+`RASA_PRO_LICENSE` still works (deprecated).
+
+---
+
+## ✅ Verify Installation
+
+```bash
+rasa --version
+```
+
+Expect:
+- Rasa Pro version
+- SDK version
+- Python version
+- **License Expires** date
+
+If error: `license.not_found.error` → license variable not set in current shell.
+
+---
+
+## 📦 Part 1 — Pull Starter Project
+
+```bash
+rasa init --template tutorial
+```
+
+Why `tutorial` template?
+- Uses free hosted Rasa tutorial LLM
+- No OpenAI billing/API-key setup needed for students
+
+---
+
+## 🗂️ What the Scaffold Includes
+
+| File/Folder | Purpose |
+|---|---|
+| `config.yml` | CALM config (`CompactLLMCommandGenerator`, `FlowPolicy`) |
+| `domain.yml` | Slots + responses |
+| `data/flows.yml` | Conversation business logic |
+| `data/patterns.yml` | Built-in repair flows |
+| `actions/` | Custom Python actions |
+| `credentials.yml` | Channel connectors (REST default) |
+| `endpoints.yml` | LLM/action server endpoints |
+
+---
+
+## 🧩 Part 2 — Core CALM Concepts
+
+- **`description:`** flow trigger intent (LLM-readable)
+- **`collect:`** request and fill slot
+- **Slots** typed memory (`text`, `categorical`, `float`, ...)
+- **Patterns** built-in repair/handoff/chitchat flows
+
+⭐ Key feature for demo: **digressions** (pause current flow, handle interruption, then resume)
+
+---
+
+## 🟢 Part 3 — Scenario 1: Course FAQ Assistant
+
+**Goal:** Trigger flows + static responses (no slot collection)
+
+### Add flows in `data/flows.yml`
+
+```yaml
+flows:
+  tell_office_hours:
+    description: User wants to know instructor office hours.
+    steps:
+      - action: utter_office_hours
+
+  tell_syllabus_location:
+    description: User wants to know where to find the course syllabus.
+    steps:
+      - action: utter_syllabus_location
+
+  tell_assignment_deadline:
+    description: User wants to know when an assignment is due.
+    steps:
+      - action: utter_assignment_deadline
+```
+
+---
+
+## 🟢 Scenario 1 — Responses in `domain.yml`
+
+```yaml
+responses:
+  utter_office_hours:
+    - text: "Office hours are Tue/Thu 2–3pm in Ford 210, or by appointment."
+  utter_syllabus_location:
+    - text: "The syllabus is posted on the course Canvas page, under Files."
+  utter_assignment_deadline:
+    - text: "Check the Canvas calendar for exact due dates — they vary by assignment."
+```
+
+⚠️ Keep one `responses:` block only.
+
+---
+
+## 🧪 Scenario 1 — Validate, Train, Test
+
+```bash
+rasa data validate
+rasa train
+rasa shell
+```
+
+Visualization:
+```bash
+rasa inspect
+```
+
+Try paraphrased user asks to demonstrate CALM generalization.
+
+---
+
+## 🚀 Scenario 1 — Deploy Locally
+
+```bash
+rasa run --enable-api --cors "*"
+```
+
+Health check:
+```bash
+curl -s http://localhost:5005/status
+```
+
+REST test:
+```bash
+curl -s -X POST http://localhost:5005/webhooks/rest/webhook \
+  -H "Content-Type: application/json" \
+  -d '{"sender": "test_user", "message": "when are office hours?"}'
+```
+
+---
+
+## 💬 Browser Demo
+
+```bash
+open "webchat_test.html"
+```
+
+- Real chat UI over REST endpoint
+- Refresh creates new random sender/session
+- Great for showing “deployed product” feel in class
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/OOjs_UI_icon_robot.svg/512px-OOjs_UI_icon_robot.svg.png){fig-alt="Robot icon" width="180"}
+
+---
+
+## 🟡 Part 4 — Scenario 2: IT Help-Desk Assistant
+
+**Goal:** slot collection + conditional branching + digressions/corrections
+
+### Add slots (`domain.yml`)
+
+```yaml
+slots:
+  issue_category:
+    type: categorical
+    values: ["hardware", "software", "account_access", "other"]
+    mappings:
+      - type: from_llm
+  issue_description:
+    type: text
+    mappings:
+      - type: from_llm
+  urgency:
+    type: categorical
+    values: ["low", "medium", "high"]
+    mappings:
+      - type: from_llm
+```
+
+---
+
+## 🟡 Scenario 2 — Add Responses
+
+```yaml
+responses:
+  utter_ask_issue_category:
+    - text: "What kind of issue is this — hardware, software, or account access?"
+  utter_ask_issue_description:
+    - text: "Briefly describe the problem."
+  utter_ask_urgency:
+    - text: "How urgent is this — low, medium, or high?"
+  utter_escalate:
+    - text: "This looks urgent — flagging it for immediate review."
+  utter_ticket_summary:
+    - text: "Ticket created: {issue_category} issue — '{issue_description}', urgency: {urgency}."
+```
+
+---
+
+## 🟡 Scenario 2 — Flow with Branching
+
+```yaml
+submit_it_ticket:
+  description: User wants to report a tech problem or request IT help.
+  steps:
+    - collect: issue_category
+    - collect: issue_description
+    - collect: urgency
+      next:
+        - if: slots.urgency == "high"
+          then:
+            - action: utter_escalate
+            - link: pattern_human_handoff
+        - else:
+            - action: utter_ticket_summary
+              next: END
+```
+
+---
+
+## 🔍 Scenario 2 — What to Test
+
+1. **Clean run:** fill all slots → ticket summary
+2. **Digression:** interrupt mid-flow, ask ticket status, resume prior flow
+3. **Correction:** change urgency after initial value
+
+Commands:
+```bash
+rasa data validate
+rasa train
+rasa inspect
+```
+
+---
+
+## 🧯 Part 5 — Troubleshooting Cheat Sheet
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| duplicate `flows`/`responses` key | second top-level header added | keep one block |
+| `CategoricalSlot ... unexpected keyword` | slot indentation error | align slot names |
+| `missing a 'next'` in branch | terminal step without `next` | add `next: END` |
+| `invalid choice: 'validate'` | wrong command | `rasa data validate` |
+| `address already in use` | port conflict | free port/process |
+| `license.not_found.error` | env var unset | export license |
+
+---
+
+## ⚙️ Part 6 — Optional: Switch LLM Provider
+
+Default tutorial endpoint is free.  
+Swap in OpenAI or Gemini in `endpoints.yml` when needed.
+
+```yaml
+provider: openai
+model: gpt-5.1-2025-11-13
+api_key: ${OPENAI_API_KEY}
+```
+
+Cost note: paid providers bill every class run.
+
+---
+
+## ✅ Deliverables for Today
+
+- Working Scenario 1 assistant (FAQ)
+- Working Scenario 2 assistant (ticket flow + branching)
+- Successful local deployment test (REST + browser)
+- Error-fix evidence from validate/train cycle
+
+## Next
+
+- Dockerize for persistent deployment
+- Later: visualize/edit same artifacts in Rasa Studio
+

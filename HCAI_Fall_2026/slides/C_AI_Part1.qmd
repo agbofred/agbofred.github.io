@@ -1,0 +1,191 @@
+---
+title: "Building Assistive Conversational Agents with Rasa Pro (CALM)"
+author: "Fred Agbo"
+date: February 9, 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: true
+    code-line-numbers: true
+    preview-links: auto
+---
+
+## 👋 Welcome Conversational AI (Part 1)
+
+::: {.columns}
+::: {.column width="58%"}
+### Building Assistive Conversational Agents with Rasa Pro (CALM)
+
+#### PART 1: FOUNDATIONS
+
+- **Week 1**: Introduction to Virtual Assistants
+- **Week 2**: Building Your First Virtual Assistant
+
+**Learning Outcome:** Understand assistant architectures, core NLU mechanics, and practical dialogue design.
+:::
+::: {.column width="42%"}
+![Conversational AI pipeline infographic](https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80){fig-alt="Conversational AI architecture concept image"}
+
+🔹 **User** → **Conversational UI** → **NLU** → **Dialogue Engine** → **Enterprise Systems**
+:::
+:::
+
+## Week 1 · Introduction to Virtual Assistants
+
+### Slide 1: What is a Virtual Assistant?
+
+> **Definition**: Software applications designed to interact with users via natural language (**text or speech**) to satisfy tasks or answer inquiries.
+
+::: {.columns}
+::: {.column width="52%"}
+#### 3 Primary System Architectures
+
+1. **Event Classifiers**  
+   Single-input categorization engines  
+   _Example:_ spam filtering, support ticket routing
+
+2. **Command Interpreters**  
+   Action-oriented, usually single-turn systems  
+   _Example:_ “Turn off the living room lights.”
+
+3. **Conversational AI**  
+   Multi-turn dialogue agents that maintain context
+:::
+::: {.column width="48%"}
+![AI assistant use patterns infographic](https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1200&q=80){fig-alt="Abstract visualization of AI assistant architectures"}
+
+- 🏷️ **Classifier**: categorize
+- ⚡ **Command**: execute
+- 💬 **Conversational AI**: track context and respond across turns
+:::
+:::
+
+## Week 1 · Introduction to Virtual Assistants
+
+### Slide 2: Primary Enterprise Use Cases
+
+::: {.columns}
+::: {.column width="60%"}
+- **Self-Service Automation**  
+  Direct customer resolution without human intervention  
+  _Examples:_ checking balance, password reset
+
+- **Agent Assist**  
+  Embedded AI support for human agents with:
+  - real-time recommendations
+  - document retrieval
+  - compliance checks
+
+- **Classification & Routing**  
+  Triage raw inputs to correct human teams or backend queues
+:::
+::: {.column width="40%"}
+![Enterprise support use cases infographic](https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80){fig-alt="Enterprise customer support and operations image"}
+
+🧭 **Input** → Self-Service | Agent Assist | Routing
+:::
+:::
+
+## Week 1 · Introduction to Virtual Assistants
+
+### Slide 3: High-Level Architecture
+
+![System architecture infographic](https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80){fig-alt="Digital network architecture concept"}
+
+🌐 **Channels** → 🧠 **NLU** → 🧩 **Dialogue Engine** → 🏢 **Enterprise APIs/DB** → 🔁 **Response**
+
+- **User Interface Layer**: Channels where users interact
+- **NLU**: Transforms unstructured input into structured meaning
+- **Dialogue Engine**: Controls flow and context
+- **Enterprise Orchestration**: Executes business operations through integrations
+
+## Week 2 · Building Your First Virtual Assistant
+
+### Slide 1: Core Mechanics — Intents and Entities
+
+::: {.columns}
+::: {.column width="54%"}
+- **Intents** = user’s goal/action (**verb-focused**)  
+  _Examples:_ `#Check_Balance`, `#Track_Order`, `#Cancel_Subscription`
+
+- **Entities** = contextual details (**nouns/metadata**) that complete intent meaning
+
+**Example Utterance:**  
+“What is the status of order #98723?”
+
+- Intent → `#Track_Order`
+- Entity → `@OrderNumber = 98723`
+:::
+::: {.column width="46%"}
+![Intent and entity extraction illustration](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80){fig-alt="Data extraction and NLP illustration"}
+
+- 🎯 Intent: `#Track_Order`
+- 🏷️ Entity: `@OrderNumber=98723`
+- ✅ Combined for dialogue decision
+:::
+:::
+
+## Week 2 · Building Your First Virtual Assistant
+
+### Slide 2: Multi-Turn Dialogue & Slot Filling
+
+1. **Simple Q&A**  
+   Immediate response from recognized intent
+
+2. **Conditioned Responses**  
+   Output changes using entities/rules  
+   _Example:_ if `@AccountType == "Checking"`, return checking-specific response
+
+3. **Slot Filling**  
+   Gather all required fields before API execution
+
+![Multi-turn conversation flow infographic](https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80){fig-alt="Team collaborating over workflow and conversation steps"}
+
+💬 Request → ❓Clarify slots → 🧾 Collect values → 🔌 API call → ✅ Confirmation
+
+## Week 2 · Building Your First Virtual Assistant
+
+### Slide 3: Basic Error Management
+
+::: {.columns}
+::: {.column width="57%"}
+#### Confidence Thresholds (\(P_{intent}\))
+
+- **\(P \ge 0.75\)** → Execute intent response directly
+- **\(0.40 \le P < 0.75\)** → Ask for confirmation/disambiguation
+- **\(P < 0.40\)** → Trigger fallback recovery node
+
+#### Two-Strikes Rule
+
+If the assistant fails to understand **two consecutive turns**, immediately:
+
+- move to robust fallback, or
+- transfer to a human agent
+:::
+::: {.column width="43%"}
+![Error handling and escalation illustration](https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80){fig-alt="Decision and escalation concept"}
+
+- 🟢 High confidence: answer directly
+- 🟡 Medium confidence: clarify
+- 🔴 Low confidence: fallback
+- 🧑‍💼 Two failures: handoff to human
+:::
+:::
+
+## ✅ Part 1 Recap
+
+- Virtual assistants range from **classifiers** to **full conversational systems**
+- Enterprise value appears in **self-service**, **agent assist**, and **routing**
+- Core NLP design starts with **intents + entities**
+- Real assistants need **multi-turn slot filling** and **error policies**
+
+### Next: Implementing these foundations in Rasa Pro (CALM)
+

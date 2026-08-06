@@ -1,0 +1,256 @@
+---
+title: "Building Assistive Conversational Agents with Rasa Pro (CALM)"
+author: "Fred Agbo"
+date: February 9, 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: true
+    code-line-numbers: true
+    preview-links: auto
+---
+
+## 👋 Welcome Conversational AI (Part 3)
+
+## PART 3: TRAINING AND TESTING
+
+### Week 6: Training Your Assistant (Chapter 6)
+
+---
+
+## Visual: Part 3 Roadmap
+
+```{mermaid}
+flowchart LR
+  A[Week 6<br/>Training Data] --> B[Week 7<br/>Model Evaluation]
+  B --> C[Week 8<br/>Flow & Performance Testing]
+  C --> D[Deployment-Ready Assistant]
+```
+
+## Slide 1: Training Data Principles
+
+- **The 3 V's of NLU Data Quality**:
+- **Volume**: Sufficient utterances per intent (minimum target: 20–50 distinct examples).
+- **Variety**: Structural, lexical, and syntactical diversity (slang, typos, synonyms, length variations).
+- **Veracity**: Clean, correctly labeled ground truth data without misallocations.
+
+---
+
+## Visual: The 3 V's of NLU Data Quality
+
+```{mermaid}
+flowchart LR
+  V1[Volume\nEnough examples per intent] --> Q[High-Quality NLU Data]
+  V2[Variety\nDifferent wording patterns] --> Q
+  V3[Veracity\nAccurate labels + clean data] --> Q
+```
+
+---
+
+## Infographic: Data Quality Balance
+
+```{mermaid}
+pie title Relative Focus in Early NLU Dataset Design
+  "Volume" : 35
+  "Variety" : 35
+  "Veracity" : 30
+```
+
+---
+
+## Slide 2: Sourcing Training Data
+
+- **Historical Logs**: Live customer service chat logs, email threads, call center transcripts.
+- **Domain Subject Matter Experts (SMEs)**: Gathering common phrasing patterns directly from frontline support staff.
+- **Synthetic Generation**: Using controlled augmentation strategies to expand low-sample intents.
+
+---
+
+## Slide 3: Managing Intent Overlap
+
+- **Intent Collisions**: When two intents share highly similar training phrases (e.g., `#Cancel_Order` vs. `#Return_Item`).
+- **Disambiguation Rules**: Merging overlapping intents into a single broad intent or separating them using mandatory entity constraints.
+
+---
+
+## Visual: Intent Overlap Example
+
+```{mermaid}
+venn
+  title Overlapping Intents
+  "Cancel_Order" : 40
+  "Return_Item" : 40
+  "Shared Phrases" : 20
+```
+
+---
+
+### Week 7: Evaluating Assistant Accuracy (Chapter 7)
+
+---
+
+## Visual: Evaluation Loop
+
+```{mermaid}
+flowchart LR
+  T[Train] --> E[Evaluate]
+  E --> A[Analyze Errors]
+  A --> R[Refine Data/Rules]
+  R --> T
+```
+
+## Slide 1: Empirical Testing Frameworks
+
+- **Train / Test Splits**: Splitting raw data into separate sets (e.g., 80% Training Set, 20% Holdout Test Set).
+- **Blind Testing**: Evaluating models against uncleaned, real-world user data collected after the training phase.
+- **Cross-Validation**: $k$-fold cross-validation to assess dataset stability and highlight underfitting.
+
+---
+
+## Visual: Train/Test + Cross-Validation Workflow
+
+```{mermaid}
+flowchart LR
+  A[Raw Dataset] --> B[Split: Train / Test]
+  B --> C[Train Model]
+  C --> D[Evaluate on Holdout Test]
+  A --> E[k-fold Cross-Validation]
+  E --> F[Average Scores]
+```
+
+---
+
+## Slide 2: Machine Learning Metrics
+
+$$\text{Precision} = \frac{TP}{TP + FP} \quad \vert{} \quad \text{Recall} = \frac{TP}{TP + FN}$$
+
+$$\text{F1 Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+- **True Positive ($TP$)**: Correctly assigned intent.
+- **False Positive ($FP$)**: Incorrectly assigned intent (over-triggering).
+- **False Negative ($FN$)**: Failed to detect correct intent (under-triggering).
+
+---
+
+## Visual: Precision vs Recall Tradeoff
+
+```{mermaid}
+quadrantChart
+  title Precision vs Recall Positioning
+  x-axis Low Recall --> High Recall
+  y-axis Low Precision --> High Precision
+  quadrant-1 Strong classifier
+  quadrant-2 Conservative trigger
+  quadrant-3 Weak classifier
+  quadrant-4 Over-triggering classifier
+  Model_A: [0.82, 0.88]
+  Model_B: [0.40, 0.90]
+  Model_C: [0.38, 0.35]
+  Model_D: [0.86, 0.42]
+```
+
+---
+
+## Slide 3: Analyzing Confusion Matrices
+
+- **Confusion Matrix**: A square matrix mapping predicted intents against ground-truth labels.
+- **Diagonal Values**: High values indicate strong model accuracy.
+- **Off-Diagonal Values**: Highlight intent collisions and misclassifications needing data cleanup.
+
+---
+
+## Illustration: Sample Confusion Matrix (Concept)
+
+| Actual \ Predicted | Check_Balance | Transfer_Money | Report_Fraud |
+|---|---:|---:|---:|
+| **Check_Balance** | **46** | 3 | 1 |
+| **Transfer_Money** | 4 | **39** | 7 |
+| **Report_Fraud** | 2 | 5 | **43** |
+
+- Bold diagonal cells = correct predictions
+- Non-diagonal cells = misclassifications to investigate
+
+---
+
+### Week 8: Testing Dialogue Flows (Chapter 8)
+
+---
+
+## Visual: End-to-End Testing Stack
+
+```{mermaid}
+flowchart TB
+  U[User Input] --> N[NLU Intent + Entities]
+  N --> D[Dialogue Policy + Flow]
+  D --> F[Fulfillment API]
+  F --> R[Assistant Response]
+  R --> M[Monitoring + Metrics]
+```
+
+## Slide 1: Structural Flow Validation
+
+- **Path Coverage**: Validating every branch, conditional logic block, and node transition within the dialogue engine.
+- **Automated Flow Testing**: Scripting end-to-end conversation trees to run automatically during continuous integration builds.
+
+---
+
+## Visual: Dialogue Path Coverage Map
+
+```{mermaid}
+flowchart TD
+  S([Start]) --> I{Identify Intent}
+  I -->|Order Status| O[Fetch Order]
+  I -->|Cancel Order| C[Validate Policy]
+  I -->|Fallback| F[Clarify Request]
+  O --> E([End])
+  C --> E
+  F --> I
+```
+
+---
+
+## Slide 2: Edge Case & Boundary Stress Testing
+
+- **Unexpected Inputs**: Testing user interruptions, mid-flow intent switching (digressions), and invalid payload types.
+- **Context Bleed**: Ensuring previous turn entities do not overwrite new session contexts when changing topics.
+
+---
+
+## Visual: Edge Case Test Matrix
+
+| Test Type | Example Input | Expected Behavior |
+|---|---|---|
+| Interruption | "Wait, different question..." | Pause current flow and re-route intent |
+| Mid-flow switch | "Actually cancel it" | Preserve safety checks, switch branch cleanly |
+| Invalid payload | Empty/garbled entity data | Trigger validation and recovery prompt |
+| Context reset | "New topic: billing" | Clear stale entities from old task |
+
+---
+
+## Slide 3: Non-Functional & Performance Testing
+
+- **Load / Concurrency Testing**: Verifying system performance under high simultaneous user traffic.
+- **API Latency Checks**: Ensuring back-end fulfillment webhooks respond within 1–2 seconds to prevent conversation drop-offs.
+
+---
+
+## Visual: Performance Test Targets
+
+```{mermaid}
+xychart-beta
+  title "Latency Under Increasing Concurrent Users"
+  x-axis [10, 50, 100, 250, 500]
+  y-axis "Latency (ms)" 0 --> 2500
+  line [220, 430, 710, 1320, 2100]
+```
+
+- **Target**: Keep average response time below **2000 ms**
+

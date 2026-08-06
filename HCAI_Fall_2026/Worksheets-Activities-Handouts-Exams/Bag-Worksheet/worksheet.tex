@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Worksheet: Implementing the Bag Data Structure\\with Pair Programming}
+\author{CS 152 Data Structures}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+This worksheet will guide you through implementing the \texttt{Bag} data structure step-by-step, testing it, and submitting your work. Follow the instructions carefully, and ask for help from the professor or TA if needed. 
+\section*{Instructions}
+
+Pick a partner of your choice to pair with on this activity. At least one of you should have a computer and ideally, you have met the prerequisites for beginning Assignment 1. This includes having Assignment 1 configured with CodeGrade and your GitHub repository. Please note: although you are working as a pair, you are both responsible for submitting your work to GitHub by the official assignment due date. Submit the completed worksheet by the end of class. If you don't finish, you can keep the worksheet and complete it on your own time, and submit it at the beginning of the next class.
+
+
+\subsection*{Pair Programming Team}
+
+\noindent Developer 1 Name: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\noindent Developer 2 Name: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\section*{Part 1: Understanding the Bag Data Structure}
+
+Before you start coding, think about how the \texttt{Bag} should work internally. Recall that a \texttt{Bag} is a collection where items can appear multiple times, so you need to decide how to store the items and their counts.
+
+\subsection*{Questions to Consider}
+\begin{enumerate}
+    \item What internal data structure will you use to store the items in the \texttt{Bag}? Why?
+    \item How will you track the number of occurrences of each item?
+    \item How will you ensure the \texttt{Bag} only accepts valid items?
+\end{enumerate}
+
+\noindent Write your answers below:
+
+\vspace{4\baselineskip}
+
+
+\section*{Part 2: Step-by-Step Implementation}
+
+Implement the methods in \texttt{bag.py} one at a time. After completing each method, run the associated test in \texttt{test\_bag.py} using the \textbf{Test Explorer} in Visual Studio Code (it is on the left side of VS Code and has a beaker symbol).
+
+\subsection*{2.1 Implement the \texttt{\_\_init\_\_} Method}
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item Open \texttt{bag.py} and navigate to the \texttt{\_\_init\_\_} method:
+    \begin{lstlisting}[language=Python]
+def __init__(self) -> None:
+
+    \end{lstlisting}
+    \item Remove the \texttt{raise NotImplementedError} statement.
+    \item Initialize the internal data structure that you will be using to store the items and their counts.
+    \item Add any other necessary instance variables.
+    \item Since the Bag may be instantiated with items, remember to iterate over those items and manually add them to the Bag.
+
+\end{enumerate}
+
+\subsection*{2.2 Implement the \texttt{add} Method}
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item Open \texttt{bag.py} and navigate to the \texttt{add} method:
+    \begin{lstlisting}[language=Python]
+def add(self, item: T) -> None:
+    
+    \end{lstlisting}
+    \item Remove the \texttt{raise NotImplementedError} statement.
+    \item Add the item to the \texttt{Bag} and update its count. Remember to check if the item is already in the \texttt{Bag} and increment its count. If it is not in the \texttt{Bag}, add it with a count of 1. If the item is \texttt{None}, raise a \texttt{TypeError}.
+\end{enumerate}
+
+\textbf{Verify:} Run the following tests (see Part 3 for more guidance on running tests):
+\begin{itemize}
+    \item \texttt{test\_add\_item\_increases\_count}
+    \item \texttt{test\_add\_none\_raises\_type\_error}
+\end{itemize}
+
+\textbf{Questions:}
+\begin{itemize}
+    \item What does \texttt{item: T} mean in the type hint?
+    \item What does \texttt{-> None} indicate about the return value?
+\end{itemize}
+
+\subsection*{2.3 Implement the \texttt{remove} Method}
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item Define the \texttt{remove} method:
+    \begin{lstlisting}[language=Python]
+def remove(self, item: T) -> None:
+    # Implementation here
+    \end{lstlisting}
+    \item This method should:
+    \begin{itemize}
+        \item Decrease the count of the specified item in the \texttt{Bag}.
+        \item Raise a \texttt{ValueError} if the item is not in the \texttt{Bag}.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Verify:} Run the following tests (see Part 3 for more guidance on running tests):
+\begin{itemize}
+    \item \texttt{test\_remove\_item\_decreases\_count}
+    \item \texttt{test\_remove\_nonexistent\_item\_raises\_value\_error}
+\end{itemize}
+
+\textbf{Questions:}
+\begin{itemize}
+    \item Why does \texttt{remove} return \texttt{None}?
+\end{itemize}
+
+
+\subsection*{Remaining Methods}
+Repeat the process for each of the following methods:
+\begin{itemize}
+    \item \texttt{count} \hspace{1cm} \textbf{Test:} \texttt{test\_count\_returns\_correct\_number\_of\_occurrences}
+    \item \texttt{\_\_len\_\_} \hspace{1cm} \textbf{Test:} \texttt{test\_len\_returns\_total\_number\_of\_items}
+    \item \texttt{distinct\_items} \hspace{1cm} \textbf{Test:} \texttt{test\_distinct\_items\_returns\_unique\_items}
+    \item \texttt{\_\_contains\_\_} \hspace{1cm} \textbf{Test:} \texttt{test\_contains\_checks\_item\_membership}
+    \item \texttt{clear} \hspace{1cm} \textbf{Test:} \texttt{test\_clear\_removes\_all\_items}
+\end{itemize}
+
+---
+
+\section*{Part 3: Running Tests in Visual Studio Code}
+
+\begin{enumerate}
+    \item Open the \textbf{Test Explorer} in Visual Studio Code.
+    \item Run individual tests after completing each method.
+    \item If a test fails, review your implementation, fix the issue, and re-run the test.
+    \item Use the error messages to help you identify and fix the problem. 
+    \item Use breakpoints and the debugger to step through your code and understand what's happening. To debug a test, add a breakpoint in the test or in the code, then right-click the test and select \textbf{Debug Test}.
+    \item If you encounter an error you can't resolve, ask the professor or TA for help.
+\end{enumerate}
+
+---
+
+\section*{Part 4: Committing and Pushing Your Code to GitHub}
+
+\begin{enumerate}
+    \item Open the \textbf{Source Control} tab in Visual Studio Code.
+    \item Add a meaningful message to the commit message box; i.e.:
+    \begin{verbatim}
+        "Completed Bag implementation"
+    \end{verbatim}
+    \item Commit and Push your changes to GitHub.
+    
+\end{enumerate}
+
+---
+
+\section*{Part 5: Viewing Your Score in CodeGrade}
+
+\begin{enumerate}
+    \item Visit the \textbf{Bag assignment} in Canvas.
+    \item Click the \textbf{[Load in New Window/Tab]} button at the bottom of the assignment.
+    \item Review your CodeGrade results and score.
+\end{enumerate}
+
+\textbf{Troubleshooting:} If you don’t see your score or encounter issues, raise your hand in class or visit the professor or TA during office hours.
+
+---
+
+\section*{Need Help?}
+
+\begin{itemize}
+    \item Ask questions in class.
+    \item Visit the professor or TA during office hours.
+    \item Use the resources available in Canvas.
+\end{itemize}
+
+\end{document}

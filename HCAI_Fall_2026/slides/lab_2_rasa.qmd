@@ -1,0 +1,384 @@
+---
+title: "Lab 3: Building a Voice-Enabled Assistant with Rasa CALM"
+author: "Fred Agbo"
+date: February 16, 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: true
+    code-line-numbers: true
+    preview-links: auto
+---
+
+## 🎙️ Welcome + Lab 3
+
+**Course:** Human-AI Interaction — Willamette University  
+**Format:** Hands-on lab (CLI/IDE workflow), building directly on `rasa_project_demo` from Labs 1–2  
+**Outcome:** Build a **working voice conversation** and run a live **barge-in demo**
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Microphone_font_awesome.svg/512px-Microphone_font_awesome.svg.png){fig-alt="Microphone icon" width="170"}
+
+---
+
+## 🎯 Lab Overview
+
+By the end of lab, you will:
+
+1. Connect your assistant to voice using `browser_audio`
+2. Configure Deepgram for ASR + TTS
+3. Build a **Voice-Enabled Library Assistant**
+4. Verify logic over REST, then test real-time voice behavior
+5. Demonstrate interruption handling (**barge-in**) live
+
+---
+
+## ✅ Does Rasa support voice? Yes.
+
+Rasa Pro CALM is **channel-agnostic**: the same flows, slots, and patterns work for text *and* voice.
+
+- Text channel: `rest` (JSON in/out)
+- Voice channel: `browser_audio` (mic streaming + ASR + CALM + TTS)
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon-round-Question_mark.svg/512px-Icon-round-Question_mark.svg.png){fig-alt="Question icon" width="110"}
+
+---
+
+## 🔊 Voice Provider Options
+
+| Provider | ASR | TTS | Notes |
+|---|---|---|---|
+| **Deepgram** | ✅ | ✅ | Streaming both directions; simplest setup |
+| Cartesia | — | ✅ | Streaming TTS |
+| Azure Speech | ✅ | ✅ | TTS does not support streaming |
+| Rime | — | ✅ | No streaming, 24kHz only |
+
+This lab uses **Deepgram for both ASR and TTS**.
+
+---
+
+## 💡 Why this deserves its own lab
+
+Voice exposes HAI concepts text chat hides:
+
+- **Turn-taking + barge-in** (can users interrupt?)
+- **Latency is felt** in spoken interaction
+- **No visual affordances** (everything must work as speech)
+- **Silence/no-input handling** is critical
+
+> Lab 3 focus: make these concepts concrete and testable in class.
+
+---
+
+## 🧰 Part 1 — Setup
+
+### 1.1 Get a free Deepgram API key
+
+Sign up at [deepgram.com](https://deepgram.com/) or `console.deepgram.com/signup`.
+
+- No credit card required
+- $200 free credit
+
+### 1.2 Export the key
+
+```bash
+export DEEPGRAM_API_KEY="<your deepgram api key>"
+```
+
+Tip: add this to `.venv/bin/activate` like your `RASA_LICENSE`.
+
+---
+
+## 🧪 1.3 Confirm `browser_audio` channel in `credentials.yml`
+
+```yaml
+browser_audio:
+  server_url: localhost
+  interruptions:
+    enabled: false
+    min_words: 3
+  asr:
+    name: deepgram
+  tts:
+    name: deepgram
+```
+
+- `enabled`: allow mid-speech interruption (barge-in)
+- `min_words`: minimum partial transcript words before interrupt triggers
+
+---
+
+## 🏗️ Part 2 — Build: Voice-Enabled Library Assistant
+
+Two flows:
+
+1. Quick spoken Q&A (hours)
+2. Slow lookup flow (availability) for latency/filler-response design
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/OOjs_UI_icon_book-ltr.svg/512px-OOjs_UI_icon_book-ltr.svg.png){fig-alt="Library/book icon" width="150"}
+
+---
+
+## 2.1 Add slots (`domain.yml`)
+
+```yaml
+room_type:
+  type: categorical
+  values:
+    - "quiet"
+    - "group"
+    - "media"
+  mappings:
+    - type: from_llm
+room_status:
+  type: text
+  mappings:
+    - type: controlled
+```
+
+`room_status` is controlled because your custom action sets it (not user speech).
+
+---
+
+## 2.2 Declare custom action (`domain.yml`)
+
+⚠️ Must be explicitly listed under top-level `actions:`
+
+```yaml
+actions:
+  - action_check_room_availability
+```
+
+If omitted, you'll get: action used in flow but not listed in domain.
+
+---
+
+## 2.3 Add responses (`domain.yml`)
+
+```yaml
+utter_library_hours:
+  - text: "The library is open Monday through Friday, 8am to midnight, and weekends 10am to 8pm."
+utter_ask_room_type:
+  - text: "Would you like a quiet room, a group room, or a media room?"
+utter_please_wait_room_check:
+  - text: "One moment, let me check that for you."
+utter_room_availability_result:
+  - text: "Here's what I found: the {room_type} room is {room_status}."
+```
+
+---
+
+## 2.4 Add flows (`data/flows.yml`)
+
+```yaml
+tell_library_hours:
+  description: User wants to know the library's opening hours.
+  steps:
+    - action: utter_library_hours
+
+check_room_availability:
+  description: User wants to check whether a study room is available to book.
+  steps:
+    - collect: room_type
+    - action: utter_please_wait_room_check
+    - action: action_check_room_availability
+    - action: utter_room_availability_result
+```
+
+✅ Key ordering: **filler response → slow action → result**.
+
+---
+
+## 2.5 Add custom action (`actions/actions.py`)
+
+```python
+class ActionCheckRoomAvailability(Action):
+    def name(self) -> Text:
+        return "action_check_room_availability"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        # Simulates a slow backend lookup.
+        time.sleep(3)
+
+        room_type = tracker.get_slot("room_type")
+        hardcoded_status = {
+            "quiet": "available now",
+            "group": "booked until 3pm",
+            "media": "available now",
+        }
+        room_status = hardcoded_status.get(room_type, "not found")
+        return [SlotSet("room_status", room_status)]
+```
+
+Note: add `import time` if needed.
+
+---
+
+## ⚙️ Execution Note
+
+`endpoints.yml` already contains:
+
+```yaml
+action_endpoint:
+  actions_module: "actions"
+```
+
+So actions run embedded in the assistant process.  
+No separate `rasa run actions` needed for this lab.
+
+---
+
+## 🔍 Part 3 — Verify Over Text First
+
+Before audio debugging, validate logic quickly via REST.
+
+```bash
+rasa data validate
+rasa train
+rasa run --enable-api --cors "*"
+```
+
+---
+
+## 🔍 REST Test Conversation
+
+```bash
+curl -s -X POST http://localhost:5005/webhooks/rest/webhook -H "Content-Type: application/json" -d '{"sender": "voice_demo", "message": "is a study room available?"}'
+```
+
+```json
+[{"recipient_id":"voice_demo","text":"Would you like a quiet room, a group room, or a media room?"}]
+```
+
+```bash
+curl -s -X POST http://localhost:5005/webhooks/rest/webhook -H "Content-Type: application/json" -d '{"sender": "voice_demo", "message": "quiet"}'
+```
+
+```json
+[{"recipient_id":"voice_demo","text":"One moment, let me check that for you."},{"recipient_id":"voice_demo","text":"Here's what I found: the quiet room is available now."},{"recipient_id":"voice_demo","text":"Is there anything else I can do for you?"}]
+```
+
+---
+
+## 🧠 Important Caveat (Discuss in Class)
+
+REST buffers full turn output and returns one JSON array.  
+So filler-response timing is **not perceived** over REST.
+
+- REST = validates logic
+- Streaming voice channel = reveals UX timing behavior
+
+> Same flow, different user experience by channel.
+
+---
+
+## 🎧 Part 4 — Deploy: Talk to It For Real
+
+Stop REST server (`Ctrl+C`) and launch Inspector:
+
+```bash
+rasa inspect
+```
+
+Open the provided localhost URL in **Chrome** and allow microphone access.
+
+Look for `voice_channel.initialized` in terminal logs.
+
+---
+
+## 🗣️ 4.3 Run the voice conversation
+
+Try saying:
+
+- “Is a study room available?”
+- “quiet”
+- “What time does the library close?”
+
+You should hear TTS playback of assistant replies.
+
+---
+
+## 🚦 Part 5 — Live Demo: Barge-In (Interruptions)
+
+### 5.1 With interruptions disabled
+
+Current config:
+
+```yaml
+interruptions:
+  enabled: false
+  min_words: 3
+```
+
+Assistant finishes speaking even if user talks over it.
+
+---
+
+## 🚦 5.2 Enable interruptions
+
+Edit `credentials.yml`:
+
+```yaml
+browser_audio:
+  interruptions:
+    enabled: true
+    min_words: 3
+```
+
+Restart `rasa inspect`, then interrupt mid-sentence with 3+ words  
+(e.g., “wait, stop, change it to group”).
+
+---
+
+## 💬 5.3 Discussion Prompts
+
+- Why `min_words: 3` instead of 1?
+- During `time.sleep(3)`, what is interruptible: speaking, thinking, or both?
+- Which human turn-taking cues does a word-threshold approximate — and miss?
+
+---
+
+## 🧯 Part 6 — Troubleshooting (Voice-Specific)
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| No microphone prompt | Browser/context issue | Use Chrome; localhost is secure origin |
+| No transcript / hears nothing | `DEEPGRAM_API_KEY` missing in launch shell | Re-export key or place in `.venv/bin/activate` |
+| `credentials.yml` edits ignored | Server not restarted | Restart `rasa inspect` |
+| Feedback loop | Mic picks up speaker output | Use headphones |
+| Text works, voice fails | Channel config problem, not flow logic | Re-test over REST first, then voice config |
+
+---
+
+## ✅ Deliverables for Today
+
+- Working voice-enabled library assistant
+- Successful ASR → CALM → TTS round trip in browser
+- Live barge-in demo (disabled vs enabled)
+- Notes on latency + channel UX differences
+
+---
+
+## ⏭️ What’s Next
+
+- Replace `hardcoded_status` with a real API call
+- Compare Deepgram vs Cartesia TTS quality/latency
+- Explore telephony channels (Twilio/Jambonz) for production
+
+- Makes **flows, slots, triggers, and branching explicit** as text
+- Better for learning how CALM actually works under the hood
+- Strong foundation before moving to visual/no-code tooling
+
+> In this lab, we optimize for conceptual understanding, not just click-through completion.

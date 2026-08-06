@@ -1,0 +1,105 @@
+<style>
+/* Extend the Bootstrap active-highlight to ALL nesting depths.
+   Bootstrap only covers ul>li>a and ul>li>ul>li>a; this covers everything. */
+.sidebar nav[role=doc-toc] a.active {
+  color: #2761e3 !important;
+  border-left: 1px solid #2761e3;
+  font-weight: 600;
+}
+</style>
+
+<script>
+// Robust TOC scroll-spy override
+// quarto.js uses section.offsetTop which is relative to the nearest positioned
+// offsetParent. With custom padding/margin on #quarto-content and main.content
+// the value drifts from window.pageYOffset, so the active link never updates.
+// This script uses getBoundingClientRect() + pageYOffset (always document-
+// relative). It also re-runs the walk() logic so nested ul.collapse containers
+// are expanded/collapsed in sync with the newly-active link.
+(function () {
+  var _tocTimer;
+  var MARGIN = 150;
+
+  function getDocTop(el) {
+    return el.getBoundingClientRect().top + (window.pageYOffset || window.scrollY);
+  }
+
+  // Mirror of quarto.js walk() – expands parent <ul> when they contain
+  // an active child and collapses all others below the top level.
+  function prevSibIsActive(el) {
+    var sib = el.previousElementSibling;
+    return sib && sib.tagName === 'A' && sib.classList.contains('active');
+  }
+
+  function walk(el, depth) {
+    if (el.tagName === 'UL') depth++;
+    var isActive = el.tagName === 'A' && el.classList.contains('active');
+    var hasActiveChild = false;
+    for (var i = 0; i < el.children.length; i++) {
+      hasActiveChild = walk(el.children[i], depth) || hasActiveChild;
+    }
+    if (el.tagName === 'UL') {
+      if (depth > 1 && !hasActiveChild && !prevSibIsActive(el)) {
+        el.classList.add('collapse');
+      } else {
+        el.classList.remove('collapse');
+      }
+      depth--;
+    }
+    return isActive || hasActiveChild;
+  }
+
+  function updateTOC() {
+    var tocEl = document.querySelector('#TOC');
+    if (!tocEl) return;
+
+    var tocLinks = Array.from(tocEl.querySelectorAll('a[data-scroll-target]'));
+    if (!tocLinks.length) return;
+
+    var sections = tocLinks.map(function (l) {
+      var t = l.getAttribute('data-scroll-target');
+      return t.charAt(0) === '#'
+        ? document.getElementById(t.slice(1))
+        : document.querySelector(t);
+    });
+
+    var scrollY   = window.pageYOffset || window.scrollY;
+    var maxScroll = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+    var atBottom  = window.innerHeight + scrollY >= maxScroll - 5;
+    var activeIdx = 0;
+
+    if (atBottom) {
+      activeIdx = sections.length - 1;
+    } else {
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i] && scrollY >= getDocTop(sections[i]) - MARGIN) {
+          activeIdx = i;
+          break;
+        }
+      }
+    }
+
+    // Update active class on all links
+    tocLinks.forEach(function (link, idx) {
+      link.classList.toggle('active', idx === activeIdx);
+    });
+
+    // Re-run walk so parent ul.collapse containers open/close correctly
+    walk(tocEl, 0);
+  }
+
+  function onScroll() {
+    clearTimeout(_tocTimer);
+    _tocTimer = setTimeout(updateTOC, 10);
+  }
+
+  setTimeout(function () {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateTOC();
+  }, 150);
+})();
+</script>

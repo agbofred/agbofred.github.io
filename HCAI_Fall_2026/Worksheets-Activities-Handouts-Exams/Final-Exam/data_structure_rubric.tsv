@@ -1,0 +1,5 @@
+Criteria				
+Operations	Thoroughly and accurately describes all core operations with clear examples.	Correctly describes basic operations with minimal prompting.	Mentions some operations but lacks detail or clarity.	Cannot describe operations or gives incorrect information.
+Time Complexity	"Clearly explains best-, average-, and worst-case time complexities and can justify them."	Explains common time complexities for core operations.	Provides vague or partially correct time complexity descriptions.	Does not know or incorrectly states time complexities.
+Comparisons	"Compares and contrasts with at least two other structures, including advantages and disadvantages."	Provides at least one accurate comparison with another structure.	Gives a shallow or partially accurate comparison.	Fails to compare with other data structures meaningfully.
+Usage Scenarios	Identifies strong and weak use cases and justifies choices with context.	Identifies basic usage scenarios correctly.	Identifies scenarios but may not justify or misunderstand them.	Gives irrelevant or incorrect usage scenarios.

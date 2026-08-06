@@ -1,0 +1,520 @@
+:STEM Interactive Lab:index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>STEM XR: Simple Harmonic Motion Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="https://xrblocks.github.io/css/xr.css" />
+    <script>
+      window.litDisableBundleWarning = true;
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/",
+          "troika-three-text": "https://cdn.jsdelivr.net/gh/protectwise/troika@028b81cf308f0f22e5aa8e78196be56ec1997af5/packages/troika-three-text/src/index.js",
+          "troika-three-utils": "https://cdn.jsdelivr.net/gh/protectwise/troika@v0.52.4/packages/troika-three-utils/src/index.js",
+          "troika-worker-utils": "https://cdn.jsdelivr.net/gh/protectwise/troika@v0.52.4/packages/troika-worker-utils/src/index.js",
+          "bidi-js": "https://esm.sh/bidi-js@%5E1.0.2?target=es2022",
+          "webgl-sdf-generator": "https://esm.sh/webgl-sdf-generator@1.1.1/es2022/webgl-sdf-generator.mjs",
+          "lit": "https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js",
+          "lit/": "https://esm.run/lit@3/",
+          "xrblocks": "https://cdn.jsdelivr.net/npm/xrblocks@0.14.1/build/xrblocks.js",
+          "xrblocks/addons/": "https://cdn.jsdelivr.net/npm/xrblocks@0.14.1/build/addons/",
+          "@google/genai": "https://cdn.jsdelivr.net/npm/@google/genai/+esm"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import 'xrblocks/addons/simulator/SimulatorAddons.js';
+      import * as THREE from 'three';
+      import * as xb from 'xrblocks';
+
+      class StemLabScript extends xb.Script {
+        constructor() {
+          super();
+          
+          // Simulation state parameters
+          this.mode = 'pendulum'; // 'pendulum' or 'spring'
+          this.isSimulating = true;
+          this.time = 0;
+
+          // Physics coefficients
+          this.length = 1.0;       // m (pendulum length)
+          this.mass = 1.0;         // kg
+          this.gravity = 9.81;     // m/s^2
+          this.damping = 0.1;      // b (damping factor)
+          this.springK = 15.0;     // N/m (spring constant)
+
+          // Live states
+          this.theta = 0.5;        // current angle for pendulum (rad)
+          this.omega = 0.0;        // angular velocity (rad/s)
+          this.displacement = 0.3; // displacement for spring (m)
+          this.velocity = 0.0;     // velocity (m/s)
+
+          // AI interaction state
+          this.ai = null;
+          this.isProcessingAI = false;
+        }
+
+        init() {
+          this.ai = xb.core.ai;
+
+          // Set up stage lighting
+          this.add(new THREE.HemisphereLight(0xffffff, 0x333333, 2.5));
+          const dirLight = new THREE.DirectionalLight(0x00f0ff, 1.5);
+          dirLight.position.set(2, 4, 1);
+          this.add(dirLight);
+
+          // Build Apparatus Base Platform
+          this.createApparatusBase();
+
+          // Build Interactive 3D Objects
+          this.createPendulumGeometry();
+          this.createSpringGeometry();
+
+          // Construct Multi-panel spatial UI
+          this.createControlsPanel();
+          this.createExplainerPanel();
+
+          // Set initial visibility
+          this.updateApparatusVisibility();
+        }
+
+        // ==========================================
+        // 3D MODEL & APPARATUS CREATION
+        // ==========================================
+        createApparatusBase() {
+          // Tabletop Stand
+          const standGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.05, 32);
+          const standMat = new THREE.MeshStandardMaterial({ color: 0x222222, metalness: 0.8, roughness: 0.2 });
+          this.basePlatform = new THREE.Mesh(standGeo, standMat);
+          this.basePlatform.position.set(0, 0.5, -1.3);
+          this.add(this.basePlatform);
+
+          // Vertical Rod
+          const rodGeo = new THREE.CylinderGeometry(0.015, 0.015, 1.5, 16);
+          const rodMat = new THREE.MeshStandardMaterial({ color: 0xcccccc, metalness: 0.9, roughness: 0.1 });
+          const verticalRod = new THREE.Mesh(rodGeo, rodMat);
+          verticalRod.position.set(0, 0.75, 0);
+          this.basePlatform.add(verticalRod);
+
+          // Horizontal Arm
+          const armGeo = new THREE.CylinderGeometry(0.012, 0.012, 0.4, 16);
+          armGeo.rotateX(Math.PI / 2);
+          const horizontalArm = new THREE.Mesh(armGeo, rodMat);
+          horizontalArm.position.set(0, 0.7, 0.2);
+          this.basePlatform.add(horizontalArm);
+        }
+
+        createPendulumGeometry() {
+          this.pendulumGroup = new THREE.Group();
+          this.pendulumGroup.position.set(0, 1.2, -1.1); // Hang pivot position
+          this.add(this.pendulumGroup);
+
+          // Pivot point indicator (Cyan glowing sphere)
+          const pivotGeo = new THREE.SphereGeometry(0.02, 16, 16);
+          const pivotMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff });
+          const pivotMesh = new THREE.Mesh(pivotGeo, pivotMat);
+          this.pendulumGroup.add(pivotMesh);
+
+          // Swing Group (holds string and bob to rotate them relative to the pivot)
+          this.swingGroup = new THREE.Group();
+          this.pendulumGroup.add(this.swingGroup);
+
+          // Cord Cylinder
+          const cordGeo = new THREE.CylinderGeometry(0.003, 0.003, 1.0, 8);
+          cordGeo.translate(0, -0.5, 0); // Offset geometry to pivot from top
+          const cordMat = new THREE.MeshBasicMaterial({ color: 0x888888 });
+          this.pendulumCord = new THREE.Mesh(cordGeo, cordMat);
+          this.swingGroup.add(this.pendulumCord);
+
+          // Bob (Spherical mass)
+          const bobGeo = new THREE.SphereGeometry(0.06, 32, 32);
+          const bobMat = new THREE.MeshStandardMaterial({
+            color: 0xff00ff,
+            metalness: 0.5,
+            roughness: 0.2,
+            emissive: 0x330033
+          });
+          this.pendulumBob = new THREE.Mesh(bobGeo, bobMat);
+          this.swingGroup.add(this.pendulumBob);
+        }
+
+        createSpringGeometry() {
+          this.springGroup = new THREE.Group();
+          this.springGroup.position.set(0, 1.2, -1.1);
+          this.add(this.springGroup);
+
+          // Spiral Coil Assembly (simulated using connected toruses or scaled cylinders)
+          this.coilContainer = new THREE.Group();
+          this.springGroup.add(this.coilContainer);
+
+          // Build a modular spring visual using 15 small segmented rings
+          this.springSegments = [];
+          const segmentCount = 18;
+          for (let i = 0; i < segmentCount; i++) {
+            const ringGeo = new THREE.TorusGeometry(0.03, 0.004, 8, 24);
+            ringGeo.rotateX(Math.PI / 2);
+            const ringMat = new THREE.MeshStandardMaterial({ color: 0x00ff88, metalness: 0.7, roughness: 0.2 });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            this.coilContainer.add(ring);
+            this.springSegments.push(ring);
+          }
+
+          // Suspended Weight Block (Spring Mass)
+          const massGeo = new THREE.BoxGeometry(0.08, 0.08, 0.08);
+          const massMat = new THREE.MeshStandardMaterial({
+            color: 0x00ff88,
+            metalness: 0.6,
+            roughness: 0.3,
+            emissive: 0x002211
+          });
+          this.springBob = new THREE.Mesh(massGeo, massMat);
+          this.springGroup.add(this.springBob);
+        }
+
+        updateApparatusVisibility() {
+          if (this.mode === 'pendulum') {
+            this.pendulumGroup.visible = true;
+            this.springGroup.visible = false;
+          } else {
+            this.pendulumGroup.visible = false;
+            this.springGroup.visible = true;
+          }
+        }
+
+        // ==========================================
+        // MULTI-PANEL SPATIAL UI CREATION
+        // ==========================================
+        createControlsPanel() {
+          // Positioning left panel
+          this.ctrlPanel = new xb.SpatialPanel({
+            width: 1.0,
+            height: 1.3,
+            backgroundColor: '#15151fee',
+          });
+          this.ctrlPanel.position.set(-0.9, 1.25, -1.0);
+          this.ctrlPanel.rotation.set(0, Math.PI / 6.5, 0); // Angled slightly towards viewer
+          this.add(this.ctrlPanel);
+
+          const grid = this.ctrlPanel.addGrid();
+
+          // Title & Mode Selector
+          grid.addRow({weight: 0.12}).addText({
+            text: 'STEM Interactive Lab',
+            fontSize: 0.06,
+            fontColor: '#00f0ff',
+          });
+
+          // Mode Toggle Buttons
+          const modeRow = grid.addRow({weight: 0.12});
+          const btnPendulum = modeRow.addCol({weight: 0.5}).addTextButton({
+            text: 'Pendulum',
+            backgroundColor: '#00f0ff',
+            fontColor: '#11111a',
+            fontSize: 0.18,
+          });
+          const btnSpring = modeRow.addCol({weight: 0.5}).addTextButton({
+            text: 'Mass-Spring',
+            backgroundColor: '#333344',
+            fontColor: '#ffffff',
+            fontSize: 0.18,
+          });
+
+          btnPendulum.onTriggered = () => {
+            this.mode = 'pendulum';
+            btnPendulum.setBackgroundColor('#00f0ff');
+            btnPendulum.setFontColor('#11111a');
+            btnSpring.setBackgroundColor('#333344');
+            btnSpring.setFontColor('#ffffff');
+            this.updateApparatusVisibility();
+            this.resetSimulation();
+          };
+
+          btnSpring.onTriggered = () => {
+            this.mode = 'spring';
+            btnSpring.setBackgroundColor('#00ff88');
+            btnSpring.setFontColor('#11111a');
+            btnPendulum.setBackgroundColor('#333344');
+            btnPendulum.setFontColor('#ffffff');
+            this.updateApparatusVisibility();
+            this.resetSimulation();
+          };
+
+          // Adjust Coefficient Controls Function
+          const buildAdjuster = (label, getVal, updateFunc, step, minVal, maxVal) => {
+            const row = grid.addRow({weight: 0.12});
+            row.addCol({weight: 0.45}).addText({
+              text: label,
+              fontSize: 0.045,
+              fontColor: '#cccccc',
+              anchorX: 'left',
+            });
+
+            const decCol = row.addCol({weight: 0.15});
+            const decBtn = decCol.addIconButton({ text: 'remove', fontSize: 0.35 });
+            
+            const valCol = row.addCol({weight: 0.25});
+            const valText = valCol.addText({ text: getVal().toFixed(2), fontSize: 0.045, fontColor: '#ffffff' });
+
+            const incCol = row.addCol({weight: 0.15});
+            const incBtn = incCol.addIconButton({ text: 'add', fontSize: 0.35 });
+
+            decBtn.onTriggered = () => {
+              const newVal = Math.max(minVal, getVal() - step);
+              updateFunc(newVal);
+              valText.setText(newVal.toFixed(2));
+              this.updateLiveStats();
+            };
+
+            incBtn.onTriggered = () => {
+              const newVal = Math.min(maxVal, getVal() + step);
+              updateFunc(newVal);
+              valText.setText(newVal.toFixed(2));
+              this.updateLiveStats();
+            };
+          };
+
+          // Generate adjustment modules
+          buildAdjuster('Length / Height (m)', () => this.length, (v) => { this.length = v; }, 0.1, 0.2, 2.0);
+          buildAdjuster('Mass (kg)', () => this.mass, (v) => { this.mass = v; }, 0.1, 0.1, 5.0);
+          buildAdjuster('Gravity (m/s²)', () => this.gravity, (v) => { this.gravity = v; }, 0.5, 0.0, 25.0);
+          buildAdjuster('Spring Constant k', () => this.springK, (v) => { this.springK = v; }, 1.0, 5.0, 50.0);
+          buildAdjuster('Friction / Damping', () => this.damping, (v) => { this.damping = v; }, 0.05, 0.0, 2.0);
+
+          // Play/Pause Action Controls
+          const actionRow = grid.addRow({weight: 0.14});
+          const btnPlayPause = actionRow.addCol({weight: 0.5}).addTextButton({
+            text: '⏹ Pause',
+            backgroundColor: '#ff3366',
+            fontSize: 0.18,
+          });
+          btnPlayPause.onTriggered = () => {
+            this.isSimulating = !this.isSimulating;
+            btnPlayPause.setText(this.isSimulating ? '⏹ Pause' : '▶ Play');
+            btnPlayPause.setBackgroundColor(this.isSimulating ? '#ff3366' : '#22aa33');
+          };
+
+          const btnReset = actionRow.addCol({weight: 0.5}).addTextButton({
+            text: '⟲ Reset',
+            backgroundColor: '#555566',
+            fontSize: 0.18,
+          });
+          btnReset.onTriggered = () => {
+            this.resetSimulation();
+          };
+
+          // Live Stats readouts at bottom
+          const statsRow = grid.addRow({weight: 0.14});
+          this.statsText = statsRow.addText({
+            text: 'Period (T): Calculating...',
+            fontSize: 0.04,
+            fontColor: '#aaccff',
+          });
+
+          this.ctrlPanel.updateLayouts();
+        }
+
+        createExplainerPanel() {
+          // Positioning right panel
+          this.explainPanel = new xb.SpatialPanel({
+            width: 1.1,
+            height: 1.3,
+            backgroundColor: '#15151fee',
+          });
+          this.explainPanel.position.set(0.9, 1.25, -1.0);
+          this.explainPanel.rotation.set(0, -Math.PI / 6.5, 0); // Angled slightly towards viewer
+          this.add(this.explainPanel);
+
+          const grid = this.explainPanel.addGrid();
+
+          // Title
+          grid.addRow({weight: 0.1}).addText({
+            text: 'AI Physics Assistant',
+            fontSize: 0.06,
+            fontColor: '#ff00ff',
+          });
+
+          // Text view area
+          const textRow = grid.addRow({weight: 0.65});
+          this.explainTextView = new xb.ScrollingTroikaTextView({
+            text: 'Welcome to your STEM XR Lab!\n\nUse the left controls to tweak parameters.\nClick any query option below to request a real-time Gemini calculation or custom analysis.',
+            fontSize: 0.035,
+            textAlign: 'left',
+          });
+          textRow.add(this.explainTextView);
+
+          // Educational interactive prompts
+          const promptsRow = grid.addRow({weight: 0.25});
+          
+          const btnPrompt1 = promptsRow.addRow({weight: 0.33}).addTextButton({
+            text: 'Analyze Current Setup',
+            backgroundColor: '#ff00ff',
+            fontSize: 0.14,
+          });
+          btnPrompt1.onTriggered = () => {
+            this.askAIAssistant('setup');
+          };
+
+          const btnPrompt2 = promptsRow.addRow({weight: 0.33}).addTextButton({
+            text: 'Explain Phase Space',
+            backgroundColor: '#4285f4',
+            fontSize: 0.14,
+          });
+          btnPrompt2.onTriggered = () => {
+            this.askAIAssistant('phase');
+          };
+
+          const btnPrompt3 = promptsRow.addRow({weight: 0.33}).addTextButton({
+            text: 'Derive Damped Oscillation',
+            backgroundColor: '#34a853',
+            fontSize: 0.14,
+          });
+          btnPrompt3.onTriggered = () => {
+            this.askAIAssistant('derivation');
+          };
+
+          this.explainPanel.updateLayouts();
+        }
+
+        // ==========================================
+        // SIMULATION INTEGRATION LOGIC
+        // ==========================================
+        resetSimulation() {
+          this.theta = 0.6; // initial angle 34 degrees
+          this.omega = 0.0;
+          this.displacement = 0.3; // 30cm stretch
+          this.velocity = 0.0;
+          this.time = 0;
+          this.updateLiveStats();
+        }
+
+        updateLiveStats() {
+          let T = 0.0; // period
+          if (this.mode === 'pendulum') {
+            if (this.gravity > 0) {
+              T = 2 * Math.PI * Math.sqrt(this.length / this.gravity);
+            }
+          } else {
+            if (this.springK > 0) {
+              T = 2 * Math.PI * Math.sqrt(this.mass / this.springK);
+            }
+          }
+
+          if (this.statsText) {
+            this.statsText.setText(
+              `Mode: ${this.mode.toUpperCase()}\n` +
+              `Theoretical Period (T): ${T > 0 ? T.toFixed(3) + 's' : '∞'}\n` +
+              `Frequency (f): ${T > 0 ? (1 / T).toFixed(2) + 'Hz' : '0Hz'}`
+            );
+          }
+        }
+
+        update() {
+          const dt = Math.min(xb.getDeltaTime(), 0.03); // clamp dynamic delta time to prevent physics clipping
+
+          if (this.isSimulating) {
+            this.time += dt;
+
+            if (this.mode === 'pendulum') {
+              // Simple Harmonic Motion equations for pendulum
+              // Angular acceleration α = -(g / L) * sin(θ) - (damping / mass) * ω
+              const alpha = -(this.gravity / this.length) * Math.sin(this.theta) - (this.damping / this.mass) * this.omega;
+              this.omega += alpha * dt;
+              this.theta += this.omega * dt;
+
+              // Apply rotation to swing group containing the string and bob
+              this.swingGroup.rotation.z = this.theta;
+
+              // Update visual coordinates of Bob and scale of string
+              this.pendulumCord.scale.y = this.length;
+              this.pendulumBob.position.set(0, -this.length, 0);
+
+            } else {
+              // Mass-Spring System integration
+              // Acceleration a = -(k / m) * displacement - (damping / mass) * velocity
+              const accel = -(this.springK / this.mass) * this.displacement - (this.damping / this.mass) * this.velocity;
+              this.velocity += accel * dt;
+              this.displacement += this.velocity * dt;
+
+              // Position Spring Weight
+              const restingY = -0.6; // Equilibrium hang point
+              const currentY = restingY + this.displacement;
+              this.springBob.position.set(0, currentY, 0);
+
+              // Update procedural spring segments layout
+              const springHeight = Math.abs(currentY);
+              const segmentSpacing = springHeight / this.springSegments.length;
+              for (let i = 0; i < this.springSegments.length; i++) {
+                const ring = this.springSegments[i];
+                ring.position.set(0, -i * segmentSpacing, 0);
+                ring.rotation.y = (i * 0.4) + (this.time * 0.5); // Add dynamic visual spin
+              }
+            }
+          }
+        }
+
+        // ==========================================
+        // GEMINI AI INTEGRATION
+        // ==========================================
+        async askAIAssistant(type) {
+          if (this.isProcessingAI || !this.ai?.isAvailable()) return;
+
+          this.isProcessingAI = true;
+          this.explainTextView.setText('Processing with AI Assistant...\n\nAnalyzing physical system parameters...');
+
+          let prompt = '';
+          if (type === 'setup') {
+            prompt = `Context: The user is running a WebXR physics simulation of a ${this.mode}.\n` +
+                     `Active parameters:\n` +
+                     `- Length/Equilibrium Height: ${this.length} m\n` +
+                     `- Mass: ${this.mass} kg\n` +
+                     `- Gravity: ${this.gravity} m/s^2\n` +
+                     `- Spring Constant k: ${this.springK} N/m\n` +
+                     `- Friction/Damping: ${this.damping}\n\n` +
+                     `Question: Can you analyze this specific system setup? Calculate the exact period, natural angular frequency (omega_0), and explain how the active damping coefficient will affect its amplitude decay envelope. Keep your response concise, educational, and structured with clear Markdown equations.`;
+          } else if (type === 'phase') {
+            prompt = `Explain Phase Space in Simple Harmonic Motion concisely for a physics student. Include details about how paths are affected when damping coefficients are introduced, forming spiral trajectories. Keep it concise (less than 200 words).`;
+          } else {
+            prompt = `Derive the differential equation for damped harmonic motion ($m a = -kx - bv$) and state the general solution for underdamped, critically damped, and overdamped cases. Keep the output clean, using standard LaTeX notation, suitable for an immersive educational environment.`;
+          }
+
+          try {
+            const parts = [{ text: prompt }];
+            const response = await this.ai.query({
+              type: 'multiPart',
+              parts: parts,
+            });
+            this.explainTextView.setText(response.text);
+          } catch (error) {
+            this.explainTextView.setText(`Error generating analysis: ${error.message}\n\nPlease try again!`);
+          } finally {
+            this.isProcessingAI = false;
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const options = new xb.Options();
+        options.enableUI();
+        options.enableAI();
+        options.setAppTitle('STEM Interactive Lab');
+        
+        xb.add(new StemLabScript());
+        xb.init(options);
+      });
+    </script>
+  </body>
+</html>
+
+
+<!-- ### App Walkthrough
+- **Physical Adjustments**: Utilize the `[ + ]` and `[ - ]` interactive buttons on the **STEM Interactive Lab** dashboard to immediately change physical characteristics (Length, Mass, Gravity, etc.) and observe the responsive mechanical changes.
+- **Simulation Control**: Toggle between **Pendulum** and **Mass-Spring** models to explore varying types of Simple Harmonic Motion. You can pause the simulation to study instantaneous velocities or reset to start cleanly.
+- **AI Tutoring**: Tap **Analyze Current Setup** on the right panel to dynamically calculate natural frequencies and decay rates using Gemini, receiving customized calculations based on whatever arbitrary configuration you design on the sliders.
+
+The XR app is best viewed in an Android XR device like Galaxy XR. On desktop, we provide you a simulated environment for previewing the app. -->

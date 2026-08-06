@@ -1,0 +1,60 @@
+---
+title: "CS152: Data Structure"
+subtitle: Week 13 - Graphs Worksheet (A)
+# author: "Fred Agbo"
+# date: November 17, 2025
+format:
+  # revealjs:
+  #   # css: minimal.css
+  #   chalkboard: true
+  #   slide-number: true
+  #   theme: [simple, night]
+  #   respect-user-color-scheme: true
+  #   width: 1400
+  pdf:
+      documentclass: article   # or 'report', 'book', etc.
+      toc: false               # Table of contents (optional)
+      geometry: margin=1in     # Page margins (optional)
+      latex-auto-install: false
+---
+\vspace{-2cm}
+
+## Write the full name of all collaborators inside this box
+\fbox{\makebox[\linewidth][l]{\rule{0pt}{2cm}\hspace{0.99\linewidth}}}
+
+\vspace{.5cm}
+
+## Discuss these questions and write your answers in the space provided below it.
+
+\vspace{0.2cm}
+
+
+1. The course prerequisites for a computer science major at a local college are numbered as follows: 111 is required for 112 and 210; 112 is required for 312, 313, 209, and 211; and 210 is required for 312. Draw a directed graph that represents this numbering structure.
+
+\vspace{5cm}
+
+
+2.  a) How many edges are in a `complete`, `undirected` graph with six vertices? 
+
+\vspace{2cm}
+
+2. b) Draw a graph that represents the description in 2a above.
+    
+
+\vspace{5cm}
+
+
+
+3. Make a table showing the `adjacency matrix` for the following directed graph with edge costs.
+
+![](adjacencyRep.png){style="width:80%;"}
+
+\vspace{5cm}
+
+4. Draw a picture showing the `adjacency list` for the above-directed graph with edge costs. You should assume that the edges in a list are ordered from least cost to greatest cost.
+
+\vspace{5cm}
+
+5. State one advantage and one disadvantage of the adjacency matrix representation and the adjacency list representation of graphs.
+
+\vspace{4cm}

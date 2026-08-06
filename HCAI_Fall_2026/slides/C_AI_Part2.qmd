@@ -1,0 +1,122 @@
+---
+title: "Building Assistive Conversational Agents with Rasa Pro (CALM)"
+author: "Fred Agbo"
+date: February 9, 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: true
+    code-line-numbers: true
+    preview-links: auto
+---
+
+## 👋 Welcome Conversational AI (Part 2)
+
+## PART 2: DESIGNING FOR SUCCESS
+
+## Week 3: Designing Effective Processes (Chapter 3)
+
+### Slide 1: Target Selection Strategy
+
+- **The Sweet Spot**: Target high-frequency, low-complexity incoming requests for initial automation.
+- **Complexity Metrics**: Number of decision paths, system integrations, and regulatory boundary edge-cases.
+- **Process Mapping**: Convert legacy human call-center scripts into deterministic flowchart logic trees.
+
+```{mermaid}
+flowchart TD
+    A[Incoming Request] --> B{High Frequency?}
+    B -- No --> C[Keep Human-Assisted]
+    B -- Yes --> D{Low Complexity?}
+    D -- No --> E[Phase 2/3 Automation]
+    D -- Yes --> F[Automate First]
+    F --> G[Measure KPI Impact]
+```
+
+### Slide 2: Cross-Functional Team Roles
+
+- **Product Owner / Business Lead**: Defines KPIs, ROI expectations, and process boundaries.
+- **Conversation Designer**: Writes natural dialogue paths, persona guidelines, and fallback flows.
+- **NLU/AI Trainer**: Collects data, labels utterances, resolves intent collisions, and trains models.
+- **Software Engineer**: Manages API webhooks, database state persistence, and continuous integration pipelines.
+
+![](https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80){fig-alt="Cross-functional team collaboration" height="360px"}
+
+### Slide 3: Channel Dynamics — Web/Text vs. Voice
+
+| Feature | Web / Text (Chatbots) | Voice (IVR / Telephony) |
+|---|---|---|
+| **Pacing** | User-controlled, visual scanning | Real-time audio stream, sequential memory load |
+| **Interface Options** | Buttons, carousels, rich text, links | Pure voice, keypad inputs (DTMF) |
+| **Error Rate** | Low (precise spelling/clicking) | High (background noise, accents, ASR errors) |
+| **Brevity** | Paragraphs supported | Strictly 1–2 sentence turns |
+
+## Week 4: Designing Effective Dialogue (Chapter 4)
+
+### Slide 1: Persona and Brand Tone
+
+- **Persona Definition**: Define explicit attributes (e.g., professional, concise, empathetic) without pretending to be human.
+- **Variations in Response**: Rotate templates to avoid repetitive output (e.g., *"Got it"*, *"Sure thing"*, *"Understood"*).
+- **Setting Expectations**: Explicitly declare capabilities during the initial turn.
+
+![](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80){fig-alt="Brand voice and communication planning" height="340px"}
+
+### Slide 2: Question & Disambiguation Design
+
+- **Open vs. Closed Prompts**:
+  - *Open*: *"How can I help you today?"* (high NLU flexibility required)
+  - *Closed*: *"Did you want to check your balance or pay a bill?"* (constrained responses)
+- **Implicit vs. Explicit Acknowledgments**:
+  - *Implicit*: *"Sure, let's update your address. What is your new zip code?"*
+  - *Explicit*: *"Did you say you want to change your primary home address?"*
+
+```{mermaid}
+flowchart LR
+    U[User Input] --> I{Intent Clear?}
+    I -- Yes --> A[Implicit Ack + Next Slot]
+    I -- No --> E[Explicit Confirmation]
+    E --> U2[User Clarifies]
+    U2 --> A
+```
+
+### Slide 3: Designing Graceful Failure Recovery
+
+- **Targeted Reprompts**: Explain *how* to rephrase instead of repeating *"I didn't understand that."*
+- **Context Preservation**: Keep collected entities while requesting missing information.
+- **Escalation Path**: Pass gathered variables and transcript context during live-agent handoff.
+
+## Week 5: Building a Successful AI Assistant (Chapter 5)
+
+### Slide 1: Telemetry and Event Logging
+
+- **Data Logging**: Record every utterance, confidence score, intent, entities, path executed, and session duration.
+- **Session Tracking**: Map user flows from start to end state using unique session IDs.
+
+```{mermaid}
+flowchart TD
+    S[Session Start] --> U[User Utterance]
+    U --> N[NLU Output: Intent + Entities + Confidence]
+    N --> P[Dialogue Policy Path]
+    P --> R[Response Sent]
+    R --> M[Metrics Store / Dashboard]
+```
+
+### Slide 2: Core Assistant Metrics
+
+$$
+	ext{Containment Rate} = \frac{\text{Sessions Resolved Without Human Escalation}}{\text{Total Incoming Sessions}}
+$$
+
+- **Containment Rate**: Percentage of users who complete goals entirely within the AI assistant.
+- **Time to Resolution (TTR)**: Average elapsed seconds from initiation to successful completion.
+- **Coverage**: Percentage of inbound traffic mapped to actionable intents vs. fallback.
+- **NPS / CSAT**: Satisfaction from post-interaction micro-surveys.
+
+![](https://images.unsplash.com/photo-1551281044-8b7e32d9f0f6?auto=format&fit=crop&w=1400&q=80){fig-alt="Analytics dashboard for AI assistant metrics" height="320px"}

@@ -1,0 +1,63 @@
+## Why Use a Prime Number for Hash Map Size?
+
+- Hash tables often use **`hash(key) % N`** to compute a bucket index
+- Choosing a **prime number for `N`** helps reduce **collisions**
+- Especially useful when:
+  - Hash function has patterns
+  - Keys share similar formats
+
+---
+
+## Problem with Composite Numbers
+
+Suppose keys are numeric strings like: `"1000"`, `"2000"`, `"3000"`
+
+```python
+def poor_hash(key):
+    return int(key)
+
+num_buckets = 100  # Composite number
+```
+
+- If keys end in `00`, `poor_hash(key) % 100` ⇒ likely clustered
+- Composite numbers increase the chance of such patterns colliding
+
+---
+
+## Example: Composite vs Prime
+
+```python
+keys = ["1000", "2000", "3000", "4000"]
+
+# Poor hash = last digits matter
+indexes_composite = [int(k) % 100 for k in keys]
+indexes_prime = [int(k) % 97 for k in keys]
+
+print("Composite (100):", indexes_composite)
+print("Prime (97):     ", indexes_prime)
+```
+
+> Output:
+> - Composite: `[0, 0, 0, 0]` ← all same bucket  
+> - Prime: `[30, 61, 92, 23]` ← nicely spread
+
+---
+
+## When Prime Matters Most
+
+| Scenario                        | Use Prime? |
+|--------------------------------|------------|
+| High-quality hash function     | Optional   |
+| Custom or poor hash function   | ✅ Yes     |
+| Small number of buckets        | ✅ Yes     |
+| Power-of-2 bucket sizes        | ❌ Risky (especially for bit-based hashers) |
+
+---
+
+## Final Tip
+
+- Use **prime number buckets** to reduce accidental clustering
+- Especially helpful when:
+  - You're unsure about key distribution
+  - You control the hash function
+
