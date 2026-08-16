@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: .
+
+format:
+  html:
+    theme: cosmo
+    css: assets/custom-theme.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    link-external-icon: true
+    link-external-newwindow: true
+
+website:
+  title: "AI 380: Human-AI Interaction"
+  favicon: assets/images/favicon.png
+  page-navigation: true
+  back-to-top-navigation: true
+
+  navbar:
+    logo: assets/images/logo-text.png
+    logo-alt: "AI 380"
+    pinned: true
+    left:
+      - text: "Home"
+        href: index.md
+      - text: "Syllabus"
+        href: syllabus.md
+      - text: "Schedule"
+        href: schedule.md
+      - text: "Assignments"
+        href: assignments.md
+      - text: "Project"
+        href: project.md
+      - text: "Course Policy"
+        href: policy.md
+    right:
+      - icon: discord
+        href: "https://discord.gg/JR4yUSSP"
+        aria-label: "Course Discord"
+      - text: "Canvas"
+        href: "https://willamette.instructure.com/courses/8131"
+        target: _blank
+
+  sidebar: false
+
+  page-footer:
+    left: "AI 380: Human-AI Interaction · Willamette University · Fall 2026"
+    center: "Instructor: [Fred Agbo, PhD](https://fredagbo.com/)"
+    right:
+      - icon: github
+        href: "https://github.com/agbofred/agbofred.github.io"
+
+editor: visual

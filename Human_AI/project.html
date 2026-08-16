@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Group Project – AI 380: Human-AI Interaction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d24c3880db9ce3ca4ea2d5bb002bea1f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="assets/custom-theme.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/images/logo-text.png" alt="AI 380" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">AI 380: Human-AI Interaction</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./schedule.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./assignments.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./project.html" aria-current="page"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./policy.html"> 
+<span class="menu-text">Course Policy</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://discord.gg/JR4yUSSP"> <i class="bi bi-discord" role="img" aria-label="Course Discord">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://willamette.instructure.com/courses/8131" target="_blank"> 
+<span class="menu-text">Canvas</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#team-formation" id="toc-team-formation" class="nav-link" data-scroll-target="#team-formation">Team Formation</a>
+  <ul class="collapse">
+  <li><a href="#team-work-agreement" id="toc-team-work-agreement" class="nav-link" data-scroll-target="#team-work-agreement">Team Work Agreement</a></li>
+  </ul></li>
+  <li><a href="#project-1-conversation-ai-learning-environment" id="toc-project-1-conversation-ai-learning-environment" class="nav-link" data-scroll-target="#project-1-conversation-ai-learning-environment">Project 1: Conversation AI Learning Environment</a>
+  <ul class="collapse">
+  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1">Overview</a></li>
+  <li><a href="#milestones" id="toc-milestones" class="nav-link" data-scroll-target="#milestones">Milestones</a></li>
+  <li><a href="#design-considerations-for-older-adults" id="toc-design-considerations-for-older-adults" class="nav-link" data-scroll-target="#design-considerations-for-older-adults">Design Considerations for Older Adults</a></li>
+  <li><a href="#authoring-platform" id="toc-authoring-platform" class="nav-link" data-scroll-target="#authoring-platform">Authoring Platform</a></li>
+  <li><a href="#example-activity-scenarios" id="toc-example-activity-scenarios" class="nav-link" data-scroll-target="#example-activity-scenarios">Example Activity Scenarios</a></li>
+  </ul></li>
+  <li><a href="#project-2-conversational-ai-assistants-for-older-adults" id="toc-project-2-conversational-ai-assistants-for-older-adults" class="nav-link" data-scroll-target="#project-2-conversational-ai-assistants-for-older-adults">Project 2: Conversational AI Assistants for Older Adults</a>
+  <ul class="collapse">
+  <li><a href="#overview-2" id="toc-overview-2" class="nav-link" data-scroll-target="#overview-2">Overview</a></li>
+  <li><a href="#milestones-1" id="toc-milestones-1" class="nav-link" data-scroll-target="#milestones-1">Milestones</a></li>
+  </ul></li>
+  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline">Project Timeline</a></li>
+  <li><a href="#design-process-requirements" id="toc-design-process-requirements" class="nav-link" data-scroll-target="#design-process-requirements">Design Process Requirements</a>
+  <ul class="collapse">
+  <li><a href="#research-phase-weeks-18" id="toc-research-phase-weeks-18" class="nav-link" data-scroll-target="#research-phase-weeks-18">Research Phase (Weeks 1–8)</a></li>
+  <li><a href="#design-phase-weeks-48" id="toc-design-phase-weeks-48" class="nav-link" data-scroll-target="#design-phase-weeks-48">Design Phase (Weeks 4–8)</a></li>
+  <li><a href="#build-phase-weeks-911" id="toc-build-phase-weeks-911" class="nav-link" data-scroll-target="#build-phase-weeks-911">Build Phase (Weeks 9–11)</a></li>
+  <li><a href="#evaluation-phase-weeks-1214" id="toc-evaluation-phase-weeks-1214" class="nav-link" data-scroll-target="#evaluation-phase-weeks-1214">Evaluation Phase (Weeks 12–14)</a></li>
+  </ul></li>
+  <li><a href="#contribution-statement-requirements" id="toc-contribution-statement-requirements" class="nav-link" data-scroll-target="#contribution-statement-requirements">Contribution Statement Requirements</a></li>
+  <li><a href="#peer-evaluation" id="toc-peer-evaluation" class="nav-link" data-scroll-target="#peer-evaluation">Peer Evaluation</a></li>
+  <li><a href="#project-resources" id="toc-project-resources" class="nav-link" data-scroll-target="#project-resources">Project Resources</a></li>
+  <li><a href="#project-faq" id="toc-project-faq" class="nav-link" data-scroll-target="#project-faq">Project FAQ</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Group Project</h1>
+<p class="subtitle lead">AI 380: Human-AI Interaction · Fall 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The group project is the <strong>core learning experience</strong> of AI 380 — worth <strong>60%</strong> of your final grade. It runs in two sequential projects that take your team from initial user research through a fully deployed, user-tested conversational AI system.</p>
+</div>
+</div>
+<hr>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This course centers on <strong>two sequential group projects</strong> designed to progressively build your human-centered design and conversational AI skills:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Project</th>
+<th>Focus</th>
+<th>Milestones</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Project 1</strong></td>
+<td>Conversation AI Learning Environment (VR)</td>
+<td>GP0, GP1</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td><strong>Project 2</strong></td>
+<td>Conversational AI Assistants for Older Adults</td>
+<td>GP2, GP3, GP4</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table>
+<p>Teams of <strong>2–3 students</strong> are assigned by Sep 5 (Last Day Add/Drop). Each team must submit a signed Team Working Agreement (GP0) before work on Project 1 begins.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Students who do not actively contribute to group activities will lose the grade for that activity. The instructor reserves the right to assign individual grades that differ from the group grade based on documented contribution.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="team-formation" class="level2">
+<h2 class="anchored" data-anchor-id="team-formation">Team Formation</h2>
+<ul>
+<li><strong>Group size:</strong> 2–3 students per team</li>
+<li><strong>Formation deadline:</strong> Sep 5 (Last Day Add/Drop)</li>
+<li><strong>Interdisciplinary teams are encouraged</strong> — diverse perspectives produce more inclusive designs</li>
+<li>Students unable to find partners should notify the instructor immediately</li>
+</ul>
+<section id="team-work-agreement" class="level3">
+<h3 class="anchored" data-anchor-id="team-work-agreement">Team Work Agreement</h3>
+<p>Each team submits a <strong>signed Work Agreement</strong> (template on Canvas) as part of GP0, covering:</p>
+<ul>
+<li>Team member names and contact info</li>
+<li>Meeting schedule and communication norms (Discord, email, etc.)</li>
+<li>Decision-making process</li>
+<li>Conflict resolution strategy</li>
+<li>Expectations for equal contribution</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="project-1-conversation-ai-learning-environment" class="level2">
+<h2 class="anchored" data-anchor-id="project-1-conversation-ai-learning-environment">Project 1: Conversation AI Learning Environment</h2>
+<section id="overview-1" class="level3">
+<h3 class="anchored" data-anchor-id="overview-1">Overview</h3>
+<p>In this first project, teams co-design and build an interactive <strong>VR learning experience</strong> for older adults (ages 70+) using the course’s custom web-authoring tool. The goal is to support cognitive health, memory, or daily routine management through a carefully designed 9-screen VR activity validated on the Meta Quest 3.</p>
+<p>This project develops skills in: <strong>needfinding, paper prototyping, digital authoring, VR interaction design, and older adult UX considerations.</strong></p>
+</section>
+<section id="milestones" class="level3">
+<h3 class="anchored" data-anchor-id="milestones">Milestones</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Milestone</th>
+<th>Description</th>
+<th>Due</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GP0</strong></td>
+<td>Team Formation, Charter &amp; Project Journal Setup</td>
+<td>Sep 25</td>
+<td>5%</td>
+</tr>
+<tr class="even">
+<td><strong>GP1</strong></td>
+<td>Co-Designing &amp; Authoring VR Interventions</td>
+<td>Oct 2</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="design-considerations-for-older-adults" class="level3">
+<h3 class="anchored" data-anchor-id="design-considerations-for-older-adults">Design Considerations for Older Adults</h3>
+<p>All VR activities must incorporate UX accommodations for users 70+:</p>
+<ul>
+<li><strong>Large UI targets</strong> — buttons and hotspots with generous touch/pointer areas</li>
+<li><strong>High-contrast visual cues</strong> — colors and borders that remain legible with reduced vision</li>
+<li><strong>Gentle pacing</strong> — no time pressure; patient transitions between screens</li>
+<li><strong>Audio support</strong> — important instructions read aloud, not text-only</li>
+<li><strong>Low-stress error recovery</strong> — positive feedback regardless of initial response; no penalties</li>
+<li><strong>Minimal cognitive load</strong> — linear layouts, one action per screen</li>
+</ul>
+</section>
+<section id="authoring-platform" class="level3">
+<h3 class="anchored" data-anchor-id="authoring-platform">Authoring Platform</h3>
+<p>Teams use the course web-authoring tool to build and export VR lessons:<br>
+<strong><a href="http://147.182.173.208:5173/">http://147.182.173.208:5173/</a></strong></p>
+<p>The platform allows teams to author 9-screen interactive sequences and export them for deployment on the Meta Quest 3. Instructor will provide onboarding in Week 9 lab sessions.</p>
+</section>
+<section id="example-activity-scenarios" class="level3">
+<h3 class="anchored" data-anchor-id="example-activity-scenarios">Example Activity Scenarios</h3>
+<div class="project-domains-grid">
+<div class="domain-card">
+<div class="domain-icon">
+💊
+</div>
+<h4 class="anchored">
+Medication Management
+</h4>
+<p>
+Help older adults learn to organize, sort, and manage daily medications — sorting pills by meal timing, understanding label instructions, setting reminder alarms.
+</p>
+</div>
+<div class="domain-card">
+<div class="domain-icon">
+🧠
+</div>
+<h4 class="anchored">
+Memory Exercises
+</h4>
+<p>
+Sequence-based activities for short-term memory practice — ordering morning routine steps, matching terms, or completing daily checklists.
+</p>
+</div>
+<div class="domain-card">
+<div class="domain-icon">
+🏠
+</div>
+<h4 class="anchored">
+Daily Living Skills
+</h4>
+<p>
+Practice navigating everyday tasks — preparing an emergency kit, planning a grocery list, or reviewing home safety procedures.
+</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="project-2-conversational-ai-assistants-for-older-adults" class="level2">
+<h2 class="anchored" data-anchor-id="project-2-conversational-ai-assistants-for-older-adults">Project 2: Conversational AI Assistants for Older Adults</h2>
+<section id="overview-2" class="level3">
+<h3 class="anchored" data-anchor-id="overview-2">Overview</h3>
+<p>In this main project, teams ideate, design, build, deploy, and evaluate a <strong>conversational AI assistant</strong> aimed at addressing the specific needs of older adults (70+ years). Guided by the Design Thinking framework, teams work closely with older adults throughout the semester to develop solutions focused on one or more of these core domains:</p>
+<ul>
+<li><strong>Cognitive enhancement</strong> — memory support, medication reminders, cognitive exercises</li>
+<li><strong>Physical mobility support</strong> — navigation assistance, exercise guidance, fall-risk awareness</li>
+<li><strong>Social well-being</strong> — companionship interfaces, family communication tools, social activity suggestions</li>
+</ul>
+</section>
+<section id="milestones-1" class="level3">
+<h3 class="anchored" data-anchor-id="milestones-1">Milestones</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Milestone</th>
+<th>Description</th>
+<th>Due</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GP2</strong></td>
+<td>User Needfinding, Personas &amp; Paper Workflow</td>
+<td>Oct 16</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td><strong>GP3</strong></td>
+<td>System Implementation &amp; Containerization</td>
+<td>Nov 20</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td><strong>GP4</strong></td>
+<td>Public Deployment, Usability Testing &amp; Final Docs</td>
+<td>Dec 3</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="project-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="project-timeline">Project Timeline</h2>
+<div class="project-timeline">
+<div class="timeline-item tl-active">
+<div class="tl-marker">
+GP0
+</div>
+<div class="tl-content">
+<h4 class="anchored">
+Team Formation, Charter &amp; Project Journal Setup
+</h4>
+<p class="tl-due">
+Due: Sep 25 · 5%
+</p>
+<p>
+Your team is formed, your working agreement is signed, and your public project journal website is live. This foundation enables all future project work.
+</p>
+<ul>
+<li>
+Signed Team Working Agreement (all members)
+</li>
+<li>
+Team project journal website (Home, Process, Deliverables)
+</li>
+<li>
+Team members, roles, and project vision posted publicly
+</li>
+</ul>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-marker">
+GP1
+</div>
+<div class="tl-content">
+<h4 class="anchored">
+Co-Designing &amp; Authoring VR Interventions for Older Adults
+</h4>
+<p class="tl-due">
+Due: Oct 2 · 15%
+</p>
+<p>
+Your team has engaged an older adult (70+) in needfinding, produced a paper prototype of a 9-screen learning activity, authored it using the course VR authoring tool, and validated it on the Meta Quest 3.
+</p>
+<ul>
+<li>
+Needfinding artifacts (interview/observation notes, photos)
+</li>
+<li>
+Paper prototype (state diagram or storyboard)
+</li>
+<li>
+9-screen VR activity authored on the course platform
+</li>
+<li>
+Narrated Meta Quest 3 demonstration video
+</li>
+<li>
+Authoring system export file or link
+</li>
+</ul>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-marker">
+GP2
+</div>
+<div class="tl-content">
+<h4 class="anchored">
+User Needfinding, Personas &amp; Paper Conversational Workflow
+</h4>
+<p class="tl-due">
+Due: Oct 16 · 15%
+</p>
+<p>
+Your team has conducted needfinding with older adult participants, defined a clear problem, built representative user personas, and mapped the full conversational workflow for your AI assistant on paper.
+</p>
+<ul>
+<li>
+Needfinding summary (2+ older adult participants)
+</li>
+<li>
+Problem statement and scoping document
+</li>
+<li>
+2 user personas (grounded in research evidence)
+</li>
+<li>
+Paper-based dialogue flowchart (multi-turn paths, fallbacks, human-in-the-loop)
+</li>
+<li>
+Project website updated with all GP2 artifacts
+</li>
+</ul>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-marker">
+GP3
+</div>
+<div class="tl-content">
+<h4 class="anchored">
+System Implementation, Integration &amp; Containerization
+</h4>
+<p class="tl-due">
+Due: Nov 20 · 15%
+</p>
+<p>
+Your team has built a functional conversational AI assistant with Rasa CALM, wrapped it in an accessible web/mobile interface, and containerized the full stack with Docker.
+</p>
+<ul>
+<li>
+Functional Rasa CALM agent (multi-turn dialogue)
+</li>
+<li>
+Accessible web/mobile frontend interface
+</li>
+<li>
+Docker container (Dockerfile + docker-compose)
+</li>
+<li>
+Technical README with setup instructions
+</li>
+<li>
+Project website updated with architecture and screenshots
+</li>
+</ul>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-marker">
+GP4
+</div>
+<div class="tl-content">
+<h4 class="anchored">
+Public Deployment, Usability Testing &amp; Final Documentation
+</h4>
+<p class="tl-due">
+Due: Dec 3 · 15% · Presentation Dec 2
+</p>
+<p>
+Your system is publicly deployed. You have conducted field testing with real older adult users and documented your full design process in a scholarly report and public presentation.
+</p>
+<ul>
+<li>
+Publicly accessible live URL for the deployed assistant
+</li>
+<li>
+Usability testing report (3+ older adult participants)
+</li>
+<li>
+Academic poster and technical documentation report
+</li>
+<li>
+12-min final presentation + 5-min Q&amp;A + live demo
+</li>
+<li>
+Individual contribution statement (submitted privately)
+</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="design-process-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="design-process-requirements">Design Process Requirements</h2>
+<p>Each milestone builds on the previous, following the <strong>double-diamond design process</strong>:</p>
+<pre><code>Discover → Define → Develop → Deliver
+  GP0/GP1  →  GP2   →   GP3  →   GP4</code></pre>
+<section id="research-phase-weeks-18" class="level3">
+<h3 class="anchored" data-anchor-id="research-phase-weeks-18">Research Phase (Weeks 1–8)</h3>
+<ul>
+<li>Engage <strong>older adult participants</strong> (70+) for needfinding — not just assumptions</li>
+<li>Conduct <strong>participant observation</strong> or <strong>semi-structured interviews</strong></li>
+<li>Use <strong>informed consent</strong> (template on Canvas)</li>
+<li>Document findings with anonymized quotes and behavioral observations</li>
+</ul>
+</section>
+<section id="design-phase-weeks-48" class="level3">
+<h3 class="anchored" data-anchor-id="design-phase-weeks-48">Design Phase (Weeks 4–8)</h3>
+<ul>
+<li>Paper prototype conversational flows <em>before</em> building</li>
+<li>Use Workshop 1 (Week 4) and Workshop 2 (Week 8) for structured ideation</li>
+<li>Produce paper dialogue flowcharts for all major conversational paths</li>
+</ul>
+</section>
+<section id="build-phase-weeks-911" class="level3">
+<h3 class="anchored" data-anchor-id="build-phase-weeks-911">Build Phase (Weeks 9–11)</h3>
+<ul>
+<li>Use <strong>Rasa CALM</strong> as the conversational AI framework</li>
+<li>Build in accessibility from the start (don’t retrofit)</li>
+<li>Participate in Lab 2, Lab 3, and Lab 4 sessions for hands-on implementation support</li>
+<li>Complete Docker containerization before GP3 deadline</li>
+</ul>
+</section>
+<section id="evaluation-phase-weeks-1214" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-phase-weeks-1214">Evaluation Phase (Weeks 12–14)</h3>
+<ul>
+<li>Conduct heuristic evaluation in Week 12 workshop with a peer team</li>
+<li>Run <strong>user studies with at least 3 older adult participants</strong> (Nov–Dec)</li>
+<li>Use think-aloud protocol + post-session questionnaire</li>
+<li>CITI research ethics context applies — treat participants with care and respect</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="contribution-statement-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="contribution-statement-requirements">Contribution Statement Requirements</h2>
+<p><strong>Mandatory for GP1 through GP4.</strong> See <a href="./assignments.html#contribution-statement-requirements">Assignments → Contribution Statements</a> for the full requirement. Both a team-level breakdown AND a private individual statement are required for every group submission.</p>
+<hr>
+</section>
+<section id="peer-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="peer-evaluation">Peer Evaluation</h2>
+<p>At the end of the semester, all team members complete a <strong>confidential peer contribution survey</strong> on Canvas evaluating:</p>
+<ul>
+<li>Teammate contributions to research, design, and implementation</li>
+<li>Communication and reliability</li>
+<li>Overall collaboration quality</li>
+</ul>
+<p>Peer evaluation results inform individual grade adjustments within teams.</p>
+<hr>
+</section>
+<section id="project-resources" class="level2">
+<h2 class="anchored" data-anchor-id="project-resources">Project Resources</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Resource</th>
+<th>Purpose</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VR Authoring Tool</td>
+<td>Build 9-screen VR lessons (GP1)</td>
+<td><a href="http://147.182.173.208:5173/">http://147.182.173.208:5173/</a></td>
+</tr>
+<tr class="even">
+<td>Rasa Docs</td>
+<td>CALM framework reference</td>
+<td><a href="https://rasa.com/docs/rasa-pro/calm">rasa.com/docs/rasa-pro/calm</a></td>
+</tr>
+<tr class="odd">
+<td>Docker Docs</td>
+<td>Containerization guide</td>
+<td><a href="https://docs.docker.com/">docs.docker.com</a></td>
+</tr>
+<tr class="even">
+<td>Google PAIR Guidebook</td>
+<td>AI product design patterns</td>
+<td><a href="https://pair.withgoogle.com/guidebook/">pair.withgoogle.com/guidebook</a></td>
+</tr>
+<tr class="odd">
+<td>Microsoft HAX Toolkit</td>
+<td>Human-AI experience design</td>
+<td><a href="https://www.microsoft.com/en-us/haxtoolkit">microsoft.com/en-us/haxtoolkit</a></td>
+</tr>
+<tr class="even">
+<td>WCAG 2.1</td>
+<td>Accessibility guidelines</td>
+<td><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">w3.org/WAI/standards-guidelines/wcag</a></td>
+</tr>
+<tr class="odd">
+<td>Canvas</td>
+<td>Submissions and grades</td>
+<td><a href="https://willamette.instructure.com/courses/8131">willamette.instructure.com/courses/8131</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="project-faq" class="level2">
+<h2 class="anchored" data-anchor-id="project-faq">Project FAQ</h2>
+<p><strong>Do we choose our own project topic within Project 2?</strong><br>
+Yes. Teams choose the specific domain (cognitive, mobility, or social) and the exact problem to solve. The constraint is that the target population is <strong>older adults (70+)</strong> and the system must be a conversational AI interface.</p>
+<p><strong>Can we build a real system, not just a prototype?</strong><br>
+Yes — and you are encouraged to. Using Rasa CALM to build a functional conversational agent is required for GP3. Technical sophistication is valued, but the primary focus for grading is the <em>design process and evaluation rigor</em>, not how many features you ship.</p>
+<p><strong>What if we cannot recruit older adult participants?</strong><br>
+Contact the instructor immediately. The class Discord has a <code>#participant-recruitment</code> channel. The instructor can provide access to community partner networks. Do not simply substitute CS students for your target population.</p>
+<p><strong>How should we handle a teammate who is not contributing?</strong><br>
+First, address it within your team using the Work Agreement. If unresolved, contact the instructor with documentation. Individual grades may be adjusted based on contribution evidence.</p>
+<p><strong>What technology is required for GP3?</strong><br>
+Rasa CALM (or equivalent enterprise conversational AI framework), Docker for containerization, and a web or mobile frontend. Specific framework choices should be discussed with the instructor by GP2.</p>
+<p><strong>Can we use ChatGPT or other LLMs in our system?</strong><br>
+Yes. AI-augmented prototypes are encouraged. Document your use of AI tools in your report, including what they were used for and any limitations observed.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<style>
+/* Extend the Bootstrap active-highlight to ALL nesting depths.
+   Bootstrap only covers ul>li>a and ul>li>ul>li>a; this covers everything. */
+.sidebar nav[role=doc-toc] a.active {
+  color: #2761e3 !important;
+  border-left: 1px solid #2761e3;
+  font-weight: 600;
+}
+</style>
+
+<script>
+// Robust TOC scroll-spy override
+// quarto.js uses section.offsetTop which is relative to the nearest positioned
+// offsetParent. With custom padding/margin on #quarto-content and main.content
+// the value drifts from window.pageYOffset, so the active link never updates.
+// This script uses getBoundingClientRect() + pageYOffset (always document-
+// relative). It also re-runs the walk() logic so nested ul.collapse containers
+// are expanded/collapsed in sync with the newly-active link.
+(function () {
+  var _tocTimer;
+  var MARGIN = 150;
+
+  function getDocTop(el) {
+    return el.getBoundingClientRect().top + (window.pageYOffset || window.scrollY);
+  }
+
+  // Mirror of quarto.js walk() – expands parent <ul> when they contain
+  // an active child and collapses all others below the top level.
+  function prevSibIsActive(el) {
+    var sib = el.previousElementSibling;
+    return sib && sib.tagName === 'A' && sib.classList.contains('active');
+  }
+
+  function walk(el, depth) {
+    if (el.tagName === 'UL') depth++;
+    var isActive = el.tagName === 'A' && el.classList.contains('active');
+    var hasActiveChild = false;
+    for (var i = 0; i < el.children.length; i++) {
+      hasActiveChild = walk(el.children[i], depth) || hasActiveChild;
+    }
+    if (el.tagName === 'UL') {
+      if (depth > 1 && !hasActiveChild && !prevSibIsActive(el)) {
+        el.classList.add('collapse');
+      } else {
+        el.classList.remove('collapse');
+      }
+      depth--;
+    }
+    return isActive || hasActiveChild;
+  }
+
+  function updateTOC() {
+    var tocEl = document.querySelector('#TOC');
+    if (!tocEl) return;
+
+    var tocLinks = Array.from(tocEl.querySelectorAll('a[data-scroll-target]'));
+    if (!tocLinks.length) return;
+
+    var sections = tocLinks.map(function (l) {
+      var t = l.getAttribute('data-scroll-target');
+      return t.charAt(0) === '#'
+        ? document.getElementById(t.slice(1))
+        : document.querySelector(t);
+    });
+
+    var scrollY   = window.pageYOffset || window.scrollY;
+    var maxScroll = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight
+    );
+    var atBottom  = window.innerHeight + scrollY >= maxScroll - 5;
+    var activeIdx = 0;
+
+    if (atBottom) {
+      activeIdx = sections.length - 1;
+    } else {
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i] && scrollY >= getDocTop(sections[i]) - MARGIN) {
+          activeIdx = i;
+          break;
+        }
+      }
+    }
+
+    // Update active class on all links
+    tocLinks.forEach(function (link, idx) {
+      link.classList.toggle('active', idx === activeIdx);
+    });
+
+    // Re-run walk so parent ul.collapse containers open/close correctly
+    walk(tocEl, 0);
+  }
+
+  function onScroll() {
+    clearTimeout(_tocTimer);
+    _tocTimer = setTimeout(updateTOC, 10);
+  }
+
+  setTimeout(function () {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateTOC();
+  }, 150);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>AI 380: Human-AI Interaction · Willamette University · Fall 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Instructor: <a href="https://fredagbo.com/">Fred Agbo, PhD</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/agbofred/agbofred.github.io">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
