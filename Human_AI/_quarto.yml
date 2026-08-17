@@ -37,10 +37,10 @@ website:
         href: policy.md
     right:
       - icon: discord
-        href: "https://discord.gg/JR4yUSSP"
+        href: "https://discord.gg/jJuSTWtW"
         aria-label: "Course Discord"
       - text: "Canvas"
-        href: "https://willamette.instructure.com/courses/8131"
+        href: "https://willamette.instructure.com/courses/11111"
         target: _blank
 
   sidebar: false

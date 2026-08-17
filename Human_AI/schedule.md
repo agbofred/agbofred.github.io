@@ -102,7 +102,7 @@ AI is embedded in the tools we use every day — and often fails us in everyday 
 
 ---
 
-<h3 class="week-label">Week 3 — Sep 7 & 9 · Understanding Users & Personas</h3>
+<h3 class="week-label">Week 3 — Sep 7 & 9 · Design Process & Persuasive Design</h3>
 
 <div class="week-card">
 <div class="session-row session-noclass">
@@ -113,28 +113,6 @@ AI is embedded in the tools we use every day — and often fails us in everyday 
 
 <div class="session-row session-lecture">
 <div class="session-date">Wednesday, Sep 9</div>
-<div class="session-title">Understanding Users & Personas</div>
-<div class="session-tags"><span class="tag-lecture">Lecture</span></div>
-</div>
-<div class="session-detail">
-How do we learn what users actually need? We cover participant observation, contextual inquiry, and interview techniques. We then translate user research into personas — actionable archetypes that guide design decisions throughout the project lifecycle.
-</div>
-
-<div class="week-readings">
-**Readings Due Sep 14:**
-
-1. Klemmer, S. (2013). [Participant Observation.](https://www.youtube.com/watch?v=PzW3awUwSlQ) 6-min video. HCI MOOC, Stanford.
-2. Visme. (2021). [How to Create Personas.](https://www.youtube.com/watch?v=HkKf3Mhszww) 10.5-min video tutorial.
-</div>
-</div>
-
----
-
-<h3 class="week-label">Week 4 — Sep 14 & 16 · Design Process & Workshop 1</h3>
-
-<div class="week-card">
-<div class="session-row session-lecture">
-<div class="session-date">Monday, Sep 14</div>
 <div class="session-title">Design Process & Persuasive Design</div>
 <div class="session-tags"><span class="tag-lecture">Lecture</span></div>
 </div>
@@ -142,22 +120,44 @@ How do we learn what users actually need? We cover participant observation, cont
 IDEO's design thinking process: Empathize → Define → Ideate → Prototype → Test. We apply the framework to AI system design and examine BJ Fogg's Persuasive Technology model — how AI systems nudge, influence, and sometimes manipulate user behavior.
 </div>
 
-<div class="session-row session-activity">
-<div class="session-date">Wednesday, Sep 16</div>
-<div class="session-title">Workshop 1: Empathize, Define, and Ideate</div>
-<div class="session-tags"><span class="tag-activity">Workshop</span></div>
+<div class="week-readings">
+**Readings Due Sep 14:**
+
+1. IDEO. [Design Thinking.](https://ixdf.org/literature/topics/design-thinking) Online resource.
+2. [Brainstorm, Chainstorm, Cheatstorm, Tweetstorm: Ideation Methods.](https://dl.acm.org/doi/pdf/10.1145/2470654.2466177)
+3. Fogg, B.J. [The Process of Persuasion.](https://ixdf.org/literature/article/the-process-of-persuasion-how-to-make-a-casual-browser-an-intrigued-user) Interaction Design Foundation.
+</div>
+</div>
+
+---
+
+<h3 class="week-label">Week 4 — Sep 14 & 16 · Understanding Users & Personas</h3>
+
+<div class="week-card">
+<div class="session-row session-lecture">
+<div class="session-date">Monday, Sep 14</div>
+<div class="session-title">Understanding Users & Personas</div>
+<div class="session-tags"><span class="tag-lecture">Lecture</span></div>
 </div>
 <div class="session-detail">
-Hands-on team workshop. Using your personas and problem statements, teams practice the first three stages of design thinking: empathy mapping, POV synthesis, and structured ideation using Brainstorming, Chainstorming, and Tweetstorming techniques.
+How do we learn what users actually need? We cover participant observation, contextual inquiry, and interview techniques. We then translate user research into personas — actionable archetypes that guide design decisions throughout the project lifecycle.
+</div>
+
+<div class="session-row session-activity">
+<div class="session-date">Wednesday, Sep 16</div>
+<div class="session-title">Users Domain and Context: Understanding Older Adults and Ageism (with Tommy Van Cleave)</div>
+<div class="session-tags"><span class="tag-activity">Guest Session</span></div>
+</div>
+<div class="session-detail">
+Guest session with Tommy Van Cleave exploring users' domain and context — with a specific focus on understanding older adults and ageism. How do we design conversational AI systems that truly serve the needs and cognitive patterns of elderly users?
 </div>
 
 <div class="week-readings">
 **Readings Due Sep 18:**
 
-1. IDEO. [Design Thinking.](https://ixdf.org/literature/topics/design-thinking) Online resource. || [Tim Brown urges designers to think big](https://www.youtube.com/watch?v=UAinLaT42xY)
-2. [Brainstorm, Chainstorm, Cheatstorm, Tweetstorm: Ideation Methods.](hhttps://dl.acm.org/doi/pdf/10.1145/2470654.2466177).
-3. Fogg, B.J. [The Process of Persuasion.](https://ixdf.org/literature/article/the-process-of-persuasion-how-to-make-a-casual-browser-an-intrigued-user) Interaction Design Foundation.
-4. Dam, R.F. & Siang, T.Y. [Get Started with Prototyping.](https://ixdf.org/literature/article/design-thinking-get-started-with-prototyping) Interaction Design Foundation
+1. Klemmer, S. (2013). [Participant Observation.](https://www.youtube.com/watch?v=PzW3awUwSlQ) 6-min video. HCI MOOC, Stanford.
+2. Visme. (2021). [How to Create Personas.](https://www.youtube.com/watch?v=HkKf3Mhszww) 10.5-min video tutorial.
+3. Dam, R.F. & Siang, T.Y. [Get Started with Prototyping.](https://ixdf.org/literature/article/design-thinking-get-started-with-prototyping) Interaction Design Foundation.
 </div>
 
 <div class="week-due">
@@ -209,25 +209,25 @@ Hands-on lab. Students explore human-in-the-loop design by building a simple con
 
 ---
 
-<h3 class="week-label">Week 6 — Sep 28 & Sep 30 · Challenges & Guidelines for Human-AI Interaction</h3>
+<h3 class="week-label">Week 6 — Sep 28 & Sep 30 · Challenges, Guidelines & Workshop 1</h3>
 
 <div class="week-card">
 <div class="session-row session-lecture">
 <div class="session-date">Monday, Sep 28</div>
-<div class="session-title">Challenges of Human-AI Interaction</div>
+<div class="session-title">Challenges and Guidelines for Human-AI Interaction</div>
 <div class="session-tags"><span class="tag-lecture">Lecture</span></div>
 </div>
 <div class="session-detail">
-Why is designing for AI-mediated interactions uniquely difficult? We examine the fundamental challenges: opacity of AI decision-making, miscalibrated user trust, brittleness, and the problem of explainability. Case studies from deployed systems.
+Why is designing for AI-mediated interactions uniquely difficult? We examine fundamental challenges — opacity of AI decision-making, miscalibrated user trust, brittleness, and explainability — then walk through Microsoft's 18 guidelines for Human-AI Interaction and discuss which apply to conversational AI.
 </div>
 
-<div class="session-row session-lecture">
+<div class="session-row session-activity">
 <div class="session-date">Wednesday, Sep 30</div>
-<div class="session-title">Guidelines for Human-AI Interaction</div>
-<div class="session-tags"><span class="tag-lecture">Lecture</span></div>
+<div class="session-title">Workshop 1 with Older Adults: Empathize, Define, and Ideate</div>
+<div class="session-tags"><span class="tag-activity">Workshop</span></div>
 </div>
 <div class="session-detail">
-Microsoft's 18 guidelines for Human-AI Interaction provide a practitioner-oriented framework grounded in empirical research. We walk through each guideline, discuss which apply to conversational AI, and identify gaps or conflicts with standard UX heuristics.
+Hands-on workshop with older adult participants. Teams practice the first three stages of design thinking — empathy mapping, POV synthesis, and structured ideation — informed by the challenges and guidelines of human-AI interaction. Real user participation provides direct design insights.
 </div>
 
 <div class="week-readings">
@@ -279,7 +279,7 @@ In-class midterm quiz covering Modules 1–2 content: HCI fundamentals, design t
 
 ---
 
-<h3 class="week-label">Week 8 — Oct 12 & 14 · Conversational AI (2) & Workshop 2</h3>
+<h3 class="week-label">Week 8 — Oct 12 & 14 · Conversational AI (2) & (3)</h3>
 
 <div class="week-card">
 <div class="session-row session-lecture">
@@ -291,13 +291,13 @@ In-class midterm quiz covering Modules 1–2 content: HCI fundamentals, design t
 What separates good conversational AI design from bad? We examine dialogue management patterns — happy paths, fallbacks, clarification loops, and graceful degradation. Case studies from commercial assistants (Alexa, Google Assistant) and enterprise chatbots.
 </div>
 
-<div class="session-row session-activity">
+<div class="session-row session-lecture">
 <div class="session-date">Wednesday, Oct 14</div>
-<div class="session-title">Workshop 2: Define, Ideate, and Design Workflow for AI Assistants</div>
-<div class="session-tags"><span class="tag-activity">Workshop</span></div>
+<div class="session-title">Conversational AI and AI Assistants (Part 3): Training and Testing</div>
+<div class="session-tags"><span class="tag-lecture">Lecture</span></div>
 </div>
 <div class="session-detail">
-Applying design thinking to conversational AI. Teams define their assistant's scope, ideate dialogue flows, and produce paper-based conversation flow diagrams. Discussion of ethical responsibilities for AI designers and accessibility considerations per WCAG.
+How do you train and test conversational AI systems? We cover data collection, intent annotation, training pipelines, and testing strategies — including automated testing, unit tests for dialogue flows, and end-to-end conversation simulation. Accessibility and ethical responsibilities for AI designers per WCAG.
 </div>
 
 <div class="week-readings">
@@ -466,7 +466,7 @@ In-class workshop: peer heuristic evaluation of each team's conversational AI sy
 <div class="week-card">
 <div class="session-row session-activity">
 <div class="session-date">Monday, Nov 16</div>
-<div class="session-title">Interface Testing with Users (Field Experiment)</div>
+<div class="session-title">Workshop 2: Interface Testing with Users & Usability Study (Field Experiment with Older Adults)</div>
 <div class="session-tags"><span class="tag-activity">Workshop</span></div>
 </div>
 <div class="session-detail">
@@ -527,25 +527,25 @@ Structured peer-review session: teams share an executive summary and prototype d
 
 ---
 
-<h3 class="week-label">Week 15 — Nov 30 & Dec 2 · Final Presentations</h3>
+<h3 class="week-label">Week 15 — Nov 30 & Dec 2 · Project Exhibition & Final Reflection</h3>
 
 <div class="week-card">
 <div class="session-row session-presentation">
 <div class="session-date">Monday, Nov 30</div>
-<div class="session-title">🎤 Project Presentations (Group 1)</div>
-<div class="session-tags"><span class="tag-presentation">Presentation</span></div>
+<div class="session-title">🎤 Project Presentation Check-in</div>
+<div class="session-tags"><span class="tag-presentation">Check-in</span></div>
 </div>
 <div class="session-detail">
-Public project showcase — first half of teams present. Each team delivers a 12-minute presentation + 5-minute Q&A demonstrating their completed conversational AI system, summarizing the design process and evaluation findings from field testing with older adults.
+Pre-exhibition check-in session. Teams share their final system status, present key findings, and receive instructor and peer feedback before the Wednesday exhibition. Opportunity to refine presentation and demo.
 </div>
 
 <div class="session-row session-presentation">
 <div class="session-date">Wednesday, Dec 2</div>
-<div class="session-title">🎓 Project Presentations (Group 2) & Finals Review/Reflection</div>
-<div class="session-tags"><span class="tag-presentation">Final Demo</span></div>
+<div class="session-title">🎓 Project Presentation Exhibition & Finals Review/Reflection</div>
+<div class="session-tags"><span class="tag-presentation">Exhibition</span></div>
 </div>
 <div class="session-detail">
-Remaining teams present. Followed by course-wide reflection: what did we learn? Course synthesis and guidance for the Final Reflection Essay. Key date: Dec 4 is the last day of class.
+Final public project exhibition. All teams demonstrate their completed conversational AI systems and present their design process and evaluation findings. Followed by course-wide Finals Review and Reflection. Key date: Dec 4 is the last day of class.
 </div>
 
 <div class="week-due">
@@ -582,7 +582,8 @@ Remaining teams present. Followed by course-wide reflection: what did we learn? 
 | **Nov 17** | SP27 Registration Begins |
 | **Nov 20** | GP3 Due — System Implementation |
 | **Nov 25–27** | Fall Break — No Class |
-| **Nov 30 & Dec 2** | Final Project Presentations |
+| **Nov 30** | Project Presentation Check-in |
+| **Dec 2** | Project Presentation Exhibition & Finals Review/Reflection |
 | **Dec 2** | Final Reflection Essay Due |
 | **Dec 3** | GP4 Due — Public Deployment & Final Docs |
 | **Dec 4** | Last Day of Class |

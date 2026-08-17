@@ -272,7 +272,7 @@ Peer evaluation results inform individual grade adjustments within teams.
 | Google PAIR Guidebook | AI product design patterns | [pair.withgoogle.com/guidebook](https://pair.withgoogle.com/guidebook/) |
 | Microsoft HAX Toolkit | Human-AI experience design | [microsoft.com/en-us/haxtoolkit](https://www.microsoft.com/en-us/haxtoolkit) |
 | WCAG 2.1 | Accessibility guidelines | [w3.org/WAI/standards-guidelines/wcag](https://www.w3.org/WAI/standards-guidelines/wcag/) |
-| Canvas | Submissions and grades | [willamette.instructure.com/courses/8131](https://willamette.instructure.com/courses/8131) |
+| Canvas | Submissions and grades | [willamette.instructure.com/courses/11111](https://willamette.instructure.com/courses/11111) |
 
 ---
 

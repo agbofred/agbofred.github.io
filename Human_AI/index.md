@@ -18,7 +18,7 @@ format:
 <div class="hero-cta-group">
 <a href="schedule.md" class="btn-hero-primary">View Schedule →</a>
 <a href="syllabus.md" class="btn-hero-secondary">Course Syllabus</a>
-<a href="https://discord.gg/JR4yUSSP" class="btn-hero-discord" target="_blank">Join Discord</a>
+<a href="https://discord.gg/jJuSTWtW" class="btn-hero-discord" target="_blank">Join Discord</a>
 </div>
 </div>
 </div>
@@ -110,7 +110,7 @@ Through hands-on projects, students learn to design, prototype, and rigorously e
 <span class="ql-text">Course Policy</span>
 <span class="ql-desc">Grading, conduct & policies</span>
 </a></div>
-<div class="quick-link-card"><a href="https://willamette.instructure.com/courses/8131" class="ql-inner" target="_blank">
+<div class="quick-link-card"><a href="https://willamette.instructure.com/courses/11111" class="ql-inner" target="_blank">
 <span class="ql-icon">🖥️</span>
 <span class="ql-text">Canvas LMS</span>
 <span class="ql-desc">Slides, grades, submissions</span>
@@ -200,7 +200,7 @@ By the end of this course, you will be able to:
 <span class="mod-tag">Conversational AI</span>
 <span class="mod-tag">Lab 1</span>
 <span class="mod-tag">Guidelines for HAI</span>
-<span class="mod-tag">Workshop 2</span>
+<span class="mod-tag">Workshop 1</span>
 </div>
 </div>
 </div>

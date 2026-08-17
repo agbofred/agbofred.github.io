@@ -26,11 +26,11 @@ format:
 | **Course Title** | AI 380: Human-AI Interaction |
 | **Semester** | Fall 2026 |
 | **Lecture Days/Time** | Monday & Wednesday, 10:20 AM – 11:50 AM |
-| **Lecture Hall** | Ford Hall 202 |
+| **Lecture Hall** | Smullin Hall 119 |
 | **Credits** | 4 |
 | **Prerequisites** | CS 151 (Software Engineering experience is a plus) |
-| **Canvas** | [willamette.instructure.com/courses/8131](https://willamette.instructure.com/courses/8131) |
-| **Discord** | [discord.gg/JR4yUSSP](https://discord.gg/JR4yUSSP) |
+| **Canvas** | [willamette.instructure.com/courses/11111](https://willamette.instructure.com/courses/11111) |
+| **Discord** | [discord.gg/jJuSTWtW](https://discord.gg/jJuSTWtW) |
 
 ## Instructor
 

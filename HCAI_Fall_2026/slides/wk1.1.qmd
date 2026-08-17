@@ -1,0 +1,686 @@
+---
+title: "AI 380: Human-AI Interaction"
+subtitle: "Kickoff & Logistics"
+author: "Professor Fred Agbo, PhD · School of Computing & Information Sciences"
+date: "Fall 2026 · Willamette University"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    toc: false
+    slide-level: 2
+---
+
+```{=html}
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+.reveal { font-size: 28px; color: var(--ink); }
+.reveal h1, .reveal h2 { color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h3 { color: var(--midnight); }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal .title-slide { background: var(--cardinal); }
+.reveal p, .reveal li { line-height: 1.35; }
+.reveal table { font-size: 0.62em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.55em; }
+.reveal .tag-cardinal { background: var(--cardinal); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+.reveal .tag-midnight { background: var(--midnight); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+.reveal .tag-field { background: var(--field); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+.reveal .tag-gold { background: var(--gold-light); color: var(--cardinal); padding: 0.5em 0.9em; border-radius: 8px; }
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+</style>
+```
+
+## Today's Agenda
+
+*Everything you need to hit the ground running in AI 380.*
+
+1. **Course at a glance** — what this course is about, and who it's for
+2. **Logistics** — meeting times, location, instructor, communication
+3. **The 15-week journey** — four modules, from HCI foundations to a live conversational AI
+4. **Grading & assignments** — how your grade is built, week by week
+5. **The group project** — two sequential projects worth 40% of your grade
+6. **Policies** — attendance, late work, AI use, and academic honesty
+
+## Course at a Glance
+
+**Human-AI Interaction · Designing Intelligent Systems that Work for Humans**
+
+This course introduces the core principles of human-centered design for conversational AI systems — chatbots, virtual assistants, and interactive voice interfaces. You'll explore how NLP, dialogue management, and UX principles converge to create intuitive, accessible, and inclusive AI interactions.
+
+::: {.callout}
+"Designing AI that works for humans — in all their wonderful diversity."
+:::
+
+| | |
+|---|---|
+| **4 credit hours** | ≈ 6–9 hrs/week outside class |
+| **Prerequisite: CS 151** | Non-CS majors warmly welcome |
+| **Group project** | 2–3 members, worth 40% of grade |
+
+## Who Is This Course For?
+
+::: {.columns}
+::: {.column width="50%"}
+**Prerequisite**
+
+CS 151 is required before taking this course. Prior software engineering experience is a plus, but not required.
+
+**Interdisciplinary by design**
+
+Non-CS majors are strongly encouraged to enroll — diverse perspectives are essential for designing AI systems that work for everyone.
+:::
+::: {.column width="50%"}
+**Group project commitment**
+
+This course requires substantial group work across the semester. Be ready to collaborate in teams of 2–3 on a full design and evaluation project.
+
+**Our value statement**
+
+We are committed to an equitable, inclusive, and welcoming learning environment.
+:::
+:::
+
+## Key Course Information
+
+| | |
+|---|---|
+| 📅 **Lecture Days** | Monday & Wednesday, 10:20 – 11:50 AM |
+| 📍 **Location** | Ford Hall 202, Willamette University |
+| 🎓 **Credits** | 4 Credits · Prerequisite CS 151 |
+| 👥 **Project Groups** | 2–3 members, collaborative design |
+| 🕐 **Office Hours** | Tue & Thu, 10:30 AM – 12:00 PM |
+| 💬 **Communication** | Discord + Email · fjagbo@willamette.edu |
+
+## Meet Your Instructor
+
+**Fred Agbo, PhD**
+*Assistant Professor of Computer Science · School of Computing & Information Sciences*
+
+- 📧 fjagbo@willamette.edu
+- 🏢 Ford Hall 209
+- ⏰ Office Hours: Tue & Thu, 10:30 AM – 12:00 PM
+- 🌐 fredagbo.com · Willamette Profile · Google Scholar
+
+::: {.callout}
+Research interests: human-centered AI, conversational systems, and accessible technology design — with a focus on building AI that adapts to real users, not the other way around.
+:::
+
+## Communication & Resources
+
+::: {.columns}
+::: {.column width="33%"}
+**Discord**
+
+Primary hub for course questions and peer support. Post here first.
+
+`discord.gg/JR4yUSSP`
+:::
+::: {.column width="33%"}
+**Email**
+
+Reserved for personal or sensitive matters. Always include "AI 380" in your subject line.
+
+`fjagbo@willamette.edu`
+:::
+::: {.column width="33%"}
+**Canvas**
+
+Slides, grades, assignment submissions, and official announcements.
+
+`willamette.instructure.com`
+:::
+:::
+
+::: {.callout}
+Full class attendance and participation are mandatory and graded.
+:::
+
+## Course Learning Objectives
+
+By the end of this course, you will be able to...
+
+**01 — Critique & Synthesize Research**
+Review scientific literature in human-AI interaction to synthesize trends and inform evidence-based design decisions.
+
+**02 — Design Conversational Systems**
+Apply human-centered design alongside NLP and dialogue management to prototype functional, context-aware conversational interfaces.
+
+**03 — Evaluate Usability & Ethics**
+Conduct rigorous usability testing to assess user trust, efficiency, and error recovery, while analyzing ethical risks.
+
+**04 — Collaborate & Communicate**
+Work in multidisciplinary teams to manage interactive AI projects, communicating outcomes professionally.
+
+## The 15-Week Journey
+
+*Four modules take you from HCI foundations to a live, user-tested conversational AI.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart LR
+    M1["M1: HAI & User-Centered Design
+    Weeks 1-4 · Aug 24-Sep 16"] --> M2["M2: Human-AI Collaborations
+    Weeks 5-8 · Sep 21-Oct 14"]
+    M2 --> M3["M3: AI Design & Orchestration
+    Weeks 9-11 · Oct 19-Nov 4"]
+    M3 --> M4["M4: UX, Usability & Presentation
+    Weeks 12-15 · Nov 9-Dec 2"]
+    style M1 fill:#BA0C2F,color:#fff
+    style M2 fill:#BA0C2F,color:#fff
+    style M3 fill:#003B5C,color:#fff
+    style M4 fill:#F19C49,color:#fff
+```
+
+::: {.callout}
+Two group projects run underneath these four modules: a VR learning experience (Weeks 1–6), then a full conversational AI assistant (Weeks 5–15).
+:::
+
+## Module 1 · Human-AI Interaction & User-Centered Design {.smaller}
+
+*Weeks 1–4 · Aug 24 – Sep 16 · Foundations of HCI, role of humans in AI, design thinking, needfinding, personas.*
+
+| Week | Focus | Topic |
+|---|---|---|
+| 1 | Kick-off + HAI Roots | Introduction & The Role of Humans in AI |
+| 2 | History & Reality | Historical Perspective & Everyday AI |
+| 3 | Research Methods | Understanding Users & Personas |
+| 4 | Design Thinking | Design Process & Workshop 1 |
+
+**Key readings:** Amershi et al. "Power to the People" (AI Magazine) · Dijkstra "On the Foolishness of Natural Language Programming" · Shneiderman & Maes "Direct Manipulation vs. Interface Agents"
+
+## Module 2 · Human-AI Collaborations {.smaller}
+
+*Weeks 5–8 · Sep 21 – Oct 14 · Conversational AI design, HAI challenges, dialogue guidelines, Lab 1, Workshop 2, midterm quiz.*
+
+| Week | Focus | Topic |
+|---|---|---|
+| 5 | Conversational AI | The Conversational Agent Paradigm & Lab 1 |
+| 6 | Challenges & Guidelines | HAI Challenges & Microsoft's 18 Guidelines |
+| 7 | CALM + Assessment | Conversational AI (Part 1) & Midterm Quiz |
+| 8 | Patterns + Workshop | Designing for Success & Workshop 2 |
+
+**Key readings:** Cai et al. "Re-examining Whether, Why, and How HAI Is Uniquely Difficult" · Amershi et al. "Guidelines for Human-AI Interaction" (CHI 2019) · Luger & Sellen "Like Having a Really Bad PA"
+
+## Module 3 · AI Design & Conversational Orchestration {.smaller background-color="#003B5C"}
+
+*Weeks 9–11 · Oct 19 – Nov 4 · Deep-dive into building AI assistants with Rasa CALM.*
+
+| Week | Focus | Topic |
+|---|---|---|
+| 9 | CALM Architecture | CALM & Lab 2 |
+| 10 | NLU + Debugging | CALM Overview & Lab 3 |
+| 11 | Accessibility + QA | Building for Success & Lab 4 |
+
+**Key reading:** Rasa Documentation — CALM Overview, Actions & Custom Actions, Deployment & Channels
+
+## Module 4 · UX, Usability Study, Report & Presentation {.smaller}
+
+*Weeks 12–15 · Nov 9 – Dec 2 · Usability testing with real older adults, heuristic evaluation, final presentations.*
+
+| Week | Focus | Topic |
+|---|---|---|
+| 12 | Evaluation Methods | Testing & Heuristic Evaluation |
+| 13 | Field Results | Interface Testing & Documentation |
+| 14 | Peer Review | Future Tech & Peer Review |
+| 15 | Showcase | Final Project Presentations |
+
+**Key readings:** Nielsen "How to Conduct a Heuristic Evaluation" · "Ethics Pathways in HCI Research" · Eagleman "Can We Create New Senses for Humans?" (TED)
+
+## Tools & Technology
+
+*No textbook purchase required — readings are provided as PDFs or links via Canvas.*
+
+| Tool | Purpose | Cost |
+|---|---|---|
+| Discord | Course communication | Free |
+| Canvas | Assignments, slides, grades | Free (Willamette login) |
+| Google Site | Project journal for reporting | Free |
+| Google Drive | Shared project documents | Free |
+| GitHub | Project repository | Free |
+| Figma | Wireframing and prototyping | Free (Education) |
+
+## Course Structure & Assessment {background-color="#BA0C2F"}
+
+Five components make up how you'll learn — and how you'll be graded.
+
+1. **Lectures** — Every Mon & Wed, Aug 24 – Dec 4. Attendance and participation are mandatory and graded.
+2. **Weekly Readings & Homework** — Individual readings, 3–4 homework assignments, one short individual project.
+3. **Group Project** — Two major group projects, from need-finding through usability evaluation.
+4. **Mid-term Quiz** — Week 7 in-class quiz testing Modules 1–2 content.
+5. **Final Reflection Essay** — Individual essay connecting learning outcomes to broader AI design themes.
+
+## Grading Breakdown
+
+*Where your grade comes from.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'pieOuterStrokeWidth': '0px'}}}%%
+pie showData
+    "Group Project (40%)" : 40
+    "Active Participation (20%)" : 20
+    "HW & Personal Project (20%)" : 20
+    "Mid-term Quizzes (10%)" : 10
+    "Final Reflection Essay (10%)" : 10
+```
+
+::: {.callout}
+The Group Project alone is nearly half your grade — plan your semester accordingly.
+:::
+
+## Grade Scale & Time Commitment
+
+::: {.columns}
+::: {.column width="50%"}
+**Grade Distribution**
+
+| Score | Grade |
+|---|---|
+| ≥ 95.00 | A |
+| 90.00 – 94.99 | A– |
+| 85.00 – 89.99 | B+ |
+| 80.00 – 84.99 | B |
+| 75.00 – 79.99 | B– |
+| 60.00 – 74.99 | C |
+| < 60.00 | F |
+:::
+::: {.column width="50%"}
+**Expect 6–9 hrs/week outside class**
+
+Willamette's Credit Hour Policy: every hour of class time expects 2–3 hours of outside work. For this 4-credit course:
+
+- Reading course materials
+- Preparing for discussions & activities
+- Working on group projects
+- Writing reports/presentations
+- Individual homework
+:::
+:::
+
+## Assignment Landscape {.smaller}
+
+| # | Assignment | Type | Weight | Due |
+|---|---|---|---|---|
+| HW0 | Personal Introduction & Expectations | Individual | Participation | Aug 28 |
+| HW1 | Critical Literature Synthesis & Interface Critique | Individual | 3% | Sep 5 |
+| HW2 | Applied Needfinding & Low-Fidelity Prototype | Individual | 3% | Sep 18 |
+| HW3 | Description TBA by Instructor | Individual | 6% | Nov 13 |
+| Quiz | In-class Midterm Quiz (Week 7) | Individual | 10% | Oct 7 |
+| GP0 | Team Formation, Charter & Journal Setup | Group | Mandatory | Sep 25 |
+| GP1 | Co-Designing & Authoring VR Interventions | Group | 10% | Oct 2 |
+| GP2 | Needfinding, Personas & Paper Workflow | Group | 10% | Oct 16 |
+| GP3 | System Implementation & Containerization | Group | 10% | Nov 20 |
+| GP4 | Public Deployment, Testing & Final Docs | Group | 10% | Dec 3 |
+| RE | Final Course Reflection Essay | Individual | 10% | Dec 5 |
+
+## Individual Homework Assignments {.smaller}
+
+::: {.columns}
+::: {.column width="25%"}
+**HW0** · Aug 28
+*Personal Introduction*
+
+Canvas Discussion: intro yourself, share course goals, critique one AI system you use.
+
+*Participation*
+:::
+::: {.column width="25%"}
+**HW1** · Sep 5
+*Literature Synthesis & Critique*
+
+300-word position paper critiquing an AI tool through Direct Manipulation vs. Agents and "Power to the People."
+
+*3%*
+:::
+::: {.column width="25%"}
+**HW2** · Sep 18
+*Needfinding & Low-Fi Prototype*
+
+2–3 page discovery report + paper prototype from a participant observation session.
+
+*3%*
+:::
+::: {.column width="25%"}
+**HW3** · Nov 13
+*TBA by Instructor*
+
+Full description provided before Week 12 — watch Canvas and Discord.
+
+*6%*
+:::
+:::
+
+## How Assignments Are Submitted
+
+- **Submit via Canvas** — all assignments submitted via Canvas unless otherwise noted; deadlines are 11:59 PM unless specified as "before class."
+- **Contribution statements required** — GP1–GP4 each need a team-level breakdown AND a private individual statement from every member.
+- **Peer evaluation** — at semester's end, all team members complete a confidential peer contribution survey.
+- **Discrepancies matter** — if reported contributions don't match observed effort, the instructor may assign individual grades that differ from the group grade.
+
+## The Group Project {background-color="#BA0C2F"}
+
+::: {.kicker}
+THE CORE OF THIS COURSE
+:::
+
+Two sequential projects, worth 40% of your grade, take your team from user research to a deployed system.
+
+## Two Sequential Group Projects
+
+*Teams of 2–3, assigned by Sep 5 (Last Day Add/Drop).*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-midnight}
+**Project 1**
+
+**Conversation AI Learning Environment**
+
+Co-design and author an interactive VR learning experience for older adults (70+) — supporting cognitive health, memory, or daily routine management.
+
+*GP0 + GP1 · 20%*
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Project 2**
+
+**Conversational AI Assistants for Older Adults**
+
+Ideate, design, build, deploy, and evaluate a conversational AI assistant — built with Rasa CALM.
+
+*GP2 + GP3 + GP4 · 40%*
+:::
+:::
+:::
+
+## Project 1: VR Learning Environment {.smaller}
+
+*Co-designing and authoring a 9-screen VR intervention for older adults, validated on the Meta Quest 3.*
+
+::: {.columns}
+::: {.column width="50%"}
+**Design Considerations for Older Adults (70+)**
+
+- Large UI targets — generous touch/pointer areas
+- High-contrast visual cues that remain legible
+- Gentle pacing — no time pressure
+- Audio support — instructions read aloud
+- Low-stress error recovery — no penalties
+- Minimal cognitive load — one action per screen
+:::
+::: {.column width="50%"}
+**Example: Medication Management**
+
+1. Why Medication Schedules Matter
+2. Inspect the Pill Bottle
+3. Food vs. Empty Stomach
+4. Morning Routine Steps
+5. Emergency Kit Checklist
+6. Key Terms & Definitions
+7. Storage Best Practices
+8. Handling Missed Doses
+9. Reminder Alarm Logic
+:::
+:::
+
+## Project 2: Conversational AI Assistants
+
+*Guided by Design Thinking, teams work with older adults across the full semester.*
+
+::: {.columns}
+::: {.column width="33%"}
+**Cognitive Enhancement**
+
+Memory support, medication reminders, cognitive exercises
+:::
+::: {.column width="33%"}
+**Physical Mobility Support**
+
+Navigation assistance, exercise guidance, fall-risk awareness
+:::
+::: {.column width="33%"}
+**Social Well-Being**
+
+Companionship interfaces, family communication, social activities
+:::
+:::
+
+::: {.callout}
+**Tech stack for GP3:** Rasa CALM (or equivalent) for multi-turn dialogue · Docker for full-stack containerization · Accessible web/mobile UI with high-contrast, speech-to-text support.
+:::
+
+## The Design Process
+
+*Every milestone builds on the last, following the double-diamond design process.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart LR
+    D1["1. Discover
+    GP0/GP1
+    Needfinding with real
+    older adult participants"] --> D2["2. Define
+    GP2
+    Problem statement,
+    personas, workflow"]
+    D2 --> D3["3. Develop
+    GP3
+    Build with Rasa CALM,
+    Docker containerization"]
+    D3 --> D4["4. Deliver
+    GP4
+    Public deployment,
+    field usability testing"]
+    style D1 fill:#003B5C,color:#fff
+    style D2 fill:#BA0C2F,color:#fff
+    style D3 fill:#F19C49,color:#fff
+    style D4 fill:#C0AC7E,color:#333
+```
+
+## Group Project Milestones {background-color="#BA0C2F"}
+
+*Five checkpoints across the semester — each with contribution statements required.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#7A0A22','primaryTextColor':'#fff','primaryBorderColor':'#C0AC7E','lineColor':'#C0AC7E'}}}%%
+flowchart LR
+    GP0["GP0
+    Sep 25 · 5%
+    Team Charter & Journal"] --> GP1["GP1
+    Oct 2 · 15%
+    VR Intervention Delivery"]
+    GP1 --> GP2["GP2
+    Oct 16 · 15%
+    Needfinding & Personas"]
+    GP2 --> GP3["GP3
+    Nov 20 · 15%
+    System Implementation"]
+    GP3 --> GP4["GP4
+    Dec 3 · 15%
+    Deployment & Evaluation"]
+    style GP0 fill:#7A0A22,color:#fff
+    style GP1 fill:#7A0A22,color:#fff
+    style GP2 fill:#7A0A22,color:#fff
+    style GP3 fill:#7A0A22,color:#fff
+    style GP4 fill:#C0AC7E,color:#333
+```
+
+::: {.callout}
+Contribution statements are mandatory for GP1–GP4: a team-level breakdown plus a private individual statement from every member.
+:::
+
+## Course Policies {background-color="#BA0C2F"}
+
+::: {.kicker}
+PROFESSIONALISM & INTEGRITY
+:::
+
+Attendance, late work, generative AI use, and academic honesty — know these before Week 1.
+
+## Attendance & Late Submission
+
+::: {.columns}
+::: {.column width="50%"}
+**Attendance & Participation**
+
+- Attend all classes, labs, and workshops — come prepared to contribute meaningfully.
+- Attendance is tracked randomly through in-class participation activities.
+- Participation activities cannot be made up if missed.
+- Unable to attend? Notify the instructor as soon as possible.
+:::
+::: {.column width="50%"}
+**Late Submission: Not Allowed Without Approval**
+
+- Email the instructor before the deadline explaining the situation.
+- Receive a written reply confirming any extension.
+- No lateness beyond 24 hours is tolerated without explicit approval.
+- Maximum of 2 late submissions allowed across the entire course.
+:::
+:::
+
+## Policy on AI & Generative AI Use {background-color="#003B5C"}
+
+*This course heavily integrates AI — use it responsibly, and always disclose it.*
+
+::: {.columns}
+::: {.column width="50%"}
+**AI is encouraged for...**
+
+- Explaining complex concepts
+- Providing coding examples
+- Offering debugging suggestions
+- Recommending best practices
+- Exploring new ideas and approaches
+
+**Responsible use requires:** never using AI to solve entire assignments, always acknowledging AI usage, understanding everything you submit.
+:::
+::: {.column width="50%"}
+**The perils of over-reliance**
+
+- **Hinders your learning** — hands-on problem-solving is irreplaceable
+- **Impedes your growth** — prevents critical thinking development
+- **Limits your creativity** — over-dependence stifles innovation
+- **Compromises your career** — employers value independent thinkers
+:::
+:::
+
+## Academic Honesty for CS Students {.smaller}
+
+::: {.columns}
+::: {.column width="33%"}
+::: {.tag-field}
+**Reasonable**
+
+- Talking with classmates about assignments
+- Discussing strategies verbally (no code shared)
+- Whiteboarding a solution together
+- Searching the web for general concepts
+- Small cited code snippets
+- Working with a tutor on your own code
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-gold}
+**Careful**
+
+- Showing code to another student for debugging only, in private
+- Reviewing others' code after submission to enhance learning
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Not Reasonable**
+
+- Submitting another's work as your own
+- Copying from a quiz or exam
+- Viewing or copying another's solution
+- Copying solutions from previous years
+- Recording or sharing exam content
+- Maintaining public repositories of solutions
+:::
+:::
+:::
+
+## University Policies & Support {.smaller}
+
+| Resource | Details |
+|---|---|
+| **Accommodations & Disability Services** | Notify the instructor of any barriers to inclusion. Accessible Education Services — Smullin 155, 503-370-6737. |
+| **Positive Sexual Ethics (Title IX)** | Instructor is a mandatory reporter. WUTalk 24-hr line 503-375-5353, Campus Safety 503-370-6911. |
+| **SOAR Center** | Free, confidential access to food, toiletries, clothing, textbooks. Putnam University Center, 3rd floor. |
+| **Land Acknowledgement** | We gather on the land of the Kalapuya, represented by the Grand Ronde and Siletz tribes. |
+| **DACA / Undocumented Students** | Contact Olivia Muñoz — omunoz@willamette.edu, 503-370-6447. |
+| **Academic Integrity** | Plagiarism and cheating may result in failure or dismissal. |
+
+## Key Semester Dates {background-color="#BA0C2F" .smaller}
+
+::: {.columns}
+::: {.column width="33%"}
+**Aug 24** · First day of class
+**Aug 28** · HW0 due
+**Sep 4** · Last day Add/Drop
+**Sep 5** · HW1 due
+**Sep 7** · Labor Day — no class
+**Sep 18** · HW2 due
+:::
+::: {.column width="33%"}
+**Sep 25** · GP0 due
+**Oct 2** · GP1 due
+**Oct 7** · Midterm quiz
+**Oct 9** · Mid-semester break
+**Oct 16** · GP2 due
+**Oct 23** · Last day to withdraw
+:::
+::: {.column width="33%"}
+**Nov 13** · HW3 due
+**Nov 20** · GP3 due
+**Nov 25–27** · Fall Break
+**Nov 30 & Dec 2** · Final Presentations
+**Dec 3** · GP4 due
+**Dec 5** · Reflection Essay due
+:::
+:::
+
+## Our Value Statement {background-color="#003B5C"}
+
+This course is designed for students from **all disciplinary backgrounds** — not just Computer Science. We believe diverse perspectives are essential for designing AI systems that work for everyone.
+
+Students of different abilities, identities, and disciplinary backgrounds bring unique value to human-centered AI design. Your perspective on how AI systems affect your community is not just welcome — it is essential to the course's intellectual mission.
+
+::: {.callout}
+"The goal is not to build AI that thinks like humans, but AI that works for humans — in all their wonderful diversity."
+:::
+
+## Questions? {background-color="#BA0C2F"}
+
+*Let's make sure everyone is set up for success before Wednesday.*
+
+- **Join Discord today** — `discord.gg/JR4yUSSP`
+- **Check Canvas** — review the syllabus, confirm enrollment
+- **Complete HW0 by Aug 28** — personal introduction & expectations
+- **Start thinking about teammates** — groups of 2–3, finalized by Sep 5
+
+See you Wednesday for "The Role of Humans in AI."

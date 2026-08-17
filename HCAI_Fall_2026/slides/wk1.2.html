@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="wk1.2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="wk1.2_files/libs/quarto-html/tabby.min.js"></script>
+<script src="wk1.2_files/libs/quarto-html/popper.min.js"></script>
+<script src="wk1.2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="wk1.2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="wk1.2_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="wk1.2_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
+
+  <meta name="author" content="Lecture 1 Background · History · Human-in-the-Loop · Human-AI Teaming">
+  <title>The Role of Humans in AI</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="wk1.2_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="wk1.2_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="wk1.2_files/libs/revealjs/dist/theme/quarto-2c1b5f745a11cfad616ebade4a4a7d24.css">
+  <link href="wk1.2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="wk1.2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="wk1.2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="wk1.2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="wk1.2_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="wk1.2_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="wk1.2_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">The Role of Humans in AI</h1>
+  <p class="subtitle">Human–AI Interaction · Course Background</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Lecture 1 Background · History · Human-in-the-Loop · Human-AI Teaming 
+</div>
+</div>
+</div>
+
+</section>
+<section class="slide level2">
+
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+/* Bigger base type across the whole deck */
+.reveal { font-size: 30px; color: var(--ink); }
+.reveal h1, .reveal h2 { font-size: 1.9em; color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h2 { font-size: 1.5em; }
+.reveal h3 { font-size: 1.15em; color: var(--midnight); }
+.reveal p, .reveal li { line-height: 1.35; }
+.reveal table { font-size: 0.72em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.6em; }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+</style>
+</section>
+<section id="where-were-headed" class="slide level2">
+<h2>Where we’re headed</h2>
+<p><em>Three lenses on the same question: what do humans actually do in AI systems?</em></p>
+<ol type="1">
+<li><strong>A short history</strong> — how the human’s job inside AI systems has shifted across three eras, from hand-written rules to reinforcement learning from human feedback.</li>
+<li><strong>Human-in-the-loop &amp; oversight</strong> — where people sit relative to automated decisions, and how much control that hands them.</li>
+<li><strong>Human-AI collaboration &amp; teaming</strong> — what it takes for people and AI systems to work as an effective team, not just an operator and a tool.</li>
+<li><strong>This week’s reading</strong> — connecting all of the above to Amershi et al.’s <em>Power to the People</em> (2014).</li>
+</ol>
+</section>
+<section id="humans-across-the-history-of-ai" class="slide level2" data-background-color="#BA0C2F">
+<h2>Humans Across the History of AI</h2>
+<div class="kicker">
+<p>PART ONE</p>
+</div>
+<p><em>Every era of AI has redefined what the human in the system is actually for.</em></p>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme':'neutral'}}%%
+timeline
+    title The human's role, era by era
+    1950s-1980s : Symbolic AI &amp; Expert Systems : Human = knowledge engineer
+    1990s-2010s : Statistical &amp; ML AI : Human = data labeler &amp; feature designer
+    2012-present : Deep Learning &amp; LLMs : Human = trainer, evaluator, prompt-writer
+    Emerging : Agentic systems : Human = teammate
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="era-1-symbolic-ai-expert-systems" class="slide level2 smaller">
+<h2>Era 1 · Symbolic AI &amp; Expert Systems</h2>
+<p><strong>1950s – late 1980s</strong> · <em>The human as knowledge engineer</em></p>
+<p>Experts hand-coded rules, facts, and heuristics into systems like MYCIN and DENDRAL. The machine could only reason about what a person had explicitly told it.</p>
+<ul>
+<li><strong>Authorship</strong> — people wrote IF–THEN rules by hand; no learning from data</li>
+<li><strong>Bottleneck</strong> — progress capped by how fast experts could articulate what they knew</li>
+<li><strong>Brittleness</strong> — systems failed outside the exact scenarios their rules anticipated</li>
+</ul>
+<blockquote>
+<p>Human input = the entire knowledge base.</p>
+</blockquote>
+</section>
+<section id="era-2-statistical-machine-learning-ai" class="slide level2 smaller">
+<h2>Era 2 · Statistical &amp; Machine Learning AI</h2>
+<p><strong>1990s – early 2010s</strong> · <em>The human as data labeler &amp; feature designer</em></p>
+<p>Systems learned statistical patterns from examples. People shifted from writing rules to curating labeled data and hand-crafting the features models learned from.</p>
+<ul>
+<li><strong>Supervision</strong> — humans supplied ground-truth labels defining “correct”</li>
+<li><strong>Feature engineering</strong> — experts decided which signals were worth learning from</li>
+<li><strong>Emerging oversight roles</strong> — monitoring and correcting deployed models</li>
+</ul>
+<blockquote>
+<p>Human input = labeled examples + engineered features.</p>
+</blockquote>
+</section>
+<section id="era-3-deep-learning-foundation-models-llms" class="slide level2 smaller">
+<h2>Era 3 · Deep Learning, Foundation Models &amp; LLMs</h2>
+<p><strong>2012 – present</strong> · <em>The human as trainer, evaluator &amp; prompt-writer</em></p>
+<p>Large pretrained models shifted human effort from building capability to shaping and steering it — through preference data, evaluation, and natural-language prompting.</p>
+<ul>
+<li><strong>RLHF &amp; preference data</strong> — annotators rank outputs; judgments become training signal</li>
+<li><strong>Prompting as interaction</strong> — everyday users “program” behavior in natural language</li>
+<li><strong>Evaluation &amp; red-teaming</strong> — humans probe for failures automated metrics miss</li>
+</ul>
+<blockquote>
+<p>Human input = preferences, feedback, and instructions in natural language.</p>
+</blockquote>
+</section>
+<section id="the-throughline-from-author-to-collaborator" class="slide level2">
+<h2>The throughline: from author to collaborator</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme':'neutral'}}%%
+flowchart LR
+    A["Rule Author
+    1950s-80s
+    Encodes knowledge directly"] --&gt; B["Data Supervisor
+    1990s-2010s
+    Labels examples, engineers features"]
+    B --&gt; C["Trainer &amp; Evaluator
+    2012-present
+    Shapes behavior via feedback &amp; prompts"]
+    C --&gt; D["Teammate
+    Emerging
+    Collaborates with agentic systems"]
+
+    style A fill:#BA0C2F,color:#fff
+    style B fill:#BA0C2F,color:#fff
+    style C fill:#BA0C2F,color:#fff
+    style D fill:#C0AC7E,color:#fff
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>As machines took on more of the reasoning, the human role moved up a level of abstraction each time.</p>
+</section>
+<section id="human-in-the-loop-oversight" class="slide level2" data-background-color="#BA0C2F">
+<h2>Human-in-the-Loop &amp; Oversight</h2>
+<div class="kicker">
+<p>PART TWO</p>
+</div>
+<p><em>As AI took on more of the work, the design question became: where exactly does the human stand?</em></p>
+</section>
+<section id="a-spectrum-of-human-involvement" class="slide level2">
+<h2>A spectrum of human involvement</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme':'neutral'}}%%
+flowchart LR
+    subgraph S1["In-the-Loop"]
+    direction TB
+    A1["The AI proposes;&lt;br/&gt;a human must approve&lt;br/&gt;or act first"]
+    A2["e.g., a radiologist confirms&lt;br/&gt;every AI-flagged scan"]
+    end
+    subgraph S2["On-the-Loop"]
+    direction TB
+    B1["The AI acts autonomously;&lt;br/&gt;a human monitors and&lt;br/&gt;can intervene"]
+    B2["e.g., a supervisor watching&lt;br/&gt;a fleet of delivery robots"]
+    end
+    subgraph S3["Out-of-the-Loop"]
+    direction TB
+    C1["The AI acts and adapts&lt;br/&gt;with no real-time&lt;br/&gt;human involvement"]
+    C2["e.g., automatic spam&lt;br/&gt;filtering at scale"]
+    end
+    S1 --&gt; S2 --&gt; S3
+    style S1 fill:#BA0C2F,color:#fff
+    style S2 fill:#FAF8F5,color:#2B2320
+    style S3 fill:#FAF8F5,color:#2B2320
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><em>decreasing human control →</em></p>
+</section>
+<section id="levels-of-automation" class="slide level2">
+<h2>Levels of automation</h2>
+<p>Sheridan &amp; Verplank’s (1978) scale — later adapted by Parasuraman, Sheridan &amp; Wickens (2000) — breaks “automated or not” into a graded scale of who decides and who acts.</p>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme':'neutral'}}%%
+flowchart LR
+    L1(["1&lt;br/&gt;Human does it all"]) --- L3(["3&lt;br/&gt;AI narrows the options"]) --- L5(["5&lt;br/&gt;AI recommends,&lt;br/&gt;waits for approval"]) --- L7(["7&lt;br/&gt;AI acts,&lt;br/&gt;then informs"]) --- L10(["10&lt;br/&gt;Full automation"])
+    style L1 fill:#BA0C2F,color:#fff
+    style L3 fill:#BA0C2F,color:#fff
+    style L5 fill:#BA0C2F,color:#fff
+    style L7 fill:#BA0C2F,color:#fff
+    style L10 fill:#C0AC7E,color:#fff
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1 — Human does it all</strong></td>
+<td>No AI assistance; the person decides and acts</td>
+</tr>
+<tr class="even">
+<td><strong>3 — AI narrows the options</strong></td>
+<td>The system narrows alternatives down to a few for the human to pick from</td>
+</tr>
+<tr class="odd">
+<td><strong>5 — AI recommends &amp; waits for approval</strong></td>
+<td>The system picks an action but executes only if approved</td>
+</tr>
+<tr class="even">
+<td><strong>7 — AI acts, then informs</strong></td>
+<td>The system executes automatically and tells the human afterward</td>
+</tr>
+<tr class="odd">
+<td><strong>10 — Full automation</strong></td>
+<td>The system decides, acts, and reports to no one</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-oversight-matters" class="slide level2">
+<h2>Why oversight matters</h2>
+<ul>
+<li><strong>Accountability</strong> — someone must be answerable when an AI decision causes harm; oversight determines who that is and when they had a chance to act</li>
+<li><strong>Error correction</strong> — humans catch failure modes the model wasn’t trained to recognize, especially in rare or novel situations</li>
+<li><strong>Trust calibration</strong> — well-placed oversight prevents both over-trust (complacency) and under-trust (needless double-checking)</li>
+<li><strong>Skill retention</strong> — too little involvement over time can erode the human expertise needed to catch AI mistakes at all</li>
+</ul>
+</section>
+<section id="human-ai-collaboration-teaming" class="slide level2" data-background-color="#BA0C2F">
+<h2>Human-AI Collaboration &amp; Teaming</h2>
+<div class="kicker">
+<p>PART THREE</p>
+</div>
+<p><em>Beyond oversight: what does it take for a person and an AI system to genuinely work as a team?</em></p>
+</section>
+<section id="principles-of-human-ai-teaming" class="slide level2 smaller">
+<h2>Principles of human-AI teaming</h2>
+<p><em>Informed by Klein et al.’s (2004) “Ten Challenges for Making Automation a Team Player” and later human-automation teaming research.</em></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Mutual predictability</strong> Each teammate — human or AI — can reasonably anticipate what the other will do next.</p>
+<p><strong>Shared mental models</strong> Both sides hold a compatible understanding of the goal, the state of the task, and each other’s roles.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Complementarity</strong> The team is designed around what each party does best, not around forcing one to imitate the other.</p>
+<p><strong>Graceful degradation</strong> When one teammate fails or is uncertain, the team as a whole should fail safely, not catastrophically.</p>
+</div></div>
+</section>
+<section id="three-patterns-of-collaboration" class="slide level2">
+<h2>Three patterns of collaboration</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme':'neutral'}}%%
+flowchart LR
+    A["🧑 Assistive
+    Human leads
+    AI performs narrow sub-tasks
+    on request
+    e.g. grammar checking"]
+    B["🤝 Augmentative
+    Shared control
+    Human &amp; AI trade initiative
+    e.g. AI pair-programming"]
+    C["🤖 Autonomous w/ handback
+    AI leads
+    AI runs the task, recognizes
+    its limits, hands back
+    e.g. self-driving takeover"]
+    A --&gt; B --&gt; C
+    style A fill:#FAF8F5,color:#2B2320
+    style B fill:#C0AC7E,color:#fff
+    style C fill:#FAF8F5,color:#2B2320
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="this-weeks-reading" class="slide level2" data-background-color="#BA0C2F">
+<h2>This Week’s Reading</h2>
+<div class="kicker">
+<p>PART FOUR</p>
+</div>
+<p><em>Connecting the ideas above to Amershi, Cakmak, Knox &amp; Kulesza’s “Power to the People” (AI Magazine, 2014).</em></p>
+</section>
+<section id="what-is-interactive-machine-learning" class="slide level2">
+<h2>What is interactive machine learning?</h2>
+<p>Amershi et al.&nbsp;(2014) define IML by how its update cycle differs from the traditional applied ML workflow.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Traditional Applied ML</th>
+<th>Interactive Machine Learning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Long, asynchronous iterations mediated by ML practitioners</td>
+<td><strong>Rapid</strong> — the model updates immediately in response to user input</td>
+</tr>
+<tr class="even">
+<td>End users give data/feedback only indirectly, through the practitioner</td>
+<td><strong>Focused</strong> — only a particular aspect of the model changes each time</td>
+</tr>
+<tr class="odd">
+<td>Model updates are infrequent and can change the model drastically</td>
+<td><strong>Incremental</strong> — each update is small, so users can steer via trial and error</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme':'neutral'}}%%
+flowchart LR
+    U["User acts"] --&gt; M["Model updates"] --&gt; O["Output shown"] --&gt; A["User adjusts"] --&gt; U
+    style U fill:#BA0C2F,color:#fff
+    style M fill:#C0AC7E,color:#fff
+    style O fill:#BA0C2F,color:#fff
+    style A fill:#C0AC7E,color:#fff
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><em>seconds, not weeks</em></p>
+</section>
+<section id="the-readings-case-studies-through-our-lenses" class="slide level2 smaller">
+<h2>The reading’s case studies, through our lenses</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Source</th>
+<th>What happened</th>
+<th>Connects to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Crayons</strong></td>
+<td>Fails &amp; Olsen, 2003</td>
+<td>Rapid train-feedback-correct cycles for pixel classification</td>
+<td>Part 2 — tight, in-the-loop correction</td>
+</tr>
+<tr class="even">
+<td><strong>Wekinator</strong></td>
+<td>Fiebrink, Cook &amp; Trueman, 2011</td>
+<td>Training gesture instruments; the system also trained the users</td>
+<td>Part 3 — mutual adaptation</td>
+</tr>
+<tr class="odd">
+<td><strong>Robot active learning</strong></td>
+<td>Cakmak, Chao &amp; Thomaz, 2010</td>
+<td>Users resented being treated as constant-query “oracles”</td>
+<td>Part 2 — oversight must fit real behavior</td>
+</tr>
+<tr class="even">
+<td><strong>Reward-based teaching</strong></td>
+<td>Thomaz &amp; Breazeal, 2008; Knox &amp; Stone, 2012</td>
+<td>People give far more positive than negative feedback</td>
+<td>Part 1 &amp; 3 — human as trainer</td>
+</tr>
+<tr class="odd">
+<td><strong>CueFlik / ManiMatrix</strong></td>
+<td>Fogarty et al., 2008; Kapoor et al., 2010</td>
+<td>Users get direct control over decision boundaries, not just labels</td>
+<td>Part 2 — beyond label-only automation</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="discussion-questions-for-the-reading" class="slide level2 smaller">
+<h2>Discussion questions for the reading</h2>
+<p><em>Power to the People: The Role of Humans in Interactive Machine Learning (Amershi et al., 2014)</em></p>
+<ol type="1">
+<li>The paper argues user and learning system are coupled so tightly it’s difficult to study one in isolation. Does this complicate the in-/on-/out-of-the-loop spectrum from Part 2?</li>
+<li>Cakmak et al.&nbsp;found users resented being treated as constant-query “oracles.” What does this suggest about designing for oversight versus what users actually want?</li>
+<li>People give systematically more positive than negative feedback when teaching agents. How does that stress-test “mutual predictability” and “shared mental models” from Part 3?</li>
+<li>Compare Crayons and Wekinator to the three collaboration patterns from Part 3. Which pattern best fits each system, and why?</li>
+<li>The authors call for closer HCI–ML collaboration. Where in the Part 1 history do you see evidence this collaboration was missing?</li>
+</ol>
+</section>
+<section id="key-takeaways" class="slide level2">
+<h2>Key takeaways</h2>
+<ul>
+<li>The human’s role in AI hasn’t disappeared as systems got smarter — it has moved up a level, from encoding knowledge to steering and evaluating it.</li>
+<li>“Human-in-the-loop” is not one thing; it’s a design choice along a spectrum of control, monitoring, and accountability.</li>
+<li>Good collaboration requires more than a capable AI — it requires mutual predictability, shared understanding, and graceful failure.</li>
+</ul>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Discussion:</strong> As a system moves from in-the-loop to out-of-the-loop, what design elements should travel with it to preserve accountability? Pick a tool you use today — which era’s human role does it mostly still resemble?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="further-reading" class="slide level2 smaller">
+<h2>Further reading</h2>
+<ul>
+<li>Sheridan, T. B., &amp; Verplank, W. L. (1978). <em>Human and Computer Control of Undersea Teleoperators.</em> MIT Man-Machine Systems Laboratory.</li>
+<li>Parasuraman, R., Sheridan, T. B., &amp; Wickens, C. D. (2000). A Model for Types and Levels of Human Interaction with Automation. <em>IEEE Transactions on Systems, Man, and Cybernetics — Part A</em>, 30(3), 286–297.</li>
+<li>Klein, G., Woods, D. D., Bradshaw, J. M., Hoffman, R. R., &amp; Feltovich, P. J. (2004). Ten Challenges for Making Automation a “Team Player” in Joint Human-Agent Activity. <em>IEEE Intelligent Systems</em>, 19(6), 91–95.</li>
+<li>Amershi, S., Weld, D., Vorvoreanu, M., et al.&nbsp;(2019). Guidelines for Human-AI Interaction. <em>CHI Conference on Human Factors in Computing Systems</em>.</li>
+<li>Ouyang, L., Wu, J., Jiang, X., et al.&nbsp;(2022). Training Language Models to Follow Instructions with Human Feedback. <em>NeurIPS</em>, 35.</li>
+<li>Christian, B. (2020). <em>The Alignment Problem: Machine Learning and Human Values.</em> W. W. Norton &amp; Company.</li>
+<li>Endsley, M. R. (2017). From Here to Autonomy: Lessons Learned from Human-Automation Research. <em>Human Factors</em>, 59(1), 5–27.</li>
+</ul>
+<blockquote>
+<p><strong>This week’s reading:</strong> Amershi, S., Cakmak, M., Knox, W. B., &amp; Kulesza, T. (2014). Power to the People: The Role of Humans in Interactive Machine Learning. <em>AI Magazine</em>, 35(4), 105–120.</p>
+</blockquote>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="wk1.2_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="wk1.2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="wk1.2_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="wk1.2_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

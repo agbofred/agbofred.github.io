@@ -1,0 +1,510 @@
+---
+title: "A Historical Perspective of Human-AI Interaction"
+subtitle: "AI 380: Human-AI Interaction · Week 2"
+author: "From command lines to conversational agents"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    toc: false
+    slide-level: 2
+---
+
+```{=html}
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+.reveal { font-size: 28px; color: var(--ink); }
+.reveal h1, .reveal h2 { color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h2 { font-size: 1.5em; }
+.reveal h3 { font-size: 1.1em; color: var(--midnight); }
+.reveal p, .reveal li { line-height: 1.35; }
+.reveal table { font-size: 0.6em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.55em; }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+.reveal .tag-cardinal { background: var(--cardinal); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+.reveal .tag-midnight { background: var(--midnight); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+</style>
+```
+
+## Where We're Headed
+
+*Four moments that defined how humans and machines communicate.*
+
+1. **Before "AI" existed** — 1950s foundations: a question, a workshop, and a command line
+2. **Two paths diverge** — direct manipulation and natural language split off as rival visions
+3. **The great interface debate** — 1997: Shneiderman vs. Maes — control it, or delegate it?
+4. **The pendulum swings back** — agents return quietly, then loudly, with today's conversational AI
+
+## The 70-Year Arc, at a Glance
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+timeline
+    title Human-AI Interaction, 1950-2022
+    1950 : Turing's Question
+    1956 : Dartmouth Workshop
+    1963 : Sketchpad
+    1966 : ELIZA
+    1968 : Mother of All Demos
+    1973-1984 : Alto to Macintosh
+    1978 : Dijkstra's Warning
+    1982-83 : Direct Manipulation named
+    1987 : Knowledge Navigator
+    1997 : Shneiderman vs Maes debate
+    2011 : Siri
+    2012-2017 : Deep Learning and Transformers
+    2022 : ChatGPT
+```
+
+## Before "AI" Existed {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART ONE
+:::
+
+*A philosophical question, an eight-week workshop, and a machine that demanded formal precision.*
+
+## Can Machines Think?
+
+*Two founding moments set the terms of the conversation.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-midnight}
+**1950 · Turing's Question**
+
+Alan Turing's "Computing Machinery and Intelligence" sidestepped "Can machines think?" for a testable question: could a machine's conversation be indistinguishable from a human's? Intelligence became something demonstrated through interaction.
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**1956 · The Dartmouth Workshop**
+
+McCarthy, Minsky, Rochester, and Shannon convened an eight-week summer workshop at Dartmouth, proposing that "every aspect of learning... can be so precisely described that a machine can be made to simulate it." The workshop coined the term "artificial intelligence."
+:::
+:::
+:::
+
+## The Command-Line Era
+
+*In the beginning, humans learned to speak the machine's language.*
+
+**A demanding interface**
+
+Early computing was batch processing and command lines: precise, unforgiving, entirely on the machine's terms. Programming "required the care and accuracy that is characteristic for the use of any formal symbolism" — any deviation produced an error, or worse, a silent wrong answer.
+
+::: {.callout}
+This friction is exactly what later movements — both direct manipulation and natural language computing — set out to fix. They just disagreed about the fix.
+:::
+
+If formal symbolism was the friction, the fix seemed obvious: let people talk to computers in their own language. If control was the friction, the fix seemed equally obvious: let people manipulate what's on screen directly. Both ideas trace to the 1960s.
+
+## Two Paths Diverge {background-color="#003B5C"}
+
+::: {.kicker}
+PART TWO
+:::
+
+*Direct manipulation and natural language emerge as rival answers to the same problem — and one giant of computer science says both are wrong.*
+
+## Two Paths, One Problem
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart TD
+    CLI["The Command-Line Problem
+    Formal, unforgiving syntax"]
+    CLI --> A["Path A: Direct Manipulation
+    1963 Sketchpad
+    1968 Mother of All Demos
+    1973 Xerox Alto"]
+    CLI --> B["Path B: Natural Language
+    1966 ELIZA
+    1970s NL programming ambitions"]
+    B --> D["1978: Dijkstra's Warning
+    'On the Foolishness of
+    Natural Language Programming'"]
+    style A fill:#BA0C2F,color:#fff
+    style B fill:#003B5C,color:#fff
+    style D fill:#7A0A22,color:#fff
+    style CLI fill:#C0AC7E,color:#333
+```
+
+## Path A — Toward Direct Manipulation {.smaller}
+
+*Show the objects. Let people touch them.*
+
+| Year | Milestone | What happened |
+|---|---|---|
+| 1963 | **Sketchpad** | Ivan Sutherland's MIT PhD thesis let users draw and edit shapes directly on a CRT with a light pen — the first interactive graphical interface. |
+| 1968 | **"Mother of All Demos"** | Douglas Engelbart demonstrated NLS live at the Fall Joint Computer Conference — the mouse, windows, and hypertext, all on stage. |
+| 1973 | **Xerox Alto** | PARC's Alto combined a bitmapped display, windows, icons, and a mouse into a working machine — ancestor of every GUI since. |
+
+## Path B — Toward Natural Language
+
+*Skip the syntax. Let people just ask.*
+
+**1966 · ELIZA**
+
+Joseph Weizenbaum's ELIZA, built at MIT, simulated a Rogerian psychotherapist by pattern-matching keywords and reflecting them back as questions. It never understood language — yet many users, including Weizenbaum's own secretary, treated it as if it did (the "ELIZA effect").
+
+**The parallel ambition**
+
+ELIZA's popularity fed a broader 1970s hope: that programming itself could eventually be conducted in plain English, letting the machine carry more of the communication burden.
+
+::: {.callout}
+In 1978, one of computing's most influential voices publicly disagreed.
+:::
+
+## Dijkstra's Warning {background-color="#7A0A22" .smaller}
+
+*EWD 667 · "On the Foolishness of Natural Language Programming" (1978)*
+
+**The argument**
+
+- Choosing an interface is not just splitting up a fixed amount of work — the labor of communicating across it must be added, not assumed away.
+- A "narrow," formal interface is a *privilege*, not a burden: its strict rules rule out nonsense that natural language lets slide.
+- History backs this up: mathematics only advanced past the ancient Greeks and medieval scholastics once it adopted deliberate formal symbolism — Vieta, Descartes, Leibniz, Boole.
+- His conclusion, in his own words: machines "to be programmed in our native tongues... are as damned difficult to make as they would be to use."
+
+::: {.callout}
+**Why it still matters:** Dijkstra wasn't arguing against talking to computers — he argued that removing formal precision doesn't remove the underlying work of specifying what you mean. It just relocates it. This is the same tension every modern prompt-engineer rediscovers.
+:::
+
+## From Alto to Macintosh
+
+*The graphical path wins its first major commercial battle.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart LR
+    A["1973
+    Xerox Alto
+    GUI research machine,
+    never sold commercially"] --> B["1981
+    Xerox Star
+    First commercial GUI
+    workstation"]
+    B --> C["1984
+    Apple Macintosh
+    Brought GUI to a
+    mass market"]
+    style A fill:#BA0C2F,color:#fff
+    style B fill:#BA0C2F,color:#fff
+    style C fill:#C0AC7E,color:#333
+```
+
+::: {.callout}
+A young computer scientist at the University of Maryland was watching this shift closely — and about to give it a name.
+:::
+
+## Shneiderman Names "Direct Manipulation"
+
+*1982–83 · A term, and a science, for what made interfaces delightful.*
+
+::: {.columns}
+::: {.column width="50%"}
+Ben Shneiderman, founder of the University of Maryland's HCI Lab, studied why certain systems produced "truly pleased users." He named the pattern "direct manipulation" in 1982, formalized the next year in a widely cited *Computer* article.
+
+*Shneiderman, B. (1983). Direct Manipulation: A Step Beyond Programming Languages. Computer, 16(8), 57–69.*
+:::
+::: {.column width="50%"}
+**Three defining principles**
+
+- **Visibility** — continuous, visible representation of the objects of interest
+- **Rapid, reversible actions** — pointing and dragging instead of complex syntax, with immediate feedback
+- **Incremental & low-risk** — errors are easy to see and undo
+:::
+:::
+
+## Meanwhile: Expert Systems Rise and Fall
+
+*A third thread, running in parallel — encode the expert, not the interface.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-midnight}
+**MYCIN & DENDRAL** (1965–1976)
+
+Stanford researchers built rule-based systems that diagnosed blood infections (MYCIN, 1972) and identified chemical structures (DENDRAL, begun 1965) — early proof that machines could apply expert-level domain knowledge.
+:::
+:::
+::: {.column width="50%"}
+**The AI Winter** (late 1970s–1980s)
+
+As expert systems proved brittle outside narrow domains and funding expectations went unmet, interest and investment collapsed — the first of several "AI winters."
+:::
+:::
+
+## The Great Interface Debate {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART THREE
+:::
+
+*By the late 1990s, two visions of the future collided head-on — live, in front of an audience.*
+
+## The Knowledge Navigator's Vision
+
+*1987 · Apple imagines a machine that talks back.*
+
+For his 1987 EDUCOM keynote, Apple CEO John Sculley unveiled a concept video imagining "Knowledge Navigator" — a tablet computer with an animated assistant named Phil who could search databases, manage a calendar, and hold a natural spoken conversation.
+
+::: {.callout}
+It was fiction — but it planted a vivid, anthropomorphic picture of "the agent" in the industry's imagination for a decade to come. Its central bet — proactive, conversational computing — became the founding premise of the software-agents research that followed at labs like MIT's Media Lab.
+:::
+
+## Pattie Maes and the Rise of Software Agents
+
+*MIT Media Lab · A new pitch: let software act on your behalf.*
+
+::: {.columns}
+::: {.column width="50%"}
+**What made it an "agent"**
+
+- **Personalized** — knows the user's habits and interests
+- **Proactive** — takes initiative instead of waiting
+- **Long-lived** — runs autonomously in the background
+- **Adaptive** — tracks changing interests over time
+:::
+::: {.column width="50%"}
+**Early agents from her lab**
+
+- **Letizia** — watched Web browsing, looked ahead for relevant pages
+- **Firefly** — collaborative-filtering recommender, became a real company
+- **Kasbah** — agents that negotiated buying/selling on a user's behalf
+:::
+:::
+
+## Setting the Stage: IUI 97 & CHI 97
+
+*"Direct Manipulation vs. Interface Agents" — a public debate, twice.*
+
+In January 1997, at the Intelligent User Interfaces conference, and again that March at CHI 97 in Atlanta, Ben Shneiderman and Pattie Maes debated the future of the interface in front of a live audience. Their exchange — transcribed and published in ACM *interactions* — became one of HCI's most cited debates.
+
+*Shneiderman, B., & Maes, P. (1997). Direct Manipulation vs. Interface Agents. ACM interactions, 4(6), 42–61.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Ben Shneiderman**
+
+University of Maryland HCI Lab · argued for comprehensible, predictable, user-controlled direct manipulation.
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Pattie Maes**
+
+MIT Media Lab Software Agents Group · argued that rising complexity demands some delegation to software agents.
+:::
+:::
+:::
+
+## Ben's Case for Direct Manipulation {.smaller}
+
+*"Responsibility will be the central issue in this debate."*
+
+**Natural language had already failed commercially**
+Products like Q&A (Symantec), Intellect (AI Corporation), and Lotus HAL — natural-language database and spreadsheet interfaces — had all been discontinued by 1997. Direct manipulation was, in his words, "the surviving technology."
+
+**Anthropomorphic interfaces misled users**
+He pointed to failed products like Microsoft Bob and the never-shipped Postal Buddy as evidence that human-like personas "deceive users" and "undermine responsibility."
+
+**Information visualization was the future**
+His own lab's work — FilmFinder, LifeLines, the Visible Human Explorer — showed thousands of data points made directly explorable, no "agent" needed to interpret them.
+
+## Pattie's Case for Delegation {background-color="#003B5C" .smaller}
+
+*"Whenever workload or information load gets too high, there is a point where a person has to delegate."*
+
+**The computing environment had changed**
+Twenty years earlier, one user had one well-organized computer. By 1997, the Web made the "screen a window onto a vast, dynamic, unstructured network" — too complex for any single visualization to tame.
+
+**The user population had changed**
+Computing was shifting from trained professionals to consumer users who, as she put it, "do not even know how to program their VCRs."
+
+**Agents and direct manipulation are complementary, not rivals**
+"Agents are not an alternative for direct manipulation... you still need a very good direct manipulation interface."
+
+## Where They Actually Agreed
+
+*Strip away the theatrics, and the debate converges on two words.*
+
+::: {.columns}
+::: {.column width="50%"}
+**Understanding**
+
+Maes: "The agent-user collaboration can only be successful if the user can understand and trust the agent." Shneiderman: users need a clear, predictable model of what a system will do.
+:::
+::: {.column width="50%"}
+**Control**
+
+Maes: "Users must be able to turn over control of tasks to agents but users must never feel out of control." Both agreed that giving up control should always be a choice, not a default.
+:::
+:::
+
+::: {.callout}
+Even Shneiderman conceded a "new Pattie" had emerged, ready to build agents that made the user model available to the user — the two positions had moved toward each other.
+:::
+
+## History's Early Verdict (as of 1997)
+
+*Two categories of interface had already failed the market test.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Natural-language commands**
+
+- Q&A (Symantec) — NL database queries
+- Intellect (AI Corporation) — English-language query
+- Lotus HAL — NL spreadsheet commands
+
+*All discontinued by the time of the 1997 debate.*
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Anthropomorphic personas**
+
+- Microsoft Bob — cartoon-guide desktop interface
+- The proposed "Postal Buddy" kiosk assistant
+- Chatty, character-based bank-teller interfaces
+
+*Cited by Shneiderman as evidence social interfaces mislead and deceive users.*
+:::
+:::
+:::
+
+## The Pendulum Swings Back {background-color="#003B5C"}
+
+::: {.kicker}
+PART FOUR
+:::
+
+*From smartphones to large language models, the twenty-first century revisits every question this debate raised.*
+
+## Agents Return — Quietly, Then Loudly {.smaller}
+
+*The interface Maes envisioned finally has the hardware to match.*
+
+| Year | Milestone | What happened |
+|---|---|---|
+| 2011 | **Siri** | Apple introduced Siri with the iPhone 4S — the first natural-language voice assistant built into a mass-market smartphone. |
+| 2011–2016 | **Recommenders everywhere** | Netflix, Amazon, and Spotify scaled Maes-style personalization into the default way people discovered content. |
+| 2016 | **AlphaGo** | DeepMind's AlphaGo defeated world champion Lee Sedol at Go, renewing attention on what learning systems could achieve. |
+
+## The Deep Learning Turn
+
+*A technical shift that would make natural-language computing finally work.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-midnight}
+**2012 · AlexNet**
+
+A deep convolutional neural network dramatically outperformed prior methods on the ImageNet benchmark, convincing the field that large neural networks trained on large datasets — not hand-built rules — were the path forward.
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**2017 · The Transformer**
+
+Google researchers introduced the Transformer architecture in "Attention Is All You Need" — a design for modeling long-range relationships in language that became the foundation for every major LLM since.
+
+*Vaswani, A., et al. (2017). NeurIPS.*
+:::
+:::
+:::
+
+## Natural Language Wins?
+
+*November 30, 2022 · ChatGPT brings conversational AI to the mainstream.*
+
+::: {.callout}
+OpenAI released ChatGPT, a conversational fine-tune of GPT-3.5 trained with reinforcement learning from human feedback (RLHF) — human raters scoring outputs to steer the model toward helpful, natural-language conversation. It reached 100 million users within about two months, the fastest adoption of any consumer application to that point.
+:::
+
+**So did Dijkstra lose?**
+
+Not exactly. Prompting still requires precision — vague requests get vague answers, and "prompt engineering" is itself a discipline of learning to specify intent carefully. The formal work Dijkstra insisted couldn't disappear didn't disappear; it moved from syntax into the structure of the prompt, and from the programmer to every user.
+
+## Revisiting the Debate in the LLM Era {.smaller}
+
+*Today's chat-based AI assistants are, structurally, both sides of the 1997 debate at once.*
+
+| | |
+|---|---|
+| **A chat interface** | Natural language, conversational, low barrier to entry — the world Dijkstra worried about. |
+| **Tool use & agentic actions** | Modern AI assistants browse, run code, and take multi-step actions on a user's behalf — exactly the proactive delegation Maes described. |
+| **Visible, editable outputs** | Chat responses, generated documents, and citations remain on-screen, inspectable, and correctable — Shneiderman's insistence on visibility and control, reasserting itself. |
+| **Confirmation before consequential actions** | Well-designed AI assistants still ask before sending an email or making a purchase — control handed back at exactly the moments Shneiderman cared about most. |
+
+## Recurring Themes Across 70 Years {background-color="#BA0C2F"}
+
+*The specific technology keeps changing. The underlying questions don't.*
+
+- **Control vs. delegation** — how much do we hand over, and when do we take it back? Every era answers this differently, but never permanently.
+- **Formal vs. natural** — precision has a cost that doesn't vanish when you switch to plain language — it just changes who pays it, and when.
+- **Trust must be earned by design** — systems succeed when users can predict and understand them, not when they merely feel friendly or "smart."
+- **Old debates return in new clothes** — command line, agents, chat: each new interface paradigm re-litigates the same trade-offs its predecessors faced.
+
+## Discussion Questions {background-color="#003B5C" .smaller}
+
+*Bring your answers to at least one of these to class.*
+
+1. Dijkstra argued that a "narrow," formal interface is a privilege, not a burden. Does prompting an LLM count as a return to a narrow interface, or has it recreated the natural-language problem he warned about?
+2. Shneiderman worried that anthropomorphic interfaces "undermine human responsibility." Do today's conversational AI assistants raise the same concern — and if so, whose responsibility is it?
+3. Maes said users would eventually need to delegate because information load was becoming unmanageable. Do you personally feel that way about any task you do today? What would you delegate, and what would you never delegate?
+4. Pick one interface paradigm from this lecture (command line, direct manipulation, software agents, conversational AI). What specific problem was it responding to — and what new problem did it create?
+
+## Key Takeaways
+
+*What seventy years of interface history teaches us about designing the next one.*
+
+- Every generation believes it has finally found the natural way to talk to computers — and every generation discovers that natural language doesn't eliminate the hard work of being precise, it just relocates it.
+- Direct manipulation and software agents were never really opposites. Maes and Shneiderman converged on the same two requirements — understanding and control — even while disagreeing about how much autonomy a system should have by default.
+- The interfaces that failed — natural-language database queries, anthropomorphic "social" interfaces — failed for identifiable, recurring reasons: unpredictability, hidden state, and misplaced trust, not just "bad timing."
+- Today's conversational AI assistants aren't a clean win for either side of the 1997 debate — they're a synthesis neither Shneiderman nor Maes fully anticipated.
+
+## References {.smaller}
+
+- Turing, A. M. (1950). Computing Machinery and Intelligence. *Mind*, 49(236), 433–460.
+- McCarthy, J., Minsky, M., Rochester, N., & Shannon, C. E. (1955). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence.
+- Sutherland, I. E. (1963). Sketchpad: A Man-Machine Graphical Communication System. PhD thesis, MIT.
+- Weizenbaum, J. (1966). ELIZA — A Computer Program for the Study of Natural Language Communication Between Man and Machine. *Communications of the ACM*, 9(1), 36–45.
+- Engelbart, D. (1968). "The Mother of All Demos." Fall Joint Computer Conference, San Francisco.
+- Shortliffe, E. H. (1976). *Computer-Based Medical Consultations: MYCIN.* Elsevier.
+- Dijkstra, E. W. (1978). On the Foolishness of "Natural Language Programming." EWD 667.
+- Shneiderman, B. (1982). The Future of Interactive Systems and the Emergence of Direct Manipulation. *Behaviour & Information Technology*, 1(3), 237–256.
+- Shneiderman, B. (1983). Direct Manipulation: A Step Beyond Programming Languages. *Computer*, 16(8), 57–69.
+- Sculley, J. (1987). Knowledge Navigator (concept video). Apple Computer, EDUCOM keynote.
+- Shneiderman, B., & Maes, P. (1997). Direct Manipulation vs. Interface Agents. *ACM interactions*, 4(6), 42–61.
+- Apple Inc. (2011). Apple Launches iPhone 4S, iOS 5 & iCloud [Siri introduced]. October 4, 2011.
+- Vaswani, A., Shazeer, N., Parmar, N., et al. (2017). Attention Is All You Need. *NeurIPS*.
+- OpenAI (2022). Introducing ChatGPT. November 30, 2022.
