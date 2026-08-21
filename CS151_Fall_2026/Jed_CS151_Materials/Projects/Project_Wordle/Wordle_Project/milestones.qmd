@@ -1,0 +1,6 @@
+---
+title: Introducing Milestones
+---
+
+
+Whenever you are working on a programming project of any significant size, you should never try to get the entire project running all at once (until the very end). A much more effective strategy is to define a series of milestones that allow you to complete and test the project in stages. Ideally, each milestone you choose should be a program that you can test and debug independently, even if the code you write to test a particular milestone doesn't make its way into the finished project. The advantage you get from making it possible to test each stage more than compensates for having to write a little extra code along the way. Similarly, it often makes sense to defer more of the more complex aspects of the project until after you have gotten the basic foundation working. The next few sections outline six milestones for the Wordle project that walk you through different stages of the implementation. _You should get each one working before moving on to the next one._

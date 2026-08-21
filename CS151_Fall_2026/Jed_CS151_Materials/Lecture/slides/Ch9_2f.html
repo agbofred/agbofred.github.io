@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold">
+  <meta name="dcterms.date" content="2026-03-16">
+  <title>Constructing Types</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_catppuccin.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/catppuccin-mocha.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Constructing Types</h1>
+  <p class="author">Jed Rembold</p>
+  <p class="date">March 16, 2026</p>
+</section>
+
+<section id="last-monday-before-spring-break" class="slide level2">
+<h2>Last Monday before Spring Break!</h2>
+<div class="cols" style="font-size:.8em">
+<div class="col">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Fun group question: What piece of technology do you use every single
+day that you have zero idea how it works internally? How does this
+relate to the abstraction boundary?</li>
+</ul>
+<p><img data-src="../images/group_seating_locs_Ford102.png"
+style="width:40.0%" /></p>
+</div>
+<div class="col" style="flex-grow:.5">
+<p><img
+data-src="https://barcode.orcascan.com/?text=TBWv97&amp;data=https://tools.jedrembold.prof/daily?code=TBWv97"
+style="width:100.0%" /></p>
+</div>
+</div>
+<!-- Comments
+-->
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<div style="font-size: .8em">
+<ul>
+<li>Problem Set 5 due tonight!</li>
+<li>ImageShop is this week! Introducing later today</li>
+<li>Office hours from 2-2:40 today, or after 5:30pm</li>
+</ul>
+</div>
+</section>
+<section id="perusall-guidelines" class="slide level2">
+<h2>Perusall Guidelines</h2>
+<div style="font-size:.9em">
+<ul>
+<li>Perusall determines scores for an assignment based on a combination
+of factors:
+<ul>
+<li>What percentage of the video did you want?</li>
+<li>How much active engagement time did you spend with the video?</li>
+<li>How much did you interact with any of the community commentary?
+<ul>
+<li>Asking questions?</li>
+<li>Answering others questions?</li>
+<li>Upvoting questions or answers?</li>
+</ul></li>
+</ul></li>
+<li>These all sum to over 100% of the 3 possible points, so there is
+room for some flexibility</li>
+<li>Most common improvements for most students: don’t watch on increased
+speeds and engage more in the comments</li>
+</ul>
+</div>
+</section>
+<section id="daily-los" class="slide level2">
+<h2>Daily LO’s</h2>
+<ul>
+<li>Why would we create a custom data type?</li>
+<li>What is the abstraction boundary, and why do we care?</li>
+<li>How do we create a basic class?</li>
+<li>How can we add attributes to a class in a constructor method?</li>
+</ul>
+</section>
+<section>
+<section id="group-problems" class="title-slide slide level1">
+<h1>Group Problems</h1>
+
+</section>
+<section id="problem-1-tracing-cars" class="slide level2">
+<h2>Problem 1: Tracing Cars</h2>
+<div class="cols">
+<div class="col">
+<p>What is printed out on the final line of code to the right?</p>
+<div class="poll">
+<ol>
+<li><code class="no-highlight">Honda red 2006</code></li>
+<li><code class="no-highlight">Honda blue 2006</code></li>
+<li><code class="no-highlight">Toyota blue 2008</code></li>
+<li><code class="no-highlight">Honda red 2008</code></li>
+</ol>
+</div>
+</div>
+<div class="col" style="flex-grow:2">
+<pre ><code class="python" style="max-height:800px">class Car:
+    def __init__(self, color, year):
+        self.color = color
+        self.year = year
+        self.make = 'Toyota'
+
+A = Car('blue', 2008)
+A.make = 'Honda'
+B = Car('red', 2006)
+A.year = B.year
+print(A.make, A.color, A.year)</code></pre>
+</div>
+</div>
+</section>
+<section id="problem-2a-a-classy-song" class="slide level2">
+<h2>Problem 2a: A Classy Song</h2>
+<ul>
+<li>This is a coding problem. Work in pairs or trios on a single
+computer, and discuss your algorithm <strong>BEFORE YOU WRITE ANY
+CODE</strong>.</li>
+<li>Your task:
+<ul>
+<li>You want to define a class to hold information about a single
+song</li>
+<li>You desire to store several attributes:
+<code class="python">title</code>, <code class="python">artist</code>,
+and <code class="python">duration_sec</code></li>
+<li>Define the class and write the necessary constructor</li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-2b-genres" class="slide level2">
+<h2>Problem 2b: Genres</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>Suppose you realized you also want to track
+<code class="python">genres</code> in your class, and so add as an
+attribute</li>
+<li>What data-type will the value be that is assigned to the
+<code class="python">genres</code> attribute? You get to choose, but
+have a reason for why you chose what you did!</li>
+<li>Implement this new attribute into your class</li>
+</ul>
+</section>
+<section id="problem-2b-personal-taste" class="slide level2">
+<h2>Problem 2b: Personal Taste</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>For each member in your group, get at <em>least</em> two of their
+favorite songs</li>
+<li>Create a song object for each song (look up values online as needed)
+and add them to a list called <code class="python">playlist</code></li>
+</ul>
+</section>
+<section id="problem-2d-play-time" class="slide level2">
+<h2>Problem 2d: Play Time</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>Write a function that loops through each song in the playlist, and
+then prints the total playlist duration to the screen.</li>
+<li>Bonus: Also print out all the different genres covered within the
+playlist</li>
+</ul>
+</section></section>
+<section>
+<section id="imageshop" class="title-slide slide level1">
+<h1>ImageShop</h1>
+
+</section>
+<section id="starting" class="slide level2">
+<h2>Starting</h2>
+<div class="cols">
+<div class="col">
+<figure>
+<img data-src="../images/StartScreen.png"
+alt="Starting view of ImageShop" />
+<figcaption aria-hidden="true">Starting view of ImageShop</figcaption>
+</figure>
+</div>
+<div class="col">
+<ul>
+<li>ImageShop initially has only two buttons
+<ul>
+<li>“Load” will bring up a file selection box where you can choose what
+image to display
+<ul>
+<li>Internally, this is handled by a function that returns the chosen
+file path</li>
+</ul></li>
+<li>“Flip Vertical” is the example feature button that flips an image
+vertically</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="big-picture" class="slide level2">
+<h2>Big Picture</h2>
+<ul>
+<li>Each milestone in ImageShop boils down to:
+<ul>
+<li>Adding a button to the window to handle a new feature</li>
+<li>Writing a simple callback function that sets the new image to be
+equal to the output of a new function you’ll write</li>
+<li>Writing that function, which will generally return a
+<code class="python">GImage</code> type object</li>
+</ul></li>
+<li>You are always free to write whatever other helper functions you
+might like!</li>
+</ul>
+</section>
+<section id="so-many-files" class="slide level2">
+<h2>So Many Files!</h2>
+<ul>
+<li>ImageShop is the first project to start leveraging multi-file
+layouts:
+<ul>
+<li>Some functions will already be provided in
+<code class="python">GrayscaleImage.py</code> that you can import into
+your main program</li>
+<li>You are encouraged to write the necessary functions for Milestone 4
+in their own file and import them in accordingly</li>
+<li>I’ve <strong><em>seen</em></strong> you all scrolling madly around
+trying to find the code you want. This helps with that!</li>
+</ul></li>
+<li>Just make sure you save a file after editing!
+<ul>
+<li>See a circle in the tab for a file in VSCode? That file <strong>has
+not been saved!</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="gbuttons" class="slide level2">
+<h2>GButtons</h2>
+<ul>
+<li>To help facilitate working with buttons, ImageShop introduces a new
+type called <code class="python">GButton</code></li>
+<li>There is nothing magical about these! They are just pre-bundling PGL
+concepts that you already know like labels and mouse click events</li>
+<li>Each <code class="python">GButton</code> gets a label and a callback
+function name that determines what function is called when that button
+is clicked</li>
+<li>ImageShop will come with a pre-defined
+<code class="python">add_button</code> function which will take care of
+adding a new button to the correct part of the screen.
+<ul>
+<li>You’ll just need to provide it a label and function name to callback
+to</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-current-image" class="slide level2">
+<h2>The Current Image</h2>
+<ul>
+<li>ImageShop holds the <code class="python">GImage</code> currently
+displayed on the window in a variable (really an attribute) called
+<code class="python">gw.current_image</code></li>
+<li>The variable is specifically added as an attribute to
+<code class="python">gw</code> so that you will have access to it in any
+callback function you write</li>
+<li>This will generally be the input to your various image manipulation
+functions, since most of those functions work with whatever image was
+currently displayed on the screen</li>
+<li>Your callback function should run
+<code class="python">set_image</code> on the output of your manipulation
+function, which will take care of updating the value of
+<code class="python">gw.current_image</code> and displaying the new
+image in the window</li>
+</ul>
+</section>
+<section id="milestone-0" class="slide level2">
+<h2>Milestone 0</h2>
+<ul>
+<li>Milestone 0 has you adding a “Flip Horizontal” button
+<ul>
+<li>Add the button</li>
+<li>Add the action callback function</li>
+<li>Write a function to manipulate the pixels to flip the image
+horizontally</li>
+</ul></li>
+<li>Slightly more complicated than the example function, but not
+much</li>
+</ul>
+</section>
+<section id="milestone-1" class="slide level2">
+<h2>Milestone 1</h2>
+<div class="cols" style="align-items: center">
+<div class="col">
+<ul>
+<li>Here you will add buttons to rotate the image left or right (or CW
+or CCW if you prefer)</li>
+<li>Most of the difficulty comes in keeping track of of rows and columns
+<ul>
+<li>Need to create a new list of lists of the correct dimensions</li>
+<li>Need to copy over the pixels from the original to the needed
+location in the new list</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/d20b6bd27a91cff9d922cc11cecd56a3d67832eb.svg"
+style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="milestone-2" class="slide level2">
+<h2>Milestone 2</h2>
+<ul>
+<li>Here you’ll add a button to convert an image to grayscale</li>
+<li>If you understand the other library files that have been given to
+you as part of the project, this milestone should be the simplest!</li>
+<li><strong>Don’t copy. Import!</strong></li>
+</ul>
+</section>
+<section id="milestone-3" class="slide level2">
+<h2>Milestone 3</h2>
+<ul>
+<li>Here you get to enable a green screen effect!</li>
+<li>Unlike other buttons, when this one is clicked, you should use the
+file chooser library to prompt the user to select <em>another</em> image
+<ul>
+<li>This is the image that will be overlaid on whatever image is
+currently shown on the screen</li>
+</ul></li>
+<li>You will want to start with an “empty” pixel array with the same
+dimensions as the background</li>
+<li>This will closely mimic our in-class example from Friday, where
+depending on how “green” a pixel is, you will choose between different
+choices
+<ul>
+<li>If green enough, you will copy the pixel from the
+<em>background</em> image to your new pixel array</li>
+<li>If not green enough, you will copy the pixel from the
+<em>foreground</em> image to your new pixel array</li>
+</ul></li>
+</ul>
+</section>
+<section id="milestone-4" class="slide level2">
+<h2>Milestone 4</h2>
+<ul>
+<li>Here you’ll implement one algorithm for increasing dynamic contrast
+across an image!</li>
+<li>Doing so requires several steps and different functions. It can be
+convenient to place these in their own file and import them into
+<code class="python">ImageShop.py</code> as needed.
+<ul>
+<li>Compute all the pixel luminosities</li>
+<li>Construct a histogram of these luminosity counts
+<ul>
+<li>Your histogram should have 256 elements, one for each possible
+luminosity</li>
+</ul></li>
+<li>Construct a cumulative histogram using your histogram</li>
+<li>Use the cumulative histogram to adjust the luminosity of each pixel
+in the pixel array</li>
+</ul></li>
+<li>You don’t need to display the visual histograms! But they can be a
+great way to check that you are doing the other parts correctly.
+<ul>
+<li>Related to Problem 1 on PSet 5</li>
+</ul></li>
+</ul>
+</section>
+<section id="extensions" class="slide level2">
+<h2>Extensions</h2>
+<ul>
+<li>Give yourself time for extensions on this project!</li>
+<li>They are <strong>easy</strong>! Just come up with interesting or
+cool graphical effects and add a button for them!</li>
+<li>You’ll look at several this week in your section meetings
+<ul>
+<li>Adding these in your project is encouraged and will be regarded as
+“sub-extensions”, but come up with your own as well!</li>
+</ul></li>
+<li>Accidentally make a mistake but think it looks cool? Save it! Make
+it a feature!!</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/multimodal/multimodal.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../html_srcs/reveal.js/../js/python_language.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+          highlight: {
+            beforeHighlight: hljs => hljs.registerLanguage("python", function(hljs) {
+              console.log(mypythondef);
+              return mypythondef(hljs); } )
+          },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+          Multimodal,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(205,214,244,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(137,180,250,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(243,139,168,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,227,161,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(250,179,135,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(203,166,247,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(249,226,175,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(205,214,244,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(137,180,250,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(243,139,168,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,227,161,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(250,179,135,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(203,166,247,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(249,226,175,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+
+  <script>
+  // This is admitedly a very hacky way to achieve my pseudo code highlighting, but it works?
+    function remove_bars() {
+      var pseudoBlocks = document.getElementsByClassName("hljs-pseudo");
+      console.log(pseudoBlocks);
+      for ( var i = 0; i < pseudoBlocks.length; i++) {
+        pseudoBlocks[i].innerHTML = pseudoBlocks[i].innerHTML.replaceAll("\|\|\|", "");
+      }
+      }
+    // omg this is even more hacky now, but I need this to run after hljs has done its thing
+    setTimeout(remove_bars, 100);
+  </script>
+    </body>
+</html>

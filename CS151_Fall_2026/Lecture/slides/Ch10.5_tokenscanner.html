@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
+  <meta name="dcterms.date" content="2025-04-09">
+  <title>Token Machine</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Token Machine</h1>
+  <p class="author">Jed Rembold &amp; Fred Agbo</p>
+  <p class="date">April 9, 2025</p>
+</section>
+
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li>Personal project is 10% of the course grade component
+<ul>
+<li><strong><em>Due date is Monday 14 April at
+10:00pm</em></strong></li>
+</ul></li>
+<li>Next week Monday 14th, Professor Emeritus <a
+href="https://profiles.stanford.edu/eric-roberts">Eric S Roberts</a>
+will be our guest.
+<ul>
+<li>No one has indicated to volunteer to help organize some light food
+yet</li>
+</ul></li>
+<li>Polling: <a
+href="https://www.polleverywhere.com/agbofred203">here</a></li>
+</ul>
+</section>
+<section id="review-question" class="slide level2"
+data-notes="Solution: False">
+<h2 data-notes="Solution: False">Review Question</h2>
+<div class="cols">
+<div class="col" style="flex-grow:1.5;">
+<p>What would be the output of the last print statement in the code to
+the right? <br><br></p>
+<div class="poll">
+<ol>
+<li><code class="python">True</code></li>
+<li><code class="python">False</code></li>
+<li><code class="python">Error: Index out of range</code></li>
+<li><code class="python">Error: Python will not know how to compare the new Demo objects</code></li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python" style="max-height:900px; font-size: 0.5em; line-height:1.5em;">class Demo:
+    def __init__(self):
+        self.x = []
+
+    def add(self, v):
+        self.x.append(v)
+
+    def get_x(self):
+        return self.x
+
+A, B = Demo(), Demo()
+C = B.get_x()
+A.add(3)
+B.add(3)
+C.append(A)
+print(A.get_x() == B.get_x())</code></pre>
+</div>
+</div>
+</section>
+<section id="normal-data-types" class="slide level2">
+<h2>Normal Data Types</h2>
+<ul>
+<li>Defining new data types through classes is commonly used to
+represent objects to be manipulated by the program</li>
+<li>Examples:
+<ul>
+<li>A letter cell in Wordle: stores the graphical portrayal of the cell,
+as well as tools to interact with the cell (changing color or
+letter)</li>
+<li>A ball in Breakout: stores the ball position and graphics, as well
+as tools to handle movement and bouncing</li>
+</ul></li>
+<li>We define these classes to make it easier to write the later code
+governing the overall program</li>
+</ul>
+</section>
+<section id="abstract-data-types" class="slide level2">
+<h2>Abstract Data Types</h2>
+<ul>
+<li>An alternative use of classes though is to represent a little
+machine that allows us to more easily perform certain actions
+<ul>
+<li>The created objects themselves are not important to the program.
+Only the result of their computations.</li>
+</ul></li>
+<li>Types that are defined largely by their behavior this way are called
+<strong><em>abstract data types</em></strong> or
+<strong><em>ADT</em></strong>s</li>
+</ul>
+</section>
+<section id="why-adts" class="slide level2">
+<h2>Why ADTs?</h2>
+<ul>
+<li><strong><em>Simplicity</em></strong> – The internal representation
+is hidden from the client when used.</li>
+</ul>
+<blockquote>
+<p>“I don’t need to know how a car works to drive from my home to
+work.”</p>
+</blockquote>
+<ul>
+<li><strong><em>Flexibility</em></strong> – If the internal
+representation needs to be changed by the programmer, they can do so
+without breaking outside compatibility.</li>
+</ul>
+<blockquote>
+<p>“My mechanic could install new brakes, and I’d still drive the car in
+the same way.”</p>
+</blockquote>
+<ul>
+<li><strong><em>Security</em></strong> – Keeping the internal
+representation away from clients prevents clients from directly altering
+values that may cause the type to behave unexpectedly.</li>
+</ul>
+<blockquote>
+<p>“My engine is not exposed to the outside world, where anyone could
+muck with it.”</p>
+</blockquote>
+</section>
+<section id="creating-adts" class="slide level2">
+<h2>Creating ADTs</h2>
+<ul>
+<li>As ADTs accomplish or facilitate a task, we need to understand what
+task we are hoping to accomplish
+<ul>
+<li>The most useful ADTs are often not correlated to a specific program.
+They could work in any program.</li>
+</ul></li>
+<li>With task in mind, what would be useful to a person trying to
+accomplish that task?
+<ul>
+<li>These are commonly the methods that we need to define</li>
+</ul></li>
+<li>What internal values will we need to track to accomplish these tasks
+or interactions?
+<ul>
+<li>These will likely be the attributes that we need to define</li>
+</ul></li>
+</ul>
+</section>
+<section id="chop-chop" class="slide level2">
+<h2>Chop Chop</h2>
+<ul>
+<li>Hearken back to our Pig Latin translation program from earlier this
+semester
+<ul>
+<li><code class="python">word_to_pig_latin</code> took a single word and
+translated into Pig Latin</li>
+<li>To translate an entire sentence, we would need code to break the
+sentence up into individual words, which we could then pass into
+word_to_pig_latin</li>
+</ul></li>
+<li>The latter is an example of something that comes up often in
+computer science: breaking a larger thing into particular smaller chunks
+<ul>
+<li>These “chunks” can really be anything, so the more general term
+computer scientists use is a <strong><em>token</em></strong></li>
+<li>Breaking up a larger thing into smaller tokens would be a useful
+task to accomplish!</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-token-scanner" class="slide level2">
+<h2>A Token Scanner</h2>
+<ul>
+<li>A class that plucked out individual tokens might be called a token
+scanner or token extractor</li>
+<li>What would a client want from a token scanner?
+<ul>
+<li>A way to pass in the necessary input</li>
+<li>A way to retrieve the next individual token</li>
+<li>A way to know when there are no more tokens</li>
+<li>Maybe a way to tailor or fine-tune what tokens are desired</li>
+</ul></li>
+<li>These requirements help inform what methods should be incorporated
+into a token scanner class!
+<ul>
+<li>Still need to determine what internal attributes might be
+needed</li>
+</ul></li>
+</ul>
+</section>
+<section id="token-scanner-methods" class="slide level2">
+<h2>Token Scanner Methods</h2>
+<ul>
+<li>Exports 4 main methods:
+<ol type="1">
+<li><code class="python">scanner.set_input(str)</code>
+<ul>
+<li>Sets the input of the token scanner to the specified string or input
+stream</li>
+</ul></li>
+<li><code class="python">scanner.next_token()</code>
+<ul>
+<li>Returns the next token from the scanner text, or
+<code class="python">""</code> at the end</li>
+</ul></li>
+<li><code class="python">scanner.has_more_tokens()</code>
+<ul>
+<li>Returns <code class="python">True</code> if more tokens exist,
+<code class="python">False</code> otherwise</li>
+</ul></li>
+<li><code class="python">scanner.ignore_whitespace()</code>
+<ul>
+<li>Customization option which tells the scanner to ignore whitespace
+characters</li>
+</ul></li>
+</ol></li>
+</ul>
+</section>
+<section id="token-scanner-attributes" class="slide level2">
+<h2>Token Scanner Attributes</h2>
+<ul>
+<li>What will we need to track to implement these methods?
+<ul>
+<li>What the main text is</li>
+<li>Where we are currently at within the text</li>
+<li>A boolean flag to indicate if we should be ignoring whitespace</li>
+</ul></li>
+<li>These will generally be defined within our constructor function (or
+in a function called from the constructor)</li>
+</ul>
+</section>
+<section id="walkthrough-token-scanner-ch-10.5" class="slide level2">
+<h2>Walkthrough Token Scanner: Ch 10.5</h2>
+<pre ><code class="python" data-line-numbers="1|48,49,50,51,52,53|57,58,59,60,61,62,63|65-80|82-88|90-94|98-103" style="min-height:900px; font-size: 30px"># A token scanner is an abstract data type that divides a string into
+# individual tokens, which are strings of consecutive characters that
+# form logical units.  This simplified version recognizes two token types:
+#
+#   1. A string of consecutive letters and digits
+#   2. A single character string
+#
+# To use this class, you must first create a TokenScanner instance by
+# calling its constructor:
+#
+#     scanner = TokenScanner()
+#
+# The next step is to call the set_input method to specify the string
+# from which tokens are read, as follows:
+#
+#     scanner.set_input(s)
+#
+# Once you have initialized the scanner, you can retrieve the next token
+# by calling
+#
+#    token = scanner.next_token()
+#
+# To determine whether any tokens remain to be read, you can either
+# call the predicate method scanner.has_more_tokens() or check to see
+# whether next_token returns the empty string.
+#
+# The following code fragment serves as a pattern for processing each
+# token in the string stored in the variable source:
+#
+#     scanner = TokenScanner(source)
+#     while scanner.has_more_tokens():
+#         token = scanner.next_token()
+#         . . . code to process the token . . .
+#
+# By default, the TokenScanner class treats whitespace characters
+# as operators and returns them as single-character tokens.  You
+# can set the token scanner to ignore whitespace characters by
+# making the following call:
+#
+#     scanner.ignore_whitespace()
+ 
+class TokenScanner:
+ 
+    """This class implements a simple token scanner."""
+ 
+# Constructor
+ 
+    def __init__(self, source=""):
+        """
+        Creates a new TokenScanner object that scans the specified string.
+        """
+        self.set_input(source)
+        self._ignore_whitespace_flag = False
+ 
+# Public methods
+ 
+    def set_input(self, source):
+        """
+        Resets the input so that it comes from source.
+        """
+        self._source = source
+        self._nch = len(source)
+        self._cp = 0
+ 
+    def next_token(self):
+        """
+        Returns the next token from this scanner.  If called when no
+        tokens are available, next_token returns the empty string.
+        """
+        if self._ignore_whitespace_flag:
+            self._skip_whitespace()
+        if self._cp == self._nch:
+            return ""
+        token = self._source[self._cp]
+        self._cp += 1
+        if token.isalnum():
+            while self._cp < self._nch and self._source[self._cp].isalnum():
+                token += self._source[self._cp]
+                self._cp += 1
+        return token
+ 
+    def has_more_tokens(self):
+        """
+        Returns True if there are more tokens for this scanner to read.
+        """
+        if self._ignore_whitespace_flag:
+            self._skip_whitespace()
+        return self._cp < self._nch
+ 
+    def ignore_whitespace(self):
+        """
+        Tells the scanner to ignore whitespace characters.
+        """
+        self._ignore_whitespace_flag = True
+ 
+# Private methods
+ 
+    def _skip_whitespace(self):
+        """
+        Skips over any whitespace characters before the next token.
+        """
+        while self._cp < self._nch and self._source[self._cp].isspace():
+            self._cp += 1
+</code></pre>
+<!-- ##  -->
+</section>
+<section id="using-tokenscanner" class="slide level2">
+<h2>Using <code class="python">TokenScanner</code></h2>
+<ul>
+<li><strong>Need to initialize the token scanner object</strong>
+<ul>
+<li>You need to create the machine before you can use it</li>
+</ul></li>
+<li>Feed the machine the text you want to grab tokens from</li>
+<li>Generally, keep looping as long as there are still tokens
+<ul>
+<li>Each iteration, get the latest token and then do something with
+it</li>
+</ul></li>
+</ul>
+</section>
+<section id="using-tokenscanner-in-piglatin" class="slide level2">
+<h2>Using <code class="python">TokenScanner</code> in
+<code class="python">PigLatin</code></h2>
+<pre ><code class="python" style="min-height:900px; font-size: 40px">
+from tokenscanner import TokenScanner
+
+def to_pig_latin(text):
+    translation = ""
+    scanner = TokenScanner()
+    scanner.set_input(text)
+    while scanner.has_more_tokens():
+        token = scanner.next_token()
+        if token.isalpha():
+            token = word_to_pig_latin(token)
+        translation += token
+    return translation
+
+</code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1200,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>

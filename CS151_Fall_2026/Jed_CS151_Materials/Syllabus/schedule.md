@@ -1,0 +1,408 @@
++++
+title = "Semester's Schedule"
+date = 2023-08-27
++++
+<br>
+<center>
+<table id='schedule'>
+<tr>
+<th>Week</th>
+<th>Date</th>
+<th>Chapter</th>
+<th>Description</th>
+<th>Due</th>
+</tr>
+<tbody>
+<tr>
+<td rowspan='3'>1</td>
+<td>Aug 28</td>
+<td></td>
+<td>Karel the Robot</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Aug 30</td>
+<td></td>
+<td>Karel the Robot</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Sep 01</td>
+<td></td>
+<td>Karel the Robot</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>2</td>
+<td>Sep 04</td>
+<td></td>
+<td bgcolor=#005146>Labor Day</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Sep 06</td>
+<td></td>
+<td>Karel the Robot</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Sep 08</td>
+<td>Ch 1</td>
+<td>Introducing Python</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>3</td>
+<td>Sep 11</td>
+<td>Ch 1</td>
+<td>Introducing Python</td>
+<td>Problem Set 1</td>
+</tr>
+
+<tr>
+
+<td>Sep 13</td>
+<td>Ch 2</td>
+<td>Control Statements</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Sep 15</td>
+<td>Ch 3</td>
+<td>Algorithms</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>4</td>
+<td>Sep 18</td>
+<td>Ch 7</td>
+<td>Strings</td>
+<td>Problem Set 2</td>
+</tr>
+
+<tr>
+
+<td>Sep 20</td>
+<td>Ch 7</td>
+<td>Strings</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Sep 22</td>
+<td>Ch 7</td>
+<td>Strings</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>5</td>
+<td>Sep 25</td>
+<td>Ch 4</td>
+<td>Simple Graphics</td>
+<td>Problem Set 3</td>
+</tr>
+
+<tr>
+
+<td>Sep 27</td>
+<td>Ch 4</td>
+<td>Simple Graphics</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Sep 29</td>
+<td>Ch 5</td>
+<td>Functions</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>6</td>
+<td>Oct 02</td>
+<td>Ch 6</td>
+<td>Writing Interactive Programs</td>
+<td>Project 1: Wordle</td>
+</tr>
+
+<tr>
+
+<td>Oct 04</td>
+<td>Ch 6</td>
+<td>Writing Interactive Programs</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Oct 06</td>
+<td></td>
+<td bgcolor=#A20C00>Midterm 1 (Ch 1 - 4, 7)</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>7</td>
+<td>Oct 09</td>
+<td>Ch 6</td>
+<td>Writing Interactive Programs</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Oct 11</td>
+<td>Ch 6</td>
+<td>Writing Interactive Programs</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Oct 13</td>
+<td></td>
+<td bgcolor=#005146>Mid-Semester Day</td>
+<td>Graphics Contest</td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>8</td>
+<td>Oct 16</td>
+<td>Ch 8</td>
+<td>Lists</td>
+<td>Problem Set 4</td>
+</tr>
+
+<tr>
+
+<td>Oct 18</td>
+<td>Ch 8</td>
+<td>Lists</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Oct 20</td>
+<td>Ch 8</td>
+<td>Lists</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>9</td>
+<td>Oct 23</td>
+<td>Ch 8</td>
+<td>Lists</td>
+<td>Project 2: Breakout</td>
+</tr>
+
+<tr>
+
+<td>Oct 25</td>
+<td></td>
+<td>Debugging</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Oct 27</td>
+<td></td>
+<td>Imageshop Overview</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>10</td>
+<td>Oct 30</td>
+<td>Ch 10</td>
+<td>Classes and Objects</td>
+<td>Problem Set 5</td>
+</tr>
+
+<tr>
+
+<td>Nov 01</td>
+<td>Ch 10</td>
+<td>Classes and Objects</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Nov 03</td>
+<td>Ch 10</td>
+<td>Classes and Objects</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>11</td>
+<td>Nov 06</td>
+<td>Ch 11</td>
+<td>Dictionaries and Sets</td>
+<td>Project 3: ImageShop</td>
+</tr>
+
+<tr>
+
+<td>Nov 08</td>
+<td></td>
+<td>Enigma Overview</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Nov 10</td>
+<td></td>
+<td bgcolor=#A20C00>Midterm 2 (Ch 5, 6, 8)</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>12</td>
+<td>Nov 13</td>
+<td>Ch 11</td>
+<td>Dictionaries and Sets</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Nov 15</td>
+<td>Ch 12</td>
+<td>Data Structures</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Nov 17</td>
+<td>Ch 12</td>
+<td>Data Structures</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>13</td>
+<td>Nov 20</td>
+<td>Ch 9</td>
+<td>Algorithmic Analysis</td>
+<td>Project 4: Enigma</td>
+</tr>
+
+<tr>
+
+<td>Nov 22</td>
+<td></td>
+<td bgcolor=#005146>Thanksgiving Break</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Nov 24</td>
+<td></td>
+<td bgcolor=#005146>Thanksgiving Break</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='3'>14</td>
+<td>Nov 27</td>
+<td></td>
+<td>Adventure Overview</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Nov 29</td>
+<td>Ch 9</td>
+<td>Algorithmic Analysis</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Dec 01</td>
+<td>Ch 9</td>
+<td>Algorithmic Analysis</td>
+<td></td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='2'>15</td>
+<td>Dec 04</td>
+<td></td>
+<td>Fun Libraries</td>
+<td></td>
+</tr>
+
+<tr>
+
+<td>Dec 06</td>
+<td></td>
+<td>Fun Algorithms</td>
+<td>Project 5: Adventure, Game Contest</td>
+</tr>
+
+</tbody>
+<tbody>
+<tr>
+<td rowspan='1'>16</td>
+<td>Dec 13</td>
+<td></td>
+<td bgcolor=#A20C00>Final</td>
+<td></td>
+</tr>
+
+</tbody>
+</table>
+</center>

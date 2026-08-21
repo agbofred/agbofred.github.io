@@ -1,0 +1,137 @@
+\documentclass[letterpaper,12pt]{exam}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,anysize,graphicx,siunitx}
+\usepackage[colorlinks]{hyperref}
+\usepackage{python-commands}
+\marginsize{1in}{1in}{1in}{0.5in}
+
+\sisetup{per-mode=symbol}
+
+\newcommand{\class}{CS 151}
+\newcommand{\classname}{Intro to Python}
+\newcommand{\due}{February 10, 2023}
+\newcommand{\hwnumber}{3}
+
+% Setting up headers and footers
+\pagestyle{headandfoot}
+\firstpageheader{PS\hwnumber}{\classname}{\class}
+\firstpageheadrule
+\firstpagefootrule
+\firstpagefooter{Due \due}{}{\thepage}
+\runningheadrule
+\runningheader{}{}{\class}
+\runningfooter{Due \due}{}{\thepage}
+\runningfootrule
+
+%\printanswers
+
+\begin{document}
+All assignment work will be done in the included template files on Github this week. Please do not forget to fill out the metadata at the top of each template! At \emph{least} the field of if you worked with anyone!
+	\begin{center}
+		Get Assignment link: \url{https://classroom.github.com/a/CWwP6zW9}
+	\end{center}
+\begin{questions}
+	\begin{question}
+		\emph{(Chapter 2, Exercise 8)}
+
+		Here your goal is to write a function named \pyi{draw_console_pyramid} which takes a single argument (function input) of the pyramid height. Your function should then print to the screen a pyramid (constructed of \pyi{*} characters) of the specified height in which the width of each row increases by two as you move downward in the console (toward the base of the pyramid). Each of the rows should be centered with respect to the others, and the bottom line should begin at the left margin. Calling \pyi{draw_console_pyramid(8)} should thus produce the following:
+
+\begin{termout}{Prob1.py}
+	   *
+	  ***
+	 *****
+	*******
+   *********
+  ***********
+ *************
+***************
+\end{termout}
+
+		Note how on the bottom row the pyramid starts immediately, with no space between it and the left margin, and that each row of the pyramid is centered on the others, increasing by 2 each time.
+
+		I've already set up the template to call this function to draw pyramids of height 8 for your testing purposes, but you should absolutely test it with other heights as well to ensure it is working as planned. \emph{Hint: In order to keep things centered, you are going to need to add an amount of space characters to the front of most lines. Think about how you could assemble these strings, and how you'll know how many characters to add. Writing some helper functions can be useful!} 
+
+
+	\end{question}
+
+	\newpage
+	\begin{question}
+		\emph{(From Chapter 3, Exercise 6)}
+
+		Your task here is to write a Python function called \pyi{largest_two} that reads in integers from a \emph{user's input} up until they enter a blank line, at which point the program should print out both the largest and second-largest values from all the integers that the user had input. You can assume at least two integers will always be entered. For example, running the program could look like:
+
+		\begin{termout}{Prob1.py}
+This program finds the two largest integers.
+Enter a blank line to stop.
+  ? 223
+  ? 251
+  ? 317
+  ? 636
+  ? 766
+  ? 607
+  ? 607
+  ? 
+The largest value is 766.
+The second-largest value is 636.
+		\end{termout}
+
+		The values of this sample run are the number of pages in the British hardcover editions of J.~K.~Rowling's \emph{Harry Potter} series. The output tells us that the longest book is \emph{Harry Potter and the Order of the Phoenix} at 766 pages, and the second-longest book is \emph{Harry Potter and the Goblet of Fire} at 636 pages.
+
+		You should write your program so that it exactly duplicates the format above, with instructions, prompt, and final output looking the same. You can (and should!) of course enter in whatever numbers you like when testing it (including negative numbers)!
+
+		\emph{Hint: While you could keep track of all the numbers entered by the user, you only ever really need to keep track of two: the largest and second largest\ldots}
+
+	\end{question}
+
+	\newpage
+
+	\begin{question}
+		\begin{parts}
+			\part
+			As you will soon discover, implementing the Wordle project requires you to take account of the possibility that a word might contain more than one instance of the same letter. In preparation of that, your task here is to write a predicate function called \pyi{contains_repeated_letters(word)}, that returns \pyi{True} if any of the characters in the word appear more than once, not necessarily consecutively. Thus,
+			\begin{pythoncode}
+				contains_repeated_letters("single")
+			\end{pythoncode}
+			should return \pyi{False}, as no letter ever shows up twice. Conversely,
+			\begin{pythoncode}
+				contains_repeated_letters("repeating")
+			\end{pythoncode}
+			should return \pyi{True}, as the letter \pyi{e} shows up twice. Test that this function is working as intended before moving on to the next part!
+
+			\part
+			Now use \pyi{contains_repeated_letters} together with the \pyi{english.py} library to write a function called \pyi{longest_no_repeats} that finds and returns the longest word in the English dictionary that contains no repeated letters.
+		\end{parts}
+	\end{question}
+
+
+
+	%\begin{question}
+	%While printing content or inputting content from the terminal is nice, often times you want to have more control over graphic elements of your program. To that end, we are using the \pyi{pgl} library in class this semester. To start things off in a very simple manner, and to get you some more practice with the library, this week you will just need to draw a pretty picture of whatever you might like. A few qualifications though to get full points:
+	%\begin{itemize}
+		%\item It must be a coherent picture. No purely abstract art comprised of random shapes.
+		%\item You must use multiple colors
+		%\item You must use multiple types of \pyi{GObject}s (ovals, rectangles, lines, etc).
+		%\item You must define at least one function which groups together some code relating to a particular object (or objects) in your image (for instance, a function to draw a tree at some location, or a cloud, etc). The function must take some form of input in the form of arguments. It can not, however, just be a helper functions we've provided, such as \pyi{draw_filled_rect}, though you are free to use those as well.
+		%\item You must use comments or docstrings to label what different functions or parts of your code are responsible for drawing.
+		%\item You must use a loop to draw some repeating portion of your image.
+		%\item You must title your masterpiece at the top or bottom using a \pyi{GLabel} centered horizontally within the window.
+	%\end{itemize}
+	%If you need a list of known colors in \pyi{pgl} I've taken the time to give you a visual chart on the last page of this document! Or you can use something like a \href{https://www.webfx.com/web-design/color-picker/}{color picker} to get the hex value for a color (starts with a \# symbol) and provide that string (including the \#) directly to the \pyi{set_color} method.
+
+	%As a bit of an example, below is my creation:
+	%\begin{center}
+		%\includegraphics[width=0.45\textwidth]{Sailboat.png}
+	%\end{center}
+%\end{question}
+
+
+\end{questions}
+
+%\newpage
+%\begin{figure}[htpb]
+	%\centering
+		%\includegraphics[width=1\textwidth]{pgl_colors.png}
+		%\caption{All available named colors in \pyi{pgl.py}}
+%\end{figure}
+
+\end{document}

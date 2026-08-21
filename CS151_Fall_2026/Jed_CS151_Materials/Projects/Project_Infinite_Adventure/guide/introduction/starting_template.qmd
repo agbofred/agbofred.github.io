@@ -1,0 +1,32 @@
+---
+title: The Starting Template
+---
+
+There are multiple folders and files evident when you first look at the starting materials. Here we will try to break down what each is responsible for and which you will need to interact with.
+
+## The `data` folder
+This is the folder that holds the JSON files that contain the initial data for each infinite story. You'll be dealing largely with `starter.json` and `adventure.json` for most of the assignment, and will only explore `engineer_story.json` in the last milestone. These files will need no editing from you unless you decide to write your own initial story as part of an extension. The format of the individual JSON files will be explained later in this guide ([here](./json_format.qmd)).
+
+## The `img` folder
+This folder will hold the pre-populated images that correspond to the initially written scenes. You won't need to utilize these images until Milestone 5, and will only add to them if you decide to do so an an extension.
+
+## The `notopenai` folder
+This folder holds the `NotOpenAI` class that you are using to make API connections to ChatGPT. This class is constructed to be identical to the _actual_ OpenAI API, but instead routes your request through a separate server so that we get billed instead of you. This class gets implemented in Milestone 4, and you should not need to make any edits to the contents of this folder at any point.
+
+## `example_request.py`
+This file is here to serve as an example of how to go about creating a valid prompt to ChatGPT to send over the API. You shouldn't need to edit it unless you want to try running it, in which case you'll need to fill in your NotOpenAI key that has been provided to you.
+
+## `example_images.py`
+This file is here to serve as an example of how to go about using ChatGPT to generate images, should you desire. Note that to do this you will need to create your **own** OpenAI key by creating an account and requesting a key. This will also require you to preload at least a few dollars onto the account. Dalle-3 image generation runs about 4 cents per image, so you could generate a lot of images for the price of a coffee if you wanted. This is all 100% optional though and just exists for potential extensions.
+
+## `pgl.py`
+Our classic graphics library. It adds some visual spice to the storytelling if there are pictures (ask any child) and so we'll be using PGL to visualize the static images from each scene (where they exist).
+
+## `infinite_ethics.txt`
+This file is part of Milestone 6, and serves as a template to provide some reflection on potential ethical concerns that might arise when using generative AI in your programs. It is explained in Milestone 6, and should be filled out and uploaded as part of your submission.
+
+## `infinite_adventure.py`
+This is the big one! The one where almost all your code will be added! It is pretty barebones initially, but the milestones will sequentially having you build it up. It probably goes without saying, but this file should be uploaded as the main part of your submission.
+
+## `warmup.py`
+We've seen it before (Milestone 0 in Wordle), but sometimes it helps to have a milestone as a sort of "stepping stone" to ensure you understand what is going on before trying to implement something more complicated. Milestone 0 here will be dealing with reading in a file and finding all the "dead-ends", and instead of writing it in `infinite_adverture.py` and then commenting it out, you'll just complete it in this file. This file should be uploaded as part of your submission.

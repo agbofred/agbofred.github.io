@@ -1,0 +1,22 @@
+---
+title: "Milestone 2: Creating a bouncy ball"
+---
+From one perspective, creating the ball is easy, as it is just a filled `GOval`. The interesting part lies in getting it to move and bounce appropriately. To start, create a ball and put it in the center of the window, keeping in mind that the coordinates of the `GOval` do not specify the location of the center of the ball but rather the upper left corner. The math is not any more difficult, but decidedly less intuitive.
+
+The program needs to keep track of the velocity of the ball, which consists of two separate components--`vx` and `vy` are the names used in this handout--which must be added as attributes to the `GWindow` object created inside the main program. The values of the `vx` and `vy` variables represent the change in the position that occurs on each time step (or the \emph{velocity} in physics parlance). Initially, the ball is heading downward, and you might try a starting value of 3.0 for `vy`, which is included in the constants as `INITIAL_Y_VELOCITY`. The game would be very boring if every ball took the same course, so you should choose the `vx` component randomly using the following code:
+```python
+gw.vx = random.uniform(MIN_X_VELOCITY, MAX_X_VELOCITY)
+if random.uniform(0,1) < 0.5:
+    gw.vx = -gw.vx
+```
+
+This code sets `vx` to be a random real number in the range 1.0 to 3.0 (given the definitions constants) and then makes it negative half the time. This strategy gives better results than just setting it to `random.uniform(-MAX_X_VELOCITY, MAX_X_VELOCITY)`, which might generate a ball going more or less straight down. We can't be making life too easy for the player!
+
+You then need to get the ball moving by creating a timer that triggers every `TIME_STEP` milliseconds and updates the position of the ball each time by moving it `vx` pixels in the $x$ direction and `vy` pixels in the $y$ direction. The model to use for this part of the problem is undoubtably the bouncing ball problem that you looked at in your small section. It isn't sporting to have the ball start moving the instant that the game starts, so, to give the player a chance to get ready, what you want to happen is that the ball starts moving only once the user has clicked the mouse.
+
+There are several strategies you can use to accomplish the goal of waiting for a click before starting the game. One possibility is to start the timer inside the listener for the "click" event. That strategy, however, is difficult to get right. A problem that often shows up is that clicking the mouse again while the ball is moving doubles the speed of the ball, because then there are two timers running simultaneously, each of which advances the ball. A better strategy is to start one timer running at the beginning, but have the `step` function update the position of the ball only if the ball is moving. You can keep track of whether the ball is moving in a Boolean variable that is set to `True` when a click occurs and is set to `False` initially or if the ball falls through the bottom of the window.
+
+Once you've gotten the ball moving, your next challenge is to get it to bounce around the world, ignoring, at least for the moment, the paddle and bricks entirely. To do so, you need to check to see if the coordinates of the ball have moved outside the window. Thus, to see if the ball has bounced off the right wall, you need to see whether the coordinate of the right edge of the ball has become greater than the width of the window. The other three directions are treated similarly. For now, have the ball bounce off the bottom wall so that you can watch it make its path around the world. You can change that test later so that moving past the bottom wall signifies the end of a turn.
+
+Computing what happens during a bounce is extremely simple. If a ball bounces off the top or bottom wall, all you need to do is reverse the sign of `vy`. Similarly, bouncing off the side walls reverses the sign of `vx`.
+

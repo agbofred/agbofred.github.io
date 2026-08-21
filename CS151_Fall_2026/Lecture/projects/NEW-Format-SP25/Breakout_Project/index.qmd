@@ -1,0 +1,27 @@
+---
+title: "Project 2: Breakout"
+---
+
+Your job in this programming project is to write the classic arcade game of Breakout, which was invented by Steve Wozniak before he founded Apple with Steve Jobs. It is a large project, but well within your capabilities, as long as you break the problem up into manageable pieces. The decomposition is discussed in the milestones, and there are several suggestions for staying on top of things in the "Strategy and Tactics" section below.
+
+
+As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
+
+```{=html}
+<a href='https://classroom.github.com/a/etU9rUx1' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+```
+<br>
+
+To help you navigate the project, I've included a table of contents in the sidebar, but I would highly recommend you read through everything as you work your way through the project.
+
+
+
+
+# Strategies and Hints
+Here are some survival hints for this project:
+
+- _Start as soon as possible!_ This assignment is due in just over a week, which will be here before you know it. If you wait until the day before this project is due, you will have a very hard time getting it all together.
+- _Implement the program in stages, as described in this handout._ Don't try to get everything working all at once. Implement the various pieces of the project one at a time and **test them** to make sure that each one is working before you move on to the next phase.
+- _Set up a milestone schedule._ In the handout, I've suggested that you get the brick display up and running by the end of Tuesday and the paddle moving by Wednesday. If you do, you'll have more time for the more interesting parts and for implementing potential extensions.
+- _Don't try to extend the program until you get the basic functionality working!_ The following section describes several ways in which you could extend the implementation. Several of those are lots of fun. Don't start them, however, until the basic project is working. If you try to add the extensions too early, you'll find that the debugging process gets really difficult.
+

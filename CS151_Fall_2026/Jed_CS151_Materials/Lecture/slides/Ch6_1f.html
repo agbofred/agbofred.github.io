@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold">
+  <meta name="dcterms.date" content="2026-02-04">
+  <title>Binary Strings</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_catppuccin.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/catppuccin-mocha.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Binary Strings</h1>
+  <p class="author">Jed Rembold</p>
+  <p class="date">February 4, 2026</p>
+</section>
+
+<section id="welcome-back" class="slide level2">
+<h2>Welcome back!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Class code is <code class="python">TD9RC0</code></li>
+<li>Introduce yourselves! Fun question: What is your favorite number in
+binary?</li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_seating_locs_Ford102.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=TD9RC0"
+style="width:60.0%" /></p>
+</div>
+</div>
+<!-- Comments
+I think these worked pretty well and I had the right amount of time for the live-coding at the end. The floating problem is maybe the one that is most confusing to students.
+-->
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<ul>
+<li>Problem Set 3 is live!</li>
+<li>Techbytes tomorrow!
+<ul>
+<li>Where Data Science Meets Medicine</li>
+</ul></li>
+<li>Sections today and tomorrow</li>
+<li>If you didn’t get through all of today’s videos yet, reminder that
+you have until midnight tonight</li>
+</ul>
+</section>
+<section>
+<section id="group-problems" class="title-slide slide level1">
+<h1>Group Problems</h1>
+
+</section>
+<section id="problem-1-base-ic-counting" class="slide level2">
+<h2>Problem 1: Base-ic Counting</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>How would you write out a representation of the number of circles to
+the right in:
+<ul>
+<li>Decimal (base-10)</li>
+<li>Binary (base-2)</li>
+<li>Octal (base-8)</li>
+<li>Hex (base-16)</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/6583ff48a47e435c5800e4c9b9be34b7ddb20046.svg"
+style="width:80.0%" /></p>
+</div>
+</div>
+</section>
+<section id="problem-2-getting-energized" class="slide level2">
+<h2>Problem 2: Getting Energized</h2>
+<ul>
+<li>The Java compiler has a fun quirk where every binary file it
+produces begins with <br><br></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/15155923567102d18c20a62935eb47b01097ebc8.svg"
+style="width:70.0%" /></p>
+<p><br></p>
+<ul>
+<li>What is this in octal? hexadecimal?</li>
+<li>There are hard ways to do this, and very easy ways! I recommend the
+easy ways :)</li>
+</ul>
+</section>
+<section id="floating-representations" class="slide level2">
+<h2>Floating Representations</h2>
+<ul>
+<li>Python represents floating point (fractional) numbers using two
+integers
+<ul>
+<li>One to represent the significant digits</li>
+<li>One to represent the exponent (where the decimal place is)</li>
+</ul></li>
+<li><span class="math inline">\(1\frac{1}{4}\)</span> Example
+<ul>
+<li>In decimal: <span class="math inline">\(\quad\displaystyle
+1\frac{1}{4} = \frac{1}{1} + \frac{2}{10} + \frac{5}{100} = 1.25 = (125,
+-2)\)</span></li>
+<li>In binary: <span class="math inline">\(\quad\displaystyle
+1\frac{1}{4} = \frac{1}{1} + \frac{0}{2} + \frac{1}{4} = 1.01 = (101,
+-10)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-3-floating-problems" class="slide level2">
+<h2>Problem 3: Floating Problems</h2>
+<ul>
+<li class="fragment">With this in mind, how could you convert the value
+<span class="math inline">\(\tfrac{7}{8}\)</span> to a binary floating
+point representation?</li>
+<li class="fragment"><span class="math display">\[\frac{7}{8} =
+\frac{0}{1} + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} = 0.111 = (111,
+-11)\]</span></li>
+<li class="fragment">Now how would we convert <span
+class="math inline">\(\frac{1}{10}\)</span> to binary??
+<ul>
+<li class="fragment">We run into a problem! An infinitely repeating
+sequence! <span class="math display">\[\frac{1}{10} = \frac{0}{1} +
+\frac{0}{2} + \frac{0}{4} + \frac{0}{8} + \frac{1}{16} + \frac{1}{32} +
+\frac{0}{64} + \frac{0}{128} + \frac{1}{256} +  \cdots =
+0.0001100110011\ldots\]</span></li>
+<li class="fragment">Have to stop the sequence somewhere and approximate
+it: <span class="math display">\[\frac{3}{32} =
+0.09375\quad\text{or}\quad\frac{25}{256} = 0.09765625\]</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="consequences" class="slide level2">
+<h2>Consequences</h2>
+<ul>
+<li>The best we can do within the range of normal integers <span
+class="math display">\[\frac{3602879701896397}{2^{55}} =
+0.10000000000000000555111512312578270\]</span></li>
+<li>When doing operations on these numbers, extra decimals will
+sometimes get rounded off, suddenly making the number look precise, but
+you might always have a tiny bit of this rounding error showing up in
+floating point values.</li>
+<li>So be <em>careful</em> using <code class="python">==</code> for
+floating numeric comparisons! Rounding might result in unexpected
+falsehoods
+<ul>
+<li><code class="python">0.1 + 0.1 + 0.1 != 0.3</code></li>
+<li>Far better to check if two numbers are within a small margin of one
+another, or greater or less than the other</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="live-coding" class="title-slide slide level1">
+<h1>Live-Coding</h1>
+
+</section>
+<section id="concatenating-ascii" class="slide level2">
+<h2>Concatenating ASCII</h2>
+<ul>
+<li>Suppose we wanted to print out the simple ASCII table as we saw it
+in the video</li>
+<li>Grid of 8 rows and 16 columns</li>
+<li>We can use <code class="python">chr</code> to get the
+characters</li>
+<li>Need to “build-up” a string to print for each row</li>
+</ul>
+</section>
+<section id="a-solution" class="slide level2">
+<h2>A Solution</h2>
+<pre ><code class="python" style="max-height: 800px; font-size:.8em;">row=''
+for i in range(32,127):
+    if len(row) == 16:
+        print(row)
+        row = ""
+    row = row + chr(i)
+print(row)</code></pre>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/multimodal/multimodal.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../html_srcs/reveal.js/../js/python_language.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+          highlight: {
+            beforeHighlight: hljs => hljs.registerLanguage("python", function(hljs) {
+              console.log(mypythondef);
+              return mypythondef(hljs); } )
+          },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+          Multimodal,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(205,214,244,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(137,180,250,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(243,139,168,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,227,161,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(250,179,135,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(203,166,247,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(249,226,175,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(205,214,244,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(137,180,250,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(243,139,168,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,227,161,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(250,179,135,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(203,166,247,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(249,226,175,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+
+  <script>
+  // This is admitedly a very hacky way to achieve my pseudo code highlighting, but it works?
+    function remove_bars() {
+      var pseudoBlocks = document.getElementsByClassName("hljs-pseudo");
+      console.log(pseudoBlocks);
+      for ( var i = 0; i < pseudoBlocks.length; i++) {
+        pseudoBlocks[i].innerHTML = pseudoBlocks[i].innerHTML.replaceAll("\|\|\|", "");
+      }
+      }
+    // omg this is even more hacky now, but I need this to run after hljs has done its thing
+    setTimeout(remove_bars, 100);
+  </script>
+    </body>
+</html>

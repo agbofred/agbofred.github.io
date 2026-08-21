@@ -1,0 +1,26 @@
+---
+title: "Milestone 0: Display a word"
+---
+
+:::{.callout-important}
+This milestone is purely to get you acquainted with some basic operations you'll need to complete the project! Once you have it working, you'll be able to remove some parts that you won't need later. But taking the time to complete this now will aid you greatly as you enter Milestone 1.
+:::
+
+For your first milestone, your task is to choose a five-letter word and have that word appear in the five boxes across the first row of the window automatically. Clearly this is not exactly the way that the game of Wordle works, but this milestone exists to get you practice interfacing between your code and the `WordleGWindow`, which is saved as the variable `gw` in the starting template.
+
+To achieve this effect, you should begin by defining a variable within the `wordle` function to store your five-letter word. Remember that the convention in Python programming is that function definitions come first, followed by the code that uses those functions. As such, I recommend that you define your variable after the `gw.add_enter_listener(enter_action)` line. Remember to indent it so that it is part of the `wordle` function!
+
+To display the word to the screen, looking at the table of available `WordleGWindow` methods [here](../introduction/wordle_graphics.qmd#tbl-gwmethods), you might notice that there is no obvious way to display an entire word. As such, it is a great candidate for writing a helper function! Define a new function _inside_ the `wordle` function and after the `enter_action` function definition called `display_word(word)`. This function will be responsible for displaying the argument `word` to the first row of the Wordle window. How can you accomplish this? Well, looking back at the table of available `WordleGWindow` methods, what you do have available is the method `set_square_letter`, which allows you to put a single letter in a box identified by its row and column indices. So you'll need to think about how you could use that in your `display_word` function to populate the first row immediately upon launching the program.
+
+As with everything in Python, rows and columns are numbered beginning with 0, so that the top row of the window is row 0, and its column numbers range from 0 to 4. To avoid cluttering up your code with numbers that don't tell you anything about what they represent (where does the 4 come from in the previous sentence, for example?), it is best to import the constants `N_ROWS` and `N_COLS` from `WordleGraphics` and use those constants wherever your code needs to know how many rows or columns exist. Not only does `N_COLS - 1` provide more insight than the number 4, but this strategy also makes it far easier to implement a SuperWordle extension with longer words or a different number of guesses.
+
+Don't forget that you need to call this function on whatever variable you assigned your five-letter word to! So your lines after the `gw.add_enter_listener` might look something like:
+```python
+secret_word = "happy" #my chosen 5 letter word
+display_word(secret_word) # displaying it using my defined function
+```
+resulting in a display of:
+
+![The window immediately upon hitting play after displaying the secret word. Note that even though the word was all lowercase here, the letters displayed in the boxes are uppercase, which is handled automatically by `set_square_letter`.](ms0.png)
+
+Once you have this working you can comment out the `display_word` function call, as the game would be very easy if you showed the user the secret word before they started guessing! It highlights the fact, though, that often times it can be worth doing a little work that will later be unnecessary, if it helps you better understand the tools and problem-solving strategies at your disposal. In this case, the code that you will end up writing for part of Milestone 1 will look _very_ similar to what you wrote here.

@@ -1,0 +1,26 @@
+---
+title: The Story Data Format
+---
+
+Before getting into the coding, it is going to be imperative to understand how the story data is stored in the JSON files in the `data` folder. We can view the structure of the JSON interactively for `data/starter.json` below. Note that I have started with all of the nested data collapsed, so that you can open and explore it yourself.
+
+<andypf-json-viewer class='column-page'
+    show-toolbar="false"
+    show-copy="false"
+    show-data-types="false"
+    data="https://gist.githubusercontent.com/jrembold/c7d419edbbed0b4b7944b2ed8f33e3ec/raw/a0f94ff6271b138f020f2b2f1db478ba31597452/original_small.json"
+>
+</andypf-json-viewer>
+
+It can be a lot to absorb, I know! But don't be intimidated: the key is just to systematically understand it step by step.
+
+Story:
+: Every story is a dictionary with two keys: a key "plot" that is associated with a string description of the overall story line, and a key "scenes" that is associated with a dictionary containing all the data of the scenes in the story (see below). Here, if you expand the "scenes" key, we can see that there are initially only 4 scenes defined.
+
+Scenes:
+: A dictionary with all of the scene data. In the scenes dictionary, _scene keys_ are associated with all the data for a given scene (which is also stored in a dictionary). We can see that the scene key of the first scene in our above example is just "start", and corresponds to a dictionary of 3 items. Every single scene is defined by this dictionary of three items, which have keys of "text", for the scene description, "scene_summary", for a shortened description, and "choices", for a list of all the possible choices a player could take to move onwards from that scene. If you expand the "start" scene and then the "choices" key, you'll see that there are three possible choices the player could make in the initial scene.
+
+Choices:
+: The choices key is comprised of a list of possible choices, each of which is yet another dictionary. These individual dictionaries that comprise a single choice always have two keys: a "text" key which describes the choice, and a "scene_key" which is the name of the **next** scene that the player would travel to if they selected that choice. So, for example, if a player selected the first choice from the "start" scene, which is to "take the road up the hill", then they would next be taken to the "overlooking_valley" scene (which happens to be defined and be the third scene in `starter.json`.
+
+Take some time to play around with the above structure to ensure you understand it, or open one of the JSON files in VSCode, which will also give you collapsible arrows to the right to help control how much of the data is visible at any given time. The key (no pun intended!) is to not let the nested structure overwhelm you, and to just focus on the overall structure and whatever piece(s) of information you need at any given point.

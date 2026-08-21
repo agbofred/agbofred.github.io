@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold">
+  <meta name="dcterms.date" content="2026-01-21">
+  <title>Planning  Solutions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_catppuccin.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/catppuccin-mocha.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Planning <code class="python">for</code>
+Solutions</h1>
+  <p class="author">Jed Rembold</p>
+  <p class="date">January 21, 2026</p>
+</section>
+
+<section id="welcome-to-wednesday" class="slide level2">
+<h2>Welcome to Wednesday!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://classroomtools-production.up.railway.app/daily</a></li>
+<li>Class code is <code class="python">yDzKvf</code></li>
+<li>Introduce yourselves! Fun question: what is your favorite
+recipe?</li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_seating_locs_Ford102.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://classroomtools-production.up.railway.app/daily?code=yDzKvf"
+style="width:60.0%" /></p>
+</div>
+</div>
+<!-- Comments
+- Problem 1: This worked decently I think? Most students didn't test their implementation though.
+- Problem 2: Possible that this needed a bit of an on-ramp, but I certainly think students found it interesting
+- Live Code: I didn't leave myself enough time here, so had to finish about 50% of it after class. I think it is a good prob, but needs to be given more time.
+-->
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<ul>
+<li>Ensure you have the tech installed on your system!</li>
+<li>Sections today or tomorrow! Make sure to attend!
+<ul>
+<li>Should have gotten an email from me telling your when and where to
+meet</li>
+<li>Bring your laptops to your section</li>
+</ul></li>
+<li>Problem Set 1 is due next Monday night</li>
+</ul>
+</section>
+<section>
+<section id="group-problems" class="title-slide slide level1">
+<h1>Group Problems</h1>
+
+</section>
+<section id="problem-1-building-boxes" class="slide level2">
+<h2>Problem 1: Building Boxes</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Suppose Karel starts in the bottom left corner, facing East, in a 10
+by 10 world with an infinite amount of beepers in their bag</li>
+<li>Goal is to create a 6x6 grid of beepers in the center</li>
+<li>What needs to be repeated a known amount of times?</li>
+<li>Have a member of your group email me your solution. Just copy and
+paste into the email body.</li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/3667b808ea7ac54d4a49506edcfb5b95ecdbd6fe.svg"
+style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="fenceposts" class="slide level2">
+<h2>Fenceposts</h2>
+<ul>
+<li>Often times, when you need to take two actions in a loop, one might
+be off by one from the other
+<ul>
+<li>Called the <em>fencepost problem</em></li>
+<li>Need to place down 6 beepers in a row, but that only requires moving
+5 times</li>
+</ul></li>
+<li>You can always add a correction term before or at the end of your
+loop to account for the last action!</li>
+</ul>
+</section>
+<section id="problem-2-an-amazing-algorithm" class="slide level2">
+<h2>Problem 2: An Amazing Algorithm</h2>
+<div class="cols">
+<div class="col" style="font-size:.9em">
+<ul>
+<li>Consider a simple, loop-less, maze that we want to move through
+<ul>
+<li>Karel could start anywhere</li>
+<li>The end of the maze is a beeper</li>
+</ul></li>
+<li>A common algorithm to get through the maze is to “always follow or
+touch the wall to your right”
+<ul>
+<li>How could you phrase this in language Karel would understand?</li>
+</ul></li>
+<li>Implement this, and test it against the example mazes.</li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/291ded1ab68fb168550a686b953ebe39b3f19015.svg"
+style="width:100.0%" /></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="live-coding" class="title-slide slide level1">
+<h1>Live-Coding</h1>
+
+</section>
+<section id="spring-decor" class="slide level2">
+<h2>Spring Decor</h2>
+<ul>
+<li>Karel is gearing up for Spring by adding leaves back to the top of
+barren trees</li>
+<li>There are 3 trees in Karel’s yard they want to refoliage
+<ul>
+<li>Trees are one block wide and could be any height</li>
+<li>Refoliaging a tree means adding a 3x3 block of beepers on top</li>
+</ul></li>
+</ul>
+</section>
+<section id="visual-start" class="slide level2">
+<h2>Visual Start</h2>
+<p><img
+data-src="../images/svg_cache/c1b1565406514803bf03ad64c1334324f5a56e66.svg"
+style="width:100.0%" /></p>
+</section>
+<section id="visual-finish" class="slide level2">
+<h2>Visual Finish</h2>
+<p><img
+data-src="../images/svg_cache/af96386c9bb7d21c83849d58a8d5c39416c536bb.svg"
+style="width:100.0%" /></p>
+</section>
+<section id="a-solution" class="slide level2">
+<h2>A Solution</h2>
+<pre ><code class="python" style="max-height: 800px; font-size:.8em;">import karel
+
+def main():
+    """Refoliage 3 trees"""
+    for i in range(3):
+        find_next_tree()
+        refoliage_tree()
+
+
+def find_next_tree():
+    """Moves Karel to the base of a tree
+
+    Algorithm: move forward until tree in face
+    """
+    while front_is_clear():
+        move()
+
+def refoliage_tree():
+    """Add leavese back to the top of the tree
+    
+    Algorithm: climb tree, add leaves, descend tree
+    """
+    climb_tree()
+    add_leaves()
+    descend_tree()
+
+def climb_tree():
+    """Climbs one tree to the top
+
+    Algorithm: reorient to face upwards, climb until no tree to 
+    my right 
+    """
+    turn_left() # face upwards
+    while right_is_blocked():
+        move()
+
+def add_leaves():
+    """Adds leaves to the top of a tree
+    
+    Algorithm: move up to top of leaves, and then snake way 
+    across top and back to end up in bottom right
+    """
+    for i in range(2): #Already one above the top of the tree
+        move()
+    turn_right()
+    add_leaf_row() #top
+    turn_right() # Make first corner
+    move()
+    turn_right()
+    add_leaf_row() #middle
+    turn_left() # Second corner
+    move()
+    turn_left()
+    add_leaf_row() #bottom
+
+def add_leaf_row():
+    """Adds a row of 3 leaves
+    
+    Algorithm: Place one beeper first to avoid fencepost problem,
+    then loop twice
+    """
+    put_beeper() # Beepers across bottom
+    for i in range(2):
+        move()
+        put_beeper()
+
+def descend_tree():
+    """Positions and moves back down the tree to the ground
+    
+    Algorithm: orient downwards, move until group, and then 
+    orient to east
+    """
+    while not_facing_south():
+        turn_left()
+    while front_is_clear():
+        move()
+    turn_left()
+
+def turn_right():
+    """Turns Karel to the right"""
+    for i in range(3):
+        turn_left()</code></pre>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/multimodal/multimodal.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../html_srcs/reveal.js/../js/python_language.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+          highlight: {
+            beforeHighlight: hljs => hljs.registerLanguage("python", function(hljs) {
+              console.log(mypythondef);
+              return mypythondef(hljs); } )
+          },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+          Multimodal,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(205,214,244,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(137,180,250,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(243,139,168,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,227,161,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(250,179,135,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(203,166,247,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(249,226,175,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(205,214,244,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(137,180,250,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(243,139,168,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,227,161,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(250,179,135,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(203,166,247,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(249,226,175,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+
+  <script>
+  // This is admitedly a very hacky way to achieve my pseudo code highlighting, but it works?
+    function remove_bars() {
+      var pseudoBlocks = document.getElementsByClassName("hljs-pseudo");
+      console.log(pseudoBlocks);
+      for ( var i = 0; i < pseudoBlocks.length; i++) {
+        pseudoBlocks[i].innerHTML = pseudoBlocks[i].innerHTML.replaceAll("\|\|\|", "");
+      }
+      }
+    // omg this is even more hacky now, but I need this to run after hljs has done its thing
+    setTimeout(remove_bars, 100);
+  </script>
+    </body>
+</html>

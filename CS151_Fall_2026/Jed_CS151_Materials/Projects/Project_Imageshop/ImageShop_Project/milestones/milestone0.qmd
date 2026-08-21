@@ -1,0 +1,6 @@
+---
+title: "Milestone 0: The Flip Horizontal button"
+---
+
+To start you off with a relatively straightforward task, add a new **Flip Horizontal** button that flips the image from left to right. 
+To display the button on the screen, you simple need to copy the code that displays the **Flip Vertical** button, adding new functions `flip_horizontal_action`, which will be your button callback, and `flip_horizontal`, which actually implements the image transformation. The only function that requires any real change from the `flip_vertical` model is `flip_horizontal`, where you have to reverse each individual row in the pixel array instead of reversing the array as a whole. I suggest first adding the button (and making sure it appears on the screen), then the callback function and finally the transformation function itself to make sure you are understanding what each is doing along the way.

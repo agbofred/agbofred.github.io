@@ -1,0 +1,9 @@
+---
+title: "Milestone 5: Color the keys"
+---
+
+Your last milestone implements a very helpful feature from the _New York Times_ website wherein it updates the colors of the keys on the virtual keyboard, making it easy to see what letters you've already positioned, found, or determined not to be present. The `WordleGWindow` object exports the methods `set_key_color` and `get_key_color` to accomplish this task. These methods use the same string codes (and constant variables) as the corresponding methods for squares.
+
+In solving this milestone, it is important to remember that once you have set the color of a key, it won't regress to a worse color. If, for example, you've colored the `S` key green, it will never get set to yellow or gray, even though you may end up using those colors for other squares that contain as `S`. Key colors can only ever be upgraded, never "downgraded". An example of this is shown in the image below.
+
+![An example of key coloring for the secret word `SHOPS` in the middle of a game. Note that the "S" and "O" keys are still colored green on the keyboard, even though the most recent guess had the "S" in the incorrect location and didn't include an "O" at all. The keys always keep the best coloring from any guessed word.](ms5.png)

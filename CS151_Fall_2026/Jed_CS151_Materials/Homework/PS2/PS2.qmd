@@ -1,0 +1,191 @@
+---
+title: "Problem Set 2"
+subtitle: "Due: February 2, 2026"
+lightbox: true
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - ../psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+---
+
+
+This problem set has one problem relating to Karel and then two problems concerning more generic Python programming. You should already be good to start working on the Karel problem, and for the other problems you'll have most of the tools to solve after Wednesday. All problems have starting templates included in the repository. You can accept the assignment and get the starting materials by following the link below.
+
+```{=html}
+<a href='https://classroom.github.com/a/aLJSBsFo' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+## Problem 1: The Return of Karel
+Karel, tired of painting, is thinking more abstractly, and wants to lay out a checkerboard pattern of beepers inside an empty rectangular world. An example of a before and after for an 8x8 world is shown below:
+
+```{r, engine='tikz', echo=FALSE, fig.ext='png', engine.opts=list(extra.preamble="\\usepackage{python-commands}")}
+        \begin{tikzpicture}[scale=.8, transform shape]
+            \karelgrid{8}{8}
+            \karelmark[fill=white]{1}{1}{0}
+            \node at (4.5,-1) {Before};
+
+            \begin{scope}[xshift=10cm]
+            \karelgrid{8}{8}
+            \karelmark[fill=white]{1}{8}{90}
+            \node at (4.5,-1) {After};
+            \foreach \x in {1,3,5,7} {
+                \foreach \y in {1,3,5,7} {
+                    \karelbeeper[fill=gray!50]{\x}{\y}
+                }
+            }
+            \foreach \x in {2,4,6,8} {
+                \foreach \y in {2,4,6,8} {
+                    \karelbeeper[fill=gray!50]{\x}{\y}
+                }
+            }
+            \end{scope}
+        \end{tikzpicture}
+```
+This problem has a nice decomposition structure along with some interesting algorithmic issues. As you think about how you will solve the problem, you should make sure that your solution works with checkerboards that are different in size from the standard 8x8 checkerboard shown in the image above. Odd-sized checkerboards are trickier, and you should make sure that your program generates the following pattern in a 5x3 world:
+
+```{r, engine='tikz', engine.opts=list(extra.preamble="\\usepackage{python-commands}")}
+#| echo: false
+#| fig-ext: png
+#| out-width: 50%
+#| fig-align: center
+\begin{tikzpicture}[scale=1.5, transform shape]
+        \karelgrid{5}{3}
+        \foreach \x in {1,3,5}{
+            \foreach \y in {1,3}{
+                \karelbeeper[fill=gray!50]{\x}{\y}
+            }
+        }
+        \foreach \x in {2,4} \karelbeeper[fill=gray!50]{\x}{2};
+        \karelmark[fill=white]{5}{3}{90}
+\end{tikzpicture}
+```
+Another special case you need to consider is that of a world which is only one column wide or one row high. The repository includes several sample worlds for you to test your program against, including: `1x8.w`, `5x3.w` (shown above), `5x5.w`, and `8x1.w`. You can safely assume that Karel always starts in the bottom left corner and facing to the east with an infinite supply of beepers in its bag. In does not matter where Karel finishes (_but they should finish without erroring!_) or which specific spaces have beepers, except that the world should be completely checkerboarded. To get full points on this problem, your program should show clear evidence of how you decomposed the problem and successfully recreate a checkerboard on any empty rectangular world.
+
+
+## Problem 2: Divide and Conquer?
+
+I'm supplying you with a template file for this problem, but it is largely empty. You thus have lots of flexibility in how you want to approach this, but make sure it achieves the objectives.
+
+> Why is everything either at sixes or at sevens?
+>
+>   ---Gilbert and Sullivan, _H.M.S. Pinafore_, 1878
+
+You task in this problem is to write a function called `divisible_by_six_or_seven` which takes two arguments. The first argument should represent the lower bound of a series of numbers to check, whereas the second argument should represent the upper bound. So for instance, calling `divisible_by_six_or_seven(1,100)` should check the numbers from 1 to 100 (including 1 and 100). Your function should print a number to the screen from the provided range if and only if it is evenly divisible by six or seven, **but not both**! These numbers do not need to be in strictly ascending order. In addition to printing these numbers, your function should keep track of how many numbers are printed, and _return_ this value at the end of the function. So for instance, one example of running the program in the Python REPL might look like:
+```python-repl
+>>> count = divisible_by_six_or_seven(40, 60)
+49
+56
+48
+54
+60
+>>> print(count)
+5
+```
+
+## Problem 3: Boxy Algorithms
+Consider the situation in which you have two squares, one with a side length of $A$ and the other with a side length of $B$, positioned as shown below.
+```{r, engine='tikz', engine.opts=list(extra.preamble="\\usepackage{python-commands}")}
+#| out-width: 75%
+#| echo: false
+#| fig-ext: png
+#| fig-align: center
+    \begin{tikzpicture}[scale=1.5, transform shape]
+        \fill[black] (0,0) rectangle + (3,3);
+        \fill[black] (-.1,0) rectangle +(-2,2);
+
+        \draw[|-|] (0,-.2) -- +(3,0) node[midway,below] {B};
+        \draw[|-|] (-.10,-.2) -- +(-2,0) node[midway,below] {A};
+        \draw[|-|] (3.2,0) -- +(0,3) node[midway,right] {B};
+        \draw[|-|] (-2.3,0) -- +(0,2) node[midway,left] {A};
+    \end{tikzpicture}
+```
+Initially, there is no overlap in the boxes, and thus the total shaded area encompassed by both squares would be equal to $A^2 + B^2$.
+
+Now suppose that the squares are moved towards one another, such that they overlap by a distance $d$, where $d$ is 0 at a minimum (the starting situation) and $A$ at a maximum. When $d>0$, the total shaded area has clearly diminished owing to the overlap between the squares.
+
+```{ojs}
+//| echo: false
+
+function* createSketch(sketch) {
+  const element = DOM.element('div');
+  yield element;
+  const instance = new p5(sketch, element, true);
+  try {
+    while (true) {
+      yield element;
+    }
+  } finally {
+    instance.remove();
+  }
+}
+```
+
+```{ojs}
+//| echo: false
+//| fig-align: center
+createSketch(s => {
+    let r1x;
+    let r2x;
+    let col;
+    let r1s = 100;
+    let r2s = 150;
+    let rvel = 1;
+    let width = 400;
+    let pad = 10;
+
+    s.setup = function() {
+      s.createCanvas(width, 200);
+      r1x = width / 2 - pad - r1s;
+      r2x = width / 2;
+      col = s.color(0,0,0)
+      col.setAlpha(150)
+      s.stroke("black");
+      s.fill(col).rect(r1x, 200-r1s, r1s);
+      s.fill(col).rect(r2x, 200-r2s, r2s);
+    };
+
+    s.draw = function() {
+      s.background("white");
+      if (!s.mouseIsPressed) {
+        r1x += rvel;
+      }
+      s.fill(col).rect(r1x, 200-r1s, r1s);
+      s.fill(col).rect(r2x, 200-r2s, r2s);
+      if (r1x > r2x) { rvel = -1 };
+      if (r1x < width / 2 - pad - r1s) {rvel = 1};
+      if (r1x + r1s > r2x) {
+        s.strokeWeight(2);
+        s.line(r2x, 25, r1x+r1s, 25);
+        s.strokeWeight(1);
+        s.text('d', r2x + (r1x + r1s - r2x)/2, 20);
+      }
+      s.text('A', r1x - 20, 200 - r1s/2);
+      s.text('B', r2x + r2s + 10, 200 - r2s/2);
+    }
+
+  }
+)
+```
+
+**Your objective in this problem is not to write any Python code!** Instead, you are to write out, _in plain English_, what your algorithm would be for computing the total area covered by the squares for any given values of $A$, $B$, and $d$. You are guaranteed that $A > 0$, $B > 0$, and that $0 \leq d \leq A$. In the provided template, write out using words and full sentences what your approach would be to find the total shaded area. No coding needs to be happening here, you just need to determine a method by which you could find the total covered area and convey that method clearly in English. Imagine that someone with no knowledge of programming were trying to accomplish this task. How would you explain your algorthim for coming up with a solution? Make sure it works for all possible values of $A$, $B$, and $d$!
+
+:::{.callout-tip title="Tips"}
+- You just need the shaded area, so be careful that you don't "double count" the overlapping region.
+- You don't know which square is larger, so you may need your algorithm to adjust depending on the sizes.
+- It might be useful to map out all the major configurations for how the squares could be sized or overlapping to ensure your algorithm works for all of them. The most common mistake on this problem is not considering all possible allowed configurations.
+:::

@@ -1,0 +1,13 @@
+---
+title: "Milestone 3: Pick a random secret word"
+---
+
+Up until this point your game uses the same secret word every single time you press play. This is great for testing and debugging purposes, but it isn't very good from a "good game" perspective! As such, your goal in this milestone is to set the secret word to a _random_ five-letter English word.
+
+This is a great candidate for writing another helper function! Write a function which will return a random five-letter English word, and then call it where you were originally setting your secret word to a string. There are a variety of ways you could try to create a random five-letter word, but I would suggest using the `random` library to _choose_ a random word from the `ENGLISH_WORDS` sequence. Remember though that `ENGLISH_WORDS` has words of all sizes in it, so you might need to keep choosing a new random word until you get one that is five letters long.
+
+Once you have your function running, you should be able to call it and assign the returned value to your secret word variable. Now every time you play you'll be guessing a random word!
+
+Testing this may give you a chance to reuse your `display_word` function for a little bit. For example, all of the images below used `display_word` to automatically show the randomly chosen word. Once you are convinced it is working though, comment back out your `display_word` function call so that players can't cheat!
+
+![Three possible random five-letters words are displayed to the first row using `display_word`. In a general game, you of course would not display them, but instead challenge the player to guess them.](ms3.png)

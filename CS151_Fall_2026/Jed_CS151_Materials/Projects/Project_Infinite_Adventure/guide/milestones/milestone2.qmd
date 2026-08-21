@@ -1,0 +1,27 @@
+---
+title: "Milestone 2: Getting a Valid Choice"
+---
+
+Now that you can print out a scene to the console, the next step is to prompt and get a choice from the player as to what they want to do. However, when we prompt a user in this fashion, they could enter in **any** possible text. So we want to also check that they entered in something that makes sense and is reasonable for the choices displayed. This milestone is thus about writing a helper function to both prompt the user for input, and then ensure that what they entered was valid, prompting them again if not. This helper function should also take only a single parameter: the data dictionary of a particular scene. It should return the number of the choice that the user made.
+
+Ask the user what they choose, with an input prompt of `"What do you choose? "`. Their response _needs_ to be one of the integers that corresponds to a printed choice for the scene. Until they actually make a valid choice, you should reprompt them with `"Please enter a valid choice: "`. Once they finally enter in something valid, return the choice that they made.
+
+To give you an example, let us take an instance where the "start" scene was printed to the screen (using the previous milestone). The user first tries to enter in the word `cat`, then the equally invalid number `5`, before finally entering in the valid choice of `1`, at which point the function should have returned the number 1.
+
+```text
+You are standing at the end of a road before a small brick building.
+A small stream flows out of the building and down the gully to the
+south. A road runs up a small hill to the west.
+  1. Take the road up the hill
+  2. Walk up to the stream
+  3. Knock on the door
+What do you choose? cat
+Please enter a valid choice: 5
+Please enter a valid choice: 1
+```
+
+:::callout-tip
+Python lists are 0-indexed, but our choices are indexed starting at 1! Don't forget that you need to account for this!
+:::
+
+Note that it is always possible that a player decides they are done and want to exit the program. One way to accomplish this would be to add a `Quit` choice to each and every room. But an easier approach is to just check if a player pressed Enter without entering in any characters. When such a thing happens, instead of reprompting them for a valid response, your helper function should just immediately return `None`. This will effectively work as a built-in "quit" option for us.

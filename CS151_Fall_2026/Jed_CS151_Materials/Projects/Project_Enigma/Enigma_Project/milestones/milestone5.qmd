@@ -1,0 +1,9 @@
+---
+title: "Milestone 5: Auto rotor advance"
+---
+
+The final step in the creating of the Enigma simulator is to implement the feature that advances the fast rotor every time a key is pressed. Although some sources (and most of the movies) suggest that the fast rotor advances _after_ the key is pressed, watching the Enigma machine work makes it clear that it is the force of the key press that advances the rotor. Thus, the fast rotor advances _before_ the translation occurs. When the fast rotor has made a complete revolution, the medium rotor advances. Similarly, when the medium rotor makes a complete revolution, the slow rotor advances.
+
+Given that you already have a `key_pressed` method that is called when the user presses an Enigma key and a function to advance a rotor, the only new capability you need to implement is the "carry" from one rotor to the next. A useful technique to get this process working is to change the definition of `advance` in your rotor class so that it returns a boolean: `False` in the usual case when no carry occurs, and `True` when the progress for that rotor wraps back to 0. The function that calls `advance` can check this result to determine whether it needs to propagate the carry to the next rotor.
+
+When you complete this milestone, you are done!! Send some secret messages!

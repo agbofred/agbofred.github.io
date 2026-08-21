@@ -1,0 +1,29 @@
+---
+title: "Project 1: Wordle"
+---
+
+Welcome to the first project of CS 151! This project is designed to help you practice working with strings in the context of an engaging application: the Wordle game initially developed by Josh Wardle and now available on the _New York Times_ website. Given Wordle's enormous popularity, we thought it would be fun to give you a chance to implement the game!
+
+As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
+
+```{=html}
+<a href='https://classroom.github.com/a/X299XvQW' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+```
+<br>
+
+To help you navigate the project, I've created this webpage with sections and a table of contents across the top, but I would highly recommend you read through everything as you work your way through the project. If you want to check your final program, a web implementation of the same program is available at the link below.
+```{=html}
+<a href='https://willamette.edu/~esroberts/NiftyAssignments-2022/demos/Wordle.html' target="_blank" class="btn btn-primary" style='margin:auto; display: block; width:50%;'>Web Demo</a>
+```
+<br>
+
+
+
+
+
+# Strategies and Hints
+
+- With any large program, it is **essential** to get each milestone working before moving on to the next. It almost never works to write large programs all at once without testing the individual pieces as you go.
+- Remember that uppercase and lowercase letters are different in Python! The letters displayed in the game window are all uppercase, but the `ENGLISH_WORDS` constant contains all _lowercase_ words. You will want to use appropriate string methods to convert accordingly, so you can make proper comparisons.
+- In order to have access to the `gw` variable that represents the `WordleGWindow` object, you will likely want to define any helper functions _inside_ the main `wordle` function. If you define them outside the `wordle` function, you will not be able to access the `gw` variable, which might not be an issue for some helper functions, but will probably be an issue for others.
+- Decompose the various tasks in different milestones down into smaller functions! This will help you track what you are doing and simplify debugging. You can easily have less than 10 lines of code inside the `enter_action` function if you decompose things nicely into smaller functions.

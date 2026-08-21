@@ -1,0 +1,9 @@
+---
+title: "Milestone 2: The Grayscale button"
+---
+
+In this simplest of all the milestones, your job is to add a **Grayscale** button that replaces the image with a new one in which the image has been converted to grayscale. 
+The code necessary for this transformation appears not only in the book but also in the file `GrayscaleImage.py` in the repository. 
+To implement this milestone, you should **not** copy and paste the code from `GrayscaleImage.py`, but instead import the function or functions you need. 
+The advantage of doing so is that there is then only one copy of the code, which is shared between the two applications. 
+Copying code inevitably creates problems for software maintenance, since changes made to one copy may not be incorporated into the other, leading to incompatible versions.

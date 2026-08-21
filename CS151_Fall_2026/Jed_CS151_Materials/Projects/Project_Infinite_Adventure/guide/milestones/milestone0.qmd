@@ -1,0 +1,38 @@
+---
+title: "Milestone 0: Loading the Story"
+---
+
+A key limitation for any adventure story of this nature is that you will eventually hit a dead end, where a "dead end" in this context is a scene that is referenced by another scene somewhere in the story, but is never actually defined itself. This first milestone is to get you started with understanding how to load in the story content and navigate within them to find these dead ends. As such, it is slightly tangential to your overall objective of programming the Infinite Adventure, but it ensures you understand some important concepts before you go on. _As such, you will complete this portion of the project within `warmup.py`, instead of `infinite_adventure.py`._
+
+In order to complete this warmup, you need to first understand how the story data is stored. All of the data for each story is saved within a nested dictionary, encoded as a JSON file in the `data` folder. Several story dictionaries initially exist, of which the one named `starter.json` will be of primary interest here.
+
+You should begin by loading in the story data. This entails opening the file, and then using the `load` function from the `json` library to parse the JSON data into data structures that Python understands. So something as simple as
+
+```python
+with open('data/starter.json') as fh:
+    story_data = json.load(fh)
+```
+will get you going.
+
+To proceed further, you really need to ensure that you understand the structure and various pieces of the `story_data` dictionary. If you haven't read over the [Story Data Format](../introduction/json_format.qmd) yet, you should absolutely paused to look that over. Once you are feeling confident in your ability to navigate the nested dictionary, your goal is to write some code to find and print out all of the "dead ends" in the `starter.json` story. To do so, you'll need to:
+
+- Loop over all the scenes in the story
+- For each scene, loop over all the possible choices for that scene
+- Each choice references a particular "scene_key" as the next scene to visit. If that scene key does not also appear in the scenes dictionary, then you have found a dead end! Print out the scene key of the dead end scene.
+
+For the `starter` story, you'll know you have done `warmup.py` correctly when the following scene keys are printed out:
+```text
+next_to_gully
+descend_into_valley
+watching_sunset
+continue_exploring_hilltop
+return_to_small_brick_building
+```
+
+Note that the order that these scenes are printed does not matter.
+
+You can also try some additional **optional** challenges here if you want to really make sure you understand how to navigate the story dictionary. Can you print out the following?
+
+- The "plot" of the story?
+- The "text" description of the scene with the key "start"?
+- The "scene_key" you would go to if you took the first choice from the "start" scene (which would be the choice with the text "Take the road up the hill")?

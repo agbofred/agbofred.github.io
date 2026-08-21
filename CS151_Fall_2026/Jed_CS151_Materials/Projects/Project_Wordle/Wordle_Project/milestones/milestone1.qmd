@@ -1,0 +1,19 @@
+---
+title: "Milestone 1: Checking for valid words"
+---
+
+Although the starting program allows the user to type letters into the Wordle game, nothing happens when you hit the `RETURN` key or click the `ENTER` button. The `WordleGWindow` object lets you respond to that event though, through the `add_enter_listener` method. If you call
+```{.python}
+gw.add_enter_listener(enter_action)
+```
+(which is already in the template file) then hitting `RETURN` or clicking `ENTER` in the window will trigger a call to the function `enter_action`, which you now get to write!
+
+For this milestone, your job is to add code to `enter_action` so that it checks to see whether the string the player has typed in is a legitimate English word. Initially, this means you will have to get the letters from the `WordleGWindow` object and assemble them into a word, which is essentially the exact opposite of what you did in Milestone 0! Then, once you have the typed word as a string, you can check it against the English library. You can do this either using the `in` keyword or using the imported function `is_english_word` from the `english` library. If the typed word isn't a valid English word, your implementation of `enter_action` should call the `show_message` method with the string `"Not in word list"`, which is what the _New York Times_ website displays. If it is a word, you should temporarily display some more positive message that shows you have this milestone up and running.
+
+:::{.callout-tip}
+Be careful here with capitalization! All letters typed into the Wordle window are capitalized, and thus you will likely create a string of capital letters. But all of the words in the `ENGLISH_WORDS` sequence are lowercase! So make sure you are comparing similar cases!
+:::
+
+The image below depicts some possible output you might be seeing at this point. What words you type in of course can vary.
+
+![The image to the left depicts the window after typing in `thumb` and pressing enter. That word is in the `ENGLISH_WORDS` sequence, and thus we are congratulated. To the right is the result of typing in `babys` and pressing enter. Here we are given the same error message as the _New York Times_ uses, which informs us that this word is not in the word list.](ms1.png)

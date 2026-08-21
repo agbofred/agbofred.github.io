@@ -1,0 +1,32 @@
+---
+title: "Project 5: The Infinite Adventure"
+---
+
+
+Welcome to the final project of CS 151! Your mission in this project is to implement an "Adventure" game, similar to classics such as Will Crowther's pioneering "Adventure" in the early 1970's, or the later Zork. In games of this sort, the player wanders around from one location to another, discovering new locations and perhaps solving some puzzles. Generally these locations are pre-determined and written to fit the designers vision, but we are going to implement something a bit extra here. Should a player try to access a location that was not originally determined by the game designer, a new location will instead be generated using ChatGPT, thus making the adventure essentially infinite!
+
+<!--
+In order to generate these now locations using ChatGPT, you will need to connect to ChatGPT's API using Python's `requests` library. This is a third-party library, and thus did not come bundled with your installation of Python. Thus you will need to install it, similarly to how we had to install the `pillow` library at the beginning of the semester. The easiest way to do this is to open a terminal in VSCode and then type either `pip install requests` or `pip3 install requests` depending on if you are on Windows or MacOS, respectively. If you are having issues, reach out to your professor or section leader for assistance!
+-->
+
+As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
+
+```{=html}
+<a href='https://classroom.github.com/a/IcWSuIk2' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+```
+<br>
+
+
+
+# Strategies and Hints
+Basic strategies from all the projects thus far still apply, with maybe a few additions:
+
+- _Start as soon as possible!_ This assignment is due in a week. There are very cool opportunities for extensions on this project, and you want to give yourself time!
+- _Implement the program in stages, as described in this handout._ As with most projects, the milestones in this project build atop one another. Implement the various pieces of the project one at a time and **test them** to make sure that each one is working before you move on to the next phase.
+- _Don't try to extend the program until you get the basic functionality working!_ There are some very fun extensions available here, but make sure that you have all the required milestones working and _well tested_ before starting to add extensions.
+- _Draw yourself a diagram of the nested JSON structure._ This project requires working with a heavily nested compound data structure with many dictionaries and lists. It can be easy to lose yourself in the nestings if you are not careful. Diagram it out so that you have something to look at when writing your code.
+- _Be economical with your API usage._ We are funding your LLM usage for this project, within limits. The amount of tokens you have been allocated should easily cover extensive testing, demonstrating, and running of your program, but they are not infinite. Should you decide to invest in your own API key to enable image generation, place clear (and low) limits on the monthly usage to ensure you don't get an unexpected charge!
+
+
+# Credit
+This assignment is the product of contributions from many individuals. It has been loosely adapted by Jed Rembold from the original design by Chris Piech, which in turn was inspired by Eric Roberts. The original student handout was designed by Anjali Sreenivas, Yasmine Alonso, Katie Liu, Javokhir Arifov and Dan Webber. Advise and testing was originally provided from Mehran Sahami, Ngoc Nguyen, and Juliette Woodrow. Further testing and feedback has been provided by all Fall 2025 and Spring 2026 Section Leaders.

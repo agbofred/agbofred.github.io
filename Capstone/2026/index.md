@@ -27,7 +27,7 @@ Throughout this journey, you'll work independently on your chosen project while 
 ## Quick Links
 
 - [Course Syllabus](syllabi.md)
-- [Schedule an Appointment](#)
+- [Schedule an Appointment (Individual Sprint Review)](https://calendar.app.google/QMJ1TL3GWyFNkK5eA)
 
 ## Instructor
 

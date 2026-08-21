@@ -1,0 +1,57 @@
+---
+title: "Week 3 Class Activities"
+subtitle: "Due but not graded: January 31, 2025"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgb(28, 84, 106) 0%, rgb(181, 89, 166) 100%)
+    title-block-banner-color: white
+---
+
+These activities are to make you practice more and are not graded!
+__Implementation Guidelines:__
+
+- Students work in pairs or individually
+- Each activity should take 10-15 minutes
+- Encourage creativity and additional features
+<br>
+
+# Problem 1: ATM 
+Create a program that:
+
+1. Starts with a balance of 1000
+2. Shows menu options (check balance, withdraw, deposit)
+3. Updates balance after transactions
+4. Prevents overdraft (balance < 0)
+5. Continues until user chooses to exit
+
+# Problem 2: Count Characters 
+Create a program that:
+
+1. Accepts a sentence from user
+2. Counts total characters (excluding spaces)
+3. Counts total words
+4. Displays statistics (total characters excluding spaces and total words)
+
+# Problem 3: Grade Calculator
+
+Create a program that:
+
+1. Accepts assignment scores (`tests`, `homework`, `projects`) from users in the terminal
+  - where each of these assignment is calculated with it's weighting factor 
+  - For example, you are given that the weighting factor for `tests is 20%`,  `homework is 20%`, and `projects is 30%`. 
+2. Calculates weighted average of the assignment scores
+3. Show the current numeric grade which is the weighted average.
+4. If the weighted average score is less than `50%`, warn the student to prepare hard for the final exam in order not to fail the class
+5. Calculates what score is needed on final exam for a potential desired grade of `A` which must be `>=90` scores
+6. Optional: Convert numerical grades to letter grades where `>= 90 is A, >= 80 is B, >= 70 is C, >= 60 is D, and < 60 is F`

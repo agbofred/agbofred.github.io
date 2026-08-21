@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Adventure</title>
+<meta charset="utf-8" />
+<meta name="author" content="Eric Roberts and Jed Rembold" />
+<meta name="dcterms.date" content="2022-09-07" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent" />
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no,
+      minimal-ui" />
+<link href="css/reset.css" rel="stylesheet" />
+<link href="css/reveal.css" rel="stylesheet" />
+<link href="css/theme/python_monokai.css" rel="stylesheet" id="theme" />
+<link href="css/plugin/highlight/monokai.css" rel="stylesheet" />
+<link href="css/revealct.css" rel="stylesheet" />
+<link href="css/cslecture.css" rel="stylesheet" />
+<link href="css/GetLamp.css" rel="stylesheet" />
+<link href="css/Adventure.css" rel="stylesheet" />
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section id="CS151/TitleSlides/Adventure" class="TitleSlide">
+<h1 class="title" style="font-size:2.2em;">Adventure</h1>
+<p class="author">Eric Roberts</p>
+<p class="date">14 April 2025</p>
+<p style="text-align:center; margin-top:2.5em;">
+<img data-src="images/GetLamp.png" class="GetLamp" /></p>
+</section>
+
+<section id="CS151/Adventure/Myst" class="slide level2">
+<h2>Myst</h2>
+<ul>
+<li>When Myst appeared in 1993 (back when computers were too slow to
+animate more than a small part of the screen), the most common question
+I got from my students was: Can I write Myst?</li>
+
+<video
+    class="fragment" controls
+    src="video/MystIntro.mp4"
+    style="width:1300px;">
+</video>
+
+</ul>
+</section>
+
+<section id="CS151/Adventure/TheOriginsOfTheInternet" class="slide level2">
+<h2>The Origins of the Internet</h2>
+<ul>
+<li>The Internet that has become so much a part of today&rsquo;s world
+got its start as the ARPANET in the late 1960s.</li>
+
+<li class="fragment">The contract to build the ARPANET was awarded to
+Bolt Beranek and Newman Inc. (BBN), a small, Cambridge-based research
+and development firm founded by MIT engineers.
+A prototype implementation of the ARPANET connecting four nodes came on
+line in December 1969.</li>
+
+<li class="fragment">The initial design for the ARPANET allowed for a
+maximum of 127 connected computers.
+Larger networks were possible only after the TCP/IP protocols were
+adopted in the 1980s.</li>
+</ul>
+</section>
+
+<section id="CS151/Adventure/EarlyDesignsForTheArpanet" class="slide level2">
+<h2>Early Designs for the ARPANET</h2>
+<table style="margin-top:0.8em;">
+<tbody style="border:none;">
+<tr>
+<td class="ArpanetEarlyDesigns" style="width:1000px;">
+As Larry Roberts envisioned it:<br />
+
+<img data-src="images/LarryRobertsDrawings.png"
+     style="width:950px; border:solid 1px black; border-radius:0px;" />
+</td>
+<td class="ArpanetEarlyDesigns" style="width:800px;">
+As implemented in 1969:<br />
+
+<img data-src="images/ArpanetFirstFourNodes.png"
+     style="width:750px; border:solid 1px black; border-radius:0px;" />
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="CS151/Adventure/TheArpanetIn1971GeographicMap" class="slide level2">
+<h2>The ARPANET in 1971: Geographic Map</h2>
+<p style="text-align:center; margin-top:1em;">
+<img data-src="images/ArpanetGeographicMap.png"
+     style="width:1600px; border-radius:0px;" /></p>
+</section>
+
+<section id="CS151/Adventure/TheArpanetIn1971LogicalMap" class="slide level2">
+<h2>The ARPANET in 1971: Logical Map</h2>
+<p style="text-align:center; margin-top:1em;">
+<img data-src="images/ArpanetLogicalMap.png"
+     style="width:1600px; border-radius:0px;" /></p>
+</section>
+
+<section id="CS151/Adventure/TheArpanetDirectory" class="slide level2">
+<h2>The ARPANET Directory</h2>
+<div class="r-stack">
+<img data-src="images/ArpanetDirectoryCover.png"
+     class="ArpanetDirectory" />
+<img data-src="images/ArpanetDirectoryPage178.png"
+     class="ArpanetDirectory fragment" />
+</div>
+<div class="EricRobertsOval fragment"></div>
+<div class="LarryRobertsOval fragment"></div>
+</section>
+
+<section id="CS151/Adventure/LifeAmongTheWizards" class="slide level2">
+<h2>Life among the Wizards</h2>
+<ul>
+<li>The history of the Internet has been told in several books.
+One tells the following story:
+
+<table style="margin-top:0.8em;">
+<tbody style="border:none;">
+<tr>
+<td class="r-stack" style="vertical-align:middle; margin-right:50px;">
+<div class="DandDBackground" style="text-align:center;">
+<img data-src="images/WizardsCover.png"
+     style="width:505px; border-radius:0px;" />
+</div>
+<div class="DandDBackground fragment" data-fragment-index=1
+     style="text-align:center;">
+<img data-src="images/DungeonsAndDragonsCover.png"
+     style="width:560px; border-radius:0px;" />
+</div>
+<div class="DandDBackground fragment" data-fragment-index=2
+     style="text-align:center;">
+<img data-src="images/MirkwoodTalesCover.png"
+     style="width:590px; border-radius:0px;" />
+</div>
+</td>
+
+<td class="WizardExcerpts">
+<p style="margin-top:0px;">A small circle of friends at BBN had gotten
+hooked on Dungeons and Dragons, an elaborate fantasy role-playing game
+in which one player invents a setting and populates it with monsters and
+puzzles, and the other players then make their way through that setting.
+The game exists only in the minds of the players.</p>
+
+<p class="fragment" data-fragment-index=2>Dave Walden got his
+introduction to the game one night when Eric Roberts, a student from a
+class he was teaching at Harvard, took him to a D&D session.
+Walden immediately rounded up a group of friends from the ARPANET team
+for continued sessions. Roberts created the Mirkwood Tales. . . . </p>
+
+<p class="fragment" data-fragment-index=3>One of the regulars was Will
+Crowther . . .</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</section>
+
+<section id="CS151/Adventure/TheBBNArpanetTeam" class="slide level2">
+<h2>The BBN ARPANET Team</h2>
+<p style="text-align:center;">
+<img data-src="images/BBNArpanetTeam.png"
+     style="width:1200px; border-radius:0px;" /></p>
+<div class="DaveWaldenCircle fragment"
+     data-fragment-index=1></div>
+<div class="DaveWaldenLabel fragment"
+     data-fragment-index=1>Dave Walden</div>
+<div class="WillieCrowtherCircle fragment"
+     data-fragment-index=2></div>
+<div class="WillieCrowtherLabel fragment"
+     data-fragment-index=2>Will Crowther</div>
+</section>
+
+<section id="CS151/Adventure/WillieCrowthersAdventureGame"
+         class="slide level2"
+         data-state="CrowtherScriptDemo">
+<h2>Willie Crowther&rsquo;s Adventure Game</h2>
+<table class="AdventureScriptTable">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="CrowtherConsole" class="CrowtherConsole"></div></td></tr>
+</tbody>
+</table>
+<span id="CrowtherMark0" class="fragment"></span>
+<span id="CrowtherMark1" class="fragment"></span>
+<span id="CrowtherMark2" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/InTheAgeOfTheSlowMachine"
+         class="slide level2"
+         data-state="SlowMachineDemo">
+<h2>In the Age of the Slow Machine</h2>
+<table class="AdventureScriptTable">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td>
+<div id="SlowMachineConsole" class="SlowMachineConsole">
+</div></td></tr>
+</tbody>
+</table>
+<span id="SlowMark0" class="fragment"></span>
+<span id="SlowMark1" class="fragment"></span>
+<span id="SlowMark2"
+      class="fragment SlowMark2">. . . some time later . . .</span>
+<span id="SlowMark3" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/ABriefHistoryOfAdventure" class="slide level2">
+<h2>A Brief History of Adventure</h2>
+<ul>
+<li>Eric Roberts begins the Mirkwood Tales in early 1975.</li>
+
+<li class="fragment">Will Crowther creates Adventure later that
+year.</li>
+
+<li class="fragment">Will moves to Xerox/PARC in 1976.</li>
+
+<li class="fragment">Stanford graduate student Don Woods releases an
+expanded version of Adventure in early 1977.</li>
+
+<li class="fragment">Dave Lebling and others from MIT release the first
+version of Zork in 1977.
+That game later becomes the foundation of the computer game company
+Infocom.</li>
+
+<li class="fragment">Adventure is ported to a wide variety of platforms
+by 1980.</li>
+
+<li class="fragment">Eric Roberts creates an expanded version in 1984
+and uses it as the basis for his first Adventure Contest at
+Wellesley.</li>
+</ul>
+</section>
+
+<section id="ODwyerMessage" class="slide level2">
+<h2>Adventure Is Still of Interest</h2>
+<p style="text-align:center;">
+<img data-src="images/ODwyerMessage.png" style="height:75%;" />
+<a href="https://cs.stanford.edu/people/eroberts/Adventure/"
+   target="_blank">https://cs.stanford.edu/people/eroberts/Adventure/</a>
+</p>
+</section>
+
+<section id="CS151/Adventure/Milestone1Demo"
+         class="slide level2"
+         data-state="Milestone1Demo">
+<h2>Milestone #1</h2>
+<ul>
+<li>Adapt the code from the Teaching Machine application so that it uses
+the class and method names for Adventure.</li>
+
+<li class="fragment">Once you finish this milestone, you should be able
+to wander around the surface geography of the game.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone1Console" class="Milestone1Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone1Mark0" class="fragment"></span>
+<span id="Milestone1Mark1" class="fragment"></span>
+<span id="Milestone1Mark2" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/TheTinyRoomsDataFile" class="slide level2">
+<h2>The <span class="m">TinyRooms.txt</span> Data File</h2>
+<div class="CodeScrollBox" style="font-size:0.75em;"
+>OutsideBuilding
+Outside building
+You are standing at the end of a road before a small brick
+building.  A small stream flows out of the building and
+down a gully to the south.  A road runs up a small hill
+to the west.
+-----
+WEST: EndOfRoad
+UP: EndOfRoad
+NORTH: InsideBuilding
+IN: InsideBuilding
+SOUTH: Valley
+DOWN: Valley
+
+EndOfRoad
+End of road
+You are at the end of a road at the top of a small hill.
+You can see a small building in the valley to the east.
+-----
+EAST: OutsideBuilding
+DOWN: OutsideBuilding
+
+InsideBuilding
+Inside building
+You are inside a building, a well house for a large spring.
+The exit door is to the south.
+-----
+SOUTH: OutsideBuilding
+OUT: OutsideBuilding
+
+Valley
+Valley beside a stream
+You are in a valley in the forest beside a stream tumbling
+along a rocky bed.
+-----
+NORTH: OutsideBuilding
+UP: OutsideBuilding
+</div>
+</section>
+
+<section id="CS151/Adventure/Milestone2Demo"
+         class="slide level2"
+         data-state="Milestone2Demo">
+<h2>Milestone #2</h2>
+<ul>
+<li>Implement <span class="mb">set<span class="u">_</span>visited</span> and
+<span class="mb">has<span class="u">_</span
+>been<span class="u">_</span>visited</span> to keep track of which
+rooms have been visited.</li>
+
+<li class="fragment">Check this flag in the code that describes a room.</li>
+
+<li class="fragment">Once you finish this milestone, the program should
+use the short descriptions when you enter a previously visited
+room.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone2Console" class="Milestone2Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone2Mark0" class="fragment"></span>
+<span id="Milestone2Mark1" class="fragment"></span>
+<span id="Milestone2Mark2" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/Milestone3Demo"
+         class="slide level2"
+         data-state="Milestone3Demo">
+<h2>Milestone #3</h2>
+<ul>
+<li>Implement the <span class="mb">QUIT</span>,
+<span class="mb">HELP</span>, and <span class="mb">LOOK</span> commands.</li>
+
+<li class="fragment">Once you finish this milestone, the player can end
+the game, see the help text, and redisplay the room&rsquo;s long
+description.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone3Console" class="Milestone3Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone3Mark0" class="fragment"></span>
+<span id="Milestone3Mark1" class="fragment"></span>
+<span id="Milestone3Mark2" class="fragment"></span>
+<span id="Milestone3Mark3" class="fragment"></span>
+<span id="Milestone3Mark4" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/Milestone4Demo"
+         class="slide level2"
+         data-state="Milestone4Demo">
+<h2>Milestone #4</h2>
+<ul>
+<li>Implement the <span class="mb">AdvObject</span> class.</li>
+
+<li class="fragment">Implement the methods in the
+<span class="mb">AdvRoom</span> class that make it possible to keep
+track of the objects in a room.</li>
+
+<li class="fragment">In the <span class="mb">AdvGame</span> class,
+write the code to put each object in its initial room (ignore the room
+name <span class="mb">"PLAYER"</span> for now).</li>
+
+<li class="fragment">Change the code to display a room so that it lists
+the objects.</li>
+
+<li class="fragment">This milestone allows you to see (but not yet take)
+objects.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone4Console" class="Milestone4Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone4Mark0" class="fragment"></span>
+<span id="Milestone4Mark1" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/TheSmallObjectsDataFile" class="slide level2">
+<h2>The <span class="m">SmallObjects.txt</span> Data File</h2>
+<div class="CodeScrollBox" style="font-size:0.75em;"
+>KEYS
+a set of keys
+InsideBuilding
+
+LAMP
+a brightly shining brass lamp
+BeneathGrate
+
+ROD
+a black rod with a rusty star
+DebrisRoom
+
+WATER
+a bottle of water
+PLAYER
+</div>
+</section>
+
+<section id="CS151/Adventure/Milestone5Demo"
+         class="slide level2"
+         data-state="Milestone5Demo">
+<h2>Milestone #5</h2>
+<ul>
+<li>Implement the <span class="mb">TAKE</span>, <span class="mb">DROP</span>,
+and <span class="mb">INVENTORY</span> commands and any code you need
+to remember what the player is carrying.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone5Console" class="Milestone5Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone5Mark0" class="fragment"></span>
+<span id="Milestone5Mark1" class="fragment"></span>
+<span id="Milestone5Mark2" class="fragment"></span>
+<span id="Milestone5Mark3" class="fragment"></span>
+<span id="Milestone5Mark4" class="fragment"></span>
+<span id="Milestone5Mark5" class="fragment"></span>
+<span id="Milestone5Mark6" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/Milestone6Demo"
+         class="slide level2"
+         data-state="Milestone6Demo">
+<h2>Milestone #6</h2>
+<ul>
+<li>Implement synonym processing so that the player can use abbreviated
+forms of the direction verbs and alternative names for the objects.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone6Console" class="Milestone6Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone6Mark0" class="fragment"></span>
+<span id="Milestone6Mark1" class="fragment"></span>
+<span id="Milestone6Mark2" class="fragment"></span>
+<span id="Milestone6Mark3" class="fragment"></span>
+<span id="Milestone6Mark4" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/TheSmallSynonymsDataFile" class="slide level2">
+<h2>The <span class="m">SmallSynonyms.txt</span> Data File</h2>
+<div class="CodeScrollBox" style="font-size:0.75em;"
+>N=NORTH
+S=SOUTH
+E=EAST
+W=WEST
+U=UP
+D=DOWN
+Q=QUIT
+L=LOOK
+I=INVENTORY
+CATCH=TAKE
+RELEASE=DROP
+BOTTLE=WATER
+</div>
+</section>
+
+<section id="CS151/Adventure/Milestone7Demo"
+         class="slide level2"
+         data-state="Milestone7Demo">
+<h2>Milestone #7</h2>
+<ul>
+<li>Implement <em>locked passages</em>, which are passages that require
+a particular object to use, as illustrated on the next slide.</li>
+
+<li class="fragment">Making this change requires moving
+<span class="mb">get<span class="u">_</span
+>next<span class="u">_</span>room</span> from
+<span class="mb">AdvRoom</span> to <span class="mb">AdvGame</span>
+so that it can see the objects.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone7Console" class="Milestone7Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone7Mark0" class="fragment"></span>
+<span id="Milestone7Mark1" class="fragment"></span>
+<span id="Milestone7Mark2" class="fragment"></span>
+</section>
+
+<section id="CS151/Adventure/TheSmallRoomsDataFile" class="slide level2">
+<h2>The <span class="m">SmallRooms.txt</span> Data File</h2>
+<div class="CodeScrollBox" style="font-size:0.7em;"
+>OutsideGrate
+Outside grate
+You are in a 20-foot depression floored with bare dirt.
+Set into the dirt is a strong steel grate mounted in
+concrete.  A dry streambed leads into the depression from
+the north.
+-----
+NORTH: SlitInRock
+UP: SlitInRock
+DOWN: BeneathGrate/KEYS
+DOWN: MissingKeys
+
+MissingKeys
+-
+The grate is locked and you don't have any keys.
+-----
+FORCED: OutsideGrate
+
+BeneathGrate
+Beneath grate
+You are in a small chamber beneath a 3x3 steel grate to
+the surface.  A low crawl over cobbles leads inward to
+the west.
+-----
+UP: OutsideGrate
+OUT: OutsideGrate
+IN: CobbleCrawl
+WEST: CobbleCrawl
+</div>
+</section>
+
+<section id="CS151/Adventure/Milestone8Demo"
+         class="slide level2"
+         data-state="Milestone8Demo">
+<h2>Milestone #8</h2>
+<ul>
+<li>Implement <em>forced motion</em>, in which the player is forced to
+move from a room even before reading a command. Forced motion is
+indicated by the verb <span class="mb">FORCED</span>.</li>
+
+<li class="fragment">It is important to ensure that your implementation
+of forced motion allows those passages to be locked. This combination of
+features is used to implement the shimmering curtain.</li>
+</ul>
+
+<table class="AdventureScriptTable fragment">
+<tbody style="border:none;">
+<tr><td><div class="AdventureScriptBanner">Adventure</div></td></tr>
+<tr><td><div id="Milestone8Console" class="Milestone8Console"></div></td></tr>
+</tbody>
+</table>
+<span id="Milestone8Mark0" class="fragment"></span>
+<span id="Milestone8Mark1" class="fragment"></span>
+<span id="Milestone8Mark2" class="fragment"></span>
+</section>
+
+<section id="Common/TheEnd" class="slide level2">
+<h2 style="padding-top:27%;">The End</h2>
+</section>
+
+</div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<!-- reveal.js plugins -->
+
+<script src="js/plugin/notes/notes.js"></script>
+<script src="js/plugin/search/search.js"></script>
+<script src="js/plugin/zoom/zoom.js"></script>
+<script src="js/plugin/chart/Chart.min.js"></script>
+<script src="js/plugin/chart/plugin.js"></script>
+<script src="js/plugin/chalkboard/plugin.js"></script>
+<script src="js/plugin/math/math.js"></script>
+<script src="js/plugin/highlight/highlight.js"></script>
+
+<script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+                //autoAnimateEasing: 'ease-in',
+                //autoAnimateDuration: 1.0,
+                //autoAnimateUnmatched: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Loop the presentation
+        loop: false,
+        // Change the presentation direction to be RTL
+        rtl: false,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: true,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1200,
+        // The display mode that will be used to show slides
+        display: 'block',
+                math: {
+                  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+                  <!--config: 'tex-mml-chtml',-->
+                  <!--tex2jax: {-->
+                        <!--inlineMath: [['\\(','\\)']],-->
+                        <!--displayMath: [['\\[','\\]']],-->
+                        <!--balanceBraces: true,-->
+                        <!--processEscapes: false,-->
+                        <!--processRefs: true,-->
+                        <!--processEnvironments: true,-->
+                        <!--preview: 'TeX',-->
+                        <!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+                        <!--ignoreClass: 'tex2jax_ignore',-->
+                        <!--processClass: 'tex2jax_process'-->
+                  <!--},-->
+                  CommonHTML: {scale: 80},
+                },
+        reveald3: {
+                        runLastState: true, // true/false, default: true
+                        onSlideChangedDelay: 200,
+                        mapPath: false, // true / false / "spefific/path/as/string", default: false
+                        tryFallbackURL: true, // true/false, default false
+                        disableCheckFile: false, //default false
+                 },
+
+        // reveal.js plugins
+        plugins: [
+            RevealMath,
+            RevealHighlight,
+            RevealNotes,
+            RevealSearch,
+            RevealZoom,
+            RevealChart,
+            RevealChalkboard,
+        ],
+        chalkboard: {
+            boardmarkerWidth: 4,
+            chalkWidth: 7,
+            boardmarkers : [
+                { color: 'rgba(248,248,242,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
+                { color: 'rgba(102,217,239,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-blue.png), auto' },
+                { color: 'rgba(249,38,114,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-red.png), auto' },
+                { color: 'rgba(166,226,46,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-green.png), auto' },
+                { color: 'rgba(253,151,31,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-orange.png), auto' },
+                { color: 'rgba(174,129,255,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-purple.png), auto' },
+                { color: 'rgba(255,231,146,1)',
+                  cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto '}
+            ],
+            chalks: [
+                { color: 'rgba(248,248,242,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-white.png), auto' },
+                { color: 'rgba(102,217,239,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-blue.png), auto' },
+                { color: 'rgba(249,38,114,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-red.png), auto' },
+                { color: 'rgba(166,226,46,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-green.png), auto' },
+                { color: 'rgba(253,151,31,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-orange.png), auto' },
+                { color: 'rgba(174,129,255,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-purple.png), auto' },
+                { color: 'rgba(255,231,146,0.5)',
+                  cursor: 'url(' + path + 'img/chalk-yellow.png), auto '}
+            ]
+        },
+        dependencies: [
+            {
+                src: "js/plugin/title-footer/title-footer.js",
+                async: true,
+                callback:
+                    function() {
+                        title_footer.initialize({
+                            css: "css/plugin/title-footer/title-footer.css"
+                        });
+                    }
+             }
+        ],
+    });
+</script>
+
+<script src="js/AdventureScript.js"></script>
+<script src="js/codetrace.js"></script>
+<script>
+    Reveal.addEventListener("CrowtherScriptDemo", CrowtherScriptDemo);
+    Reveal.addEventListener("SlowMachineDemo", SlowMachineDemo);
+    Reveal.addEventListener("Milestone1Demo", Milestone1Demo);
+    Reveal.addEventListener("Milestone2Demo", Milestone2Demo);
+    Reveal.addEventListener("Milestone3Demo", Milestone3Demo);
+    Reveal.addEventListener("Milestone4Demo", Milestone4Demo);
+    Reveal.addEventListener("Milestone5Demo", Milestone5Demo);
+    Reveal.addEventListener("Milestone6Demo", Milestone6Demo);
+    Reveal.addEventListener("Milestone7Demo", Milestone7Demo);
+    Reveal.addEventListener("Milestone8Demo", Milestone8Demo);
+</script>
+</body>
+</html>

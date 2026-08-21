@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold">
+  <meta name="dcterms.date" content="2026-03-13">
+  <title>Tis Tuple Time</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_catppuccin.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/catppuccin-mocha.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Tis Tuple Time</h1>
+  <p class="author">Jed Rembold</p>
+  <p class="date">March 13, 2026</p>
+</section>
+
+<section id="happy-friday-the-13th" class="slide level2">
+<h2>Happy Friday the 13th!</h2>
+<div class="cols" style="font-size:.8em">
+<div class="col">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Fun group question: What records do you consult or look at most
+often?</li>
+</ul>
+<p><img data-src="../images/group_seating_locs_Ford102.png"
+style="width:50.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?text=mBZejD&amp;data=https://tools.jedrembold.prof/daily?code=mBZejD"
+style="width:60.0%" /></p>
+</div>
+</div>
+<!-- Comments
+-->
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<div style="font-size: .8em">
+<ul>
+<li>Problem Set 5 due on Monday!</li>
+<li>We’ll be introducing ImageShop on Monday</li>
+<li>I am basically booked solid all afternoon, so email or dm me if you
+have questions</li>
+</ul>
+</div>
+</section>
+<section id="daily-los" class="slide level2">
+<h2>Daily LO’s</h2>
+<ul>
+<li>Understanding when to choose tuples</li>
+<li>Practice working with basic tuple operations</li>
+<li>Practice packing and unpacking tuples</li>
+</ul>
+</section>
+<section>
+<section id="group-problems" class="title-slide slide level1">
+<h1>Group Problems</h1>
+
+</section>
+<section id="problem-1-tuple-tactics" class="slide level2">
+<h2>Problem 1: Tuple Tactics</h2>
+<div class="cols" style="align-items: center">
+<div class="col">
+<p>What would the code to the left print off?</p>
+<div class="poll">
+<ol>
+<li><code class="python">2</code></li>
+<li><code class="python">4</code></li>
+<li><code class="python">6</code></li>
+<li>This would error</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python">A = (1, 2, (3, 4))
+B = A[1::2]
+x, y, z = A
+for i in range(x):
+    B += z
+print(y * B[-2])</code></pre>
+</div>
+</div>
+</section>
+<section id="problem-2a-karel-trackers" class="slide level2">
+<h2>Problem 2a: Karel Trackers</h2>
+<ul>
+<li>This is a coding problem. Work in pairs or trios on a single
+computer, and discuss your algorithm <strong>BEFORE YOU WRITE ANY
+CODE</strong>.</li>
+<li>The file <code class="python">positions.py</code> exports a single
+constant called <code class="python">KAREL_POS</code>, which is a
+<em>list</em> of <em>tuples</em>, recording what street and avenue
+intersection Karel is located at different elapsed times
+<ul>
+<li>The tuples are ordered by time, street (x), avenue (y)</li>
+</ul></li>
+<li>Your task:
+<ul>
+<li>Return the start and end times between which Karel moved the
+furthest</li>
+<li>Since Karel can’t move diagonally, you can compute distance as <span
+class="math display">\[ |x_1 - x_2| + |y_1 - y_2|\]</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-2b-lazy-logging" class="slide level2">
+<h2>Problem 2b: Lazy Logging</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>Sometimes Karel doesn’t move in a given interval</li>
+<li>Here, we’d like to enhance the existing records of Karel’s position
+by including a boolean flag if Karel moves in the <em>following</em>
+interval
+<ul>
+<li>The last record will always have <code class="python">None</code>
+here, since we don’t know what the next position is</li>
+</ul></li>
+<li>For example, the left should become the right:</li>
+</ul>
+<div class="cols" style="font-size:.8em">
+<div class="col">
+<pre ><code class="python">KAREL_POS = [
+    (0, 4, 3),
+    (1, 4, 3),
+    (2, 3, 3),
+    (3, 0, 2),
+    (4, 0, 2)
+]</code></pre>
+</div>
+<div class="col">
+<pre ><code class="python">KAREL_POS = [
+    (0, 4, 3, False),
+    (1, 4, 3, True),
+    (2, 3, 3, True),
+    (3, 0, 2, False),
+    (4, 0, 2, None)
+]</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="demo" class="title-slide slide level1">
+<h1>Demo</h1>
+
+</section>
+<section id="yarn-art" class="slide level2">
+<h2>Yarn Art</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Points, or tuples of an x and y position, often show up in graphical
+applications</li>
+<li>Let’s make some yarn art, where we:
+<ul>
+<li>Place a set of “pegs” at regular intervals around the border</li>
+<li>Tie a piece of “yarn” around one peg</li>
+<li>Loop that yarn around the peg a number of pegs ahead</li>
+<li>Continue until we return to our starting point</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="202.73213mm"
+   height="202.58243mm"
+   viewBox="0 0 202.73213 202.58243"
+   version="1.1"
+   id="svg472"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   sodipodi:docname="yarn_pattern.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview474"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="1.0841681"
+     inkscape:cx="634.58796"
+     inkscape:cy="440.42987"
+     inkscape:window-width="2560"
+     inkscape:window-height="1413"
+     inkscape:window-x="1080"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs469" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-20.690923,-25.225078)">
+    <rect
+       style="fill:none;stroke:#a6e3a1;stroke-width:2.08946;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+       id="rect528"
+       width="192.94083"
+       height="192.94083"
+       x="25.495306"
+       y="30.410948"
+       ry="1.5094541" />
+    <g
+       id="pegs"
+       class="fragment"
+       transform="matrix(1.3585539,0,0,1.3585539,-7.4188104,-9.0445491)">
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="path582"
+         cx="35.561756"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle584"
+         cx="52.678326"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle586"
+         cx="69.794899"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle588"
+         cx="86.911469"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle590"
+         cx="104.02804"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle592"
+         cx="121.14461"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle594"
+         cx="138.26117"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle596"
+         cx="155.37775"
+         cy="28.777637"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle598"
+         cx="35.561756"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle600"
+         cx="52.678326"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle602"
+         cx="69.794899"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle604"
+         cx="86.911469"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle606"
+         cx="104.02804"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle608"
+         cx="121.14461"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle610"
+         cx="138.26117"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle612"
+         cx="155.37775"
+         cy="170.78874"
+         r="2.78356" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle614"
+         cx="38.585598"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle616"
+         cx="55.702168"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle618"
+         cx="72.818741"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle620"
+         cx="89.93531"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle622"
+         cx="107.05188"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle624"
+         cx="124.16845"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle626"
+         cx="141.285"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle628"
+         cx="158.40158"
+         cy="-166.36478"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle648"
+         cx="38.585598"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle650"
+         cx="55.702168"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle652"
+         cx="72.818741"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle654"
+         cx="89.93531"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle656"
+         cx="107.05188"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle658"
+         cx="124.16845"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle660"
+         cx="141.285"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+      <circle
+         style="fill:#89b4fa;stroke:#89b4fa;stroke-width:1.538;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.998262"
+         id="circle662"
+         cx="158.40158"
+         cy="-24.243483"
+         r="2.78356"
+         transform="rotate(90)" />
+    </g>
+    <path
+       style="fill:none;stroke:#cba6f7;stroke-width:3.04044;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.998262"
+       d="M 40.948219,30.503681 219.15776,90.146287"
+       id="string1"
+       class="fragment" />
+    <path
+       style="fill:none;stroke:#cba6f7;stroke-width:3.44801;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.998262"
+       d="M 218.59153,90.14344 110.54209,223.42182"
+       id="string2"
+       class="fragment" />
+    <path
+       style="fill:none;stroke:#cba6f7;stroke-width:3.44801;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.998262"
+       d="M 25.680942,66.736916 110.54209,223.42182"
+       id="string3"
+       sodipodi:nodetypes="cc"
+       class="fragment" />
+    <path
+       style="fill:none;stroke:#cba6f7;stroke-width:3.44801;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.998262"
+       d="M 25.72879,66.900994 218.72134,43.50405 156.71951,222.89453 25.302927,113.15522 180.4125,30.271749 203.74032,223.33504 25.63295,159.56925 133.7845,29.893361 218.72093,183.23207 25.383458,206.50005 87.156944,30.071772 218.70326,136.63625 64.147836,223.31055 40.834407,30.605897"
+       id="string_rest"
+       class="fragment" />
+  </g>
+</svg>
+</p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/multimodal/multimodal.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../html_srcs/reveal.js/../js/python_language.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+          highlight: {
+            beforeHighlight: hljs => hljs.registerLanguage("python", function(hljs) {
+              console.log(mypythondef);
+              return mypythondef(hljs); } )
+          },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+          Multimodal,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(205,214,244,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(137,180,250,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(243,139,168,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,227,161,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(250,179,135,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(203,166,247,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(249,226,175,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(205,214,244,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(137,180,250,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(243,139,168,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,227,161,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(250,179,135,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(203,166,247,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(249,226,175,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+
+  <script>
+  // This is admitedly a very hacky way to achieve my pseudo code highlighting, but it works?
+    function remove_bars() {
+      var pseudoBlocks = document.getElementsByClassName("hljs-pseudo");
+      console.log(pseudoBlocks);
+      for ( var i = 0; i < pseudoBlocks.length; i++) {
+        pseudoBlocks[i].innerHTML = pseudoBlocks[i].innerHTML.replaceAll("\|\|\|", "");
+      }
+      }
+    // omg this is even more hacky now, but I need this to run after hljs has done its thing
+    setTimeout(remove_bars, 100);
+  </script>
+    </body>
+</html>

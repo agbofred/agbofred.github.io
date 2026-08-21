@@ -1,0 +1,2469 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="215.89999mm"
+   height="279.39999mm"
+   viewBox="0 0 215.89999 279.39999"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="event_loop_cards.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.28"
+     inkscape:cx="1759.375"
+     inkscape:cy="243.75"
+     inkscape:window-width="2560"
+     inkscape:window-height="1413"
+     inkscape:window-x="1080"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="215.89998"
+       height="279.39999"
+       id="page1"
+       margin="0"
+       bleed="0" />
+    <inkscape:page
+       x="225.89998"
+       y="0"
+       width="215.89998"
+       height="279.39999"
+       id="page2"
+       margin="0"
+       bleed="0" />
+    <inkscape:page
+       x="451.79996"
+       y="0"
+       width="215.89998"
+       height="279.39999"
+       id="page3"
+       margin="0"
+       bleed="0" />
+    <inkscape:page
+       x="677.69995"
+       y="0"
+       width="215.89998"
+       height="279.39999"
+       id="page4"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect173" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect174" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect175" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect176" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect177" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect178" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect179" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect180" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect181" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect182" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect183" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect184" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect296" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect297" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect298" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect299" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect300" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect301" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect302" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect303" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect304" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect305" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect306" />
+    <rect
+       x="243.06796"
+       y="43.641747"
+       width="130.92524"
+       height="192.24466"
+       id="rect307" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g21"
+       transform="translate(221.20993,-2.062289)" />
+    <g
+       id="g68"
+       transform="translate(-2.3532159,-1.1915834)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect4"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect5"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect6"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect7"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect8"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect9"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect10"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect11"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect12"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect62"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect63"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect64"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect65"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect66"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect67"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect68"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="214.78841"
+         ry="2.1228969" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="14.587071"
+         y="19.03796"
+         id="text117"><tspan
+           sodipodi:role="line"
+           id="tspan117"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="19.03796">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="24.117956"
+           id="tspan118">  raise hand</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="29.197952"
+           id="tspan119">  for 2 sec</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="34.277946"
+           id="tspan120">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="39.357944"
+           id="tspan121">  clap hands</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="44.437939"
+           id="tspan122">  together</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="49.517937"
+           id="tspan123">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="54.597931"
+           id="tspan124">  go give Jed</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="59.677929"
+           id="tspan125">  a high-five</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="13.306182"
+         y="85.338737"
+         id="text134"><tspan
+           sodipodi:role="line"
+           id="tspan126"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="85.338737">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="90.418732"
+           id="tspan128">  say &quot;Thanks&quot;</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="95.498726"
+           id="tspan135">  loudly</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="100.57873"
+           id="tspan129">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="105.65872"
+           id="tspan131">  toss a pen</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="110.73872"
+           id="tspan137">  into air and</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="115.81871"
+           id="tspan138">  catch it</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="120.89871"
+           id="tspan132">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="125.97871"
+           id="tspan134">  walk once </tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="131.0587"
+           id="tspan139">  around room</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="14.544738"
+         y="153.73557"
+         id="text149"><tspan
+           sodipodi:role="line"
+           id="tspan140"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="153.73557">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="158.81557"
+           id="tspan142">  point at</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="163.89555"
+           id="tspan150">  someone</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="168.97556"
+           id="tspan143">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="174.05554"
+           id="tspan152">  put hands</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="179.13554"
+           id="tspan154">  on head</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="184.21555"
+           id="tspan153">  for 2 sec</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="189.29553"
+           id="tspan147">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="194.37553"
+           id="tspan149">  touch front</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="199.45554"
+           id="tspan155">  podium</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="13.201978"
+         y="221.68843"
+         id="text165"><tspan
+           sodipodi:role="line"
+           id="tspan156"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="221.68843">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="226.76843"
+           id="tspan158">  bow once in</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="231.84842"
+           id="tspan166">  each compass</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="236.92842"
+           id="tspan167">  direction</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="242.00841"
+           id="tspan159">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="247.08841"
+           id="tspan162">  pat head,</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="252.16841"
+           id="tspan169">  rub belly 2x</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="257.24841"
+           id="tspan163">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="262.3284"
+           id="tspan165">  recite full</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="267.40839"
+           id="tspan170">  alphabet</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,1.1915834)"
+         id="text173"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect173);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan1">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan2">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan3">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan4">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan5">When Jed
+</tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan6">claps twice
+</tspan><tspan
+           x="273.37969"
+           y="172.44258"
+           id="tspan7">rapidly</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,70.620987)"
+         id="text174"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect174);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan8">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan9">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan10">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan11">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan12">When Jed
+</tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan13">claps twice
+</tspan><tspan
+           x="273.37969"
+           y="172.44258"
+           id="tspan14">rapidly</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,139.01781)"
+         id="text175"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect175);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan15">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan16">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan17">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan18">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan19">When Jed
+</tspan><tspan
+           x="273.37969"
+           y="153.24258"
+           id="tspan20">makes a
+</tspan><tspan
+           x="248.18928"
+           y="172.44258"
+           id="tspan21">loud popping
+</tspan><tspan
+           x="283.45585"
+           y="191.64257"
+           id="tspan22">noise</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,206.97068)"
+         id="text176"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect176);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan23">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan24">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan25">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan26">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan27">When Jed
+</tspan><tspan
+           x="273.37969"
+           y="153.24258"
+           id="tspan28">makes a
+</tspan><tspan
+           x="248.18928"
+           y="172.44258"
+           id="tspan29">loud popping
+</tspan><tspan
+           x="283.45585"
+           y="191.64257"
+           id="tspan30">noise</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,1.1915834)"
+         id="text177"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect177);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan31"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan32">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan33">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan34">Whenever </tspan><tspan
+           x="263.30353"
+           y="134.04258"
+           id="tspan35">something
+</tspan><tspan
+           x="263.30353"
+           y="153.24258"
+           id="tspan36">is tossed </tspan><tspan
+           x="248.18928"
+           y="172.44258"
+           id="tspan37">into the air</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,70.620987)"
+         id="text178"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect178);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan38"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan39">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan40">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan41">Whenever </tspan><tspan
+           x="273.37969"
+           y="134.04258"
+           id="tspan42">someone </tspan><tspan
+           x="248.18928"
+           y="153.24258"
+           id="tspan43">stands up or </tspan><tspan
+           x="263.30353"
+           y="172.44258"
+           id="tspan44">sits down</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,139.01781)"
+         id="text179"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect179);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan45"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan46">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan47">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan48">Whenever </tspan><tspan
+           x="243.1512"
+           y="134.04258"
+           id="tspan49">someone claps</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,206.97068)"
+         id="text180"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect180);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan50"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan51">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan52">
+</tspan><tspan
+           x="248.18928"
+           y="114.84258"
+           id="tspan53">Whenever you </tspan><tspan
+           x="258.26545"
+           y="134.04258"
+           id="tspan54">see two or </tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan55">more people </tspan><tspan
+           x="283.45585"
+           y="172.44258"
+           id="tspan56">doing </tspan><tspan
+           x="263.30353"
+           y="191.64257"
+           id="tspan57">something </tspan><tspan
+           x="258.26545"
+           y="210.84257"
+           id="tspan58">with their </tspan><tspan
+           x="283.45585"
+           y="230.04257"
+           id="tspan59">hands</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,1.1915834)"
+         id="text181"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect181);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan60"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan61">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan62">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan63">Whenever </tspan><tspan
+           x="248.18928"
+           y="134.04258"
+           id="tspan64">someone says </tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan65">a word that </tspan><tspan
+           x="253.22737"
+           y="172.44258"
+           id="tspan66">starts with </tspan><tspan
+           x="293.53201"
+           y="191.64257"
+           id="tspan67">&quot;T&quot;</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,70.620987)"
+         id="text182"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect182);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan68"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan69">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan70">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan71">Whenever </tspan><tspan
+           x="273.37969"
+           y="134.04258"
+           id="tspan72">someone
+</tspan><tspan
+           x="248.18928"
+           y="153.24258"
+           id="tspan73">bows towards
+</tspan><tspan
+           x="263.30353"
+           y="172.44258"
+           id="tspan74">the North</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,139.01781)"
+         id="text183"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect183);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan75"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan76">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan77">
+</tspan><tspan
+           x="248.18928"
+           y="114.84258"
+           id="tspan78">Whenever you </tspan><tspan
+           x="248.18928"
+           y="134.04258"
+           id="tspan79">hear someone </tspan><tspan
+           x="268.34161"
+           y="153.24258"
+           id="tspan80">cough or </tspan><tspan
+           x="283.45585"
+           y="172.44258"
+           id="tspan81">laugh</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,206.97068)"
+         id="text184"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect184);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan82"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan83">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan100">
+</tspan><tspan
+           x="248.18928"
+           y="114.84258"
+           id="tspan127">Whenever you </tspan><tspan
+           x="253.22737"
+           y="134.04258"
+           id="tspan130">see someone </tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan133">touch their </tspan><tspan
+           x="263.30353"
+           y="172.44258"
+           id="tspan136">head with </tspan><tspan
+           x="253.22737"
+           y="191.64257"
+           id="tspan141">their hands</tspan></text>
+    </g>
+    <g
+       id="g84"
+       transform="translate(223.54677,-1.1915834)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect69"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect70"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect71"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect72"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect73"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect74"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect75"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect76"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect77"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect78"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect79"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect80"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect81"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect82"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect83"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect84"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="214.78841"
+         ry="2.1228969" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.615822"
+         y="34.884457"
+         id="text84"><tspan
+           sodipodi:role="line"
+           id="tspan84"
+           style="stroke-width:1"
+           x="31.615822"
+           y="34.884457">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.64625"
+           y="46.314457"
+           id="tspan85">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.615822"
+         y="103.28127"
+         id="text87"><tspan
+           sodipodi:role="line"
+           id="tspan86"
+           style="stroke-width:1"
+           x="31.615822"
+           y="103.28127">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.64625"
+           y="114.71127"
+           id="tspan87">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.785666"
+         y="175.09"
+         id="text89"><tspan
+           sodipodi:role="line"
+           id="tspan88"
+           style="stroke-width:1"
+           x="31.785666"
+           y="175.09">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.816093"
+           y="186.51999"
+           id="tspan89">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.615822"
+         y="240.07492"
+         id="text91"><tspan
+           sodipodi:role="line"
+           id="tspan90"
+           style="stroke-width:1"
+           x="31.615822"
+           y="240.07492">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.64625"
+           y="251.50491"
+           id="tspan91">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.196648"
+         y="35.121349"
+         id="text93"><tspan
+           sodipodi:role="line"
+           id="tspan92"
+           style="stroke-width:1"
+           x="84.196648"
+           y="35.121349">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.227074"
+           y="46.55135"
+           id="tspan93">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.196648"
+         y="103.51817"
+         id="text95"><tspan
+           sodipodi:role="line"
+           id="tspan94"
+           style="stroke-width:1"
+           x="84.196648"
+           y="103.51817">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.227074"
+           y="114.94817"
+           id="tspan95">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.130699"
+         y="175.09"
+         id="text97"><tspan
+           sodipodi:role="line"
+           id="tspan96"
+           style="stroke-width:1"
+           x="84.130699"
+           y="175.09">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.161125"
+           y="186.51999"
+           id="tspan97">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.196648"
+         y="240.31181"
+         id="text99"><tspan
+           sodipodi:role="line"
+           id="tspan98"
+           style="stroke-width:1"
+           x="84.196648"
+           y="240.31181">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.227074"
+           y="251.74181"
+           id="tspan99">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="38.296352"
+         y="-136.47572"
+         id="text101"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.296352"
+           y="-136.47572"
+           id="tspan101">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.326778"
+           y="-125.04572"
+           id="tspan102">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="106.45006"
+         y="-138.23907"
+         id="text104"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.45006"
+           y="-138.23907"
+           id="tspan103">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.48048"
+           y="-126.80907"
+           id="tspan104">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="175.09"
+         y="-136.47572"
+         id="text106"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.09"
+           y="-136.47572"
+           id="tspan105">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.12042"
+           y="-125.04572"
+           id="tspan106">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="243.48682"
+         y="-136.47572"
+         id="text108"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.48682"
+           y="-136.47572"
+           id="tspan107">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.51724"
+           y="-125.04572"
+           id="tspan108">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="38.296352"
+         y="-188.82076"
+         id="text110"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.296352"
+           y="-188.82076"
+           id="tspan109">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.326778"
+           y="-177.39076"
+           id="tspan110">B</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="106.69317"
+         y="-188.82076"
+         id="text112"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.69317"
+           y="-188.82076"
+           id="tspan111">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.72359"
+           y="-177.39076"
+           id="tspan112">B</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="175.09"
+         y="-188.82076"
+         id="text114"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.09"
+           y="-188.82076"
+           id="tspan113">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.12042"
+           y="-177.39076"
+           id="tspan114">B</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="243.48682"
+         y="-188.82076"
+         id="text116"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.48682"
+           y="-188.82076"
+           id="tspan115">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.51724"
+           y="-177.39076"
+           id="tspan116">B</tspan></text>
+    </g>
+    <g
+       id="g250"
+       transform="translate(449.44676,-1.1915834)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect185"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect186"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect187"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect188"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect189"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect190"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect191"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect192"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect193"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect194"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect195"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect196"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect197"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect198"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect199"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect200"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="214.78841"
+         ry="2.1228969" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="14.587071"
+         y="19.03796"
+         id="text208"><tspan
+           sodipodi:role="line"
+           id="tspan200"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="19.03796">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="24.117956"
+           id="tspan201">  raise hand</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="29.197952"
+           id="tspan202">  for 2 sec</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="34.277946"
+           id="tspan203">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="39.357944"
+           id="tspan204">  clap hands</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="44.437939"
+           id="tspan205">  together</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="49.517937"
+           id="tspan206">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="54.597931"
+           id="tspan207">  go give Jed</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.587071"
+           y="59.677929"
+           id="tspan208">  a high-five</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="13.306182"
+         y="85.338737"
+         id="text218"><tspan
+           sodipodi:role="line"
+           id="tspan209"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="85.338737">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="90.418732"
+           id="tspan210">  say &quot;Thanks&quot;</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="95.498726"
+           id="tspan211">  loudly</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="100.57873"
+           id="tspan212">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="105.65872"
+           id="tspan213">  toss a pen</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="110.73872"
+           id="tspan214">  into air and</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="115.81871"
+           id="tspan215">  catch it</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="120.89871"
+           id="tspan216">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="125.97871"
+           id="tspan217">  walk once </tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.306182"
+           y="131.0587"
+           id="tspan218">  around room</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="14.544738"
+         y="153.73557"
+         id="text228"><tspan
+           sodipodi:role="line"
+           id="tspan219"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="153.73557">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="158.81557"
+           id="tspan220">  point at</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="163.89555"
+           id="tspan221">  someone</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="168.97556"
+           id="tspan222">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="174.05554"
+           id="tspan223">  put hands</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="179.13554"
+           id="tspan224">  on head</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="184.21555"
+           id="tspan225">  for 2 sec</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="189.29553"
+           id="tspan226">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="194.37553"
+           id="tspan227">  touch front</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="14.544738"
+           y="199.45554"
+           id="tspan228">  podium</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:4.23333px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:start;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="13.201978"
+         y="221.68843"
+         id="text238"><tspan
+           sodipodi:role="line"
+           id="tspan229"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="221.68843">On even:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="226.76843"
+           id="tspan230">  bow once in</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="231.84842"
+           id="tspan231">  each compass</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="236.92842"
+           id="tspan232">  direction</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="242.00841"
+           id="tspan233">On odd:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="247.08841"
+           id="tspan234">  pat head,</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="252.16841"
+           id="tspan235">  rub belly 2x</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="257.24841"
+           id="tspan236">On special:</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="262.3284"
+           id="tspan237">  recite full</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:4.23333px;stroke-width:1"
+           x="13.201978"
+           y="267.40839"
+           id="tspan238">  alphabet</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,1.1915834)"
+         id="text239"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect296);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan144">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan145">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan146">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan148">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan151">When Jed
+</tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan157">claps twice
+</tspan><tspan
+           x="273.37969"
+           y="172.44258"
+           id="tspan160">rapidly</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,70.620987)"
+         id="text240"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect297);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan161">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan164">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan168">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan171">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan172">When Jed
+</tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan173">claps twice
+</tspan><tspan
+           x="273.37969"
+           y="172.44258"
+           id="tspan174">rapidly</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,139.01781)"
+         id="text241"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect298);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan175">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan176">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan177">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan178">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan179">When Jed
+</tspan><tspan
+           x="273.37969"
+           y="153.24258"
+           id="tspan180">makes a
+</tspan><tspan
+           x="248.18928"
+           y="172.44258"
+           id="tspan181">loud popping
+</tspan><tspan
+           x="283.45585"
+           y="191.64257"
+           id="tspan182">noise</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.3532159,206.97068)"
+         id="text242"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect299);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="273.37969"
+           y="57.242579"
+           id="tspan183">Special </tspan><tspan
+           x="263.30353"
+           y="76.442579"
+           id="tspan184">Listening
+</tspan><tspan
+           x="253.22737"
+           y="95.64258"
+           id="tspan185">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="114.84258"
+           id="tspan186">
+</tspan><tspan
+           x="268.34161"
+           y="134.04258"
+           id="tspan187">When Jed
+</tspan><tspan
+           x="273.37969"
+           y="153.24258"
+           id="tspan188">makes a
+</tspan><tspan
+           x="248.18928"
+           y="172.44258"
+           id="tspan189">loud popping
+</tspan><tspan
+           x="283.45585"
+           y="191.64257"
+           id="tspan190">noise</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,1.1915834)"
+         id="text243"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect300);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan191"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan192">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan193">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan194">Whenever </tspan><tspan
+           x="263.30353"
+           y="134.04258"
+           id="tspan195">something
+</tspan><tspan
+           x="263.30353"
+           y="153.24258"
+           id="tspan196">is tossed </tspan><tspan
+           x="248.18928"
+           y="172.44258"
+           id="tspan197">into the air</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,70.620987)"
+         id="text244"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect301);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan198"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan199">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan239">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan240">Whenever </tspan><tspan
+           x="273.37969"
+           y="134.04258"
+           id="tspan241">someone </tspan><tspan
+           x="248.18928"
+           y="153.24258"
+           id="tspan242">stands up or </tspan><tspan
+           x="263.30353"
+           y="172.44258"
+           id="tspan243">sits down</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,139.01781)"
+         id="text245"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect302);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan244"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan251">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan252">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan253">Whenever </tspan><tspan
+           x="243.1512"
+           y="134.04258"
+           id="tspan254">someone claps</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,54.836955,206.97068)"
+         id="text246"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect303);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan255"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan256">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan257">
+</tspan><tspan
+           x="248.18928"
+           y="114.84258"
+           id="tspan258">Whenever you </tspan><tspan
+           x="258.26545"
+           y="134.04258"
+           id="tspan259">see two or </tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan260">more people </tspan><tspan
+           x="283.45585"
+           y="172.44258"
+           id="tspan261">doing </tspan><tspan
+           x="263.30353"
+           y="191.64257"
+           id="tspan262">something </tspan><tspan
+           x="258.26545"
+           y="210.84257"
+           id="tspan263">with their </tspan><tspan
+           x="283.45585"
+           y="230.04257"
+           id="tspan264">hands</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,1.1915834)"
+         id="text247"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect304);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan297"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan298">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan299">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan300">Whenever </tspan><tspan
+           x="248.18928"
+           y="134.04258"
+           id="tspan301">someone says </tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan302">a word that </tspan><tspan
+           x="253.22737"
+           y="172.44258"
+           id="tspan303">starts with </tspan><tspan
+           x="293.53201"
+           y="191.64257"
+           id="tspan304">&quot;T&quot;</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,70.620987)"
+         id="text248"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect305);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan305"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan306">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan307">
+</tspan><tspan
+           x="268.34161"
+           y="114.84258"
+           id="tspan308">Whenever </tspan><tspan
+           x="273.37969"
+           y="134.04258"
+           id="tspan309">someone
+</tspan><tspan
+           x="248.18928"
+           y="153.24258"
+           id="tspan310">bows towards
+</tspan><tspan
+           x="263.30353"
+           y="172.44258"
+           id="tspan311">the North</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,139.01781)"
+         id="text249"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect306);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan312"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan313">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan314">
+</tspan><tspan
+           x="248.18928"
+           y="114.84258"
+           id="tspan315">Whenever you </tspan><tspan
+           x="248.18928"
+           y="134.04258"
+           id="tspan316">hear someone </tspan><tspan
+           x="268.34161"
+           y="153.24258"
+           id="tspan317">cough or </tspan><tspan
+           x="283.45585"
+           y="172.44258"
+           id="tspan318">laugh</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,107.08215,206.97068)"
+         id="text250"
+         style="font-weight:bold;font-size:16px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.23px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect307);display:inline;fill:#000000;stroke:none;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round"><tspan
+           x="258.26545"
+           y="57.242579"
+           id="tspan319"> Listening
+</tspan><tspan
+           x="253.22737"
+           y="76.442579"
+           id="tspan320">Assignment:
+</tspan><tspan
+           x="308.64625"
+           y="95.64258"
+           id="tspan321">
+</tspan><tspan
+           x="248.18928"
+           y="114.84258"
+           id="tspan322">Whenever you </tspan><tspan
+           x="253.22737"
+           y="134.04258"
+           id="tspan323">see someone </tspan><tspan
+           x="253.22737"
+           y="153.24258"
+           id="tspan324">touch their </tspan><tspan
+           x="263.30353"
+           y="172.44258"
+           id="tspan325">head with </tspan><tspan
+           x="253.22737"
+           y="191.64257"
+           id="tspan326">their hands</tspan></text>
+    </g>
+    <g
+       id="g296"
+       transform="translate(675.34677,-1.1915834)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect250"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect251"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect252"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect253"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect254"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect255"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect256"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect257"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect258"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect259"
+         width="41.345036"
+         height="57.396824"
+         x="11.113146"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect260"
+         width="41.345036"
+         height="57.396824"
+         x="63.458179"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect261"
+         width="41.345036"
+         height="57.396824"
+         x="115.80321"
+         y="214.78841"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect262"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="9.5979404"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect263"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="77.994759"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect264"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="146.39159"
+         ry="2.1228969" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999997;stroke-linecap:round;stroke-linejoin:round"
+         id="rect265"
+         width="41.345036"
+         height="57.396824"
+         x="168.14824"
+         y="214.78841"
+         ry="2.1228969" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.615822"
+         y="34.884457"
+         id="text266"><tspan
+           sodipodi:role="line"
+           id="tspan265"
+           style="stroke-width:1"
+           x="31.615822"
+           y="34.884457">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.64625"
+           y="46.314457"
+           id="tspan266">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.615822"
+         y="103.28127"
+         id="text268"><tspan
+           sodipodi:role="line"
+           id="tspan267"
+           style="stroke-width:1"
+           x="31.615822"
+           y="103.28127">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.64625"
+           y="114.71127"
+           id="tspan268">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.785666"
+         y="175.09"
+         id="text270"><tspan
+           sodipodi:role="line"
+           id="tspan269"
+           style="stroke-width:1"
+           x="31.785666"
+           y="175.09">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.816093"
+           y="186.51999"
+           id="tspan270">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="31.615822"
+         y="240.07492"
+         id="text272"><tspan
+           sodipodi:role="line"
+           id="tspan271"
+           style="stroke-width:1"
+           x="31.615822"
+           y="240.07492">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="31.64625"
+           y="251.50491"
+           id="tspan272">Loop</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.196648"
+         y="35.121349"
+         id="text274"><tspan
+           sodipodi:role="line"
+           id="tspan273"
+           style="stroke-width:1"
+           x="84.196648"
+           y="35.121349">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.227074"
+           y="46.55135"
+           id="tspan274">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.196648"
+         y="103.51817"
+         id="text276"><tspan
+           sodipodi:role="line"
+           id="tspan275"
+           style="stroke-width:1"
+           x="84.196648"
+           y="103.51817">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.227074"
+           y="114.94817"
+           id="tspan276">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.130699"
+         y="175.09"
+         id="text278"><tspan
+           sodipodi:role="line"
+           id="tspan277"
+           style="stroke-width:1"
+           x="84.130699"
+           y="175.09">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.161125"
+           y="186.51999"
+           id="tspan278">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="84.196648"
+         y="240.31181"
+         id="text280"><tspan
+           sodipodi:role="line"
+           id="tspan279"
+           style="stroke-width:1"
+           x="84.196648"
+           y="240.31181">Event</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="84.227074"
+           y="251.74181"
+           id="tspan280">Queue</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="38.296352"
+         y="-136.47572"
+         id="text282"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.296352"
+           y="-136.47572"
+           id="tspan281">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.326778"
+           y="-125.04572"
+           id="tspan282">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="106.45006"
+         y="-138.23907"
+         id="text284"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.45006"
+           y="-138.23907"
+           id="tspan283">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.48048"
+           y="-126.80907"
+           id="tspan284">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="175.09"
+         y="-136.47572"
+         id="text286"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.09"
+           y="-136.47572"
+           id="tspan285">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.12042"
+           y="-125.04572"
+           id="tspan286">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="243.48682"
+         y="-136.47572"
+         id="text288"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.48682"
+           y="-136.47572"
+           id="tspan287">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.51724"
+           y="-125.04572"
+           id="tspan288">A</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="38.296352"
+         y="-188.82076"
+         id="text290"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.296352"
+           y="-188.82076"
+           id="tspan289">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="38.326778"
+           y="-177.39076"
+           id="tspan290">B</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="106.69317"
+         y="-188.82076"
+         id="text292"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.69317"
+           y="-188.82076"
+           id="tspan291">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="106.72359"
+           y="-177.39076"
+           id="tspan292">B</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="175.09"
+         y="-188.82076"
+         id="text294"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.09"
+           y="-188.82076"
+           id="tspan293">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="175.12042"
+           y="-177.39076"
+           id="tspan294">B</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:9.525px;line-height:1.2;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Bold';font-variant-ligatures:no-contextual;text-align:center;letter-spacing:0.0608542px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         x="243.48682"
+         y="-188.82076"
+         id="text296"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.48682"
+           y="-188.82076"
+           id="tspan295">Listener</tspan><tspan
+           sodipodi:role="line"
+           style="stroke-width:1"
+           x="243.51724"
+           y="-177.39076"
+           id="tspan296">B</tspan></text>
+    </g>
+  </g>
+</svg>

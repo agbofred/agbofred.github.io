@@ -25,7 +25,7 @@
     "href": "index.html#quick-links",
     "title": "CS 480W/481: Senior Capstone Project",
     "section": "Quick Links",
-    "text": "Quick Links\n\nCourse Syllabus\nSchedule an Appointment"
+    "text": "Quick Links\n\nCourse Syllabus\nSchedule an Appointment (Individual Sprint Review)"
   },
   {
     "objectID": "index.html#instructor",
@@ -109,7 +109,7 @@
     "href": "syllabi.html",
     "title": "CS 480W/481: Course Syllabus",
     "section": "",
-    "text": "Course Numbers\nCS 480W (Fall 2026) / CS 481 (Spring 2027)\n\n\nCredits\n4 credits per semester (8 total)\n\n\nDuration\nTwo semesters (30 weeks)\n\n\nMeeting Format\nWeekly individual meetings (30 minutes)\n\n\nPrerequisites\nSenior standing; completion of core CS curriculum\n\n\n\n\n\n\nProfessor Fred Agbo, PhD\nEmail: fjagbo@willamette.edu\nOffice: Ford Hall 209 (Salem)\n\n\n\nOffice hours are available by 15-minute appointments or on a drop-in basis when available. Multiple modalities are offered (in-person, phone, Google Meet). If the scheduled times do not align with your availability, please contact the instructor.\n\n\n\nA two-semester culminating experience where students apply their cumulative knowledge to design, develop, and deploy a full-stack or similar-type application. Students will follow industry-standard software development lifecycle (SDLC) practices, from initial conception through final deployment and documentation. The course emphasizes professional software engineering methodology, project management, technical communication, and collaborative development practices.\n\n\n\nUpon completion of this course sequence, students will be able to:\n\nDesign and implement a complete full-stack or similar-type application from conception to deployment\nApply software engineering principles and best practices throughout the development lifecycle\nDemonstrate proficiency in project management and agile methodologies\nCreate comprehensive technical documentation\nPresent technical work to both technical and non-technical audiences\nCollaborate effectively using version control and project management tools\nConduct meaningful peer reviews and incorporate feedback\n\n\n\n\n\n\n\n\n\n\n\n\nSoftware Engineering: A Modern Approach\nMarco Tulio Valente. Free, open textbook. Available at engsoftmoderna.info\nRequired\n\n\nHandbook of Software Engineering Methods\nLara Letaw. Free OER via Open Textbook Library. Available at open.umn.edu\nRequired\n\n\n\nSoftware Engineering: A Modern Approach provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. Handbook of Software Engineering Methods complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access."
+    "text": "Course Numbers\nCS 480W (Fall 2026) / CS 481 (Spring 2027)\n\n\nCredits\n4 credits per semester (8 total)\n\n\nDuration\nTwo semesters (30 weeks)\n\n\nMeeting Format\nFridays 10:30–11:00 AM (group, 30 min) + Individual sprint review (15 min, by appointment)\n\n\nPrerequisites\nSenior standing; completion of core CS curriculum\n\n\n\n\n\n\nProfessor Fred Agbo, PhD\nEmail: fjagbo@willamette.edu\nOffice: Ford Hall 209 (Salem)\n\n\n\nOffice hours are available by 15-minute appointments or on a drop-in basis when available. Multiple modalities are offered (in-person, phone, Google Meet). If the scheduled times do not align with your availability, please contact the instructor.\n\n\n\nA two-semester culminating experience where students apply their cumulative knowledge to design, develop, and deploy a full-stack or similar-type application. Students will follow industry-standard software development lifecycle (SDLC) practices, from initial conception through final deployment and documentation. The course emphasizes professional software engineering methodology, project management, technical communication, and collaborative development practices.\n\n\n\nUpon completion of this course sequence, students will be able to:\n\nDesign and implement a complete full-stack or similar-type application from conception to deployment\nApply software engineering principles and best practices throughout the development lifecycle\nDemonstrate proficiency in project management and agile methodologies\nCreate comprehensive technical documentation\nPresent technical work to both technical and non-technical audiences\nCollaborate effectively using version control and project management tools\nConduct meaningful peer reviews and incorporate feedback\n\n\n\n\n\n\n\nSoftware Engineering: A Modern Approach\nMarco Tulio Valente. Free, open textbook. Available here\nRecommended\n\n\nHandbook of Software Engineering Methods\nLara Letaw. Free OER via Open Textbook Library. Available here\nRecommended\n\n\n\nSoftware Engineering: A Modern Approach provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. Handbook of Software Engineering Methods complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access."
   },
   {
     "objectID": "syllabi.html#table-of-contents",
@@ -193,7 +193,7 @@
     "href": "syllabi.html#basic-information",
     "title": "CS 480W/481: Course Syllabus",
     "section": "",
-    "text": "Course Numbers\nCS 480W (Fall 2026) / CS 481 (Spring 2027)\n\n\nCredits\n4 credits per semester (8 total)\n\n\nDuration\nTwo semesters (30 weeks)\n\n\nMeeting Format\nWeekly individual meetings (30 minutes)\n\n\nPrerequisites\nSenior standing; completion of core CS curriculum"
+    "text": "Course Numbers\nCS 480W (Fall 2026) / CS 481 (Spring 2027)\n\n\nCredits\n4 credits per semester (8 total)\n\n\nDuration\nTwo semesters (30 weeks)\n\n\nMeeting Format\nFridays 10:30–11:00 AM (group, 30 min) + Individual sprint review (15 min, by appointment)\n\n\nPrerequisites\nSenior standing; completion of core CS curriculum"
   },
   {
     "objectID": "syllabi.html#professor",
@@ -228,7 +228,7 @@
     "href": "syllabi.html#textbooks-and-materials",
     "title": "CS 480W/481: Course Syllabus",
     "section": "",
-    "text": "Software Engineering: A Modern Approach\nMarco Tulio Valente. Free, open textbook. Available at engsoftmoderna.info\nRequired\n\n\nHandbook of Software Engineering Methods\nLara Letaw. Free OER via Open Textbook Library. Available at open.umn.edu\nRequired\n\n\n\nSoftware Engineering: A Modern Approach provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. Handbook of Software Engineering Methods complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access."
+    "text": "Software Engineering: A Modern Approach\nMarco Tulio Valente. Free, open textbook. Available here\nRecommended\n\n\nHandbook of Software Engineering Methods\nLara Letaw. Free OER via Open Textbook Library. Available here\nRecommended\n\n\n\nSoftware Engineering: A Modern Approach provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. Handbook of Software Engineering Methods complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access."
   },
   {
     "objectID": "syllabi.html#modified-agile-with-academic-milestones",
@@ -256,7 +256,7 @@
     "href": "syllabi.html#agile-ceremonies",
     "title": "CS 480W/481: Course Syllabus",
     "section": "Agile Ceremonies",
-    "text": "Agile Ceremonies\n\nSprint Planning (Weekly – 10 min)\n\nReview velocity\nSelect backlog items\nBreak down tasks\nCommit to goals\n\n\n\nDaily Standup (Asynchronous)\nPost daily by 10 AM in Discord/Slack:\n\nYesterday’s completions\nToday’s plan\nCurrent blockers\n\n\n\nSprint Review (Weekly – 15 min)\n\nDemo features\nGather feedback\nDiscuss incomplete items\n\n\n\nSprint Retrospective (Bi-weekly – 5 min)\n\nWhat went well\nAreas for improvement\nAction items"
+    "text": "Agile Ceremonies\n\nSprint Planning (Weekly – 10 min)\n\nReview velocity\nSelect backlog items\nBreak down tasks\nCommit to goals\n\n\n\nDaily Standup (Asynchronous)\nPost daily by 10 AM in Discord/Slack:\n\nYesterday’s completions\nToday’s plan\nCurrent blockers\n\n\n\nSprint Review (Weekly – 15 min)\nEach student must individually book a 15-minute Sprint Review meeting with the instructor every week via Google Calendar:\nBook Your Sprint Review\n\nDemo features\nGather feedback\nDiscuss incomplete items\n\n\n\nSprint Retrospective (Bi-weekly – 5 min)\n\nWhat went well\nAreas for improvement\nAction items"
   },
   {
     "objectID": "syllabi.html#semester-1-planning-design-and-foundation-cs-481w-fall-2025",
@@ -466,7 +466,7 @@
     "href": "syllabi.html#land-acknowledgement",
     "title": "CS 480W/481: Course Syllabus",
     "section": "Land Acknowledgement",
-    "text": "Land Acknowledgement\nWe respectfully acknowledge that Willamette University is located on the ancestral lands of the Kalapuya people, who today are represented by the Confederated Tribes of the Grand Ronde and the Confederated Tribes of the Siletz Indians. We honor their deep connection to this land and recognize the ongoing contributions of Indigenous peoples to our academic community.\n\nCourse materials structure adapted from Dr. Lucas P. Cordova’s CS Capstone course. Special thanks to Lucas for the excellent organizational framework to capstone education.\n\nNote: This syllabus is subject to change with reasonable notice. Students will be informed of any significant changes via official communication channels.\n\nLast updated: August 2025"
+    "text": "Land Acknowledgement\nWe respectfully acknowledge that Willamette University is located on the ancestral lands of the Kalapuya people, who today are represented by the Confederated Tribes of the Grand Ronde and the Confederated Tribes of the Siletz Indians. We honor their deep connection to this land and recognize the ongoing contributions of Indigenous peoples to our academic community.\n\nCourse materials structure adapted from Dr. Lucas P. Cordova’s CS Capstone course. Special thanks to Lucas for the excellent organizational framework to capstone education.\n\nNote: This syllabus is subject to change with reasonable notice. Students will be informed of any significant changes via official communication channels.\n\nLast updated: August 2026"
   },
   {
     "objectID": "syllabi.html#semester-1-planning-design-and-foundation-cs-480w-fall-2026",
@@ -495,5 +495,12 @@
     "title": "CS 480W/481: Course Syllabus",
     "section": "Semester 2 Grade Distribution (CS 481)",
     "text": "Semester 2 Grade Distribution (CS 481)\n\n\n\nComponent\nWeight\nDescription\n\n\n\n\nFeature Completion\n25%\nAll planned features implemented\n\n\nTesting and Quality\n15%\nTest coverage and bug fixes\n\n\nDeployment Success\n15%\nProduction deployment\n\n\nDocumentation\n15%\nUser and technical docs\n\n\nWeekly Progress\n15%\nConsistent development\n\n\nFinal Presentation\n10%\nProject showcase\n\n\nPeer Reviews\n5%\nQuality of reviews provided"
+  },
+  {
+    "objectID": "syllabi.html#weekly-meeting-schedule",
+    "href": "syllabi.html#weekly-meeting-schedule",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Weekly Meeting Schedule",
+    "text": "Weekly Meeting Schedule\nThe course uses two meeting modalities throughout the semester:\n\nGroup Review Session (Every Friday, 10:30–11:00 AM)\nA 30-minute group session held every Friday from 10:30 to 11:00 AM at Ford Hall 209. All students are expected to attend. This session is used for:\n\nReviewing expectations and discussing the week’s milestones as shown in the implementation schedule below\nGroup-level sprint check-in and discussion\nPeer collaboration and shared problem-solving\n\n\n\nIndividual Sprint Review (Weekly – 15 min, By Appointment)\nIn addition to the group session, every student must individually book a 15-minute one-on-one Sprint Review with the instructor each week. Use the link below to reserve your time slot:\nBook Your Individual Sprint Review →\n\nEach student is responsible for booking their own slot. These sessions are used to demo individual progress, receive personalized feedback, and address sprint-specific blockers."
   }
 ]

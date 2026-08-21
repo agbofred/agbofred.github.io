@@ -1,0 +1,16 @@
+---
+title: "Milestone 4: Advance or end the game"
+---
+
+Now that you are trying to guess random words, you will almost assuredly be requiring more than a single guess! As such, it is time to ensure that we can advance the game along.
+
+After each guess, assuming that we have not won or lost the game yet, we need to move on to the next row. This ensures that when the user goes to type a new word, it shows up on the second (or later) rows. The information about the current row is maintained inside the `WordleGraphics` module (which needs this information to know where typed letters should appear), and can be interacted with by using the `set_current_row` and `get_current_row` methods. After each guess then, you should set the current row to whatever index the next row would be. _Test it!_
+
+Finally, you need to implement the victory or loss conditions.
+
+- A player wins the game if they have correctly guessed all `N_COLS` letters, which would correspond to all of the letters being colored `CORRECT_COLOR` (green). In that case, you want to have your program display some properly congratulatory message and then set the current row to `N_ROWS`, which will disable further keyboard input.
+- A player loses the game if they have made `N_ROWS` guesses without winning. Display a message to the window telling them as this, and letting them know what the mystery word was.
+
+At this point you have a working game of Wordle! Play it through a bunch of times to ensure it is behaving as you expect. Don't assume all the code you have written is perfect! Some examples of example games are shown below.
+
+![Examples of winning and losing games at this point. The game to the left was won on guess 4, and thus the victory text was displayed and the current line moved to the end to disable any more text input. The game to the right was lost, and thus after that last guess the loss message was displayed, which included the word that was trying to be guessed.](ms4.png)

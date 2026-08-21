@@ -31,7 +31,7 @@ August 2026
 | Course Numbers | CS 480W (Fall 2026) / CS 481 (Spring 2027) |
 | Credits | 4 credits per semester (8 total) |
 | Duration | Two semesters (30 weeks) |
-| Meeting Format | Weekly individual meetings (30 minutes) |
+| Meeting Format | Fridays 10:30–11:00 AM (group, 30 min) + Individual sprint review (15 min, by appointment) |
 | Prerequisites | Senior standing; completion of core CS curriculum |
 
 ## Professor
@@ -64,8 +64,8 @@ Upon completion of this course sequence, students will be able to:
 
 | | | |
 |---|---|---|
-| Software Engineering: A Modern Approach | Marco Tulio Valente. Free, open textbook. Available at engsoftmoderna.info | Required |
-| Handbook of Software Engineering Methods | Lara Letaw. Free OER via Open Textbook Library. Available at open.umn.edu | Required |
+| Software Engineering: A Modern Approach | Marco Tulio Valente. Free, open textbook. Available [here](https://softengbook.org/) | Recommended |
+| Handbook of Software Engineering Methods | Lara Letaw. Free OER via Open Textbook Library. Available [here](https://open.umn.edu/opentextbooks/textbooks/1557) | Recommended |
 
 *Software Engineering: A Modern Approach* provides comprehensive coverage of software engineering topics including process models, requirements, architecture, design, testing, and maintenance. *Handbook of Software Engineering Methods* complements it with a practical, methods-oriented framing aligned with real-world project work. Both texts are free and open-access.
 
@@ -160,6 +160,10 @@ Post daily by 10 AM in Discord/Slack:
 
 ### Sprint Review (Weekly – 15 min)
 
+Each student must individually book a 15-minute Sprint Review meeting with the instructor every week via Google Calendar:
+
+**[Book Your Sprint Review](https://calendar.app.google/QMJ1TL3GWyFNkK5eA)**
+
 - Demo features
 - Gather feedback
 - Discuss incomplete items
@@ -173,6 +177,28 @@ Post daily by 10 AM in Discord/Slack:
 ---
 
 # Course Structure
+
+## Weekly Meeting Schedule
+
+The course uses two meeting modalities throughout the semester:
+
+### Group Review Session (Every Friday, 10:30–11:00 AM)
+
+A 30-minute group session held **every Friday from 10:30 to 11:00 AM at Ford Hall 209**. All students are expected to attend. This session is used for:
+
+- Reviewing expectations and discussing the week's milestones as shown in the implementation schedule below
+- Group-level sprint check-in and discussion
+- Peer collaboration and shared problem-solving
+
+### Individual Sprint Review (Weekly – 15 min, By Appointment)
+
+In addition to the group session, **every student must individually book a 15-minute one-on-one Sprint Review** with the instructor each week. Use the link below to reserve your time slot:
+
+**[Book Your Individual Sprint Review →](https://calendar.app.google/QMJ1TL3GWyFNkK5eA)**
+
+> Each student is responsible for booking their own slot. These sessions are used to demo individual progress, receive personalized feedback, and address sprint-specific blockers.
+
+---
 
 ## Semester 1: Planning, Design, and Foundation (CS 480W – Fall 2026)
 
@@ -474,4 +500,4 @@ We respectfully acknowledge that Willamette University is located on the ancestr
 
 ---
 
-*Last updated: August 2025*
+*Last updated: August 2026*

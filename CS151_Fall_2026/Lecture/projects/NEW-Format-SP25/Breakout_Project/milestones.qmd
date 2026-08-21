@@ -1,0 +1,6 @@
+---
+title: Introducing Milestones
+---
+
+Success in this project will depend on decomposing the problem into manageable pieces and getting each one working before you move on to the next. The next few sections describe a reasonable staged approach to the problem. You can find working versions of each milestone [here](https://willamette.edu/~esroberts/cs151/Assignments/Project2/Breakout1/index.html) that you can use to compare to your version.
+

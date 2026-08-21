@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jed Rembold">
+  <meta name="dcterms.date" content="2026-02-11">
+  <title>Random Graphics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_catppuccin.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/catppuccin-mocha.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Random Graphics</h1>
+  <p class="author">Jed Rembold</p>
+  <p class="date">February 11, 2026</p>
+</section>
+
+<section id="happy-friday" class="slide level2">
+<h2>Happy Friday!!!</h2>
+<div class="cols" style="font-size:.8em">
+<div class="col">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Introduce yourselves! Fun question: What is your favorite
+shape?</li>
+</ul>
+<p><img data-src="../images/group_seating_locs_Ford102.png"
+style="width:50.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?text=CtegqI&amp;data=https://tools.jedrembold.prof/daily?code=CtegqI"
+style="width:60.0%" /></p>
+</div>
+</div>
+<!-- Comments
+-->
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<ul>
+<li>By working on Project 1! Due Monday</li>
+<li>Sections today and tomorrow!</li>
+<li>Our first exam is a week from Friday!
+<ul>
+<li>Study materials will come out on Friday</li>
+<li>Sections next week will be for reviewing and studying</li>
+</ul></li>
+</ul>
+</section>
+<section>
+<section id="group-problems" class="title-slide slide level1">
+<h1>Group Problems</h1>
+
+</section>
+<section id="problem-1-5d100s" class="slide level2">
+<h2>Problem 1: 5d100s</h2>
+<ul>
+<li>Every week before we start playing, each person in my D&amp;D group
+rolls 5 (virtual) 100-sided dice
+<ul>
+<li>A 100-sided dice has numbers 1-100 on its faces</li>
+</ul></li>
+<li>We like to use the <em>sum</em> of the 5 dice to predict how lucky
+or unlucky we’ll be that night</li>
+<li>But what would be exceptional?</li>
+<li>Your group’s task: Roll 5 100-sided dice 10,000 times. What is the
+maximum value you got?</li>
+</ul>
+</section>
+<section id="problem-2-olympic-flags" class="slide level2">
+<h2>Problem 2: Olympic Flags</h2>
+<ul>
+<li>With the Olympics going on, you’ve probably seen way more
+international flags than usual</li>
+<li>Let’s recreate some in PGL!</li>
+<li>Each member of your group should choose a different flag. Your task
+is to recreate it as exactly as possible.</li>
+<li>A list of countries with flags that would be very approachable with
+our current shapes follows on the next slide
+<ul>
+<li>You’ll need to search for the flag itself to see what you need to
+replicate (Wikipedia is great for this)</li>
+</ul></li>
+</ul>
+</section>
+<section id="country-flag-options" class="slide level2">
+<h2>Country Flag Options</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Italy</li>
+<li>Japan</li>
+<li>Laos</li>
+<li>Germany</li>
+</ul>
+</div>
+<div class="col">
+<ul>
+<li>Thailand</li>
+<li>Latvia</li>
+<li>Switzerland</li>
+<li>France</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="problem-3-the-drunken-robot" class="slide level2">
+<h2>Problem 3: The Drunken Robot</h2>
+<ul>
+<li>Determine the middle of your window and save the
+<code class="python">x</code> and <code class="python">y</code>
+coordinates. This is your robots current location.</li>
+<li>Draw a 25x25 square at that location (doesn’t need to be centered,
+but could be!)
+<ul>
+<li>Make it filled with a fill color of your choice</li>
+</ul></li>
+<li>Now, for 50 iterations:
+<ul>
+<li>Determine the next direction (North, South, East or West)
+randomly</li>
+<li>Update the robot’s location variables accordingly, assuming they
+moved exactly 25 pixels in that direction</li>
+<li>Draw a <strong>new</strong> square at the robot’s new location (with
+a different fill color than your starting color)</li>
+</ul></li>
+<li>Admire your robot’s little drunken walk! Play around with more
+iterations!</li>
+</ul>
+</section></section>
+<section>
+<section id="live-coding" class="title-slide slide level1">
+<h1>Live Coding</h1>
+
+</section>
+<section id="estimating-pi" class="slide level2">
+<h2>Estimating Pi</h2>
+<ul>
+<li>One of the ways that the value of <span
+class="math inline">\(\pi\)</span> can be estimated is by looking at the
+number of random points that strike a circle vs a surrounding box</li>
+<li>Our task here is to both estimate they value of <span
+class="math inline">\(\pi\)</span> using random numbers in this fashion,
+but to also visualize it!</li>
+</ul>
+</section>
+<section id="a-solution" class="slide level2">
+<h2>A Solution</h2>
+<pre ><code class="python" style="max-height: 800px; font-size: .8em">from pgl import GWindow, GRect, GOval
+import random
+
+WIDTH = 800
+HEIGHT = 800
+
+SIZE = 700
+DART_SIZE = 10
+
+gw = GWindow(WIDTH, HEIGHT)
+
+background = GRect(
+    WIDTH / 2 - SIZE / 2,
+    HEIGHT / 2 - SIZE / 2,
+    SIZE,
+    SIZE
+)
+background.set_filled(True)
+background.set_color('gray')
+gw.add(background)
+
+target = GOval(
+    WIDTH / 2 - SIZE / 2,
+    HEIGHT / 2 - SIZE / 2,
+    SIZE,
+    SIZE
+)
+target.set_filled(True)
+target.set_color('darkgray')
+gw.add(target)
+
+attempts = 1000
+successful_strikes = 0
+for i in range(attempts):
+    x = random.uniform(WIDTH / 2 - SIZE / 2, WIDTH / 2 + SIZE / 2)
+    y = random.uniform(HEIGHT / 2 - SIZE / 2, HEIGHT / 2 + SIZE / 2)
+    dart = GOval(
+        x - DART_SIZE / 2,
+        y - DART_SIZE / 2,
+        DART_SIZE,
+        DART_SIZE
+    )
+    dart.set_filled(True)
+    distance_to_center = (
+        (x - WIDTH / 2)**2 + (y - HEIGHT / 2)**2
+    ) ** (1/2)
+    if distance_to_center < SIZE / 2:
+        dart.set_fill_color('red')
+        successful_strikes += 1
+    else:
+        dart.set_fill_color('blue')
+    gw.add(dart)
+
+# I forgot this extra factor of 4 in class! That is why it wasn't working initially
+print(successful_strikes / attempts * 4 )</code></pre>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/multimodal/multimodal.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="../html_srcs/reveal.js/../js/python_language.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+          highlight: {
+            beforeHighlight: hljs => hljs.registerLanguage("python", function(hljs) {
+              console.log(mypythondef);
+              return mypythondef(hljs); } )
+          },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+          Multimodal,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(205,214,244,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(137,180,250,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(243,139,168,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,227,161,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(250,179,135,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(203,166,247,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(249,226,175,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(205,214,244,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(137,180,250,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(243,139,168,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,227,161,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(250,179,135,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(203,166,247,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(249,226,175,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+
+  <script>
+  // This is admitedly a very hacky way to achieve my pseudo code highlighting, but it works?
+    function remove_bars() {
+      var pseudoBlocks = document.getElementsByClassName("hljs-pseudo");
+      console.log(pseudoBlocks);
+      for ( var i = 0; i < pseudoBlocks.length; i++) {
+        pseudoBlocks[i].innerHTML = pseudoBlocks[i].innerHTML.replaceAll("\|\|\|", "");
+      }
+      }
+    // omg this is even more hacky now, but I need this to run after hljs has done its thing
+    setTimeout(remove_bars, 100);
+  </script>
+    </body>
+</html>

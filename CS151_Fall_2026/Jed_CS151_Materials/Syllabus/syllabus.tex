@@ -1,0 +1,260 @@
+% This syllabus template was originally created by:
+% Brian R. Hall
+% Assistant Professor, Champlain College
+% www.brianrhall.net
+% and since has been heavily modified by
+% Jed Rembold
+% Willamette University
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{multirow}
+\usepackage{setspace, booktabs, standalone, longtable}
+\usepackage[colorlinks=true, urlcolor=red]{hyperref}
+\pagestyle{plain}
+\setlength\parindent{0pt}
+\usepackage{pifont,tikz}
+\newcommand{\plus}{\ding{58}}
+\newcommand{\cmark}{\ding{52}}
+\newcommand{\minus}{\tikz[baseline=-0.5ex]{\draw[line width=3pt] (0,0) -- +(.65em,0)}}
+
+\begin{document}
+
+% Course information
+\begin{tabular}{ l l }
+  \multirow{3}{*}{\includegraphics[width=.8in]{color_compasslogo.jpg}} & \LARGE CS 151\\
+  & \huge\bf Intro to Programming with Python\\ \\
+  & \Large MWF 12:00pm, Ford 102\\
+  & \Large Spring 2026
+\end{tabular}
+\vspace{10mm}
+
+% Professor information
+\begin{tabular}{ l l }
+  \multirow{6}{*}{\includegraphics[width=.9in,]{syl_img.jpg}} & \Large Jed Rembold, Ph.D. \\
+  & \large \href{mailto:jjrembold@willamette.edu}{jjrembold@willamette.edu} \\
+  &  \large\url{http://willamette.edu/~jjrembold/classes/cs151} \\
+  &  \large Ford 214 \\
+  &  \large Office Hours: MW 4:30-5:30, TTh 2:00-4:00\\
+  &  \large Open Door: You are always welcome to contact me anytime online \\
+  & \hspace{2.25cm} or when my office door is open!\\
+  &  \large Office Phone: (503) 370-6860 \\
+\end{tabular}
+\vspace{5mm}
+\begin{center} \emph{This syllabus is subject to change or adaptation as the semester progresses. } \\
+\end{center}
+
+% Course details
+\textbf {\large \\ Course Description:} The skills necessary to communicate with computers are becoming more and more imperative in the modern world. This course focuses on introducing concepts of computer science and programming to students through the use of the programming language Python. Fundamental concepts such as understanding variables, logic and loops will be covered, as well as object-oriented programming and working with graphical environments. Students should leave the course having a comfort and familiarity in writing Python scripts requiring several hundred lines of code to accomplish a variety of tasks.\\
+
+\textbf {Prerequisite(s):} None
+
+\textbf {Note:} A minimum grade of C- is required for this course to count toward gen-ed credit. 
+
+\textbf {Credits:} 4.0 \\
+
+\textbf {\large Text:} \emph{Programming in Python} 
+
+\textbf {Author:} Eric S. Roberts
+
+\textbf {Availability:} This book is available for free via PDF on the course website. While I will not assign problems directly out of the book, I'd highly recommend following along with the reading in the text, as it is tailored exactly to this course as we are teaching it. And it is free! \\
+
+\newpage
+\textbf {\large Course Objectives:} \\
+Over the semester, students will gain working knowledge in:
+\begin{enumerate} \itemsep-0.4em
+  \item The fundamentals of coding: variables, logic and loops
+  \item Implementing fundamentals in Python to create basic programs
+  \item Applying decomposition and stepwise refinement to tailor a problem-solving strategy
+  \item Utilizing data structures to hold and model information
+  \item Debugging and testing programs to ensure they are working as intended
+\end{enumerate}
+The field of computer science and programming is vast and the entirety of what is possible in Python could never be contained in a single course. This course seeks to provide solid fundamentals and confidence to students so that they might continue their learning on their own or in whatever direction their creativity might take them. \\
+
+% I recommend using \newpage here if necessary
+\textbf {\large Grade Weighting} \\
+\hspace*{40mm}
+\begin{tabular}{ l r }
+Perusal & 5\% \\
+Attendance & 5\% \\
+Problem Sets & 15\% \\
+Projects & 30\% \\
+Midterms & 20\% \\
+Final Exam  & 25\%
+\end{tabular} \\\\
+
+\textbf {\large Letter Grade Distribution:} \\\\
+\hspace*{40mm}
+\begin{tabular}{ l l | l l }
+\textgreater= 92.00 & A & 72.00 - 77.99 & C \\
+90.00 - 91.99 & A-  & 70.00 - 71.99 & C- \\
+88.00 - 89.99 & B+  & 68.00 - 69.99 & D+ \\
+82.00 - 87.99 & B  & 62.00 - 67.99 & D \\
+80.00 - 81.99 & B-  & 60.00 - 61.99 & D- \\
+78.00 - 79.99 & C+  & \textless= 59.99 & F \\
+\end{tabular} \\
+
+\vspace{0.25cm}
+
+% Course Policies. These are just examples, modify to your liking.
+\textbf {\large Student Learning Objectives (SLO):} \\
+Upon completion of the course, students should be able to:
+\begin{itemize}
+	\item Describe, design, implement and test structured programs to solve a problem. Problem-solving is at the heart of programming, and students must be able to a take a given problem, break it up into solvable steps, and implement each individual piece to achieve their solution.
+	\item Explain what an algorithm is and how it relates to computer programming. Many types of problems share similar solutions. Knowing when they can be used, how to use them, and the benefits of one method over another is important.
+	\item Recognize and construct common programming concepts, including variables, loops, functions, I/O, and logic. The bread-and-butter of basic programming. These are the tools in a student's toolbox from which students can pull to construct all their programs. Knowing them well leads to both increases in efficiency and creativity in how they can be used.
+	\item Recognize the difference between various data structures like lists, dictionaries and tuples and decide the proper times to use each. Python has a variety of ways in which to store data. Choosing the correct one for a problem can eliminate many issues further down the line.
+	%\item Design and implement a novel problem using Python idioms, data structures, and the Python standard library. Like any spoken language, beyond its core syntax, programming is a form of creative expression. Being able to take a problem of personal interest and solve it through code is not only satisfying but excellent practice for solving job or research related problems.
+\end{itemize}
+
+
+\newpage
+\textbf {\large Course Assessment:}
+\begin{itemize}
+	\item \textbf {Homework}
+		\begin{itemize}
+			\item There will be problem sets which will be due at 11:59pm on Monday of many weeks. Problem sets will comprise of 2-3 questions which require writing a program to accomplish a particular task. Starting template files are provided, and so students have simply to add the necessary code to the existing file to solve the objective. Problem set templates and submissions will be handled through GitHub Classroom, which we will discuss and demonstrate in class. Assignments will be posted on the class webpage each week and the provided link should be followed to download that week's assignment materials and templates. If you work with anyone on the homework, please provide their name at the top of the template in the designated line.
+			\item \underline{General Info}: Programming is very hands-on, and the odds are high that you will not do well in the course if you do not practice! As far as I know, the best method to gain proficiency is solving problems and writing code. There are no real ``shortcuts''. The number and length of problems assigned is my best estimate for having you adequately practice and learn the material without being an excessive burden on your time. Working in groups and helping others is very encouraged, though students must turn in their own work. I highly recommend helping and instructing other classmates if you feel proficient on a topic, both to help them and because there is no better way to identify gaps in your own knowledge than when you attempt to teach something. \emph{But clearly indicate who you worked with at the top of each problem!}
+		\end{itemize}
+	\item \textbf{Projects}
+		\begin{itemize}
+			\item There are 5 larger projects scattered throughout the semester. Unlike the problem sets, which tend to be more narrowly focused, the projects are a chance to pull from all the areas of computer science and programming that we have been discussing to form a cohesive and functional program. Because of their broader scope, all projects will be scored on a more holistic scale:
+				\begin{center}
+					\small
+					\begin{tabular}{cp{10cm}}
+					\toprule
+					Score & Description \\
+					\midrule
+					\plus\plus & An absolutely fantastic submission that goes far above and beyond the set requirements. Comes along maybe only a few times a semester, if at all. \\
+					\plus & A submission that exceeds expectations. The program must reflect additional work beyond the requirements or get the job done in a particularly elegant way. \\
+					\cmark\plus & A submission that satisfies all the requirements for the assignment. A job well done!\\
+					\cmark & A submission that meets the requirements of the assignment, but which is either stylistically weak or has a few minor problems.\\
+					\cmark\minus & A submission that falls significantly short of the requirements of the assignment. \\
+					\minus & A submission that shows even more serious problems but nonetheless shows some effort and understanding. \\
+					\minus\minus & A submission showing little effort and not representing passing work.\\
+					\bottomrule
+				\end{tabular}
+				\end{center}
+				A \cmark\plus\ is the equivalent of a 95\%, with other scores scaling above and below accordingly.
+		\end{itemize}
+		
+	%\item \textbf {Lab Time}
+		%\begin{itemize}
+			%\item Immediately following class on Wednesday is an hour of lab time. Generally most of this time will be devoted to an exercise that emphasizes and provides practice for what we talked about in class that day. To better accomodate the fact that these labs will be done remotely, finished exercises will be submitted through Github Classroom. Any remaining lab time is available for students to work freely on their homework assignment. If students are feeling comfortable, they are free to leave early during this second portion.
+		%\end{itemize}
+	\item \textbf {Small Sections}
+		\begin{itemize}
+			\item To better facilitate students getting assistance, guidance, and role-models, we utilize a small section model in this course. Students will be split into small groups of 7-10 and assigned to a section leader. All section leaders are previous students who excelled in the course and are excited to help you do the same! Sections will meet for 1 hour with their section leader each week, wherein they will work through a few short problems and demonstrations. Section leaders will also serve as experts and peers that students can contact to ask questions and get extra help and guidance on problem sets and projects. Section attendance is mandatory and is graded as part of your course participation. Sections are designed to help you, and your attendance helps your peers. To further stress the importance of attending, we have a policy wherein you are allowed 3 unexcused absences over the course of the semester. Each unexcused absence after the 3rd will incur a 5\% deduction on your final overall grade. Please show up! Should you not be able to attend your section some week, reach out to myself and your section leader, and we will endeavor to find you another section that you could attend that week. Sections will meet on Wednesdays and Thursdays, and a poll concerning your availability on those days will go out on the first day of classes.
+		\end{itemize}
+	\item \textbf {Tests}
+		\begin{itemize}
+			\item There will be 3 tests this semester: two midterms and one final. Exams will be open note and open book, but will not allow the use of the internet or any program to actually run code. This policy is a frequent cause of confusion for students, but it has been shown to actually improve student test scores, as students can focus on the larger picture of their code (which is what they are really being scored on) rather than getting hung up on one small error that they can't fix. There will be study guides and examples of old exams available before each exam, so students can feel prepared for the types of questions that may appear.
+	  \end{itemize}
+	\item \textbf{Perusal}
+		\begin{itemize}
+			\item The flipped nature of this class can only be effective if you keep up with watching the content videos before each lecture section. Your viewing and interaction with these videos will be scored through Perusal, and is accessible through our Canvas page. Perusal has a lot of different methods for you to achieve full points, but they generally boil down to: watching the videos in their entirety and leaving or responding to comments that I or others have left on the videos. These comments are also a chance to highlight questions or points of confusion that you would like me to revisit or highlight in class! The goal is to not only ensure that you are absorbing the content before we work with it each day in class, but to foster camaraderie and community around the act of learning to code. It is far better that trying to do it alone!
+		\end{itemize}
+	\item \textbf{Attendance}
+		\begin{itemize}
+			\item Lecture hours will be split between group activities and discussions and live coding examples. They are meant to supplement and reinforce the content videos, and get you off to as strong a start as possible on each week's homework or project. Student's will check-in when they enter class to be placed in a group for the day, and will answer questions as part of that group. Just checking in and participating gets full points for the day. In addition, there will frequently be a bonus question offered to groups, wherein correct answers count towards a bit of extra credit to those group members. I have restructured lecture sections significantly this semester to make them more dynamic and engaging, but that is only effective if you show up!
+		\end{itemize}
+
+	\item \textbf{Contests}
+		\begin{itemize}
+			\item In addition to the projects, there will be one or two programming contests scheduled at different points during the term. The point of these contests is to give you a chance to show some more creativity and personal initiative beyond what you might be able to show on projects or assignments. Rules for each contest will be released to the class when announced.
+			\item To encourage participation, an extra incentive is offered. Every reasonably serious entry gets you one virtual ticket in a random drawing for a grand prize at the end of the semester. Enter more contests, get more tickets! Getting runner-up or honorable mention in a contest will also grant you extra chances.
+		\end{itemize}
+		
+\end{itemize}
+
+\vspace{.5cm}
+\textbf {\large\underline{Course Policies}:}
+\vspace{0.25cm}
+
+\textbf{Late Work Policy}
+
+\hspace{3mm}
+\hangindent=5mm I understand that sometimes things come up and you are unable to get an assignment in on time, and I strive to be incredibly flexible and accepting of late work. However, there also comes a point when you get too far behind to realistically keep up with the class, and just need to turn in what you have. In an effort to compromise between the two, my late policy allots you 3 cumulative days of late work throughout the entire semester. So you can turn 3 assignments in one day late, 6 assignments in 12 hours late, etc.\ without penalty. Once you have used up your 3 days (72 hours), projects are assessed a late penalty of one category point per extra late day used (a \cmark\plus\ becomes a \cmark, etc.), and problem sets a 20\% penalty per day late. Late days can be precious, and it can really behoove you to keep some late days around for later in the semester when life gets busier.
+
+\vspace{0.25cm}
+\textbf{AI Policy}
+
+\hspace{3mm}
+\hangindent=5mm Large language models (LLMs) and modern AI have taken the world by storm, and computer science and programming is certainly no exception. Modern tools like ChatGPT and GitHub's Copilot can pull together impressive programs given only a basic description and set of requirements. But they are not perfect, and thus humans are still left the task of ensuring the code that is produced actually does what was intended. As such, in this class, you are allowed, even encouraged, to use AI to assist your coding, \emph{so long as you give it proper credit and realize that you are still responsible for the final output.} Know though that you will still be expected to produce code without AI assistance. You will still be expected to find errors in code without AI assistance. Modern LLMs can be terrific tools, but they are no substitute for programming language competency (at least yet!). Especially when learning, they can be more hindrance than help if used incorrectly, so proceed thoughtfully and with caution.
+
+
+\vspace{.25cm}
+\textbf{Incomplete Policy}
+
+\hspace{3mm}
+\hangindent=5mm An incomplete grade will only be granted in the case of prolonged illness or family emergencies that remove the student from the campus for an extended time period during the semester. Under no situations will an incomplete be granted due to a student falling behind through lack of motivation, understanding, or time management skills. If you are concerned about your progress and how you are doing in the class, please come visit me! We can sort out where you are struggling and work out a plan to get you back on track. 
+
+\vspace{0.25cm}
+\textbf{Trans Inclusive Space}
+
+\hspace{3mm}
+\hangindent=5mm I will gladly honor your request to address you by your affirmed name or gender pronoun. Please advise me of this at any point in the semester so that I may make appropriate changes to my records. If I accidentally use an incorrect gender pronoun when addressing you, please feel free to let me know, in whatever manner makes you comfortable, that I messed up and explain or remind me of what pronouns you use so that I can make every effort to correct that error.
+
+\vspace{.5cm}
+\newpage
+\textbf {\large\underline{Willamette Policies:} }
+% This should be specific to your instituition, an example is provided.
+\vspace{0.25cm}
+
+\textbf{Academic Honesty}
+
+\hspace{3mm}
+\hangindent=5mm Cheating is defined as any form of intellectual dishonesty or misrepresentation of one's knowledge. Plagiarism, a form of cheating, consists of intentionally or unintentionally representing someone else's work as one's own. Integrity is of prime importance in a college setting, and thus cheating, plagiarism, theft, or assisting another to perform any of the previously listed acts is strictly prohibited. I may impose penalties for plagiarism or cheating ranging from a grade reduction on an assignment or exam to failing the course. An instructor can also involve the Office of the Dean for further action. For further information, visit: \url{http://willamette.edu/cla/catalog/policies/plagiarism-cheating.php}. 
+
+\hspace{3mm}\hangindent=5mm \emph{This can be particularly problematic in programming courses, so know that I will be keeping an eye out for it. Do your own work, and always indicate if you have worked with someone else.}
+
+\vspace{.25cm}
+\textbf{Classroom Conduct}
+
+\hspace{3mm}
+\hangindent=5mm As an educational institution, Willamette is committed to supporting the ideals and standards that help create a constructive and healthy learning community. That requires, among other things, encouraging positive classroom behaviors, discouraging disruptive classroom behaviors, and setting clear standards for both of those things.
+\\\\
+To that end, constructive classroom behaviors are those that support learners and teachers in an environment that promotes trust, respect, and collaborative learning.
+\\\\
+Disruptive classroom behaviors are those that undermine or interfere with individual's abilities to learn and teach. Clear examples of disruptive behaviors include, but are not limited to:
+\begin{itemize}
+	\item Interrupting others or persistently speaking out of turn
+	\item Distracting the class from the subject-matter or discussion at hand
+	%\item Making unauthorized recordings or photos of a class meeting or discussion (except as permitted as part of an Accessible Education Services-mandated accommodation)
+	\item Any physical threat, physical, psychological, or sexual harassment, ridicule, or abusive act towards a student, staff member, or instructor in a classroom or related setting.
+\end{itemize}
+\vspace{0.25cm}
+
+\textbf{Time Commitments}
+
+\hspace{3mm}
+\hangindent=5mm Willamette's Credit Hour Policy holds that for every hour of class time there is an expectation of 2-3 hours work outside of class.  Thus, for a class meeting three 
+days a week you should anticipate spending 6-9 hours outside of class engaged in course-related activities.  Examples include study time, reading and homework, assignments, research projects, and group work. This is a course that can often demand the full extent of that time, so plan accordingly!
+
+\vspace{0.25cm}
+
+\textbf{Diversity and Disability}
+
+\hspace{3mm}
+\hangindent=5mm Willamette University values diversity and inclusion; we are committed to a climate of mutual respect and full participation. Our goal is to create learning environments that are usable, equitable, inclusive and welcoming. If there are aspects of the instruction or design of this course that result in barriers to your inclusion or accurate assessment or achievement, please notify me as soon as possible. Students with disabilities are also encouraged to contact the Accessible Education Services office in Smullin 155 at 503-370-6737 or \url{accessible-info@willamette.edu} to discuss a range of options to removing barriers in the course, including accommodations.
+
+
+\newpage
+
+% Course Outline
+\textbf {\Large Tentative Course Outline}:
+
+The weekly coverage might change as it depends on the progress of the class.  However, I highly recommend you follow along with the reading, as it makes a large difference!\\
+
+Note that ``assignments'' starting with \texttt{S} followed by a number are just listing out what you'll be working on in your small section that week. Nothing actually needs to be turned in there.
+\vspace{5mm}
+  \footnotesize
+  \input{schedule}
+
+
+\end{document}
+
+
+

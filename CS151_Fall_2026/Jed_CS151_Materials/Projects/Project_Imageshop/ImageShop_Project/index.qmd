@@ -1,0 +1,25 @@
+---
+title: "Project 3: ImageShop"
+---
+
+
+Most of you have probably had the occasion to use some sort of image editing software such as Adobe Photoshop™ or Adobe Illustrator™. In this assignment, you will have the chance to build a simple version of an image editor which we will call _ImageShop_, which implements several simple operations on images along with a few more interesting ones.
+
+Performing image manipulation in Python requires the use of the Pillow library, which is not included in the normal Python distribution. This should have already been resolved on everyone's systems from using Karel, but if you are having issues, please contact me and I can help get you sorted out.
+
+As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
+
+```{=html}
+<a href='https://classroom.github.com/a/jyYW1hFD' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+```
+<br>
+
+
+
+# Strategies and Hints
+There are no new strategies for approaching this project, just the same ideas as before:
+
+- _Start as soon as possible!_ This assignment is due after Spring Break, but the intention is that you have most of it done before break. If you wait until the day before this project is due, you will have a very hard time getting it all together.
+- _Implement the program in stages, as described in this handout._ This project can be a bit more forgiving in this aspect than others, but please don't try to get everything working all at once. Implement the various pieces of the project one at a time and **test them** to make sure that each one is working before you move on to the next phase.
+- _Don't try to extend the program until you get the basic functionality working!_ The ImageShop project is perhaps the easiest project to come up with extensions for, as you can just ask yourself what cool operations you want to perform on an image. But make sure that you have all the required milestones working and _well tested_ before starting to add extensions.
+

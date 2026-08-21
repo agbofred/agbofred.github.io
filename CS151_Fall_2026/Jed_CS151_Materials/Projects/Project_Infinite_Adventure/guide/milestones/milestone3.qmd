@@ -1,0 +1,28 @@
+---
+title: "Milestone 3: Scene Flow"
+---
+
+Now that we have the ability to print out a scene and then prompt and get a valid choice for the next scene, we have everything we need to stitch together the basic adventure flow! In this milestone, your task is to use the helper functions defined earlier to infinitely move the player between scenes: printing out the scene, prompting for input, and then using that input to move on to the next scene. You'll likely want to accomplish this all in the `main` function in the starting template.
+
+:::callout-tip
+You should consider having a variable which always keeps track of the _current_ scene key. At the start of the story, this key should always be set to "start".
+:::
+
+In the (nearly) infinite loop, you should:
+
+#. get the scene data for the current scene
+#. print the current scene
+#. get a valid choice from the user
+#. update the current scene key
+
+The only exception to the above flow is if the player just presses Enter when prompted to make a choice, in which case your Milestone 2 function should return `None`. Be checking for this, and if such an instance occurs, you should terminate the infinite loop so that the program ends gracefully.
+
+:::callout-tip
+To make it easier for the user to read, it is recommended to print out an extra blank line to the console before you print each scene, so that different scenes are clearly separated from one another on the console.
+:::
+
+Once you have this working, you should be able to navigate from room to room, exploring the pre-defined rooms in the story dictionary. Woohoo!! If you play long enough though, you will eventually reach a scene key that is not defined within your story dictionary. When that happens, your program will likely crash out with an error that says `KeyError`, and complain that a particular key was not found in your scenes dictionary. That is ok! These are those special dead end scenes that we found in Milestone 0, and in the next milestone we will develop a way to resolve this issue!
+
+:::callout-warning
+At this point the `starter.json` story has very few pre-defined scenes to wander around in and test. It is recommended that you switch to playing the `adventure.json` story at this point, which is heavily based on the original Adventure game created by Willie Crowther. This story has many already defined rooms, so you should be able to play longer before encountering an undefined room.
+:::

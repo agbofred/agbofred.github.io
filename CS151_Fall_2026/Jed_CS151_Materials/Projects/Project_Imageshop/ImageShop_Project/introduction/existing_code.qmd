@@ -1,0 +1,120 @@
+---
+title: Understanding the Existing Code
+code-annotations: select
+---
+
+There is already a decent amount of code included in the ImageShop project, across a few different files, so it is time well spent to ensure you understand what you are starting with.
+
+## `button.py`
+
+The code for `ImageShop.py` in the repository uses a new class called `GButton`, defined in the `button.py` library, which is responsible for displaying the buttons on the screen. The `GButton` object type is really just a convenience: wrapping together a `GRect`, a `GLabel` and a mouse event listener all together for ease of use and placement. Creating a new `GButton` takes the text to display in the button, along with a function to call when the user clicks the button.
+
+In general, you should not need to interact directly with this library. It has already been imported for you in `ImageShop.py`, and in the `ImageShop` code, the call to create a new `GButton` object appears within the function `add_button`, which also takes care of placing each new button just underneath the previous one in the button area.
+
+
+## `GrayscaleImage.py`
+This program is introduced in the PDF reader on pg 287 (pdf page 293), and contains three function definitions to help with displaying a grayscale version of a particular image. Two of these functions will likely be useful to you in this project, _but one will not_. Take some time to review what each function is accomplishing, so that you understand which you will want to use later. Keep in mind that instead of copying these functions over to `ImageShop.py`, you should instead _import them_. Again, you shouldn't need to edit any code in this file, you'll just import what you need and use it inside `ImageShop.py`.
+
+
+## `ImageShop.py`
+This is the main file that you will be editing through most of the milestones. It starts with code already present to draw the starting screen and add the first few buttons. This code and its major functionality is highlighted below, where you can click on the circled numbers to the right to bring up descriptions of each code block.
+
+```python
+######################################################################
+# Name:
+# Collaborators (if any):
+# Section leader's name:
+# List of extensions made (if any):
+######################################################################
+
+"""
+This program is the starter file for the ImageShop application, which
+implements the "Load" and "Flip Vertical" buttons.
+"""
+
+from filechooser import choose_input_file #<0>
+from pgl import GWindow, GImage, GRect #<0>
+from button import GButton #<0>
+
+# Constants
+
+GWINDOW_WIDTH = 900
+GWINDOW_HEIGHT = 500
+BUTTON_WIDTH = 125
+BUTTON_HEIGHT = 20
+BUTTON_MARGIN = 10
+BUTTON_BACKGROUND = "#CCCCCC"
+
+# Derived constants
+
+BUTTON_AREA_WIDTH = 2 * BUTTON_MARGIN + BUTTON_WIDTH
+IMAGE_AREA_WIDTH = GWINDOW_WIDTH - BUTTON_AREA_WIDTH
+
+# The image_shop application
+
+def image_shop():
+    def add_button(label, action): #<1>
+        """ #<1>
+        Adds a button to the region on the left side of the window #<1>
+        label is the text that will be displayed on the button and #<1>
+        action is the callback function that will be run when the #<1>
+        button is clicked. #<1>
+        """ #<1>
+        x = BUTTON_MARGIN #<1>
+        y = gw.next_button_y #<1>
+        button = GButton(label, action) #<1>
+        button.set_size(BUTTON_WIDTH, BUTTON_HEIGHT) #<1>
+        gw.add(button, x, y) #<1>
+        gw.next_button_y += BUTTON_HEIGHT + BUTTON_MARGIN #<1>
+
+    def set_image(image): #<2>
+        """
+        Sets image as the current image after removing the old one.
+        """ #<2>
+        if gw.current_image is not None: #<2>
+            gw.remove(gw.current_image) #<2>
+        gw.current_image = image #<2>
+        x = BUTTON_AREA_WIDTH + (IMAGE_AREA_WIDTH - image.get_width()) / 2 #<2>
+        y = (gw.get_height() - image.get_height()) / 2 #<2>
+        gw.add(image, x, y) #<2>
+
+    def load_button_action(): #<3>
+        """Callback function for the Load button"""
+        filename = choose_input_file()
+        if filename != "":
+            set_image(GImage(filename)) #<3>
+
+    def flip_vertical_action(): #<4>
+        """Callback function for the Flip Vertical button"""
+        if gw.current_image is not None:
+            set_image(flip_vertical(gw.current_image)) #<4>
+        
+    gw = GWindow(GWINDOW_WIDTH, GWINDOW_HEIGHT) #<5>
+    button_area = GRect(0, 0, BUTTON_AREA_WIDTH, GWINDOW_HEIGHT)    
+    button_area.set_filled(True)
+    button_area.set_color(BUTTON_BACKGROUND)
+    gw.add(button_area)
+    gw.next_button_y = BUTTON_MARGIN
+    gw.current_image = None
+    add_button("Load", load_button_action)
+    add_button("Flip Vertical", flip_vertical_action) #<5>
+
+# Creates a new GImage from the original one by flipping it vertically.
+
+def flip_vertical(image): #<6>
+    array = image.get_pixel_array()
+    return GImage(array[::-1]) #<6>
+
+# Startup code
+
+if __name__ == "__main__":
+    image_shop()
+```
+
+0. The initial imports of necessary functions. You **will** need to add to this later!
+1. The provided function to add a new button to the window. You need to provide both the text that should be displayed on the button and callback function to be run when the button is pressed. Note that the placement of the button is automatically determined. You should call this function whenever you want to create a new button.
+2. The provided function to display a `GImage` to the screen. It takes care of clearing out the old value of `gw.current_image`, setting it to the new image, and then adding the image centered in the right portion of the window. You should call this function whenever you want to update what is displayed on the right side of the ImageShop window.
+3. The callback function responsible for prompting you for an image when the `Load` button is pressed. You should not need to edit this function, but you may want to draw inspiration from it when you need to implement a similar prompt as part of Milestone 3.
+4. The callback function which is run when the `Flip Vertical` button is pressed. Note how it accesses the current value of `gw.current_image` and passes it into the `flip_vertical` function, then takes the output of `flip_vertical` and sets the image on the screen to whatever image `flip_vertical` returned. This will be a very common pattern for many of the buttons you'll create.
+5. Initializes the major window components, a few variables, and then starts adding buttons. For the most part, you'll just need to add your code to add your own buttons below this.
+6. The image manipulation function for flipping the image vertically. Note that it take in a GImage as an argument, and then returns a new GImage at the end. Again, this will be a pattern most of your image manipulation functions should follow.

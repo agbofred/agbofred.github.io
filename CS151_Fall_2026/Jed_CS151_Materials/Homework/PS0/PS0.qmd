@@ -1,0 +1,39 @@
+---
+title: "Problem Set 0"
+subtitle: "Due: September 2, 2024"
+format:
+  html:
+    theme:
+      light: 
+        - cosmo
+        - psets.scss
+      dark: darkly
+    fontsize: 1.2em
+    highlight-style: atom-one
+    toc: true
+    toc-depth: 2
+    html-math-method: katex
+    embed-resources: true
+    title-block-banner: linear-gradient(90deg, rgba(117,76,245,1) 0%, rgba(0,212,255,1) 100%)
+    title-block-banner-color: white
+---
+
+This first problem set is really a practice problem set (for participation credit) and is meant to go along with the installation and getting started guide posted on the website. Once you reach the last section in the guide, you can either follow the link in the guide or the link below to accept and create your starting template. The link to accept an assignment will always be prominently displayed at the top of an assignment like below. You can't miss it!
+
+```{=html}
+<a href='https://classroom.github.com/a/FBbVCiar' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+```
+<br>
+
+
+If you have not followed the posted guide to install Python and VSCode, and then setup VSCode to work with Python, go ahead and do that before continuing here. Then you can procede through the following steps:
+
+1. **Download and unzip the starting contents.** One of the first things you will usually want to do after accepting an assignment is to download the assignment materials to your local system. If you haven't yet, watch the section on downloading materials from GitHub in the guide. To get some practice doing so, you should download the zip containing the contents of this problem set (in GitHub's parlance, we call this a repository) to a known location. Download this zip file, and then unzip it to a known and desired location.
+
+2. **Open the contents in VSCode and edit.** Once you have the files locally existing on your compture, then next step will generally be to edit them in some way. The easiest way to do this is to open VSCode, then from the File menu select "Open Folder", and select the unzipped folder that you just made. You'll then see all the contents of that folder show up in the panel to the left in VSCode. In this folder is a file called `Info.txt`. If you open it (just by clicking on it), you will see a series of questions with text in `<` `>` symbols at the end (eg: `<STUFF>`). Your task here is to answer each of the questions by deleting the text currently within the `<` `>` symbols (including the `<` `>` symbols) and inserting your own text that answers the question. Once you have answered all the questions, save the file.
+
+3. **Uploaded saved files back to GitHub.** Finally, you need to upload the file back to GitHub! If you haven't yet read the section in the guide for uploading files, do so now. When you go to upload the file, just choose the file that you currently edited. _There is no need to change the name or anything, as it will override the original version, which is what is desired. GitHub keeps a record of all versions of a file, so you can always go back to an earlier version if necessary._ Give your upload (called a "commit" in GitHub's terminology) a description (eg: "Answered all questions"), and then commit it! All done! Nothing more that you need to do!
+
+:::callout-note
+It is possible to edit the Info.txt file directly online within GitHub itself. I would recommend that you do **NOT** do this however, as it will defeat the purpose of making sure you are comfortable both downloading and uploading content to GitHub. Moreover, trying to edit actual code in the online editor later in the semester is an almost surefire way to make mistakes.
+:::

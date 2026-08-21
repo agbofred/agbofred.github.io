@@ -1,0 +1,421 @@
+---
+title: "Human-AI Interaction: A Conversational Agent"
+subtitle: "AI 380: Human-AI Interaction · Week 5"
+author: "Text Chatbots, Voice Assistants, and Multimodal Agents"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    toc: false
+    slide-level: 2
+---
+
+```{=html}
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+.reveal { font-size: 28px; color: var(--ink); }
+.reveal h1, .reveal h2 { color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h2 { font-size: 1.5em; }
+.reveal h3 { font-size: 1.1em; color: var(--midnight); }
+.reveal p, .reveal li { line-height: 1.35; }
+.reveal table { font-size: 0.55em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.55em; }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+.reveal .tag-cardinal { background: var(--cardinal); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+.reveal .tag-midnight { background: var(--midnight); color: white; padding: 0.5em 0.9em; border-radius: 8px; }
+</style>
+```
+
+## Where We're Headed
+
+*From a new interaction paradigm to the mental models users bring to it.*
+
+1. **Introducing the paradigm** — what makes something a "conversational agent" in the first place
+2. **Conversation vs. GUI** — what's actually different when the interface is dialogue, not direct manipulation
+3. **The design space** — text chatbots, voice assistants, and multimodal agents
+4. **User expectations** — why users often expect far more, or less, than the system delivers
+
+## Introducing the Conversational Paradigm {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART ONE
+:::
+
+*Conversation is becoming a key mode of human-computer interaction — what does that actually mean?*
+
+## From Commands to Conversation
+
+*A brief callback to where this interaction paradigm came from.*
+
+::: {.callout}
+Command lines demanded formal syntax; graphical interfaces let people manipulate visible objects directly; conversational agents now ask people to simply say what they want, in their own words — shifting the burden of translation back onto the machine.
+:::
+
+**A key mode of human-computer interaction:** by 2016, researchers Ewa Luger and Abigail Sellen observed that nearly every major technology company — Apple, Microsoft, Amazon, Google, Facebook — had shipped its own conversational agent, and dialogue itself was quickly becoming a mainstream way of interacting with computers.
+
+*Luger, E., & Sellen, A. (2016). "Like Having a Really Bad PA." CHI '16.*
+
+## What Is a Conversational Agent?
+
+*An interface where natural language dialogue — not visual manipulation — is the primary means of interaction.*
+
+::: {.columns}
+::: {.column width="33%"}
+**Text-Based**
+
+Typed or written natural language, exchanged in a chat-style thread.
+:::
+::: {.column width="33%"}
+**Voice-Based**
+
+Spoken language, recognized and synthesized in real time.
+:::
+::: {.column width="33%"}
+**Multimodal**
+
+Conversation combined with visual, gestural, or touch input and output.
+:::
+:::
+
+::: {.callout}
+All three share one defining trait: the interface asks you to say what you want, instead of showing you where to click.
+:::
+
+## What Distinguishes a Conversational Interface from a GUI? {background-color="#BA0C2F"}
+
+*The Interaction Design Foundation names three interface formats — each asks something very different of the user.*
+
+::: {.columns}
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Graphical (GUI)**
+
+Users interact with visual representations on digital control panels — a computer's desktop is a GUI.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Voice-Controlled (VUI)**
+
+Users interact through their voices — most smart assistants, e.g. Siri and Alexa, are VUIs.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Gesture-Based**
+
+Users engage with 3D design spaces through bodily motions — e.g. in virtual reality.
+:::
+:::
+:::
+
+*Interaction Design Foundation, What is User Interface (UI) Design?*
+
+## The GUI: Visible, Direct, Persistent
+
+*Recall Shneiderman's direct manipulation principles from earlier in the course.*
+
+::: {.callout}
+A GUI shows you the objects of interest continuously: files, buttons, menus stay on screen, visible and clickable, until you act on them.
+:::
+
+- **Visibility** — the state of the system and its options are always on screen
+- **Direct manipulation** — actions are physical: point, click, drag
+- **Persistence** — the interface doesn't disappear after each action
+
+## The CUI: Sequential, Implicit, Ephemeral {background-color="#003B5C"}
+
+*A conversational interface trades all three GUI properties for something much less forgiving.*
+
+::: {.columns}
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Sequential**
+
+No menu of options on screen — the user must generate the right words, in order, from memory.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Implicit**
+
+System state and capability aren't shown; they must be inferred or guessed at.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Ephemeral**
+
+Once a turn passes, it's gone — nothing to point back to.
+:::
+:::
+:::
+
+## GUI vs. Conversational Interface, Side by Side {.smaller}
+
+*The same underlying task, framed through two very different interaction models.*
+
+| | Graphical Interface (GUI) | Conversational Interface (CUI) |
+|---|---|---|
+| **Discoverability** | Options are visible | Options are invisible — you must guess |
+| **Error recovery** | Undo, back button, visible history | Rephrase, repeat, or start over |
+| **Learning curve** | Recognition — browse menus | Recall — remember or infer phrasing |
+| **State** | Persistent on screen | Held in short-term memory, if at all |
+| **Feedback** | Immediate, visual | Sequential, often just words |
+
+## The Hidden Complexity: Turn-Taking & Grounding
+
+*Human conversation runs on machinery most of us never notice we're using.*
+
+::: {.callout}
+Herbert Clark and Susan Brennan's influential 1991 account describes conversation as a joint activity: participants build "common ground" — shared knowledge, beliefs, and assumptions — through a moment-by-moment process called grounding.
+:::
+
+**The grounding criterion:** a speaker and listener mutually believe the listener has understood "to a criterion sufficient for current purposes." In human talk, this happens automatically through nods, "mm-hm," and eye contact. A conversational agent has to approximate all of that using text or audio alone.
+
+*Clark, H. H., & Brennan, S. E. (1991). Grounding in Communication. APA.*
+
+## Why Grounding Is Hard for Machines {background-color="#7A0A22"}
+
+*The cues humans use to ground a conversation mostly aren't available to a CA.*
+
+- **No nonverbal cues** — nods, facial expressions, and eye contact carry huge amounts of grounding information in face-to-face talk; text and most voice interfaces have none of it.
+- **Least collaborative effort, reversed** — a CA can't always tell when a short reply signals confusion instead of confirmation.
+- **No shared physical context** — human listeners ground references using shared surroundings ("the blue one"); most agents have no access to what the user can see.
+
+## The Design Space of Conversational Agents {background-color="#003B5C"}
+
+::: {.kicker}
+PART TWO
+:::
+
+*Text-based chatbots, voice assistants, and multimodal agents each make different trade-offs.*
+
+## Text-Based Chatbots
+
+*The most constrained — and most forgiving — point in the design space.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**What makes it distinct**
+
+- Persistent transcript the user can scroll back through
+- No speech recognition errors to contend with
+- Supports rich text, links, buttons, images inline
+- Slower-paced than speech, giving users time to think
+:::
+:::
+::: {.column width="50%"}
+**Where text still beats speech**
+
+The transcript partially restores the persistence a GUI offers — a user can scroll up, copy information, or re-read a complex answer.
+
+*Examples: customer support widgets, SMS services, Slack/Teams bots.*
+:::
+:::
+
+## Voice Assistants (VUIs)
+
+*No screen, no transcript, no visible history — the most demanding point in the space.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-midnight}
+**What makes it distinct**
+
+- Entirely hands-free and eyes-free
+- Speech recognition errors compound with every misheard word
+- Nothing persists once spoken
+- Fastest, most natural-feeling input for comfortable speakers
+:::
+:::
+::: {.column width="50%"}
+**The cost of losing the screen**
+
+Every GUI convenience disappears. The user must hold everything in working memory — what they asked, what was said, what to say next.
+
+*Examples: Amazon Alexa, Google Assistant (audio-only), Siri via HomePod.*
+:::
+:::
+
+## Multimodal Agents
+
+*Conversation plus a screen — borrowing GUI persistence back for a CUI.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**What makes it distinct**
+
+- Combines speech or text with visual output
+- Lets the agent show a result instead of describing it
+- Users can switch modes mid-task
+- Reintroduces GUI-style visibility without abandoning language
+:::
+:::
+::: {.column width="50%"}
+**The best of both, if done well**
+
+A multimodal agent can answer with both a spoken summary and a visual result — ephemeral warmth plus persistent clarity, together.
+
+*Examples: Echo Show, Nest Hub, ChatGPT with canvas output.*
+:::
+:::
+
+## Comparing the Three Types {background-color="#BA0C2F" .smaller}
+
+*No type is strictly better — each trades away something the others keep.*
+
+| | Text Chatbot | Voice Assistant | Multimodal |
+|---|---|---|---|
+| **Persistence** | High (scrollback) | None | High (screen) |
+| **Hands/eyes-free** | No | Yes | Partial |
+| **Error tolerance** | High | Low | Medium |
+| **Richness of output** | Text, links, images | Audio only | Full multimedia |
+
+## The Expectations Users Bring {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART THREE
+:::
+
+*A landmark study asks: what do people actually think a conversational agent can do?*
+
+## "Like Having a Really Bad PA"
+
+*Luger & Sellen (2016) — a landmark CHI study of everyday conversational agent use.*
+
+::: {.callout}
+By the mid-2010s, every major tech company had shipped its own conversational agent — yet almost no research had looked at how people actually used these systems day to day, outside the lab. Luger and Sellen set out to close that gap.
+:::
+
+| | |
+|---|---|
+| **14** | semi-structured interviews with existing CA users |
+| **2** | guiding questions: what motivates, and what limits, everyday use |
+| **1** | core theoretical lens: Norman's "gulfs of execution and evaluation" |
+
+*Luger, E., & Sellen, A. (2016). CHI '16, 5286–5297.*
+
+## Norman's Gulfs, Applied to Conversation {background-color="#003B5C"}
+
+*Luger & Sellen use Don Norman's classic HCI framework to interpret their findings.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**The Gulf of Execution**
+
+The distance between what a user wants to do and what they must actually say to make it happen. A GUI narrows this with visible buttons; a CA leaves the user guessing.
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**The Gulf of Evaluation**
+
+The distance between what the system did and what the user can tell it did. Without a screen, users often can't tell if they were misheard or misunderstood.
+:::
+:::
+:::
+
+## The Central Finding
+
+*User expectations were dramatically out of step with how the systems actually operate.*
+
+::: {.callout}
+Luger and Sellen found that users' beliefs about their conversational agents were dramatically out of step with the operation of the systems themselves — particularly around three things: known machine intelligence, system capability, and system goals.
+:::
+
+- **Machine intelligence** — how smart the agent actually is, versus how smart it seems
+- **System capability** — what tasks it can complete, versus what users assume
+- **System goals** — what the agent optimizes for, rarely visible to the user
+
+## What "Like Having a Really Bad PA" Reveals {background-color="#7A0A22"}
+
+*The paper's title is itself a finding — users reach for a human metaphor, then feel betrayed by it.*
+
+::: {.callout}
+Users described their conversational agents using a human role — a Personal Assistant — because that's the closest existing mental model available. But a PA understands context, remembers preferences, and asks smart clarifying questions. When the CA falls short, the comparison itself produces the disappointment.
+:::
+
+**The design lesson:** the metaphor a product invites — "assistant," "friend," "helper" — sets the bar the system will be judged against, whether or not that bar was intentional.
+
+## Design Implications: Narrowing the Gulf
+
+*What follows from taking Luger & Sellen's findings seriously.*
+
+- **Signal what's actually possible** — narrow the gulf of execution with example prompts, not a blank text box
+- **Make outcomes visible** — narrow the gulf of evaluation with explicit confirmations, not silence
+- **Calibrate the intelligence claim** — avoid interface choices that imply more understanding than the system has
+- **Design for repair, not just success** — assume misunderstanding will happen, and make it cheap to correct
+
+## Choosing the Right Paradigm {background-color="#F19C49"}
+
+*A conversational agent is a design choice, not a default.*
+
+- **Prefer a GUI when...** users need to compare many options, browse freely, or the task benefits from persistent, visible state
+- **Prefer a CUI when...** the task is narrow and well-defined, hands/eyes are busy, or natural language genuinely simplifies the request
+- **Prefer multimodal when...** the task has both — a quick spoken request with a result best shown, not described
+
+## Connecting to Your Course Project {background-color="#BA0C2F" .smaller}
+
+*You'll be designing a conversational AI assistant for older adults — every idea today applies directly.*
+
+| | |
+|---|---|
+| **Expect a wide gulf of execution** | Older adults may have less exposure to conversational norms with machines. |
+| **Make evaluation especially visible** | Confirm actions clearly and redundantly. |
+| **Choose your paradigm deliberately** | Voice-first, multimodal, or both — and why, given your personas? |
+| **Watch the "bad PA" trap** | A warm, human-sounding persona raises the exact expectations systems tend to fail. |
+
+## Discussion Questions {background-color="#003B5C" .smaller}
+
+*Bring your answers to at least one of these to class.*
+
+1. Think of a time a voice assistant or chatbot misunderstood you. Using Norman's gulfs, was the failure in execution or evaluation?
+2. Clark & Brennan argue grounding relies on cues like nods and eye contact. What could a text-only chatbot use instead?
+3. Would you rather a CA never invite the "bad PA" comparison at all — or invite it and try to live up to it?
+4. For your course project's older-adult users, would you choose a voice assistant, text chatbot, or multimodal agent? Defend your choice.
+
+## Key Takeaways
+
+*What separates a conversational agent from every interface this course has studied before.*
+
+- A conversational interface asks users to generate the right words from memory, instead of recognizing options on screen — trading GUI visibility, persistence, and direct manipulation for natural language.
+- Conversation depends on grounding — Clark & Brennan's term for confirming mutual understanding. Machines have far fewer grounding cues than humans.
+- Text chatbots, voice assistants, and multimodal agents trade off persistence, hands-free use, error tolerance, and output richness — none is universally best.
+- Luger & Sellen show user expectations are often dramatically out of step with what CAs actually do — and the human metaphors we invite are a large part of why.
+
+## References {.smaller}
+
+- Luger, E., & Sellen, A. (2016). "Like Having a Really Bad PA": The Gulf between User Expectation and Experience of Conversational Agents. *CHI '16*, 5286–5297.
+- Interaction Design Foundation. What is User Interface (UI) Design? ixdf.org/literature/topics/ui-design
+- Clark, H. H., & Brennan, S. E. (1991). Grounding in Communication. In *Perspectives on Socially Shared Cognition*. American Psychological Association, 127–149.
+- Norman, D. A. (1988). *The Design of Everyday Things.* Basic Books.
+- Shneiderman, B. (1983). Direct Manipulation: A Step Beyond Programming Languages. *Computer*, 16(8), 57–69.
+- Nielsen, J., & Molich, R. Ten Usability Heuristics, as discussed via Interaction Design Foundation.
