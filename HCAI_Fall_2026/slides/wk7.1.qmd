@@ -1,0 +1,539 @@
+---
+title: "Conversational AI and AI Assistants"
+subtitle: "AI 380: Human-AI Interaction · Week 7"
+author: "Part 1: Introduction"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    toc: false
+    slide-level: 2
+---
+
+```{=html}
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+.reveal { font-size: 27px; color: var(--ink); }
+.reveal h1, .reveal h2 { color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h2 { font-size: 1.45em; }
+.reveal h3 { font-size: 1.05em; color: var(--midnight); }
+.reveal p, .reveal li { line-height: 1.32; }
+.reveal table { font-size: 0.5em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.5em; }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+.reveal .tag-cardinal { background: var(--cardinal); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+.reveal .tag-midnight { background: var(--midnight); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+</style>
+```
+
+## Where We're Headed
+
+*From what an AI assistant actually is, to the four ways people build one.*
+
+1. **What is conversational AI?** — the building blocks: intent, entity, dialogue, and orchestration
+2. **The conversational AI ecosystem** — rule-based, retrieval-based, generative, and task-oriented systems
+3. **Building your first assistant** — a worked example: Fictitious Inc.'s customer service skill
+4. **Confidence & control** — how an assistant knows when it doesn't know
+
+## What Is Conversational AI? {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART ONE
+:::
+
+*Before the ecosystem, the fundamentals: what these systems are built from.*
+
+## Three Types of AI Assistants
+
+*Alan Freed's Conversational AI (Manning) distinguishes assistants by what they're built to do.*
+
+::: {.columns}
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**Conversational AI**
+
+Answers questions and holds back-and-forth exchanges, from a simple fact lookup to a multi-turn diagnostic conversation.
+:::
+:::
+::: {.column width="33%"}
+**Command Interpreter**
+
+Executes a specific action the user requests, gathering only the parameters needed to complete it.
+:::
+::: {.column width="33%"}
+**Event Classifier**
+
+Categorizes an incoming message so it can be routed or acted on, without necessarily replying conversationally.
+:::
+:::
+
+*Freed, A. (2021). Conversational AI. Manning Publications, Ch. 1.*
+
+## The Baseline Interaction: Simple Q&A
+
+*A question is asked, an answer is given, and the request is complete.*
+
+::: {.callout}
+**"What is the coronavirus?"** — In Freed's CDC assistant example, this gets a static, descriptive answer. No API call is needed, so the interface, NLU, and dialogue engine handle it entirely on their own.
+:::
+
+**Not every simple answer is static:** "How many COVID cases are there?" also gets a one-line answer — but the number changes daily. An orchestrator queries a live case-count API each time, even though the response format stays simple.
+
+## When a Simple Answer Isn't Enough {background-color="#BA0C2F"}
+
+*"Do I have the coronavirus?" can't be answered in one line — it needs a process.*
+
+::: {.callout}
+A static result here would run pages long and put all the interpretive work on the user. Instead, the assistant asks follow-up questions — about fever, then breathing difficulty — and only delivers a recommendation once it has enough information.
+:::
+
+1. **Greeting**
+2. **Recognize the question, start a process flow**
+3. **Ask follow-up questions one at a time**
+4. **Give a final, informed recommendation**
+
+## Command Interpreters: A Different Kind of Assistant
+
+*Not every AI assistant holds a conversation — some just execute a command.*
+
+::: {.callout}
+"Set an alarm for 9 p.m." is a command, not a question — there's no back-and-forth needed once the system has everything it needs to act.
+:::
+
+- **Commands are intents; parameters are entities** — the terminology shifts slightly, but the underlying structure is the same
+- **Missing a parameter triggers a follow-up** — "Set an alarm" recognizes the command but asks for the missing time
+- **All parameters at once ends the exchange** — supplying time and label together executes immediately
+
+## The Architecture Behind the Conversation {background-color="#003B5C"}
+
+*Four components recur across nearly every conversational AI platform.*
+
+::: {.columns}
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Interface**
+
+What the user types or speaks into.
+:::
+:::
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**NLU**
+
+Turns text into a recognized intent and entities.
+:::
+:::
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Dialogue Engine**
+
+Decides how to respond based on state.
+:::
+:::
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Orchestrator**
+
+Calls external APIs for live data.
+:::
+:::
+:::
+
+*Freed, A. (2021). Conversational AI. Manning Publications, Ch. 1–2.*
+
+## Walking Through One Turn: Setting an Alarm
+
+*An original diagram tracing Freed's alarm example through all four architecture components.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart LR
+    I["Interface"] --> N["NLU"]
+    N --> D["Dialogue Engine"]
+    D --> O["Orchestrator"]
+    style I fill:#003B5C,color:#fff
+    style N fill:#BA0C2F,color:#fff
+    style D fill:#7A0A22,color:#fff
+    style O fill:#8A2A0E,color:#fff
+```
+
+| Step | What happens |
+|---|---|
+| **1. User speaks** | "Set an alarm for 9 p.m." |
+| **2. Interface → NLU** | Passes the raw utterance along for understanding |
+| **3. NLU responds** | Intent: set_alarm · Entity: 9 p.m. |
+| **4. Dialogue engine decides** | Looks up the response for set_alarm + a time |
+| **5. Orchestrator acts** | Calls the alarm API to actually set 9 p.m. |
+| **6. Assistant replies** | "I've set an alarm for 9 p.m." |
+
+## The Conversational AI Ecosystem {background-color="#003B5C"}
+
+::: {.kicker}
+PART TWO
+:::
+
+*Four fundamentally different approaches to building a system that talks back.*
+
+## Four Approaches to Building a Conversational System
+
+*Two well-established surveys of the field converge on this same basic map.*
+
+| | |
+|---|---|
+| **Rule-Based** | Hand-written patterns and scripted responses |
+| **Retrieval-Based** | Selects the best-fitting response from a fixed pool |
+| **Generative** | Composes a novel response, word by word |
+| **Task-Oriented** | Optimized to complete a specific goal, not just chat |
+
+::: {.callout}
+**Two axes, not one list:** Chen et al. (2017) and Gao et al. (2019) both frame this as two separate questions: what is the system trying to do, and how does it generate what it says.
+:::
+
+## Rule-Based Systems: Where It All Began
+
+*1966 · The first chatbot ran on nothing but pattern matching.*
+
+::: {.callout}
+Joseph Weizenbaum's ELIZA, built at MIT, simulated a Rogerian psychotherapist using hand-crafted scripts. It searched the user's last message for keywords and reflected them back as a question, following rules a person had written in advance.
+:::
+
+**A lineage still visible today:** every rule-based system since ELIZA shares its core idea. The command interpreter from Part 1 is a modern, structured descendant of the same basic approach.
+
+*Weizenbaum, J. (1966). ELIZA. Communications of the ACM, 9(1), 36–45.*
+
+## Rule-Based Systems, Formalized {background-color="#003B5C"}
+
+*1995 · AIML turns ELIZA's ad hoc scripts into a reusable markup language.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**ALICE and AIML**
+
+Richard Wallace's A.L.I.C.E. chatbot used a new XML-based language, AIML, to define patterns and templates. ALICE's knowledge base grew to roughly 41,000 categories, versus ELIZA's roughly 200, and won the Loebner Prize three times.
+:::
+:::
+::: {.column width="50%"}
+**Strengths and limits**
+
+- **Predictable and controllable** — every response is human-written
+- **Brittle outside its scripts** — anything unanticipated isn't handled well
+- **Labor-intensive to scale** — more topics means more hand-written rules
+:::
+:::
+
+## Retrieval-Based Chatbots: Selecting, Not Creating
+
+*Instead of writing rules by hand, retrieve the best existing response.*
+
+::: {.callout}
+A retrieval-based system is given a large corpus of candidate responses and selects the one that best fits the current context. Chen et al. (2017) note this tends to produce fluent, natural-sounding replies, because every response was, at some point, actually said by a person.
+:::
+
+**The trade-off:** a retrieval-based system can only ever say something already in its response pool — it cannot compose a genuinely new sentence.
+
+## How Retrieval Systems Work {background-color="#7A0A22"}
+
+*Three steps, whether the matching is simple keyword overlap or a modern neural encoder.*
+
+1. **Encode the context** — represent the current conversation in a comparable form
+2. **Score every candidate** — compare the context to each response in the pool
+3. **Return the best match** — select and return the highest-scoring candidate, unmodified
+
+## Generative Models & LLMs: Composing Novel Responses
+
+*No fixed pool of answers — the response is built one word at a time.*
+
+::: {.callout}
+A generative model produces new text token by token, conditioned on the conversation so far. Chen et al. describe the appeal directly: generative models can produce responses that could never have appeared anywhere in a training corpus.
+:::
+
+**The trade-off:** because nothing constrains the output to a pre-approved set, generative systems can also produce something inconsistent, off-topic, or wrong.
+
+## From Seq2Seq to ChatGPT {background-color="#003B5C"}
+
+*The generative lineage, in three jumps.*
+
+::: {.columns}
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**2014–2017**
+
+Neural sequence models learned to generate responses directly from data.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**2017**
+
+The Transformer became the foundation for every major LLM since.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**2022**
+
+ChatGPT brought generative chat to a mass audience.
+:::
+:::
+:::
+
+## Retrieval vs. Generative, Side by Side {.smaller}
+
+*The same underlying trade-off Chen et al. (2017) identify, made concrete.*
+
+| | Retrieval-Based | Generative |
+|---|---|---|
+| **Response source** | An existing pool of real, human-written text | Composed fresh, token by token |
+| **Fluency** | Reliably fluent | Usually fluent, but can drift |
+| **Novelty** | Never says anything outside its pool | Can respond to unseen situations |
+| **Main risk** | No good match for unusual input | Can generate incorrect content |
+| **Typical use** | Customer service, known topics | Open-ended chat, drafting |
+
+## Task-Oriented Dialogue Systems {background-color="#BA0C2F"}
+
+*A different question entirely: not how to generate text, but what the conversation is for.*
+
+::: {.callout}
+Chen et al. (2017) split dialogue systems along a second axis: task-oriented systems help a user accomplish something concrete, versus non-task-oriented systems built for open-ended chat. A task-oriented system can be built with rule-based, retrieval-based, or generative techniques underneath.
+:::
+
+**Success looks different, too:** a task-oriented system is judged on whether the task got done — not conversational charm.
+
+## The Task-Oriented Pipeline
+
+*Mapping Freed's architecture from Part 1 onto the standard task-oriented pipeline.*
+
+| Stage | Freed's Term | What it does |
+|---|---|---|
+| **NLU** | Interface + NLU | Recognize the intent and entities |
+| **Dialogue State** | Dialogue Engine | Track what's been established so far |
+| **Policy** | Dialogue Engine + Orchestrator | Decide the next action |
+| **Response** | Interface | Generate or select the reply |
+
+::: {.callout}
+Modern systems increasingly blend these approaches: a task-oriented assistant might use an LLM to generate phrasing, while still following rule-based logic to decide when a task is complete.
+:::
+
+## Building Your First Conversational AI {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART THREE
+:::
+
+*Freed's worked example: a fictitious company builds a customer-service skill from scratch.*
+
+## Meet Fictitious Inc.
+
+*A concrete, worked example — building a store-hours-and-locations assistant.*
+
+::: {.callout}
+Freed's textbook walks through building a customer-service assistant for a fictional retail company. The goal is small and concrete: answer questions about store hours and locations.
+:::
+
+**Why start this small:** a narrow, well-defined scope lets you see the entire pipeline — intent recognition, entity extraction, dialogue response — working end to end, before adding slots, multi-turn flows, or live API calls.
+
+*Freed, A. (2021). Conversational AI. Manning Publications, Ch. 2.*
+
+## Two Building Blocks: Assistant and Skill {background-color="#003B5C"}
+
+*Watson Assistant's terms for the interface layer and the dialogue engine, made concrete.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Assistant**
+
+The interface layer — what the end user actually talks to, and where the finished experience is deployed.
+:::
+:::
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Skill**
+
+The dialogue engine underneath — the collection of intents, entities, and dialogue nodes.
+:::
+:::
+:::
+
+## Training Intents
+
+*An intent is trained by example, not by writing exhaustive rules.*
+
+::: {.callout}
+An intent like #store_hours is trained with a handful of example phrases — "What time do you open?", "When are you open today?" — not an exhaustive list of every possible phrasing.
+:::
+
+**The testing interface:** Freed's walkthrough uses Watson Assistant's built-in tester to try new phrasings and see which intent is recognized, and how confident the system is.
+
+**Confidence is a probability, not a guarantee:** every recognized intent comes with a confidence value between 0 and 1.
+
+## Responding with Dialogue Nodes {background-color="#BA0C2F"}
+
+*The dialogue engine matches a recognized intent to a node that defines what to say back.*
+
+- **Welcome** — fires automatically at the start of a new conversation
+- **#store_hours** — fires whenever that intent is recognized, returning the appropriate response
+- **Anything Else** — a fallback that catches input matching no intent with sufficient confidence
+
+## Anatomy of a Dialogue Node Tree
+
+*An original diagram of how one recognized intent branches into store-specific replies.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart TD
+    R["#store_location
+    intent recognized"] --> E["@store_location: Elm
+    'The Elm store is at
+    456 Elm Drive.'"]
+    R --> M["@store_location: Maple
+    'The Maple store is at
+    123 Maple Street.'"]
+    R --> A["Anything Else (no entity)
+    'We have two locations —
+    Elm and Maple.'"]
+    style R fill:#BA0C2F,color:#fff
+    style E fill:#003B5C,color:#fff
+    style M fill:#7A0A22,color:#fff
+    style A fill:#8A2A0E,color:#fff
+```
+
+::: {.callout}
+This is the *n + 2* pattern Freed describes: one child node per unique entity value, plus one fallback for when the intent is recognized but no entity is present.
+:::
+
+## Adding Entities for Context
+
+*An intent tells you what the user wants; an entity tells you the specifics.*
+
+::: {.callout}
+"What time does the Boston store open?" recognizes the #store_hours intent, plus a @store_location entity valued "Boston." The dialogue node can now respond with hours for that specific location.
+:::
+
+**Fuzzy matching handles the real world:** entities configured with fuzzy matching let "Bosten" or "boston, ma" still resolve to the same value — without a hand-written rule for every misspelling.
+
+## Slots for Multi-Parameter Requests {background-color="#003B5C"}
+
+*An original flowchart of the slot-filling loop — ask, check, repeat until done.*
+
+::: {.callout}
+"I'd like to book an appointment" supplies an intent but no details. Freed's example uses slots to define every entity needed — date, time, service type — and asks a targeted follow-up for each one still missing.
+:::
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart TD
+    S["'Book an appointment'"] --> Q{"All slots
+    filled?"}
+    Q -->|No| F["Ask for the missing slot
+    'What day would you
+    like to come in?'"]
+    F --> Q
+    Q -->|Yes| C["Confirm the appointment
+    'Set for Maple,
+    9:15 AM, Friday.'"]
+    style S fill:#BA0C2F,color:#fff
+    style Q fill:#FAF8F5,color:#333
+    style F fill:#BA0C2F,color:#fff
+    style C fill:#8A2A0E,color:#fff
+```
+
+## Confidence Thresholds & the Two-Strikes Rule
+
+*How an assistant knows when it doesn't know — and what it does about it.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**A confidence threshold**
+
+Freed's walkthrough sets a minimum confidence value — below it, the system treats the intent as unrecognized, even if it was the highest-scoring guess.
+:::
+:::
+::: {.column width="50%"}
+**The two-strikes rule**
+
+The first low-confidence input gets a clarifying response. A second consecutive low-confidence input escalates further — for example, to a human agent.
+:::
+:::
+
+## The Two-Strikes Rule, as a Flowchart {background-color="#7A0A22"}
+
+*An original flowchart of Freed's escalation logic — low-confidence guesses accumulate toward a handoff.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart TD
+    U["User utterance received"] --> D1{"Confidence ≥
+    threshold?"}
+    D1 -->|Yes| R["Respond normally;
+    reset strike count to 0"]
+    D1 -->|No| INC["Increment
+    misunderstood_count"]
+    INC --> D2{"Count ≥ 2
+    (two strikes)?"}
+    D2 -->|No| ASK["'I didn't understand.
+    Can you try rephrasing?'"]
+    D2 -->|Yes| ESC["Escalate: offer a human
+    agent or another channel"]
+    style U fill:#BA0C2F,color:#fff
+    style D1 fill:#FAF8F5,color:#333
+    style D2 fill:#FAF8F5,color:#333
+    style R fill:#8A2A0E,color:#fff
+    style INC fill:#003B5C,color:#fff
+    style ASK fill:#BA0C2F,color:#fff
+    style ESC fill:#7A0A22,color:#fff
+```
+
+## Discussion Questions {background-color="#003B5C" .smaller}
+
+*Bring your answers to at least one of these to class.*
+
+1. Pick an AI assistant you use regularly. Which of the four approaches best describes how it likely works, and why?
+2. Chen et al. argue retrieval-based systems are more fluent but less flexible than generative ones. Can you think of a task where that trade-off would matter enormously?
+3. Freed's two-strikes rule escalates to a human after two low-confidence guesses. What would the right threshold be for your own course project's assistant?
+4. Modern LLM-based assistants blend rule-based logic, retrieval (e.g., RAG), and generation together. Pick a real product and try to identify all three pieces in it.
+
+## Key Takeaways
+
+*The vocabulary and the map you'll need before Part 2 goes deeper.*
+
+- A conversational AI system is built from the same recurring parts — interface, NLU, dialogue engine, orchestrator — whether answering questions, interpreting commands, or classifying events.
+- The conversational AI ecosystem splits along two independent axes: how a response is produced, and what the conversation is for.
+- Rule-based systems trace back to ELIZA (1966) and were formalized by AIML (1995); retrieval and generative approaches emerged later, each with real trade-offs, not a strict hierarchy of "better."
+- Building even a simple assistant means defining intents, entities, dialogue nodes, and a confidence threshold — vocabulary that scales up to far more sophisticated systems.
+
+## References {.smaller}
+
+- Freed, A. (2021). *Conversational AI.* Manning Publications.
+- Chen, H., Liu, X., Yin, D., & Tang, J. (2017). A Survey on Dialogue Systems: Recent Advances and New Frontiers. *ACM SIGKDD Explorations Newsletter*, 19(2), 25–35.
+- Gao, J., Galley, M., & Li, L. (2019). Neural Approaches to Conversational AI. *Foundations and Trends in Information Retrieval*, 13(2–3), 127–298.
+- Weizenbaum, J. (1966). ELIZA — A Computer Program for the Study of Natural Language Communication Between Man and Machine. *Communications of the ACM*, 9(1), 36–45.
+- Wallace, R. (2009). The Anatomy of A.L.I.C.E. In *Parsing the Turing Test*. Springer.
+- Vaswani, A., et al. (2017). Attention Is All You Need. *NeurIPS*.
+- OpenAI (2022). Introducing ChatGPT. November 30, 2022.

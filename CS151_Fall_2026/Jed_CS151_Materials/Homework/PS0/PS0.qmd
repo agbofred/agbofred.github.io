@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 0"
-subtitle: "Due: September 2, 2024"
+subtitle: "Due: August 28, 2024"
 format:
   html:
     theme:

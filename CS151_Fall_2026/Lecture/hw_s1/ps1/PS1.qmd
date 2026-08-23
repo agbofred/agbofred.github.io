@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 1"
-subtitle: "Due: January 27, 2025 at 10:00 PM"
+subtitle: "Due: September 14, 2026 at 10:00 PM"
 format:
   html:
     theme:
@@ -22,7 +22,7 @@ Both questions on this first problem set have template files in the repository. 
 worry about changing any file names, you want to overwrite the original template files.
 
 ```{=html}
-<a href='https://classroom.github.com/a/8RPTj51z' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom50.org/Agbo-CS151/cs151-fa-2026/assignments/project-sets-2/accept' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 
