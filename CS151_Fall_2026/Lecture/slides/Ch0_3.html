@@ -40,22 +40,56 @@
   <p class="date">August 28, 2026</p>
 </section>
 
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
+<section id="announcements---house-keepting" class="slide level2">
+<h2>Announcements - House Keepting</h2>
 <ul>
+<li>As a policy, everyone must help create a constructive and healthy
+learning community in this class.
+<ul>
+<li>uphold positive classroom behaviors</li>
+<li>avoid disruptive classroom behaviors</li>
+</ul></li>
+<li>I’m retracting my statement made on the first day that says
+<strong>“interject to ask”</strong>:
+<ul>
+<li>Interjections are no longer permitted during lectures.
+<ul>
+<li>Raise your hand and wait for me to grant you permission to ask
+question.</li>
+<li>Wait untill the class activity time or during group collaboration to
+ask your questions.</li>
+<li>Otherwise, note all your questions until the end of class.</li>
+</ul></li>
+</ul></li>
+<li>If I could not attend to your issues in class, come see me in the
+office during office hours.</li>
+<li>Use the course Discord channel <strong>‘Questions’</strong> to ask
+all questions related to the class, assignments, and projects.</li>
+</ul>
+</section>
+<section id="announcements---heads-up" class="slide level2">
+<h2>Announcements - Heads Up</h2>
+<ul>
+<li>If you have not joined the Discord, please <a
+href="https://discord.gg/g4yfX6AcD9">click here to join Now!</a>
+<ul>
+<li>Although the first link sent yesterday broke, but the second one
+worked.</li>
+</ul></li>
 <li>Problem Set 1 posted and it’s due on <strong>Monday Sept. 7th @
 10pm</strong>!
 <ul>
-<li>You’ll have basically all you need to solve it after today</li>
+<li>You’ll have basically all you need to solve it after today and
+Monday’s Class</li>
 </ul></li>
 <li>Small section meeting is starting next week
 <ul>
 <li>watchout for an email from <em>Prof. Jed</em> on when your section
 meets</li>
-<li>If you did not recieve <em>Prof. Jed’s</em> email by Tuesday, you
+<li>If you did not recieve <em>Prof. Jed’s</em> email by Monday, you
 must not have filled out the availability poll.</li>
-<li>Come see me after class and we can see about getting you placed into
-one.</li>
+<li>Come see me after class on Monday and we can see about getting you
+placed into one.</li>
 </ul></li>
 <li>Polling today! Use this <a
 href="https://www.polleverywhere.com/agbofred203">link</a>
@@ -63,90 +97,275 @@ href="https://www.polleverywhere.com/agbofred203">link</a>
 <li>Reminder: use your first name and be consistent to be able to
 uniquely identify you!</li>
 </ul></li>
+<li>Welcome to TechByte event on Tuesday <em>September 1</em> <strong>by
+12 pm @ Ford 102</strong>.
+<!-- - Welcome to Cookie Social at QUAD Center (Ford 224) __TUE Jan 30 @ 4:30pm__
+- I've requested for ***relocation of lecture hall***. Stay tuned for the info soon! --></li>
 </ul>
-<!--  
--Welcome to TechByte event tomorrow __by 11:30 am @ Ford 102__. Talk will be on how to find and apply for internships 
-- Welcome to Cookie Social at QUAD Center (Ford 224) __TUE Jan 30 @ 4:30pm__
-- I've requested for ***relocation of lecture hall***. Stay tuned for the info soon!
+</section>
+<section id="the-run-journal-tool" class="slide level2">
+<h2>The Run Journal Tool</h2>
+<ul>
+<li>A new tool/concept being piloted this semester is that of the
+<code class="python">“run_journal”</code></li>
+<li>Every time you run your code, you should have some concept of what
+you are expecting to happen. The Run Journal formalizes that.</li>
+<li>Each time you run the code for an assignment, you will be prompted:
+<ul>
+<li>Once at the start:
+<ul>
+<li>What are you expecting to happen?</li>
+</ul></li>
+<li>Twice at the end:
+<ul>
+<li>What actually happened?</li>
+<li>What is your next step?</li>
+</ul></li>
+</ul></li>
+<li>The journals are automatically saved, and you will upload them
+alongside your code whenever you are submitting
+assignments/projects</li>
+<li>The goal is to emphasize and highlight the process of solving these
+problems, not just the final product</li>
+</ul>
+</section>
+<section id="pothole-decomposition" class="slide level2">
+<h2>Pothole Decomposition</h2>
+<ul>
+<li>Functions can also be a very effective way to break a larger problem
+into smaller, more managable pieces</li>
+<li>Suppose we wanted Karel to fill all the “holes” in the below world
+with a beeper</li>
+</ul>
+<p><img
+data-src="../images/svg_cache/e4861116a4ada12f99b05c8d06104eb7ea107ef6.svg"
+style="width:60.0%" /></p>
+</section>
+<section id="breaking-down-potholes" class="slide level2">
+<h2>Breaking down Potholes</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>From a big picture perspective, we might break this down something
+like:
+<ul>
+<li>Moving between potholes</li>
+<li>Filling a pothole</li>
+</ul></li>
+<li>Wherever one of those actions is simple and routine enough to write
+a function, we probably should!
+<ul>
+<li>Moving between potholes: this is not currently routine as the amount
+we need to move changes</li>
+<li>Filling a pothole: this would be the same every time!</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<pre ><code class="python fragment" style="max-height: 900px">def main():
+    move()
+    fill_pothole()
+    move()
+    move()
+    fill_pothole()
+    move()
 
+def fill_pothole():
+    turn_right()
+    move()
+    put_beeper()
+    turn_around()
+    move()
+    turn_right()
 
-## If Conditions
-- Predicate functions can be used to control a kind of "switch": running one piece of code if the answer is yes and a different piece of code if the answer is no.
-- Commonly called _if_ or _if-else_ statements, they take on the syntax of:
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
 
-    ```python
-    if conditional_test:
-        # Code to run if test answer is yes
-    else:
-        # Code to run if test answer is no
-    ```
-- If you don't want the code to do anything special if the answer is no, you can ignore the "else" part of the statement:
-    
-    ```python
-    if conditional_test:
-        # Code to run if test is true
-    # Carrying on with code that will always run
-    ```
+def turn_around():
+    turn_left()
+    turn_left()</code></pre>
+</div>
+</div>
+</section>
+<section id="a-quick-comment" class="slide level2">
+<h2>A Quick Comment</h2>
+<ul>
+<li>It is <strong>always</strong> a good idea to document and leave
+notes to yourself (or future readers of your code)</li>
+<li><em>Comments</em> are pieces of text in your program that are
+ignored when the program is run</li>
+<li>Python has two methods to make a comment:
+<ul>
+<li><p>Hashtag method: Everything following a hashtag (#) on the same
+line is ignored</p>
+<pre ><code class="python"># This is a short comment!</code></pre>
+<ul>
+<li>Commonly used to make quick explanatory or labeling comments</li>
+</ul></li>
+<li><p>Triple quote method: Every inside triple quotes (“““) is
+ignored</p>
+<pre ><code class="python">""" This is also a comment! """</code></pre>
+<ul>
+<li>Commonly used to describe what functions do</li>
+<li>Can span multiple lines</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="commenting-example" class="slide level2">
+<h2>Commenting Example</h2>
+<pre ><code class="python" style="max-height: 900px">def main():
+    """
+    Main function to fill 2 potholes 
+    at known locations.
+    """
+    move()
+    fill_pothole()
+    move()
+    move()
+    fill_pothole()
+    move()
 
-## Remember Predicate Functions?
-Potential questions you can ask Karel include:
+def fill_pothole():
+    """
+    Fills a single pothole and returns 
+    to where it started. 
+    """
+    turn_right()
+    move()
+    put_beeper() #assuming infinite beepers available
+    turn_around()
+    move()
+    turn_right()
 
- | 
----|----
-`front_is_clear()` | `front_is_blocked()`
-`left_is_clear()` |  `left_is_blocked()`
-`right_is_clear()` | `right_is_blocked()`
-`beepers_present()` | `no_beepers_present()`
-`beepers_in_bag()` | `no_beepers_in_bag()`
-`facing_north()` | `not_facing_north()`
-`facing_south()` | `not_facing_south()`
-`facing_east()` | `not_facing_east()`
-`facing_west()` | `not_facing_west()`
+def turn_right():
+    """ Turns Karel 90 to the right. """
+    turn_left()
+    turn_left()
+    turn_left()
 
-<!--
-## Karel's Decisions Example
-- Suppose we want Karel to move across the bottom of the world and fill in any gaps in the beepers
-    - We want an even layer of beepers, no stacks
-    - What questions should we have Karel ask?
-
-\begin{tikzpicture}%%width=60%
-\karelgrid[MGreen]{4}{2}
-\karelbeeper[MBlue]{2}{1}
-\karelbeeper[MBlue]{3}{1}
-\karelmark[fill=MYellow]{1}{1}{0}
-\end{tikzpicture}
-
-
-## Iterative: while
-- Another common use of predicate functions is in controlling a type of iterative function called a _while_ loop
-- The structure of a while loop looks like:
-  ```python
-  while some_conditional_test:
-      # Code to repeat as long as the answer
-      # to the conditional_test is yes (true)
-  # Code to run once the answer is no
-  ```
-- All of our predicate functions give yes-or-no answers though! So we can do something like
-
-    ```python
-    while front_is_clear():
-        move()
-    ```
-    which will continually move Karel forward as long as there is not a wall in front of them!
-
-
-
-## Smarty Karel
-- Combining conditional statements with loops lets us write a program for Karel in which it can **react** to different situations in different ways, all using the same code
-- Our pothole code from earlier could **only** handle two potholes, and they had to be perfectly spaced
-- With one loop and one if statement, we can make the program fill any number of potholes with any manner of spacing!
-- Key questions:
-    - How do we know when we are done?
-    - How do we know when we reach a pothole?
-
-## Smart Potholes
-```{.python style='max-height: 900px'}
-def main():
+def turn_around():
+    """ Convenience function to turn Karel 180 around. """
+    turn_left()
+    turn_left()</code></pre>
+</section>
+<section id="if-conditions" class="slide level2">
+<h2>If Conditions</h2>
+<ul>
+<li><p>Predicate functions can be used to control a kind of “switch”:
+running one piece of code if the answer is yes and a different piece of
+code if the answer is no.</p></li>
+<li><p>Commonly called <em>if</em> or <em>if-else</em> statements, they
+take on the syntax of:</p>
+<pre ><code class="python">if conditional_test:
+    # Code to run if test answer is yes
+else:
+    # Code to run if test answer is no</code></pre></li>
+<li><p>If you don’t want the code to do anything special if the answer
+is no, you can ignore the “else” part of the statement:</p>
+<pre ><code class="python">if conditional_test:
+    # Code to run if test is true
+# Carrying on with code that will always run</code></pre></li>
+</ul>
+</section>
+<section id="remember-predicate-functions" class="slide level2">
+<h2>Remember Predicate Functions?</h2>
+<p>Potential questions you can ask Karel include:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><code class="python">front_is_clear()</code></td>
+<td><code class="python">front_is_blocked()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">left_is_clear()</code></td>
+<td><code class="python">left_is_blocked()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">right_is_clear()</code></td>
+<td><code class="python">right_is_blocked()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">beepers_present()</code></td>
+<td><code class="python">no_beepers_present()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">beepers_in_bag()</code></td>
+<td><code class="python">no_beepers_in_bag()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">facing_north()</code></td>
+<td><code class="python">not_facing_north()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">facing_south()</code></td>
+<td><code class="python">not_facing_south()</code></td>
+</tr>
+<tr class="even">
+<td><code class="python">facing_east()</code></td>
+<td><code class="python">not_facing_east()</code></td>
+</tr>
+<tr class="odd">
+<td><code class="python">facing_west()</code></td>
+<td><code class="python">not_facing_west()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="karels-decisions-example" class="slide level2">
+<h2>Karel’s Decisions Example</h2>
+<ul>
+<li>Suppose we want Karel to move across the bottom of the world and
+fill in any gaps in the beepers
+<ul>
+<li>We want an even layer of beepers, no stacks</li>
+<li>What questions should we have Karel ask?</li>
+</ul></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/cbb1d667e55a3e0db68cbdcd40529fb8fee0cf5f.svg"
+style="width:60.0%" /></p>
+</section>
+<section id="iterative-while" class="slide level2">
+<h2>Iterative: while</h2>
+<ul>
+<li><p>Another common use of predicate functions is in controlling a
+type of iterative function called a <em>while</em> loop</p></li>
+<li><p>The structure of a while loop looks like:</p>
+<pre ><code class="python">while some_conditional_test:
+    # Code to repeat as long as the answer
+    # to the conditional_test is yes (true)
+# Code to run once the answer is no</code></pre></li>
+<li><p>All of our predicate functions give yes-or-no answers though! So
+we can do something like</p>
+<pre ><code class="python">while front_is_clear():
+    move()</code></pre>
+<p>which will continually move Karel forward as long as there is not a
+wall in front of them!</p></li>
+</ul>
+</section>
+<section id="smarty-karel" class="slide level2">
+<h2>Smarty Karel</h2>
+<ul>
+<li>Combining conditional statements with loops lets us write a program
+for Karel in which it can <strong>react</strong> to different situations
+in different ways, all using the same code</li>
+<li>Our pothole code from earlier could <strong>only</strong> handle two
+potholes, and they had to be perfectly spaced</li>
+<li>With one loop and one if statement, we can make the program fill any
+number of potholes with any manner of spacing!</li>
+<li>Key questions:
+<ul>
+<li>How do we know when we are done?</li>
+<li>How do we know when we reach a pothole?</li>
+</ul></li>
+</ul>
+</section>
+<section id="smart-potholes" class="slide level2">
+<h2>Smart Potholes</h2>
+<pre ><code class="python" style="max-height: 900px">def main():
     """
     Main function to fill any number of
     potholes at any location!
@@ -177,9 +396,7 @@ def turn_right():
 def turn_around():
     """ Turns Karel 180 deg around. """
     turn_left()
-    turn_left()
-```
--->
+    turn_left()</code></pre>
 </section>
 <section id="inception-loops-in-loops" class="slide level2">
 <h2>Inception: Loops in Loops</h2>
@@ -368,84 +585,66 @@ times</p>
 </div>
 </div>
 </section>
-<section id="algorithms" class="slide level2">
-<h2>Algorithms</h2>
-<ul>
-<li>The process of designing a solution strategy to a problem is called
-<em>algorithmic design</em></li>
-<li>An <em>algorithm</em> is just an approach or recipe for a method to
-solve a particular problem
-<ul>
-<li>Frequently language agnostic</li>
-</ul></li>
-<li>Algorithms are not a new concept
-<ul>
-<li>Euclids algorithm to find greatest common denominators for
-instance</li>
-</ul></li>
-<li>A large part of computer science is focused on the study or analysis
-of algorithms</li>
-</ul>
-</section>
-<section id="algorithm-code" class="slide level2">
-<h2>Algorithm ⮕ Code</h2>
-<ul>
-<li>You need to have an algorithm in place <strong>before</strong> you
-can write the code to tell the computer what you want to do
-<ul>
-<li>Imagine an alien asking me how to bake a cake. I need to understand
-the steps to baking the cake before I can even worry about the
-translation or communication</li>
-</ul></li>
-<li>Programming tools like conditional statements and loops will
-frequently play a role in your algorithm, but as general concepts
-<ul>
-<li>I can easily describe a loop to you without needing the exact syntax
-of Python</li>
-</ul></li>
-<li>The implementation of the algorithm is the act of translating it
-into Python (or whatever language you are using)</li>
-</ul>
-</section>
-<section id="an-amazing-algorithm" class="slide level2">
-<h2>An Amazing Algorithm</h2>
-<div class="cols">
-<div class="col" style="font-size:.9em">
-<ul>
-<li>Consider a simple, loop-less, maze that we want to move through
-<ul>
-<li>Karel could start anywhere</li>
-<li>The end of the maze is a beeper</li>
-</ul></li>
-<li>A common algorithm to get through the maze is to essentially always
-follow or touch the wall to your right
-<ul>
-<li>How could we phrase this in language Karel would understand?</li>
-</ul></li>
-<li>Let’s take a few minutes to work with a neighbor(s) to sketch out
-your code</li>
-</ul>
-</div>
-<div class="col">
-<p><img
-data-src="../images/svg_cache/b6ec06c2a3fee2efeceb1865b37293e5194d5fa8.svg"
-style="width:100.0%" /></p>
-</div>
-</div>
-</section>
-<section id="an-amazing-algorithm-1" class="slide level2">
-<h2>An Amazing Algorithm</h2>
-<div class="cols">
-<div class="col">
-<ul>
-<li>Practically speaking, this largely means to go forward unless a
-passage opens to your right, in which case you take that passage</li>
-<li>In Karel, since the exit is a beeper, we might implement the above
-algorithm as:</li>
-</ul>
-</div>
-<div class="col">
-<pre ><code class="python fragment" style="max-height:900px; font-size: .75em;">while no_beepers_present():
+<section class="slide level2">
+
+<!-- ## Algorithms
+- The process of designing a solution strategy to a problem is called _algorithmic design_
+- An _algorithm_ is just an approach or recipe for a method to solve a particular problem
+    - Frequently language agnostic
+- Algorithms are not a new concept
+    - Euclids algorithm to find greatest common denominators for instance
+- A large part of computer science is focused on the study or analysis of algorithms
+
+## Algorithm ⮕ Code
+- You need to have an algorithm in place **before** you can write the code to tell the computer what you want to do
+    - Imagine an alien asking me how to bake a cake. I need to understand the steps to baking the cake before I can even worry about the translation or communication
+- Programming tools like conditional statements and loops will frequently play a role in your algorithm, but as general concepts
+    - I can easily describe a loop to you without needing the exact syntax of Python
+- The implementation of the algorithm is the act of translating it into Python (or whatever language you are using)
+
+## An Amazing Algorithm
+::::::cols
+::::{.col style='font-size:.9em'}
+- Consider a simple, loop-less, maze that we want to move through
+    - Karel could start anywhere
+    - The end of the maze is a beeper
+- A common algorithm to get through the maze is to essentially always follow or touch the wall to your right
+    - How could we phrase this in language Karel would understand?
+- Let's take a few minutes to work with a neighbor(s) to sketch out your code
+
+::::
+
+::::col
+\begin{tikzpicture}%%width=100%
+\karelgrid[MGreen]{5}{5}
+\karelmark[MYellow]{1}{1}{90}
+\karelbeeper[MBlue]{5}{4}
+
+\draw[very thick, MGreen]
+    (1.5,0.5) -- ++(0,1) -- ++(1,0)
+    (3.5,0.5) -- ++(0,1)
+    (2.5,5.5) -- ++(0,-1) -- ++(-1,0) -- ++(0,-2)
+    (1.5,3.5) -- ++(1,0)
+    (2.5,4.5) -- ++(1,0) -- ++(0,-2) -- ++(-1,0) -- ++ (2,0) -- ++ (0,-1)
+    (5.5,3.5) -- ++(-1,0) -- ++ (0,1);
+
+\end{tikzpicture}
+
+
+::::
+::::::
+
+## An Amazing Algorithm
+::::::cols
+::::col
+- Practically speaking, this largely means to go forward unless a passage opens to your right, in which case you take that passage
+- In Karel, since the exit is a beeper, we might implement the above algorithm as:
+
+::::
+
+::::col
+```{.python .fragment style='max-height:900px; font-size: .75em;'}
+while no_beepers_present():
     # if opening on right, we follow
     if right_is_clear():
         turn_right()
@@ -455,9 +654,11 @@ algorithm as:</li>
         if front_is_clear():
             move()
         else:
-            turn_left()</code></pre>
-</div>
-</div>
+            turn_left()
+```
+
+::::
+:::::: -->
 <!--
 ## Complications
 - More complicated problems will generally result or require more complex and longer code
@@ -522,285 +723,362 @@ def create_beeper_chain():
         else:
             move()
 ```
--->
-</section>
-<section id="stepwise-refinement"
-class="slide level2 data-auto-animate">
-<h2 class="data-auto-animate">Stepwise Refinement</h2>
-<div class="cols">
-<div class="col">
-<ul>
-<li>The most successful way to solve a complex problem is to break it
-down into progressively simpler problems</li>
-<li>Begin by breaking the whole problem into a few simpler parts
-<ul>
-<li>Some of these parts might then need further breaking down into even
-simpler parts</li>
-</ul></li>
-<li>The process is commonly called <em>stepwise refinement</em> or
-<em>decomposition</em></li>
-</ul>
-</div>
-<div class="col">
-<p><img
-data-src="../images/svg_cache/fa41b9f3d829b9445fb46c47d01debe72c06cb1a.svg"
-style="width:100.0%" /></p>
-</div>
-</div>
-</section>
-<section id="excellent-decomposing" class="slide level2">
-<h2>Excellent Decomposing</h2>
-<ul>
-<li><p>A good problem decomposition should mean:</p>
-<dl>
-<dt>The proposed pieces should be easy to explain</dt>
-<dd>
-One indication that you have succeeded is if it is easy to give them
-simple names
-</dd>
-<dt>The steps are as general as possible</dt>
-<dd>
-Each piece of code you can reuse is one less piece of code you need to
-write! If your steps solve general tasks, they are much easier to reuse.
-</dd>
-<dt>The steps should make logical sense for the problem you are
-solving</dt>
-<dd>
-If you have a function that will work to solve a step but was designed
-(and named) with something else entirely in mind, adopt it for the
-currently needed situation
-</dd>
-</dl></li>
-</ul>
-</section>
-<section id="enter-the-winter" class="slide level2">
-<h2>Enter the Winter</h2>
-<ul>
-<li>Suppose we want Karel to usher in the Fall/Winter by removing the
-“leaves” from the tops of all the trees</li>
-</ul>
-<p><img
-data-src="../images/svg_cache/c392900647544fde342c8e0a5ef0f5a2ff23bab9.svg"
-style="width:90.0%" /></p>
-</section>
-<section id="understanding-the-problem" class="slide level2">
-<h2>Understanding the Problem</h2>
-<ul>
-<li>What are we guaranteed by the problem?</li>
-<li>How will we know when we are done?</li>
-</ul>
-<p><img
-data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="understanding-the-problem-1" class="slide level2">
-<h2>Understanding the Problem</h2>
-<ul>
-<li>There are four trees in this problem</li>
-<li>We need to find a tree at a time</li>
-<li>We need to remove the leaves
-<ul>
-<li>there are four leaves per tree</li>
-</ul></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li>Find the next tree</li>
-<li>Strip the leaves off that tree</li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-1" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li><strong>Find the next tree</strong></li>
-<li>Strip the leaves off that tree</li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/4e41dbd42114df74ccca5f17a01f09c74865a46d.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-2" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li>Find the next tree</li>
-<li><strong>Strip the leaves off that tree</strong></li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/6b8e67c0a2a37c81ead1b4594151b28fab9d3e14.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-3" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li><strong>Find the next tree</strong></li>
-<li>Strip the leaves off that tree</li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/e75db5cab8556666b58ff0bc80fecf8390a86728.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-4" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li>Find the next tree</li>
-<li><strong>Strip the leaves off that tree</strong></li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/886d22da5dd8b4feb81c40044f6a22f3c4d65db6.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-5" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li><strong>Find the next tree</strong></li>
-<li>Strip the leaves off that tree</li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/179042babe66e96f8e0d89398361dfd634edbeec.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-6" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li>Find the next tree</li>
-<li><strong>Strip the leaves off that tree</strong></li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/e918ac408e6c1c97f6734d18b154481f5e21510a.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-7" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li><strong>Find the next tree</strong></li>
-<li>Strip the leaves off that tree</li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/5541a39e99d7bb1fa853dc49400b8c2657298f32.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="top-level-decomposition-8" class="slide level2"
-data-auto-animate="True">
-<h2 data-auto-animate="True">Top-Level Decomposition</h2>
-<ul>
-<li>We could break this problem into two main subproblems:
-<ol>
-<li>Find the next tree</li>
-<li><strong>Strip the leaves off that tree</strong></li>
-</ol></li>
-</ul>
-<p><img
-data-src="../images/svg_cache/3a7e718ef4f46bfcd251460ab073581ad81f843d.svg"
-style="width:80.0%" /></p>
-</section>
-<section id="remember-your-algorithms" class="slide level2">
-<h2>Remember Your Algorithms!</h2>
-<ul>
-<li><em>Algorithmic design</em>: The process of designing a solution
-strategy to a problem</li>
-<li>An <em>algorithm</em> is just an approach or recipe for a method to
-solve a particular problem
-<ul>
-<li>Frequently language agnostic</li>
-</ul></li>
-<li>Can you design algorithm to address the Fall/Winter problem?</li>
-</ul>
-</section>
-<section id="algorithm-code-1" class="slide level2">
-<h2>Algorithm ⮕ Code</h2>
-<div class="cols" style="font-size:.95em">
-<div class="col">
-<div class="block" name="General Algorithm">
-<ul>
-<li>for four iterations
-<ul>
-<li>find a tree</li>
-<li>then remove leaves</li>
-</ul></li>
-</ul>
-</div>
-<div class="block" name="Algorithm to find a tree">
-<ul>
-<li>while the front is clear
-<ul>
-<li>keep moving</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div class="col" style="flex-grow:1.5">
-<div class="block" name="Algorithm to remove leaves">
-<ul>
-<li>move up the tree</li>
-<li>remove each leaf</li>
-<li>move down the tree</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="algorithm-code-2" class="slide level2">
-<h2>Algorithm ⮕ Code</h2>
-<div class="cols" style="font-size:.85em">
-<div class="col">
-<div class="block" name="Main Program">
-<pre ><code class="python">import karel
+
+
+## Stepwise Refinement {.data-auto-animate}
+::::::cols
+::::col
+- The most successful way to solve a complex problem is to break it down into progressively simpler problems
+- Begin by breaking the whole problem into a few simpler parts
+    - Some of these parts might then need further breaking down into even simpler parts
+- The process is commonly called _stepwise refinement_ or _decomposition_
+::::
+
+::::col
+\begin{tikzpicture}[box/.style={MGreen, draw, very thick, rounded corners, font=\Large\tt}]%%width=100%
+\node[box] (prob) at (0,0) {Problem};
+\node[box, MBlue] (sub1) at (-3,-3) {Subprob 1};
+\node[box, MBlue] (sub2) at (0,-3) {Subprob 2};
+\node[box, MBlue] (sub3) at (3,-3) {Subprob 3};
+\draw[MGreen, very thick, -latex] (prob.south) -- (sub1.north);
+\draw[MGreen, very thick, -latex] (prob.south) -- (sub2.north);
+\draw[MGreen, very thick, -latex] (prob.south) -- (sub3.north);
+\node[box, MRed] (ssub1) at (-2,-6) {Subprob 2a};
+\node[box, MRed] (ssub2) at (2,-6) {Subprob 2b};
+\draw[MGreen, very thick, -latex] (sub2.south) -- (ssub1.north);
+\draw[MGreen, very thick, -latex] (sub2.south) -- (ssub2.north);
+
+\end{tikzpicture}
+
+
+::::
+::::::
+
+## Excellent Decomposing
+- A good problem decomposition should mean:
+
+  The proposed pieces should be easy to explain
+    : One indication that you have succeeded is if it is easy to give them simple names
+
+  The steps are as general as possible
+    : Each piece of code you can reuse is one less piece of code you need to write! If your steps solve general tasks, they are much easier to reuse.
+
+  The steps should make logical sense for the problem you are solving
+    : If you have a function that will work to solve a step but was designed (and named) with something else entirely in mind, adopt it for the currently needed situation
+
+## Enter the Winter
+- Suppose we want Karel to usher in the Fall/Winter by removing the "leaves" from the tops of all the trees
+
+\begin{tikzpicture}%%width=90%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{1}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+\treetop{2}{3}
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+
+## Understanding the Problem
+- What are we guaranteed by the problem?
+- How will we know when we are done?
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{1}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{2}{3}
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Understanding the Problem
+- There are four trees in this problem
+- We need to find a tree at a time
+- We need to remove the leaves 
+    - there are four leaves per tree
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{1}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{2}{3}
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. Find the next tree
+  #. Strip the leaves off that tree
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{1}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{2}{3}
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. **Find the next tree**
+  #. Strip the leaves off that tree
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{2}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{2}{3}
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. Find the next tree
+  #. **Strip the leaves off that tree**
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{3}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. **Find the next tree**
+  #. Strip the leaves off that tree
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{4}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{4}{5}
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. Find the next tree
+  #. **Strip the leaves off that tree**
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{5}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. **Find the next tree**
+  #. Strip the leaves off that tree
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{8}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{8}{3}
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. Find the next tree
+  #. **Strip the leaves off that tree**
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{9}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. **Find the next tree**
+  #. Strip the leaves off that tree
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{11}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+\newcommand{\treetop}[2]{
+    \foreach \x in {0,1} {
+        \foreach \y in {0,1} {
+            \karelbeeper[MBlue]{#1+\x}{#2+\y}
+        }
+    }
+}
+
+\treetop{11}{4}
+\end{tikzpicture}
+
+## Top-Level Decomposition {data-auto-animate=True}
+- We could break this problem into two main subproblems:
+  #. Find the next tree
+  #. **Strip the leaves off that tree**
+
+\begin{tikzpicture}%%width=80%
+\karelgrid[MGreen]{13}{6}
+\karelmark[MYellow]{12}{1}{0}
+\draw[MGreen, very thick] (2.5,0.5) --+ (0,2) (4.5,0.5) --+(0,4) (8.5,0.5) --+(0,2) (11.5,0.5) -- +(0,3);
+
+\end{tikzpicture}
+
+## Remember Your Algorithms!
+- _Algorithmic design_: The process of designing a solution strategy to a problem 
+- An _algorithm_ is just an approach or recipe for a method to solve a particular problem
+    - Frequently language agnostic
+- Can you design algorithm to address the Fall/Winter problem?
+
+## Algorithm ⮕ Code
+::::::{.cols style='font-size:.95em'}
+::::col
+:::{.block name="General Algorithm"}
+- for four iterations
+    - find a tree
+    - then remove leaves
+:::
+
+:::{.block name="Algorithm to find a tree"}
+- while the front is clear
+    - keep moving
+
+:::
+::::
+
+::::{.col style='flex-grow:1.5'}
+:::{.block name="Algorithm to remove leaves"}
+- move up the tree
+- remove each leaf
+- move down the tree
+    
+:::
+::::
+::::::
+
+## Algorithm ⮕ Code
+::::::{.cols style='font-size:.85em'}
+::::col
+:::{.block name="Main Program"}
+```python
+import karel
 def main():
     # Here is our general solution with higher level of decomposition
     for i in range(4):
         find_next_tree()
-        remove_leaves()</code></pre>
-</div>
-<div class="block" name="Find next tree">
-<pre ><code class="python">def find_next_tree():
+        remove_leaves()
+```
+:::
+
+:::{.block name="Find next tree"}
+```python
+def find_next_tree():
     # the codes to find next tree
     while front_is_clear():
-        move()</code></pre>
-</div>
-</div>
-<div class="col" style="flex-grow:1.4">
-<div class="block" name="Remove leaves">
-<pre ><code class="python">def remove_leaves():# codes to remove leaves
+        move()
+```
+:::
+::::
+
+::::{.col style='flex-grow:1.4'}
+:::{.block name="Remove leaves"}
+```python
+def remove_leaves():# codes to remove leaves
     move_up()
     deleaf()
     move_down()
@@ -821,8 +1099,9 @@ def deleaf(): # function to deleaf
 def move_down(): # to move karel downward
     while front_is_clear():
         move()
-    turn_left()</code></pre>
-<!--
+    turn_left()
+```
+
 - moving up
 ```python
 def move_up():
@@ -847,13 +1126,166 @@ def move_down():
         move()
     turn_left()
 ```
--->
+:::
+::::
+::::::
+ -->
+</section>
+<section id="group-problems-activity" class="slide level2">
+<h2>Group Problems Activity</h2>
+</section>
+<section id="preliminaries" class="slide level2">
+<h2>Preliminaries</h2>
+<ul>
+<li>Take a quick moment to introduce yourself to your group-mates for
+the day
+<ul>
+<li>Name</li>
+<li>Class year</li>
+<li>Major?</li>
+</ul></li>
+<li>Fun question of the day: if you were to add one fun command to
+Karel, what would it do (and be named)?</li>
+</ul>
+</section>
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
+<ul>
+<li>Don’t forget about decomposition!</li>
+<li>For all code writing questions today, try to think about how you
+could decompose it into at least two parts
+<ul>
+<li>Frequently, you’ll be able to reuse one of those parts!</li>
+</ul></li>
+<li>You can find a repository of worlds for today’s problems <a
+href="https://github.com/rembold-cs151-master/Lec3Content">here</a>
+<ul>
+<li>Not required, but there if you want to be able to test
+solutions</li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-1-flippy-floppy" class="slide level2">
+<h2>Problem 1: Flippy Floppy</h2>
+<ul>
+<li>Suppose we had the situation similar to the world below, and you
+want to exchange where beepers are
+<ul>
+<li>Replace empty space with a beeper, and a beeper with empty
+space</li>
+</ul></li>
+<li>The world is always the same size, Karel has infinite beepers, and
+always starts facing East</li>
+<li>Initial beepers could be anywhere though!</li>
+</ul>
+<p><img
+data-src="../images/svg_cache/777470ecff6650196f6c1972238a4d21abb0d537.svg"
+style="width:90.0%" /></p>
+<aside class="notes">
+<p>An interesting variant of this would be to shift all the beepers to
+the right or left, wrapping around!</p>
+</aside>
+</section>
+<section id="problem-2-the-race" class="slide level2">
+<h2>Problem 2: The Race</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Karel starts at the bottom of a world facing north</li>
+<li>There are exactly <em>two</em> stacks of beepers placed somewhere
+above them</li>
+<li>To win the race Karel needs to pick up both stacks of beepers and
+then touch the North wall
+<ul>
+<li>Remember that Karel can only pick up one beeper at a time!</li>
+</ul></li>
+</ul>
 </div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/d0b079aea3b0303ddd526c50bc5733c4f7106e88.svg"
+style="width:60.0%" /></p>
 </div>
 </div>
 </section>
-<section id="class-activity" class="slide level2">
-<h2>Class Activity?</h2>
+<section class="slide level2">
+
+<!-- ## Problem 3: Nested Beeper Drops
+::::::cols
+::::{.col style='flex-grow:1.5'}
+Karel starts as shown to the right with 20 beepers in its bag. After executing the commands below, how many beepers are left in the bag upon the conclusion of the program?
+
+```python
+while left_is_clear():
+    while front_is_clear():
+        move()
+        if no_beepers_present():
+            put_beeper()
+    turn_left()
+```
+::::
+
+::::col
+\begin{tikzpicture}%%width=90%
+\karelgrid[Green]{5}{5}
+\karelmark[fill=Yellow]{1}{1}{0}
+\draw[very thick, Green] (.5,2.5) --++(1,0) --++(0,-1)--++(2,0)--++(0,1)--++(1,0)
+                          (2.5,3.5) --++(0,-1)
+                          (5.5,3.5) --++(-1,0) --++(0,1) --++(1,0)
+                          (0.5,4.5) --++(2,0) --++(0,1)
+                          (3.5,4.5) --++(0,1);
+\karelbeeper[fill=Blue]{3}{1}
+\karelbeeper[fill=Blue]{3}{4}
+\karelbeeper[fill=Blue]{1}{3}
+\karelbeeper[fill=Blue]{5}{3}
+\node at (1,1) {20};
+\end{tikzpicture}
+::::
+:::::
+
+--- -->
+</section>
+<section id="live-coding" class="slide level2">
+<h2>Live-Coding</h2>
+</section>
+<section id="option-1-more-bars-in-more-places" class="slide level2">
+<h2>Option 1: More Bars in More Places</h2>
+<ul>
+<li>A line of stacks of beepers goes across the bottom of Karel’s
+world</li>
+<li>Karel’s job is to spread each stack out on the corresponding avenue,
+with 1 beeper on each street, starting from 1st street</li>
+<li>You don’t know how big the world is, or how many beepers might be in
+each stack
+<ul>
+<li>But there will be fewer beepers than the height of the world</li>
+</ul></li>
+<li>Karel always starts from the lower right facing west</li>
+</ul>
+</section>
+<section id="visualized" class="slide level2">
+<h2>Visualized</h2>
+<p><img
+data-src="../images/svg_cache/95a7a415a93e746884f2d5e3a0fc7dfd78485c95.svg"
+style="width:90.0%" /></p>
+</section>
+<section id="a-narrow-path" class="slide level2">
+<h2>A Narrow Path</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>There is a beeper path that extends from one side of the world to
+the other</li>
+<li>Karel starts on one end, facing toward the first beeper</li>
+<li>Goal is to follow the path to the other end</li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/bc79b0e968f3762f20bd7bcc3dcf4b2c11f549fe.svg"
+style="width:90.0%" /></p>
+</div>
+</div>
 </section>
     </div>
   </div>

@@ -1,7 +1,7 @@
 ---
 title: "Stepwise Refinement"
-author: Jed Rembold & Fred Agbo
-date: January 26, 2024
+author: Fred Agbo
+date: August 31, 2026
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -14,7 +14,7 @@ history: false
 
 
 ## Announcements
-- Remember, problem Set 1 is due on __Monday Jan. 29th @ 10pm__!
+- Remember, problem Set 1 is due on __Monday Sept. 7th @ 10pm__!
 - Small sections started this week. Keep attending
 	- Remember! The channel for getting help is ***Section leaders***,  __QUAD__, Instructors 
     - Did you not get a message from _Prof. Jed_ about your section meeting time? 

@@ -1,0 +1,21 @@
+\documentclass[border=2pt]{standalone}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{python-commands}
+\usepackage{monokai-colors}
+\begin{document}
+\nopagecolor
+\begin{tikzpicture}%
+\karelgrid[Green]{1}{6}
+\karelbeeper[Blue]{1}{2}
+\node at (1,2) {4};
+\karelbeeper[Blue]{1}{4}
+\node at (1,4) {3};
+\karelmark[Yellow]{1}{1}{90}
+
+\begin{scope}[xshift=3cm]
+\karelgrid[Green]{1}{6}
+\karelmark[Yellow]{1}{6}{90}
+\end{scope}
+\end{tikzpicture}
+\end{document}
