@@ -2,26 +2,43 @@ import karel
 
 
 def main():
-    while front_is_clear():
-        plot_bar()
+    if front_is_clear():
+        a_bar_per_time()
 
-# def count_beeper():
-#     while beepers_present():
-#            c = c + 1
-    
-def plot_bar():
-    while beepers_present():
+
+def a_bar_per_time():
+    if front_is_clear():
+        while beepers_present():
+            paint()
+
+def paint():
+    if beepers_present():
         pick_beeper()
-        c = c + 1
-    turn_right()
-    for i in range(c-1):
+        checker()
+    else:
         put_beeper()
+
+def checker():
+    if beepers_present():
+        turn_right()
+        up()
+        down()
+        turn_right()
+    else:
+        put_beeper()
+        # if front_is_clear():
         move()
+
+def up():
+    while beepers_present():
+        move()
+    put_beeper()
+            
+def down():
     turn_around()
-    for i in range(c):
-            move()
-    turn_right()
-    move()
+    while front_is_clear():
+        move()
+    
     
 def turn_around():
     turn_left()

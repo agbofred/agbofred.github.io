@@ -11,7 +11,7 @@
 # into smaller pieces! Here I'm leaving those pieces (and helper functions)
 # up to you to design and name as you see fit. Don't forget comments!
 
-import karelc
+import karel
 
 def main():
     """ Function to cause Karel to paint 3 sides of its house and then go indoors. """

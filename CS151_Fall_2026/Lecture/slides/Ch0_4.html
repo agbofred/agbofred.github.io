@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2024-01-26">
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-08-31">
   <title>Stepwise Refinement</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -36,14 +36,35 @@
 
 <section id="title-slide">
   <h1 class="title">Stepwise Refinement</h1>
-  <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">January 26, 2024</p>
+  <p class="author">Fred Agbo</p>
+  <p class="date">August 31, 2026</p>
 </section>
 
+<section id="happy-new-week" class="slide level2">
+<h2>Happy New Week!!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Login with your Willamette Email ID.</li>
+<li>Join the class group. The code is
+<code class="python">qUhTrP</code></li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arranegment.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img data-src="../images/code.png" style="width:60.0%" /></p>
+</div>
+</div>
+</section>
 <section id="announcements" class="slide level2">
 <h2>Announcements</h2>
 <ul>
-<li>Remember, problem Set 1 is due on <strong>Monday Jan. 29th @
+<li>Remember, problem Set 1 is due on <strong>Monday Sept. 7th @
 10pm</strong>!</li>
 <li>Small sections started this week. Keep attending
 <ul>
@@ -56,16 +77,75 @@ meeting time?
 one.</li>
 </ul></li>
 </ul></li>
-<li>Polling: <a
-href="https://www.polleverywhere.com/agbofred203">https://www.polleverywhere.com/agbofred203</a>
+<li>Welcome to TechByte event tomorrow Tuesday <em>September 1</em>
+<strong>by 12 pm @ Ford 102</strong>.
+<!-- - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+    - Reminder: include enough of your name that I can uniquely identify you! --></li>
+</ul>
+</section>
+<section id="group-problems-activity" class="slide level2">
+<h2>Group Problems Activity</h2>
+</section>
+<section id="preliminaries" class="slide level2">
+<h2>Preliminaries</h2>
 <ul>
-<li>Reminder: include enough of your name that I can uniquely identify
-you!</li>
+<li>Take a quick moment to introduce yourself to your group-mates for
+the day
+<ul>
+<li>Name</li>
+<li>Class year</li>
+<li>Major?</li>
 </ul></li>
 </ul>
 </section>
-<section id="review-question" class="slide level2">
-<h2>Review Question</h2>
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
+<ul>
+<li>Don’t forget about decomposition!</li>
+<li>For all code writing questions today, try to think about how you
+could decompose it into at least two parts
+<ul>
+<li>Frequently, you’ll be able to reuse one of those parts!</li>
+</ul></li>
+<li>You already got the repository of worlds for today’s problems <a
+href="https://github.com/rembold-cs151-master/Lec3Content">here</a>
+<ul>
+<li>Not required, but there if you want to be able to test
+solutions</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<!-- ## Problem 1: Flippy Floppy
+- Suppose we had the situation similar to the world below, and you want to exchange where beepers are
+    - Replace empty space with a beeper, and a beeper with empty space
+- The world is always the same size, Karel has infinite beepers, and always starts facing East
+- Initial beepers could be anywhere though!
+
+\begin{tikzpicture}%%width=90%
+\karelgrid[Green]{6}{1}
+\karelbeeper[Blue]{3}{1}
+\karelbeeper[Blue]{5}{1}
+\karelbeeper[Blue]{6}{1}
+\karelmark[Yellow]{1}{1}{0}
+
+\begin{scope}[xshift=8cm]
+\karelgrid[Green]{6}{1}
+\karelbeeper[Blue]{1}{1}
+\karelbeeper[Blue]{2}{1}
+\karelbeeper[Blue]{4}{1}
+\karelmark[Yellow]{6}{1}{0}
+\end{scope}
+
+\end{tikzpicture}
+
+:::notes
+An interesting variant of this would be to shift all the beepers to the right or left, wrapping around!
+::: -->
+</section>
+<section id="problem-1-wondering-karel" class="slide level2">
+<h2>Problem 1: Wondering Karel</h2>
 <div class="cols">
 <div class="col" style="flex-grow:1.5">
 <p>Karel starts as shown to the right. At which beeper do they end up
@@ -82,6 +162,101 @@ when the below sequence of commands finishes?</p>
 <div class="col">
 <p><img
 data-src="../images/svg_cache/4f1a435ea039e0f276eeed48b3603574df62e06d.svg"
+style="width:90.0%" /></p>
+</div>
+</div>
+</section>
+<section id="problem-2-the-race" class="slide level2">
+<h2>Problem 2: The Race</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Karel starts at the bottom of a world facing north</li>
+<li>There are exactly <em>two</em> stacks of beepers placed somewhere
+above them</li>
+<li>To win the race Karel needs to pick up both stacks of beepers and
+then touch the North wall
+<ul>
+<li>Remember that Karel can only pick up one beeper at a time!</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/d0b079aea3b0303ddd526c50bc5733c4f7106e88.svg"
+style="width:60.0%" /></p>
+</div>
+</div>
+<!-- ## Problem 3: Nested Beeper Drops
+::::::cols
+::::{.col style='flex-grow:1.5'}
+Karel starts as shown to the right with 20 beepers in its bag. After executing the commands below, how many beepers are left in the bag upon the conclusion of the program?
+
+```python
+while left_is_clear():
+    while front_is_clear():
+        move()
+        if no_beepers_present():
+            put_beeper()
+    turn_left()
+```
+::::
+
+::::col
+\begin{tikzpicture}%%width=90%
+\karelgrid[Green]{5}{5}
+\karelmark[fill=Yellow]{1}{1}{0}
+\draw[very thick, Green] (.5,2.5) --++(1,0) --++(0,-1)--++(2,0)--++(0,1)--++(1,0)
+                          (2.5,3.5) --++(0,-1)
+                          (5.5,3.5) --++(-1,0) --++(0,1) --++(1,0)
+                          (0.5,4.5) --++(2,0) --++(0,1)
+                          (3.5,4.5) --++(0,1);
+\karelbeeper[fill=Blue]{3}{1}
+\karelbeeper[fill=Blue]{3}{4}
+\karelbeeper[fill=Blue]{1}{3}
+\karelbeeper[fill=Blue]{5}{3}
+\node at (1,1) {20};
+\end{tikzpicture}
+::::
+:::::
+
+--- -->
+</section>
+<section id="live-coding-more-bars-in-more-places" class="slide level2">
+<h2>Live-Coding: More Bars in More Places</h2>
+<ul>
+<li>A line of stacks of beepers goes across the bottom of Karel’s
+world</li>
+<li>Karel’s job is to spread each stack out on the corresponding avenue,
+with 1 beeper on each street, starting from 1st street</li>
+<li>You don’t know how big the world is, or how many beepers might be in
+each stack
+<ul>
+<li>But there will be fewer beepers than the height of the world</li>
+</ul></li>
+<li>Karel always starts from the lower right facing west</li>
+</ul>
+</section>
+<section id="visualized" class="slide level2">
+<h2>Visualized</h2>
+<p><img
+data-src="../images/svg_cache/95a7a415a93e746884f2d5e3a0fc7dfd78485c95.svg"
+style="width:90.0%" /></p>
+</section>
+<section id="a-narrow-path---practice-problem" class="slide level2">
+<h2>A Narrow Path - Practice Problem</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>There is a beeper path that extends from one side of the world to
+the other</li>
+<li>Karel starts on one end, facing toward the first beeper</li>
+<li>Goal is to follow the path to the other end</li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/bc79b0e968f3762f20bd7bcc3dcf4b2c11f549fe.svg"
 style="width:90.0%" /></p>
 </div>
 </div>
@@ -165,62 +340,54 @@ def draw_6_line():
 ```
 
 -->
-</section>
-<section id="summary-so-far" class="slide level2">
-<h2>Summary So Far</h2>
-<div class="cols" style="font-size:.95em">
-<div class="col">
-<div class="block" name="Karel Cmds">
-<ul>
-<li>Karel can only:
-<ul>
-<li><code class="python">move()</code></li>
-<li><code class="python">turn_left()</code></li>
-<li><code class="python">pick_beeper()</code></li>
-<li><code class="python">put_beeper()</code></li>
-</ul></li>
-<li>Get info about surroundings using predicate functions
-<ul>
-<li>Eg. <code class="python">front_is_clear()</code></li>
-<li>Inverse options exist as well</li>
-</ul></li>
-</ul>
-</div>
-<div class="block" name="Functions">
-<ul>
-<li>Group code into reusable bundles</li>
-</ul>
-<pre ><code class="python">def function_name():
-    # Code to be grouped</code></pre>
-</div>
-</div>
-<div class="col" style="flex-grow:1.5">
-<div class="block" name="Control Statements">
-<ul>
-<li>Conditional statements
-<ul>
-<li>Run certain code blocks only if a condition is true (the
-<code class="python">else</code> block is optional)</li>
-</ul>
-<pre ><code class="python">if condition_test:
-    # Code if answer yes
-else:
-    # Code if answer no</code></pre></li>
-<li>Iterative statements
-<ul>
-<li>Repeat code block as long as condition is true</li>
-</ul>
-<pre ><code class="python">while condition_test:
-    # Code to repeat</code></pre>
-<ul>
-<li>Repeat set number of times</li>
-</ul>
-<pre ><code class="python">for i in range(desired_count):
-    # Code to repeat</code></pre></li>
-</ul>
-</div>
-</div>
-</div>
+<!-- 
+## Summary So Far
+::::::{.cols style='font-size:.95em'}
+::::col
+:::{.block name="Karel Cmds"}
+- Karel can only:
+    - `move()`
+    - `turn_left()`
+    - `pick_beeper()`
+    - `put_beeper()`
+- Get info about surroundings using predicate functions
+    - Eg. `front_is_clear()`
+    - Inverse options exist as well
+:::
+
+:::{.block name="Functions"}
+- Group code into reusable bundles
+```python
+def function_name():
+    # Code to be grouped
+```
+:::
+::::
+
+::::{.col style='flex-grow:1.5'}
+:::{.block name="Control Statements"}
+- Conditional statements
+    - Run certain code blocks only if a condition is true (the `else` block is optional)
+    ```python
+    if condition_test:
+        # Code if answer yes
+    else:
+        # Code if answer no
+    ```
+- Iterative statements
+    - Repeat code block as long as condition is true
+    ```python
+    while condition_test:
+        # Code to repeat
+    ```
+    - Repeat set number of times
+    ```python
+    for i in range(desired_count):
+        # Code to repeat
+    ```
+:::
+::::
+:::::: -->
 </section>
 <section id="stepwise-refinement"
 class="slide level2 data-auto-animate">
@@ -529,145 +696,47 @@ def main():
 </div>
 </div>
 </div>
-</section>
-<section id="data-types" class="slide level2">
-<h2>Data Types</h2>
-<ul>
-<li>Generally, the data processed by computers can take on many
-forms</li>
-<li>A <em>data type</em> defines the common characteristics of some data
-values that have a certain form or purpose.
-<ul>
-<li>Ex: a whole number or integer has certain characteristics common to
-all integers</li>
-</ul></li>
-<li>A data type has a <em>domain</em>, which is the set of all potential
-values that would belong to that type.
-<ul>
-<li>Ex: 0,1,2,3,4,5,6,7,…</li>
-</ul></li>
-<li>A data type has a <em>set of operations</em> that define how those
-values can be manipulated
-<ul>
-<li>Ex: You can add two whole numbers (5+2)</li>
-</ul></li>
-</ul>
-</section>
-<section id="numeric-types" class="slide level2">
-<h2>Numeric Types</h2>
-<ul>
-<li>Initially, we’ll focus on the numeric types</li>
-<li>Python has 3 data types for representing numbers:
-<ul>
-<li><p><code class="python">int</code> for integers and whole
-numbers</p>
-<pre ><code class="python">1, 2, 3, 10, 1001010101, -231</code></pre></li>
-<li><p><code class="python">float</code> for numbers containing a
-decimal point</p>
-<pre ><code class="python">1.23, 3.14, 10.001, 0.0, -8.23</code></pre></li>
-<li><p><code class="python">complex</code> for numbers with an imaginary
-component (which we won’t deal with)</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="expressions" class="slide level2">
-<h2>Expressions</h2>
-<ul>
-<li>Python describes computation using <em>arithmetic expressions</em>,
-which consist of <em>terms</em> joined by <em>operators</em>
-<ul>
-<li>Very similar to how a logical English sentence has nouns connected
-by verbs</li>
-</ul></li>
-<li>A term in an expression can be:
-<ul>
-<li>an explicit numeric value (called a literal) like 1 or 3.14</li>
-<li>a variable name serving as a placeholder to a value (more on those
-in a moment!)</li>
-<li>a value resulting from the output of a function call (more on those
-on Monday!)</li>
-<li>another expression enclosed in parentheses</li>
-</ul></li>
-</ul>
-<p><br></p>
-<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- 
+## Data Types
+- Generally, the data processed by computers can take on many forms
+- A _data type_ defines the common characteristics of some data values that have a certain form or purpose.
+    - Ex: a whole number or integer has certain characteristics common to all integers
+- A data type has a _domain_, which is the set of all potential values that would belong to that type.
+    - Ex: 0,1,2,3,4,5,6,7,...
+- A data type has a _set of operations_ that define how those values can be manipulated
+    - Ex: You can add two whole numbers (5+2)
 
-<svg
-   width="329.58304mm"
-   height="25.093552mm"
-   viewBox="0 0 329.58304 25.093552"
-   version="1.1"
-   id="svg5"
-   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
-   sodipodi:docname="expressions.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="0.457453"
-     inkscape:cx="677.66524"
-     inkscape:cy="-221.88072"
-     inkscape:window-width="2560"
-     inkscape:window-height="1413"
-     inkscape:window-x="1080"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs2" />
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(23.498847,-81.3686)">
-    <text
-       xml:space="preserve"
-       style="font-size:23.8114px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Normal';fill:#a6e22e;stroke:none;stroke-width:1.31342;stroke-linecap:round;stroke-dasharray:none"
-       x="-27.992485"
-       y="101.2847"
-       id="text236"><tspan
-         sodipodi:role="line"
-         id="tspan234"
-         style="fill:#a6e22e;stroke:none;stroke-width:1.31342;stroke-dasharray:none"
-         x="-27.992485"
-         y="101.2847">[term]</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:23.8114px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Normal';fill:#a6e22e;stroke:none;stroke-width:1.31342;stroke-linecap:round;stroke-dasharray:none"
-       x="222.65875"
-       y="101.2847"
-       id="text3080"><tspan
-         sodipodi:role="line"
-         id="tspan3078"
-         style="fill:#a6e22e;stroke:none;stroke-width:1.31342;stroke-dasharray:none"
-         x="222.65875"
-         y="101.2847">[term]</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:23.8114px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code, Normal';fill:#f92672;stroke:none;stroke-width:1.31342;stroke-linecap:round;stroke-dasharray:none"
-       x="68.026825"
-       y="101.2847"
-       id="text3084"><tspan
-         sodipodi:role="line"
-         id="tspan3082"
-         style="fill:#f92672;stroke:none;stroke-width:1.31342;stroke-dasharray:none"
-         x="68.026825"
-         y="101.2847">[operator]</tspan></text>
-  </g>
-</svg>
-</p>
+## Numeric Types
+- Initially, we'll focus on the numeric types
+- Python has 3 data types for representing numbers:
+    - `int`{.python} for integers and whole numbers
+
+        ```python
+        1, 2, 3, 10, 1001010101, -231
+        ```
+
+    - `float`{.python} for numbers containing a decimal point
+
+        ```python
+        1.23, 3.14, 10.001, 0.0, -8.23
+        ```
+
+    - `complex`{.python} for numbers with an imaginary component (which we won't deal with)
+
+---
+
+## Expressions
+- Python describes computation using _arithmetic expressions_, which consist of _terms_ joined by _operators_
+    - Very similar to how a logical English sentence has nouns connected by verbs
+- A term in an expression can be:
+    - an explicit numeric value (called a literal) like 1 or 3.14
+    - a variable name serving as a placeholder to a value (more on those in a moment!)
+    - a value resulting from the output of a function call (more on those on Monday!)
+    - another expression enclosed in parentheses
+
+<br>
+
+![](../images/expressions.svg) -->
 </section>
     </div>
   </div>
