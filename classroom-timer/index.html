@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <title>Classroom Timer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="timer.js" defer></script>
+</head>
+<body>
+  <main class="timer-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Classroom tool</p>
+        <h1>Focus timer</h1>
+      </div>
+      <button class="icon-button" id="fullscreenButton" type="button" title="Enter fullscreen" aria-label="Enter fullscreen">⛶</button>
+    </header>
+
+    <section class="timer-panel" aria-labelledby="timerHeading">
+      <div class="status-row">
+        <p id="timerHeading" class="status" aria-live="polite">Ready when you are</p>
+        <p class="session-label" id="sessionLabel">Activity</p>
+      </div>
+
+      <div class="time-display" id="timeDisplay" aria-label="Time remaining">05:00</div>
+      <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+      <div class="controls" aria-label="Timer controls">
+        <button class="primary-button" id="startButton" type="button">Start timer</button>
+        <button class="secondary-button" id="resetButton" type="button">Reset</button>
+        <button class="student-view-button" id="studentViewButton" type="button">Student view</button>
+      </div>
+    </section>
+
+    <section class="setup-panel" aria-labelledby="setupHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Set the pace</p>
+          <h2 id="setupHeading">How long?</h2>
+        </div>
+        <p class="shortcut-hint"><kbd>Space</kbd> start / pause</p>
+      </div>
+
+      <div class="duration-inputs">
+        <label>Minutes <input id="minutesInput" type="number" min="0" max="99" value="5" inputmode="numeric"></label>
+        <span class="colon">:</span>
+        <label>Seconds <input id="secondsInput" type="number" min="0" max="59" value="0" inputmode="numeric"></label>
+        <button class="set-button" id="setButton" type="button">Set time</button>
+      </div>
+
+      <div class="presets" aria-label="Quick durations">
+        <span>Quick set</span>
+        <button type="button" data-minutes="2">2 min</button>
+        <button type="button" data-minutes="5">5 min</button>
+        <button type="button" data-minutes="10">10 min</button>
+        <button type="button" data-minutes="15">15 min</button>
+      </div>
+    </section>
+
+    <footer>Keep this tab open while students work.</footer>
+  </main>
+</body>
+</html>

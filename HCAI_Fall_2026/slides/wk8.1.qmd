@@ -1,0 +1,503 @@
+---
+title: "Conversational AI and AI Assistants"
+subtitle: "AI 380: Human-AI Interaction · Week 8"
+author: "Part 2: Designing for Success"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    toc: false
+    slide-level: 2
+---
+
+```{=html}
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+.reveal { font-size: 27px; color: var(--ink); }
+.reveal h1, .reveal h2 { color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h2 { font-size: 1.45em; }
+.reveal h3 { font-size: 1.05em; color: var(--midnight); }
+.reveal p, .reveal li { line-height: 1.32; }
+.reveal table { font-size: 0.5em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.5em; }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+.reveal .tag-cardinal { background: var(--cardinal); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+.reveal .tag-midnight { background: var(--midnight); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+.reveal .tag-field { background: var(--field); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+</style>
+```
+
+## Where We're Headed
+
+*From planning what to build, to the design patterns that make it feel effortless.*
+
+1. **Designing effective processes** — prioritizing requests, assembling a team, mapping the flow
+2. **Dialogue management patterns** — happy paths, fallbacks, clarification loops, graceful degradation
+3. **Case studies** — how Alexa, Google Assistant, and enterprise chatbots actually handle this
+4. **Patterns meet principles** — connecting dialogue design to accessibility and calm technology
+
+## Designing Effective Processes {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART ONE
+:::
+
+*A conversational AI is a complete user experience channel — its design sets the ceiling on how good it can be.*
+
+## What the User Sees — and What They Don't
+
+*An original diagram of Freed's core design principle: invisible parts still need to work well.*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart TD
+    V["VISIBLE: 'Set an alarm for 9 p.m.' →
+    'I've set an alarm for 9 p.m.'"]
+    V --> I1["1. Utterance sent to NLU"]
+    I1 --> I2["2. Intent + entity returned"]
+    I2 --> I3["3. Matching response found"]
+    I3 --> I4["4. Orchestrator calls the API"]
+    style V fill:#BA0C2F,color:#fff
+    style I1 fill:#FAF8F5,color:#333
+    style I2 fill:#FAF8F5,color:#333
+    style I3 fill:#FAF8F5,color:#333
+    style I4 fill:#FAF8F5,color:#333
+```
+
+::: {.callout}
+Freed's point: the user experiences only what they say and what you say back. Everything in between must still be designed carefully for that experience to feel good.
+:::
+
+## Don't Boil the Ocean {background-color="#003B5C"}
+
+*An impossibly large scope is the fastest way to stall a conversational AI project.*
+
+::: {.callout}
+Freed's advice: brainstorm everything your assistant could conceivably do, then build an iterative plan instead of trying to launch it all at once. High-frequency, low-complexity requests should always come first.
+:::
+
+**Where the data comes from:** review call logs, search queries, and interview subject-matter experts. Shadow your call center staff for a day if you have one. The closer you are to real user data — and the farther you are from opinions — the better this exercise works.
+
+## The Volume × Complexity Grid
+
+*An original recreation of Freed's Fictitious Inc. prioritization exercise.*
+
+| | Lower complexity | Higher complexity |
+|---|---|---|
+| **Higher volume** | Store hours & location, Get contact info | Open account, Reset password, Schedule appointment |
+| **Lower volume** | Apply for a job, Check loyalty status | Report fraud, Transfer points |
+
+*Table 3.1's Customer Care intents, sorted into Freed's grid: quick wins (top-left), bigger investments (top-right), nice-to-haves (bottom-left), and rarely-worth-it (bottom-right).*
+
+## A Generalized Plan: Focus, FAQ, or Escalate {background-color="#BA0C2F"}
+
+*The same grid, turned into an actual decision rule for what to build.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**Focus** (high volume, low complexity)
+
+Fully automate as many of these as you can — the highest ROI in the whole grid.
+:::
+
+::: {.tag-cardinal}
+**FAQ or Escalate** (high volume, high complexity)
+
+Decide: quick-win answer, or route to a human-staffed channel?
+:::
+:::
+::: {.column width="50%"}
+**FAQ, as time permits** (low volume, low complexity)
+
+Worth addressing eventually — don't over-invest here.
+
+**Escalate** (low volume, high complexity)
+
+May never be worth automating.
+:::
+:::
+
+## Assembling Your Dream Team
+
+*Production-grade conversational AI needs more than one person's expertise.*
+
+| Role | What they bring |
+|---|---|
+| **Business-Process SME** | Understands the business and its current, as-is processes in depth |
+| **UX Designer** | Advocates for the user, making sure the conversation delivers what users want |
+| **Developer / Technical SME** | Codes the dialogue rules and confirms what's technically possible |
+| **Legal** | Makes sure legal and regulatory concerns are addressed before launch |
+| **Marketing** | Keeps the assistant's tone and content aligned with the brand |
+| **Project Sponsor** | "I'm making sure we deliver a coherent solution." |
+
+*Freed, A. (2021). Conversational AI. Manning Publications, Ch. 3.*
+
+## Mapping a Process Flow: Password Reset {background-color="#003B5C"}
+
+*An original recreation of Freed's labeled process-flow convention — easier to say "P04" than "the node after we ask for date of birth."*
+
+```{mermaid}
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#BA0C2F','primaryTextColor':'#fff','primaryBorderColor':'#7A0A22','lineColor':'#C0AC7E'}}}%%
+flowchart LR
+    P00["P00: Reset
+    password request"] --> P01["P01: Ask
+    for user ID"]
+    P01 --> P02["P02: Known?
+    Look up user"]
+    P02 --> P03["P03: Ask
+    date of birth"]
+    P01 --> P04["P04: Match?"]
+    P04 --> P05["P05: Ask
+    security question"]
+    P05 --> P06["P06: Match?"]
+    P05 --> P07["P07: Reset
+    password"]
+    P06 --> P08["P08: Cannot
+    reset password"]
+    P03 --> P09["P09: Intent
+    closure"]
+    style P00 fill:#BA0C2F,color:#fff
+    style P07 fill:#8A2A0E,color:#fff
+    style P08 fill:#7A0A22,color:#fff
+```
+
+*Reset only happens after both checks pass. Any failed match routes to P08, never to a reset.*
+
+## Choosing Your Channel: Voice vs. Web
+
+*The channel you pick shapes nearly every later design decision.*
+
+| | Web | Voice |
+|---|---|---|
+| **Technical complexity** | Fewer moving parts; no speech training needed | Adds speech-to-text and text-to-speech |
+| **Reach** | Requires a website, app, or browser | Ubiquitous — almost everyone has a phone |
+| **Output richness** | Text, images, buttons, links | Text readout only — no visuals |
+| **Input certainty** | You know exactly what was typed/clicked | You get a transcription, which can be wrong |
+| **Best for** | Users already comfortable online | Non-tech-savvy users, hands-busy situations |
+
+## Dialogue Management Patterns {background-color="#003B5C"}
+
+::: {.kicker}
+PART TWO
+:::
+
+*What separates good conversational AI design from bad? Four recurring patterns, grounded in real design practice.*
+
+## What Separates Good Design from Bad?
+
+*A 1995 essay on ubiquitous computing offers a surprisingly durable answer.*
+
+::: {.callout}
+Writing in Computer-Mediated Communication Magazine, Xerox PARC researcher Mark Weiser argued that the most profound technologies are those that disappear — that force people to adapt their whole lives to the machine, instead of blending naturally into it.
+:::
+
+**Applied to conversational AI:** bad design constantly reminds you that you're talking to a machine — rigid menus, brittle phrasing requirements, dead ends. Good design lets the conversation feel natural even when things go wrong.
+
+*Weiser, M. (1995). The Technologist's Responsibilities and Social Change. CMC Magazine, 2(4).*
+
+## The Happy Path: Design's Starting Point {background-color="#BA0C2F"}
+
+*The sequence you designed for — but voice users rarely stay on it.*
+
+::: {.callout}
+Amazon's own developer team defines the happy path as the sequence you expect most customers to follow. In voice, defining the happy path is only the starting point — what defines a good voice experience is how well it handles customers who veer off it.
+:::
+
+**A concrete example:** your happy path offers three sizes: small, medium, large. A customer asks for something your menu never anticipated — "gigantic," or "how big is large?" That moment is where design either forces the customer back into a rigid script, or handles the detour gracefully.
+
+## When Users Leave the Happy Path
+
+*Two responses to the same off-script moment — one loses the user, one keeps them.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**The rigid response**
+
+"Please say small, medium, or large." The customer is forced to learn your interface's rules instead of being understood.
+:::
+:::
+::: {.column width="50%"}
+**The adaptive response**
+
+"Large is about the size of a refrigerator — are you thinking more medium or large?" The system rolls with the customer's direction.
+:::
+:::
+
+*Amazon Developer Blog. Why Voice Design Matters: We Don't Speak the Way We Write.*
+
+## Pattern 1 · Fallbacks
+
+*A safety net for input the system was never trained to expect.*
+
+::: {.callout}
+A fallback catches whatever doesn't match any trained intent, and gives the system something reasonable to say instead of silence or a raw error.
+:::
+
+**Fallbacks are not failures:** Google's own developer guidance treats fallback handling as core design work — every turn needs one, because off-script input can happen at any point.
+
+**A good fallback still moves the conversation forward:** rather than a dead-end "I don't understand," offer a next step — rephrase, try an example, or reach a human.
+
+## Google's Error Taxonomy {background-color="#7A0A22"}
+
+*Google's official conversation design guidance names three distinct kinds of failure.*
+
+::: {.columns}
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**No Input**
+
+The system heard nothing — the user was silent, distracted, or the microphone closed with no response.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**No Match**
+
+The system heard something, but couldn't interpret it in the current context.
+:::
+:::
+::: {.column width="33%"}
+::: {.tag-cardinal}
+**System Error**
+
+A backend system the assistant depends on can't complete the task.
+:::
+:::
+:::
+
+::: {.callout}
+Google's guidance is explicit: with good error handling, the user won't even know an error occurred at all.
+:::
+
+*Google for Developers. Conversation Design: Errors.*
+
+## Pattern 2 · Clarification Loops
+
+*Not every ambiguous input needs a fallback — sometimes it just needs a good follow-up question.*
+
+::: {.callout}
+A clarification loop asks a targeted follow-up when the system is close but not certain — rather than giving up and falling back.
+:::
+
+**Google's design principle: assume cooperation.** Official guidance instructs designers to assume the user is being cooperative, even when it's unclear — the system's job is to figure out what the user meant, not to make the user guess the system's rules. Context matters too: the second or third attempt should sound different from the first.
+
+## How Many Reprompts? {background-color="#BA0C2F"}
+
+*Three independent sources converge on the same answer: not many.*
+
+| Source | Limit | What it covers |
+|---|---|---|
+| **Google Assistant** | 3 | No Input / No Match errors in a row before exiting |
+| **Google Assistant (collection)** | 2 | No Match attempts to collect one piece of information |
+| **Freed's two-strikes rule** | 2 | Consecutive low-confidence guesses before escalating |
+
+*The common thread: every additional attempt costs user patience. Once two or three attempts fail, the user stops trusting the system entirely.*
+
+## Pattern 3 · Graceful Degradation
+
+*When the ideal response isn't available, offer the best one that still is.*
+
+::: {.callout}
+Graceful degradation means a system keeps providing real value even as conditions get worse, instead of failing outright. Google's guidance is direct: end the conversation gracefully when there's genuinely nothing you can do to help, rather than stalling the user with vague promises.
+:::
+
+**What it looks like in practice:** redirecting Report Fraud requests straight to a human hotline (Freed's Fictitious Inc. example) is graceful degradation in action — the assistant recognizes its limits and hands off cleanly.
+
+## Graceful Degradation Meets Accessibility {background-color="#003B5C"}
+
+*The W3C's Web Content Accessibility Guidelines (WCAG) formalize the same idea at web scale.*
+
+::: {.columns}
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Perceivable**
+
+Presentable to users in ways they can perceive.
+:::
+:::
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Operable**
+
+Usable by everyone, regardless of how they interact.
+:::
+:::
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Understandable**
+
+Information and operation must be understandable.
+:::
+:::
+::: {.column width="25%"}
+::: {.tag-cardinal}
+**Robust**
+
+Works reliably across current and future assistive tech.
+:::
+:::
+:::
+
+*Robustness, in WCAG's sense, is graceful degradation by another name. W3C WAI. WCAG 2 Overview.*
+
+## Anatomy of a Good vs. Bad Error Message
+
+*The same underlying failure, handled two very different ways.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**A bad example**
+
+"Sorry, I can't hear that." Implies the user simply spoke too quietly — users often respond by raising their voice, which doesn't fix a system issue.
+:::
+:::
+::: {.column width="50%"}
+**A good example**
+
+"Sorry, I can't sell this product right now. Please visit our website." Names the real limitation honestly and gives a concrete next step.
+:::
+:::
+
+## These Patterns Play Out Differently by Channel {background-color="#7A0A22"}
+
+*The same pattern, implemented very differently depending on whether users can see it.*
+
+| | Web | Voice |
+|---|---|---|
+| **Fallback** | A visible message, plus suggested buttons | A brief spoken apology — nothing to visually scan |
+| **Clarification** | Can show multiple options at once | Must ask one question at a time, kept short |
+| **Graceful degradation** | Can link out to a website for more detail | Must fully resolve or clearly redirect |
+
+## The Cost of a Long Greeting
+
+*Freed's own timed comparison shows how quickly good design becomes bad design.*
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.tag-cardinal}
+**20 seconds**
+
+to the first useful piece of information. A typical automated phone greeting buries its one useful instruction at the very end — 62 words, 20 seconds of audio.
+:::
+:::
+::: {.column width="50%"}
+**4 seconds**
+
+to the same point, rewritten. "Thanks for calling So-and-So. Calls are recorded. How can I help you?" covers the same basics far faster.
+:::
+:::
+
+*Freed cites Pascal's famous observation that it takes real editing work to write briefly — "I have not had the time to make it shorter," as Pascal himself once put it.*
+
+## Case Studies {background-color="#BA0C2F"}
+
+::: {.kicker}
+PART THREE
+:::
+
+*How Alexa, Google Assistant, and enterprise chatbots put these patterns into practice.*
+
+## Case Study · Amazon Alexa's Happy-Path Philosophy
+
+*A skill ecosystem built around designing well for the moments off the happy path.*
+
+::: {.callout}
+Amazon's own developer guidance frames voice's biggest design challenge directly: users don't speak the way they write, and won't stay inside your defined happy path. A skill's quality, in Amazon's own words, is revealed by how well it lets customers take the lead when they veer off it.
+:::
+
+**The design lesson:** a skill that only handles "small, medium, large" verbatim will frustrate users the moment they say anything else — which, in voice, happens constantly.
+
+## Case Study · Google Assistant's Error-Handling Rules {background-color="#003B5C"}
+
+*The most formally specified error-handling policy of any major conversational AI platform.*
+
+::: {.callout}
+Google's public conversation design documentation specifies exact limits: no more than three No Input or No Match errors in a row, and no more than two collection attempts for a single piece of information, before the system must change strategy.
+:::
+
+**The design lesson:** publishing exact numeric thresholds makes Google's platform unusually testable — a designer can verify a build actually complies, not just "feels okay."
+
+## Case Study · An Enterprise Chatbot (Fictitious Inc.)
+
+*Freed's own extended example — the design process behind a real retail deployment.*
+
+::: {.callout}
+Fictitious Inc.'s dream team prioritized store hours and locations first — high volume, low complexity — then layered in appointment scheduling and password resets in a second milestone.
+:::
+
+- **Cross-cutting concerns shaped the roadmap** — authentication, CRM logging, and legal review for the Report Fraud intent all had to be designed in, not bolted on
+- **Change management kept the team in sync** — a single-editor checkout process for the process-flow diagrams prevented merge chaos
+
+## Comparing the Three: What Each Gets Right {background-color="#BA0C2F"}
+
+*Different platforms, different constraints — but the same underlying patterns.*
+
+| | Focus | What it teaches |
+|---|---|---|
+| **Alexa** | Designing for the detour | A voice-first ecosystem where handling off-script users gracefully defines quality |
+| **Google Assistant** | Precise, testable thresholds | Numeric limits make good design verifiable, not just felt |
+| **Enterprise chatbot** | Process discipline at scale | Prioritization and change management keep a multidisciplinary team aligned |
+
+## Connecting Back: Patterns Meet Principles {background-color="#F19C49"}
+
+*Every pattern in Part 2 traces back to the same underlying idea: technology should adapt to people.*
+
+| Pattern | Principle | Why they connect |
+|---|---|---|
+| **Happy path + fallback** | Weiser's calm technology | A design that only works on the happy path forces users to adapt to the machine |
+| **Clarification loops** | "Assume cooperation" | Google's principle is a practical descendant of designing for how people think |
+| **Graceful degradation** | WCAG's Robust principle | A system that keeps working, in some form, as conditions change |
+
+## Discussion Questions {background-color="#003B5C" .smaller}
+
+*Bring your answers to at least one of these to class.*
+
+1. Think of a real conversational AI interaction where you left the happy path. Did the system handle it like Amazon's "good example," or like the rigid one?
+2. Google publishes exact numeric thresholds (3 errors, 2 collection attempts). What would the right thresholds be for your own course project's assistant, and why?
+3. Apply Weiser's "calm technology" framing to an AI assistant you use daily. Does it feel like it disappears into your life, or does it constantly remind you it's a machine?
+4. Pick one WCAG principle and design one concrete dialogue-management rule for a voice assistant that would satisfy it.
+
+## Key Takeaways
+
+*Good design isn't a feeling — it's a set of testable, repeatable patterns.*
+
+- Effective process design starts with prioritizing by volume and complexity, and it takes a multidisciplinary team, not just a developer, to do it well.
+- Four dialogue management patterns recur across every serious conversational AI platform: happy paths, fallbacks, clarification loops, and graceful degradation.
+- The best-documented platforms turn these patterns into precise rules — Google's 2–3 error thresholds and Freed's two-strikes rule reflect user patience as a finite, designable resource.
+- Good conversational design and accessibility are the same underlying discipline, applied to different constraints.
+
+## References {.smaller}
+
+- Freed, A. (2021). *Conversational AI.* Manning Publications, Ch. 3.
+- Weiser, M. (1995). The Technologist's Responsibilities and Social Change. *Computer-Mediated Communication Magazine*, 2(4). johndecember.com/cmc/mag/1995/apr/last.html
+- W3C Web Accessibility Initiative (WAI). WCAG 2 Overview. w3.org/WAI/standards-guidelines/wcag
+- Google for Developers. Conversation Design: Errors. developers.google.com/assistant/conversation-design/errors
+- Amazon Developer Blog. Why Voice Design Matters: We Don't Speak the Way We Write. developer.amazon.com
+- Pascal, B. (1657). *Lettres Provinciales*, Letter 16.
