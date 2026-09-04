@@ -13,7 +13,7 @@ history: false
 
 ---
 
-## Happy Friday!!
+## Welcome!!
 ::::{style='font-size:.8em'}
 - Today's Grouping: Scan the QR code or go to [https://tools.jedrembold.prof/daily](https://tools.jedrembold.prof/daily)
 - Class code is `LKhWDb`

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Fred Agbo &amp; Jed">
-  <meta name="dcterms.date" content="2026-09-02">
-  <title>Data Type &amp; Functions?</title>
+  <meta name="dcterms.date" content="2026-09-04">
+  <title>Functional Libraries</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,19 +35,21 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Data Type &amp; Functions?</h1>
+  <h1 class="title">Functional Libraries</h1>
   <p class="author">Fred Agbo &amp; Jed</p>
-  <p class="date">September 2, 2026</p>
+  <p class="date">September 4, 2026</p>
 </section>
 
-<section id="welcome" class="slide level2">
-<h2>Welcome!!</h2>
+<section id="happy-friday" class="slide level2">
+<h2>Happy Friday!!</h2>
 <div style="font-size:.8em">
 <ul>
 <li>Today’s Grouping: Scan the QR code or go to <a
 href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
-<li>Class code is <code class="python">LKhWDb</code></li>
-<li>Introduce yourselves! Fun question: favorite name for a pet?</li>
+<li>Class code is <code class="python">2FvLMX</code></li>
+<li>Introduce yourselves! Fun question: If you had a magic box that
+consumed one type of object and output another, what would the inputs
+and outputs be?</li>
 </ul>
 </div>
 <div class="cols">
@@ -57,7 +59,7 @@ style="width:60.0%" /></p>
 </div>
 <div class="col">
 <p><img
-data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=LKhWDb"
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=2FvLMX"
 style="width:60.0%" /></p>
 </div>
 </div>
@@ -65,179 +67,110 @@ style="width:60.0%" /></p>
 <section id="quick-announcements" class="slide level2">
 <h2>Quick Announcements</h2>
 <ul>
-<li>Hopefully, everyone is already in a section which starts today
+<li>Feedback from the section meeting this week?
 <ul>
 <li>Attendance is mandatory</li>
 </ul></li>
-<li>Watching the videos and reading the text helps to give room for
-class activities
+<li>Reminder to watch the videos and read the text. They help in better
+understanding and gives room for class activities</li>
+<li>Problem Set 1 is due on Monday night!
 <ul>
-<li>Both contributes to your class participation grades</li>
+<li><strong><em>Monday September 7 is Labor Day - NO
+CLASS</em></strong></li>
 </ul></li>
-<li>Problem Set 1 is due on Monday night!</li>
-<li>We are leaving Karel after a quick one more live demo today!
+<li>Problem Set 2 will be posted on Monday
 <ul>
-<li>We’ve already covered everything Karel can do, and you should have
-all the tools needed for PS1</li>
-<li>Karel will <strong>not</strong> understand the things we are talking
-about today and going forwards</li>
+<li><strong>Due the following Monday, September 14th</strong></li>
 </ul></li>
 </ul>
 </section>
-<section class="slide level2">
+<section id="group-problems" class="slide level2">
+<h2># Group Problems</h2>
+<!-- ## Problem 1: The Assembly Line
+- Each group has been handed a set of functions, one of which should be given to each individual. If you have fewer people, one person can double up.
+- The blank slips of paper should be distributed amongst everyone
+- Clustering around may be easier than being stretched out in a line
+- Your overall goal is to determine the final printed number.
 
-<!-- Comments
-- Problem 1: this just isn't really that interesting. How could this be more dynamic?
-- Problem 2: Really liked this, and the extra bonus question I thought was fun.
-- Problem 3: This felt like a good on-ramp type problem. Fairly quick, but helps get students sorted out
-- Problem 4: I rather liked this, but it might be far more difficult if one of the targets isn't a 1
-- Live Code: This I think hit the mark. I had time to do it justice, and I think it was useful.
--->
+ ## Problem 1: How it works
+- The individual with the `person_D` function starts things off
+- Whenever a function is _called_ in your code, you must write any inputs to that function on a slip of paper, and then hand that paper to whichever individual is in charge of the function that you are calling.
+- You then **must continue to hold out your hand** until that function/person returns a slip of paper to you. Then you can continue with your program.
+- If your function ever _prints_ something, you need to say that value **out loud** whenever you hit that line of code. -->
 </section>
-<section>
-<section id="group-problems" class="title-slide slide level1">
-<h1>Group Problems</h1>
-
-</section>
-<section id="problem-1-arithmetic-operations" class="slide level2">
-<h2>Problem 1: Arithmetic Operations</h2>
-<p>What value does the below expression evaluate to? What type of object
-is the result?</p>
-<p><code class="python inlinecode">1 * 2 * 3 + (4 + 5) % 6 + (7 * 8) // 9</code></p>
-</section>
-<section id="problem-2-names-are-hard" class="slide level2">
-<h2>Problem 2: Names are Hard</h2>
-<p>Some of the variable names below are invalid. If you take the 3rd
-character of each invalid variable name, they will form an anagram for a
-coding concept. What is the hidden word?</p>
-<table>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><code class="python">user_age</code></td>
-<td><code class="python">1st_place</code></td>
-<td><code class="python">bag%red</code></td>
-<td><code class="python">first-name</code></td>
-<td><code class="python">_temp_celsius</code></td>
-</tr>
-<tr class="even">
-<td><code class="text">elif</code></td>
-<td><code class="python">AvgScore</code></td>
-<td><code class="python">the num</code></td>
-<td><code class="python">NUM_ITEMS</code></td>
-<td><code class="python">x2</code></td>
-</tr>
-<tr class="odd">
-<td><code class="text">@angle</code></td>
-<td><code class="text">item_#</code></td>
-<td><code class="python">__secret__</code></td>
-<td><code class="python">attempt23</code></td>
-<td><code class="python">time4bed</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="problem-3-updates" class="slide level2">
-<h2>Problem 3: Updates</h2>
-<div class="cols">
-<div class="col">
-<p>What is the final value of the <code class="python">A</code> variable
-at the end of the code to the right?</p>
+<section id="problem-1-the-bureau-of-standards" class="slide level2">
+<h2>Problem 1: The Bureau of Standards</h2>
+<div class="cols" style="align-items: center">
+<div class="col" style="font-size:.9em">
+<ul>
+<li>Your group is tasked with creating a simple library of conversion
+functions</li>
+<li>Each individual should choose one of the conversions to the right,
+and write <strong>two</strong> functions: one that converts one
+direction, and one that converts the other</li>
+<li>Collect all of these functions together into a single file called
+<code class="python">conversions.py</code>. It may be useful to use
+something like a shared Google Doc for quick sharing, or you can just
+dictate/copy from each other.</li>
+</ul>
 </div>
 <div class="col">
-<pre ><code class="idle python-repl">>>> A = 10
->>> B = 4
->>> C = A * B
->>> A -= B
->>> A, B, C = C, A, B
->>> A
-??</code></pre>
+<ul>
+<li>Feet to Kilometers</li>
+<li>Pounds to Grams</li>
+<li>Fahrenheit to Celsius</li>
+<li>Cups to Liters</li>
+</ul>
 </div>
 </div>
 </section>
-<section id="problem-4-birthday-variables" class="slide level2">
-<h2>Problem 4: Birthday Variables</h2>
+<section id="problem-2-calling-bs" class="slide level2">
+<h2>Problem 2: Calling BS</h2>
 <ul>
-<li><p>Get the birth month number of each member of your group, and
-assign them to the variables <code class="python">A</code>,
-<code class="python">B</code>, <code class="python">C</code>,
-etc.</p></li>
-<li><p>Your challenge is to get each of the variables equating to parts
-of today’s date:</p>
-<pre ><code class="python">A = 1
-B = 23
-C = 20
-D = 26</code></pre></li>
-<li><p>You are only allowed to use these variables, arithmetic
-operations, and <code class="python">for</code> loops, updating from
-your starting values each step of the way</p>
+<li>Now, in a separate file, write a program to solve the following word
+problem, importing in what functions you need.</li>
+</ul>
+<blockquote>
+<p>Johnny needs his 2000 lb car to travel 2000 feet down the road. He
+knows that it normally takes 1 cup of gas to move 5000 grams 0.5
+kilometers down the road, when the temperature is 20 degrees Celsius.
+But for each degree Celsius above that, it takes an addition 0.5 liter
+of gas to move the 5000 grams 0.5 kilometers down the road. It is 83
+degrees F outside. How many liters of gas does Johnny need?</p>
+</blockquote>
+<aside class="notes">
+<p>I think the answer is 973.9 liters?</p>
+</aside>
+</section>
+<section id="problem-3-the-error-doctor" class="slide level2">
+<h2>Problem 3: The Error Doctor</h2>
 <ul>
-<li>At no point should other numbers show up in your sequence of
-commands! (Except inside the <code class="python">for</code> loop
-parentheses, if you use <code class="python">for</code> loops</li>
+<li>In the materials for today there are three problems named
+<ul>
+<li><code class="python">Error1.py</code></li>
+<li><code class="python">Error2.py</code></li>
+<li><code class="python">Error3.py</code></li>
 </ul></li>
+<li>Each contains a function and a comment that explains the expected
+output. But something is wrong.</li>
+<li>Identify what is wrong in each case and how you could easily fix
+it.</li>
 </ul>
+<!-- Didn't get to
+# Live-Coding
+
+## Tis Quadratic
+- Most people have seen or had to memorize the quadratic formula at some point in time. As a reminder, the equation
+$$a\cdot x^2 + b\cdot x + c = 0$$
+can be solved for $x$ according to
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+- Define a function `quad` which takes 3 arguments `a,b,c` and returns the greater of the two solutions (by absolute value)
+
+## A Solution
+```{.python style='max-height: 800px; font-size:.8em;'}
+# Added once completed!
+``` -->
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="live-coding" class="title-slide slide level1">
-<h1>Live-Coding</h1>
-
-</section>
-<section id="hot-glowing-things" class="slide level2">
-<h2>Hot Glowing Things</h2>
-<ul>
-<li>Planck’s law governs the amount of light of a certain color that is
-emitted when something is glowing at a certain temperature <span
-class="math display">\[ B(\lambda, T) = \frac{2hc^2}{\lambda^5}
-\frac{1}{e^{\frac{hc}{\lambda k_B T}} - 1} \]</span></li>
-<li>Where
-<ul>
-<li><span class="math inline">\(\lambda\)</span> in the wavelength
-(color) of the light in meters</li>
-<li><span class="math inline">\(T\)</span> is the temperature of the
-object in kelvin</li>
-<li><span class="math inline">\(h\)</span> is Planck’s constant: <span
-class="math inline">\(6.62\times 10^{-34}\)</span></li>
-<li><span class="math inline">\(c\)</span> is the speed of light: <span
-class="math inline">\(3\times 10^8\)</span></li>
-<li><span class="math inline">\(k_B\)</span> is Boltzmann’s constant:
-<span class="math inline">\(1.38\times 10^{-23}\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="goal" class="slide level2">
-<h2>Goal</h2>
-<ul>
-<li>My goal is to write a short program that would allow a user to
-define the desired temperature and wavelength at the top, and then
-compute the brightness of that light</li>
-</ul>
-</section>
-<section id="a-solution" class="slide level2">
-<h2>A Solution</h2>
-<pre ><code class="python" style="max-height: 800px; font-size:.8em;">wavelength = 400 * 10 ** -9 # meter
-temperature =  1000 # kelvin
-
-H = 6.62E-34
-C = 3E8 # m/s
-KB = 1.38E-23
-
-first_fraction = 2 * H * C ** 2 / wavelength ** 5
-exp_fraction = H * C / (wavelength * KB * temperature)
-second_fraction = 1 / (2.71828 ** exp_fraction - 1)
-brightness = first_fraction * second_fraction
-
-print(brightness)</code></pre>
-</section></section>
     </div>
   </div>
 
