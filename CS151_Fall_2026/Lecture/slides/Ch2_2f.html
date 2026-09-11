@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Fred Agbo &amp; Jed">
-  <meta name="dcterms.date" content="2026-09-09">
-  <title>Bombastic Booleans</title>
+  <meta name="dcterms.date" content="2026-09-11">
+  <title>Home on the Range</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,20 +35,20 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Bombastic Booleans</h1>
+  <h1 class="title">Home on the Range</h1>
   <p class="author">Fred Agbo &amp; Jed</p>
-  <p class="date">September 9, 2026</p>
+  <p class="date">September 11, 2026</p>
 </section>
 
-<section id="welcome-to-week-3" class="slide level2">
-<h2>Welcome to week 3!</h2>
+<section id="happy-friday" class="slide level2">
+<h2>Happy Friday!</h2>
 <div style="font-size:.8em">
 <ul>
 <li>Class grouping today: Scan the QR code or go to <a
 href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
-<li>Class code is <code class="python">lcjjHj</code></li>
-<li>Introduce yourselves! Fun question: What is your favorite riddle
-about liars/truth-tellers?</li>
+<li>Class code is <code class="python">jd7WSW</code></li>
+<li>Introduce yourselves! Fun question: Do you think you can count
+faster forwards or backwards?</li>
 </ul>
 </div>
 <div class="cols">
@@ -62,22 +62,11 @@ data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily
 style="width:60.0%" /></p>
 </div>
 </div>
-<!-- Comments
-- Problem 1 I think was still instructive, and worth keeping
-- Problem 2 is good, and NEED TO UPDATE VIDEO TO PROPERLY TEACH THIS!
-- Problem 3 I think only needed the "hard" version. We skipped the short
-- Problem 4 was a bit rushed. And asking them to print strings feel weird before introducing strings.
-- Live coding I think was good, both from a algorithm and conceptual viewpoint
--->
 </section>
 <section id="quick-announcements" class="slide level2">
 <h2>Quick Announcements</h2>
 <ul>
-<li>Problem Set 2 published and due on Monday Sept 14!
-<ul>
-<li>All problems should be approachable after today</li>
-</ul></li>
-<li>Sections today or tomorrow! Don’t forget!</li>
+<li>Problem Set 2 is due on Monday Sept 14!</li>
 </ul>
 </section>
 <section>
@@ -85,88 +74,106 @@ style="width:60.0%" /></p>
 <h1>Group Problems</h1>
 
 </section>
-<section id="problem-1-reviewing-functions" class="slide level2">
-<h2>Problem 1: Reviewing Functions</h2>
+<section id="problem-1-multiple-approaches" class="slide level2">
+<h2>Problem 1: Multiple Approaches</h2>
+<p>Which of the below blocks of code would print something different
+from the others?</p>
+<div class="cols">
+<div class="col">
+<div class="block" name="A">
+<pre ><code class="python" style="margin-left:1em">for n in range(10):
+    if n % 2 == 0:
+        if n <= 10:
+            print(n)</code></pre>
+</div>
+<div class="block" name="B">
+<pre ><code class="python" style="margin-left:1em">for k in range(2,10):
+    if not (k % 2 > 0):
+        print(k)</code></pre>
+</div>
+</div>
+<div class="col">
+<div class="block" name="C">
+<pre ><code class="python" style="margin-left:1em">j = 0
+while j < 10:
+    print(j)
+    j += 2
+</code></pre>
+</div>
+<div class="block" name="D">
+<pre ><code class="python" style="margin-left:1em">for i in range(-2,10,2):
+    if i >= 0:
+        print(i)</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-2-ranging-about" class="slide level2">
+<h2>Problem 2: Ranging About</h2>
 <div class="cols" style="align-items: center">
 <div class="col">
-<p>Examining the code to the right, what is the returned value if I
-evaluate the expression <code class="python">func2(1,5)</code>?</p>
+<p>What would be the printed result of the code on the right?</p>
 </div>
 <div class="col" style="font-size:1em; flex-grow:1.5">
-<pre ><code class="python">def func1(x):
-    for i in range(3):
-        x *= 2
-    return x + x
-
-def func2(y, z):
-    A = func1(y+1) % 8
-    z, A = A + z, y
-    return z ** A</code></pre>
+<pre ><code class="python">biggest = 0
+for i in range(2, 8, 2):
+    for j in range(10, -1, -5):
+        if i * j > biggest:
+            biggest = i * j
+print(biggest)</code></pre>
 </div>
 </div>
 </section>
-<section id="problem-2-the-boolean-expression" class="slide level2">
-<h2>Problem 2: The Boolean Expression</h2>
-<div style="font-size:.9em">
-<p>What would the below expression evaluate to?</p>
-<p><code class="inlinecode">True and not False or False and not (False or True or False) or False</code></p>
-</div>
-</section>
-<section id="please-note-the-order" class="slide level2">
-<h2>Please Note the Order!</h2>
+<section id="creating-your-algorithms" class="slide level2">
+<h2>Creating your Algorithms</h2>
 <ul>
-<li>This may be left out in the video…</li>
-<li>Boolean operators absolutely have an order of operations:
+<li>Think about how you would solve the problem <strong>without</strong>
+a computer. You can’t write code if you don’t understand what you want
+the computer to do.</li>
+<li>Computers are fast! Brute force methods are often very viable, or at
+least a good starting point.</li>
+<li>Try to use tools and programming patterns you have already seen. It
+is often far easier to write programs by assembling pieces from code you
+have already seen than writing each program entirely from scratch.
 <ul>
-<li>Parentheses</li>
-<li><code class="python">not</code></li>
-<li><code class="python">and</code></li>
-<li><code class="python">or</code></li>
+<li>Identify common patterns that we’ve used to solve past problems
+<ul>
+<li>Counting things</li>
+<li>Various ways to loop</li>
+<li>Tracking biggest/smallest things</li>
+<li>Checking divisibility</li>
 </ul></li>
-<li>Only operations at the same “level” act left to right</li>
+</ul></li>
 </ul>
 </section>
-<section id="problem-3-gridded-booleans" class="slide level2">
-<h2>Problem 3: Gridded Booleans</h2>
-<div class="cols" style="align-items: center">
-<div class="col" style="font-size:.9em">
+<section id="a-recommendation" class="slide level2">
+<h2>A Recommendation</h2>
 <ul>
-<li>The grid to the right shows several comparison expressions, along
-with placeholders for unknown boolean operations</li>
-<li>It also shows a target result for each row and column</li>
-<li>Your task is to fill in the missing boolean operators to ensure all
-rows and columns evaluate to their desired target</li>
-</ul>
-</div>
-<div class="col">
-<p><img data-src="../images/bool_logic1.png" /></p>
-</div>
-</div>
-</section>
-<section id="problem-3b-raising-the-stakes" class="slide level2">
-<h2>Problem 3b: Raising the Stakes</h2>
-<p><img data-src="../images/bool_logic3.png" /></p>
-</section>
-<section id="problem-4-being-smart" class="slide level2">
-<h2>Problem 4: Being Smart</h2>
+<li>One of the most useful things you can do early on is to compile
+yourself a summary page of various problem-solving approaches
 <ul>
-<li>Suppose you are writing a function to “control” a thermostat for an
-HVAC system</li>
-<li>Your function has two variables as input:
-<code class="python">current_temp</code> and
-<code class="python">target_temp</code>
-<ul>
-<li>If the two values are within 5 degrees, you should print “Off”</li>
-<li>If the current temperature is less than the target, you should print
-“Heating”</li>
-<li>If the current temp is greater than the target, you should print
-“Cooling”</li>
+<li>Indicate what the problem was, how you solved it, and link to or
+directly include some sample code</li>
 </ul></li>
-<li>If they are separated by more than 25 degrees, you should
-<em>also</em> print “Warning: High Load!”
+<li>This makes it <strong>far</strong> easier in future problems to
+identify a similar part of a problem and immediately recall (or look
+back) at how you have solved it previously</li>
+</ul>
+</section>
+<section id="problem-3-optimus-prime" class="slide level2">
+<h2>Problem 3: Optimus Prime</h2>
 <ul>
-<li>This is in addition to whichever of the three values you printed
-above</li>
+<li>Write a function <code class="python">is_prime</code> which takes
+one integer as input and which returns a boolean that indicates if the
+input number is a prime number.</li>
+<li>As a reminder, a number is prime if it has no factors besides 1 and
+itself.</li>
+<li>When you write out your general algorithm, also include information
+about where you have previously showcased each of the steps you plan to
+take (what problem, on what date, etc)
+<ul>
+<li>I may require this sort of information in future homework
+problems!</li>
 </ul></li>
 </ul>
 </section></section>
@@ -175,41 +182,17 @@ above</li>
 <h1>Live-Coding</h1>
 
 </section>
-<section id="multiples" class="slide level2">
-<h2>Multiples</h2>
-<ul>
-<li>I want to write a function that takes a given number as input and
-prints all of its integer factors
-<ul>
-<li>As a reminder, a factor of a number is a value that evenly divides
-the number</li>
-</ul></li>
-<li>I want to return a count of how many factors were printed</li>
-</ul>
+<section id="pythagorean-triples" class="slide level2">
+<h2>Pythagorean Triples</h2>
+<p>A Pythagorean triplet is a set of three natural numbers, <span
+class="math inline">\(a &lt; b &lt; c\)</span>, for which, <span
+class="math display">\[ a^2 + b^2 = c^2\]</span></p>
+<p>There exists exactly one Pythagorean triplet where <span
+class="math inline">\(a + b + c = 1000\)</span>. Find it.</p>
 </section>
 <section id="a-solution" class="slide level2">
 <h2>A Solution</h2>
-<pre ><code class="python" style="max-height: 800px; font-size:.8em;">
-def print_factors_of(num):
-    """Prints off all the integer factors of
-    the provided number, and returns the count of
-    them.
-    
-    Algorithm:
-        Loop over all numbers less than num
-        Check if factor by seeing if remainder is 0
-        Print and increment counter if so
-    """
-    possible_factor = 1
-    count = 0
-    while possible_factor <= num:
-        if num % possible_factor == 0: # Factor found!
-            print(possible_factor)
-            count += 1
-        possible_factor += 1
-    return count
-
-print(print_factors_of(45632636))</code></pre>
+<pre ><code class="python" style="max-height: 800px; font-size:.8em;"># Added once completed!</code></pre>
 </section></section>
     </div>
   </div>

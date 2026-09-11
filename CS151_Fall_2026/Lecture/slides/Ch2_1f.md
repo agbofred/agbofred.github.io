@@ -119,7 +119,7 @@ What would the below expression evaluate to?
   - As a reminder, a factor of a number is a value that evenly divides the number
 - I want to return a count of how many factors were printed
 
-<!-- 
+
 ## A Solution
 ```{.python style='max-height: 800px; font-size:.8em;'}
 
@@ -143,4 +143,4 @@ def print_factors_of(num):
     return count
 
 print(print_factors_of(45632636))
-``` -->
+```

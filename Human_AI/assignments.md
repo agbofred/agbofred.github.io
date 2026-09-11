@@ -98,11 +98,11 @@ Produce a **2–3 page project discovery report** and an **initial paper prototy
 
 #### Tasks
 
-1. **Observation & Persona** — Conduct a brief participant observation session (15–20 min) of a user interacting with an existing intelligent application. Construct 1–2 user personas based on observed pain points, referencing Klemmer's observation video (Week 3) and Visme's persona-creation method.
+1. **Observation & Persona** — Conduct a brief participant observation session (15–20 min) of a user interacting with an existing intelligent application. Construct 1–2 user personas based on observed pain points, referencing Klemmer's observation video (Week 4) and Visme's persona-creation method.
 
 2. **Problem Critique** — Identify user-reported issues (loss of control, unpredictability, or lack of transparency) inspired by *When People and Algorithms Meet* (Eslami et al., IUI 2019).
 
-3. **Ideation & Prototyping** — Use a brainstorming technique (Chainstorm or Tweetstorm from Week 4 readings) to design an alternative interface. Create a low-fidelity paper prototype demonstrating a mixed-initiative approach balancing agent automation with user control.
+3. **Ideation & Prototyping** — Use a brainstorming technique (Chainstorm or Tweetstorm from Week 3 readings) to design an alternative interface. Create a low-fidelity paper prototype demonstrating a mixed-initiative approach balancing agent automation with user control.
 
 #### Deliverables
 - 2–3 page written report (personas, problem statement, design rationale)
