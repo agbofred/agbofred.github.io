@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-08-31">
+  <title>Stepwise Refinement</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Stepwise Refinement</h1>
+  <p class="author">Fred Agbo</p>
+  <p class="date">August 31, 2026</p>
+</section>
+
+<section id="happy-new-week" class="slide level2">
+<h2>Happy New Week!!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Login with your Willamette Email ID.</li>
+<li>Join the class group. The code is
+<code class="python">qUhTrP</code></li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arranegment.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img data-src="../images/code.png" style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li>Remember, problem Set 1 is due on <strong>Monday Sept. 7th @
+10pm</strong>!</li>
+<li>Small sections started this week. Keep attending
+<ul>
+<li>Remember! The channel for getting help is <strong><em>Section
+leaders</em></strong>, <strong>QUAD</strong>, Instructors</li>
+<li>Did you not get a message from <em>Prof. Jed</em> about your section
+meeting time?
+<ul>
+<li>Come see me after class and we can see about getting you placed into
+one.</li>
+</ul></li>
+</ul></li>
+<li>Welcome to TechByte event tomorrow Tuesday <em>September 1</em>
+<strong>by 12 pm @ Ford 102</strong>.
+<!-- - Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203)
+    - Reminder: include enough of your name that I can uniquely identify you! --></li>
+</ul>
+</section>
+<section id="group-problems-activity" class="slide level2">
+<h2>Group Problems Activity</h2>
+</section>
+<section id="preliminaries" class="slide level2">
+<h2>Preliminaries</h2>
+<ul>
+<li>Take a quick moment to introduce yourself to your group-mates for
+the day
+<ul>
+<li>Name</li>
+<li>Class year</li>
+<li>Major?</li>
+</ul></li>
+</ul>
+</section>
+<section id="considerations" class="slide level2">
+<h2>Considerations</h2>
+<ul>
+<li>Don’t forget about decomposition!</li>
+<li>For all code writing questions today, try to think about how you
+could decompose it into at least two parts
+<ul>
+<li>Frequently, you’ll be able to reuse one of those parts!</li>
+</ul></li>
+<li>You already got the repository of worlds for today’s problems <a
+href="https://github.com/rembold-cs151-master/Lec3Content">here</a>
+<ul>
+<li>Not required, but there if you want to be able to test
+solutions</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<!-- ## Problem 1: Flippy Floppy
+- Suppose we had the situation similar to the world below, and you want to exchange where beepers are
+    - Replace empty space with a beeper, and a beeper with empty space
+- The world is always the same size, Karel has infinite beepers, and always starts facing East
+- Initial beepers could be anywhere though!
+
+\begin{tikzpicture}%%width=90%
+\karelgrid[Green]{6}{1}
+\karelbeeper[Blue]{3}{1}
+\karelbeeper[Blue]{5}{1}
+\karelbeeper[Blue]{6}{1}
+\karelmark[Yellow]{1}{1}{0}
+
+\begin{scope}[xshift=8cm]
+\karelgrid[Green]{6}{1}
+\karelbeeper[Blue]{1}{1}
+\karelbeeper[Blue]{2}{1}
+\karelbeeper[Blue]{4}{1}
+\karelmark[Yellow]{6}{1}{0}
+\end{scope}
+
+\end{tikzpicture}
+
+:::notes
+An interesting variant of this would be to shift all the beepers to the right or left, wrapping around!
+::: -->
+</section>
+<section id="problem-1-wondering-karel" class="slide level2">
+<h2>Problem 1: Wondering Karel</h2>
+<div class="cols">
+<div class="col" style="flex-grow:1.5">
+<p>Karel starts as shown to the right. At which beeper do they end up
+when the below sequence of commands finishes?</p>
+<pre ><code class="python">while no_beepers_present():
+    while front_is_clear():
+        move()
+        if beepers_present():
+            turn_left()
+        else:
+            turn_right()
+    turn_left()</code></pre>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/4f1a435ea039e0f276eeed48b3603574df62e06d.svg"
+style="width:90.0%" /></p>
+</div>
+</div>
+</section>
+<section id="problem-2-the-race" class="slide level2">
+<h2>Problem 2: The Race</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Karel starts at the bottom of a world facing north</li>
+<li>There are exactly <em>two</em> stacks of beepers placed somewhere
+above them</li>
+<li>To win the race Karel needs to pick up both stacks of beepers and
+then touch the North wall
+<ul>
+<li>Remember that Karel can only pick up one beeper at a time!</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/d0b079aea3b0303ddd526c50bc5733c4f7106e88.svg"
+style="width:60.0%" /></p>
+</div>
+</div>
+<!-- ## Problem 3: Nested Beeper Drops
+::::::cols
+::::{.col style='flex-grow:1.5'}
+Karel starts as shown to the right with 20 beepers in its bag. After executing the commands below, how many beepers are left in the bag upon the conclusion of the program?
+
+```python
+while left_is_clear():
+    while front_is_clear():
+        move()
+        if no_beepers_present():
+            put_beeper()
+    turn_left()
+```
+::::
+
+::::col
+\begin{tikzpicture}%%width=90%
+\karelgrid[Green]{5}{5}
+\karelmark[fill=Yellow]{1}{1}{0}
+\draw[very thick, Green] (.5,2.5) --++(1,0) --++(0,-1)--++(2,0)--++(0,1)--++(1,0)
+                          (2.5,3.5) --++(0,-1)
+                          (5.5,3.5) --++(-1,0) --++(0,1) --++(1,0)
+                          (0.5,4.5) --++(2,0) --++(0,1)
+                          (3.5,4.5) --++(0,1);
+\karelbeeper[fill=Blue]{3}{1}
+\karelbeeper[fill=Blue]{3}{4}
+\karelbeeper[fill=Blue]{1}{3}
+\karelbeeper[fill=Blue]{5}{3}
+\node at (1,1) {20};
+\end{tikzpicture}
+::::
+:::::
+
+--- -->
+</section>
+<section id="live-coding-more-bars-in-more-places" class="slide level2">
+<h2>Live-Coding: More Bars in More Places</h2>
+<ul>
+<li>A line of stacks of beepers goes across the bottom of Karel’s
+world</li>
+<li>Karel’s job is to spread each stack out on the corresponding avenue,
+with 1 beeper on each street, starting from 1st street</li>
+<li>You don’t know how big the world is, or how many beepers might be in
+each stack
+<ul>
+<li>But there will be fewer beepers than the height of the world</li>
+</ul></li>
+<li>Karel always starts from the lower right facing west</li>
+</ul>
+</section>
+<section id="visualized" class="slide level2">
+<h2>Visualized</h2>
+<p><img
+data-src="../images/svg_cache/95a7a415a93e746884f2d5e3a0fc7dfd78485c95.svg"
+style="width:90.0%" /></p>
+</section>
+<section id="a-narrow-path---practice-problem" class="slide level2">
+<h2>A Narrow Path - Practice Problem</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>There is a beeper path that extends from one side of the world to
+the other</li>
+<li>Karel starts on one end, facing toward the first beeper</li>
+<li>Goal is to follow the path to the other end</li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/bc79b0e968f3762f20bd7bcc3dcf4b2c11f549fe.svg"
+style="width:90.0%" /></p>
+</div>
+</div>
+<!--
+## Counting Loops
+- Sometimes we **know** the number of times we want to loop
+    - It is not dependent on some condition like a while loop
+- In these circumstances, the iterative statement called a _for_ loop is best used
+- Syntax looks like:
+
+    ```python
+    for i in range(desired_count):
+        # statements to be repeated
+    ```
+   - `desired_count` is an _integer_ indicating the number of times you want the loop to repeat
+   - The `i` is a name that we will later make more general, but for now you can always leave it as an `i`
+
+
+## An Example `for` you 
+::::::cols
+::::col
+- Suppose Karel starts in the bottom left corner of a "room"
+- We want Karel to create a 6x6 square outline of beepers in the center of the room
+- Need to repeat making each side 4 times
+- Need to repeat placing a beeper and moving 6 times for each side
+    - Placing 6 beepers requires moving only 5 times. So not everything can be in the loop
+::::
+::::col
+\begin{tikzpicture}%%width=100%
+\karelgrid[MGreen]{10}{10}
+\foreach \x in {3,4,5,6,7,8}{
+    \karelbeeper[MBlue]{\x}{3};
+    \karelbeeper[MBlue]{\x}{8};
+    \karelbeeper[MBlue]{3}{\x};
+    \karelbeeper[MBlue]{8}{\x};
+}
+\karelmark[MYellow]{3}{3}{0}
+\end{tikzpicture}
+::::
+::::::
+
+## A Potential Solution
+```{.python style="max-height: 900px"}
+import karel
+
+def main():
+    """Draw a 4x4 square in the world."""
+    position()
+    draw_box()
+
+def position():
+    """Move to starting corner of box."""
+    move()
+    move()
+    turn_left()
+    move()
+    move()
+    turn_right()
+
+def turn_right():
+    """Turns Karel 90 deg to the right."""
+    turn_left()
+    turn_left()
+    turn_left()
+
+def draw_box():
+    """Draws a box with 4 equal sides in a CCW direction."""
+    for i in range(4):
+        draw_6_line()
+        turn_left()
+
+def draw_6_line():
+    """Draws a straight line of 6 beepers, if space."""
+    for i in range(5):
+        if no_beepers_present():
+            put_beeper()
+        if front_is_clear():
+            move()
+    if no_beepers_present(): # Last beeper to make 6
+        put_beeper()
+```
+
+-->
+<!-- 
+## Summary So Far
+::::::{.cols style='font-size:.95em'}
+::::col
+:::{.block name="Karel Cmds"}
+- Karel can only:
+    - `move()`
+    - `turn_left()`
+    - `pick_beeper()`
+    - `put_beeper()`
+- Get info about surroundings using predicate functions
+    - Eg. `front_is_clear()`
+    - Inverse options exist as well
+:::
+
+:::{.block name="Functions"}
+- Group code into reusable bundles
+```python
+def function_name():
+    # Code to be grouped
+```
+:::
+::::
+
+::::{.col style='flex-grow:1.5'}
+:::{.block name="Control Statements"}
+- Conditional statements
+    - Run certain code blocks only if a condition is true (the `else` block is optional)
+    ```python
+    if condition_test:
+        # Code if answer yes
+    else:
+        # Code if answer no
+    ```
+- Iterative statements
+    - Repeat code block as long as condition is true
+    ```python
+    while condition_test:
+        # Code to repeat
+    ```
+    - Repeat set number of times
+    ```python
+    for i in range(desired_count):
+        # Code to repeat
+    ```
+:::
+::::
+:::::: -->
+</section>
+<section id="stepwise-refinement"
+class="slide level2 data-auto-animate">
+<h2 class="data-auto-animate">Stepwise Refinement</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>The most successful way to solve a complex problem is to break it
+down into progressively simpler problems</li>
+<li>Begin by breaking the whole problem into a few simpler parts
+<ul>
+<li>Some of these parts might then need further breaking down into even
+simpler parts</li>
+</ul></li>
+<li>The process is commonly called <em>stepwise refinement</em> or
+<em>decomposition</em></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/fa41b9f3d829b9445fb46c47d01debe72c06cb1a.svg"
+style="width:100.0%" /></p>
+</div>
+</div>
+</section>
+<section id="excellent-decomposing" class="slide level2">
+<h2>Excellent Decomposing</h2>
+<ul>
+<li><p>A good problem decomposition should mean:</p>
+<dl>
+<dt>The proposed pieces should be easy to explain</dt>
+<dd>
+One indication that you have succeeded is if it is easy to give them
+simple names
+</dd>
+<dt>The steps are as general as possible</dt>
+<dd>
+Each piece of code you can reuse is one less piece of code you need to
+write! If your steps solve general tasks, they are much easier to reuse.
+</dd>
+<dt>The steps should make logical sense for the problem you are
+solving</dt>
+<dd>
+If you have a function that will work to solve a step but was designed
+(and named) with something else entirely in mind, adopt it for the
+currently needed situation
+</dd>
+</dl></li>
+</ul>
+</section>
+<section id="enter-the-winter" class="slide level2">
+<h2>Enter the Winter</h2>
+<ul>
+<li>Suppose we want Karel to usher in the Fall/Winter by removing the
+“leaves” from the tops of all the trees</li>
+</ul>
+<p><img
+data-src="../images/svg_cache/c392900647544fde342c8e0a5ef0f5a2ff23bab9.svg"
+style="width:90.0%" /></p>
+</section>
+<section id="understanding-the-problem" class="slide level2">
+<h2>Understanding the Problem</h2>
+<ul>
+<li>What are we guaranteed by the problem?</li>
+<li>How will we know when we are done?</li>
+</ul>
+<p><img
+data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="understanding-the-problem-1" class="slide level2">
+<h2>Understanding the Problem</h2>
+<ul>
+<li>There are four trees in this problem</li>
+<li>We need to find a tree at a time</li>
+<li>We need to remove the leaves
+<ul>
+<li>there are four leaves per tree</li>
+</ul></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/04d63af547720bd6c9cefc5608cba0bfaeee6f26.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-1" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/4e41dbd42114df74ccca5f17a01f09c74865a46d.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-2" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/6b8e67c0a2a37c81ead1b4594151b28fab9d3e14.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-3" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/e75db5cab8556666b58ff0bc80fecf8390a86728.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-4" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/886d22da5dd8b4feb81c40044f6a22f3c4d65db6.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-5" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/179042babe66e96f8e0d89398361dfd634edbeec.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-6" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/e918ac408e6c1c97f6734d18b154481f5e21510a.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-7" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li><strong>Find the next tree</strong></li>
+<li>Strip the leaves off that tree</li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/5541a39e99d7bb1fa853dc49400b8c2657298f32.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="top-level-decomposition-8" class="slide level2"
+data-auto-animate="True">
+<h2 data-auto-animate="True">Top-Level Decomposition</h2>
+<ul>
+<li>We could break this problem into two main subproblems:
+<ol>
+<li>Find the next tree</li>
+<li><strong>Strip the leaves off that tree</strong></li>
+</ol></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/3a7e718ef4f46bfcd251460ab073581ad81f843d.svg"
+style="width:80.0%" /></p>
+</section>
+<section id="remember-your-algorithms" class="slide level2">
+<h2>Remember Your Algorithms!</h2>
+<ul>
+<li><em>Algorithmic design</em>: The process of designing a solution
+strategy to a problem</li>
+<li>An <em>algorithm</em> is just an approach or recipe for a method to
+solve a particular problem
+<ul>
+<li>Frequently language agnostic</li>
+</ul></li>
+<li>Can you design algorithm to address the Fall/Winter problem?</li>
+</ul>
+</section>
+<section id="algorithm-code" class="slide level2">
+<h2>Algorithm ⮕ Code</h2>
+<div class="cols" style="font-size:.95em">
+<div class="col">
+<div class="block" name="General Algorithm">
+<ul>
+<li>for four iterations
+<ul>
+<li>find a tree</li>
+<li>then remove leaves</li>
+</ul></li>
+</ul>
+</div>
+<div class="block" name="Algorithm to find a tree">
+<ul>
+<li>while the front is clear
+<ul>
+<li>keep moving</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="col" style="flex-grow:1.5">
+<div class="block" name="Algorithm to remove leaves">
+<ul>
+<li>move up the tree</li>
+<li>remove each leaf</li>
+<li>move down the tree</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="algorithm-code-1" class="slide level2">
+<h2>Algorithm ⮕ Code</h2>
+<div class="cols" style="font-size:.70em">
+<div class="col">
+<div class="block" name="Main Program">
+<pre ><code class="python">import karel
+def main():
+    # Here is our general solution with higher level of decomposition
+    for i in range(3):
+        find_next_tree()
+        remove_leaves()</code></pre>
+</div>
+<div class="block" name="Find next tree">
+<pre ><code class="python">def find_next_tree():
+    # the codes to find next tree
+    while front_is_clear():
+        move()</code></pre>
+</div>
+</div>
+<div class="col" style="flex-grow:1.5">
+<div class="block" name="Remove leaves">
+<pre ><code class="python">def remove_leaves():# codes to remove leaves
+    move_up()
+    deleaf()
+    move_down()</code></pre>
+<ul>
+<li>moving up</li>
+</ul>
+<pre ><code class="python">def move_up():
+    turn_left()
+    while right_is_blocked():
+        move()</code></pre>
+<ul>
+<li>deleafing</li>
+</ul>
+<pre ><code class="python">def deleaf():
+    pick_beeper()
+    for i in range(3):
+        move()
+        pick_beeper()
+        turn_right()
+    turn_left()</code></pre>
+<ul>
+<li>moving down</li>
+</ul>
+<pre ><code class="python">def move_down():
+    while front_is_clear():
+        move()
+    turn_left()</code></pre>
+</div>
+</div>
+</div>
+<!-- 
+## Data Types
+- Generally, the data processed by computers can take on many forms
+- A _data type_ defines the common characteristics of some data values that have a certain form or purpose.
+    - Ex: a whole number or integer has certain characteristics common to all integers
+- A data type has a _domain_, which is the set of all potential values that would belong to that type.
+    - Ex: 0,1,2,3,4,5,6,7,...
+- A data type has a _set of operations_ that define how those values can be manipulated
+    - Ex: You can add two whole numbers (5+2)
+
+## Numeric Types
+- Initially, we'll focus on the numeric types
+- Python has 3 data types for representing numbers:
+    - `int`{.python} for integers and whole numbers
+
+        ```python
+        1, 2, 3, 10, 1001010101, -231
+        ```
+
+    - `float`{.python} for numbers containing a decimal point
+
+        ```python
+        1.23, 3.14, 10.001, 0.0, -8.23
+        ```
+
+    - `complex`{.python} for numbers with an imaginary component (which we won't deal with)
+
+---
+
+## Expressions
+- Python describes computation using _arithmetic expressions_, which consist of _terms_ joined by _operators_
+    - Very similar to how a logical English sentence has nouns connected by verbs
+- A term in an expression can be:
+    - an explicit numeric value (called a literal) like 1 or 3.14
+    - a variable name serving as a placeholder to a value (more on those in a moment!)
+    - a value resulting from the output of a function call (more on those on Monday!)
+    - another expression enclosed in parentheses
+
+<br>
+
+![](../images/expressions.svg) -->
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1200,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>

@@ -82,6 +82,6 @@ For example, if you run the program in the Python REPL as shown below, it might 
   >>> A = 5
   >>> B = 7
   >>> d = 3
-  >>> print(total_shaded_area(A,B,4))
-  65
+  >>> print(total_shaded_area(A,B,d))
+  59
 ```

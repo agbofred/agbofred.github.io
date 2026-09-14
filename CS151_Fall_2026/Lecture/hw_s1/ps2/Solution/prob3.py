@@ -30,5 +30,5 @@ def total_shaded_area(A, B, d):
 A = 5
 B = 7
 d = 3
-print(total_shaded_area(A, B,d))
+print(total_shaded_area(A, B, d))
 
