@@ -1,5 +1,5 @@
 ---
-title: "Home on the Range"
+title: "Squashing Bugs"
 author: Fred Agbo & Jed
 date: "September 14, 2026"
 slideNumber: true

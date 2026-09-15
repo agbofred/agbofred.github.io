@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Fred Agbo &amp; Jed">
-  <meta name="dcterms.date" content="2026-09-14">
-  <title>Squashing Bugs</title>
+  <meta name="dcterms.date" content="2026-09-16">
+  <title>Binary Strings</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,9 +35,9 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Squashing Bugs</h1>
+  <h1 class="title">Binary Strings</h1>
   <p class="author">Fred Agbo &amp; Jed</p>
-  <p class="date">September 14, 2026</p>
+  <p class="date">September 16, 2026</p>
 </section>
 
 <section id="happy-new-week" class="slide level2">
@@ -46,8 +46,8 @@
 <ul>
 <li>Class grouping today: Scan the QR code or go to <a
 href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
-<li>Class code is <code class="python">hVSGho</code></li>
-<li>Introduce yourselves! What is your favorite bug?</li>
+<li>Class code is <code class="python">TD9RC0</code></li>
+<li>Introduce yourselves! What is your favorite number in binary?</li>
 </ul>
 </div>
 <div class="cols">
@@ -65,139 +65,146 @@ style="width:60.0%" /></p>
 <section id="quick-announcements" class="slide level2">
 <h2>Quick Announcements</h2>
 <ul>
-<li>Problem Set 2 is due on Monday Sept 14!</li>
-<li>My apologies, I’m yet to complete the grading of Problem set 1.
-Should be cone by the end of the week.</li>
-<li>Welcome to SCIS Open House: Computer Science, Data Science,
-Industrial Eng, and Statistics
+<li>Problem Set 3 is live abd due on Monday Sept 21!</li>
+<li>Thanks to those who attended the SCIS Open House
 <ul>
-<li>WHEN: <strong>Sep 15, 2026 Tuesday 11:30 AM – 1:00 PM</strong></li>
-<li>WHERE: <strong>Salem Campus - Ford Hall 102</strong>
-<ul>
-<li><a href="https://events.willamette.edu/e/8070">See this link for
-more info</a></li>
-</ul></li>
+<li>ANy follow up questions, please ask me.</li>
 </ul></li>
 </ul>
 </section>
-<section>
-<section id="live-coding" class="title-slide slide level1">
-<h1>Live-Coding</h1>
-
-</section>
-<section id="pythagorean-triples" class="slide level2">
-<h2>Pythagorean Triples</h2>
-<p>A Pythagorean triplet is a set of three natural numbers, <span
-class="math inline">\(a &lt; b &lt; c\)</span>, for which, <span
-class="math display">\[ a^2 + b^2 = c^2\]</span></p>
-<p>There exists exactly one Pythagorean triplet where <span
-class="math inline">\(a + b + c = 1000\)</span>. Find it.</p>
-</section>
-<section id="a-solution" class="slide level2">
-<h2>A Solution</h2>
-<pre ><code class="python" style="max-height: 800px; font-size:.8em;"># My own attempt below!
-def pythagorean(a,b,c):
-    """
-    Identify the contraints
-    1. The Ordering: a < b < c (This prevents duplicate searches, like checking both a=3, b=4 and a=4, b=3).
-    2. The Equation: a^2 + b^2 = c^2 (The Pythagorean theorem).
-    3. The Sum: a + b + c = 1000.
-    
-    Reduce the Variables (Mathematical Optimization)
-    1. Since a + b + c = 1000, you can rewrite c as: c=1000-a-b
-    2. In Pythagorean a^2 + b^2 = (1000 - a - b)^2
-    
-    Establish Strict Loop Boundaries
-    1. Boundaries for a: Since a < b < c, a must be strictly less than a third of the total sum.
-       
-        Max a < 1000/3 => a <=332
-    2. Boundaries for b: b must always start at a + 1 (since a < b). 
-        It must also be less than the remaining sum divided by 2.
-        Max b < (1000 - a) / 2
-    
-    ALGORITHMS
-    Algorithmic Logic With the math simplified, the programmatic blueprint looks like this:
-    1. Initialize a loop for a ranging from 1 to 332.
-    2. Initialize a nested loop for b ranging from (a + 1) to (1000 - a) / 2.
-    3. Calculate c inside the loop: c = 1000 - a - b.
-    4. Test the condition: Check if a^2 + b^2 == c^2.
-        Return the result: If the condition is met,
-        multiply a x b x c to get the final answer and break the loop immediately (since the problem states there is exactly one solution).
-    
-    """
-    # Now Write the program 
-</code></pre>
-</section></section>
 <section>
 <section id="group-problems" class="title-slide slide level1">
 <h1>Group Problems</h1>
 
 </section>
-<section id="prep" class="slide level2">
-<h2>Prep</h2>
+<section id="problem-1-base-ic-counting" class="slide level2">
+<h2>Problem 1: Base-ic Counting</h2>
+<div class="cols">
+<div class="col">
 <ul>
-<li>All problems today revolve around troubleshooting and finding errors
-in some “launch code”-esque checks</li>
-<li>You will want at least someone or all of you to have downloaded all
-the lecture contents linked in <code class="python">Discord</code></li>
-<li>To get <code class="python">rich</code> installed easily, I have
-included a Python file in the contents that you should just need to run,
-and it will (in theory) handle things automatically for you.
+<li>How would you write out a representation of the number of circles to
+the right in:
 <ul>
-<li>You’ll need this for the problems today</li>
+<li>Decimal (base-10)</li>
+<li>Binary (base-2)</li>
+<li>Octal (base-8)</li>
+<li>Hex (base-16)</li>
+</ul></li>
+</ul>
+</div>
+<div class="col">
+<p><img
+data-src="../images/svg_cache/6583ff48a47e435c5800e4c9b9be34b7ddb20046.svg"
+style="width:80.0%" /></p>
+</div>
+</div>
+</section>
+<section id="problem-2-getting-energized" class="slide level2">
+<h2>Problem 2: Getting Energized</h2>
+<ul>
+<li>The Java compiler has a fun quirk where every binary file it
+produces begins with <br><br></li>
+</ul>
+<p><img
+data-src="../images/svg_cache/15155923567102d18c20a62935eb47b01097ebc8.svg"
+style="width:70.0%" /></p>
+<p><br></p>
+<ul>
+<li>What is this in octal? hexadecimal?</li>
+<li>There are hard ways to do this, and very easy ways! I recommend the
+easy ways :)</li>
+</ul>
+</section>
+<section id="floating-representations" class="slide level2">
+<h2>Floating Representations</h2>
+<ul>
+<li>Python represents floating point (fractional) numbers using two
+integers
+<ul>
+<li>One to represent the significant digits</li>
+<li>One to represent the exponent (where the decimal place is)</li>
+</ul></li>
+<li><span class="math inline">\(1\frac{1}{4}\)</span> Example
+<ul>
+<li>In decimal: <span class="math inline">\(\quad\displaystyle
+1\frac{1}{4} = \frac{1}{1} + \frac{2}{10} + \frac{5}{100} = 1.25 = (125,
+-2)\)</span></li>
+<li>In binary: <span class="math inline">\(\quad\displaystyle
+1\frac{1}{4} = \frac{1}{1} + \frac{0}{2} + \frac{1}{4} = 1.01 = (101,
+-10)\)</span></li>
 </ul></li>
 </ul>
 </section>
-<section id="problem-1-stress-tests" class="slide level2">
-<h2>Problem 1: Stress Tests</h2>
+<section id="problem-3-floating-problems" class="slide level2">
+<h2>Problem 3: Floating Problems</h2>
+<div>
 <ul>
-<li>The <code class="python">p1.py</code> file is doing some stress
-testing, but has some issues</li>
-<li>Focus on using print statements to track down where things are going
-wrong</li>
-<li>How could you get around this issue?</li>
+<li class="fragment">With this in mind, how could you convert the value
+<span class="math inline">\(\tfrac{7}{8}\)</span> to a binary floating
+point representation?</li>
+<li class="fragment"><span class="math display">\[\frac{7}{8} =
+\frac{0}{1} + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} = 0.111 = (111,
+-11)\]</span></li>
+<li class="fragment">Now how would we convert <span
+class="math inline">\(\frac{1}{10}\)</span> to binary??
+<ul>
+<li class="fragment">We run into a problem! An infinitely repeating
+sequence! <span class="math display">\[\frac{1}{10} = \frac{0}{1} +
+\frac{0}{2} + \frac{0}{4} + \frac{0}{8} + \frac{1}{16} + \frac{1}{32} +
+\frac{0}{64} + \frac{0}{128} + \frac{1}{256} +  \cdots =
+0.0001100110011\ldots\]</span></li>
+<li class="fragment">Have to stop the sequence somewhere and approximate
+it: <span class="math display">\[\frac{3}{32} =
+0.09375\quad\text{or}\quad\frac{25}{256} = 0.09765625\]</span></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="consequences" class="slide level2">
+<h2>Consequences</h2>
+<ul>
+<li>The best we can do within the range of normal integers <span
+class="math display">\[\frac{3602879701896397}{2^{55}} =
+0.10000000000000000555111512312578270\]</span></li>
+<li>When doing operations on these numbers, extra decimals will
+sometimes get rounded off, suddenly making the number look precise, but
+you might always have a tiny bit of this rounding error showing up in
+floating point values.</li>
+<li>So be <em>careful</em> using <code class="python">==</code> for
+floating numeric comparisons! Rounding might result in unexpected
+falsehoods
+<ul>
+<li><code class="python">0.1 + 0.1 + 0.1 != 0.3</code></li>
+<li>Far better to check if two numbers are within a small margin of one
+another, or greater or less than the other</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="live-coding" class="title-slide slide level1">
+<h1>Live-Coding</h1>
+
+</section>
+<section id="concatenating-ascii" class="slide level2">
+<h2>Concatenating ASCII</h2>
+<ul>
+<li>Suppose we wanted to print out the simple ASCII table as we saw it
+in the video</li>
+<li>Grid of 8 rows and 16 columns</li>
+<li>We can use <code class="python">chr</code> to get the
+characters</li>
+<li>Need to “build-up” a string to print for each row</li>
 </ul>
 </section>
-<section id="problem-2-systems-go" class="slide level2">
-<h2>Problem 2: Systems Go?</h2>
-<ul>
-<li>The <code class="python">p2.py</code> file <strong>should</strong>
-be saying that all systems are a go, but it is not</li>
-<li>Pay particular attention to the documentation to figure out what has
-gone wrong</li>
-<li>You should be able to fix all the problems by only changing 3-5
-lines</li>
-</ul>
-</section>
-<section id="problem-3-sufficient-shields" class="slide level2">
-<h2>Problem 3: Sufficient Shields?</h2>
-<ul>
-<li>The <code class="python">p3.py</code> file should
-<strong>also</strong> be saying that all systems are go, but is not</li>
-<li>Instead of using print statements here, use only your debugger to
-track down what is happening and how to fix it</li>
-</ul>
-</section>
-<section id="problem-4-system-scanning" class="slide level2">
-<h2>Problem 4: System Scanning</h2>
-<ul>
-<li>Finally, <code class="python">p4.py</code> should be verifying a
-scan, but is instead erring out. Use the printed error alongside print
-statements or the debugger to establish where things have gone awry</li>
-<li>How can you easily fix this problem?</li>
-</ul>
-<!-- # Live-Coding
-
-## Writing Tests
-- Let's write a suite a tests for each of the library functions
-- Always a good idea to target `assert` statements at both typical values, but also edge cases
-- Let's try to come up with at least 3-4 for each function
-
-
-## A Solution
-```{.python style='max-height: 800px; font-size:.8em;'}
-# Added once completed!
-``` -->
+<section id="a-solution" class="slide level2">
+<h2>A Solution</h2>
+<pre ><code class="python" style="max-height: 800px; font-size:.8em;">row=''
+for i in range(32,127):
+    if len(row) == 16:
+        print(row)
+        row = ""
+    row = row + chr(i)
+print(row)</code></pre>
 </section></section>
     </div>
   </div>
