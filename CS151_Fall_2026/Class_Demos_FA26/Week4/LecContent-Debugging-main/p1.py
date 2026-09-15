@@ -15,9 +15,9 @@ shielding = 5
 print("[green]Starting Stress Test Simulation...[/green]")
 
 time_step = 0
-while time_step < 12:
+while time_step < 10:
     current_flow = flow_rate - time_step
-    
+    # if current_flow > 0:
     status = astrolib.validate_mission_parameters(
         initial_pressure, 
         current_flow, 

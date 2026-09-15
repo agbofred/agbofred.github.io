@@ -23,13 +23,13 @@ final_status = astrolib.validate_mission_parameters(
     pressure_sensor, 
     flow_sensor, 
     density_sensor, 
-    outside_temp, 
     inside_temp, 
-    density_sensor,
+    outside_temp, 
+    shield_level,
     0
 )
 
-if is_engine_ready:
+if final_status:
     print("[bold green]ALL SYSTEMS GO: Proceed to launch.")
 else:
     print("[bold red]LAUNCH ABORTED: Systems do not meet safety threshold.")

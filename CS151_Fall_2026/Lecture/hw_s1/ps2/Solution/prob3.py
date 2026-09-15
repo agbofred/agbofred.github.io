@@ -4,12 +4,12 @@ def divisible_by_six_or_seven(lower, upper):
     c =0
     for i in range(lower,upper+1):
         if((i%6==0 or i%7==0) and not(i%6==0 and i%7==0)):
-            print(i)
+            #print(i)
             c +=1
     return c
 
 count = divisible_by_six_or_seven(40,60)
-print(count)
+#print(count)
 
 
 #SOLUTION to Problem 2
