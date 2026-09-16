@@ -32,9 +32,9 @@ history: false
 
 
 ## Quick Announcements
-- Problem Set 3 is live abd due on Monday Sept 21!
+- Problem Set 3 is live and due on Monday Sept 21!
 - Thanks to those who attended the SCIS Open House
-    - ANy follow up questions, please ask me.
+    - Any follow up questions, please ask me.
 
 
 # Group Problems
