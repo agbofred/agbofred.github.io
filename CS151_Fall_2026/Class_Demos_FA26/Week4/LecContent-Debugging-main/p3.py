@@ -17,12 +17,12 @@ shield_factor = 0
 
 print("Calculating shield requirements for intensity:", heat_intensity)
 
-if heat_intensity > 0:
-    shield_factor = 1
+if heat_intensity > 400:
+    shield_factor = 10
 elif heat_intensity > 100:
     shield_factor = 5
-elif heat_intensity > 400:
-    shield_factor = 10
+elif heat_intensity > 0:
+    shield_factor = 1
 else:
     shield_factor = 0
 

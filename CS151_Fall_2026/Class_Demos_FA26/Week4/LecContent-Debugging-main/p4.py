@@ -16,7 +16,7 @@ shield = 9
 
 print("[bold cyan]Initializing Deep Space Scan...[/bold cyan]")
 
-sweep_limit = base_sensor_time / reduction_factor
+sweep_limit = base_sensor_time // reduction_factor
 
 print("Target sweep duration calculated at:", sweep_limit)
 
