@@ -376,32 +376,95 @@ docker --version   # 20.0+ (recommended)
 
 # Project Proposal Template
 
-## Executive Summary (1 page)
+**DEPARTMENT OF COMPUTER SCIENCE**
 
-- Project name and tagline
-- Problem statement
-- Proposed solution
-- Target users
+## Senior Capstone Project Proposal
 
-## Technical Specifications (2–3 pages)
+**[Working Project Title]**
 
-- Functional requirements (minimum 10)
-- Non-functional requirements
-- Technology stack justification
-- System architecture overview
+> A title is required even in draft form. Use a placeholder that names the problem or system (for example, “A Mobile App for Campus Food-Pantry Scheduling”) rather than “My Capstone Project.”
 
-## Project Management (1–2 pages)
+**Student Name(s):**  
+**Team / Group Number (if applicable):**  
+**Faculty Advisor:**  
+**Course / Section:**  
+**Submission Date:**  
 
-- Development methodology
-- Timeline with milestones
-- Risk analysis matrix
-- Success metrics
+### How to Use This Template
 
-## References and Research (1 page)
+This is a working document, not a final contract. Each section includes a prompt describing what a reviewer expects to see. Write your best current thinking underneath each one, even if it is rough, incomplete, or likely to change. A proposal with honest gaps and open questions is more useful, and more gradable, than one that hides uncertainty behind vague language.
 
-- Similar solutions analysis
-- Technical resources
-- Learning requirements
+**Target length:** Approximately 5 pages, excluding the title page and references, single-spaced, 11–12 pt font.
+
+## 1. Problem Statement and Motivation
+
+> Describe, in plain language, the real problem or unmet need your project addresses and why it matters to actual users or stakeholders.
+>
+> Consider who experiences this problem today, how they currently cope without your solution, and what evidence (personal experience, articles, data, interviews) suggests the problem is real and worth solving.
+
+## 2. Project Overview
+
+> Summarize, in 3–5 sentences, what you plan to build or investigate, as if explaining it to a classmate outside the CS department.
+>
+> Consider naming the type of artifact (web app, mobile app, ML model, systems tool, research study, etc.) and the single core function it must perform.
+
+## 3. Goals and Objectives
+
+> List the specific, measurable objectives your finished project should achieve, distinguishing must-have goals from stretch goals.
+>
+> Phrase each objective so a reader could later check whether it was met. For example: “Users can upload a file under 10MB and receive results in under 5 seconds.”
+
+## 4. Scope and Boundaries
+
+> Clarify what is explicitly included in this project and what is explicitly excluded, to prevent scope creep later.
+
+**In scope:** The features, platforms, or use cases you commit to delivering by the deadline.
+
+**Out of scope:** Related ideas you are consciously setting aside for a future version or a different project.
+
+## 5. Technical Approach and Methodology
+
+> Outline your current best guess at the technologies, architecture, algorithms, or methods you expect to use, and how you will verify that the result works.
+>
+> Consider languages and frameworks under consideration, major components or modules, data sources, and how you will test or evaluate correctness and performance.
+>
+> This section may be tentative. Flag the specific technical decisions still open and what you need to learn or prototype to resolve them.
+
+## 6. Related Work and Existing Solutions
+
+> Briefly identify at least two or three existing tools, products, papers, or approaches that address a similar problem, and state how your project will differ or improve on them.
+>
+> Consider using a short table or bullet list comparing each alternative’s strengths and limitations against your intended approach.
+
+## 7. Timeline and Milestones
+
+> Break the semester into 4–6 milestones with target dates and a one-line deliverable for each, working backward from the final deadline.
+
+| Target Date | Milestone / Deliverable | Status |
+|-------------|-------------------------|--------|
+|             |                         |        |
+|             |                         |        |
+|             |                         |        |
+|             |                         |        |
+|             |                         |        |
+
+## 8. Anticipated Challenges and Risks
+
+> Name the two or three biggest things that could go wrong (technical, scheduling, data access, scope) and your current plan for handling each.
+>
+> Consider a simple risk / mitigation pairing rather than a general worry. For example: “Risk: needed dataset may be restricted. Mitigation: identify a public substitute by week 3.”
+
+## 9. Expected Outcomes and Deliverables
+
+> List the concrete artifacts you will hand in at the end of the semester, such as source code, a deployed demo, a final report, a poster, or a dataset.
+
+## 10. Resources and Support Needed
+
+> Note any hardware, software licenses, datasets, cloud credits, faculty expertise, or external partners this project will require.
+
+## 11. References
+
+> Cite any articles, tools, APIs, or prior work referenced above, using a consistent citation style such as IEEE or ACM.
 
 ---
 

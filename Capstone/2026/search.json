@@ -502,5 +502,89 @@
     "title": "CS 480W/481: Course Syllabus",
     "section": "Weekly Meeting Schedule",
     "text": "Weekly Meeting Schedule\nThe course uses two meeting modalities throughout the semester:\n\nGroup Review Session (Every Friday, 10:30–11:00 AM)\nA 30-minute group session held every Friday from 10:30 to 11:00 AM at Ford Hall 209. All students are expected to attend. This session is used for:\n\nReviewing expectations and discussing the week’s milestones as shown in the implementation schedule below\nGroup-level sprint check-in and discussion\nPeer collaboration and shared problem-solving\n\n\n\nIndividual Sprint Review (Weekly – 15 min, By Appointment)\nIn addition to the group session, every student must individually book a 15-minute one-on-one Sprint Review with the instructor each week. Use the link below to reserve your time slot:\nBook Your Individual Sprint Review →\n\nEach student is responsible for booking their own slot. These sessions are used to demo individual progress, receive personalized feedback, and address sprint-specific blockers."
+  },
+  {
+    "objectID": "syllabi.html#senior-capstone-project-proposal",
+    "href": "syllabi.html#senior-capstone-project-proposal",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "Senior Capstone Project Proposal",
+    "text": "Senior Capstone Project Proposal\n[Working Project Title]\n\nA title is required even in draft form. Use a placeholder that names the problem or system (for example, “A Mobile App for Campus Food-Pantry Scheduling”) rather than “My Capstone Project.”\n\nStudent Name(s):\nTeam / Group Number (if applicable):\nFaculty Advisor:\nCourse / Section:\nSubmission Date:\n\nHow to Use This Template\nThis is a working document, not a final contract. Each section includes a prompt describing what a reviewer expects to see. Write your best current thinking underneath each one, even if it is rough, incomplete, or likely to change. A proposal with honest gaps and open questions is more useful, and more gradable, than one that hides uncertainty behind vague language.\nTarget length: Approximately 5 pages, excluding the title page and references, single-spaced, 11–12 pt font."
+  },
+  {
+    "objectID": "syllabi.html#problem-statement-and-motivation",
+    "href": "syllabi.html#problem-statement-and-motivation",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "1. Problem Statement and Motivation",
+    "text": "1. Problem Statement and Motivation\n\nDescribe, in plain language, the real problem or unmet need your project addresses and why it matters to actual users or stakeholders.\nConsider who experiences this problem today, how they currently cope without your solution, and what evidence (personal experience, articles, data, interviews) suggests the problem is real and worth solving."
+  },
+  {
+    "objectID": "syllabi.html#project-overview",
+    "href": "syllabi.html#project-overview",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "2. Project Overview",
+    "text": "2. Project Overview\n\nSummarize, in 3–5 sentences, what you plan to build or investigate, as if explaining it to a classmate outside the CS department.\nConsider naming the type of artifact (web app, mobile app, ML model, systems tool, research study, etc.) and the single core function it must perform."
+  },
+  {
+    "objectID": "syllabi.html#goals-and-objectives",
+    "href": "syllabi.html#goals-and-objectives",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "3. Goals and Objectives",
+    "text": "3. Goals and Objectives\n\nList the specific, measurable objectives your finished project should achieve, distinguishing must-have goals from stretch goals.\nPhrase each objective so a reader could later check whether it was met. For example: “Users can upload a file under 10MB and receive results in under 5 seconds.”"
+  },
+  {
+    "objectID": "syllabi.html#scope-and-boundaries",
+    "href": "syllabi.html#scope-and-boundaries",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "4. Scope and Boundaries",
+    "text": "4. Scope and Boundaries\n\nClarify what is explicitly included in this project and what is explicitly excluded, to prevent scope creep later.\n\nIn scope: The features, platforms, or use cases you commit to delivering by the deadline.\nOut of scope: Related ideas you are consciously setting aside for a future version or a different project."
+  },
+  {
+    "objectID": "syllabi.html#technical-approach-and-methodology",
+    "href": "syllabi.html#technical-approach-and-methodology",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "5. Technical Approach and Methodology",
+    "text": "5. Technical Approach and Methodology\n\nOutline your current best guess at the technologies, architecture, algorithms, or methods you expect to use, and how you will verify that the result works.\nConsider languages and frameworks under consideration, major components or modules, data sources, and how you will test or evaluate correctness and performance.\nThis section may be tentative. Flag the specific technical decisions still open and what you need to learn or prototype to resolve them."
+  },
+  {
+    "objectID": "syllabi.html#related-work-and-existing-solutions",
+    "href": "syllabi.html#related-work-and-existing-solutions",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "6. Related Work and Existing Solutions",
+    "text": "6. Related Work and Existing Solutions\n\nBriefly identify at least two or three existing tools, products, papers, or approaches that address a similar problem, and state how your project will differ or improve on them.\nConsider using a short table or bullet list comparing each alternative’s strengths and limitations against your intended approach."
+  },
+  {
+    "objectID": "syllabi.html#timeline-and-milestones",
+    "href": "syllabi.html#timeline-and-milestones",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "7. Timeline and Milestones",
+    "text": "7. Timeline and Milestones\n\nBreak the semester into 4–6 milestones with target dates and a one-line deliverable for each, working backward from the final deadline.\n\n\n\n\nTarget Date\nMilestone / Deliverable\nStatus"
+  },
+  {
+    "objectID": "syllabi.html#anticipated-challenges-and-risks",
+    "href": "syllabi.html#anticipated-challenges-and-risks",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "8. Anticipated Challenges and Risks",
+    "text": "8. Anticipated Challenges and Risks\n\nName the two or three biggest things that could go wrong (technical, scheduling, data access, scope) and your current plan for handling each.\nConsider a simple risk / mitigation pairing rather than a general worry. For example: “Risk: needed dataset may be restricted. Mitigation: identify a public substitute by week 3.”"
+  },
+  {
+    "objectID": "syllabi.html#expected-outcomes-and-deliverables",
+    "href": "syllabi.html#expected-outcomes-and-deliverables",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "9. Expected Outcomes and Deliverables",
+    "text": "9. Expected Outcomes and Deliverables\n\nList the concrete artifacts you will hand in at the end of the semester, such as source code, a deployed demo, a final report, a poster, or a dataset."
+  },
+  {
+    "objectID": "syllabi.html#resources-and-support-needed",
+    "href": "syllabi.html#resources-and-support-needed",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "10. Resources and Support Needed",
+    "text": "10. Resources and Support Needed\n\nNote any hardware, software licenses, datasets, cloud credits, faculty expertise, or external partners this project will require."
+  },
+  {
+    "objectID": "syllabi.html#references",
+    "href": "syllabi.html#references",
+    "title": "CS 480W/481: Course Syllabus",
+    "section": "11. References",
+    "text": "11. References\n\nCite any articles, tools, APIs, or prior work referenced above, using a consistent citation style such as IEEE or ACM."
   }
 ]
