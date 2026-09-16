@@ -90,7 +90,7 @@ Submit a PDF to Canvas. Include screenshots to support your critique.
 
 ### HW2 — Applied Needfinding & Low-Fidelity Prototype
 
-**Due: Thursday, Sep 18 (11:59 PM) · 3%**
+**Due: Thursday, Sep 21 (11:59 PM) · 3%**
 
 ::: {.assignment-card}
 #### Description
