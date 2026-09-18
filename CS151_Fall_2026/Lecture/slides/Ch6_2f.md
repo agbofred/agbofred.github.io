@@ -36,7 +36,7 @@ history: false
 - Problem sets 1 and 2 are all graded.
 	- impressive performance overall!
 		- Many did not fill out the meta data portion on each file
-		- Many also did not provide good documentation (in-code and duting running journal)
+		- Many also did not provide good documentation (in-code and when running journal)
 	- Check and monitor your grades on Canvas.
 - __Problem set 3 is due next week Monday at 10 pm__
 - Remember the only way to master coding is to keep practicing
