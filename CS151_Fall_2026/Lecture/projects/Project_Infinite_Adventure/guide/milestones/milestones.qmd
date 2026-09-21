@@ -1,0 +1,7 @@
+---
+title: Introducing Milestones
+---
+
+As per usual, this project has been divided up into a series of smaller tasks to help you approach the project in a controlled and testable fashion. These milestones all build on one another, and so you should absolutely complete each one _in its entirety_ and **test it** before moving on to the next!
+
+

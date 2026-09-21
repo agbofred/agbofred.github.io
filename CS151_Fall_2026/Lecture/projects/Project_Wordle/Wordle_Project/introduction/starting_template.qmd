@@ -1,0 +1,29 @@
+---
+title: "The Starting Template"
+filters:
+  - include-code-files
+---
+
+
+Fortunately, you don't have to implement the Wordle project entirely from scratch. The starting repository already includes the following files:
+
+| File name           | Description                                                                                                                                                                                                   |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Wordle.py`         | The starter file for the project, which uses the `WordleGraphics` library to display the board. This is the file that you will be editing.                                                                                                                |
+| `WordleGraphics.py` | This library exports the `WordleGWindow` object type, which is responsible for managing the graphics, along with several useful constants. Unless adding some extensions, you will not need to touch this file (and probably shouldn't).                                                                     |
+| `english.py`        | This library exports the constant `ENGLISH_WORDS`, and a function `is_english_word(s)` that checks whether `s` is a valid English word. It is important to note that all the `ENGLISH_WORDS` are lowercase! You will not need to edit this file. |
+
+Note that unless you are implementing extensions, the only file you will need to change is `Wordle.py`, which imports the resources it needs from the other modules already. The starting version of `Wordle.py` is included in the starting resources, but is included here in @fig-startingcode for reference.
+
+::: {#fig-startingcode style='text-align:left;'}
+```{.python include="./Wordle.py" code-line-numbers="true" style='text-align:left'}
+```
+
+The starting state of `Wordle.py`. Of particular importance is line 21, where an instance of the `WordleGWindow` data type is stored in the variable `gw`. This is the variable you will use throughout the rest of the program when wanting to interact with the `WordleGWindow`.
+:::
+
+When you download the initial repository, a lot of the code is already written and ready to go, **because we have already implemented the graphics for you!** Running the initial version of `Wordle.py` creates a window, draws the letter boxes, and creates the keyboard at the bottom of the window. You can even type letters either by hitting keys on the keyboard or clicking the key on the screen, just as you can when you are playing the online version. @fig-startinggraphics shows both the initial screen and the screen you get after typing in the five letters of the useful starting word `RATES`, which includes five of the most common letters.
+
+![The current state of the window both initially (left), and then after typing in the letters `RATES` (right).](./initial.png){#fig-startinggraphics}
+
+Unfortunately, that is all the program does at the moment. It doesn't actually let you play the Wordle game. That's your job! But first, it is worth spending a bit of time reviewing the rules of Wordle, in case you've somehow managed to miss the craze.

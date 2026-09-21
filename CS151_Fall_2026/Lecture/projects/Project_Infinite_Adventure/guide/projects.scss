@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+$code-color: black;
+$navbar-fg: white;
+$navbar-hl: yellow;
+
+
+/*-- scss:rules --*/
+
+caption, .table-caption {
+    text-align: left;
+}
+
+.navbar {
+    background: linear-gradient(75deg, rgba(25, 138, 81, 1) 0%, rgba(51, 169, 255, 1) 100%);
+    font-weight: bold;
+}
+.navbar svg.aa-SubmitIcon {
+    color: white !important;
+}
+
+code {
+    font-weight: bold;
+}

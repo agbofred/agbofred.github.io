@@ -1,0 +1,35 @@
+---
+title: "Milestone 1: Rotate Left and Right buttons"
+---
+
+Your next step is to add two buttons that rotate the image on the screen by 90&deg;.
+Once again, the most challenging part of this milestone is adding the functions that actually transform the `GImage`.
+Implementing these rotations is a bit tricky, since you have to figure out where each of the old pixels ends up in the new image array.
+Since the dimensions of the new image are inverted from the original (the new width is the old height and vice versa), you need to create a new array with the correct number of elements in each dimension.
+Once you have done so, you need to copy each old pixel into the correct position in the new array.
+This process is illustrated in @fig-ImageRotation, which shows where each pixel in the first row of the old array (before) moves to the new array (after) during a 90&deg; rotation left (or counter-clockwise).
+
+```{r engine='tikz'}
+#| echo: false
+#| fig-align: center
+#| fig-ext: svg
+#| out-width: 100%
+#| fig-cap: Graphical depiction of rotating an image array 90&deg; counter-clockwise (left). Note that what was previously the last column is now the first row, and what was the first row is now the first column.
+#| label: fig-ImageRotation
+\usetikzlibrary{calc, arrows.meta}
+	\begin{tikzpicture}[scale=3, transform shape]
+		\foreach[evaluate={\c=int(50-10*\x)}] \x in {0,1,...,5} {
+			\foreach \y in {0,1,2} {
+				\node[minimum size=15mm, draw, fill=black!\c, font=\tt\footnotesize](A\x\y) at (1.5*\x,-1.5*\y) {\phantom|[\y][\x]};
+			}
+		}
+		\foreach \x in {0,1,2} {
+			\foreach[evaluate={\c=int(10*\y)}] \y in {0,1,...,5} {
+				\node[minimum size=15mm, draw, fill=black!\c, font=\tt\footnotesize](B\x\y) at (10+1.5*\x,-1.5*\y) {\phantom|[\y][\x]};
+			}
+		}
+		\foreach[evaluate={\y=int(5-\x)}] \x in {0,1,...,5} {
+			\draw[ultra thick, -{Stealth[scale=3]}] ($(A\y0.center)-(0,.2)$) -- (B0\x.west);
+		}
+	\end{tikzpicture}
+```

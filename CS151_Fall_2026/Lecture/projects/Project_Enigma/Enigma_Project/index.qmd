@@ -1,0 +1,27 @@
+---
+title: "Project 4: Enigma"
+---
+
+Your task in this project is to write a program that simulates the operation of the Enigma machine, which was used by the German military to encrypt messages during World War II. This guide focuses on the necessary steps you need to accomplish to complete the assignment. <!--A companion handout describes the operation of the machine, if the added background would be helpful.-->
+
+As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
+
+<br/>
+
+```{=html}
+<a href='https://classroom.github.com/a/CVJIKrGn' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+```
+<br>
+
+You can see an online version of each milestone [here](https://willamette.edu/~esroberts/roberts-enigma/Milestones/) to check your progress along the way, and I **highly** encourage you to do so!
+
+## Strategy and Tactics
+
+As with all projects in this class, the most important advice is to start early! You have enough time with this project that you could complete one milestone per day and still finish early. Beyond that, several of the milestones require less than ten lines of new code. For those, you can almost certainly complete two or even three milestones in a day. What almost certainly will not work is if you start the day before it is due and try to finish all six milestones in a single day. It is also important to complete each milestone before moving on to the next. Most of the later milestones depend on the earlier ones, and you need to know that the earlier code is working before you can debug the code you have added on top of the existing base.
+
+The following tips might also help you do well on this assignment:
+
+- _Try to get into the spirit of the history._ Although this project is an assignment in 2025, it may help to remember that the outcome of World War II once depended on the people solving this problem using tools that were far more primitive than the ones you have at your disposal.
+- _Draw lots of diagrams._ Understanding how the Enigma machine works is an exercise in visualization. A picture is often worth a thousand words here, so draw them!
+- _Debug your program by seeing what values appear in the variables._ When you are debugging a program, it is far more useful to figure out what your program _is_ doing than trying to determine why it _is not_ doing what you want. Every part of this assignment works with strings, and you can get an enormous amount of information about what your program is doing by using `print` to display the value of the strings you are using at interesting points.
+- _Check your answers against the demonstration programs._ I linked you above to a website which includes online demo programs for each milestone. Your code should generate the same results that the demo programs do.

@@ -1,0 +1,56 @@
+project:
+  type: website
+
+website:
+  title: "Project 4: Enigma"
+  page-navigation: true
+  favicon: "favicon.png"
+  navbar:
+    foreground: black
+    left:
+      - sidebar:introduction
+      - sidebar:milestones
+      - href: extensions.qmd
+        text: "Extensions"
+
+  sidebar:
+    - title: "Introduction"
+      style: "floating"
+      id: introduction
+      contents:
+        - ./introduction/mvc.qmd
+        - ./introduction/existing_code.qmd
+
+    - title: "Milestones"
+      id: milestones
+      contents:
+        - milestones.qmd
+        - milestones/milestone0.qmd
+        - milestones/milestone1.qmd
+        - milestones/milestone2.qmd
+        - milestones/milestone3.qmd
+        - milestones/milestone4.qmd
+        - milestones/milestone5.qmd
+
+    - title: "Extensions"
+      contents:
+        - extensions.qmd
+
+format:
+  html:
+    lightbox: true
+    theme: 
+      - cosmo
+      - projects.scss
+    page-layout: article
+    smooth-scroll: true
+    fontsize: 1.2em
+    highlight-style: atom-one
+    grid:
+      sidebar-width: 350px
+    html-math-method: katex
+    #title-block-banner: ./images/cover.png
+    #title-block-banner-color: black
+
+
+

@@ -1,0 +1,91 @@
+---
+title: "Playing Wordle"
+---
+
+The object of the Wordle puzzle is to figure out the hidden word for the day using no more than six guesses. When you type in a word and then hit the `RETURN` or `ENTER` key, the game gives you information about how close your guess is by coloring the background of the letters. For every letter in your guess that is in its correct position, Wordle colors the background of that letter a light shade of green, as indicated in your program by the constant `CORRECT_COLOR`. For every letter that appears in the word but is not in the correct position, Wordle colors the background a brownish yellow (`PRESENT_COLOR` in your program). All the letters in the guess that don't appear in the word are colored a medium gray (`MISSING_COLOR` in your code).
+
+For example, suppose that the hidden word for the day was `RELIC`, and your first guess was `RATES`, as in the [starting graphics image](starting_template.qmd#fig-startinggraphics). The `R` is in the correct position, and the word contains an `E`, but not in the position guessed. The hidden word does not contain the letters `T`, `A`, and `S`. Wordle reports that information by changing the background color of the squares like this:
+
+```{r engine='tikz'}
+#| echo: false
+#| fig-align: center
+#| fig-ext: svg
+#| out-width: 50%
+\definecolor{CORRECT}{HTML}{66BB66}
+\definecolor{PRESENT}{HTML}{CCBB66}
+\definecolor{MISSING}{HTML}{999999}
+\usetikzlibrary{positioning}
+	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
+		\node[fill=CORRECT](R) at (0,0) {R};
+		\node[fill=MISSING, right=2pt of R](A) {A};
+		\node[fill=MISSING, right=2pt of A](T) {T};
+		\node[fill=PRESENT, right=2pt of T](E) {E};
+		\node[fill=MISSING, right=2pt of E](S) {S};
+	\end{tikzpicture}
+```
+
+Even though you know the position of the `R`, it doesn't make sense to guess more words beginning with `R` at this point because doing so gives you no new information (assuming you are not playing in hard mode, where you are required to do so). Suppose that you tried guessing the word `LINGO`, which contains five new letters, two of which appear in the word but none of which are correctly positioned. Wordle responds by coloring the letters in your second guess as follows:
+
+```{r engine='tikz'}
+#| echo: false
+#| fig-align: center
+#| fig-ext: svg
+#| out-width: 50%
+\definecolor{CORRECT}{HTML}{66BB66}
+\definecolor{PRESENT}{HTML}{CCBB66}
+\definecolor{MISSING}{HTML}{999999}
+\usetikzlibrary{positioning}
+	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
+		\node[fill=PRESENT](1) at (0,0) {L};
+		\node[fill=PRESENT, right=2pt of 1](2) {I};
+		\node[fill=MISSING, right=2pt of 2](3) {N};
+		\node[fill=MISSING, right=2pt of 3](4) {G};
+		\node[fill=MISSING, right=2pt of 4](5) {O};
+	\end{tikzpicture}
+```
+
+Putting these clues together means that you know that the word begins with an `R`, contains the letters `E`, `L`, and `I` in some order other than the one you guessed, and that the letters `A`, `T`, `S`, `N`, `G`, and `O` do not appear anywhere in the word. These answers give you an enormous amount of information! If you think carefully about it, you might find the word `RELIC`, which is in fact the only English word that meets these conditions.
+
+```{r engine='tikz'}
+#| echo: false
+#| fig-align: center
+#| fig-ext: svg
+#| out-width: 50%
+#| cache: true
+\definecolor{CORRECT}{HTML}{66BB66}
+\definecolor{PRESENT}{HTML}{CCBB66}
+\definecolor{MISSING}{HTML}{999999}
+\usetikzlibrary{positioning}
+	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
+		\node[fill=CORRECT](1) at (0,0) {R};
+		\node[fill=CORRECT, right=2pt of 1](2) {E};
+		\node[fill=CORRECT, right=2pt of 2](3) {L};
+		\node[fill=CORRECT, right=2pt of 3](4) {I};
+		\node[fill=CORRECT, right=2pt of 4](5) {C};
+	\end{tikzpicture}
+```
+Done in three!
+
+It is worth noting a few other rules and special cases. The hidden word and each of your guesses must be a real English word that is five letters long. The file `english.py` included in the repository is described in Chapter 3 of the text, and exports two resources here: the constant `ENGISH_WORDS`, which is a sequence of all valid English words in lowercase (of any length, not just the five-letter ones!), and a function `is_english_word(s)`, which tests whether `s` is a valid English word. If you guess a word that is not in the word list, Wordle displays a message to that effect, at which point you can delete the letters you've entered and try again. Another rule is that you only get six guesses. If all the letters don't match by then, Wordle gives up on you and tells you what the hidden word was.
+
+The most interesting special cases arise when the hidden word and the guesses contain multiple copies of the same letter. Suppose, for example, that the hidden word is `GLASS` and you, for some reason, guess the word `SASSY`. Wordle responds with the following colors:
+
+```{r engine='tikz'}
+#| echo: false
+#| fig-align: center
+#| fig-ext: svg
+#| out-width: 50%
+#| cache: true
+\definecolor{CORRECT}{HTML}{66BB66}
+\definecolor{PRESENT}{HTML}{CCBB66}
+\definecolor{MISSING}{HTML}{999999}
+\usetikzlibrary{positioning}
+	\begin{tikzpicture}[every node/.style={draw, minimum size=1cm, font=\bfseries\sffamily\Huge, text=white}]
+		\node[fill=PRESENT](1) at (0,0) {S};
+		\node[fill=PRESENT, right=2pt of 1](2) {A};
+		\node[fill=MISSING, right=2pt of 2](3) {S};
+		\node[fill=CORRECT, right=2pt of 3](4) {S};
+		\node[fill=MISSING, right=2pt of 4](5) {Y};
+	\end{tikzpicture}
+```
+The green `S` shows that there is an `S` in the fourth position, and the yellow `S` shows that a second `S` appears somewhere else in the hidden word. The `S` in the middle of `SASSY`, however, remains gray because the hidden word does not contain three instances of the letter `S`.

@@ -1,0 +1,75 @@
+---
+title: The Starting Template
+code-annotations: below
+filters:
+  - include-code-files
+---
+The starting template for this project contains the initial version of the `Breakout.py` file. This file is shown below and takes care of the following details: 
+
+```python
+###################################################################### #<0>
+# Name: #<0>
+# Collaborators (if any): #<0>
+# Section leader's name: #<0>
+# Generative AI transcript (if used): #<0>
+# List of extensions made (if any): #<0>
+###################################################################### #<0>
+
+"""
+This program (once you have finished it) implements the Breakout game
+"""
+from pgl import GWindow, GOval, GRect #<1>
+import random #<1>
+
+# Constants
+GWINDOW_WIDTH = 360           # Width of the graphics window #<2>
+GWINDOW_HEIGHT = 600          # Height of the graphics window #<2>
+N_ROWS = 10                   # Number of brick rows #<2>
+N_COLS = 10                   # Number of brick columns #<2>
+BRICK_ASPECT_RATIO = 4 / 1    # Width to height ratio of a brick #<2>
+BRICK_TO_BALL_RATIO = 3 / 1   # Ratio of brick width to ball size #<2>
+BRICK_TO_PADDLE_RATIO = 2 / 3 # Ratio of brick to paddle width #<2>
+BRICK_SEP = 2                 # Separation between bricks (in pixels) #<2>
+TOP_FRACTION = 0.1            # Fraction of window above bricks #<2>
+BOTTOM_FRACTION = 0.05        # Fraction of window below paddle #<2>
+N_BALLS = 3                   # Number of balls (lives) in a game #<2>
+TIME_STEP = 10                # Time step in milliseconds #<2>
+INITIAL_Y_VELOCITY = 3.0      # Starting y velocity downwards #<2>
+MIN_X_VELOCITY = 1.0          # Minimum random x velocity #<2>
+MAX_X_VELOCITY = 3.0          # Maximum random x velocity #<2>
+
+# Derived Constants #<2>
+BRICK_WIDTH = (GWINDOW_WIDTH - (N_COLS + 1) * BRICK_SEP) / N_COLS #<2>
+BRICK_HEIGHT = BRICK_WIDTH / BRICK_ASPECT_RATIO #<2>
+PADDLE_WIDTH = BRICK_WIDTH / BRICK_TO_PADDLE_RATIO #<2>
+PADDLE_HEIGHT = BRICK_HEIGHT / BRICK_TO_PADDLE_RATIO #<2>
+PADDLE_Y = (1 - BOTTOM_FRACTION) * GWINDOW_HEIGHT - PADDLE_HEIGHT #<2>
+BALL_DIAMETER = BRICK_WIDTH / BRICK_TO_BALL_RATIO #<2>
+
+
+# Function: breakout # <3>
+def breakout(): # <3>
+    """The main program for the Breakout game.""" # <3>
+
+    gw = GWindow(GWINDOW_WIDTH, GWINDOW_HEIGHT) # <3>
+
+    # You fill in the rest of this function along with any additional # <3>
+    # helper and callback functions you need # <3>
+
+
+
+
+
+# Startup code # <4>
+if __name__ == "__main__": # <4>
+    breakout() # <4>
+```
+
+0. Submission metadata. Please make sure you don't forget to fill it all out!
+1. It includes the imports you will need in writing the game.
+2. It defines the constants that control the game parameters, such as the dimensions of the various objects. Your code should use these constants internally so that changing them in your file changes the behavior of the program accordingly. Note that some of these constants are specified directly, but that others are derived from constants specified earlier.
+3. It includes a skeleton for the `breakout` function that creates the graphics window. Your job is to add the code for the Breakout game along with the definition of any helper and callback functions, all of which are easiest to define as inner functions inside `breakout` so they can share its variables.
+4. It includes the startup code to invoke the `breakout` function when the `Breakout.py` module is run from the command line.
+
+The library `pgl.py` is included in the initial template repository as well, so that you should be able to download the entire repository and get straight to coding.
+

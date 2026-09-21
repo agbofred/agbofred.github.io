@@ -1,0 +1,6 @@
+---
+title: Introducing Milestones
+---
+
+As with all the projects, this project has been broken into a series of milestones to help you work your way through the project and check your results along the way. Perhaps more than any other project so far, it is vital that you ensure your current code is working before moving on to the next milestone. The Enigma project is large, and if you don't check it until the very end, you are going to be in a mess trying to debug your code, and have no one to blame except yourself.
+

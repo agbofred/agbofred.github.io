@@ -1,0 +1,5 @@
+---
+title: "Milestone 1: Updating lamp state"
+---
+
+The next milestone--which is actually easier than the first--is to apply the steps from Milestone 0 to the lamp panel. Once again, you need to set up an internal data structure to record the state of the lamps and change the definition of `is_lamp_on` to use it. The `EnigmaModel` class, however, has no precise counterparts to the `key_pressed` and `key_released` methods because the lamp panel is not directly called by the controller. What you need to do instead is to change the definitions of `key_pressed` and `key_released` so that they also change the state of the lamp, even though this change is only for this milestone and will eventually be replaced by code that encrypts the letter before lighting the lamp. If you get this milestone working, you will know that your lamp code is working before moving on to the more challenging problem of implementing the rotors.

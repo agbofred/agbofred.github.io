@@ -1,0 +1,71 @@
+---
+title: "Milestone 4: Handling Infinity"
+---
+
+When we get to a scene key where we don't have scene data (i.e. the key does not exist in our story dictionary, previously described as a dead end), we are not going to crash. Instead, we are going to call upon ChatGPT for help in generating a new scene, including appropriate choices! Then, we will continue our program with the newly created scene. For this milestone, you will want to define a new helper function that is responsible for creating a new scene when a scene key does not exist in the story dictionary. Specifically, you should:
+
+#. Print `"Suspenseful music plays as the story continues..."`, since it is going to take ChatGPT a moment to generate the new scene.
+#. Construct the prompt to ask ChatGPT to generate the scene.
+#. Send the prompt to ChatGPT and print out the returned scene to the console.
+#. Add the returned scene to your story dictionary, so that if the story returns to the same scene key at some later point, you display the same information.
+
+## The Prompt
+One of the keys to working with any generative AI is constructing the prompt to try to get the desired results. There is some flexibility in how you can shape the prompts for the Infinite Adventure, but to start you should use the following template:
+
+> "Return the next scene of a story for key \<scene_key\>. An example scene should be formatted in json like this \<example scene\>. The main plot line of the story is \<plot\>. A player is entering this scene via \<choice text\> from a scene with key \<prev scene_key\>, so one choice should take them back to that scene."
+
+Here, all the content enclosed within angle brackets are placeholders, where you substitute in the appropriate text (f-strings will be very useful here!). Most of them are self explanatory, but, for clarification:
+
+- The `<scene_key>` is the key of the scene that needs to be generated
+- The `<example scene>` should be the start scene's data (but converted to a string). This is important, as we need to let ChatGPT know what format we are using to generate scenes. You can cast a dictionary to as string just like you can cast an integer to a string, using the `str()` function.
+- The `<plot>` is the overall plot of the story, which you can access from the story dictionary
+- The `<choice text>` is the text of the choice that is sending the player to this new scene. This helps provide a minimal amount of continuity to try to ensure that the next scene makes sense given what choice the player made.
+- The `<prev scene_key>` is the scene key of the room that your are traveling _from_. It is important to provide this to ChatGPT so that it can ensure that one of the possible choices will return you to the old room. Without this, you'd never be able to go back!
+
+## The API
+So how do we communicate with ChatGPT to generate our next scene when we do not already have the data in our scenes dictionary? To accomplish this, we need to first understand a new key concept: APIs.
+
+APIs (Application Programming Interfaces) allow software applications to communicate and interact with one another. They define the methods and data formats that applications can use to request and exchange information, allowing computer scientists and others to integrate various services, such as ChatGPT, seamlessly into their own projects without a lot of added complexity. Think of them as functions on a remote computer that you can call over the internet. Much of the modern web is built around them, and they are a super powerful tool!
+
+In order to utilize APIs within our own Python programs, it is usually easiest to use an already established library. These libraries have been written specifically to allow Python programmers a straightforward and "easy" way to access and utilize these APIs within their programs. Fortunately, OpenAI, the company that released ChatGPT, has released their own Python library to interface with their generative AI models. Unfortunately, using the OpenAI API is not free. That said, we don't want you to have to be paying for this (unless you want to do your own fancy stuff), and thus we will instead be using a slightly alternative library called NotOpenAI. This library still uses the OpenAI library under-the-hood, but it does so in a way that ensures that the department gets charged for your API usage, instead of you having to pay the costs yourself. The way we will use the NotOpenAI library is **identical** to how you would use the actual OpenAI library, so if you later decide you want to pay for your own usage to use ChatGPT in your own programs, it should be _extremely_ easy to switch over!
+
+APIs often need to know who is using them (for billing and other security purposes) and thus frequently utilize what is called an "api key". This key is just a unique string, personalized purely for you, that the API uses to track who is using its services. This key identifies you to the API, and as such you should not share them with others. You have all been issued a key by your instructor at the beginning of this project. If you have lost that key, contact your instructor.
+
+To get started, there is a line near the top of the template that looks like
+```python
+CLIENT = NotOpenAI(api_key="yourapikey")
+```
+which initializes the API. You will need to replace `"yourapikey"` with your own API key (as a string). Now you are set to make your first API request to ChatGPT!
+
+When you make a request to ChatGPT using the NotOpenAI library (or the official OpenAI library) you will need to provide it several pieces of information. These include some configuration options, as well as the prompt itself. The file `example_request.py` in the starting template has an example, where the important code looks like:
+```python
+chat_completion = CLIENT.chat.completions.create( # <1>
+    messages=[
+        {
+            "role": "user", # <2>
+            "content": "What is the capital of all countries in east africa? Reply in json where keys are countries" # <3>
+        }
+    ],
+    model="gpt-4o-mini", # the GPT model to use # <4>
+    response_format={"type": "json_object"} # we want our response in json format # <5>
+)
+```
+
+1. Using the initialized CLIENT to create a new request to ChatGPT
+2. Different types of programs can make different types of requests. For your requests, your role will always be `"user"`
+3. Here is where you get to provide the prompt! So the prompt that you crafted earlier will go here (or you can type in whatever you want for testing purposes)
+4. ChatGPT has many different models that we can use, so here you need to specify that. You are only authorized to use the `gpt-4o-mini` model with the NotOpenAI library
+5. We need to tell ChatGPT what format we'd like the response in. Since it is going to return to us a scene dictionary, it makes the most sense to have it package that dictionary up in a JSON format, as we already know how to work with that in Python
+
+When this function is called, it might take a moment for ChatGPT to craft a response, but then it will be saved in the `chat_completion` variable. To access the specific response, we need to dig a little bit into that variable to grab the content. And then that content will be a dictionary in the form of a string (exactly the same as what we did with `<example scene>` when crafting the prompt), so we will need to use `json.loads` to read it into a valid Python dictionary. The following lines of code accomplish this:
+
+```python
+# Getting just the content of the response
+response_str = chat_completion.choices[0].message.content
+
+# Turning the string into a proper dictionary with json.loads
+new_scene_data = json.loads(response_str)
+```
+
+Now you have your new scene data! From here, you'll want to both print it to the screen, but _also save it in your scenes dictionary_. After all, if someone should return to this scene at some later point, you want it to remain the same. Otherwise ChatGPT would craft a potentially totally different scene, which would be confusing to players. Now you essentially have an actual infinite adventure you can play!! But sometimes a picture is worth a thousand words, and so for the next milestone we want to add some visual flair.
+

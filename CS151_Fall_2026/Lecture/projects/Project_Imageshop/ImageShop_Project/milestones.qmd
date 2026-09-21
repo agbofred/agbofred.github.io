@@ -1,0 +1,7 @@
+---
+title: Introducing Milestones
+---
+
+As per usual, this project has been divided up into a series of smaller tasks to help you approach the project in a controlled and testable fashion. For this project, each of the following milestones will focus on adding new buttons to the left of the screen and then implementing the desired image manipulation in a new function.
+
+

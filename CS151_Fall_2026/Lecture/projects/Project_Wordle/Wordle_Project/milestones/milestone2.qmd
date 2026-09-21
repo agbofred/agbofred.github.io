@@ -1,0 +1,25 @@
+---
+title: "Milestone 2: Coloring the boxes"
+---
+
+For this milestone, you need to add code to `enter_action` that, after checking to make sure an entry is a legal word, goes through and colors the boxes to show the user which letters in the guess match the secret word. The `WordleGWindow` method that you will need to accomplish this task is `gw.set_square_color(row, col, color)`
+
+The row and column arguments to this function are the same as the ones you used to set or get the letters from the boxes, and `color` is the color you want to use for the background of that square. Typically, that color will be one of the constants `CORRECT_COLOR`, `PRESENT_COLOR`, or `MISSING_COLOR`. These constants are already imported from `WordleGraphics`, where they were defined according to a six-digit hexadecimal number that gives the red, green, and blue intensities of the colors that correspond to the actual game:
+```{.python}
+CORRECT_COLOR = "#66BB66"   # A shade of green
+PRESENT_COLOR = "#CCBB66"   # A shade of brownish yellow
+MISSING_COLOR = "#999999"   # A shade of gray
+UNKNOWN_COLOR = "#FFFFFF"   # Initial white color
+```
+
+The hard part of this milestone is figuring out the color for each square, which is not as easy as it might first appear, particularly when the hidden word contains multiple copies of the same letter. As a recommended strategy, you should:
+
+#. Find and color the correct (green) letters first, so that you don't end up coloring a letter yellow that will later turn out to be in the correct position.
+
+#. Keep track of which letters in the guess have been "used" (already colored) and cross them off as you assign colors. This ensures that, as you consider how to color later letters, you are properly accounting for any letters already used, and will help ensure that you properly color duplicate letter combinations. To achieve this, consider keeping track of the available letters still to "use" from the secret word in a string, and then replacing those letters with something like a space or underscore as you color them. Don't be afraid to write helper functions to help you achieve this! Break it down!
+
+You have sample words and guesses shown in the [Introduction](../introduction/wordle_rules.qmd) of this guide. _Test them against your program!_ You can just redefine your secret word variable to whatever you need and then type in various possible guesses. Test other combinations as well against what you think they should be (or compare them against the online demo). This is the easiest part of the project to _think_ you have working flawlessly when, in fact, there are issues. **Test it!**
+
+An example of the output of some of this testing is shown below. Your code should be able to recreate these situations and colorings.
+
+![Output of Wordle.py after entering in a single word in a few configurations. To the left the secret word is `RELIC`, and to the right the secret word was `GLASS`. Note in particular how the coloring works for words with duplicate letters appearing in both the word and guess.](ms2.png)
