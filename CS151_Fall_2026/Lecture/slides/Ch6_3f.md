@@ -32,8 +32,9 @@ history: false
 
 
 ## Quick Announcements
-- __Problem set 3 is due next week Monday at 10 pm__
-- First Project `Wordle` will be published later today! 
+- __Problem set 3 is due today at 10 pm__
+	- I encourage you to visit QUAD if you need more help
+- Our first Project - `Wordle` is published today! 
 	- Wordle is due next week Monday
 
 ---
