@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Jed Rembold &amp; Fred Agbo">
-  <meta name="dcterms.date" content="2025-02-10">
-  <title>Simple Graphics</title>
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-09-23">
+  <title>Random Graphics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,102 +35,88 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Simple Graphics</h1>
-  <p class="author">Jed Rembold &amp; Fred Agbo</p>
-  <p class="date">February 10, 2025</p>
+  <h1 class="title">Random Graphics</h1>
+  <p class="author">Fred Agbo</p>
+  <p class="date">September 23, 2026</p>
 </section>
 
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
+<section class="slide level1">
+
+<h2 id="happy-wednesday">Happy Wednesday!</h2>
+<div style="font-size:.8em">
 <ul>
-<li>Problem set 3 is due <strong>today at 10 pm</strong>
-<ul>
-<li>From my observation, using <strong>Pensieve Tutor</strong> provides
-some help
-<ul>
-<li>use it for <strong><em>PS3</em></strong> if you find it useful</li>
-</ul></li>
-</ul></li>
-<li>Project #1 <strong><em>Wordle</em></strong> is posted and it is
-<strong>due on Monday next week at 10pm</strong>
-<ul>
-<li>Section meeting will help you a lot in understanding projects!</li>
-<li><strong>NOTE!</strong> Projects will only be deployed on GitHub
-classroom and NOT on <strong><em>Pensieve Tutor</em></strong>.
-<ul>
-<li>This means that submissions can only be made through GitHub</li>
-</ul></li>
-</ul></li>
-<li><strong><em>Heads up!</em></strong> First midterm will be next week
-Friday. More on that later</li>
-<li>We are starting chapter 4 today <strong>Graphics</strong></li>
-<li>Link to polls <a
-href="https://www.polleverywhere.com/agbofred203">here</a></li>
+<li>Class grouping today: Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Class code is <code class="python">FJ9RC0</code></li>
+<li>Introduce yourselves! What is your favorite shape?</li>
 </ul>
-<!--
-## Review Question {data-notes="Answer is B, as it would not print the 0"}
-Which of the below blocks of code would print something different than the others?
-
-::::: cols
-
-:::: col
-:::{.block name=A}
-```python
-for n in range(10):
-    if n % 2 == 0:
-        print(n)
-```
-:::
-:::{.block name=B}
-```python
-for i in range(0,10,2):
-    if i > 0:
-        print(i)
-```
-:::
-::::
-
-:::: col
-:::{.block name=C}
-```python
-for j in range(0,20,4):
-    L = j // 2
-    print(L)
-
-```
-:::
-:::{.block name=D}
-```python
-for k in range(0,10):
-    if not k % 2 > 0:
-        print(k)
-```
-:::
-::::
-:::::
-
--->
-</section>
-<section id="understanding-check" class="slide level2"
-data-notes="The 32//8 option">
-<h2 data-notes="The 32//8 option">Understanding Check!</h2>
-<p>Which of the provided formatted string options below would evaluate
-to appear as:</p>
-<center>
-<code class="python">101,234.98** & 4000</code>
-</center>
-<p>when printed?</p>
-<div class="poll">
-<ol>
-<li><code class="python">f"{101234.984:*<12,.2f} & {3200//8:<4d}"</code></li>
-<li><code class="python">f"{101234.984:>12,.2f} & {32000//8:0>3d}"</code></li>
-<li><code class="python">f"{101234.984:<12,f} & {320//8:0>4d}"</code></li>
-<li><code class="python">f"{101234.984:*<12,.2f} & {32//8:0<4d}"</code></li>
-</ol>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arrangement.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=lcjjHj"
+style="width:60.0%" /></p>
+</div>
 </div>
 </section>
-<section id="nondeterministic-programming" class="slide level2">
-<h2>Nondeterministic Programming</h2>
+<section class="slide level1">
+
+<h2 id="quick-announcements">Quick Announcements</h2>
+<ul>
+<li>Project 1 <strong><em>Wordle</em></strong> is due on <strong>Monday
+next week at 10pm</strong>
+<ul>
+<li>Avoid late submission in order to have your work graded by the
+section leaders</li>
+</ul></li>
+<li>Please attend your section (Today and tomorrow)! Attendance counts
+for participation and grades
+<ul>
+<li>Missing up to 3 attendance will remove 5% from your total grade</li>
+<li>Majority of what you need for the project is learned in the
+section</li>
+</ul></li>
+<li>Use the <strong>Run_Journal</strong> and describe the run log
+properly; it counts towards the grades.</li>
+<li>Heads up about our first exam: it’s a week from Friday!
+<ul>
+<li>Study materials will come out on or before Monday next week</li>
+<li>Sections next week will be for reviewing and studying</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="wordle-tidbits">Wordle Tidbits</h2>
+<ul>
+<li>Two useful ideas for Wordle:
+<ul>
+<li><p>You can check if an individual element is in a particular
+sequence of elements using the <code class="python">in</code>
+keyword</p>
+<pre ><code class="python">"1" in "12345"</code></pre>
+<ul>
+<li>Always returns a boolean (True/False)</li>
+</ul></li>
+<li><p>You can change the case of all letters in a string using
+<code class="python">upper()</code> or
+<code class="python">lower()</code> methods</p>
+<pre ><code class="python">lowered = "ABCDEF".lower()
+uppered = "abcDEF".upper()</code></pre>
+<ul>
+<li>The method returns a <strong>new</strong> string, so make sure you
+assign it to something</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="nondeterministic-programming">Nondeterministic Programming</h2>
 <ul>
 <li>For Wordle, the game is only interesting if the secret word is not
 the same every time!</li>
@@ -147,8 +133,10 @@ algorithm research</li>
 </ul></li>
 </ul>
 </section>
-<section id="important-functions-in-random" class="slide level2">
-<h2>Important Functions in <code class="python">random</code></h2>
+<section class="slide level1">
+
+<h2 id="important-functions-in-random">Important Functions in
+<code class="python">random</code></h2>
 <div style="font-size: 80%">
 <ul>
 <li>Random Integers</li>
@@ -211,8 +199,9 @@ style="text-align: left;"><code class="python">shuffle(a_list)</code></td>
 </table>
 </div>
 </section>
-<section id="random-examples" class="slide level2">
-<h2>Random Examples</h2>
+<section class="slide level1">
+
+<h2 id="random-examples">Random Examples</h2>
 <pre ><code class="python" style="max-height:900px">import random
 
 def random_redblue():
@@ -227,8 +216,10 @@ def random_color():
         color_string += random.choice("0123456789ABCDEF")
     return color</code></pre>
 </section>
-<section id="the-worth-of-a-picture" class="slide level2">
-<h2>The Worth of a Picture</h2>
+<section class="slide level1">
+
+<h2 id="chapter-4-the-worth-of-a-picture">Chapter 4: The Worth of a
+Picture</h2>
 <div style="font-size:.9em">
 <ul>
 <li>There comes a time when reading and entering text on a terminal
@@ -251,8 +242,10 @@ manage</li>
 </ul>
 </div>
 </section>
-<section id="the-portable-graphics-library" class="slide level2">
-<h2>The Portable Graphics Library</h2>
+<section class="slide level1">
+
+<h2 id="the-portable-graphics-library">The Portable Graphics
+Library</h2>
 <ul>
 <li>Built atop Tkinter</li>
 <li>The library (<code class="python">pgl.py</code>) is available on the
@@ -356,8 +349,9 @@ it</li>
 arrangement is called the <em>stacking order</em>.</li>
 </ul>
 </section>
-<section id="the-pieces" class="slide level2">
-<h2>The Pieces</h2>
+<section class="slide level1">
+
+<h2 id="the-pieces">The Pieces</h2>
 <ul>
 <li>At its simplest then, we have two main parts:
 <ul>
@@ -376,8 +370,9 @@ they are, etc</li>
 </ul></li>
 </ul>
 </section>
-<section id="blue-rectangle" class="slide level2">
-<h2>Blue Rectangle!</h2>
+<section class="slide level1">
+
+<h2 id="blue-rectangle">Blue Rectangle!</h2>
 <pre ><code class="python" data-line-numbers="1|3,4|6|7|8|9|10|11">from pgl import GWindow, GRect
 
 GW_WIDTH = 500
@@ -389,8 +384,9 @@ rect.set_color("Blue")
 rect.set_filled(True)
 gw.add(rect)</code></pre>
 </section>
-<section id="the-coordinate-system" class="slide level2">
-<h2>The Coordinate System</h2>
+<section class="slide level1">
+
+<h2 id="the-coordinate-system">The Coordinate System</h2>
 <figure>
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="390.46mm" height="146.14mm" version="1.1" viewBox="0 0 390.46 146.14" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -442,338 +438,168 @@ pixels</li>
 <li>Y-values increase as you move downwards</li>
 </ul></li>
 </ul>
-<!--
-## Other Simple Objects
-Functions to create simple geometric objects:
-<br>
-
-- Rectangles!
-    - `GRect( x, y, width, height )`
-    - Creates a rectangle whose upper left corner is at (x,y) of the specified size
-- Circles/Ovals!
-    - `GOval( x, y, width, height )`
-    - Creates an oval that fits inside the rectangle with the same dimensions
-    - Placement based on the upper left corner of that enclosing rectangle
-- Lines!
-    - `GLine( x1, y1, x2, y2 )`
-    - Creates a line extending from (x1, y1) to (x2, y2)
-
-## Understanding Check
-Which of the below images would be produced by the following code?
-```python
-gw = GWindow(200,200)
-for c in range(0,10):
-    for r in range(0,10):
-        rect = GRect(20*c,20*r,20,20)
-        if (r+c) % 2 != 0:
-            rect.set_filled(True)
-    gw.add(rect)
-```
-
-:::cols
-
-::::col
-![A](../images/PGL_Review_1.png){width=80%}
-::::
-::::col
-![B](../images/PGL_Review_2.png){width=80%}
-::::
-::::col
-![C](../images/PGL_Review_3.png){width=80%}
-::::
-::::col
-![D](../images/PGL_Review_4.png){width=80%}
-::::
-
-:::
-
-
-## Classification
-::::cols
-:::col
-- In the mid-18th century, Scandinavian botanist Carl Linnaeus revolutionized the field of biology by developing a new system for classifying plants and animals in a way that revealed their structural relationships.
-- Recognized that organisms fit into a hierarchy in which the placement of individual species reflects their anatomical similarities.
-- Paved the way for Darwin's theory of evolution a century later
-:::
-:::col
-![Carl Linnaeus](../images/Carl_Linneaus.jpg){width=70%}
-:::
-::::
-
-
-## Biological Hierarchy
-![](../images/animal_hierarchy.svg)
-
-
-## Instance vs Pattern
-- Important to distinguish between a class of object and a specific instance of that class
-    - Iridomyrmex purpureus is a class of ant, not an individual ant
-    - There can be many individual ants, all sharing the same class
-- Each ant is said to be an _instance_ of a particular class
-- An individual ant belongs to a species class of purpureus, family of Formicidae, Phylum of Arthropoda, etc
-
-
-## The `GObject` Hierarchy
-- The types of graphical objects form a hierarchy:
-
-![](../images/GObject_Hierarchy.svg)
-
-- The `GObject` class represents the collection of all graphical objects
-- The `GFillableObject` class represents those that have a fillable interior
-
-
-## Interacting with the `GWindow`
-- We've already shown creation:
-
-```python
-gw = GWindow(width, height)
-```
-- You have several more operations that you can apply to the `GWindow` object:
-
--------------------------------------- -------------------------------------
-       `gw.add(object)`{.no-highlight} Adds an object to the window
- `gw.add(object, x, y)`{.no-highlight} Adds an object to the window after moving it to (x,y)
-    `gw.remove(object)`{.no-highlight} Removes an object from the window
-       `gw.get_width()`{.no-highlight} Returns the width of the graphics window in pixels
-      `gw.get_height()`{.no-highlight} Returns the height of the graphics window in pixels
--------------------------------------- -------------------------------------
-
-
-## Interacting with `GObject`s
-- The following operations apply to all GObjects,  where `object`{.no-highlight} is the name of any specific instance.
-
----------------------------------------- ----------------------------
-         `object.get_x()`{.no-highlight} Returns the x coordinate of this object
-         `object.get_y()`{.no-highlight} Returns the y coordinate of this object
-     `object.get_width()`{.no-highlight} Returns the width of this object
-    `object.get_height()`{.no-highlight} Returns the height of this object
-`object.set_color(color)`{.no-highlight} Sets the color of the object to the specified color
----------------------------------------- ----------------------------
-
-- All coordinates and distances are measured in pixels
-
-
-## Interacting with `GFillableObject`s
-- Fillable GObjects have a smaller subset of commands that also apply to them.
-- Initially the only fillable objects available to you are rectangles and ovals
-
---------------------------------------------- ----------------------------
-     `object.set_filled(bool)`{.no-highlight} Sets the fill state of the object
-`object.set_fill_color(color)`{.no-highlight} Sets the color to be used to fill the interior, otherwise same as the outer line
-     `object.get_fill_color()`{.no-highlight} Gets the current color used to display the object interior
-          `object.is_filled()`{.no-highlight} Returns True or False depending on whether the object is currently filled
---------------------------------------------- ----------------------------
-
-## Smile!
-::::cols
-:::{.col style="flex-grow:1.5"}
-
-```python
-gw = GWindow(400, 400)
-
-head = GOval(20, 20, 360, 360)
-head.set_fill_color("yellow")
-head.set_filled(True)
-gw.add(head)
-
-reye = GOval(110, 100, 40, 40)
-reye.set_filled(True)
-gw.add(reye)
-
-leye = GOval(250, 100, 40, 40)
-leye.set_filled(True)
-gw.add(leye)
-
-mouth = GLine(150, 250, 250, 250)
-mouth.set_line_width(5)
-gw.add(mouth)
-```
-:::
-:::col
-
-![\ ](../images/smile_face.png){width=80%}
-
-:::
-::::
-
-## Label It!
-- Sometimes you need to add some text to the window
-- Can display any string using `GLabel` using the following format:
-
-```python
-msg = GLabel(string_to_add, x_location, y_location)
-```
-- Here `string_to_add` is the text you want to display, and `x_location` and `y_location` are the (x,y) coordinates of where you want to place the string
-
-
-## Label Geometry
-- The `GLabel` class relies on some geometrical concepts that are derived from classical typesetting
-    - The _baseline_ is the imaginary line on which the characters rest
-    - The _origin_ is the point on the baseline at which the text begins
-    - The _width_ is the horizontal distance from the origin to the end of the text
-    - The _height_ of the font is the distance between adjacent baselines
-    - The _ascent_ is the distance the characters rise above the baseline
-    - The _descent_ is the distance the characters drop below the baseline
-<br><br>
-
-![\ ](../images/GLabel_Geometry.svg)
-
-
-## Interacting with Labels
-- A `GLabel` has several special methods that you can use to interact with it
-    - You can use: `get_width()`, `get_height()`, `get_ascent()`, and `get_descent()` methods to obtain the geometric properties
-    - You can set a special font for the label using
-    
-    ```python
-    labelname.set_font(font)
-    ```
-    - The font is a string comprised of the following elements:
-        - The _font style_, which is usually blank or `italic`
-        - The _font weight_, which is usually blank or `bold`
-        - The _font size_, which is a number followed by the units (typically `pt`, `px`, or `em`)
-        - The _font family_, which is the name of the font. Because what fonts are available can differ from machine to machine, the family is usually a sequence of fonts separated by commas
-        - The font family sequence usually ends with a standard family (`serif`, `sans-serif`, or `monospace`) to ensure that the label can display
-
-## Label Example
-```python
-gw = GWindow(500, 200)
-msg = GLabel("hello world!", 50, 100)
-msg.set_font("italic bold 80px 'times new roman'")
-gw.add(msg)
-```
-<br><br>
-
-![A bold new (friendly) world](../images/hello_world_font.png){width=50%}
-
-
-## Centering a `GLabel`
-- Frequently useful to center within the window or some shape
-- To center properly, you need to know the label dimensions, but you can't determine the dimensions until after you've created the label!
-- The main idea then is to:
-    - Create a `GLabel` without setting its location
-    - Call the `.set_font()` method to set the desired font (which could change the size)
-    - Determine the horizontal position of the origin by subtracting half the width from the desired location x
-    - Determine the vertical position of the baseline by adding half the ascent to the desired location y
-    - Add the `GLabel` at the newly calculated position
-
-
-## Centering Example
-```python
-gw = GWindow(500, 200)
-msg = GLabel("hello world!")
-msg.set_font("italic bold 20px 'times new roman'")
-x = 250 - msg.get_width() / 2
-y = 100 + msg.get_ascent() / 2
-gw.add(msg, x, y)
-```
--->
 </section>
-<section id="introduction-to-wordle" class="slide level2">
-<h2>Introduction to Wordle</h2>
+<section id="group-problems" class="slide level1">
+<h1>Group Problems</h1>
+<ul>
+<li>Download the starter codes from the class Discord Channel</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="problem-1-5d100s">Problem 1: 5d100s</h2>
+<ul>
+<li>Every week before we start playing, each person in my D&amp;D group
+rolls 5 (virtual) 100-sided dice
+<ul>
+<li>A 100-sided dice has numbers 1-100 on its faces</li>
+</ul></li>
+<li>We like to use the <em>sum</em> of the 5 dice to predict how lucky
+or unlucky we’ll be that night</li>
+<li>But what would be exceptional?</li>
+<li>Your group’s task: Roll 5 100-sided dice 10,000 times. What is the
+maximum value you got?</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="problem-2-olympic-flags">Problem 2: Olympic Flags</h2>
+<ul>
+<li>With the Olympics going on, you’ve probably seen way more
+international flags than usual</li>
+<li>Let’s recreate some in PGL!</li>
+<li>Each member of your group should choose a different flag. Your task
+is to recreate it as exactly as possible.</li>
+<li>A list of countries with flags that would be very approachable with
+our current shapes follows on the next slide
+<ul>
+<li>You’ll need to search for the flag itself to see what you need to
+replicate (Wikipedia is great for this)</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="country-flag-options">Country Flag Options</h2>
 <div class="cols">
 <div class="col">
 <ul>
-<li>Our first project will be Wordle</li>
-<li>Milestone guide will be posted today</li>
-<li>Not due until next week Monday. Start working on it
-immediately.</li>
-<li>Check out Wordle game on this <a
-href="https://willamette.edu/~esroberts/NiftyAssignments-2022/demos/Wordle.html">link</a></li>
+<li>Italy</li>
+<li>Japan</li>
+<li>Laos</li>
+<li>Germany</li>
 </ul>
 </div>
 <div class="col">
-<figure>
-<img data-src="../images/wordle.png" alt="The game of Wordle" />
-<figcaption aria-hidden="true">The game of Wordle</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="your-responsibilities" class="slide level2">
-<h2>Your Responsibilities</h2>
 <ul>
-<li>We will provide you with a custom data type that will handle all the
-graphics and user interaction
-<ul>
-<li>Don’t worry, you’ll have a chance to implement your own GUIs later
-in the semester!</li>
-</ul></li>
-<li>Your responsibilities will include:
-<ul>
-<li>Displaying and reading letters from boxes</li>
-<li>Evaluating whether a word is valid</li>
-<li>Determining what color each letter of a word should be</li>
-<li>Determining when victory or defeat occurs</li>
-</ul></li>
-</ul>
-</section>
-<section id="your-toolbox" class="slide level2">
-<h2>Your Toolbox</h2>
-<ul>
-<li>Special functions provided by the provided graphics data type:
-<code class="python">WordleGWindow</code>
-<ul>
-<li>These will be well documented, and include, but are not limited to,
-things like
-<ul>
-<li>Getting or setting a letter in a particular box</li>
-<li>Getting or changing the color of a given box</li>
-<li>Changing which row is used when characters are entered</li>
-</ul></li>
-</ul></li>
-<li>Variables and functions</li>
-<li>Control statements
-<ul>
-<li>Good use of loops and if statements will be very useful</li>
-</ul></li>
-<li>Basic string functions</li>
-</ul>
-</section>
-<section id="receiver-syntax" class="slide level2">
-<h2>Receiver Syntax</h2>
-<div style="font-size:.9em">
-<ul>
-<li><p>So far, all operations between or on objects have used symbols to
-indicate the operation</p>
-<ul>
-<li>The <code class="python">+</code> sign, for instance</li>
-</ul></li>
-<li><p>Going forward, we will begin to see more examples of operations
-on objects that use <em>receiver syntax</em></p></li>
-<li><p>In receiver syntax, we specify the object to act on, followed by
-a dot and then a predefined function (called a <em>method</em> here)
-name</p>
-<pre ><code class="python">obj.method_name()</code></pre>
-<ul>
-<li>This is like you are running this special function on the object, so
-you <strong>need</strong> the <code class="python">()</code> at the
-end</li>
-<li>Some methods also allow arguments, to influence exactly how the
-operation will proceed</li>
-</ul></li>
+<li>Thailand</li>
+<li>Latvia</li>
+<li>Switzerland</li>
+<li>France</li>
 </ul>
 </div>
+</div>
 </section>
-<section id="an-approach-to-success" class="slide level2">
-<h2>An Approach to Success</h2>
+<section class="slide level1">
+
+<h2 id="problem-3-the-drunken-robot">Problem 3: The Drunken Robot</h2>
 <ul>
-<li>Each project is accompanied by a highly detailed guide: <strong>read
-it!</strong>
+<li>Determine the middle of your window and save the
+<code class="python">x</code> and <code class="python">y</code>
+coordinates. This is your robots current location.</li>
+<li>Draw a 25x25 square at that location (doesn’t need to be centered,
+but could be!)
 <ul>
-<li>Explains background ideas so that you can understand the big picture
-of what you are needing to do</li>
-<li>Also included a breakdown of individual <em>milestones</em>
-<ul>
-<li>A <em>milestone</em> is a discrete checkpoint that you should ensure
-is working (and that you understand!) before moving on</li>
+<li>Make it filled with a fill color of your choice</li>
 </ul></li>
+<li>Now, for 50 iterations:
+<ul>
+<li>Determine the next direction (North, South, East or West)
+randomly</li>
+<li>Update the robot’s location variables accordingly, assuming they
+moved exactly 25 pixels in that direction</li>
+<li>Draw a <strong>new</strong> square at the robot’s new location (with
+a different fill color than your starting color)</li>
 </ul></li>
-<li>Projects are all about managing complexity. If you start trying to
-implement milestones out of order, you are asking for disaster</li>
-<li>Don’t let yourself get overwhelmed by scale. Focus on one particular
-milestone at a time, which should involve focusing only on a small part
-of your overall code</li>
+<li>Admire your robot’s little drunken walk! Play around with more
+iterations!</li>
 </ul>
+</section>
+<section id="live-coding" class="slide level1">
+<h1>Live Coding</h1>
+<h2 id="estimating-pi">Estimating Pi</h2>
+<ul>
+<li>One of the ways that the value of <span
+class="math inline">\(\pi\)</span> can be estimated is by looking at the
+number of random points that strike a circle vs a surrounding box</li>
+<li>Our task here is to both estimate they value of <span
+class="math inline">\(\pi\)</span> using random numbers in this fashion,
+but to also visualize it!</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="a-solution">A Solution</h2>
+<ul>
+<li>TO BE PASTED!!!</li>
+</ul>
+<!-- ```{.python style='max-height: 800px; font-size: .8em'}
+from pgl import GWindow, GRect, GOval
+import random
+
+WIDTH = 800
+HEIGHT = 800
+
+SIZE = 700
+DART_SIZE = 10
+
+gw = GWindow(WIDTH, HEIGHT)
+
+background = GRect(
+    WIDTH / 2 - SIZE / 2,
+    HEIGHT / 2 - SIZE / 2,
+    SIZE,
+    SIZE
+)
+background.set_filled(True)
+background.set_color('gray')
+gw.add(background)
+
+target = GOval(
+    WIDTH / 2 - SIZE / 2,
+    HEIGHT / 2 - SIZE / 2,
+    SIZE,
+    SIZE
+)
+target.set_filled(True)
+target.set_color('darkgray')
+gw.add(target)
+
+attempts = 1000
+successful_strikes = 0
+for i in range(attempts):
+    x = random.uniform(WIDTH / 2 - SIZE / 2, WIDTH / 2 + SIZE / 2)
+    y = random.uniform(HEIGHT / 2 - SIZE / 2, HEIGHT / 2 + SIZE / 2)
+    dart = GOval(
+        x - DART_SIZE / 2,
+        y - DART_SIZE / 2,
+        DART_SIZE,
+        DART_SIZE
+    )
+    dart.set_filled(True)
+    distance_to_center = (
+        (x - WIDTH / 2)**2 + (y - HEIGHT / 2)**2
+    ) ** (1/2)
+    if distance_to_center < SIZE / 2:
+        dart.set_fill_color('red')
+        successful_strikes += 1
+    else:
+        dart.set_fill_color('blue')
+    gw.add(dart)
+
+# I forgot this extra factor of 4 in class! That is why it wasn't working initially
+print(successful_strikes / attempts * 4 )
+``` -->
 </section>
     </div>
   </div>
@@ -864,7 +690,7 @@ of your overall code</li>
         // Time before the cursor is hidden (in ms)
         hideCursorTime: 5000,
         // Transition style
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
         // Transition speed
         transitionSpeed: 'default', // default/fast/slow
         // Transition style for full page slide backgrounds
@@ -879,7 +705,7 @@ of your overall code</li>
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
         width: 1920,
-        height: 1200,
+        height: 1080,
         // The display mode that will be used to show slides
         display: 'block',
 		math: {

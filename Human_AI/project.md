@@ -80,7 +80,7 @@ All VR activities must incorporate UX accommodations for users 70+:
 ### Authoring Platform
 
 Teams use the course web-authoring tool to build and export VR lessons:  
-**[http://147.182.173.208:5173/](http://147.182.173.208:5173/)**
+**[ForgeXR](https://forgexr.me/)**
 
 The platform allows teams to author 9-screen interactive sequences and export them for deployment on the Meta Quest 3. Instructor will provide onboarding in Week 9 lab sessions.
 
