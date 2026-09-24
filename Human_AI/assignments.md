@@ -201,7 +201,7 @@ Engage directly with **older adults (ages 70+)** to co-design an interactive VR 
 - **Paper prototyping** — Design an "unplugged" 9-step activity using paper cards, state diagrams, or storyboards *before* using the authoring tool. Map the full sequence, state transitions, and user prompts.
 
 #### Phase 2 — Digital Authoring & Orchestration
-- **Platform access** — [http://147.182.173.208:5173/](http://147.182.173.208:5173/)
+- **Platform access** — [https://forgexr.me/](https://forgexr.me/)
 - **Author your VR lesson** — Translate your paper design into a 9-screen VR experience for the Meta Quest 3. Incorporate: large UI targets, high-contrast visuals, gentle pacing, low-stress error recovery.
 
 #### Phase 3 — VR Validation & First-Person Testing
