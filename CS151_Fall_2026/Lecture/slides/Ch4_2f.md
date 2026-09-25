@@ -43,7 +43,7 @@ history: false
 
 ---
 
-# Mondays left off
+# Wednesdays left off
 - Supposed live coding
 
 ---
