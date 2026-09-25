@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-09-25">
+  <title>Lines and Labels</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Lines and Labels</h1>
+  <p class="author">Fred Agbo</p>
+  <p class="date">September 25, 2026</p>
+</section>
+
+<section class="slide level1">
+
+<h2 id="happy-friday">Happy FRIDAY!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Class grouping today: Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Class code is <code class="python">bR9RLT</code></li>
+<li>Introduce yourselves! What is your favorite shape?</li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arrangement.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=lcjjHj"
+style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="quick-announcements">Quick Announcements</h2>
+<ul>
+<li>Project 1 <strong><em>Wordle</em></strong> is due on <strong>Monday
+next week at 10pm</strong>
+<ul>
+<li>Hopefully, people are making significant progress with the
+milestones</li>
+</ul></li>
+<li>Heads up: Our first <strong>Midterm exam</strong> is a week from
+now!
+<ul>
+<li>Study materials will come out on or before Monday next week</li>
+<li>Sections next week will be for reviewing and studying</li>
+<li>More info about the midterm on Monday</li>
+</ul></li>
+<li>Need accommodations? Book a spot with Testing center by emailing
+them, and be sure to copy me</li>
+</ul>
+</section>
+<section id="mondays-left-off" class="slide level1">
+<h1>Mondays left off</h1>
+<ul>
+<li>Supposed live coding</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="estimating-pi">Estimating Pi</h2>
+<ul>
+<li>One of the ways that the value of <span
+class="math inline">\(\pi\)</span> can be estimated is by looking at the
+number of random points that strike a circle vs a surrounding box</li>
+<li>Our task here is to both estimate they value of <span
+class="math inline">\(\pi\)</span> using random numbers in this fashion,
+but to also visualize it!</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="a-solution">A Solution</h2>
+<pre ><code class="python" style="max-height: 800px; font-size: .8em">from pgl import GWindow, GRect, GOval
+import random
+
+WIDTH = 800
+HEIGHT = 800
+
+SIZE = 700
+DART_SIZE = 10
+
+gw = GWindow(WIDTH, HEIGHT)
+
+background = GRect(
+    WIDTH / 2 - SIZE / 2,
+    HEIGHT / 2 - SIZE / 2,
+    SIZE,
+    SIZE
+)
+background.set_filled(True)
+background.set_color('gray')
+gw.add(background)
+
+target = GOval(
+    WIDTH / 2 - SIZE / 2,
+    HEIGHT / 2 - SIZE / 2,
+    SIZE,
+    SIZE
+)
+target.set_filled(True)
+target.set_color('darkgray')
+gw.add(target)
+
+attempts = 1000
+successful_strikes = 0
+for i in range(attempts):
+    x = random.uniform(WIDTH / 2 - SIZE / 2, WIDTH / 2 + SIZE / 2)
+    y = random.uniform(HEIGHT / 2 - SIZE / 2, HEIGHT / 2 + SIZE / 2)
+    dart = GOval(
+        x - DART_SIZE / 2,
+        y - DART_SIZE / 2,
+        DART_SIZE,
+        DART_SIZE
+    )
+    dart.set_filled(True)
+    distance_to_center = (
+        (x - WIDTH / 2)**2 + (y - HEIGHT / 2)**2
+    ) ** (1/2)
+    if distance_to_center < SIZE / 2:
+        dart.set_fill_color('red')
+        successful_strikes += 1
+    else:
+        dart.set_fill_color('blue')
+    gw.add(dart)
+
+print(successful_strikes / attempts * 4 )</code></pre>
+</section>
+<section id="group-problems" class="slide level1">
+<h1>Group Problems</h1>
+</section>
+<section class="slide level1">
+
+<h2 id="problem-1-the-big-dipper">Problem 1: The Big Dipper</h2>
+<ul>
+<li>You are provided with a file already with a night scene of the Big
+Dipper</li>
+<li>Your task is to draw in the lines connecting the proper stars</li>
+<li>No copy/pasting numbers here! Use methods to grab the needed
+coordinates from the star ovals</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="problem-2-label-bounder">Problem 2: Label Bounder</h2>
+<ul>
+<li>Write a program that:
+<ul>
+<li>Chooses a random English word and sets it to a GLabel
+<ul>
+<li>You can place the word starting on the left of the screen, roughly
+halfway down</li>
+</ul></li>
+<li>Sets the font of that GLabel to a random size between 20 and 100pt,
+serif</li>
+<li>Draws a rectangle immediately around the GLabel, such that its top
+is at the ascent distance and bottom at the descent distance.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="example-solution">Example Solution</h2>
+<pre ><code class="python">from pgl import GWindow, GLabel, GRect
+import random
+from english import ENGLISH_WORDS
+
+WIDTH = 500
+HEIGHT = 200
+
+gw = GWindow(WIDTH, HEIGHT)
+
+word = random.choice(ENGLISH_WORDS).capitalize()
+size = random.randint(20, 100)
+
+label = GLabel(word, 0, HEIGHT / 2)
+label.set_font(f"{size}pt serif")
+gw.add(label)
+
+box = GRect(
+    label.get_x(),
+    label.get_y() - label.get_ascent(),
+    label.get_width(),
+    label.get_ascent() + label.get_descent()
+)
+box.set_color('red')
+gw.add(box)
+</code></pre>
+</section>
+<section class="slide level1">
+
+<h2 id="problem-3-whats-the-temp">Problem 3: What’s the Temp?</h2>
+<div class="cols">
+<div class="col" style="flex-grow: 2">
+<ul>
+<li>I’ve already created the basic thermometer to the right with a
+randomly set temperature</li>
+<li>Your job is to add the line markers and temperature labels, getting
+as close as possible to the image</li>
+<li>There are some constants defined in the starter file to help!</li>
+</ul>
+</div>
+<div class="col">
+<p><img data-src="../images/thermometer.png" /></p>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="example-solution-1">Example Solution</h2>
+<pre ><code class="python"># Just continuing from the starting template...
+
+temp = 10
+for i in range(MARKER_START_Y, BASE - THERM_HEIGHT, -MARKER_STEP):
+    line = GLine(
+        WIDTH / 2 + THERM_WIDTH / 2,
+        i,
+        WIDTH / 2 - THERM_WIDTH / 4,
+        i
+    )
+    line.set_line_width(2)
+    gw.add(line)
+
+    lab = GLabel(f"{temp}", WIDTH / 2 + THERM_WIDTH, i)
+    gw.add(
+        lab,
+        WIDTH / 2 + THERM_WIDTH,
+        i + lab.get_ascent() / 2
+    )
+    temp += 10</code></pre>
+</section>
+<section id="live-coding" class="slide level1">
+<h1>Live Coding</h1>
+</section>
+<section class="slide level1">
+
+<h2 id="recreating-connections">Recreating Connections</h2>
+<div class="cols">
+<div class="col">
+<ul>
+<li>Suppose we want to recreate the starting layout of the NYT’s
+Connections game</li>
+<li>The puzzle for today looks like the image to the right</li>
+</ul>
+</div>
+<div class="col">
+<p><img data-src="../images/NYT_Connections.png" /></p>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="code">Code</h2>
+<ul>
+<li>Sample solution to come!!! <!-- ```{.python style='font-size:.8em'}
+from pgl import GWindow, GRect, GLabel
+
+"""
+Algorithm:
+    Make a bunch of box with text in them
+    Assign each box a location, and add it
+"""
+
+def make_and_place_box(word, x, y):
+    """Make a box with the desired word centered in it
+
+    Algorithm:
+        Make a box of the desired dimensions
+        Make a label with the text
+        Center that label in the box
+        Add everything to the window
+    """
+    box = GRect(x, y, BOX_WIDTH, BOX_HEIGHT)
+    label = GLabel(word.upper())
+    label.set_font("bold 20pt sans-serif")
+    new_x = x + BOX_WIDTH / 2 - label.get_width() / 2
+    new_y = y + BOX_HEIGHT / 2 + label.get_ascent() / 2
+
+    gw.add(box)
+    gw.add(label, new_x, new_y)
+
+BOX_WIDTH = 200
+BOX_HEIGHT = 100
+BOX_SEP = 10
+
+WIDTH = 4 * (BOX_WIDTH + BOX_SEP)
+HEIGHT = 4 * (BOX_HEIGHT + BOX_SEP)
+
+gw = GWindow(WIDTH, HEIGHT)
+
+# Row 1
+make_and_place_box('wayne', 
+                    BOX_SEP / 2,
+                    BOX_SEP / 2)
+make_and_place_box('parliament', 
+                    BOX_SEP / 2 + (BOX_WIDTH + BOX_SEP),
+                    BOX_SEP / 2)
+make_and_place_box('standard', 
+                    BOX_SEP / 2 + 2 * (BOX_WIDTH + BOX_SEP),
+                    BOX_SEP / 2)
+make_and_place_box('lesson', 
+                    BOX_SEP / 2 + 3 * (BOX_WIDTH + BOX_SEP),
+                    BOX_SEP / 2)
+
+# Row 2
+make_and_place_box('kent', 
+                    BOX_SEP / 2, 
+                    BOX_SEP / 2 + (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('sync',
+                    BOX_SEP / 2 + (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('sheer', 
+                    BOX_SEP / 2 + 2 * (BOX_WIDTH + BOX_SEP),
+                    BOX_SEP / 2 + (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('colors', 
+                    BOX_SEP / 2 + 3 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + (BOX_HEIGHT + BOX_SEP))
+
+# Row 3
+make_and_place_box('stark', 
+                    BOX_SEP / 2, 
+                    BOX_SEP / 2 + 2 * (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('camel', 
+                    BOX_SEP / 2 + 1 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + 2 * (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('banner', 
+                    BOX_SEP / 2 + 2 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + 2 * (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('utter', 
+                    BOX_SEP / 2 + 3 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + 2 * (BOX_HEIGHT + BOX_SEP))
+
+# Row 4
+make_and_place_box('reseed', 
+                    BOX_SEP / 2, 
+                    BOX_SEP / 2 + 3 * (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('pure', 
+                    BOX_SEP / 2 + 1 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + 3 * (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('flag', 
+                    BOX_SEP / 2 + 2 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + 3 * (BOX_HEIGHT + BOX_SEP))
+make_and_place_box('salem', 
+                    BOX_SEP / 2 + 3 * (BOX_WIDTH + BOX_SEP), 
+                    BOX_SEP / 2 + 3 * (BOX_HEIGHT + BOX_SEP))
+``` --></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>
