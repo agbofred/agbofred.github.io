@@ -49,4 +49,9 @@ gw.add(star5)
 gw.add(star6)
 gw.add(star7)
 
+line1 = GLine(star1.get_x() + 5/2, star1.get_y() + 5/2, star2.get_x() + 5/2, star2.get_y() + 5/2)
+line1.set_color("white")
+line1.set_line_width(4)
+gw.add(line1)
+
 

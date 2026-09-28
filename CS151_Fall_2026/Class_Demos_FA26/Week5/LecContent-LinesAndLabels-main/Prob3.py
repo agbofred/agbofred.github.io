@@ -50,6 +50,28 @@ def create_basic_thermometer():
     gauge.set_line_width(THERM_WIDTH)
     gauge.set_color('red')
     gw.add(gauge)
+    
+    temp = 10
+    for i in range(MARKER_START_Y, BASE - THERM_HEIGHT, - MARKER_STEP): # Start: 500, Limit: 50, Stride: 50
+        # 500, 450, 300, ---- 100
+        line = GLine(
+            WIDTH / 2 + THERM_WIDTH / 2,
+            i,
+            WIDTH / 2 - THERM_WIDTH / 4,
+            i
+        )
+        line.set_line_width(2)
+        gw.add(line)
+
+        lab = GLabel(f"{temp}", WIDTH / 2 + THERM_WIDTH, i)
+        gw.add(
+            lab,
+            WIDTH / 2 + THERM_WIDTH,
+            i + lab.get_ascent() / 2
+        )
+        temp += 10
+
+
 
 
 gw = GWindow(WIDTH, HEIGHT)

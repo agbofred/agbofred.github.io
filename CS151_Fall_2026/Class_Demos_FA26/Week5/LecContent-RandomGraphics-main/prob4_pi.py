@@ -23,7 +23,7 @@ target_area.set_fill_color("darkgrey")
 target_area.set_filled(True)
 gw.add(target_area)
 
-num_of_attempts = 500000
+num_of_attempts = 50000
 successful_strike = 0
 for i in range(num_of_attempts):
     x = random.uniform(WIDTH/2 - SIZE/2, WIDTH/2 + SIZE/2)

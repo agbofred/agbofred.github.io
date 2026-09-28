@@ -245,7 +245,7 @@ gw.add(rect)
 ## A Solution
 - TO BE PASTED!!!
 
-<!-- ```{.python style='max-height: 800px; font-size: .8em'}
+```{.python style='max-height: 800px; font-size: .8em'}
 from pgl import GWindow, GRect, GOval
 import random
 
@@ -300,4 +300,4 @@ for i in range(attempts):
     gw.add(dart)
 
 print(successful_strikes / attempts * 4 )
-``` -->
+```
