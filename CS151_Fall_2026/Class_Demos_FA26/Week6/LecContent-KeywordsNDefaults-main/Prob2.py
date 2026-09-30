@@ -1,6 +1,6 @@
 from sandwich import print_sandwich
 
-def make_sandwich(bread, meat, cheese, sauce, toasted, is_cut):
+def make_sandwich(bread, meat, cheese, sauce =" Ginger", is_cut= False, toasted = True):
     """Makes a desired sandwich and prints it to the terminal
 
     Inputs:
@@ -17,5 +17,6 @@ def make_sandwich(bread, meat, cheese, sauce, toasted, is_cut):
 
 
 if __name__ == '__main__':
-    make_sandwich("Sourdough", "Turkey meat", "Swiss", "Mustard", False, False )
+    make_sandwich("Sourdough", "Turkey meat", "Swiss", "Mustard")
+  
     #  make_sandwich("Sourdough", "Turkey meat")

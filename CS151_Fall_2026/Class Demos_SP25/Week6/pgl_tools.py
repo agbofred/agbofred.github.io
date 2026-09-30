@@ -1,13 +1,11 @@
-from pgl import GOval
+from pgl import GWindow, GOval
 
 """
 A collection of functions to be used to facilitate quickly
 creating objects in PGL
 """
 
-def create_filled_circ(x_cent, y_cent, radius, 
-                       is_filled =True, is_border = True, 
-                       color = "black", ):
+def create_filled_circ(x_cent, y_cent, radius, is_filled =True, is_border = True, color = "black", ):
     circ = GOval(
         x_cent/2 - radius,
         y_cent/2 - radius,
