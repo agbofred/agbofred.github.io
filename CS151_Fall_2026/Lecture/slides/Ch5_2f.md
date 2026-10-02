@@ -57,9 +57,7 @@ history: false
     - Your notes, handwritten or electronic
     - Past work on GitHub
 - Sections this week about reviewing
-- Friday weirdness:
-    - You will be in Collins 323, since the BoT takes over this room
-    - I will not be there. Prof Deutschbein will be proctoring
+
 :::
 
 ---
