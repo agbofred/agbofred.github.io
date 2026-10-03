@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 4"
-subtitle: "Due: March 3, 2025"
+subtitle: "Due: October 12, 2026"
 format:
   html:
     theme:
@@ -18,10 +18,10 @@ format:
     title-block-banner-color: white
 ---
 
-There are just two questions in this problem set. Question 1 is about working with coordinate positions in PGL, while Question 2 introduces you to mouse-driven events in PGL. Files are provided in the starting template linked before for all two questions. Make sure you fill out the top metadata on each problem please!
+There are three questions in this problem set. Make sure you fill out the top metadata on each problem please!
 
 ```{=html}
-<a href='https://classroom.github.com/a/MTbhCjMY' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
+<a href='https://classroom50.org/Agbo-CS151/cs151-fa-2026/assignments/problem-set-4/accept' target="_blank" class="btn btn-info" style='margin:auto; display: block; width:50%;'>Accept Assignment</a>
 ```
 <br>
 
