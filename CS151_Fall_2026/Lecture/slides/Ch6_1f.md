@@ -1,7 +1,7 @@
 ---
-title: "Binary Strings"
-author: Fred Agbo & Jed
-date: "September 16, 2026"
+title: "Interactive Programs"
+author: Fred Agbo
+date: "October 5, 2026"
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
@@ -13,11 +13,11 @@ history: false
 
 ---
 
-## Happy New Week!
+## Happy New Week 7!
 ::::{style='font-size:.8em'}
 - Class grouping today: Scan the QR code or go to [https://tools.jedrembold.prof/daily](https://tools.jedrembold.prof/daily)
-- Class code is `TD9RC0`
-- Introduce yourselves! What is your favorite number in binary?
+- Class code is `HdT47`
+- Introduce yourselves! What is your favorite color?
 ::::
 
 ::::::cols
@@ -30,117 +30,195 @@ history: false
 ::::
 ::::::
 
+---
 
 ## Quick Announcements
-- Problem Set 3 is live and due on Monday Sept 21!
-- Thanks to those who attended the SCIS Open House
-    - Any follow up questions, please ask me.
+- Nothing is due today.
+- Midterm exam grading is still ongoing
+- Problem Set 4 was published and __due next week Monday at 10 pm__ 
+    - Problem 1 & 2 should be something you could handle after today's class
+    - You should also have the tools to complete problem 3 by Wednesday
+- We are in Ch6 of the text this week, which is interactive graphics
 
+---
 
-# Group Problems
+# Live Coding
+- Recall the pine tree coding exercise from last week?
 
-## Problem 1: Base-ic Counting
+---
+
+## Growing Trees
 ::::::cols
 ::::col
-- How would you write out a representation of the number of circles to the right in:
-  - Decimal (base-10)
-  - Binary (base-2)
-  - Octal (base-8)
-  - Hex (base-16)
+- I'd like to write a utility function to draw a pine tree directly to the canvas
+- I'll specify the bottom location of the tree, the height, and whether it should have snow on its branches
 ::::
 
 ::::col
-\begin{tikzpicture}%%width=80%
-\foreach \c in {0,1,...,17} {
-	\pgfmathparse{floor(\c/4)}
-	\def\y{\pgfmathresult}
-	\pgfmathparse{Mod(\c,5)}
-	\def\x{\pgfmathresult}
-	\node[circle, thick, fill=Red, minimum size=0.75cm] at ({Mod(\c,5)}, {floor(\c/5)}) {};
-}
-\end{tikzpicture}
 ::::
 ::::::
 
+---
 
+# Recap of the Lecture Video
+- I'll run through the contents of this lecture video and demo a few things.
 
-## Problem 2: Getting Energized
-- The Java compiler has a fun quirk where every binary file it produces begins with
-<br><br>
+---
 
-\begin{tikzpicture}%%width=70%
-[
-every node/.style={draw, thick, Green, font=\Large}
-]
-\node(1) at (0,0) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {0};
-\node[right=0cm of 1](1) {0};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {0};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {0};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {1};
-\node[right=0cm of 1](1) {0};
-\end{tikzpicture}
+## The Python Event Model
+- Graphical applications usually make it possible for the user to control the action of a program by using an input device such a mouse.
+	- Programs supporting this type of control are called _interactive programs_.
+- User actions such as clicking the mouse are called _events_.
+- Programs that respond to events are said to be _event driven_.
+- User input does not generally occur at predictable times. As the events are not controlled by the program, they are said to be _asynchronous_.
+- In Python, you write a function that acts as a _listener_ for a particular event type. When the event happens, the listener is called.
 
-<br>
+---
 
-- What is this in octal? hexadecimal?
-- There are hard ways to do this, and very easy ways! I recommend the easy ways :)
+## First Class Functions
+- Functions in Python are treated as data values just like anything else!
+	- We will need to take advantage of this to write listener functions.
+- You can assign a function to a variable, pass it as a parameter, return it as a result, etc
+- Functions treated like any other data value are called _first-class functions_
+- To work with a function itself, you leave off the `()`. Including the parentheses is how you _call_ the function!
 
-## Floating Representations
-- Python represents floating point (fractional) numbers using two integers
-	- One to represent the significant digits
-	- One to represent the exponent (where the decimal place is)
-- $1\frac{1}{4}$ Example
-	- In decimal:
-		$\quad\displaystyle 1\frac{1}{4} = \frac{1}{1} + \frac{2}{10} + \frac{5}{100} = 1.25 = (125, -2)$
-	- In binary:
-		$\quad\displaystyle 1\frac{1}{4} = \frac{1}{1} + \frac{0}{2} + \frac{1}{4} = 1.01 = (101, -10)$
+---
 
-## Problem 3: Floating Problems
-:::incremental
-- With this in mind, how could you convert the value $\tfrac{7}{8}$ to a binary floating point representation?
--
-	$$\frac{7}{8} = \frac{0}{1} + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} = 0.111 = (111, -11)$$
-- Now how would we convert $\frac{1}{10}$ to binary??
-	- We run into a problem! An infinitely repeating sequence!
-	$$\frac{1}{10} = \frac{0}{1} + \frac{0}{2} + \frac{0}{4} + \frac{0}{8} + \frac{1}{16} + \frac{1}{32} + \frac{0}{64} + \frac{0}{128} + \frac{1}{256} +  \cdots = 0.0001100110011\ldots$$ 
-	- Have to stop the sequence somewhere and approximate it:
-		$$\frac{3}{32} = 0.09375\quad\text{or}\quad\frac{25}{256} = 0.09765625$$
+## A First Class Example
+```{.python style='max-height:900px'}
+import math
+
+def evaluate_numbers(func):
+	print(func)
+	print(func(0))
+	print(func(2))
+	print(func(10))
+
+A = evaluate_numbers
+
+A(math.sqrt)
+A(math.exp)
+```
+
+---
+
+## Closures
+::::cols
+:::col
+Consider the code to the right. 
+
+::::: incremental
+- Why does the line 12 not error?
+    - Nothing named `a` should still exist when it is called!
+- [Python Tutor](http://www.pythontutor.com/visualize.html#code=b%20%3D%201%0Adef%20f1%28a%29%3A%0A%20%20%20%20print%28a%29%0A%20%20%20%20print%28b%29%0A%20%20%20%20def%20f2%28%29%3A%0A%20%20%20%20%20%20%20%20c%20%3D%20a%20%2B%20b%0A%20%20%20%20%20%20%20%20return%20c%20*%203%0A%20%20%20%20return%20f2%20%0Af2%20%3D%20f1%2810%29%0Ac%20%3D%20f2%28%29&cumulative=false&curInstr=0&heapPrimitives=false&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false)
+- `f2` must also keep track of any local variables!
+- The local variables that are included as part of a function are called its _closure_
+:::::
+
+:::
+:::col
+```{.python style='max-height:800px' data-line-numbers=''}
+b = 1
+def f1(a):
+    print(a)
+	print(b)
+
+	def f2():
+		c = a + b
+		return c * 3
+	return f2 
+
+f2 = f1(10) 
+c = f2()
+```
+:::
+::::
+
+---
+
+## Our First Interactive Example
+:::{style='font-size:.9em'}
+- Consider the simple program below, where we've imported the basics and some of our helper functions
+  ```python
+  def draw_dots():
+      def click_action(event):
+          c = create_filled_rect(
+              event.get_x(), event.get_y(), 
+              10,10, random_color())
+          gw.add(c)
+  
+      gw = GWindow(500, 500)
+      gw.add_event_listener("click", click_action)
+  ```
+- The `click_action` function specifies what to do when the mouse is clicked
+	- Note that it has access to the `gw` variable since it is in the enclosing function and thus in the closure.
 :::
 
-## Consequences
-- The best we can do within the range of normal integers
-	$$\frac{3602879701896397}{2^{55}} = 0.10000000000000000555111512312578270$$
-- When doing operations on these numbers, extra decimals will sometimes get rounded off, suddenly making the number look precise, but you might always have a tiny bit of this rounding error showing up in floating point values.
-- So be _careful_ using `==` for floating numeric comparisons! Rounding might result in unexpected falsehoods
-	- `0.1 + 0.1 + 0.1 != 0.3`
-	- Far better to check if two numbers are within a small margin of one another, or greater or less than the other
+---
+
+## Registering a Listener
+- The last line of our example function:
+
+	```python
+	gw.add_event_listener("click", click_action)
+	```
+	tells the graphics window (`gw`) to call the `click_action` function whenever a mouse "click" occurs within the window.
+- When the user clicks the mouse, the graphics window, in essense, calls the client back to let them know that a click has occured. Thus, functions such as `click_action` are known as _callback functions_.
+- The parameter `event` given to the callback function is a special data structure called a _mouse event_, which contains details about the specifics of the event that triggered the action.
 
 
-# Live-Coding
+---
 
-## Concatenating ASCII
-- Suppose we wanted to print out the simple ASCII table as we saw it in the video
-- Grid of 8 rows and 16 columns
-- We can use `chr` to get the characters
-- Need to "build-up" a string to print for each row
+## Mouse Events
+- We have a fairly comprehensive list of mouse-events that we can trigger callbacks on:
 
-## A Solution
-```{.python style='max-height: 800px; font-size:.8em;'}
-row=''
-for i in range(32,127):
-    if len(row) == 16:
-        print(row)
-        row = ""
-    row = row + chr(i)
-print(row)
+| Name | Description
+---:|:-----
+`"click"` | The user clicks the mouse in the window
+`"dblclick"` | The user double-clicks the mouse in the window
+`"mousedown"` | The user presses the mouse button down
+`"mouseup"` | The user releases the mouse button
+`"mousemove"` | The user moves the mouse
+`"drag"` | The user moves the mouse with the button down
+
+---
+
+## Event Details
+- Certain actions can trigger more than one event
+	- Clicking generates a "mousedown", "mouseup", and then "click" event, in that order
+- Events trigger no action unless the window is listening for that event
+	- If I drag my mouse in the `draw_dots()` function, you'll notice that nothing happens
+- You can setup however many listeners you feel you need in order to make your program behave as desired
+```python
+gw.add_event_listener("click", click_action)
+gw.add_event_listener("dblclick", dblclk_action)
 ```
+
+---
+
+# Group Problems
+- Work in group on one computer
+
+---
+
+## Problem 1: PGL Listeners
+- Here you have a coding task. Work in pairs or trios on a single computer.
+- Your task is to:
+    - Add a black filled background rectangle to the window the same size as the window
+    - Add a while filled circle somewhere near the middle (no need to be exact)
+    - Add a listener so that when the mouse is clicked, the background rectangle changes to a new random color
+    - Add a listener so that when the mouse is double clicked, the circle moves down the screen one diameter's distance
+
+
+
+<!-- ## Line Art
+- Suppose we want to make a basic drawing program
+- When the user presses the mouse down, we start drawing a line
+- As the user drags the mouse around, we actively update the placement of that line to end at the users cursor
+- When the user releases the mouse button, we lock that line onto the screen
+- Now a new click starts drawing a new line -->
+
+
+
+
+
