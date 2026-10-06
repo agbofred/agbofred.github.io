@@ -1,6 +1,4 @@
 from pgl import GWindow, GOval, GLine
-#from pgl_tools import create_filled_circle
-
 def two_body():
     def create_filled_circle(x, y, r, color="black"):
         circ = GOval(x-r, y-r, 2*r, 2*r)

@@ -1,5 +1,4 @@
 from pgl import GWindow, GOval, GRect
-from pgl_tools import create_filled_circ
 import random
 
 WIDTH = 500
@@ -16,19 +15,6 @@ def back_ground(e):
     else:
         bg.set_filled(True)
         bg.set_fill_color('grey')
-circ = create_filled_circ(WIDTH/2, HEIGHT/2, 50, color = "white") 
-
-def move_diag(e):
-   x = e.get_x()     
-   y = e.get_y()
-   circ.move(x,y)
-   
-def move_continues():
-    circ.move(1,1)
-    if circ.get_x()>=400:
-        timer.stop()
-    
-
         
 
 
@@ -37,8 +23,5 @@ gw = GWindow(WIDTH, HEIGHT)
 bg = GRect(0, 0, WIDTH, HEIGHT)
 bg.set_filled(True)
 gw.add(bg)
-gw.add(circ)
 
 gw.add_event_listener("click", back_ground)
-gw.add_event_listener('dblclick', move_diag)
-timer = gw.set_interval(move_continues, 20)
