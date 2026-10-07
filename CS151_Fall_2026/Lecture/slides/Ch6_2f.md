@@ -33,10 +33,10 @@ history: false
 ---
 
 ## Quick Announcements
-- Nothing is due today.
 - Midterm exam grading was posted
-    - Average grade was **72%**, which is not so bad but needs a lot of improvement in understanding of contents
+    - Average grade was ***72%***, which is not so bad but needs a lot of improvement in understanding of contents
 - Problem Set 4 is __due next week Monday at 10 pm__ 
+- No class on Friday October 9. Its Mid-semester Break!
 - Don't forget to attend your session meeting (Today/Tomorrow)
 
 ---
