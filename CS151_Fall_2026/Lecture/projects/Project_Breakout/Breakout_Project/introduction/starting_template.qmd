@@ -18,6 +18,7 @@ The starting template for this project contains the initial version of the `Brea
 """
 This program (once you have finished it) implements the Breakout game
 """
+import run_journal
 from pgl import GWindow, GOval, GRect #<1>
 import random #<1>
 
@@ -66,10 +67,10 @@ if __name__ == "__main__": # <4>
 ```
 
 0. Submission metadata. Please make sure you don't forget to fill it all out!
-1. It includes the imports you will need in writing the game.
+1. It includes the imports you will need in writing the game. Please clearly describe your responses to the promot during run-time and make sure to upload the journal log alongside your submission to Classroom 50.
 2. It defines the constants that control the game parameters, such as the dimensions of the various objects. Your code should use these constants internally so that changing them in your file changes the behavior of the program accordingly. Note that some of these constants are specified directly, but that others are derived from constants specified earlier.
 3. It includes a skeleton for the `breakout` function that creates the graphics window. Your job is to add the code for the Breakout game along with the definition of any helper and callback functions, all of which are easiest to define as inner functions inside `breakout` so they can share its variables.
 4. It includes the startup code to invoke the `breakout` function when the `Breakout.py` module is run from the command line.
 
-The library `pgl.py` is included in the initial template repository as well, so that you should be able to download the entire repository and get straight to coding.
+The libraries, `pgl.py` and `run_journal` are included in the initial template repository as well, so that you should be able to download the entire repository and get straight to coding.
 

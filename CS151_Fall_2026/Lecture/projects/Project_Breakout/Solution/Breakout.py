@@ -4,7 +4,7 @@
 """
 This program (once you have finished it) implements the Breakout game
 """
-
+import run_journal
 from pgl import GWindow, GOval, GRect, GState
 import random
 

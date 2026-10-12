@@ -1,22 +1,16 @@
-from pgl import GWindow, GLine
- 
-WIDTH = 500
-HEIGHT = 500
- 
-def draw_lines():
-    def mousedown_event(e):
-        x = e.get_x()
-        y = e.get_y()
-        gw.line = GLine(x,y,x,y)
-        gw.add(gw.line)
- 
-    def drag_action(e):
-        gw.line.set_end_point(e.get_x(), e.get_y())
- 
-    gw = GWindow(WIDTH, HEIGHT)
-    gw.line = None
-    gw.add_event_listener("mousedown", mousedown_event)
-    gw.add_event_listener("drag", drag_action)
- 
+from pgl import GWindow, GOval, GLine, GRect
+def mystery():
+    def enigma():
+        rect.move(1, 1)
+
+    def puzzle():
+        rect.set_filled(True)
+
+    gw = GWindow(200, 200)
+    rect = GRect(0, 0, 25, 25)
+    gw.add(rect)
+    gw.set_interval(enigma, 20)
+    gw.set_timeout(puzzle, 1000)
+
 if __name__ == '__main__':
-    draw_lines()
+    mystery()

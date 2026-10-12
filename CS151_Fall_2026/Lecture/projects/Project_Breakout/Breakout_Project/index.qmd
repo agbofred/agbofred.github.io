@@ -1,14 +1,15 @@
 ---
 title: "Project 2: Breakout"
+subtitle: "Due: October 19, 2026"
 ---
 
 Your job in this programming project is to write the classic arcade game of Breakout, which was invented by Steve Wozniak before he founded Apple with Steve Jobs. It is a large project, but well within your capabilities, as long as you break the problem up into manageable pieces. The decomposition is discussed in the milestones, and there are several suggestions for staying on top of things in the "Strategy and Tactics" section below.
 
 
-As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
+As per usual, you will submit this project through Classroom 50, and you can find the link to accept the project and download the initial template files below.
 
 ```{=html}
-<a href='https://classroom.github.com/a/mgfq798M' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom50.org/Agbo-CS151/cs151-fa-2026/assignments/project-breakout/accept' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br>
 
