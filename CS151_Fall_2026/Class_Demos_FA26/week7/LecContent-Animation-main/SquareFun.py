@@ -17,11 +17,18 @@ def throw_dart():
     oval.set_filled(True)
     gw.add(oval)
 def move_across():
-    rect.move(2,0)
+    if rect.get_width()<=100:
+        rect.move(1,0)
+        rect.set_size(rect.get_width()+1, rect.get_height()+1)
+    rect.move(1,0)
+    
 
 gw = GWindow(WIDTH, HEIGHT)
 rect = GRect(0, HEIGHT / 2 - BOX_SIZE / 2, BOX_SIZE, BOX_SIZE)
 rect.set_filled(True)
 rect.set_color("red")
 gw.add(rect)
-gw.set_interval(move_across, 50)
+# gw.oval = None
+gw.set_interval(move_across, 10)
+# gw.set_timeout(throw_dart, WIDTH//2+1500)
+
