@@ -1,0 +1,495 @@
+---
+title: "Conversational AI with Language Models (CALM)"
+subtitle: "AI 380: Human-AI Interaction · Fall 2026"
+author: "Rasa Pro CALM deep dive"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    toc: false
+    slide-level: 2
+---
+
+```{=html}
+<style>
+:root {
+  --cardinal: #BA0C2F;
+  --cardinal-dark: #7A0A22;
+  --midnight: #003B5C;
+  --field: #F19C49;
+  --gold: #C0AC7E;
+  --gold-light: #EDE6D6;
+  --cream: #FAF8F5;
+  --ink: #2B2320;
+}
+.reveal { font-size: 27px; color: var(--ink); }
+.reveal h1, .reveal h2 { color: var(--cardinal); font-family: Georgia, "Cambria", serif; }
+.reveal h2 { font-size: 1.45em; }
+.reveal h3 { font-size: 1.05em; color: var(--midnight); }
+.reveal p, .reveal li { line-height: 1.32; }
+.reveal table { font-size: 0.5em; }
+.reveal table th { background: var(--cardinal); color: white; }
+.reveal table tr:nth-child(even) { background: var(--cream); }
+.reveal .callout {
+  background: var(--cream); border-left: 6px solid var(--cardinal);
+  padding: 0.6em 1em; margin: 0.6em 0; border-radius: 6px;
+}
+.reveal .kicker { color: var(--gold); font-weight: 700; letter-spacing: 2px; font-size: 0.5em; }
+.reveal .title-slide, .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide p {
+  color: white !important;
+}
+.reveal .slides section.title-slide, .reveal .slides > section:first-of-type {
+  background: var(--cardinal) !important;
+}
+.reveal section[data-background-color] h1,
+.reveal section[data-background-color] h2 { color: white; }
+.reveal .tag-cardinal { background: var(--cardinal); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+.reveal .tag-midnight { background: var(--midnight); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+.reveal .tag-field { background: var(--field); color: white; padding: 0.45em 0.8em; border-radius: 8px; }
+</style>
+```
+
+
+## Conversational AI with Language Models (CALM) {.title-slide background-color="#BA0C2F"}
+
+*A deep dive into Rasa Pro's architecture: flows, commands, actions, domain, and slots*
+
+AI 380: Human-AI Interaction · Fall 2026 · Prof. Fred Agbo, Willamette University
+
+## Where We're Headed
+
+1. **What is CALM?**: The idea, the three-part pipeline, and where it comes from
+
+2. **The Building Blocks**: Flows, commands, dialogue management, actions, domain, slots
+
+3. **CALM vs. Intent-Based NLU**: Why separating understanding from execution gives sturdier multi-turn dialogue
+
+4. **Differentiation**: Rasa CALM vs. IBM watsonx Assistant and other approaches
+
+## What is CALM? {background-color="#BA0C2F"}
+
+<span class="kicker">SECTION ONE</span>
+
+*An LLM that understands, a flow that decides*
+
+## CALM in One Slide
+
+<small>*Source: Rasa Docs, “Conversational AI with Language Models (CALM)”*</small>
+
+- CALM is the dialogue system behind Rasa's text and voice assistants: it interprets input, manages the dialogue, and keeps conversations on track.
+- It combines language-model flexibility with predefined business logic.
+- Separation of concerns: the LLM keeps the conversation fluent but does not decide business logic.
+- Conversational awareness: topic changes, corrections, and clarifications are handled.
+- Deterministic execution: structured workflows that are easier to debug.
+- Efficiency: designed to work with smaller fine-tuned models (e.g., Llama 8B) to cut latency and cost.
+- Integration: works with existing NLU classifiers, entity extractors, and tools.
+
+<div class="callout">Core design idea: the LLM interprets; the flow executes.</div>
+
+## How CALM Works: Three Stages
+
+<small>*Source: Rasa Docs, CALM overview and dialogue management pages*</small>
+
+1. **User message**: text or voice input
+2. **1 · Dialogue Understanding**: LLM reads the conversation in context and outputs commands
+3. **2 · Dialogue Management**: Executes commands within flows: start/stop/resume a flow, patterns, custom actions, RAG
+4. **3 · Response Rephraser (optional)**: Templated responses by default; an LLM can improve fluency
+
+![Rasa docs figure “Rasa CALM Dialogue System” (rasa.com/docs/learn/concepts/calm)](https://mintcdn.com/rasa-43f32701/MGuuyajq_elf6BWb/images/legacy/calm_dialogue_system.png?fit=max&auto=format&n=MGuuyajq_elf6BWb&q=85&s=f82e76cb68ff8f915f5b796186c3a357){fig-alt="Rasa docs figure “Rasa CALM Dialogue System” (rasa.com/docs/learn/concepts/calm)" width="55%"}
+
+<small>Source: Rasa docs figure “Rasa CALM Dialogue System” (rasa.com/docs/learn/concepts/calm). © Rasa; shown from Rasa's public documentation.</small>
+
+<small>Diagram is our own simplified rendering of the pipeline described in Rasa's docs. The official Rasa figure is embedded in the QMD version.</small>
+
+## Where Does CALM Come From?
+
+<small>*Source: Bocklisch, Werkmeister, Varshneya & Nichol (2024), arXiv:2402.12234*</small>
+
+**The paper.** “Task-Oriented Dialogue with In-Context Learning” (Rasa authors, Feb 2024) presents the approach behind CALM.
+
+**The claim.** Pair an LLM's in-context learning with deterministic business logic: the LLM turns the conversation into a domain-specific language that drives the logic.
+
+**The comparison.** The authors compare against intent-based NLU and report less development effort, better handling of complex dialogues, and good scaling to many tasks.
+
+<div class="callout">These are the authors' own reported results. Treat them as vendor research and discuss how you would verify them.</div>
+
+## The Building Blocks {background-color="#003B5C"}
+
+<span class="kicker">SECTION TWO</span>
+
+*Flows · Commands · Dialogue management · Actions · Domain · Slots*
+
+## Flows: Business Logic as Steps
+
+<small>*Source: Rasa Docs, “Flows” reference and dialogue management page*</small>
+
+```yaml
+flows:
+  hello_world:
+    description: A simple flow that greets the user
+    steps:
+      - action: utter_greet
+```
+
+- A flow is a structured sequence of steps that defines a business process.
+- It defines what to collect, what data to read/write via APIs, and how to branch. It does not list every possible path.
+- The flow ID is required and unique; `description` is required.
+- The description is what Dialogue Understanding uses to decide when to start the flow, so write it from the user's point of view.
+
+![Rasa docs figure: password-reset flow in Studio and Pro (rasa.com/docs/learn/concepts/dialogue-management)](https://mintcdn.com/rasa-43f32701/eDjBolAWgmzj0Tj5/images/legacy/learn/concepts_dm_password_reset_arrows.png?fit=max&auto=format&n=eDjBolAWgmzj0Tj5&q=85&s=43b2e61d5995df367ab5ca7906fd0934){fig-alt="Rasa docs figure: password-reset flow in Studio and Pro (rasa.com/docs/learn/concepts/dialogue-management)" width="55%"}
+
+<small>Source: Rasa docs figure: password-reset flow in Studio and Pro (rasa.com/docs/learn/concepts/dialogue-management). © Rasa; shown from Rasa's public documentation.</small>
+
+## Flow Properties and Step Types
+
+<small>*Source: Rasa Docs, “Flows” and “Flow Steps” reference*</small>
+
+| Element | What it does |
+|---|---|
+| `description` (required) | Summary the LLM uses to decide when to start the flow |
+| `nlu_trigger` (optional) | Intents that can start the flow (NLU coexistence) |
+| `persisted_slots` (optional) | Slots that keep their values after the flow ends (otherwise reset) |
+| `collect` | Ask for information and store it in a slot |
+| `action` | Run a response (utter_...) or a custom action |
+| `set_slots` | Assign slot values directly |
+| `link` | Start another flow after this one ends |
+| `call` | Embed another flow mid-way, then return and continue |
+| `next` with `if` / `then` / `else` | Branch on slot values or jump to a step `id` |
+
+## Branching, Linking, and Calling
+
+<small>*Source: Rasa Docs, “Flows” reference (examples shortened)*</small>
+
+```yaml
+flows:
+  basic_flow_with_branching:
+    description: a flow with a branch
+    steps:
+      - action: utter_greet
+      - collect: age
+        next:
+          - if: slots.age < 18
+            then: too_young_step
+          - else: old_enough_step
+      - id: too_young_step
+        action: utter_too_young
+      - id: old_enough_step
+        action: utter_old_enough
+```
+
+- `link: collect_feedback` at the end of `transfer_money` starts a follow-up flow once it finishes.
+- `call` embeds a child flow (e.g., collect recipient details) and returns to the parent.
+- Docs advise that parent and child flows should not collect overlapping slots.
+- `ask_before_filling: false` plus an `initial_value` makes a question optional: it is skipped unless the user volunteers a value.
+
+## Commands: The LLM's Output
+
+<small>*Source: Rasa Docs, “Dialogue Understanding”*</small>
+
+| Command | Meaning |
+|---|---|
+| `start flow` | The user wants to complete a specific flow |
+| `cancel flow` | The user does not want to continue the current flow |
+| `clarify flows` | Several flows could fit the request |
+| `set slot` | The user supplied a value a flow needs |
+| `correct slot` | The user changed a previously given value |
+| `chitchat` | The user is making small talk |
+| `knowledge answer` | The question is answered from a knowledge base |
+| `human handoff` | The user wants a human |
+
+<small>Version note: the command-generator reference lists the prompt actions as start flow, set slot, disambiguate flows, search and reply, cancel flow, and repeat message. Names differ by docs page and release, so check the version you deploy.</small>
+
+## Dialogue Understanding in Action
+
+<small>*Source: Rasa Docs, “Dialogue Understanding”*</small>
+
+- Input to the LLM: the conversation transcript, the latest message, and the collected slots.
+- Output: a list of commands for the dialogue manager. The LLM suggests next steps; it does not execute them.
+- Guardrail: commands can only use flows and knowledge bases you defined. The system cannot invent flows or free-form business replies.
+- Example (docs): “Book a flight from London to Singapore” → `start flow book_flight; set slot origin London; set slot destination Singapore`.
+- Context resolves short replies: after “card”, the single word “cancel” leads to `start flow cancel_card`.
+- If several flows fit → `clarify flows`; if only one fits → `start flow` directly.
+
+![Rasa docs figure “dialogue understanding” (rasa.com/docs/learn/concepts/dialogue-understanding)](https://mintcdn.com/rasa-43f32701/MGuuyajq_elf6BWb/images/legacy/learn/concepts_dialogue_understanding.png?fit=max&auto=format&n=MGuuyajq_elf6BWb&q=85&s=de3ecf35e4334a3c7f9e337b2aae7472){fig-alt="Rasa docs figure “dialogue understanding” (rasa.com/docs/learn/concepts/dialogue-understanding)" width="55%"}
+
+<small>Source: Rasa docs figure “dialogue understanding” (rasa.com/docs/learn/concepts/dialogue-understanding). © Rasa; shown from Rasa's public documentation.</small>
+
+## Choosing a Command Generator
+
+<small>*Source: Rasa Docs, “LLM Command Generators” reference*</small>
+
+**SearchReadyLLMCommandGenerator.** Recommended when the LLM should trigger RAG (e.g., with EnterpriseSearchPolicy). Prioritizes flows over knowledge questions and small talk.
+
+**CompactLLMCommandGenerator.** Recommended in all other cases. `minimize_num_calls` is on by default: the LLM call is skipped when the NLU adapter already issued the needed command.
+
+**Good to know.** Only one LLM-based generator per pipeline. Single-step and multi-step generators are deprecated (removal planned for Rasa 4.0). Flow retrieval keeps the prompt from growing with every flow.
+
+<div class="callout">Any LLM that supports a /chat endpoint can be configured; Rasa ships prompt templates for several model families.</div>
+
+## Dialogue Management: The Flow Engine
+
+<small>*Source: Rasa Docs, “Dialogue Management” and “Flow Policy”*</small>
+
+- The dialogue manager receives commands and routes between flows, collects information, calls backends, and sends responses, within the business logic in the flows.
+- FlowPolicy is a state machine: it tracks the assistant's state, handles step transitions, and starts repair flows when needed.
+- Active flows live on a last-in, first-out stack: the most recently started flow finishes first, then the previous one resumes.
+- A flow can be started by a component such as the LLM command generator, by another flow's link, or automatically by FlowPolicy for conversation repair.
+- Off-path input (out-of-scope questions, topic changes, corrections, interruptions) is handled by system-provided conversation pattern flows.
+
+![Rasa docs figure: dialogue management (rasa.com/docs/learn/concepts/dialogue-management)](https://mintcdn.com/rasa-43f32701/eDjBolAWgmzj0Tj5/images/legacy/learn/concepts_dialogue_management.png?fit=max&auto=format&n=eDjBolAWgmzj0Tj5&q=85&s=9dc541b619e45a1a3dc8deff0bc20a87){fig-alt="Rasa docs figure: dialogue management (rasa.com/docs/learn/concepts/dialogue-management)" width="55%"}
+
+<small>Source: Rasa docs figure: dialogue management (rasa.com/docs/learn/concepts/dialogue-management). © Rasa; shown from Rasa's public documentation.</small>
+
+## Conversation Patterns: Built-In Repair
+
+<small>*Source: Rasa Docs, “Conversation Patterns”*</small>
+
+| Category | Patterns listed in the docs |
+|---|---|
+| Conversation repair | Correction (update stored information), clarification, interruption |
+| Conversation navigation | Cancel, restart, complete, start a conversation |
+| External support | Search (knowledge-base answers), human handoff, chitchat |
+| Voice | Repeat (say the last message again), silent |
+| System error | Internal error, code change, cannot handle (fires when no flow or document applies) |
+
+<small>Callback: this is the graceful-degradation toolkit from Part 2 (fallbacks, clarification loops), shipped as default flows.</small>
+
+## Actions: Responses and Custom Code
+
+<small>*Source: Rasa Docs, “Custom Actions” and “Writing Custom Actions”*</small>
+
+```python
+class CheckRestaurantAvailability(Action):
+    def name(self):
+        return "check_restaurant_availability"
+
+    def run(self, dispatcher, tracker, domain):
+        has_availability = True  # e.g., call an API
+        return [SlotSet("has_availability", has_availability)]
+```
+
+- An `action` step sends a templated response (utter_...) or runs a custom action.
+- Custom actions are server-side code: the engine sends the action name, tracker, and domain; the server returns events and responses.
+- Design rule from the docs: keep business logic in the flow. The action does the raw work and returns a slot; the flow branches on it.
+- Since Rasa 3.10, Python actions can run inside the assistant via `actions_module` instead of a separate action server.
+
+## The Domain: What the Assistant Can Say, Do, Remember
+
+<small>*Source: Rasa Docs, “Domain” reference*</small>
+
+- `responses`: templated messages (can include buttons, images, custom JSON). Any response can be used as an `action` step in a flow.
+- `actions`: custom actions the assistant can predict. Default actions need not be listed.
+- `slots`: the assistant's memory, a key-value store (see next slides).
+- `session_config`: session expiry and whether slots carry over to a new session.
+- For NLU-based assistants, intents, entities, and slot mappings are also configured here. In CALM, understanding is handled by the command generator, so flows and the LLM replace that role.
+
+```yaml
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+```
+
+<div class="callout">The last bullet is our synthesis of the Domain and CALM pages, not a direct quote.</div>
+
+## Slots: The Assistant's Memory
+
+<small>*Source: Rasa Docs, “Slots” reference*</small>
+
+| Slot type | Holds |
+|---|---|
+| `text` | Any string |
+| `bool` | true or false |
+| `categorical` | A fixed set of allowed values (input coerced to matching casing) |
+| `float` | Floating-point numbers |
+| `any` | Any value, including structured data such as dictionaries |
+| `list` | A list of values; with CALM only in custom actions, not filled by collect or set_slots |
+
+<small>Slots are defined in the domain with a name, type, and default value.</small>
+
+## Slot Mappings and Validation
+
+<small>*Source: Rasa Docs, “Slots” reference (examples shortened)*</small>
+
+```yaml
+slots:
+  user_name:
+    type: text
+    mappings:
+      - type: from_llm
+
+  is_logged_in:
+    type: bool
+    mappings:
+      - type: controlled
+
+  phone_number:
+    type: text
+    validation:
+      rejections:
+        - if: not (slots.phone_number matches "...")
+          utter: utter_invalid_phone_number
+```
+
+- `from_llm` (default in CALM): the LLM command generator fills the slot.
+- `controlled`: filled only by a custom action, button payload, or set_slots step.
+- `from_entity` / `from_intent`: NLU-based mappings; need the NLUCommandAdapter.
+- `custom` is deprecated; use `controlled`.
+- `validation` (since 3.12) rejects bad values in real time with an `if` rule and an `utter` response.
+
+## CALM vs. Intent-Based NLU {background-color="#BA0C2F"}
+
+<span class="kicker">SECTION THREE</span>
+
+*Why separating understanding from execution makes multi-turn dialogue sturdier*
+
+## Two Ways to Understand a User
+
+<small>*Sources: Rasa Docs, CALM overview and “Migrating an NLU-based Assistant to CALM”*</small>
+
+|  | Classic NLU-based assistant | CALM |
+|---|---|---|
+| Understanding | NLU components detect intents and entities | LLM interprets each message in conversation context and emits commands |
+| Context used | Classifies the last user message, without full context | Transcript, latest message, and collected slots |
+| Steering | Rules and stories steer the next action | Flows define the business logic; commands route between them |
+| Skill boundaries | Looser fragments spread across rules and stories | Flows with well-defined boundaries |
+| Off-script input | Struggles with messages outside defined intents | Conversation patterns handle corrections, digressions, clarification |
+
+<small>Callback (Freed, Ch. 2): intents, entities, a confidence threshold, and fallback after repeated misses are the classic intent-based toolkit.</small>
+
+## Why CALM Supports Robust Multi-Turn Dialogue
+
+<small>*Synthesis of claims in Rasa's CALM, dialogue understanding, and dialogue management pages*</small>
+
+**Context-aware.** The LLM sees the whole transcript and the slots, so short replies (“cancel”) and follow-ups are interpreted in context.
+
+**Repair built in.** Commands such as correct slot, cancel flow, and clarify flows, plus pattern flows, cover corrections, interruptions, and ambiguity.
+
+**Stack-based resumption.** Interrupted flows stay on the stack and resume after the digression finishes.
+
+**Deterministic execution.** The LLM cannot invent business steps; flows run the same way each time and commands can be inspected when debugging.
+
+<div class="callout">Note: the docs describe these properties by design. They do not publish a benchmark in these pages; evaluate on your own test set.</div>
+
+## A Multi-Turn Scenario, Two Architectures
+
+<small>*Our own illustration of behavior described in Rasa's docs (not a recorded transcript)*</small>
+
+| Turn | Intent-based NLU bot (as described) | CALM (as described) |
+|---|---|---|
+| “Send $50 to Sam” | Predict an intent; fill entities | `start flow transfer_money`; `set slot` amount, recipient |
+| “Actually, make it $75” | Needs an intent/rule/story to cover a mid-form correction | `correct slot` amount = 75 |
+| “What are your fees?” | Out-of-intent input risks a fallback or a broken path | Answer via knowledge/search pattern, then return to the paused flow |
+| “Never mind” | Needs a rule for cancelling | `cancel flow` |
+
+<small>Flow names and amounts are invented for teaching. Command names come from the Dialogue Understanding page.</small>
+
+## CALM Compared with Agents and Classic Bots
+
+<small>*Source: Rasa Docs, CALM comparison table (condensed paraphrase)*</small>
+
+| Concern | ReAct-style agent | CALM (hybrid) | Classic NLU bot |
+|---|---|---|---|
+| Best for | Open-ended exploration | Structured goals needing fluency and reliability | No LLM allowed; fully deterministic |
+| Deciding next step | Logic in prompts; inconsistent | Logic in flows; LLM routes | Dialogue trees; break off-path |
+| Scaling to tasks | Declines; errors cascade | Modular, reusable flows | Overlap hurts; big trees hard to maintain |
+| Debugging | Hard; unstructured text | Inspect commands | Easy root cause, rigid fixes |
+| Cost | High; serial LLM calls | Lower; smaller fine-tuned models | Very low, fast |
+
+<small>This is Rasa's own framing of its competitors; read it as a vendor position.</small>
+
+## Differentiation {background-color="#003B5C"}
+
+<span class="kicker">SECTION FOUR</span>
+
+*Rasa CALM vs. IBM watsonx Assistant and other NLU-based frameworks*
+
+## Rasa CALM vs. IBM watsonx Assistant
+
+<small>*Sources: Rasa Docs; IBM watsonx Assistant tutorial (Dec 2024) and IBM Cloud Docs*</small>
+
+| Dimension | Rasa Pro (CALM) | IBM watsonx Assistant (documented) |
+|---|---|---|
+| Unit of work | Flow: YAML steps (collect, action, link, call, branch) | Action: an ordered set of steps, each one exchange with the customer |
+| How a task is found | LLM reads flow descriptions and issues commands | Builder adds example phrases under “customer starts with” |
+| Entities / intents | Slots filled by `from_llm`; NLU mappings optional | Actions do not need separate intents and entities; classic dialog skills use them |
+| Authoring style | Code-first project (YAML, config, Python actions); Studio for no-code | Visual builder with steps, conditions, and response types |
+| Custom logic | Custom actions in Python via Rasa SDK | Dialog API can return client-type actions for the app to run (IBM dialog-response docs) |
+| Legacy path | Coexistence of NLU-based and CALM skills with a router | Dialog and actions can be used together during migration |
+
+<small>Compares documented design, not accuracy or cost. The IBM rows rest on two IBM pages we could fetch; verify against your IBM plan and release.</small>
+
+## What Actually Differs, and What Doesn't
+
+<small>*Our synthesis; each point is grounded in the sources on the previous slides*</small>
+
+- Convergence: both moved from intent-and-dialogue-tree authoring toward task steps and slot-style information gathering.
+- Where the LLM sits in Rasa: it translates conversation into commands; flows decide. The docs stress that the LLM does not decide business logic.
+- Where the builder's effort goes: Rasa asks you to write flow descriptions and steps; IBM's actions ask for example phrases and steps in a visual editor.
+- Control and hosting: Rasa documents running smaller fine-tuned models, including self-hosted ones; IBM's pages we read do not discuss this.
+- Inspectability: Rasa highlights readable commands as a debugging surface. Whether IBM exposes an equivalent was not covered in the pages we fetched, so we make no claim.
+
+<div class="callout">Honest limit: neither vendor's docs give head-to-head results. Any ranking needs your own evaluation.</div>
+
+## Migrating: Coexistence vs. Replacement
+
+<small>*Sources: Rasa Docs, “Migrating an NLU-based Assistant to CALM”; IBM watsonx Assistant tutorial*</small>
+
+**Rasa coexistence.** NLU-based and CALM skills run side by side. A routing slot decides which system handles the message (IntentBasedRouter or LLMBasedRouter). A skill in one system cannot interrupt a skill in the other.
+
+**What stays in Rasa.** NLU components, existing policies, rules and stories, the shared action server, and largely the same end-to-end tests.
+
+**IBM's documented path.** Existing classic customers can migrate dialog skills and use dialog and actions together, moving over gradually.
+
+<div class="callout">Pattern in both: migrate skill by skill; do not rebuild everything at once.</div>
+
+## Questions to Ask When Choosing a Framework
+
+<small>*A checklist for the HAI designer (our synthesis, not vendor claims)*</small>
+
+- Who authors the conversations: conversation designers in a visual tool, or engineers in a codebase?
+- How many tasks must coexist, and how often do users digress, correct, or interrupt?
+- Is a deterministic, auditable path required (regulated domains)?
+- Where can data and models live (cloud service vs. self-hosted)?
+- How will you test multi-turn behavior, not just single-intent accuracy?
+- What does the user experience when the system cannot help (cannot-handle pattern, human handoff)?
+
+## Discussion Questions
+
+1. CALM lets an LLM interpret but not decide. Where is the human-AI trust boundary, and who is accountable when the LLM issues the wrong command?
+
+2. Rasa's own comparison favors CALM over agents and classic bots. How would you test that claim fairly?
+
+3. Flow descriptions steer the LLM. What new design skills does writing a good description require, compared with writing intent examples?
+
+4. Which of Microsoft's 18 guidelines (e.g., support efficient correction, make clear why the system did what it did) map directly onto CALM's commands and patterns?
+
+5. When would you still choose a classic NLU bot, or a free-form agent?
+
+## Key Takeaways
+
+<div class="callout">CALM = LLM for understanding, flows for execution. The LLM emits commands; it does not run business logic.</div>
+
+<div class="callout">Flows (steps), commands, slots, the domain, and actions are the five building blocks; conversation patterns supply built-in repair.</div>
+
+<div class="callout">Classic NLU classifies the last message into intents; CALM interprets in context and handles corrections and digressions through commands and a flow stack.</div>
+
+<div class="callout">Rasa and IBM watsonx Assistant both now center on task steps; they differ in authoring style, how tasks are recognized, and documented control options.</div>
+
+<div class="callout">Vendor claims describe design intent. Verify robustness with your own multi-turn tests.</div>
+
+## References and Image Credits
+
+- Rasa. Conversational AI with Language Models (CALM). rasa.com/docs/learn/concepts/calm
+- Rasa. Dialogue Understanding. rasa.com/docs/learn/concepts/dialogue-understanding
+- Rasa. Dialogue Management. rasa.com/docs/learn/concepts/dialogue-management
+- Rasa. Conversation Patterns. rasa.com/docs/learn/concepts/conversation-patterns
+- Rasa. Flows; Slots; Domain; Custom Actions (reference primitives and config pages). rasa.com/docs/reference/
+- Rasa. LLM Command Generators; Flow Policy. rasa.com/docs/reference/config/
+- Rasa. Migrating an NLU-based Assistant to CALM. rasa.com/docs/pro/calm-with-nlu/migrating-from-nlu
+- Bocklisch, T., Werkmeister, T., Varshneya, D., & Nichol, A. (2024). Task-Oriented Dialogue with In-Context Learning. arXiv:2402.12234
+- IBM. Getting started with watsonx Assistant part I: the build guide (2024-12-03). ibm.com/products/tutorials/
+- IBM Cloud Docs. Welcome to watsonx Assistant; Implementing dialog responses in a client application. cloud.ibm.com/docs/watson-assistant
+- Image credits: figures in the QMD deck are loaded from Rasa's public documentation site and belong to Rasa; check Rasa's terms before redistributing.
+
