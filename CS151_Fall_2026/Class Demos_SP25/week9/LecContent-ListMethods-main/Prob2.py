@@ -11,7 +11,7 @@ def clean_with_append(data_list):
 		list[int]: The numeric values from the original list as integers
 	"""
 	list_data = []
-	for i in DATA:
+	for i in data_list:
 		if i.isnumeric(): # Can also use i.isdigit() method too
 			list_data.append(int(i))
 	print(len(list_data))
@@ -105,7 +105,7 @@ def test_count_em():
 
 if __name__ == '__main__':
 	# Part A
-	#print(clean_with_append(DATA))
+	print(clean_with_append(DATA))
 
 	# Part B
 	#print(clean_with_comprehension(DATA))

@@ -1,7 +1,7 @@
 ---
 title: "Building Assistive Conversational Agents with Rasa Pro (CALM)"
 author: "Fred Agbo"
-date: February 9, 2026
+date: October 21, 2026
 format:
   revealjs:
     theme: [default, ./custom.scss]
@@ -230,7 +230,6 @@ open "webchat_test.html"
 - Refresh creates new random sender/session
 - Great for showing “deployed product” feel in class
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/OOjs_UI_icon_robot.svg/512px-OOjs_UI_icon_robot.svg.png){fig-alt="Robot icon" width="180"}
 
 ---
 
