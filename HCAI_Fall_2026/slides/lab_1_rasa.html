@@ -208,13 +208,12 @@ Fred Agbo
 
   <p class="date">2026-10-21</p>
 </section>
-<section id="welcome-lab-kickoff" class="slide level2">
-<h2>👋 Welcome + Lab Kickoff</h2>
+<section id="welcome-to-lab-1" class="slide level2">
+<h2>👋 Welcome to Lab 1</h2>
 <p><strong>Course:</strong> Human-AI Interaction — Willamette University<br>
 <strong>Format:</strong> Hands-on lab (CLI/IDE workflow, no Rasa Studio required)<br>
 <strong>Outcome:</strong> Build, train, test, and locally deploy <strong>two working assistants</strong></p>
-
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/640px-Git-logo.svg.png" alt="Git logo" width="220" class="r-stretch"></section>
+</section>
 <section id="lab-overview" class="slide level2">
 <h2>🎯 Lab Overview</h2>
 <p>By the end of lab, you will:</p>
@@ -311,6 +310,19 @@ Fred Agbo
 </tr>
 </tbody>
 </table>
+<aside class="notes">
+<p>Frame this scaffold as a map of responsibilities, not a collection of files students need to memorize. For example, if a student wants the FAQ assistant to answer “Where is the lab?”, they would add the conversation logic in <code>data/flows.yml</code> and the response text in <code>domain.yml</code>; <code>config.yml</code> controls how CALM interprets requests, while <code>credentials.yml</code> and <code>endpoints.yml</code> connect the assistant to channels and services. Ask students which file they would inspect first when changing an answer, then trace the request from user message to flow to response.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="part-2-core-calm-concepts" class="slide level2">
 <h2>🧩 Part 2 — Core CALM Concepts</h2>
@@ -321,6 +333,19 @@ Fred Agbo
 <li><strong>Patterns</strong> built-in repair/handoff/chitchat flows</li>
 </ul>
 <p>⭐ Key feature for demo: <strong>digressions</strong> (pause current flow, handle interruption, then resume)</p>
+<aside class="notes">
+<p>Explain that the description is a natural-language guide for recognizing when a flow is relevant, while the flow’s steps still control what the assistant does. For example, “I need help with my laptop” can trigger an IT-help flow; <code>collect</code> asks for and stores a needed detail such as the issue category. Then demonstrate a digression: while describing a software problem, the user asks “Actually, what are your office hours?” The assistant can answer that side question and return to the unfinished help flow. Emphasize that this is useful only when returning to the original task feels clear and expected to the user.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="part-3-scenario-1-course-faq-assistant" class="slide level2">
 <h2>🟢 Part 3 — Scenario 1: Course FAQ Assistant</h2>

@@ -18,13 +18,13 @@ format:
     preview-links: auto
 ---
 
-## 👋 Welcome + Lab Kickoff
+## 👋 Welcome to Lab 1
 
 **Course:** Human-AI Interaction — Willamette University  
 **Format:** Hands-on lab (CLI/IDE workflow, no Rasa Studio required)  
 **Outcome:** Build, train, test, and locally deploy **two working assistants**
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/640px-Git-logo.svg.png){fig-alt="Git logo" width="220"}
+
 
 ---
 
@@ -128,6 +128,10 @@ Why `tutorial` template?
 | `credentials.yml` | Channel connectors (REST default) |
 | `endpoints.yml` | LLM/action server endpoints |
 
+::: {.notes}
+Frame this scaffold as a map of responsibilities, not a collection of files students need to memorize. For example, if a student wants the FAQ assistant to answer "Where is the lab?", they would add the conversation logic in `data/flows.yml` and the response text in `domain.yml`; `config.yml` controls how CALM interprets requests, while `credentials.yml` and `endpoints.yml` connect the assistant to channels and services. Ask students which file they would inspect first when changing an answer, then trace the request from user message to flow to response.
+:::
+
 ---
 
 ## 🧩 Part 2 — Core CALM Concepts
@@ -138,6 +142,10 @@ Why `tutorial` template?
 - **Patterns** built-in repair/handoff/chitchat flows
 
 ⭐ Key feature for demo: **digressions** (pause current flow, handle interruption, then resume)
+
+::: {.notes}
+Explain that the description is a natural-language guide for recognizing when a flow is relevant, while the flow's steps still control what the assistant does. For example, "I need help with my laptop" can trigger an IT-help flow; `collect` asks for and stores a needed detail such as the issue category. Then demonstrate a digression: while describing a software problem, the user asks "Actually, what are your office hours?" The assistant can answer that side question and return to the unfinished help flow. Emphasize that this is useful only when returning to the original task feels clear and expected to the user.
+:::
 
 ---
 
