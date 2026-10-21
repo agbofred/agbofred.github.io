@@ -1,4 +1,2 @@
-A = [[i+j for i in range(3)] for j in range(4)]
+A = [i * 4 for i in "Oct 21, 2026" if not i.isalpha() and not i.isspace()]
 print(A)
-
-print ([A[i][2] for i in range(len(A))])

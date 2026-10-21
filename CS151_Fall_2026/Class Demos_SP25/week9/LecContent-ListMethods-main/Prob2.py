@@ -66,6 +66,8 @@ def count_em(clean_data_list):
 	count = [0 for i in range(26)]
 	for i in clean_data_list:
 		count[i] +=1
+	# top3 = sorted(count)
+	# print("Sorted Count= ", top3[-3:])
 	return count
 
 
