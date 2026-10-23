@@ -61,6 +61,12 @@ def count_em(clean_data_list):
 	Returns:
 		list[int]: The tabulated counts
 	"""
+	# count = [0]*26
+	count = [0 for i in range(26)]
+	print(count)
+	for i in clean_data_list:
+		count[i] += 1
+	return count
 
 
 
@@ -103,7 +109,7 @@ if __name__ == '__main__':
 	# print(clean_with_append(DATA))
 
 	# Part B
-	print(clean_with_comprehension(DATA))
+	# print(clean_with_comprehension(DATA))
 
 	# Part C
 	# data = DATA.copy()
@@ -111,4 +117,4 @@ if __name__ == '__main__':
 	# print(data)
 
 	# Part D
-	# print(count_em(clean_with_append(DATA)))
+	print(count_em(clean_with_append(DATA)))

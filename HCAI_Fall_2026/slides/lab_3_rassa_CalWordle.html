@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>lab_3_rassa_calwordle</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="lab_3_rassa_CalWordle_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lab_3_rassa_CalWordle_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="lab_3_rassa_CalWordle_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="lab_3_rassa_CalWordle_files/libs/quarto-html/popper.min.js"></script>
+<script src="lab_3_rassa_CalWordle_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lab_3_rassa_CalWordle_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lab_3_rassa_CalWordle_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lab_3_rassa_CalWordle_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lab_3_rassa_CalWordle_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lab_3_rassa_CalWordle_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lab_3_rassa_CalWordle_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="lab-3-build-wordle-buddy-with-rasa-pro-calm" class="level1">
+<h1>Lab 3: Build Wordle Buddy with Rasa Pro (CALM)</h1>
+<p><strong>Course:</strong> AI 380: Human-AI Interaction · Willamette University<br>
+<strong>Instructor:</strong> Prof.&nbsp;Fred Agbo<br>
+<strong>Format:</strong> Hands-on lab: text, voice, and an optional web interface<br>
+<strong>Estimated time:</strong> 10 minutes setup, 30 minutes text play, 15 minutes voice play, optional 25-minute web integration, and optional 20-minute extension</p>
+<section id="goal-and-learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="goal-and-learning-outcomes">Goal and Learning Outcomes</h2>
+<p>Build <strong>Wordle Buddy</strong>, a voice and text assistant that lets older adults play a five-letter word game. The assistant is designed to be forgiving, clear, and accessible.</p>
+<p>By the end of the lab, you will be able to:</p>
+<ol type="1">
+<li>Define a CALM flow using <code>collect</code>, <code>action</code>, <code>set_slots</code>, and branching steps.</li>
+<li>Declare <code>from_llm</code> and <code>controlled</code> slots, responses, and actions in the domain.</li>
+<li>Write custom Python actions with the Rasa SDK.</li>
+<li>Explain how CALM handles digressions, such as asking for a hint and then resuming a game.</li>
+<li>Test an assistant by text and voice, and optionally connect it to your own web page.</li>
+<li>Identify at least three human-AI interaction design choices in Wordle Buddy.</li>
+</ol>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<ul>
+<li><strong>CALM:</strong> An LLM reads the conversation and produces commands, such as setting a slot. The flows determine what happens next; the LLM does not run the game logic.</li>
+<li><strong>Flow:</strong> The steps that control the game, such as starting, collecting a guess, checking it, and repeating until the game ends.</li>
+<li><strong>Slot:</strong> Assistant memory, such as the current guess, guesses remaining, or whether the game is over.</li>
+<li><strong>Custom action:</strong> Python code that performs game operations, such as choosing an answer or scoring a guess.</li>
+<li><strong>Domain:</strong> The file that declares slots, responses, and actions.</li>
+</ul>
+<section id="rasa-references" class="level3">
+<h3 class="anchored" data-anchor-id="rasa-references">Rasa References</h3>
+<ul>
+<li><a href="https://rasa.com/docs/learn/concepts/calm">CALM overview</a></li>
+<li><a href="https://rasa.com/docs/reference/primitives/flows">Flows</a></li>
+<li><a href="https://rasa.com/docs/reference/primitives/flow-steps/">Flow steps</a></li>
+<li><a href="https://rasa.com/docs/reference/primitives/slots">Slots</a></li>
+<li><a href="https://rasa.com/docs/reference/primitives/custom-actions">Custom actions</a></li>
+<li><a href="https://rasa.com/docs/pro/testing/trying-assistant">Trying your assistant: Inspector, text, and voice</a></li>
+<li><a href="https://rasa.com/docs/reference/integrations/speech-integrations/">Speech integrations</a></li>
+<li><a href="https://rasa.com/docs/reference/channels/websockets-voice/">WebSocket voice channel</a></li>
+<li><a href="https://rasa.com/docs/reference/channels/your-own-website.md">Connecting to your own website</a></li>
+</ul>
+</section>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Rasa Pro installed, with your Developer Edition license set in <code>RASA_LICENSE</code>.</li>
+<li>No separate LLM key is needed with the tutorial template, which uses a Rasa-hosted model. If you change the model group in <code>endpoints.yml</code>, you may need that provider’s API key.</li>
+<li>A Deepgram API key (<code>DEEPGRAM_API_KEY</code>) for Stages 2 and 3.</li>
+<li>Chrome or Edge and a microphone; headphones are recommended to avoid echo.</li>
+<li>The instructor-provided <code>Calm_Wordle_files_to_copy.zip</code> bundle.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Version note:</strong> Stage 3 voice using <code>websockets_voice</code> requires Rasa Pro 3.19 or later. Check your version with <code>rasa --version</code>. Stages 1 and 2 do not depend on this requirement.</p>
+</blockquote>
+</section>
+<section id="project-setup-and-file-copying" class="level2">
+<h2 class="anchored" data-anchor-id="project-setup-and-file-copying">Project Setup and File Copying</h2>
+<p>Create the project from Rasa’s tutorial template. It starts with a money-transfer demo that you will replace:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Calm_Wordle <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> Calm_Wordle</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rasa</span> init <span class="at">--template</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The template includes this structure:</p>
+<pre class="text"><code>Calm_Wordle/
+├── actions/
+│   ├── __init__.py        KEEP (empty file)
+│   └── actions.py         REPLACE (template money-transfer action)
+├── config.yml             KEEP
+├── credentials.yml        KEEP for Stages 1 and 2 (REST and browser_audio)
+├── endpoints.yml          KEEP (action endpoint, model groups, and NLG)
+├── domain.yml             REPLACE (one file, not a domain/ folder)
+└── data/
+    ├── flows.yml          REPLACE (template transfer_money flow)
+    └── patterns.yml       KEEP</code></pre>
+<p>Unzip <code>Calm_Wordle_files_to_copy.zip</code>. It mirrors this structure. Copy the files as follows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bundle file</th>
+<th>Destination</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>actions/actions.py</code></td>
+<td><code>Calm_Wordle/actions/actions.py</code></td>
+<td>Overwrite</td>
+</tr>
+<tr class="even">
+<td><code>actions/wordle_logic.py</code></td>
+<td><code>Calm_Wordle/actions/</code></td>
+<td>Add</td>
+</tr>
+<tr class="odd">
+<td><code>actions/answers.py</code></td>
+<td><code>Calm_Wordle/actions/</code></td>
+<td>Add</td>
+</tr>
+<tr class="even">
+<td><code>actions/english.py</code></td>
+<td><code>Calm_Wordle/actions/</code></td>
+<td>Add course dictionary</td>
+</tr>
+<tr class="odd">
+<td><code>actions/__init__.py</code></td>
+<td>Skip</td>
+<td>The project already has this file</td>
+</tr>
+<tr class="even">
+<td><code>data/flows.yml</code></td>
+<td><code>Calm_Wordle/data/flows.yml</code></td>
+<td>Overwrite</td>
+</tr>
+<tr class="odd">
+<td><code>domain.yml</code></td>
+<td><code>Calm_Wordle/domain.yml</code></td>
+<td>Overwrite</td>
+</tr>
+</tbody>
+</table>
+<p>The optional <code>web/</code> folder is only needed for Stage 3. The optional <code>tests/</code> folder can be copied to the project root; run its logic tests with <code>python tests/test_logic.py</code> without Rasa.</p>
+<p><strong>Do not delete <code>data/patterns.yml</code>.</strong> It defines chitchat and search-repair patterns used by CALM.</p>
+<p>Alternatively, copy the files from the terminal, adjusting the unzip path if needed:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/Downloads/Calm_Wordle_files_to_copy/Calm_Wordle/actions/<span class="pp">*</span>.py actions/</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/Downloads/Calm_Wordle_files_to_copy/Calm_Wordle/data/flows.yml data/flows.yml</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/Downloads/Calm_Wordle_files_to_copy/Calm_Wordle/domain.yml domain.yml</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> actions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should see <code>__init__.py</code>, <code>actions.py</code>, <code>answers.py</code>, <code>english.py</code>, and <code>wordle_logic.py</code> in <code>actions/</code>. The copy command also copies the bundle’s empty <code>__init__.py</code>; that is harmless.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>actions/actions.py</code></td>
+<td>Four custom actions: start game, check guess, hint, and progress</td>
+</tr>
+<tr class="even">
+<td><code>actions/wordle_logic.py</code></td>
+<td>Scoring, validation, and hints in plain Python</td>
+</tr>
+<tr class="odd">
+<td><code>actions/answers.py</code></td>
+<td>490 common five-letter answer words</td>
+</tr>
+<tr class="even">
+<td><code>actions/english.py</code></td>
+<td>Course dictionary (<code>isEnglishWord</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>data/flows.yml</code></td>
+<td><code>play_wordle</code>, <code>wordle_rules</code>, <code>wordle_hint</code>, and <code>show_progress</code> flows</td>
+</tr>
+<tr class="even">
+<td><code>domain.yml</code></td>
+<td>Slots, responses, and actions; also includes the Wordle chitchat response</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage-0-check-your-setup-10-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="stage-0-check-your-setup-10-minutes">Stage 0: Check Your Setup (10 minutes)</h2>
+<ol type="1">
+<li><p>Export your Rasa license in the terminal you will use:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">RASA_LICENSE</span><span class="op">=</span>YOUR_LICENSE_KEY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The tutorial template points its command generator to a Rasa-hosted model, so no OpenAI key is needed unless you change the model configuration.</p></li>
+<li><p>Complete the file-copy steps above.</p></li>
+<li><p>Inspect these template settings without changing them:</p>
+<ul>
+<li><code>endpoints.yml</code> has <code>action_endpoint: actions_module: "actions"</code>. This runs the Python actions inside the assistant, so a separate action server is not needed.</li>
+<li><code>endpoints.yml</code> has an <code>nlg: type: rephrase</code> block. It lets an LLM reword responses marked for rephrasing; this lab uses it only for chitchat. If game feedback is unexpectedly reworded, comment out this block. Chitchat will then show the word <code>placeholder</code>.</li>
+<li><code>config.yml</code> uses <code>CompactLLMCommandGenerator</code> and <code>FlowPolicy</code>.</li>
+</ul></li>
+</ol>
+<p><strong>Checkpoint 0:</strong> <code>rasa train</code> finishes without errors. If it reports a flow or domain error, use the message to find the file and line to inspect.</p>
+</section>
+<section id="stage-1-play-by-text-in-the-inspector-30-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="stage-1-play-by-text-in-the-inspector-30-minutes">Stage 1: Play by Text in the Inspector (30 minutes)</h2>
+<p>From the project root, train and launch the Inspector:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rasa</span> train</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rasa</span> inspect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A browser tab opens with the Inspector. Click <strong>Inspect</strong> in the header to show the Flow, History, and Memory panels.</p>
+<section id="run-the-test-script" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-test-script">Run the Test Script</h3>
+<p>Enter each message one at a time and record what happens.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>You type</th>
+<th>Expected behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>let's play</code></td>
+<td>Welcome message, followed by “What is your guess?”</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>crane</code></td>
+<td>Word-based feedback: correct position, wrong position, absent letters, and guesses remaining</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>what have I guessed?</code></td>
+<td>Guesses so far and a pattern such as <code>_ R A _ _</code>; then asks for another guess</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>give me a hint</code></td>
+<td>Gives a hint (maximum two per game), then requests a guess</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><code>how does this work?</code></td>
+<td>Explains the rules, then requests a guess</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><code>zzzzz</code></td>
+<td>Says it is not in the word list; the guess does not count</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td><code>cat</code></td>
+<td>Says a guess must have exactly five letters; the guess does not count</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td><code>c r a n e</code> (after trying <code>crane</code>)</td>
+<td>Joins the spelled letters; since <code>crane</code> was already tried, asks for a different word</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><code>I give up</code></td>
+<td>Reveals the secret word and ends the game</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td><code>let's play</code></td>
+<td>Starts a brand-new game</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inspect-the-conversation" class="level3">
+<h3 class="anchored" data-anchor-id="inspect-the-conversation">Inspect the Conversation</h3>
+<ul>
+<li><strong>Flow panel:</strong> Identify the active step in <code>play_wordle</code>.</li>
+<li><strong>History panel:</strong> When a hint or rules flow runs, <code>play_wordle</code> should show as <em>Interrupted</em>, then return to <em>Active</em>.</li>
+<li><strong>Memory panel:</strong> Inspect <code>guess</code>, <code>guesses_left</code>, <code>game_over</code>, and <code>won</code>. The secret word is intentionally not stored here; see <a href="#understanding-the-design">Understanding the Design</a>.</li>
+<li>Click a command in the chat log to inspect the LLM-produced commands, such as <code>start flow</code> or <code>set slot</code>.</li>
+</ul>
+</section>
+<section id="if-something-does-not-work" class="level3">
+<h3 class="anchored" data-anchor-id="if-something-does-not-work">If Something Does Not Work</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>Likely cause and fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Assistant does not start the game</td>
+<td>The LLM uses each flow’s <code>description</code> to decide when it applies. Confirm <code>data/flows.yml</code> was copied, the sample flows were removed, and you retrained with <code>rasa train</code>.</td>
+</tr>
+<tr class="even">
+<td>Game does not end after a win</td>
+<td>The branch condition <code>if: slots.game_over</code> may need the bare form <code>if: game_over</code>. Rasa documentation shows both forms; try the other form and retrain.</td>
+</tr>
+<tr class="odd">
+<td>“I give up” produces a generic cancel message</td>
+<td>The LLM may have issued <code>cancel flow</code> instead of setting the guess to <code>giveup</code>. Improve the <code>collect: guess</code> description or complete Extension A.</td>
+</tr>
+<tr class="even">
+<td>Custom action errors</td>
+<td>Confirm <code>actions_module: actions</code> is set in <code>endpoints.yml</code> and <code>actions/__init__.py</code> exists.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Checkpoint 1:</strong> Complete a game by winning or giving up, and observe at least one digression (hint, rules, or progress) resume correctly.</p>
+</section>
+</section>
+<section id="stage-2-play-by-voice-in-the-browser-15-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="stage-2-play-by-voice-in-the-browser-15-minutes">Stage 2: Play by Voice in the Browser (15 minutes)</h2>
+<ol type="1">
+<li><p>Export your Deepgram key in the same terminal you use to run the Inspector:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">DEEPGRAM_API_KEY</span><span class="op">=</span>YOUR_DEEPGRAM_KEY</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Start or restart the Inspector:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rasa</span> inspect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Switch from chat to <strong>voice</strong> using the control in the chat input. Allow microphone access and say, “Let’s play.”</p></li>
+<li><p>The template’s <code>credentials.yml</code> already has a <code>browser_audio</code> block configured for Deepgram listening and speaking. If you hear no spoken replies, check that the key is exported in this terminal and that the block still resembles:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browser_audio</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">server_url</span><span class="kw">:</span><span class="at"> localhost</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">asr</span><span class="kw">:</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> deepgram</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tts</span><span class="kw">:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> deepgram</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p><strong>Voice tips:</strong> Speak clearly, spell a word as “C R A N E” if speech recognition mishears it, wait for the assistant to finish, and use headphones.</p>
+<p><strong>Checkpoint 2:</strong> Finish a game by voice. Record any word that speech recognition gets wrong; you will use this observation in the discussion.</p>
+</section>
+<section id="stage-3-optional-your-own-web-page-with-text-and-voice-25-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="stage-3-optional-your-own-web-page-with-text-and-voice-25-minutes">Stage 3 (Optional): Your Own Web Page with Text and Voice (25 minutes)</h2>
+<blockquote class="blockquote">
+<p>Requires Rasa Pro 3.19 or later. Rasa does not provide a ready-made browser demo for this voice channel. The provided <code>web/index.html</code> is a starting point that follows Rasa’s documented protocol: 24 kHz, 16-bit mono audio, with audio encoded as base64 inside JSON. Expect to debug it; that is part of the lab.</p>
+</blockquote>
+<ol type="1">
+<li><p>In <code>credentials.yml</code>, uncomment the template’s <code>socketio</code> entry and fill it in for the chat widget. Then add the voice channel:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">socketio</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">user_message_evt</span><span class="kw">:</span><span class="at"> user_uttered</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">bot_message_evt</span><span class="kw">:</span><span class="at"> bot_uttered</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">session_persistence</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">websockets_voice</span><span class="kw">:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">server_url</span><span class="kw">:</span><span class="at"> localhost:5005</span><span class="co">     # Host only; do not include ws:// or wss://</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">asr</span><span class="kw">:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> deepgram</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tts</span><span class="kw">:</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> deepgram</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">interruptions</span><span class="kw">:</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">min_words</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">silence_timeout</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Start the assistant. If the browser reports a CORS error, allow your page’s origin. Check <code>rasa run --help</code> for the exact option; the template’s suggested command is:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rasa</span> run <span class="at">--cors</span> <span class="st">"*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Copy <code>web/</code> from the bundle into the project, then serve it:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> web</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> http.server 8000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Open <a href="http://localhost:8000">http://localhost:8000</a> in Chrome or Edge.</p>
+<ul>
+<li><strong>Text:</strong> Use the Rasa chat widget in the bottom-right corner. It connects through the <code>socketio</code> channel.</li>
+<li><strong>Voice:</strong> Select <strong>Start talking</strong>, allow microphone access, and say, “Let’s play.”</li>
+</ul></li>
+<li><p>Check the voice server at <a href="http://localhost:5005/webhooks/websockets_voice/">http://localhost:5005/webhooks/websockets_voice/</a>. It should return <code>{"status": "ok"}</code>.</p></li>
+<li><p>Open the browser developer console (F12) to inspect errors.</p></li>
+</ol>
+<p><strong>Known limitations:</strong> This voice channel handles text and audio only; it does not support buttons or images. It has no built-in authentication. For a public site, use <code>wss://</code>, set <code>USE_TLS = true</code> in <code>index.html</code>, and use a secure tunnel or properly configured domain.</p>
+<p><strong>Checkpoint 3:</strong> Verify that both the text widget and voice button reach the same assistant.</p>
+</section>
+<section id="understanding-the-design" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-design">Understanding the Design</h2>
+<p>For your lab report, connect each design choice to its implementation and explain why it matters for older adults.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Design choice</th>
+<th>Where to find it</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Feedback uses <strong>words</strong>, not colors or emojis</td>
+<td><code>describe_feedback()</code> in <code>wordle_logic.py</code></td>
+<td>Works with voice, screen readers, and color-blind players</td>
+</tr>
+<tr class="even">
+<td>Invalid guesses <strong>do not cost a guess</strong></td>
+<td><code>validate_guess()</code>; messages say the guess “does not count”</td>
+<td>Forgiving interaction can reduce anxiety</td>
+</tr>
+<tr class="odd">
+<td><strong>Hints</strong> (two per game) and <strong>progress</strong> are available on request</td>
+<td><code>action_give_hint</code>, <code>action_show_progress</code></td>
+<td>Gives users control and makes system state visible</td>
+</tr>
+<tr class="even">
+<td><strong>“I give up”</strong> reveals the word kindly</td>
+<td><code>action_check_guess</code></td>
+<td>Provides a graceful ending instead of a dead end</td>
+</tr>
+<tr class="odd">
+<td>Spelled-out letters are accepted</td>
+<td><code>normalize_guess()</code></td>
+<td>Speech recognizers may split or spell words</td>
+</tr>
+<tr class="even">
+<td>The secret word stays <strong>out of slots</strong></td>
+<td><code>GAMES</code> dictionary in <code>actions.py</code></td>
+<td>Slots appear in the Inspector and may appear in LLM prompts</td>
+</tr>
+<tr class="odd">
+<td>Answers use a <strong>curated list</strong> of 490 words</td>
+<td><code>answers.py</code>; answers are validated against the full dictionary</td>
+<td>The full dictionary may contain obscure words, such as “zymes,” that frustrate players</td>
+</tr>
+<tr class="even">
+<td>Digressions resume the game</td>
+<td><code>wordle_hint</code>, <code>wordle_rules</code>, and <code>show_progress</code> flows</td>
+<td>CALM’s stack-based resumption supports natural conversation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trade-off:</strong> The game state is held in server memory, so restarting the assistant ends the current game.</p>
+</section>
+<section id="deliverables-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables-and-discussion">Deliverables and Discussion</h2>
+<p>Submit a short report (1–2 pages) containing:</p>
+<ol type="1">
+<li>A screenshot of the Inspector showing a digression and the resumed game, with the Flow and History panels visible.</li>
+<li>Your completed test table from Stage 1, noting any behavior that differed from expectations.</li>
+<li>Three speech-recognition errors, or “none,” and how you handled them.</li>
+<li>Answers to these questions:
+<ul>
+<li>Which Microsoft HAI guidelines does the assistant satisfy? For example, does it support efficient correction or clearly explain what it can do? Point to a flow or action as evidence.</li>
+<li>What would make the assistant safer or kinder for someone with hearing loss, slower speech, or memory difficulties?</li>
+<li>Where is the trust boundary between the LLM and your game code? What could go wrong if the LLM issued the wrong command?</li>
+<li>What did you need to change from the starter project to make it work on your machine?</li>
+</ul></li>
+</ol>
+</section>
+<section id="extensions-choose-one" class="level2">
+<h2 class="anchored" data-anchor-id="extensions-choose-one">Extensions (Choose One)</h2>
+<ul>
+<li><strong>A. Reveal the word on cancel:</strong> Write a custom <code>pattern_cancel_flow</code> so that any “stop” request ends the game and reveals the word.</li>
+<li><strong>B. Add a difficulty setting:</strong> Add a categorical slot (<code>easy</code>, <code>normal</code>) to change the number of guesses, such as eight or six. The constants are at the top of <code>wordle_logic.py</code>.</li>
+<li><strong>C. Make speech slower or clearer:</strong> Review Rasa’s speech integration options and change the voice or language.</li>
+<li><strong>D. Add a daily word:</strong> Choose the answer based on the date instead of randomly.</li>
+<li><strong>E. Add a new digression:</strong> For example, add a flow and action for “What vowels have I found?”</li>
+</ul>
+</section>
+<section id="troubleshooting-quick-reference" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting-quick-reference">Troubleshooting Quick Reference</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Try this</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rasa train</code> fails on flows</td>
+<td>Check YAML indentation; every flow needs a <code>description</code> and <code>steps</code>.</td>
+</tr>
+<tr class="even">
+<td>LLM errors or timeouts</td>
+<td>The template uses a Rasa-hosted tutorial model. Check your internet connection and <code>RASA_LICENSE</code>; if you switched providers, check that provider’s key.</td>
+</tr>
+<tr class="odd">
+<td>Python import errors in actions</td>
+<td>Run commands from the project root, keep <code>actions/__init__.py</code>, and check the relative imports (<code>from . import ...</code>).</td>
+</tr>
+<tr class="even">
+<td>No voice</td>
+<td>Confirm <code>DEEPGRAM_API_KEY</code> is set in this terminal and the browser has microphone permission.</td>
+</tr>
+<tr class="odd">
+<td>Voice page connects, then goes silent</td>
+<td>Confirm <code>websockets_voice</code> is in <code>credentials.yml</code> and its health-check URL returns <code>{"status": "ok"}</code>.</td>
+</tr>
+<tr class="even">
+<td>Echo or the assistant hears itself</td>
+<td>Use headphones.</td>
+</tr>
+<tr class="odd">
+<td>Firefox audio error</td>
+<td>Use Chrome or Edge for Stage 3.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="instructor-notes" class="level2">
+<h2 class="anchored" data-anchor-id="instructor-notes">Instructor Notes</h2>
+<ul>
+<li>The instructor-side build tested the Python game logic, including repeated-letter scoring, validation, hints, and win/lose/give-up behavior. It did <strong>not</strong> test training, flows, Inspector behavior, or either voice path, which require Rasa Pro and API keys. Run Stages 0–2 before teaching and adjust the troubleshooting section as needed.</li>
+<li>Rasa documentation does not fully confirm these details; verify them in your version: looping back to an earlier step, the <code>slots.game_over</code> condition syntax, and the CORS option for <code>rasa run</code>.</li>
+<li>Voice and LLM calls use third-party services (Deepgram and your LLM provider). Check costs and rate limits before a whole class connects at once.</li>
+<li>Do not collect real personal data from older adults without appropriate review. This lab uses a word game and does not require personal data.</li>
+</ul>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li>Rasa documentation: CALM, Flows, Flow Steps, Slots, Custom Actions, Rasa SDK Actions, LLM Configuration, Trying Your Assistant, Speech Integrations, WebSocket Voice Channel, and Connecting to Your Own Website. See <a href="https://rasa.com/docs/">rasa.com/docs</a>.</li>
+<li>Course dictionary: instructor-provided <code>english.py</code>.</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

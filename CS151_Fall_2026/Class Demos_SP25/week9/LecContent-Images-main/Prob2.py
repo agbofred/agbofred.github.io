@@ -23,9 +23,9 @@ for r in range(image_height):
         value = pixel_array[r][c]
         brightness = GImage.get_red(value)
      
-        if brightness < 100:
-            # count +=1
-            # print(count)
+        if brightness < 30:
+            count +=1
+            print(count)
             pixel_array[r][c] = GImage.create_rgb_pixel(1,2,1)
         else:
             pixel_array[r][c] = GImage.create_rgb_pixel(255,255,255)

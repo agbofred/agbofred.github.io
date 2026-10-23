@@ -247,12 +247,11 @@ Before audio debugging, validate logic quickly via REST.
 ```bash
 rasa data validate
 rasa train
-rasa run --enable-api --cors "*"
+rasa inspect
+# rasa run --enable-api --cors "*"
 ```
 
----
-
-## 🔍 REST Test Conversation
+<!-- ## 🔍 REST Test Conversation
 
 ```bash
 curl -s -X POST http://localhost:5005/webhooks/rest/webhook -H "Content-Type: application/json" -d '{"sender": "voice_demo", "message": "is a study room available?"}'
@@ -297,6 +296,7 @@ Open the provided localhost URL in **Chrome** and allow microphone access.
 Look for `voice_channel.initialized` in terminal logs.
 
 ---
+-->
 
 ## 🗣️ 4.3 Run the voice conversation
 
@@ -310,9 +310,9 @@ You should hear TTS playback of assistant replies.
 
 ---
 
-## 🚦 Part 5 — Live Demo: Barge-In (Interruptions)
+## 🚦 Part 4 — Live Demo: Barge-In (Interruptions)
 
-### 5.1 With interruptions disabled
+### 4.1 With interruptions disabled
 
 Current config:
 
@@ -326,7 +326,7 @@ Assistant finishes speaking even if user talks over it.
 
 ---
 
-## 🚦 5.2 Enable interruptions
+## 🚦 4.2 Enable interruptions
 
 Edit `credentials.yml`:
 
@@ -342,7 +342,7 @@ Restart `rasa inspect`, then interrupt mid-sentence with 3+ words
 
 ---
 
-## 💬 5.3 Discussion Prompts
+## 💬 4.3 Discussion Prompts
 
 - Why `min_words: 3` instead of 1?
 - During `time.sleep(3)`, what is interruptible: speaking, thinking, or both?
@@ -350,7 +350,7 @@ Restart `rasa inspect`, then interrupt mid-sentence with 3+ words
 
 ---
 
-## 🧯 Part 6 — Troubleshooting (Voice-Specific)
+## 🧯 Part 5 — Troubleshooting (Voice-Specific)
 
 | Symptom | Likely cause | Fix |
 |---|---|---|

@@ -413,33 +413,54 @@ No separate <code>rasa run actions</code> needed for this lab.</p>
 <p>Before audio debugging, validate logic quickly via REST.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href=""></a><span class="ex">rasa</span> data validate</span>
 <span id="cb9-2"><a href=""></a><span class="ex">rasa</span> train</span>
-<span id="cb9-3"><a href=""></a><span class="ex">rasa</span> run <span class="at">--enable-api</span> <span class="at">--cors</span> <span class="st">"*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="rest-test-conversation" class="slide level2">
-<h2>🔍 REST Test Conversation</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href=""></a><span class="ex">curl</span> <span class="at">-s</span> <span class="at">-X</span> POST http://localhost:5005/webhooks/rest/webhook <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="at">-d</span> <span class="st">'{"sender": "voice_demo", "message": "is a study room available?"}'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href=""></a><span class="ot">[</span><span class="fu">{</span><span class="dt">"recipient_id"</span><span class="fu">:</span><span class="st">"voice_demo"</span><span class="fu">,</span><span class="dt">"text"</span><span class="fu">:</span><span class="st">"Would you like a quiet room, a group room, or a media room?"</span><span class="fu">}</span><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">curl</span> <span class="at">-s</span> <span class="at">-X</span> POST http://localhost:5005/webhooks/rest/webhook <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="at">-d</span> <span class="st">'{"sender": "voice_demo", "message": "quiet"}'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb13-1"><a href=""></a><span class="ot">[</span><span class="fu">{</span><span class="dt">"recipient_id"</span><span class="fu">:</span><span class="st">"voice_demo"</span><span class="fu">,</span><span class="dt">"text"</span><span class="fu">:</span><span class="st">"One moment, let me check that for you."</span><span class="fu">}</span><span class="ot">,</span><span class="fu">{</span><span class="dt">"recipient_id"</span><span class="fu">:</span><span class="st">"voice_demo"</span><span class="fu">,</span><span class="dt">"text"</span><span class="fu">:</span><span class="st">"Here's what I found: the quiet room is available now."</span><span class="fu">}</span><span class="ot">,</span><span class="fu">{</span><span class="dt">"recipient_id"</span><span class="fu">:</span><span class="st">"voice_demo"</span><span class="fu">,</span><span class="dt">"text"</span><span class="fu">:</span><span class="st">"Is there anything else I can do for you?"</span><span class="fu">}</span><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="important-caveat-discuss-in-class" class="slide level2">
-<h2>🧠 Important Caveat (Discuss in Class)</h2>
-<p>REST buffers full turn output and returns one JSON array.<br>
-So filler-response timing is <strong>not perceived</strong> over REST.</p>
-<ul>
-<li>REST = validates logic</li>
-<li>Streaming voice channel = reveals UX timing behavior</li>
-</ul>
-<blockquote>
-<p>Same flow, different user experience by channel.</p>
-</blockquote>
-</section>
-<section id="part-4-deploy-talk-to-it-for-real" class="slide level2">
-<h2>🎧 Part 4 — Deploy: Talk to It For Real</h2>
-<p>Stop REST server (<code>Ctrl+C</code>) and launch Inspector:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href=""></a><span class="ex">rasa</span> inspect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Open the provided localhost URL in <strong>Chrome</strong> and allow microphone access.</p>
-<p>Look for <code>voice_channel.initialized</code> in terminal logs.</p>
+<span id="cb9-3"><a href=""></a><span class="ex">rasa</span> inspect</span>
+<span id="cb9-4"><a href=""></a><span class="co"># rasa run --enable-api --cors "*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ## 🔍 REST Test Conversation
+
+```bash
+curl -s -X POST http://localhost:5005/webhooks/rest/webhook -H "Content-Type: application/json" -d '{"sender": "voice_demo", "message": "is a study room available?"}'
+```
+
+```json
+[{"recipient_id":"voice_demo","text":"Would you like a quiet room, a group room, or a media room?"}]
+```
+
+```bash
+curl -s -X POST http://localhost:5005/webhooks/rest/webhook -H "Content-Type: application/json" -d '{"sender": "voice_demo", "message": "quiet"}'
+```
+
+```json
+[{"recipient_id":"voice_demo","text":"One moment, let me check that for you."},{"recipient_id":"voice_demo","text":"Here's what I found: the quiet room is available now."},{"recipient_id":"voice_demo","text":"Is there anything else I can do for you?"}]
+```
+
+---
+
+## 🧠 Important Caveat (Discuss in Class)
+
+REST buffers full turn output and returns one JSON array.  
+So filler-response timing is **not perceived** over REST.
+
+- REST = validates logic
+- Streaming voice channel = reveals UX timing behavior
+
+> Same flow, different user experience by channel.
+
+---
+
+## 🎧 Part 4 — Deploy: Talk to It For Real
+
+Stop REST server (`Ctrl+C`) and launch Inspector:
+
+```bash
+rasa inspect
+```
+
+Open the provided localhost URL in **Chrome** and allow microphone access.
+
+Look for `voice_channel.initialized` in terminal logs.
+
+---
+-->
 </section>
 <section id="run-the-voice-conversation" class="slide level2">
 <h2>🗣️ 4.3 Run the voice conversation</h2>
@@ -451,35 +472,35 @@ So filler-response timing is <strong>not perceived</strong> over REST.</p>
 </ul>
 <p>You should hear TTS playback of assistant replies.</p>
 </section>
-<section id="part-5-live-demo-barge-in-interruptions" class="slide level2">
-<h2>🚦 Part 5 — Live Demo: Barge-In (Interruptions)</h2>
-<h3 id="with-interruptions-disabled">5.1 With interruptions disabled</h3>
+<section id="part-4-live-demo-barge-in-interruptions" class="slide level2">
+<h2>🚦 Part 4 — Live Demo: Barge-In (Interruptions)</h2>
+<h3 id="with-interruptions-disabled">4.1 With interruptions disabled</h3>
 <p>Current config:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href=""></a><span class="fu">interruptions</span><span class="kw">:</span></span>
-<span id="cb15-2"><a href=""></a><span class="at">  </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-3"><a href=""></a><span class="at">  </span><span class="fu">min_words</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href=""></a><span class="fu">interruptions</span><span class="kw">:</span></span>
+<span id="cb10-2"><a href=""></a><span class="at">  </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb10-3"><a href=""></a><span class="at">  </span><span class="fu">min_words</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Assistant finishes speaking even if user talks over it.</p>
 </section>
 <section id="enable-interruptions" class="slide level2">
-<h2>🚦 5.2 Enable interruptions</h2>
+<h2>🚦 4.2 Enable interruptions</h2>
 <p>Edit <code>credentials.yml</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href=""></a><span class="fu">browser_audio</span><span class="kw">:</span></span>
-<span id="cb16-2"><a href=""></a><span class="at">  </span><span class="fu">interruptions</span><span class="kw">:</span></span>
-<span id="cb16-3"><a href=""></a><span class="at">    </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb16-4"><a href=""></a><span class="at">    </span><span class="fu">min_words</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href=""></a><span class="fu">browser_audio</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href=""></a><span class="at">  </span><span class="fu">interruptions</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href=""></a><span class="at">    </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb11-4"><a href=""></a><span class="at">    </span><span class="fu">min_words</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Restart <code>rasa inspect</code>, then interrupt mid-sentence with 3+ words<br>
 (e.g., “wait, stop, change it to group”).</p>
 </section>
 <section id="discussion-prompts" class="slide level2">
-<h2>💬 5.3 Discussion Prompts</h2>
+<h2>💬 4.3 Discussion Prompts</h2>
 <ul>
 <li>Why <code>min_words: 3</code> instead of 1?</li>
 <li>During <code>time.sleep(3)</code>, what is interruptible: speaking, thinking, or both?</li>
 <li>Which human turn-taking cues does a word-threshold approximate — and miss?</li>
 </ul>
 </section>
-<section id="part-6-troubleshooting-voice-specific" class="slide level2">
-<h2>🧯 Part 6 — Troubleshooting (Voice-Specific)</h2>
+<section id="part-5-troubleshooting-voice-specific" class="slide level2">
+<h2>🧯 Part 5 — Troubleshooting (Voice-Specific)</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
