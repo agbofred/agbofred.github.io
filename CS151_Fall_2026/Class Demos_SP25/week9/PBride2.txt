@@ -1,0 +1,2 @@
+Here is a new text
+Second line of the file

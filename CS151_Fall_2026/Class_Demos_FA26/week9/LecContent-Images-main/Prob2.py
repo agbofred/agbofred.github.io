@@ -32,3 +32,22 @@ new_image = GImage(pixel_array)
 gw.add(new_image, image.get_x(), image.get_y()) 
 """
 
+image_pixel = image.get_pixel_array()
+# print(image_pixel)
+height= len(image_pixel)
+width = len(image_pixel[0])
+
+count = 0
+for r in range(height):
+    for c in range(width):
+        pixel_value = image_pixel[r][c]
+        brightness = GImage.get_red(pixel_value)
+        if brightness< 100:
+            # count +=1
+            image_pixel[r][c] = GImage.create_rgb_pixel(0,0,0)
+        else:
+            image_pixel[r][c] = GImage.create_rgb_pixel(255,100,255)
+new_image = GImage(image_pixel)
+gw.add(new_image, image.get_x(), image.get_y())
+
+        
