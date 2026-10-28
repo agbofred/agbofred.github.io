@@ -2,7 +2,7 @@
 title: "App Coach"
 subtitle: "Build a text and voice learning companion with Rasa Pro (CALM)"
 author: "Prof. Fred Agbo"
-date: October 25, 2026
+date: October 28, 2026
 format:
   revealjs:
     theme: [default, ./custom.scss]
@@ -89,10 +89,10 @@ You write every project file yourself.
 4. Continue only when the checkpoint passes.
 
 ::: {.checkpoint}
-**Verification boundary:** The supplied tutorial reports testing its Python actions with the Rasa SDK. Rasa Pro training, YAML execution, Inspector behavior, and voice were **not tested in that build**. The checkpoints catch integration problems early.
+**Verification boundary:** The supplied tutorial reports testing its Python actions with the Rasa SDK. Rasa Pro training, YAML execution, and Inspector behavior. The checkpoints catch integration problems early.
 :::
 
-## ① Define the experience {.section-slide background-color="#087e80"}
+<!-- ## ① Define the experience {.section-slide background-color="#087e80"}
 
 ::: {.eyebrow}
 Part 1 · Problem, scope, and conversation design
@@ -100,15 +100,15 @@ Part 1 · Problem, scope, and conversation design
 
 From “help me use an app” to a clear, testable interaction.
 
-**Present → wait → handle → repeat**
+**Present → wait → handle → repeat** -->
 
-## 🎯 Make the vague problem explicit
+## 🎯 Make the problem explicit
 
-| Item | Vague version | Explicit version |
+| Item | Explanation |
 |---|---|---|
-| Target problem | Difficulty learning new apps | An older adult wants to learn **one app task**, such as a video call or medication reminder, but gets lost in unfamiliar screens. |
-| User need | A coach that answers questions | Give **one instruction at a time**, wait for “Done,” and support repeat, help, and progress requests. |
-| AI artefact | Dialogue, overlay, confirmation, logging, practice | Text + voice, button choices, a guided loop, practice mode, a step log, and a highlight message for a future front end. |
+| Target problem |An older adult wants to learn **one app task**, such as a video call or medication reminder, but gets lost in unfamiliar screens. |
+| User need | Give **one instruction at a time**, wait for “Done,” and support repeat, help, and progress requests. |
+| AI artefact | Text + voice, button choices, a guided loop, practice mode, a step log, and a highlight message for a future front end. |
 
 ## 🔎 Three scope decisions
 
@@ -194,21 +194,13 @@ Ask students to distinguish an operational log from a learning assessment. A com
 
 ## 🗺️ The lesson loop
 
-```{mermaid}
-flowchart LR
-  A[Choose app] --> B[Guided or practice]
-  B --> C[Start lesson]
-  C --> D[Present step]
-  D --> E[Collect reply]
-  E --> F[Handle reply]
-  F -->|complete| G[Finish and log]
-  F -->|not complete| H[Clear reply]
-  H --> D
-```
+::: {style="text-align: center;"}
+![](../slides/images/app_coach_flow.png){width=40% fig-align="center"}
+:::
 
-**Start:** set step 0 and log. **Present:** narrate, send highlight, log.
+<!-- - **Start:** set step 0 and log. **Present:** narrate, send highlight, log.
 
-**Handle:** log the reply and update state. **Repeat:** until complete.
+- **Handle:** log the reply and update state. **Repeat:** until complete. -->
 
 ## 🧩 Blueprint · Flows and user choices
 
@@ -630,10 +622,10 @@ Expected: `['learn_app', 'where_am_i']`.
 
 **Version-sensitive items retained from the source tutorial:**
 
-- Backward jump: `next: present`.
+<!-- - Backward jump: `next: present`.
 - Condition syntax: `slots.lesson_complete` versus bare `lesson_complete`.
 
-The source cites Rasa's transfer example for backward jumps but flags the general behavior for verification. Retrain and inspect the loop in your installed version.
+The source cites Rasa's transfer example for backward jumps but flags the general behavior for verification. Retrain and inspect the loop in your installed version. -->
 
 ## ⚙️ Step 5 · Custom actions
 
@@ -1080,7 +1072,7 @@ Switch to voice, allow microphone access, and say:
 **Checkpoint 8:** Finish a lesson by voice. Record two misrecognized words, or report none if none occurred.
 :::
 
-## 🔦 Step 9 · From payload to overlay
+<!-- ## 🔦 Step 9 · From payload to overlay
 
 **Optional discussion · Rasa supplies only half the artefact**
 
@@ -1128,7 +1120,7 @@ Make the assistant work, then ask whether it helps.
 | Second lesson starts at wrong step | `action_start_lesson` must reset `step_index` |
 | No spoken replies | Key exported in the launch terminal? Microphone allowed? |
 | Chitchat says “placeholder” | Restore template `nlg: rephrase` in `endpoints.yml` |
-| Unrelated messages start `learn_app` | Tighten its description and retrain |
+| Unrelated messages start `learn_app` | Tighten its description and retrain | -->
 
 ## 🧪 Extensions · Choose one
 
@@ -1138,7 +1130,7 @@ Make the assistant work, then ask whether it helps.
 4. **Quit politely:** Add `stop_lesson`, log `lesson_abandoned`, and say goodbye.
 5. **Summary report:** Read the JSON-lines log and report which steps needed help, with consent and access controls.
 
-## 💭 Reflection · Agency and learning
+<!-- ## 💭 Reflection · Agency and learning
 
 1. Which of Microsoft's 18 HAI guidelines connect to one-step instructions, tips, practice mode, progress, and logging?
 2. What happens if “not done” becomes `done`? What does the LLM control, and what is controlled only by code?
@@ -1163,7 +1155,7 @@ Consider task success, retention, help requests, correction effort, and the user
 
 **Verify locally:** Backward jumps, exact condition syntax, custom payload display, and all checkpoints.
 
-**Fictional lessons:** FamilyCall and PillTime are invented. This is not medical advice; a real medication coach requires health-professional review.
+**Fictional lessons:** FamilyCall and PillTime are invented. This is not medical advice; a real medication coach requires health-professional review. -->
 
 ## 📖 Sources · Rasa primitives
 

@@ -1,7 +1,7 @@
 ---
 title: "Lab 3: Building a Voice-Enabled Assistant with Rasa CALM"
 author: "Fred Agbo"
-date: February 16, 2026
+date: October 26, 2026
 format:
   revealjs:
     theme: [default, ./custom.scss]
