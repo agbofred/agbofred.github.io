@@ -277,28 +277,28 @@
     "href": "syllabi.html#overview",
     "title": "CS 480W/481: Course Syllabus",
     "section": "Overview",
-    "text": "Overview\nEach student serves as a peer reviewer for two projects throughout both semesters, developing critical evaluation skills and exposure to different approaches."
+    "text": "Overview\nEach student serves as a peer reviewer for a project throughout both semesters, developing critical evaluation skills and exposure to different approaches."
   },
   {
     "objectID": "syllabi.html#review-partnerships",
     "href": "syllabi.html#review-partnerships",
     "title": "CS 480W/481: Course Syllabus",
     "section": "Review Partnerships",
-    "text": "Review Partnerships\nReview partnerships are assigned at the start of Semester 1 and remain consistent throughout both semesters. Each student provides constructive feedback and support to their assigned peers."
+    "text": "Review Partnerships\nReview partnerships are assigned at the middle of Semester 1 and remain consistent throughout both semesters. Each student provides constructive feedback and support to their assigned peers.\nPeer review is a critical component of the course grade. Reviewers are expected to maintain an assessment log of comments from their review meetings, which typically last 10–15 minutes and are scheduled below. The log should include a detailed individual report describing the partner’s progress as of each meeting, areas for improvement or new work to introduce, and other relevant observations about the collaboration dynamics. Submit the completed report in Week 15 of the semester via Canvas."
   },
   {
     "objectID": "syllabi.html#review-schedule",
     "href": "syllabi.html#review-schedule",
     "title": "CS 480W/481: Course Syllabus",
     "section": "Review Schedule",
-    "text": "Review Schedule\n\nSemester 1 Reviews\n\nWeek 3: Proposal Draft\nWeek 6: Architecture\nWeek 8: Design Docs\nWeek 11: Backend Code\nWeek 13: Frontend Code\nWeek 15: Prototype\n\n\n\nSemester 2 Reviews\n\nWeek 2: Sprint Planning\nWeek 5: Features\nWeek 8: Presentation\nWeek 9: Testing\nWeek 11: Deployment\nWeek 12: Documentation\nWeek 14: Final Code\nWeek 15: Showcase"
+    "text": "Review Schedule\n\nSemester 1 Reviews\n\n\nWeek 8: Architecture & Design Docs\nWeek 11: Backend Code\nWeek 13: Frontend Code\nWeek 14: Prototype\n\n\n\nSemester 2 Reviews\n\nWeek 2: Sprint Planning\nWeek 5: Features\nWeek 8: Presentation\nWeek 9: Testing\nWeek 11: Deployment\nWeek 12: Documentation\nWeek 14: Final Code\nWeek 15: Showcase"
   },
   {
     "objectID": "syllabi.html#review-rubric",
     "href": "syllabi.html#review-rubric",
     "title": "CS 480W/481: Course Syllabus",
     "section": "Review Rubric",
-    "text": "Review Rubric\n\n\n\nGrade\nDescription\nRange\n\n\n\n\nA\nSpecific, actionable feedback with code examples\n90–100%\n\n\nB\nIdentifies major issues with useful suggestions\n80–89%\n\n\nC\nMeets requirements with basic feedback\n70–79%\n\n\nD\nMinimal effort, vague feedback\n60–69%\n\n\nF\nMissing or non-constructive\nBelow 60%"
+    "text": "Review Rubric\n\n\n\n\n\n\n\n\nGrade\nDescription\nRange\n\n\n\n\nA\nSpecific, actionable feedback with code examples where applicable\n90–100%\n\n\nB\nIdentifies major issues with useful suggestions\n80–89%\n\n\nC\nMeets requirements with basic feedback\n70–79%\n\n\nD\nMinimal effort, vague feedback\n60–69%\n\n\nF\nMissing or non-constructive\nBelow 60%"
   },
   {
     "objectID": "syllabi.html#grade-scale",

@@ -273,22 +273,25 @@ In addition to the group session, **every student must individually book a 15-mi
 
 ## Overview
 
-Each student serves as a peer reviewer for two projects throughout both semesters, developing critical evaluation skills and exposure to different approaches.
+Each student serves as a peer reviewer for a project throughout both semesters, developing critical evaluation skills and exposure to different approaches.
 
 ## Review Partnerships
 
-Review partnerships are assigned at the start of Semester 1 and remain consistent throughout both semesters. Each student provides constructive feedback and support to their assigned peers.
+Review partnerships are assigned at the middle of Semester 1 and remain consistent throughout both semesters. Each student provides constructive feedback and support to their assigned peers.
+
+Peer review is a critical component of the **course grade**. Reviewers are expected to maintain an ***assessment log*** of comments from their review meetings, which typically last 10–15 minutes and are scheduled below. The log should include a detailed individual report describing the partner’s progress as of each meeting, areas for improvement or new work to introduce, and other relevant observations about the collaboration dynamics. Submit the completed report in Week 15 of the semester via Canvas.                                                                                                                                                                                                                                
+
 
 ## Review Schedule
 
 ### Semester 1 Reviews
-
-1. Week 3: Proposal Draft
-2. Week 6: Architecture
-3. Week 8: Design Docs
-4. Week 11: Backend Code
-5. Week 13: Frontend Code
-6. Week 15: Prototype
+<!-- 
+1. Week 3: Proposal Draft 
+2. Week 6: Architecture-->
+1. Week 8: Architecture & Design Docs
+2. Week 11: Backend Code
+3. Week 13: Frontend Code
+4. Week 14: Prototype
 
 ### Semester 2 Reviews
 
@@ -305,7 +308,7 @@ Review partnerships are assigned at the start of Semester 1 and remain consisten
 
 | Grade | Description | Range |
 |-------|-------------|-------|
-| A | Specific, actionable feedback with code examples | 90–100% |
+| A | Specific, actionable feedback with code examples where applicable | 90–100% |
 | B | Identifies major issues with useful suggestions | 80–89% |
 | C | Meets requirements with basic feedback | 70–79% |
 | D | Minimal effort, vague feedback | 60–69% |

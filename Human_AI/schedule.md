@@ -455,7 +455,7 @@ In-class workshop: peer heuristic evaluation of each team's conversational AI sy
 </div>
 
 <div class="week-due">
-**Due Nov 13:** HW3 — Heuristic Evaluation Report
+**Due Nov 13:** [HW3 — Wordle for Everyone](hw3-wordle.html)
 </div>
 </div>
 
@@ -578,7 +578,7 @@ Final public project exhibition. All teams demonstrate their completed conversat
 | **Oct 16** | GP2 Due — Needfinding, Personas, Workflow |
 | **Oct 23** | Last Day to Withdraw (full semester) |
 | **Nov 3** | Lab-only class format |
-| **Nov 13** | HW3 Due |
+| **Nov 13** | [HW3 Due](hw3-wordle.html) |
 | **Nov 17** | SP27 Registration Begins |
 | **Nov 20** | GP3 Due — System Implementation |
 | **Nov 25–27** | Fall Break — No Class |

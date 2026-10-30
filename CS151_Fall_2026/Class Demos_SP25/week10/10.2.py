@@ -14,6 +14,12 @@ class songs:
         self.artist = artist
         self.duration_sec = duration_sec
         self.genre = genre
+    def __str__(self):
+        return f"{self.title}, {self.artist},{self.duration_sec}, {self.genre}"
+    
+    def __repr__(self):
+        return f"{self.title}, {self.artist},{self.duration_sec}, {self.genre}"
+
         
 playlist = []
 playlist.append(songs("title 1", "Artist1,", 128, "clasic"))
@@ -21,10 +27,16 @@ playlist.append(songs("title 2", "Artist2,", 250, "Afrobit"))
 playlist.append(songs("title 3", "Artist3,", 150, "None"))
 playlist.append(songs("title 4", "Artist4,", 100, "None"))
 
+
+
 def printlist(plist):
     total = 0
     for i in plist:
         total+= i.duration_sec
     print(f"Total music in sectond {total/60}")
 
-printlist(playlist)
+# printlist(playlist)
+mysong = songs("title 1", "Artist1", 128, "clasic")
+
+print(mysong)
+print(playlist)

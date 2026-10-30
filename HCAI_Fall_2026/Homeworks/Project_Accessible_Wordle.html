@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>project_accessible_wordle</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Project_Accessible_Wordle_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Project_Accessible_Wordle_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Project_Accessible_Wordle_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Project_Accessible_Wordle_files/libs/quarto-html/popper.min.js"></script>
+<script src="Project_Accessible_Wordle_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Project_Accessible_Wordle_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Project_Accessible_Wordle_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Project_Accessible_Wordle_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Project_Accessible_Wordle_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Project_Accessible_Wordle_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Project_Accessible_Wordle_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="project-wordle-for-everyone-an-accessible-word-game-for-older-adults" class="level1">
+<h1>Project: Wordle for Everyone — An Accessible Word Game for Older Adults</h1>
+<p><strong>Course:</strong> AI 380: Human-AI Interaction · Willamette University <strong>Instructor:</strong> Prof.&nbsp;Fred Agbo <strong>Format:</strong> Individual or pair project, completed in five milestones <strong>Provided file:</strong> <code>english.py</code> (list of English words). Nothing else is provided: no starter code, no templates.</p>
+<hr>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">1. Project Overview</h2>
+<p>The New York Times Wordle is popular, but it assumes players can distinguish colors, read small text, move quickly, remember earlier guesses, and tolerate a punishing, one-puzzle-a-day format. Many older adults cannot or do not want to play under those assumptions.</p>
+<p><strong>Your task:</strong> Design and build your own Wordle-style game that an older adult can play comfortably, then go beyond the NYT version with enhancements that make the game more supportive, more inclusive, and more meaningful.</p>
+<p>You choose the language, framework, and interface (web, desktop, text, voice, or a combination). The only fixed constraint is that <strong>your game must use <code>english.py</code> as its word source</strong>.</p>
+<section id="learning-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h3>
+<p>By the end of this project you will be able to:</p>
+<ol type="1">
+<li>Apply accessibility standards and human-centered design principles for older adults to an interactive system.</li>
+<li>Design feedback that does not depend on color alone.</li>
+<li>Justify design decisions with evidence from the literature and from user testing.</li>
+<li>Evaluate your system with real or simulated users and iterate on the results.</li>
+<li>Reflect on where AI or automation helps, and where it should not take control.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="core-requirements-everyone-must-meet-these" class="level2">
+<h2 class="anchored" data-anchor-id="core-requirements-everyone-must-meet-these">2. Core Requirements (Everyone Must Meet These)</h2>
+<section id="game-rules" class="level3">
+<h3 class="anchored" data-anchor-id="game-rules">2.1 Game Rules</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G1</td>
+<td>A hidden five-letter answer is chosen at the start of each game.</td>
+</tr>
+<tr class="even">
+<td>G2</td>
+<td>The player has a fixed number of guesses (you decide and justify the number; the NYT uses 6).</td>
+</tr>
+<tr class="odd">
+<td>G3</td>
+<td>Every guess is validated against <code>english.py</code>.</td>
+</tr>
+<tr class="even">
+<td>G4</td>
+<td>A guess that is too short, too long, contains non-letters, or is not a real word is <strong>rejected with a clear message and does not cost a guess</strong>.</td>
+</tr>
+<tr class="odd">
+<td>G5</td>
+<td>Repeated letters are scored correctly (for example, a guess with two <code>E</code>s when the answer has one).</td>
+</tr>
+<tr class="even">
+<td>G6</td>
+<td>The game ends with a clear win or loss message and always offers a new game.</td>
+</tr>
+<tr class="odd">
+<td>G7</td>
+<td>The answer pool is <strong>curated by you</strong> from <code>english.py</code>, so players are not asked to guess obscure words. Document how you curated it.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="accessible-letter-feedback-the-heart-of-the-project" class="level3">
+<h3 class="anchored" data-anchor-id="accessible-letter-feedback-the-heart-of-the-project">2.2 Accessible Letter Feedback (The Heart of the Project)</h3>
+<p>Each letter of a guess must be shown in exactly one of three states:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Correct</strong></td>
+<td>Letter is in the answer and in the right position</td>
+</tr>
+<tr class="even">
+<td><strong>Present</strong></td>
+<td>Letter is in the answer but in the wrong position</td>
+</tr>
+<tr class="odd">
+<td><strong>Absent</strong></td>
+<td>Letter is not in the answer</td>
+</tr>
+</tbody>
+</table>
+<p>Your visual design must satisfy <strong>all</strong> of the following:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>F1</td>
+<td><strong>Redundant encoding:</strong> Each state uses at least <strong>three</strong> independent cues, such as color, a distinct shape or border style, a symbol or icon, a text label, or a pattern. Color can never be the only signal.</td>
+</tr>
+<tr class="even">
+<td>F2</td>
+<td><strong>Highlighting is clear:</strong> An older adult can tell the three states apart at a glance, including in grayscale.</td>
+</tr>
+<tr class="odd">
+<td>F3</td>
+<td><strong>Contrast:</strong> Text and state indicators meet WCAG 2.1 AA contrast ratios (at least 4.5:1 for text, 3:1 for graphical indicators). Report the measured ratios.</td>
+</tr>
+<tr class="even">
+<td>F4</td>
+<td><strong>Color-blind safe:</strong> Your palette works for the three common color vision deficiencies (protanopia, deuteranopia, tritanopia). Show evidence, such as simulator screenshots.</td>
+</tr>
+<tr class="odd">
+<td>F5</td>
+<td><strong>On-screen keyboard (or equivalent letter tracker):</strong> The same three states are reflected on every letter the player has tried, using the same cues as the guess grid.</td>
+</tr>
+<tr class="even">
+<td>F6</td>
+<td><strong>Legend:</strong> A visible, always-available key explains what each state means.</td>
+</tr>
+<tr class="odd">
+<td>F7</td>
+<td><strong>Words as well as visuals:</strong> Every result is also available as plain-language text (for example, “R is in the word, but not in this spot”), so that it works for screen readers and voice.</td>
+</tr>
+<tr class="even">
+<td>F8</td>
+<td><strong>User choice:</strong> The player can switch between at least two feedback styles (such as a standard palette and a high-contrast palette) and the choice persists.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="broader-accessibility-for-older-adults" class="level3">
+<h3 class="anchored" data-anchor-id="broader-accessibility-for-older-adults">2.3 Broader Accessibility for Older Adults</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A1</td>
+<td><strong>Readable text:</strong> Default letters and messages are large; the player can enlarge text (at least 200%) without losing content or function.</td>
+</tr>
+<tr class="even">
+<td>A2</td>
+<td><strong>Easy targets:</strong> Interactive controls are large and well spaced (at least 44×44 px or equivalent).</td>
+</tr>
+<tr class="odd">
+<td>A3</td>
+<td><strong>Keyboard-only play:</strong> Every function works without a mouse, with a visible focus indicator.</td>
+</tr>
+<tr class="even">
+<td>A4</td>
+<td><strong>Screen reader support:</strong> Results, errors, and game state are announced (for example, via ARIA live regions or equivalent).</td>
+</tr>
+<tr class="odd">
+<td>A5</td>
+<td><strong>No time pressure:</strong> No timers, no forced speed, no countdown; nothing is lost if the player takes a long time.</td>
+</tr>
+<tr class="even">
+<td>A6</td>
+<td><strong>Forgiving interaction:</strong> Letters can be easily deleted, mistakes are not punished, and errors are written in plain, kind language.</td>
+</tr>
+<tr class="odd">
+<td>A7</td>
+<td><strong>Memory support:</strong> Previous guesses and their feedback remain visible for the whole game.</td>
+</tr>
+<tr class="even">
+<td>A8</td>
+<td><strong>Plain language:</strong> Instructions are short, jargon-free, and available at any moment through a Help control.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="going-beyond-the-nyt-enhancements" class="level2">
+<h2 class="anchored" data-anchor-id="going-beyond-the-nyt-enhancements">3. Going Beyond the NYT: Enhancements</h2>
+<p>Implement <strong>at least three</strong> enhancements, with <strong>at least one from each of two different categories</strong>. For each, state in your report which user problem it solves and what evidence shows it helps. You may propose your own idea; get it approved first.</p>
+<section id="category-a-cognitive-support" class="level3">
+<h3 class="anchored" data-anchor-id="category-a-cognitive-support">Category A: Cognitive Support</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Idea</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Smart hints</strong></td>
+<td>Limited, player-controlled hints that range from gentle (“the word has two vowels”) to direct (“the second letter is A”).</td>
+</tr>
+<tr class="even">
+<td><strong>Candidate helper</strong></td>
+<td>Shows how many words from the list are still possible, or lets the player view them, based on the clues so far.</td>
+</tr>
+<tr class="odd">
+<td><strong>“Why this color?” explainer</strong></td>
+<td>Click any scored letter to hear or read why it was scored that way.</td>
+</tr>
+<tr class="even">
+<td><strong>Letter notebook</strong></td>
+<td>A scratch area where the player can note letters they suspect, without affecting the game.</td>
+</tr>
+<tr class="odd">
+<td><strong>Undo / take-back</strong></td>
+<td>Lets the player retract the last submitted guess once per game.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="category-b-flexible-input-and-output" class="level3">
+<h3 class="anchored" data-anchor-id="category-b-flexible-input-and-output">Category B: Flexible Input and Output</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Idea</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Voice play</strong></td>
+<td>Speak guesses and hear results, with spelled-out letters supported.</td>
+</tr>
+<tr class="even">
+<td><strong>Read-aloud mode</strong></td>
+<td>Each result is spoken in plain language.</td>
+</tr>
+<tr class="odd">
+<td><strong>Adjustable pace and layout</strong></td>
+<td>Choices for font, spacing, animation reduction, and sound.</td>
+</tr>
+<tr class="even">
+<td><strong>Alternative input</strong></td>
+<td>Large on-screen keyboard, switch-style navigation, or one-letter-at-a-time entry.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="category-c-emotional-and-social-meaning" class="level3">
+<h3 class="anchored" data-anchor-id="category-c-emotional-and-social-meaning">Category C: Emotional and Social Meaning</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Idea</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Gentle tone</strong></td>
+<td>Encouraging language with no shaming streaks, and an “I give up” option that reveals the word kindly.</td>
+</tr>
+<tr class="even">
+<td><strong>Adjustable difficulty</strong></td>
+<td>Different word lengths, extra guesses, or guaranteed-common words.</td>
+</tr>
+<tr class="odd">
+<td><strong>Play together</strong></td>
+<td>Two players take turns or collaborate on one puzzle, such as a grandparent and grandchild.</td>
+</tr>
+<tr class="even">
+<td><strong>Save and resume</strong></td>
+<td>Pause a game and continue it later.</td>
+</tr>
+<tr class="odd">
+<td><strong>Word of the day with no penalty</strong></td>
+<td>A daily word without streaks; missing a day has no consequence.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="category-d-learning-and-reflection" class="level3">
+<h3 class="anchored" data-anchor-id="category-d-learning-and-reflection">Category D: Learning and Reflection</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Idea</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Word meaning</strong></td>
+<td>After each game, show a short definition or example sentence for the answer.</td>
+</tr>
+<tr class="even">
+<td><strong>Vocabulary journal</strong></td>
+<td>Collects words the player has encountered.</td>
+</tr>
+<tr class="odd">
+<td><strong>Progress view</strong></td>
+<td>Shows positive, non-competitive progress, such as words discovered.</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Reminder:</strong> Every enhancement must still meet the Core Requirements above. An enhancement that breaks accessibility is a defect, not a feature.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="milestones" class="level2">
+<h2 class="anchored" data-anchor-id="milestones">4. Milestones</h2>
+<p>Each milestone is submitted separately. Due dates are set by the instructor.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 26%">
+<col style="width: 40%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Milestone</th>
+<th>What to deliver</th>
+<th>Done when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>M1</strong></td>
+<td><strong>Research and Design Plan</strong></td>
+<td>1-page summary of needs of older adults (cite at least 3 sources); two or three user personas; sketches or wireframes of your feedback design; your chosen enhancements.</td>
+<td>Plan explains <em>why</em> each design choice suits your users.</td>
+</tr>
+<tr class="even">
+<td><strong>M2</strong></td>
+<td><strong>Working Core Game</strong></td>
+<td>Playable game that meets G1–G7.</td>
+<td>A full game can be won, lost, and restarted; invalid guesses do not cost guesses.</td>
+</tr>
+<tr class="odd">
+<td><strong>M3</strong></td>
+<td><strong>Accessible Feedback and Interface</strong></td>
+<td>Requirements F1–F8 and A1–A8 implemented. Evidence of contrast and color-blind checks.</td>
+<td>Passes your own accessibility checklist (Section 6).</td>
+</tr>
+<tr class="even">
+<td><strong>M4</strong></td>
+<td><strong>Enhancements</strong></td>
+<td>Your three or more enhancements implemented and working.</td>
+<td>Each enhancement can be demonstrated, with its purpose stated.</td>
+</tr>
+<tr class="odd">
+<td><strong>M5</strong></td>
+<td><strong>Evaluation and Final Submission</strong></td>
+<td>Final game, user evaluation results, reflection report, and demo (live or recorded).</td>
+<td>Everything in Section 5 is submitted.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="final-deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="final-deliverables">5. Final Deliverables</h2>
+<ol type="1">
+<li><strong>Working game</strong> with run instructions that a classmate can follow without help.</li>
+<li><strong>Design and evaluation report</strong> (4–6 pages) containing:
+<ul>
+<li>Target users and design rationale (from M1).</li>
+<li>Description of your feedback design, with annotated screenshots of all three states, in color and in grayscale.</li>
+<li>Contrast measurements and color-blind simulation evidence.</li>
+<li>Description of each enhancement, the problem it solves, and how well it worked.</li>
+<li>Evaluation results (see below).</li>
+<li>Reflection: what you changed after testing, what you would still improve, and where automation or AI should not take over from the player.</li>
+</ul></li>
+<li><strong>Accessibility checklist</strong> (Section 6), completed and honest about gaps.</li>
+<li><strong>Short demo</strong> (3–5 minutes) showing a full game, the three feedback states, and each enhancement.</li>
+<li><strong>Appendix:</strong> how you curated the answer list from <code>english.py</code>.</li>
+</ol>
+<section id="evaluation-requirement" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-requirement">Evaluation Requirement</h3>
+<p>Evaluate your game in <strong>at least two</strong> of the following ways:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Minimum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Usability test with older adults (age 60+)</strong></td>
+<td>At least 3 participants, observing them play and asking short follow-up questions. Obtain consent and <strong>do not collect personal or identifying data</strong>.</td>
+</tr>
+<tr class="even">
+<td><strong>Simulated-impairment test</strong></td>
+<td>Play your game with: grayscale display, a color-blindness simulator, 200% zoom, keyboard only, and a screen reader. Record the problems you found and fixed.</td>
+</tr>
+<tr class="odd">
+<td><strong>Heuristic evaluation</strong></td>
+<td>Review your game against a recognized set, such as Nielsen’s heuristics or the Microsoft Guidelines for Human-AI Interaction, citing specific screens.</td>
+</tr>
+</tbody>
+</table>
+<p>Report what you observed, what you changed, and what you did not fix and why.</p>
+<hr>
+</section>
+</section>
+<section id="accessibility-self-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="accessibility-self-checklist">6. Accessibility Self-Checklist</h2>
+<p>Mark each item as Met, Partly Met, or Not Met, with one sentence of evidence.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The three letter states are distinguishable in grayscale.</label></li>
+<li><label><input type="checkbox">No information depends on color alone.</label></li>
+<li><label><input type="checkbox">Text contrast is 4.5:1 or better; indicators are 3:1 or better.</label></li>
+<li><label><input type="checkbox">Text can be enlarged to 200% without breaking the layout.</label></li>
+<li><label><input type="checkbox">The complete game can be played by keyboard only.</label></li>
+<li><label><input type="checkbox">A screen reader announces guess results and errors.</label></li>
+<li><label><input type="checkbox">No timers or time pressure exist anywhere.</label></li>
+<li><label><input type="checkbox">Invalid guesses do not cost a guess, and messages are kind and clear.</label></li>
+<li><label><input type="checkbox">Help is available at any moment.</label></li>
+<li><label><input type="checkbox">Previous guesses remain visible.</label></li>
+</ul>
+<hr>
+</section>
+<section id="grading-rubric-100-points" class="level2">
+<h2 class="anchored" data-anchor-id="grading-rubric-100-points">7. Grading Rubric (100 points)</h2>
+<section id="score-summary" class="level3">
+<h3 class="anchored" data-anchor-id="score-summary">7.1 Score Summary</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Core game correctness (G1–G7)</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Accessible letter feedback (F1–F8)</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td>Broader accessibility (A1–A8)</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Enhancements beyond NYT</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Evaluation and evidence</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Report, demo, and reflection</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="detailed-rubric" class="level3">
+<h3 class="anchored" data-anchor-id="detailed-rubric">7.2 Detailed Rubric</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Excellent (90–100%)</th>
+<th>Proficient (75–89%)</th>
+<th>Developing (50–74%)</th>
+<th>Insufficient (&lt;50%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Core game (15)</strong></td>
+<td>All G1–G7 met. Repeated letters scored correctly. Invalid guesses handled gracefully. Answer list is thoughtfully curated and documented.</td>
+<td>Minor defects, such as one repeated-letter edge case or a weakly documented answer list.</td>
+<td>Playable but with several rule defects, or answers are drawn without curation.</td>
+<td>Game is not playable or does not use <code>english.py</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Accessible feedback (25)</strong></td>
+<td>Three states use three or more independent cues each. Clear in grayscale. Contrast and color-blind evidence is measured and reported. Keyboard, legend, text alternatives, and style switching are all present.</td>
+<td>Redundant encoding present but one or two requirements are weak or lack evidence.</td>
+<td>Uses color plus one additional cue; some states are hard to tell apart; limited or no evidence.</td>
+<td>Relies on color alone, or states are not distinguishable.</td>
+</tr>
+<tr class="odd">
+<td><strong>Broader accessibility (15)</strong></td>
+<td>A1–A8 all met and verified, with screen reader and keyboard-only testing.</td>
+<td>Most met; one or two gaps are acknowledged.</td>
+<td>Several gaps; limited verification.</td>
+<td>Little attention to older-adult needs.</td>
+</tr>
+<tr class="even">
+<td><strong>Enhancements (20)</strong></td>
+<td>Three or more working enhancements from at least two categories. Each is clearly justified, well integrated, and tested. At least one shows original thinking beyond the menu.</td>
+<td>Three working enhancements with adequate justification.</td>
+<td>Two working enhancements, or three that are partly working or weakly justified.</td>
+<td>One or none working.</td>
+</tr>
+<tr class="odd">
+<td><strong>Evaluation (15)</strong></td>
+<td>Two or more methods used with clear findings. At least one concrete design change is traced directly to evaluation results. Ethical handling of participants.</td>
+<td>Two methods used; findings reported but little evidence of change.</td>
+<td>One method, or findings are superficial.</td>
+<td>No evaluation.</td>
+</tr>
+<tr class="even">
+<td><strong>Report, demo, reflection (10)</strong></td>
+<td>Clear, well organized, evidence-based. Reflection is honest and insightful about limits and AI/automation boundaries. Demo covers all features.</td>
+<td>Clear and complete with limited depth.</td>
+<td>Missing sections or unclear writing.</td>
+<td>Incomplete or unclear.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bonus-up-to-5-points" class="level3">
+<h3 class="anchored" data-anchor-id="bonus-up-to-5-points">7.3 Bonus (up to 5 points)</h3>
+<ul>
+<li>Voice play that works reliably with older-adult speech patterns.</li>
+<li>A published, publicly accessible version with usage instructions.</li>
+<li>A comparison against the NYT Wordle that identifies specific barriers and shows how yours removes them.</li>
+</ul>
+</section>
+<section id="deductions" class="level3">
+<h3 class="anchored" data-anchor-id="deductions">7.4 Deductions</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Deduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Color is the only cue for any letter state</td>
+<td>-10</td>
+</tr>
+<tr class="even">
+<td>Timer or time-pressure feature</td>
+<td>-5</td>
+</tr>
+<tr class="odd">
+<td>Missing run instructions or game does not start</td>
+<td>-10</td>
+</tr>
+<tr class="even">
+<td>Participant data collected without consent or containing identifying information</td>
+<td>-10</td>
+</tr>
+<tr class="odd">
+<td>Uncredited code or ideas</td>
+<td>Academic integrity process</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="rules-and-expectations" class="level2">
+<h2 class="anchored" data-anchor-id="rules-and-expectations">8. Rules and Expectations</h2>
+<ul>
+<li><strong>Provided:</strong> only <code>english.py</code>. All other code, design, and writing are your own work.</li>
+<li><strong>Use of AI tools:</strong> You may use AI assistants for ideas and debugging, but you must disclose the tools used and what they contributed, and you must be able to explain every part of your code.</li>
+<li><strong>Privacy:</strong> Do not store names, ages, health information, or recordings of participants. Record only anonymous observations.</li>
+<li><strong>Honesty:</strong> Gaps reported honestly earn more credit than gaps that are hidden and then discovered.</li>
+</ul>
+<hr>
+</section>
+<section id="suggested-references" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-references">9. Suggested References</h2>
+<ul>
+<li>W3C. <em>Web Content Accessibility Guidelines (WCAG) 2.1</em> (contrast, text resize, keyboard, non-text content, use of color).</li>
+<li>Nielsen Norman Group. <em>Usability for Senior Citizens</em> and related articles.</li>
+<li>Microsoft. <em>Guidelines for Human-AI Interaction</em> (if you add hints or voice).</li>
+<li>National Institute on Aging. <em>Making Your Website Senior Friendly</em>.</li>
+<li>Any color-blindness simulator and contrast checker of your choice.</li>
+</ul>
+<hr>
+</section>
+<section id="quick-success-check" class="level2">
+<h2 class="anchored" data-anchor-id="quick-success-check">10. Quick Success Check</h2>
+<p>Before submitting, ask yourself:</p>
+<ol type="1">
+<li>Could my grandparent tell the three letter states apart without seeing color?</li>
+<li>Could they play without a mouse, a timer, or a manual?</li>
+<li>Did a real or simulated user find a problem that I then fixed?</li>
+<li>Would my enhancements make someone choose this game over the NYT version, and can I show why?</li>
+</ol>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

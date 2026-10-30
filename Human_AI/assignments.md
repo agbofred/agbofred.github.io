@@ -22,7 +22,7 @@ All assignments are submitted via **Canvas** unless otherwise noted. Deadlines a
 | HW0 | Personal Introduction & Expectations | Individual | Participation | Aug 28 |
 | HW1 | Critical Literature Synthesis & Interface Critique | Individual | 7% | Sep 5 |
 | HW2 | Applied Needfinding & Low-Fidelity Prototype | Individual | 7% | Sep 18 |
-| HW3 | Description TBA by Instructor | Individual | 6% | Nov 13 |
+| [HW3](hw3-wordle.html) | Wordle for Everyone | Individual | 6% | Nov 13 |
 | Midterm Quiz | In-class quiz (Week 7) | Individual | 10% | Oct 7 |
 | GP0 | Team Formation, Charter & Project Journal Setup | Group | Mandatory | Sep 25 |
 | GP1 | Co-Designing & Authoring VR Interventions for Older Adults | Group | 10% | Oct 2 |
@@ -122,13 +122,13 @@ Produce a **2–3 page project discovery report** and an **initial paper prototy
 
 ---
 
-### HW3 — Assignment Description TBA
+### [HW3 — Wordle for Everyone](hw3-wordle.html)
 
 **Due: Thursday, Nov 13 (11:59 PM) · 6%**
 
 ::: {.assignment-card}
 ::: {.callout-note}
-The full description for HW3 will be provided by the instructor before Week 12. Check Canvas and Discord for the announcement. The assignment is due **Nov 13** and carries **6%** of your final grade.
+See the [full HW3 description](hw3-wordle.html). The assignment is due **Nov 13** and carries **6%** of your final grade.
 :::
 :::
 

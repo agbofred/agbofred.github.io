@@ -297,7 +297,7 @@ For the detailed week-by-week schedule including all readings and due dates, see
 | Oct 9 | Mid-semester break — No class |
 | Oct 16 | GP2 Due — Needfinding, Personas & Workflow |
 | Oct 23 | Last day to withdraw (full semester) |
-| Nov 13 | HW3 Due |
+| Nov 13 | [HW3 Due](hw3-wordle.html) |
 | Nov 20 | GP3 Due — System Implementation |
 | Nov 25–27 | Fall Break — No class |
 | Nov 30 & Dec 2 | **Final Project Presentations** |

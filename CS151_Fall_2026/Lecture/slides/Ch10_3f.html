@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-10-30">
+  <title>Functions Classes</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Functions Classes</h1>
+  <p class="author">Fred Agbo</p>
+  <p class="date">October 30, 2026</p>
+</section>
+
+<section id="happy-wednesday" class="slide level2">
+<h2>Happy Wednesday!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Class grouping today: Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Class code is <code class="python">FiB4R</code></li>
+<li>Introduce yourselves! What is your best Python function?</li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arrangement.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=lcjjHj"
+style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<ul>
+<li>Project <strong>ImageShop</strong> is ongoing and due next week
+Monday
+<ul>
+<li>I encourage you NOT to wait until the late hour to start the
+projects or ask for extension</li>
+<li>Because by Monday, the 4th project will be published, and its always
+a bit demanding than the previous one.</li>
+</ul></li>
+<li>Second midterm exam is <strong><em>next week Friday 6th of
+November</em></strong>.
+<ul>
+<li><strong>More details next week</strong></li>
+</ul></li>
+<li>Remember that class attendance is graded as part of the
+<strong><em>Participation grade</em></strong> component of this class
+<ul>
+<li>Several unexcused absenses from the class or session meeting will
+impact your grade significantly.
+<ul>
+<li><h2 id="so-please-show-up">So, PLEASE, show up!!!</h2></li>
+</ul></li>
+</ul></li>
+</ul>
+<!-- ## Announcements
+- Grading of problem sets 5 is not ready yet! Apologies!.
+- Project 3 is due _tomorrow_ at 12:00 PM.
+- Midterm 2 is **this week Friday at 9:10-10:10 am**
+    - I’m going to post practice exams and learning objectives for you today
+    - Focused on Chapters 4-6, and 8 (graphics, functions, and lists)
+    - No problem set this week: just studying for exam
+- Wednesday class will welcome a guest faculty - Prof. Calvin 
+    - Talk on CS/DS Fall Advising Preview!
+    - Calvin will be briefly discussing what classes are being offered
+    - then how to help folks out with advising, major declarations, etc.
+- Polling: [https://www.polleverywhere.com/agbofred203](https://www.polleverywhere.com/agbofred203) -->
+</section>
+<section id="getters-and-setters" class="slide level2">
+<h2>Getters and Setters</h2>
+<ul>
+<li><p>In the object-oriented model, the client is not supposed to
+muck-about with the object internals</p></li>
+<li><p>The implementation should therefore provide methods to retrieve
+desired attributes (called <em>getters</em>) or to make changes to
+desired attributes (called <em>setters</em>)</p></li>
+<li><p>Setting up getters and setters for the attribute
+<code class="python">salary</code> might look like:</p>
+<pre ><code class="python">def get_salary(self):
+  return self.salary
+
+def set_salary(self, new_salary):
+  self.salary = new_salary</code></pre></li>
+<li><p>Getters are far more common than setters, as you don’t always
+want the client to have the freedom to change attributes on a
+whim</p></li>
+</ul>
+</section>
+<section id="representation" class="slide level2">
+<h2>Representation</h2>
+<ul>
+<li><p>Printing out an object that you just created as an instance of a
+custom class will look ugly:</p>
+<pre ><code class="python-repl">>>> C = Employee('Bob', 'clerk', 15)
+>>> print(C)
+<__main__.Employee object at 0x7f942ba13550></code></pre></li>
+<li><p>You can define special methods for a class that specify how your
+object should be converted to a string (or anything else really)</p>
+<ul>
+<li>All these special methods have double underscores before and after,
+and hence are frequently termed “dunder” (double underscore)
+methods</li>
+<li>You can use the <code class="python">__str__</code> or
+<code class="python">__repr__</code> method to specify how your object
+might be printed</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-good-employee" class="slide level2">
+<h2>A Good Employee</h2>
+<pre ><code class="python" style="max-height:900px">class Employee:
+    def __init__(self, name, title, salary):
+        self.name = name
+        self.title = title
+        self.salary = salary
+
+    def __str__(self):
+        return f"{self.name} ({self.title}): {self.salary}"
+
+    def get_salary(self):
+        return self.salary
+
+    def set_salary(self, new_salary):
+        self.salary = new_salary</code></pre>
+</section>
+<section id="daily-los" class="slide level2">
+<h2>Daily LO’s</h2>
+<ul>
+<li>Practice defining instance methods</li>
+<li>Use <code class="python">self</code> properly within our method
+definitions</li>
+<li>Write some getters and setters</li>
+<li>Print out our custom objects in a useful way</li>
+</ul>
+</section>
+<section id="problem-1-demo-tracing" class="slide level2">
+<h2>Problem 1: Demo Tracing</h2>
+<div class="cols" style="align-items:center">
+<div class="col">
+<p>What would be the output of the last print statement in the code to
+the right?</p>
+<div class="poll">
+<ol>
+<li>True</li>
+<li>False</li>
+<li>Error: Index out of range</li>
+<li>Error: Python will not know how to compare the new Demo objects</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python" style="max-height:900px; font-size:.8em; line-height:1.3em;">class Demo:
+    def __init__(self):
+        self.x = []
+
+    def add(self, v):
+        self.x.append(v)
+
+    def get_x(self):
+        return self.x
+
+A, B = Demo(), Demo()
+C = B.get_x()
+A.add(3)
+B.add(3)
+C.append(A)
+print(A.get_x() == B.get_x())</code></pre>
+</div>
+</div>
+</section>
+<section id="problem-2" class="slide level2"
+data-notes="Solution: Loly, black, 4 becuase color in constructor was not referenced but defualted">
+<h2
+data-notes="Solution: Loly, black, 4 becuase color in constructor was not referenced but defualted">Problem
+2</h2>
+<div class="cols">
+<div class="col">
+<p>What would be the output of the printed statement in the code to the
+right?</p>
+<div class="poll">
+<ol>
+<li>Loly black 2</li>
+<li>Loly brown 4</li>
+<li>Loly, black, 4</li>
+<li>Loly, brown, 2</li>
+</ol>
+</div>
+</div>
+<div class="col">
+<pre ><code class="python" style="min-height:940px; width: 1200px">class Pet:
+    def __init__(self, name, color, age):
+        self.name = name
+        self.color="black"
+        self.age = age
+
+    def bmi(self, weight, height):
+        if weight/height > 2:
+            self.age = self.age*2
+        else:
+            self.age += 1
+dog = Pet("Loly", "brown", 2)
+dog.bmi(180,45)
+print(f'{dog.name}, {dog.color}, {dog.age}')
+</code></pre>
+</div>
+</div>
+</section>
+<section id="activity-3a-banking-transaction" class="slide level2">
+<h2>Activity 3A: Banking Transaction</h2>
+<ul>
+<li>Create a <code class="python">BankAccount</code> class with the
+following requirements:
+<ul>
+<li>Private attributes: <code class="python">_account_number</code>,
+<code class="python">_balance</code>,
+<code class="python">_owner_name</code></li>
+<li>Constructor to initialize these attributes</li>
+<li>Getter and setter methods for all attributes</li>
+</ul></li>
+</ul>
+</section>
+<section id="activity-3b-banking-transaction" class="slide level2">
+<h2>Activity 3B: Banking Transaction</h2>
+<ul>
+<li>Implement the normal transactions but with security check to be sure
+the transaction is valid!
+<ul>
+<li>Method to deposit money</li>
+<li>Method to withdraw money</li>
+<li>Method to display account information</li>
+</ul></li>
+</ul>
+</section>
+<section id="activity-3c-banking-transaction" class="slide level2">
+<h2>Activity 3C: Banking Transaction</h2>
+<ul>
+<li>Display the account information and with some valid transactions:
+the formatting string will be your friend here!
+<ul>
+<li>Implement a method to display account information</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>
