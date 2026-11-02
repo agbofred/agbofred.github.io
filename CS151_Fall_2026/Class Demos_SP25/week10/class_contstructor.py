@@ -90,14 +90,25 @@ class BankAccount:
         print(f"Owner: {self._owner_name}")
         print(f"Balance: ${self._balance:.2f}")
 
-# Test
-account = BankAccount("1234567", 1000.0, "John Doe")
-account.display_info()
-account.deposit(account.get_balance()+500)
-account.withdraw(200)
-print("--------------------------")
-account.display_info()
+# Class Savings Account Inheriting from Bank Account
 
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, balance, owner_name, interest_rate):
+       super().__init__(account_number, balance, owner_name)
+       self.interest_rate = interest_rate
+    def describe_account(self):
+        super().display_info()
+        return f"rate: {self.interest_rate}"
+# Test
+# account = BankAccount("1234567", 1000.0, "John Doe")
+# account.display_info()
+# account.deposit(account.get_balance()+500)
+# account.withdraw(200)
+# print("--------------------------")
+# account.display_info()
+
+savings = SavingsAccount("123456", 3000, "Fred", 0.2)
+print(savings.describe_account())
 
 
 ######### FIRST CLASS DEMO #####################

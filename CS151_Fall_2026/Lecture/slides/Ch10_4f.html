@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-11-02">
+  <title>Inheritance</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Inheritance</h1>
+  <p class="author">Fred Agbo</p>
+  <p class="date">November 2, 2026</p>
+</section>
+
+<section id="happy-new-month-and-new-week" class="slide level2">
+<h2>Happy New Month and New Week!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Class grouping today: Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Class code is <code class="python">GrtN9</code></li>
+<li>Introduce yourselves! What class assignment do you inherit from last
+month?</li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arrangement.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=lcjjHj"
+style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<div class="sml" style="font-size: 43px;">
+<ul>
+<li>Project <strong>ImageShop</strong> is due today at 10:00pm</li>
+<li>Second midterm exam is <strong><em>this Friday 6th of November in
+this class!</em></strong>.
+<ul>
+<li>Exactly the same format as it was in Midterm 1 exam</li>
+<li>Written in Canvas</li>
+<li>Partially opened (Remember the definition of partially opened)
+<ul>
+<li>No programming in any development environment such as VS Code</li>
+<li>You can look up your past assignments on GitHub or in your note but
+not from the VS code</li>
+<li>You <strong><em>CANNOT</em></strong> Google or use any AI and/or any
+GenAI tools</li>
+</ul></li>
+<li>Remember you MUST share your entire screen from the proctoring tool
+during exams
+<ul>
+<li>You are being watched!</li>
+</ul></li>
+</ul></li>
+<li>Focused on Chapters 4-6, and 8 (Graphics, Functions, Interactive
+Programs, and Lists)
+<ul>
+<li>Practice questions will be posted by tomorrow</li>
+<li>No problem set this week: just studying for exam</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="inheritance-reuse-and-extend" class="slide level2">
+<h2>Inheritance: Reuse and Extend</h2>
+<div class="sml" style="font-size: 45px;">
+<ul>
+<li><strong>Inheritance</strong> lets a new class reuse and specialize
+the behavior of an existing class.</li>
+<li>The existing class is the <strong>parent</strong> (or base); the new
+class is the <strong>child</strong> (or subclass).</li>
+<li>A child gets the parent’s methods and attributes, and can add its
+own.</li>
+</ul>
+<pre ><code class="python">class Employee:
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        return f"Hi, I'm {self.name}."
+
+class Manager(Employee):
+    def approve_request(self):
+        return f"{self.name} approved the request."
+
+manager = Manager("Sam")
+print(manager.introduce())
+print(manager.approve_request())</code></pre>
+</div>
+<aside class="notes">
+<p>Ask students which class defines
+<code class="python">introduce</code> and which class defines
+<code class="python">approve_request</code>.</p>
+</aside>
+</section>
+<section id="a-child-can-specialize-behavior" class="slide level2">
+<h2>A Child Can Specialize Behavior</h2>
+<div class="sml" style="font-size: 45px;">
+<ul>
+<li>A subclass can define a method with the same name as a parent
+method.</li>
+<li>This is <strong>overriding</strong>: calling that method on a child
+uses the child’s version.</li>
+</ul>
+<pre ><code class="python">class Employee:
+    def describe_role(self):
+        return "I work at the company."
+
+class Manager(Employee):
+    def describe_role(self):
+        return "I manage a team."
+
+worker = Employee()
+manager = Manager()
+print(worker.describe_role())
+print(manager.describe_role())</code></pre>
+</div>
+<aside class="notes">
+<p>Before showing the output, have students predict which implementation
+each call uses.</p>
+</aside>
+</section>
+<section id="super-calls-parent-behavior" class="slide level2">
+<h2><code class="python">super()</code> Calls Parent Behavior</h2>
+<div class="sml" style="font-size: 45px;">
+<ul>
+<li><code class="python">super()</code> gives a subclass access to
+methods from its parent class.</li>
+<li>Use <code class="python">super().__init__(...)</code> to initialize
+the parent’s attributes instead of repeating that code.</li>
+<li>The child can then add its own attributes.</li>
+</ul>
+<pre ><code class="python">class Employee:
+    def __init__(self, name):
+        self.name = name
+
+class Manager(Employee):
+    def __init__(self, name, team_size):
+        super().__init__(name)
+        self.team_size = team_size
+
+manager = Manager("Sam", 4)
+print(manager.name, manager.team_size)</code></pre>
+</div>
+</section>
+<section id="extend-parent-method-with-super" class="slide level2">
+<h2>Extend Parent Method with <code class="python">super()</code></h2>
+<div class="sml" style="font-size: 44px;">
+<ul>
+<li>An override can keep the parent’s behavior and build on it.</li>
+<li>Call <code class="python">super().method_name(...)</code> from the
+child’s method.</li>
+</ul>
+<pre ><code class="python">class Employee:
+    def describe_role(self):
+        return f"{self.name} works at the company."
+
+class Manager(Employee):
+    def __init__(self, name, team_size):
+        super().__init__(name)
+        self.team_size = team_size
+
+    def describe_role(self):
+        description = super().describe_role()
+        return f"{description} They lead {self.team_size} people."
+
+manager = Manager("Sam", 4)
+print(manager.describe_role())</code></pre>
+</div>
+</section>
+<section id="guided-practice-a-more-specific-pet" class="slide level2">
+<h2>Guided Practice: A More Specific Pet</h2>
+<div class="sml" style="font-size: 40px;">
+<ul>
+<li>Start with a <code class="python">Pet</code> class that stores a
+name and has a <code class="python">speak</code> method.</li>
+<li>Create a <code class="python">Dog</code> subclass that uses
+<code class="python">super()</code> to initialize the name.</li>
+<li>Override <code class="python">speak</code> so a dog says
+<code class="python">Woof!</code>.</li>
+<li><strong>Predict:</strong> What will
+<code class="python">print(dog.name, dog.speak())</code> display?</li>
+</ul>
+<pre ><code class="python">class Pet:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "..."
+
+class Dog(Pet):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def speak(self):
+        return "Woof!"
+
+dog = Dog("Milo")
+print(dog.name, dog.speak())</code></pre>
+</div>
+<aside class="notes">
+<p>Expected output: Milo Woof! Point out that
+<code class="python">Dog</code> inherits
+<code class="python">name</code> setup and overrides only
+<code class="python">speak</code>.</p>
+</aside>
+</section>
+<section id="group-problems-los" class="slide level2">
+<h2>Group Problems LO’s</h2>
+<ul>
+<li>Define a class that inherits from another</li>
+<li>Override parent methods in a child class</li>
+<li>Properly use <code class="python">super()</code> in a child
+constructor</li>
+</ul>
+</section>
+<section id="inherit-last-weeks-bankaccount" class="slide level2">
+<h2>Inherit Last week’s BankAccount:</h2>
+<ul>
+<li>A <code class="python">BankAccount</code> has an owner and a
+balance.</li>
+<li>Add a <code class="python">SavingsAccount</code> that reuse the
+parent’s setup, add an interest rate, and report its account type.</li>
+<li><strong>Try it:</strong> Implement
+<code class="python">describe()</code> in the child by extending the
+parent’s description with <code class="python">super()</code>.</li>
+</ul>
+<!-- ```python
+class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def describe(self):
+        return f"{self.owner}: balance ${self.balance:.2f}"
+
+class SavingsAccount(BankAccount):
+    def __init__(self, owner, balance, interest_rate):
+        super().__init__(owner, balance)
+        self.interest_rate = interest_rate
+
+    def describe(self):
+        # Complete: reuse the parent description and add the rate.
+        return f"{super().describe()}, rate {self.interest_rate:.1%}"
+
+account = SavingsAccount("Ari", 250, 0.03)
+print(account.describe())
+```
+
+::: notes
+Expected output: Ari: balance $250.00, rate 3.0%. Ask why calling `super().__init__` avoids duplicated initialization.
+::: -->
+</section>
+<section id="problem-1a-im-on-a-boat" class="slide level2">
+<h2>Problem 1a: I’m on a Boat!</h2>
+<ul>
+<li>Grab the starter codes from the
+<strong><em>Discord</em></strong></li>
+<li>This is a coding problem. Work in pairs on a single computer, and
+discuss your algorithm <strong>BEFORE YOU WRITE ANY CODE</strong>.</li>
+<li>I have provided to you already a <code class="python">Vehicle</code>
+class, which tracks several attributes and includes an initial
+<code class="python">__repr__</code> method</li>
+<li>Your task:
+<ul>
+<li>Create a new <code class="python">Boat</code> class that inherits
+from <code class="python">Vehicle</code></li>
+<li>Its constructor should only accept a weight, as the terrain type
+should always be set to <code class="python">"water"</code></li>
+<li>Override its <code class="python">__repr__</code> method to
+correctly print out command needed to create the new boat objects. So it
+should return something like <code class="python">"Boat(5000)"</code>,
+if 5000 was the weight.</li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-1b-im-on-a-really-big-boat" class="slide level2">
+<h2>Problem 1b: I’m on a really big boat!</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>Now define a <code class="python">Carrier</code> class that inherits
+from boat</li>
+<li>A carrier has two new attributes to track:
+<ul>
+<li>A <code class="python">capacity</code> (integer) which should be
+provided when a carrier is created</li>
+<li>An <code class="python">onboard</code> list which tracks what planes
+are currently onboard. It always starts empty when the carrier is
+created.</li>
+</ul></li>
+<li>Override its <code class="python">__repr__</code> method to
+correctly print out command needed to create the new Carrier objects. So
+it should return something like
+<code class="python">"Carrier(8000, 3)"</code>, if 8000 was the weight,
+and it had a capacity for 3 planes</li>
+</ul>
+</section>
+<section id="problem-1c-insert-plane-here" class="slide level2">
+<h2>Problem 1c: Insert Plane Here</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>Add a method to the <code class="python">Carrier</code> class of
+<code class="python">add_plane</code>, which accepts a plane’s weight as
+an argument
+<ul>
+<li>If the number of planes currently on the carrier is less than its
+capacity, then add the weight to the onboard list and increase the
+carriers own weight by that amount</li>
+<li>Otherwise, just print <code class="python">"Deck full!"</code></li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>
