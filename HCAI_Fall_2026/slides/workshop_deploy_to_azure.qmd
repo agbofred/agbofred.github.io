@@ -1,0 +1,682 @@
+---
+title: "From Docker to a Live HTTPS Site on Azure"
+subtitle: "Deploy Calm_Wordle on a free or student-credit Azure virtual machine"
+author: "Prof. Fred Agbo"
+date: November 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: false
+    code-line-numbers: false
+    preview-links: auto
+    embed-resources: true
+    mermaid-format: js
+    slide-level: 2
+execute:
+  enabled: false
+---
+
+## ☁️ Docker to a live HTTPS site
+
+```{=html}
+<style>
+:root { --az-blue: #0067b8; --az-coral: #c44235; --az-ink: #1f2d3a; }
+.reveal { color: var(--az-ink); font-size: 30px; }
+.reveal h1, .reveal h2, .reveal h3 { letter-spacing: 0; text-transform: none; }
+.reveal h2 { font-size: 1.48em; color: var(--az-blue); border-bottom: 3px solid #d6e4f2; padding-bottom: .24em; margin-bottom: .55em; }
+.reveal h3 { font-size: 1.12em; }
+.reveal p, .reveal li { line-height: 1.38; }
+.reveal table { font-size: .74em; width: 100%; }
+.reveal table th { color: var(--az-blue); }
+.reveal table td, .reveal table th { padding: .4em .55em; }
+.reveal pre { font-size: .63em; width: 100%; box-shadow: none; }
+.reveal pre code { max-height: none; }
+.reveal code { overflow-wrap: anywhere; }
+.reveal pre code, .reveal pre code span { overflow-wrap: normal; }
+.reveal div.sourceCode { border-left: 4px solid var(--az-blue); background: #f2f6fa; }
+.reveal pre > code.sourceCode { white-space: pre-wrap; }
+.reveal blockquote { width: auto; background: #eaf2fa; border-left: 5px solid var(--az-blue); padding: .6em .9em; font-style: normal; }
+.reveal .checkpoint { border-top: 3px solid var(--az-coral); padding-top: .65em; margin-top: .8em; }
+.reveal .eyebrow { color: var(--az-coral); font-weight: 700; font-size: .7em; text-transform: uppercase; letter-spacing: 0; }
+.reveal .compact { font-size: .85em; }
+.reveal .section-slide h2 { color: white; border-color: #ffffff66; font-size: 2em; }
+.reveal .section-slide { color: white; }
+.reveal .section-slide .eyebrow { color: #ffe29a; }
+.reveal .section-slide strong { color: #ffe29a; }
+.reveal .slide-number { background: var(--az-blue); color: white; }
+.reveal .mermaid svg { max-height: 560px; }
+</style>
+```
+
+**AI 380: Human-AI Interaction · Willamette University**
+
+**Running example:** `Calm_Wordle`, an accessible Wordle game with an optional Rasa assistant.
+
+**Outcome:** The project runs in Docker, lives in GitHub, and is reachable from any phone or laptop at `https://<your-name>.<region>.cloudapp.azure.com`.
+
+## 🛠️ How to use this workshop
+
+1. Read the concept.
+2. Run the command or edit the named file.
+3. Pass the checkpoint.
+4. Continue only when it passes.
+
+::: {.checkpoint}
+**Budget:** Use a free or student-credit Azure VM. Set a budget alert before creating anything (Part 4).
+:::
+
+## 🗺️ What you will build
+
+```{mermaid}
+flowchart LR
+    A["💻 Your laptop<br/>edit + test"] -->|"GitHub Desktop push"| B["🐙 GitHub repo"]
+    B -->|"git pull"| VM
+    subgraph VM ["☁️ Azure Ubuntu VM"]
+        D["🔒 Caddy<br/>HTTPS :443"] --> E["🐳 Game container<br/>:8000"]
+    end
+    F["📱 Browser / phone"] -->|"https"| D
+```
+
+## ✅ Five things you will do
+
+1. 🐳 Package the project in a Docker image.
+2. 🧪 Test the container on your own machine.
+3. 🐙 Put the project in a GitHub repo.
+4. ☁️ Create a free Azure VM and open the web ports.
+5. 🚀 Pull the repo onto the VM and start it with automatic HTTPS.
+
+## 🔒 Why HTTPS is not optional
+
+Browsers only allow the **microphone** (speech recognition) on `https://` pages or on `localhost`.
+
+A deployed voice app on plain `http://` **silently loses its microphone**.
+
+> The setup below gets a free certificate automatically.
+
+## 📦 What actually gets deployed
+
+| Piece | In the Docker image? | Notes |
+|---|---|---|
+| `web_server.py`, `web/` | ✅ Yes | The game page and its JSON API |
+| `actions/` game logic | ✅ Yes | Rules, hints, voice-command parser |
+| Rasa server, trained `models/` | ❌ No | Needs a license and far more memory (Part 10) |
+
+The live site is the **visual and voice-command game**. The Rasa chat and voice assistant is a separate, optional deployment.
+
+## 📋 Prerequisites
+
+- A working project folder (`Calm_Wordle`) that runs locally.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+- [GitHub Desktop](https://desktop.github.com/) and a GitHub account.
+- An Azure account (Part 4).
+- A terminal: **PowerShell** on Windows, **Terminal** on macOS.
+
+## ① Containerize and secure {.section-slide background-color="#0067b8"}
+
+::: {.eyebrow}
+Parts 1–3 · Docker, Compose, GitHub
+:::
+
+**Image → container → HTTPS proxy → repo**
+
+## 🐳 Part 1 · Containerize the project
+
+**Vocabulary**
+
+- **Dockerfile:** a recipe for building an image.
+- **Image:** a frozen copy of your app plus everything it needs.
+- **Container:** a running image.
+
+## 📄 1.1 · Read the Dockerfile
+
+**`Calm_Wordle/Dockerfile`**
+
+```dockerfile
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY actions/__init__.py actions/english.py actions/answers.py \
+     actions/wordle_logic.py actions/game.py actions/voice_commands.py actions/
+COPY web/ web/
+COPY web_server.py .
+
+RUN useradd --create-home player && mkdir /data && chown player /data
+USER player
+
+ENV HOST=0.0.0.0 PORT=8000 SAVE_FILE=/data/saved_games.json
+EXPOSE 8000
+CMD ["python", "web_server.py"]
+```
+
+::: {.notes}
+In the actual file the COPY of actions/ files is on one line; it is wrapped here to fit the slide.
+:::
+
+## 🔍 Line by line
+
+| Line | Why |
+|---|---|
+| `FROM python:3.12-slim` | Small official Python base image |
+| `COPY ...` | Only the files the game needs. No models, no virtual environment, no saved games |
+| `useradd` / `USER player` | Runs as a normal user, not root. Safer if compromised |
+| `HOST=0.0.0.0` | Listen on all interfaces so outside traffic can reach the container |
+| `SAVE_FILE=/data/...` | Saved games go to `/data`, mounted as a persistent volume |
+
+## ▶️ 1.2 · Build and run
+
+From the `Calm_Wordle` folder:
+
+```bash
+docker build -t calm-wordle .
+docker run --rm -p 8000:8000 calm-wordle
+```
+
+Open <http://localhost:8000>. If the game loads, containerization worked. Stop with `Ctrl+C`.
+
+## 💾 1.3 · Keep saved games
+
+A container's filesystem is deleted when the container is removed. A **volume** survives:
+
+```bash
+docker run --rm -p 8000:8000 -v games:/data calm-wordle
+```
+
+::: {.checkpoint}
+**Checkpoint 1:** `docker build` finishes without errors, and <http://localhost:8000> shows the game.
+:::
+
+## 🔐 Part 2 · HTTPS with Docker Compose
+
+**Docker Compose** runs several containers together from one file.
+
+We need two:
+
+- **The game**
+- **Caddy:** a web server that fetches and renews HTTPS certificates by itself
+
+## 🧱 2.1 · `deploy/docker-compose.yml`
+
+```yaml
+services:
+  game:
+    build: ..
+    restart: unless-stopped
+    volumes:
+      - games:/data
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      - game
+
+volumes:
+  games:
+  caddy_data:
+```
+
+## 📝 2.2 · `deploy/Caddyfile`
+
+```text
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy game:8000
+}
+```
+
+For the site name in `DOMAIN`: get a certificate, then forward requests to the `game` container on port 8000.
+
+## 💡 Key ideas in the Compose file
+
+- **Only Caddy** publishes ports to the internet; the game is reachable only through Caddy.
+- `restart: unless-stopped` brings both containers back after a VM reboot.
+- `caddy_data` stores the certificates. Without it, every restart requests new ones and you may hit **rate limits**.
+
+## 🧪 2.3 · Test locally (optional)
+
+Caddy treats `localhost` specially and makes its own local certificate:
+
+```bash
+cd deploy
+DOMAIN=localhost docker compose up --build
+```
+
+Open <https://localhost> and accept the browser warning.
+
+Stop with `Ctrl+C`, then run `docker compose down`.
+
+## 🐙 Part 3 · `.gitignore` first
+
+In the `Calm_Wordle` folder, create `.gitignore`:
+
+```text
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.rasa/
+models/
+saved_games.json
+.env
+```
+
+Keeps junk, large folders, **player data and secrets** out of the repo.
+
+## 🖥️ 3.1 · Create the repo with GitHub Desktop
+
+1. **File → Add Local Repository…** and pick `Calm_Wordle`. If it says "not a Git repository," click **create a repository**.
+2. In **Changes**, you must see `Dockerfile`, `web_server.py`, `web/`, `actions/`, `deploy/`, `.gitignore`. You must **not** see `models/`, `.rasa/`, `saved_games.json`.
+3. Summary: `Initial commit` → **Commit to main**.
+4. **Publish repository** (choose private if you prefer).
+
+> The repo root must be `Calm_Wordle` itself, because `docker-compose.yml` uses `build: ..`.
+
+## 🔄 3.2 · The update loop
+
+You will use this for the rest of the course.
+
+1. Edit a file and save.
+2. In GitHub Desktop, write a summary and click **Commit to main**.
+3. Click **Push origin**.
+
+An empty **Changes** list means nothing changed since the last commit. That is normal.
+
+::: {.checkpoint}
+**Checkpoint 3:** The repo appears on github.com, contains `Dockerfile` and `deploy/`, and does **not** contain `models/` or `.env`.
+:::
+
+## ② Build the server {.section-slide background-color="#263b4e"}
+
+::: {.eyebrow}
+Parts 4–6 · Azure account, VM, Docker
+:::
+
+**Budget → VM → open ports → Docker**
+
+## 🎓 Part 4 · Free Azure credit
+
+Pick one option.
+
+| Option | What you get | Needs |
+|---|---|---|
+| **Azure for Students** | About $100 credit and free services for 12 months; no credit card | A school email address |
+| **Azure free account** | 12 months of free services, a monthly allowance of small Linux VM hours, plus a starter credit | A credit or debit card for identity check |
+
+- <https://azure.microsoft.com/free/students>
+- <https://azure.microsoft.com/free>
+
+## 🔎 Check the offer before you start
+
+Offers change. Look for the **B1s** Linux VM in the free services list. If your region lists a different size, use that one.
+
+Any small Linux VM with **at least 1 GB RAM** works for the game.
+
+## 💸 Protect yourself from surprise charges
+
+1. Portal: **Cost Management + Billing → Budgets**. Create a **$5 budget** with an email alert.
+2. A VM stopped from the operating system (`shutdown`) **still bills**. Use **deallocate** (Part 9).
+
+::: {.checkpoint}
+**Checkpoint 4:** Account created and budget alert exists.
+:::
+
+## 🖥️ Part 5 · Create the VM
+
+The CLI is faster and repeatable than portal clicks. Use **Azure Cloud Shell**: no installation.
+
+1. Sign in to <https://portal.azure.com>.
+2. Click the `>_` icon in the top bar and choose **Bash**.
+3. Accept the storage prompt if it appears.
+
+## 🏷️ 5.1 · Pick unique names
+
+Replace `yourname` with lowercase letters and numbers. The DNS label must be unique across the whole Azure region.
+
+```bash
+RG=calmwordle-rg
+VM=calmwordle-vm
+LOC=westus2
+DNS=calmwordle-yourname
+```
+
+`westus2` is close to Oregon. If the size is unavailable, try `westus3`, `eastus`, or `centralus`.
+
+## 🧰 5.2 · Resource group and VM
+
+A **resource group** is a folder for related resources. Deleting it removes everything inside.
+
+```bash
+az group create --name $RG --location $LOC
+
+az vm create \
+  --resource-group $RG \
+  --name $VM \
+  --image Ubuntu2404 \
+  --size Standard_B1s \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --public-ip-sku Standard \
+  --public-ip-address-dns-name $DNS
+```
+
+## 📝 Notes on `az vm create`
+
+- `--generate-ssh-keys` creates a key pair if you have none. You log in with the **key**, not a password.
+- The command prints JSON. Look for `publicIpAddress`.
+- If you get `The requested VM size is not available`, list sizes and rerun with `--size`:
+
+```bash
+az vm list-skus --location $LOC --size Standard_B1 --output table
+```
+
+## 🔓 5.3 · Open the web ports
+
+SSH (22) is open by default. Web traffic needs **80** and **443**. Port 80 is required for the certificate check.
+
+```bash
+az vm open-port --resource-group $RG --name $VM --port 80  --priority 900
+az vm open-port --resource-group $RG --name $VM --port 443 --priority 901
+```
+
+## 🌐 5.4 · Get your site address
+
+```bash
+az vm show -d --resource-group $RG --name $VM --query fqdns -o tsv
+```
+
+Result looks like `calmwordle-yourname.westus2.cloudapp.azure.com`. **Write it down.**
+
+If empty, build it yourself: `$DNS.$LOC.cloudapp.azure.com`.
+
+::: {.checkpoint}
+**Checkpoint 5:** You have a public IP and a `*.cloudapp.azure.com` name.
+:::
+
+## 🔑 Part 6 · Prepare the server
+
+### 6.1 · Log in
+
+From Cloud Shell:
+
+```bash
+ssh azureuser@$DNS.$LOC.cloudapp.azure.com
+```
+
+Type `yes` to trust the host. The prompt becomes `azureuser@calmwordle-vm`.
+
+From your own laptop instead: copy the private key from Cloud Shell, or create a key on your laptop and pass it with `--ssh-key-values`.
+
+## 🐳 6.2 · Install Docker
+
+```bash
+sudo apt-get update
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker $USER
+exit
+```
+
+**Log in again** so the new group membership applies, then check:
+
+```bash
+docker --version
+docker compose version
+```
+
+::: {.checkpoint}
+**Checkpoint 6:** Both commands print a version and `docker ps` runs without `sudo`.
+:::
+
+## ③ Deploy and operate {.section-slide background-color="#a93632"}
+
+::: {.eyebrow}
+Parts 7–9 · Code, HTTPS launch, clean-up
+:::
+
+**Clone → launch → verify → update → deallocate**
+
+## 📥 Part 7 · Get your code onto the VM
+
+### 7.1 · Public repo
+
+```bash
+cd ~
+git clone https://github.com/YOUR_GITHUB_USER/Calm_Wordle.git calm-wordle
+```
+
+Use your real username and repo name. The repo name is **case-sensitive** in the URL.
+
+Find them in GitHub Desktop: **Repository → Repository settings → Remote**.
+
+## 🗝️ 7.2 · Private repo: deploy key
+
+A **deploy key** gives this one VM **read-only** access to this one repo.
+
+On the VM:
+
+```bash
+ssh-keygen -t ed25519 -C "azure-vm" -f ~/.ssh/deploy_key -N ""
+cat ~/.ssh/deploy_key.pub
+```
+
+On GitHub: repo **Settings → Deploy keys → Add deploy key**. Paste the line, leave **Allow write access unchecked**, save.
+
+## 🗝️ Deploy key · Tell SSH to use it
+
+Back on the VM:
+
+```bash
+cat >> ~/.ssh/config <<'EOF'
+Host github.com
+  IdentityFile ~/.ssh/deploy_key
+  IdentitiesOnly yes
+EOF
+chmod 600 ~/.ssh/config
+ssh -T git@github.com
+```
+
+Expect: `Hi USER/REPO! You've successfully authenticated`. Then:
+
+```bash
+cd ~
+git clone git@github.com:YOUR_GITHUB_USER/Calm_Wordle.git calm-wordle
+```
+
+## ⚠️ Common clone mistakes
+
+| Message | Cause |
+|---|---|
+| `Authentication failed` over HTTPS | Repo is private. GitHub rejects account passwords for Git. Use the deploy key |
+| `Repository not found` | Wrong username or repo name, or key added to a different repo |
+| Literal `YOUR_GITHUB_USER` | Replace placeholders with your real values |
+
+## 🚀 Part 8 · Launch with HTTPS
+
+On the VM:
+
+```bash
+cd ~/calm-wordle/deploy
+echo "DOMAIN=calmwordle-yourname.westus2.cloudapp.azure.com" > .env
+docker compose up -d --build
+docker compose ps
+docker compose logs -f caddy
+```
+
+Use the exact name from step 5.4. Compose reads `.env` in the same folder automatically.
+
+## 👀 Watch the certificate arrive
+
+- After about a minute, the Caddy log shows the certificate was obtained.
+- Press `Ctrl+C` to stop reading logs. **The containers keep running.**
+- Open `https://calmwordle-yourname.westus2.cloudapp.azure.com` on your laptop **and phone**.
+- Test the microphone.
+
+## 🩺 Test from the command line
+
+Use GET. `curl -I` sends HEAD, which this small server does not implement: it returns **501** even when everything works.
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" \
+  https://calmwordle-yourname.westus2.cloudapp.azure.com/
+```
+
+Expected output: `200`
+
+::: {.checkpoint}
+**Checkpoint 8:** The `https://` site loads on a laptop and a phone, and the microphone works.
+:::
+
+## 🔄 Deploy an update
+
+On your laptop: edit, commit, **Push origin**. Then on the VM:
+
+```bash
+cd ~/calm-wordle && git pull && cd deploy && docker compose up -d --build
+```
+
+Saved games live in the `games` volume, so they **survive rebuilds**.
+
+## 🧯 Troubleshooting · Network and certificate
+
+| Symptom | Likely cause → Fix |
+|---|---|
+| Browser cannot connect | Ports 80/443 not open → rerun the two `az vm open-port` commands |
+| Certificate invalid or connection reset | Not issued yet → `docker compose logs caddy`, wait a minute |
+| `could not get certificate`, `timeout` | Port 80 blocked or wrong `DOMAIN` → `cat .env`; check NSG rules under VM, Networking |
+| Rate limit in the log | Many students share the Azure domain suffix → Caddy falls back to a second provider; wait |
+
+## 🧯 Troubleshooting · Docker and browser
+
+| Symptom | Likely cause → Fix |
+|---|---|
+| `permission denied` running `docker` | No re-login after `usermod` → `exit`, log in again |
+| `variable DOMAIN is not set` | No `.env` in `deploy/` → recreate it (Part 8) |
+| Microphone blocked | Page is on `http://` → use `https://` |
+| `port is already allocated` | Another service uses 80/443 → run `sudo ss -tlnp` and look for `:80` and `:443` |
+| Build runs out of memory | Very small VM → add swap (next slide) |
+
+## 🧯 Add swap on a tiny VM
+
+```bash
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+## 🛑 Part 9 · Stop, restart, clean up
+
+Azure bills for compute while a VM is **allocated**, even when the OS is shut down. Deallocate from the CLI:
+
+```bash
+az vm deallocate --resource-group calmwordle-rg --name calmwordle-vm
+az vm start      --resource-group calmwordle-rg --name calmwordle-vm
+```
+
+- Public IP and DNS name stay the same with a Standard SKU IP.
+- Containers with `restart: unless-stopped` start by themselves.
+
+## 🗑️ Delete everything
+
+When the course is over, one command removes it all:
+
+```bash
+az group delete --name calmwordle-rg --yes
+```
+
+::: {.checkpoint}
+**Checkpoint 9:** You can deallocate and restart the VM, and you know how to delete the resource group.
+:::
+
+## 🤖 Part 10 (optional) · Deploy Rasa itself
+
+The live site does **not** run Rasa. To run the assistant on a VM:
+
+1. Use the compose file from the Lab 4 template (official `rasa/rasa-pro` image, project folder mounted).
+2. Put `RASA_LICENSE` and API keys in `.env` on the VM. **Never commit `.env`.**
+3. Train on the VM or copy a model in. The image is large and needs **well over 1 GB RAM**; use a 4 GB VM, which uses credit and is not in the free allowance.
+
+## 🤖 Rasa · Security and wiring
+
+4. **Do not publish port 5005** to the internet. Keep it on localhost behind Caddy, or restrict it to your IP in the Azure network rules. An open Rasa API lets anyone spend your LLM keys.
+5. In `credentials.yml`, keep secrets in environment variables.
+
+> `web/voice.html` expects Rasa on port 5005 with the `websockets_voice` channel. Check `credentials.yml` and `endpoints.yml` before going online.
+
+## 🌍 Part 11 (optional) · Your own domain
+
+1. Keep the VM's public IP: `az vm show -d ... --query publicIps -o tsv`
+2. At your DNS provider, add an **A record**: host `calmwordle`, value `<the VM IP>`.
+3. Wait for DNS: `dig +short calmwordle.yourdomain.com` should print the IP.
+4. Change `DOMAIN` in `deploy/.env`, then run `docker compose up -d`.
+
+## 🌍 Own domain · Another site on 80/443?
+
+If nginx (or similar) already uses ports 80 and 443, **do not start Caddy**. Publish the game on `127.0.0.1:8100`, proxy to it, and use certbot.
+
+**`deploy/docker-compose.override.yml`**
+
+```yaml
+services:
+  game:
+    ports:
+      - "127.0.0.1:8100:8000"
+  caddy:
+    profiles: ["disabled"]
+```
+
+Then run `docker compose up -d --build game`.
+
+## 🛡️ Security checklist
+
+- [ ] SSH uses a key, not a password
+- [ ] Only ports 22, 80, and 443 are open in the network security group
+- [ ] `.env`, `models/`, and `saved_games.json` are not in the repo
+- [ ] The app runs as a non-root user in the container
+- [ ] The Rasa API port is not open to the internet
+- [ ] A budget alert exists in Cost Management
+
+## 📇 Command cheat sheet · Local
+
+| Task | Command |
+|---|---|
+| Build image | `docker build -t calm-wordle .` |
+| Run locally | `docker run --rm -p 8000:8000 -v games:/data calm-wordle` |
+| Status | `docker compose ps` |
+| Logs | `docker compose logs -f game` (or `caddy`) |
+| Stop | `docker compose down` |
+
+## 📇 Command cheat sheet · Server and Azure
+
+| Task | Command |
+|---|---|
+| Start on server | `cd ~/calm-wordle/deploy && docker compose up -d --build` |
+| Update | `cd ~/calm-wordle && git pull && cd deploy && docker compose up -d --build` |
+| Deallocate VM | `az vm deallocate -g calmwordle-rg -n calmwordle-vm` |
+| Delete everything | `az group delete -n calmwordle-rg --yes` |
+
+## 📬 Deliverable
+
+Submit:
+
+1. The GitHub repo URL.
+2. Your live `https://` URL.
+3. A screenshot of the game running on your phone.
+4. A short note: **one thing that went wrong and how you fixed it.**
+
+> A deployed project is one you can update, secure, and shut down.

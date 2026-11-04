@@ -1,0 +1,400 @@
+---
+title: "GitHub Codespaces"
+subtitle: "Run Docker, the game, and Rasa in a cloud dev environment, from your browser"
+author: "Prof. Fred Agbo"
+date: November 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: false
+    code-line-numbers: false
+    preview-links: auto
+    embed-resources: true
+    mermaid-format: js
+    slide-level: 2
+execute:
+  enabled: false
+---
+
+## 🧑‍💻 Your lab computer in the cloud
+
+```{=html}
+<style>
+:root { --cs-purple: #5b3fa8; --cs-coral: #c44235; --cs-ink: #24202e; }
+.reveal { color: var(--cs-ink); font-size: 30px; }
+.reveal h1, .reveal h2, .reveal h3 { letter-spacing: 0; text-transform: none; }
+.reveal h2 { font-size: 1.48em; color: var(--cs-purple); border-bottom: 3px solid #e1daf2; padding-bottom: .24em; margin-bottom: .55em; }
+.reveal h3 { font-size: 1.12em; }
+.reveal p, .reveal li { line-height: 1.38; }
+.reveal table { font-size: .74em; width: 100%; }
+.reveal table th { color: var(--cs-purple); }
+.reveal table td, .reveal table th { padding: .4em .55em; }
+.reveal pre { font-size: .63em; width: 100%; box-shadow: none; }
+.reveal pre code { max-height: none; }
+.reveal code { overflow-wrap: anywhere; }
+.reveal pre code, .reveal pre code span { overflow-wrap: normal; }
+.reveal div.sourceCode { border-left: 4px solid var(--cs-purple); background: #f5f3fa; }
+.reveal pre > code.sourceCode { white-space: pre-wrap; }
+.reveal blockquote { width: auto; background: #f0ecfa; border-left: 5px solid var(--cs-purple); padding: .6em .9em; font-style: normal; }
+.reveal .checkpoint { border-top: 3px solid var(--cs-coral); padding-top: .65em; margin-top: .8em; }
+.reveal .eyebrow { color: var(--cs-coral); font-weight: 700; font-size: .7em; text-transform: uppercase; letter-spacing: 0; }
+.reveal .compact { font-size: .85em; }
+.reveal .section-slide h2 { color: white; border-color: #ffffff66; font-size: 2em; }
+.reveal .section-slide { color: white; }
+.reveal .section-slide .eyebrow { color: #ffe29a; }
+.reveal .section-slide strong { color: #ffe29a; }
+.reveal .slide-number { background: var(--cs-purple); color: white; }
+.reveal .mermaid svg { max-height: 560px; }
+</style>
+```
+
+**AI 380: Human-AI Interaction · Willamette University**
+
+A **codespace** is a ready-to-use Linux machine with VS Code, running in the cloud and attached to your GitHub repo.
+
+- No installs on your laptop
+- Docker and Python ready to go
+- Everyone gets the same setup
+
+## 🛠️ How to use this walkthrough
+
+1. Read the concept.
+2. Do the step in your browser.
+3. Pass the checkpoint.
+4. Continue only when it passes.
+
+::: {.checkpoint}
+**You need:** A GitHub account and the `Calm_Wordle` repo already pushed to GitHub (see the Azure workshop, Part 3).
+:::
+
+## 🗺️ What Codespaces does
+
+```{mermaid}
+flowchart LR
+    A["🐙 GitHub repo<br/>+ .devcontainer"] -->|"Create codespace"| B
+    subgraph B ["☁️ Cloud Linux machine"]
+        C["📝 VS Code<br/>in the browser"]
+        D["🐳 Docker + Python"]
+        E["🎮 Game :8000<br/>🤖 Rasa :5005"]
+    end
+    B -->|"forwarded HTTPS port"| F["💻 Your browser"]
+```
+
+## 📊 What it is good for
+
+| Good for | Not good for |
+|---|---|
+| Labs and class demos | An always-on public website |
+| Same environment for every student | Anything that must keep running overnight |
+| Running Docker and Rasa without local installs | Large, long jobs that burn your free hours |
+| Trying the game over HTTPS (microphone works) | Serving the grader a link days later |
+
+> A codespace **stops when idle**. For a site that must stay online, use a host from the Azure workshop.
+
+## 💰 Free allowance
+
+| Resource | Free personal allowance (approx.) |
+|---|---|
+| Compute | About **120 core hours** per month |
+| Storage | About **15 GB-months** per month |
+
+- Core hours scale with machine size: a **2-core** machine gives about **60 hours**, a **4-core** about 30.
+- Idle codespaces stop after **30 minutes** by default.
+- Check GitHub's current limits before class; they change.
+
+## ① Create and open {.section-slide background-color="#5b3fa8"}
+
+::: {.eyebrow}
+Part 1 · Launch, look around, stop
+:::
+
+**Repo → codespace → browser editor**
+
+## 🚀 Part 1 · Create a codespace
+
+1. Open your `Calm_Wordle` repo on github.com.
+2. Click the green **Code** button.
+3. Choose the **Codespaces** tab.
+4. Click **Create codespace on main**.
+
+A new browser tab opens and builds the environment. The first build takes a few minutes.
+
+## 🧭 Part 1 · Find your way around
+
+| Area | What it is |
+|---|---|
+| **Explorer** (left) | Your repo files |
+| **Editor** (center) | Edit code like in desktop VS Code |
+| **Terminal** (bottom) | A Linux shell inside the cloud machine |
+| **Ports** tab (bottom) | Web servers running in the codespace |
+| **Bottom-left badge** | Codespace name; click for stop and rebuild options |
+
+## ✅ Part 1 · Check the tools
+
+In the terminal:
+
+```bash
+docker --version
+python --version
+git status
+```
+
+::: {.checkpoint}
+**Checkpoint 1:** All three commands run. If `docker` is missing, continue to Part 2; the dev container fixes it.
+:::
+
+## ② Make it repeatable {.section-slide background-color="#263b4e"}
+
+::: {.eyebrow}
+Part 2 · Dev container and secrets
+:::
+
+**One file tells every student's codespace what to install**
+
+## 🧱 Part 2 · The dev container
+
+A **dev container** is a description of the environment, stored in the repo. Create:
+
+```text
+Calm_Wordle/
+└── .devcontainer/
+    └── devcontainer.json
+```
+
+Anyone who opens the repo in a codespace gets the same Python version, Docker, extensions, and ports.
+
+## 📝 `devcontainer.json` · Game and Docker
+
+```json
+{
+  "name": "Calm_Wordle",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8000, 5005],
+  "portsAttributes": {
+    "8000": { "label": "Game" },
+    "5005": { "label": "Rasa" }
+  },
+  "customizations": {
+    "vscode": { "extensions": ["ms-python.python", "ms-azuretools.vscode-docker"] }
+  }
+}
+```
+
+## 🔍 Read it line by line
+
+| Key | Why |
+|---|---|
+| `image` | Python 3.12 base with developer tools |
+| `docker-in-docker` | Lets you run `docker build` and `docker compose` inside the codespace |
+| `forwardPorts` | Ports to expose to your browser |
+| `portsAttributes` | Friendly names in the **Ports** tab |
+| `extensions` | VS Code add-ons installed automatically |
+
+## 🔄 Apply the change
+
+1. Commit and push `.devcontainer/devcontainer.json`.
+2. In the codespace, press `Cmd/Ctrl + Shift + P`.
+3. Run **Codespaces: Rebuild Container**.
+
+::: {.checkpoint}
+**Checkpoint 2:** After the rebuild, `docker --version` works and the Ports tab lists *Game* and *Rasa*.
+:::
+
+## 🔐 Part 2 · Secrets, never in the repo
+
+Rasa Pro needs `RASA_LICENSE`. Voice needs `DEEPGRAM_API_KEY`. Store them as **Codespaces secrets**:
+
+1. github.com → profile photo → **Settings**.
+2. **Codespaces → New secret**.
+3. Name: `RASA_LICENSE`. Paste the value.
+4. **Repository access:** select only `Calm_Wordle`.
+5. Repeat for `DEEPGRAM_API_KEY`.
+
+Secrets appear as environment variables in new or rebuilt codespaces. **Do not commit `.env`.**
+
+## 🔎 Check the secret is loaded
+
+```bash
+test -n "$RASA_LICENSE" && echo "license set" || echo "license missing"
+```
+
+Prints a word, not the key itself.
+
+> Never `echo` the key and never paste it into chat, screenshots, or commits.
+
+## ③ Run the project {.section-slide background-color="#a93632"}
+
+::: {.eyebrow}
+Part 3 · Game, ports, Rasa
+:::
+
+**Start → forward → open → test**
+
+## 🎮 Part 3 · Run the game
+
+Either run Python directly:
+
+```bash
+HOST=0.0.0.0 PORT=8000 python web_server.py
+```
+
+or run the same Docker image you built for Azure:
+
+```bash
+docker build -t calm-wordle .
+docker run --rm -p 8000:8000 calm-wordle
+```
+
+Codespaces notices the port and shows a **notification**.
+
+## 🌐 Part 3 · Open a forwarded port
+
+1. Open the **Ports** tab.
+2. Find **8000 · Game**.
+3. Click the globe icon, or hover and choose **Open in Browser**.
+
+The address looks like:
+
+```text
+https://<codespace-name>-8000.app.github.dev
+```
+
+It is **HTTPS**, so the microphone works without Caddy or a certificate.
+
+## 🔒 Port visibility
+
+| Setting | Who can open it |
+|---|---|
+| **Private** (default) | Only you, signed in to GitHub |
+| **Organization** | Members of your GitHub organization |
+| **Public** | Anyone with the link |
+
+> Make a port **Public** only for a short demo. Never make Rasa's port 5005 public: anyone with the link could use your API keys.
+
+::: {.checkpoint}
+**Checkpoint 3:** The game loads at the forwarded HTTPS address and the microphone prompt appears.
+:::
+
+## 🤖 Part 3 · Run Rasa in the codespace
+
+Rasa Pro needs more memory than a 2-core machine may have for training. Change the size first:
+
+1. Command palette: **Codespaces: Change Machine Type**.
+2. Choose **4-core** (or larger if available).
+3. Wait for the restart.
+
+Then, from your Rasa project folder:
+
+```bash
+rasa train
+rasa inspect
+```
+
+Forwarded port **5005** shows the Inspector in your browser.
+
+## 🎙️ Part 3 · Voice test
+
+```bash
+export DEEPGRAM_API_KEY=...   # or set it as a Codespaces secret
+rasa inspect
+```
+
+- Open the forwarded Rasa URL.
+- Allow microphone access.
+- Say: **"I want to learn the medication reminder."**
+
+::: {.notes}
+Prefer the Codespaces secret over exporting a key in a shell, so the key is not in shell history.
+:::
+
+## ④ Save hours and wrap up {.section-slide background-color="#0067b8"}
+
+::: {.eyebrow}
+Part 4 · Cost, cleanup, troubleshooting
+:::
+
+**Stop → delete → reuse**
+
+## ⏱️ Part 4 · Protect your free hours
+
+1. **Stop** when done: command palette → **Codespaces: Stop Current Codespace**.
+2. Closing the browser tab does **not** stop it; it stops after the idle timeout.
+3. Choose the **smallest machine** that works. Use 4-core only for Rasa training.
+4. Check usage: github.com → **Settings → Billing and plans**.
+5. Set a spending limit of **$0** so you cannot be charged beyond the free allowance.
+
+## 🗑️ Part 4 · Delete old codespaces
+
+Stopped codespaces still use **storage**.
+
+- Open <https://github.com/codespaces>.
+- Use the `...` menu next to each codespace and choose **Delete**.
+
+Commit and push anything you need **before** deleting. Files not pushed are lost.
+
+::: {.checkpoint}
+**Checkpoint 4:** Your work is pushed, the codespace is stopped, and you can find the usage page.
+:::
+
+## 🧯 Troubleshooting
+
+| Symptom | Likely cause → Fix |
+|---|---|
+| `docker: command not found` | No Docker feature → add `docker-in-docker`, rebuild container |
+| Port does not appear in the Ports tab | Server bound to `127.0.0.1` only or not running → start with `HOST=0.0.0.0` and check the terminal |
+| Page asks you to sign in to GitHub | Port is Private → open it from the Ports tab while signed in, or change visibility briefly |
+| Rasa training killed or very slow | Out of memory → change machine type to 4-core or larger |
+| Secret is missing | Added after the codespace was created → rebuild or create a new codespace |
+| Microphone blocked | Not using the forwarded `https://` URL → open from the Ports tab |
+| "Out of free hours" notice | Quota used → stop codespaces, wait for the monthly reset |
+
+## 🆚 Codespaces vs. a hosted site
+
+| Question | Codespaces | Azure VM / Render |
+|---|---|---|
+| Setup effort | Lowest | Higher |
+| Always on | No | Yes |
+| Good for the grader to visit later | No | Yes |
+| Good for lab and Rasa experiments | **Yes** | Yes |
+| Cost to student | Free allowance | Student credit or paid tier |
+
+## 🛡️ Safety checklist
+
+- [ ] Secrets are Codespaces secrets, not files in the repo
+- [ ] `.env`, `models/`, and `saved_games.json` stay in `.gitignore`
+- [ ] Rasa port 5005 is **Private**
+- [ ] The codespace is stopped when you leave
+- [ ] Work is committed and pushed
+
+## 📇 Quick reference
+
+| Task | How |
+|---|---|
+| Create | Repo → **Code → Codespaces → Create** |
+| Command palette | `Cmd/Ctrl + Shift + P` |
+| Rebuild | **Codespaces: Rebuild Container** |
+| Change size | **Codespaces: Change Machine Type** |
+| Stop | **Codespaces: Stop Current Codespace** |
+| Manage all | <https://github.com/codespaces> |
+
+## 📬 Deliverable
+
+Submit:
+
+1. A screenshot of the **Ports** tab with the Game port forwarded.
+2. A screenshot of the game running at the `app.github.dev` address.
+3. Your `.devcontainer/devcontainer.json`.
+4. A short note: **one limitation of Codespaces compared with Azure.**
+
+> A cloud dev environment is for building and testing, not for hosting.

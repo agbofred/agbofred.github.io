@@ -40,10 +40,21 @@ class BankAccount:
         print(f"Owner: {self._owner_name}")
         print(f"Balance: ${self._balance:.2f}")
 
-# Test
-account = BankAccount("1234567", 1000.0, "John Doe")
-account.display_info()
-account.deposit(account.get_balance()+500)
-account.withdraw(200)
-print("--------------------------")
-account.display_info()
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, balance, owner_name, interest_rate):
+       super().__init__(account_number, balance, owner_name)
+       self.interest_rate = interest_rate
+    def describe_account(self):
+        super().display_info()
+        return f"rate: {self.interest_rate}"
+    
+
+# account = BankAccount("1234567", 1000.0, "John Doe")
+# account.display_info()
+# account.deposit(account.get_balance()+500)
+# account.withdraw(200)
+# print("--------------------------")
+# account.display_info()
+
+mysavings = SavingsAccount("1234567", 1000.0, "John Doe", 0.2)
+print(mysavings.describe_account())
