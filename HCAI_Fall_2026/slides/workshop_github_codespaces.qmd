@@ -72,23 +72,11 @@ A **codespace** is a ready-to-use Linux machine with VS Code, running in the clo
 4. Continue only when it passes.
 
 ::: {.checkpoint}
-**You need:** A GitHub account and the `Calm_Wordle` repo already pushed to GitHub (see the Azure workshop, Part 3).
+**You need:** A GitHub account and the `project_name` repo already pushed to GitHub.
 :::
 
-## 🗺️ What Codespaces does
 
-```{mermaid}
-flowchart LR
-    A["🐙 GitHub repo<br/>+ .devcontainer"] -->|"Create codespace"| B
-    subgraph B ["☁️ Cloud Linux machine"]
-        C["📝 VS Code<br/>in the browser"]
-        D["🐳 Docker + Python"]
-        E["🎮 Game :8000<br/>🤖 Rasa :5005"]
-    end
-    B -->|"forwarded HTTPS port"| F["💻 Your browser"]
-```
-
-## 📊 What it is good for
+## 📊 What Codespaces is good for
 
 | Good for | Not good for |
 |---|---|
@@ -110,17 +98,17 @@ flowchart LR
 - Idle codespaces stop after **30 minutes** by default.
 - Check GitHub's current limits before class; they change.
 
-## ① Create and open {.section-slide background-color="#5b3fa8"}
+<!-- ## ① Create and open {.section-slide background-color="#5b3fa8"}
 
 ::: {.eyebrow}
 Part 1 · Launch, look around, stop
 :::
 
-**Repo → codespace → browser editor**
+**Repo → codespace → browser editor** -->
 
 ## 🚀 Part 1 · Create a codespace
 
-1. Open your `Calm_Wordle` repo on github.com.
+1. Open your `project` repo on github.com.
 2. Click the green **Code** button.
 3. Choose the **Codespaces** tab.
 4. Click **Create codespace on main**.
