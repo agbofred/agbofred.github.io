@@ -1,0 +1,708 @@
+---
+title: "Deploy AppCoach_demo to Azure"
+subtitle: "Put a Rasa Pro (CALM) assistant, tested with rasa inspect, behind HTTPS on an Azure VM"
+author: "Prof. Fred Agbo"
+date: November 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: false
+    code-line-numbers: false
+    preview-links: auto
+    embed-resources: true
+    mermaid-format: js
+    slide-level: 2
+execute:
+  enabled: false
+---
+
+## 🧭 From rasa inspect to a live URL
+
+```{=html}
+<style>
+:root { --coach-teal: #087e80; --coach-coral: #c44235; --coach-ink: #203033; }
+.reveal { color: var(--coach-ink); font-size: 30px; }
+.reveal h1, .reveal h2, .reveal h3 { letter-spacing: 0; text-transform: none; }
+.reveal h2 { font-size: 1.48em; color: var(--coach-teal); border-bottom: 3px solid #d9e6e5; padding-bottom: .24em; margin-bottom: .55em; }
+.reveal h3 { font-size: 1.12em; }
+.reveal p, .reveal li { line-height: 1.38; }
+.reveal table { font-size: .74em; width: 100%; }
+.reveal table th { color: var(--coach-teal); }
+.reveal table td, .reveal table th { padding: .4em .55em; }
+.reveal pre { font-size: .63em; width: 100%; box-shadow: none; }
+.reveal pre code { max-height: none; }
+.reveal code { overflow-wrap: anywhere; }
+.reveal pre code, .reveal pre code span { overflow-wrap: normal; }
+.reveal div.sourceCode { border-left: 4px solid var(--coach-teal); background: #f3f7f7; }
+.reveal pre > code.sourceCode { white-space: pre-wrap; }
+.reveal blockquote { width: auto; background: #edf6f5; border-left: 5px solid var(--coach-teal); padding: .6em .9em; font-style: normal; }
+.reveal .checkpoint { border-top: 3px solid var(--coach-coral); padding-top: .65em; margin-top: .8em; }
+.reveal .eyebrow { color: var(--coach-coral); font-weight: 700; font-size: .7em; text-transform: uppercase; letter-spacing: 0; }
+.reveal .compact { font-size: .85em; }
+.reveal .section-slide h2 { color: white; border-color: #ffffff66; font-size: 2em; }
+.reveal .section-slide { color: white; }
+.reveal .section-slide .eyebrow { color: #ffe29a; }
+.reveal .section-slide strong { color: #ffe29a; }
+.reveal .slide-number { background: var(--coach-teal); color: white; }
+.reveal .mermaid svg { max-height: 560px; }
+</style>
+```
+
+**AI 380: Human-AI Interaction · Willamette University**
+
+**Project:** `AppCoach_demo`, the App Coach assistant from Lab 3, finished and tested with `rasa inspect`.
+
+**Outcome:** The assistant runs in Docker on an Azure VM and is reachable at `https://<your-name>.<region>.cloudapp.azure.com`, **behind a password**.
+
+## 🛠️ How to use this workshop
+
+1. Read the concept.
+2. Run the command or create the named file.
+3. Pass the checkpoint.
+4. Continue only when it passes.
+
+::: {.checkpoint}
+**Starting point:** `AppCoach_demo` works in `rasa inspect` on your laptop. Nothing else is assumed: no web page, no Dockerfile, no extra code.
+:::
+
+## 🗺️ What you will build
+
+```{mermaid}
+flowchart LR
+    A["💻 Your laptop<br/>AppCoach_demo"] -->|"GitHub Desktop push"| B["🐙 GitHub repo"]
+    B -->|"git pull"| VM
+    subgraph VM ["☁️ Azure Ubuntu VM"]
+        D["🔒 Caddy<br/>HTTPS + password"] --> E["🤖 Rasa Pro container<br/>rasa run --inspect :5005"]
+        E --> L["📝 lesson_log.jsonl"]
+    end
+    F["🧑 Browser"] -->|"https"| D
+    E -->|"API calls"| G["🧠 LLM provider"]
+```
+
+## ✅ Seven things you will do
+
+1. 📋 Check the project is ready to ship.
+2. 🧱 Add the deploy files (Compose, Caddy, `.env.example`).
+3. 🧪 Run the official Rasa image locally against your project.
+4. 🐙 Push the project to GitHub.
+5. ☁️ Create the Azure VM and install Docker.
+6. 🚀 Pull, add secrets, train, and start with HTTPS.
+7. 🔎 Verify, update, stop, and clean up.
+
+## 📦 What gets deployed
+
+| Piece | Where it comes from | Notes |
+|---|---|---|
+| Rasa Pro | Official Rasa Pro Docker image | **No custom Dockerfile** |
+| Your assistant | The repo, mounted into the container | `domain.yml`, `data/`, `actions/`, `config.yml`, `endpoints.yml`, `credentials.yml` |
+| Custom actions | Run **inside** Rasa (`actions_module`) | No separate action server |
+| Trained model | Built on the VM with `rasa train` | `models/` is not in git |
+| HTTPS and password | Caddy container | Free certificate; browser login prompt |
+| `lesson_log.jsonl` | Written in the project folder on the VM | Survives restarts |
+
+## 🌐 Do you need a web page?
+
+**No.** `rasa run --inspect` serves the **Inspector**, the same chat, Flow, History, and Memory view you used locally, over the REST channel.
+
+| Option | Use it when |
+|---|---|
+| **Inspector (this workshop)** | Demos, grading, debugging a deployed assistant |
+| Custom page (for example `web_test.html`) | You want a friendlier or branded interface for end users |
+
+> The Inspector is a **developer tool**. That is why this deck puts a password in front of it.
+
+## 🔒 Why HTTPS and a password
+
+- Browsers allow the **microphone** only on `https://` or `localhost`.
+- The assistant calls a paid **LLM** with your key. An open URL lets strangers spend it.
+- `lesson_log.jsonl` records user IDs and replies.
+
+Caddy gives you both: a free certificate **and** a login prompt before anything reaches Rasa.
+
+## 📋 Prerequisites
+
+- `AppCoach_demo` runs with `rasa train` and `rasa inspect`.
+- A **Rasa Pro license** key and your **LLM API key**.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+- [GitHub Desktop](https://desktop.github.com/) and a GitHub account.
+- An Azure account (Part 4).
+- A terminal: **PowerShell** on Windows, **Terminal** on macOS.
+
+## ① Prepare the project {.section-slide background-color="#087e80"}
+
+::: {.eyebrow}
+Parts 1–3 · Check, package, test locally
+:::
+
+**Ready → Compose files → official image on your laptop**
+
+## 📋 Part 1 · Is the project ready?
+
+Your project folder should look like this:
+
+```text
+AppCoach_demo/
+├── actions/
+│   ├── __init__.py
+│   ├── actions.py
+│   └── lessons.py
+├── data/
+│   ├── flows.yml
+│   └── patterns.yml
+├── domain.yml
+├── config.yml
+├── endpoints.yml
+├── credentials.yml
+└── models/            (trained locally; NOT committed)
+```
+
+## 🔍 Part 1 · Four things to confirm
+
+| Check | Why |
+|---|---|
+| `rasa --version` | Write it down. Use the **same version** for the Docker image |
+| `endpoints.yml` has `action_endpoint: actions_module: "actions"` | Actions run inside Rasa; no action server to deploy |
+| `credentials.yml` contains `rest:` | `rasa run --inspect` attaches the Inspector to the REST channel |
+| Secrets are not in any file | The license and LLM key come from environment variables |
+
+::: {.checkpoint}
+**Checkpoint 1:** `rasa train` and `rasa inspect` both work, and you have the version number.
+:::
+
+## 🧱 Part 2 · Add the deploy files
+
+Create a `deploy/` folder in the project root:
+
+```text
+AppCoach_demo/
+└── deploy/
+    ├── docker-compose.yml
+    ├── Caddyfile
+    └── .env.example
+```
+
+All three are safe to commit. The real `deploy/.env` is **not** committed.
+
+## 📝 2.1 · `deploy/docker-compose.yml`
+
+```yaml
+services:
+  assistant:
+    image: europe-west3-docker.pkg.dev/rasa-releases/rasa-pro/rasa-pro:3.18.0
+    command: ["run", "--inspect"]
+    restart: unless-stopped
+    user: root
+    env_file: .env
+    volumes:
+      - ..:/app
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN}
+      AUTH_USER: ${AUTH_USER}
+      AUTH_HASH: ${AUTH_HASH}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      - assistant
+
+volumes:
+  caddy_data:
+```
+
+## 🔍 Read the Compose file
+
+| Line | Why |
+|---|---|
+| `image: ...rasa-pro:3.18.0` | Official image. **Change the tag to your tested version** |
+| `command: ["run", "--inspect"]` | Start the server with the Inspector |
+| `..:/app` | Mount your project into the container. Models, actions, and the log live in your folder |
+| `user: root` | Same as Rasa's official template, so the container can write `models/` and the log |
+| No `ports:` on `assistant` | Only Caddy is exposed to the internet |
+
+::: {.notes}
+Rasa's own quick-deploy template uses this image path, a bind mount of the project, and user root. Verify the image path and latest tag on Rasa's Docker install page before class.
+:::
+
+## 📝 2.2 · `deploy/Caddyfile`
+
+```text
+{$DOMAIN} {
+	basic_auth {
+		{$AUTH_USER} {$AUTH_HASH}
+	}
+	reverse_proxy assistant:5005
+}
+```
+
+For the site name in `DOMAIN`: get a certificate, ask for a login, then forward to Rasa on port 5005.
+
+The password is stored only as a **hash** in `.env`, never as plain text.
+
+## 📝 2.3 · `deploy/.env.example`
+
+```text
+# Copy to .env and fill in. Never commit .env.
+RASA_LICENSE=your-rasa-pro-license
+OPENAI_API_KEY=your-llm-key
+DOMAIN=localhost
+AUTH_USER=coach
+AUTH_HASH='paste-the-caddy-hash-here'
+```
+
+- Use the LLM variable your `config.yml` expects (`OPENAI_API_KEY` for the default OpenAI setup).
+- Keep the **single quotes** around `AUTH_HASH`; the hash contains `$` characters.
+- Add `DEEPGRAM_API_KEY=...` only if you test voice (Part 9).
+
+## 🙈 `.gitignore`
+
+In the project root, make sure these lines exist:
+
+```text
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.rasa/
+models/
+.env
+lesson_log.jsonl
+```
+
+`models/` and `.rasa/` are large. `.env` holds secrets. `lesson_log.jsonl` holds user IDs and replies.
+
+::: {.checkpoint}
+**Checkpoint 2:** `deploy/` has three files, and `.gitignore` lists `.env`, `models/`, and `lesson_log.jsonl`.
+:::
+
+## 🧪 Part 3 · Run the official image locally
+
+This proves the **container + your project + your keys** work before you use Azure.
+
+```bash
+cp deploy/.env.example deploy/.env      # then fill RASA_LICENSE and your LLM key
+```
+
+From the project root (needs a trained `models/` folder):
+
+```bash
+docker run --rm --user root -p 5005:5005 -v "$PWD":/app --env-file deploy/.env \
+  europe-west3-docker.pkg.dev/rasa-releases/rasa-pro/rasa-pro:3.18.0 run --inspect
+```
+
+PowerShell: replace `\` with a backtick and `"$PWD"` with `"${PWD}"`.
+
+## 👀 Part 3 · Open the Inspector
+
+- Read the log for a line like *Development inspector for channel rest is running* and the URL that follows.
+- Open that URL in your browser. It points at `http://localhost:5005`.
+- Run the first steps of the Lab 3 test script: choose a lesson, walk through, say "stuck".
+- Stop with `Ctrl+C`.
+
+::: {.checkpoint}
+**Checkpoint 3:** The Inspector chat works against the **Docker** container, and `lesson_log.jsonl` appears in your project folder.
+:::
+
+## ② Put it on GitHub and Azure {.section-slide background-color="#263b3e"}
+
+::: {.eyebrow}
+Parts 4–7 · Repo, account, VM, Docker
+:::
+
+**Push → budget → VM → ports → Docker**
+
+## 🐙 Part 4 · Publish the repo
+
+1. GitHub Desktop: **File → Add Local Repository…** and pick `AppCoach_demo` (or **create a repository** if asked).
+2. In **Changes**, you must see `actions/`, `data/`, `domain.yml`, `config.yml`, `endpoints.yml`, `credentials.yml`, `deploy/`, `.gitignore`.
+3. You must **not** see `models/`, `.rasa/`, `deploy/.env`, or `lesson_log.jsonl`.
+4. Summary: `Initial commit` → **Commit to main** → **Publish repository**.
+
+> Choose **private** unless you are sure the content is fine to share.
+
+::: {.checkpoint}
+**Checkpoint 4:** The repo is on github.com with `deploy/docker-compose.yml`, and no `.env` or `models/`.
+:::
+
+## 🎓 Part 5 · Free Azure credit
+
+Pick one option.
+
+| Option | What you get | Needs |
+|---|---|---|
+| **Azure for Students** | About 100 USD credit and free services for 12 months; no credit card | A school email address |
+| **Azure free account** | 12 months of free services plus a starter credit | A credit or debit card |
+
+- <https://azure.microsoft.com/free/students>
+- <https://azure.microsoft.com/free>
+
+Offers change. Check the pages before you start.
+
+## 💸 Part 5 · Budget first
+
+1. Portal: **Cost Management + Billing → Budgets**. Create a **5 USD budget** with an email alert.
+2. A VM shut down from the operating system **still bills**. Use **deallocate** (Part 10).
+
+**Size note:** the free VM allowance covers a 1 GB machine. Rasa Pro needs more, so this workshop uses a **4 GB** VM that is paid from **credit**. Rasa's own quick-deploy guide says 1 vCPU and 2 GB RAM can be enough for a CALM assistant; 4 GB gives margin for training and the image.
+
+## 🖥️ Part 6 · Create the VM
+
+Use **Azure Cloud Shell**: no installation.
+
+1. Sign in to <https://portal.azure.com>.
+2. Click the `>_` icon and choose **Bash**.
+3. Accept the storage prompt if it appears.
+
+## 🏷️ 6.1 · Pick unique names
+
+Replace `yourname` with lowercase letters and numbers. The DNS label must be unique in the region.
+
+```bash
+RG=appcoach-rg
+VM=appcoach-vm
+LOC=westus2
+DNS=appcoach-yourname
+```
+
+## 🧰 6.2 · Resource group and VM
+
+```bash
+az group create --name $RG --location $LOC
+
+az vm create \
+  --resource-group $RG \
+  --name $VM \
+  --image Ubuntu2404 \
+  --size Standard_B2s \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --public-ip-sku Standard \
+  --public-ip-address-dns-name $DNS
+```
+
+If the size is unavailable, list sizes and pick one with **at least 2 GB RAM**:
+
+```bash
+az vm list-skus --location $LOC --size Standard_B2 --output table
+```
+
+## 🔓 6.3 · Open ports and get the address
+
+```bash
+az vm open-port --resource-group $RG --name $VM --port 80  --priority 900
+az vm open-port --resource-group $RG --name $VM --port 443 --priority 901
+az vm show -d --resource-group $RG --name $VM --query fqdns -o tsv
+```
+
+Port 80 is needed for the certificate check. The address looks like `appcoach-yourname.westus2.cloudapp.azure.com`. **Write it down.**
+
+If empty, build it: `$DNS.$LOC.cloudapp.azure.com`.
+
+::: {.checkpoint}
+**Checkpoint 6:** You have a `*.cloudapp.azure.com` name.
+:::
+
+## 🔑 Part 7 · Log in and install Docker
+
+```bash
+ssh azureuser@$DNS.$LOC.cloudapp.azure.com
+```
+
+Type `yes` to trust the host. Then on the VM:
+
+```bash
+sudo apt-get update
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker $USER
+exit
+```
+
+**Log in again**, then check `docker --version` and `docker compose version`.
+
+::: {.checkpoint}
+**Checkpoint 7:** Both commands print a version and `docker ps` works without `sudo`.
+:::
+
+## ③ Deploy and verify {.section-slide background-color="#a93632"}
+
+::: {.eyebrow}
+Parts 8–9 · Code, secrets, model, HTTPS
+:::
+
+**Clone → secrets → train → launch → test**
+
+## 📥 Part 8 · Get the code onto the VM
+
+**Public repo:**
+
+```bash
+cd ~
+git clone https://github.com/YOUR_GITHUB_USER/AppCoach_demo.git appcoach-demo
+```
+
+Use your real username. The repo name is **case-sensitive**.
+
+**Private repo:** use a **deploy key**: read-only access for this one VM and this one repo.
+
+## 🗝️ Private repo · Deploy key
+
+On the VM:
+
+```bash
+ssh-keygen -t ed25519 -C "azure-vm" -f ~/.ssh/deploy_key -N ""
+cat ~/.ssh/deploy_key.pub
+```
+
+On GitHub: repo **Settings → Deploy keys → Add deploy key**. Paste the line. Leave **Allow write access unchecked**.
+
+## 🗝️ Private repo · Use the key
+
+```bash
+cat >> ~/.ssh/config <<'EOF'
+Host github.com
+  IdentityFile ~/.ssh/deploy_key
+  IdentitiesOnly yes
+EOF
+chmod 600 ~/.ssh/config
+ssh -T git@github.com
+cd ~
+git clone git@github.com:YOUR_GITHUB_USER/AppCoach_demo.git appcoach-demo
+```
+
+Expect: `Hi USER/REPO! You've successfully authenticated`.
+
+## 🔐 8.1 · Make the password hash
+
+On the VM, create the login for the Inspector. The password is not saved in history:
+
+```bash
+read -s -p "Choose a password: " PW; echo
+docker run --rm caddy:2 caddy hash-password --plaintext "$PW"
+```
+
+Copy the whole line that starts with `$2a$`. That is the hash.
+
+> Pick a long password you do not reuse elsewhere. Share it with classmates only if they need access.
+
+## 🔑 8.2 · Create the real `.env`
+
+```bash
+cd ~/appcoach-demo/deploy
+cp .env.example .env
+nano .env
+```
+
+Fill in:
+
+- `RASA_LICENSE` and your LLM key
+- `DOMAIN` = the exact address from step 6.3
+- `AUTH_USER` and `AUTH_HASH='...'` (keep the single quotes)
+
+::: {.checkpoint}
+**Checkpoint 8:** `deploy/.env` exists on the VM, and `git status` does not list it (it is ignored).
+:::
+
+## 🧠 Part 9 · Train on the VM
+
+`models/` is not in git, so train once on the server. Use the **same Rasa version** you tested:
+
+```bash
+cd ~/appcoach-demo/deploy
+docker compose run --rm assistant train
+ls ../models
+```
+
+You should see a `.tar.gz` model file. Training calls your LLM provider, so it uses your key.
+
+::: {.notes}
+Alternative: train locally and copy the model into ~/appcoach-demo/models on the VM with scp. That needs your SSH key on the laptop, and the key above was generated in Cloud Shell, so training on the VM is simpler.
+:::
+
+## 🚀 9.1 · Launch with HTTPS
+
+```bash
+docker compose up -d
+docker compose ps
+docker compose logs -f caddy
+```
+
+- After about a minute, Caddy reports that it **obtained a certificate**.
+- Press `Ctrl+C` to stop reading logs. The containers keep running.
+- Check the assistant: `docker compose logs assistant` should show the server running and the Inspector message.
+
+## 🔎 9.2 · Open the Inspector
+
+Replace `DOMAIN` with your address:
+
+```text
+https://DOMAIN/webhooks/rest/inspect.html?projectUrl=https%3A%2F%2FDOMAIN&channel=rest
+```
+
+1. Enter `AUTH_USER` and your password when the browser asks.
+2. Run the Lab 3 test script: choose a lesson, walk through, **stuck**, **where am I**, **done**, practice mode.
+
+> `projectUrl` must be the **public https address**. The `localhost` URL in the log only works on the VM.
+
+## 🩺 9.3 · Test from the command line
+
+```bash
+curl -u coach -s -X POST https://DOMAIN/webhooks/rest/webhook \
+  -H 'Content-Type: application/json' \
+  -d '{"sender":"t1","message":"I want to learn an app"}'
+```
+
+- `-u coach` asks for the password; use your own `AUTH_USER`.
+- Expect JSON that includes the question **"Which app would you like to learn?"** and its buttons.
+- Without `-u`, Caddy answers **401**. That is the password gate working.
+
+## 📝 9.4 · Read the log
+
+After finishing one lesson in the Inspector:
+
+```bash
+cat ~/appcoach-demo/lesson_log.jsonl
+```
+
+You should see `lesson_started`, `step_shown`, `reply_...`, and `lesson_completed` events.
+
+::: {.checkpoint}
+**Checkpoint 9:** You completed a guided lesson, a stuck-and-recover turn, and a "where am I" digression at the **https** address, and the log shows the events.
+:::
+
+## 🎙️ Optional · Voice
+
+Voice is **not** required for this workshop. If you want to try it:
+
+1. Add `DEEPGRAM_API_KEY=...` to `deploy/.env`.
+2. Recreate the assistant: `docker compose up -d --force-recreate assistant`.
+3. In the Inspector, switch to voice and allow the microphone.
+
+HTTPS is already in place, which browsers require. Voice over this proxy is **not verified in this deck**: record what works and what fails, including misheard words.
+
+## ④ Operate and wrap up {.section-slide background-color="#0067b8"}
+
+::: {.eyebrow}
+Part 10 · Update, stop, clean up, review
+:::
+
+**Update → deallocate → delete → reflect**
+
+## 🔄 Part 10 · Deploy an update
+
+On your laptop: edit, commit, **Push origin**. Then on the VM:
+
+```bash
+cd ~/appcoach-demo && git pull
+cd deploy
+docker compose run --rm assistant train
+docker compose restart assistant
+```
+
+- Changed only `lessons.py` or `actions.py`? Restart is enough; retrain only when `domain.yml`, `flows.yml`, or `config.yml` change.
+- The bind mount means **no image rebuild** is needed.
+
+## 🛑 Stop, restart, delete
+
+Azure bills for compute while a VM is **allocated**, even if the OS is shut down:
+
+```bash
+az vm deallocate --resource-group appcoach-rg --name appcoach-vm
+az vm start      --resource-group appcoach-rg --name appcoach-vm
+```
+
+When the course ends, delete everything:
+
+```bash
+az group delete --name appcoach-rg --yes
+```
+
+Containers with `restart: unless-stopped` come back after a start.
+
+## 🧯 Troubleshooting · Rasa
+
+| Symptom | Likely cause → Fix |
+|---|---|
+| License error at startup | `RASA_LICENSE` missing or misspelled in `deploy/.env` |
+| "No model found" | Training not done → `docker compose run --rm assistant train` |
+| Model/version warning | Image tag differs from the version you tested → align the tag, retrain |
+| Replies fail or LLM errors | LLM key missing or wrong name → check `config.yml`, update `.env`, recreate |
+| Unknown or failing action | `docker compose logs assistant`; check `actions/__init__.py` and `endpoints.yml` |
+| Inspector loads but cannot connect | `projectUrl` is `localhost` → use the public https address |
+
+## 🧯 Troubleshooting · Network and login
+
+| Symptom | Likely cause → Fix |
+|---|---|
+| Browser cannot connect | Ports 80/443 not open → rerun both `az vm open-port` commands |
+| Certificate error or timeout | Not issued yet, or wrong `DOMAIN` → `docker compose logs caddy`, `cat .env` |
+| Login rejected | Wrong user or hash → regenerate hash; keep single quotes in `.env` |
+| Caddy fails to start | Hash pasted wrongly → check `AUTH_USER` and `AUTH_HASH` lines |
+| `permission denied` on `docker` | No re-login after `usermod` → `exit`, log in again |
+| `variable DOMAIN is not set` | No `deploy/.env` → create it (Part 8) |
+| `port is already allocated` | Another service uses 80/443 → `sudo ss -tlnp` |
+
+## 🛡️ Security and privacy checklist
+
+- [ ] SSH uses a key, not a password
+- [ ] Only ports 22, 80, and 443 are open
+- [ ] Rasa port 5005 is **not** published; only Caddy is
+- [ ] The Inspector URL asks for a password
+- [ ] `.env`, `models/`, `.rasa/`, and `lesson_log.jsonl` are not in git
+- [ ] `rasa run` runs **without** `--enable-api`
+- [ ] A budget alert exists
+- [ ] You know who can read `lesson_log.jsonl`, and you delete it when the course ends
+
+## 💭 Reflection · Agency and care
+
+1. The log holds a sender ID and every reply. What would **informed consent** look like for an older adult?
+2. The Inspector is a developer tool. What would a **real user interface** need that it lacks?
+3. The password gate protects your LLM bill. What else could go wrong if the URL is shared?
+4. A completed step means the user said "done". Is that evidence they learned the task?
+
+## 📇 Command cheat sheet
+
+| Task | Command |
+|---|---|
+| Train | `cd ~/appcoach-demo/deploy && docker compose run --rm assistant train` |
+| Start | `docker compose up -d` |
+| Status | `docker compose ps` |
+| Logs | `docker compose logs -f assistant` (or `caddy`) |
+| Restart Rasa | `docker compose restart assistant` |
+| Stop | `docker compose down` |
+| Update | `cd ~/appcoach-demo && git pull` |
+| Deallocate | `az vm deallocate -g appcoach-rg -n appcoach-vm` |
+| Delete all | `az group delete -n appcoach-rg --yes` |
+
+## 📖 Sources
+
+- [Rasa: quick deployment with Docker Compose](https://rasa.com/docs/pro/deploy/quick-deploy)
+- [Rasa: trying your assistant and `rasa run --inspect`](https://rasa.com/docs/pro/testing/trying-assistant)
+- [Rasa: environment variables](https://rasa.com/docs/reference/config/environment-variables)
+- [Rasa developer-edition Docker Compose template](https://github.com/RasaHQ/developer-edition-docker-compose)
+- [Caddy: `basic_auth` and `reverse_proxy`](https://caddyserver.com/docs/caddyfile/directives/basic_auth)
+
+## 📬 Deliverable
+
+Submit:
+
+1. The GitHub repo URL.
+2. Your live `https://` URL (do **not** post the password).
+3. A screenshot of the Inspector showing a completed lesson at your Azure address.
+4. A redacted excerpt of `lesson_log.jsonl`.
+5. A short note: **one thing that went wrong and how you fixed it.**
+
+> A deployed assistant is one you can update, protect, and shut down.

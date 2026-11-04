@@ -1,0 +1,433 @@
+---
+title: "Deploying Your Rasa Assistant: Three Options"
+subtitle: "GitHub Codespaces, Azure, and DigitalOcean: what is common, what differs, and how to choose"
+author: "Prof. Fred Agbo"
+date: November 4, 2026
+format:
+  revealjs:
+    theme: [default, ./custom.scss]
+    transition: slide
+    slide-number: c/t
+    controls: true
+    progress: true
+    center: false
+    width: 1400
+    height: 900
+    margin: 0.08
+    chalkboard: false
+    code-line-numbers: false
+    preview-links: auto
+    embed-resources: true
+    mermaid-format: js
+    slide-level: 2
+execute:
+  enabled: false
+---
+
+## 🚀 Pick a path and ship it
+
+```{=html}
+<style>
+:root { --dp-indigo: #2f4f9d; --dp-coral: #c44235; --dp-ink: #1f2638; }
+.reveal { color: var(--dp-ink); font-size: 30px; }
+.reveal h1, .reveal h2, .reveal h3 { letter-spacing: 0; text-transform: none; }
+.reveal h2 { font-size: 1.48em; color: var(--dp-indigo); border-bottom: 3px solid #dbe2f2; padding-bottom: .24em; margin-bottom: .55em; }
+.reveal h3 { font-size: 1.12em; }
+.reveal p, .reveal li { line-height: 1.38; }
+.reveal table { font-size: .74em; width: 100%; }
+.reveal table th { color: var(--dp-indigo); }
+.reveal table td, .reveal table th { padding: .4em .55em; }
+.reveal pre { font-size: .63em; width: 100%; box-shadow: none; }
+.reveal pre code { max-height: none; }
+.reveal code { overflow-wrap: anywhere; }
+.reveal pre code, .reveal pre code span { overflow-wrap: normal; }
+.reveal div.sourceCode { border-left: 4px solid var(--dp-indigo); background: #f3f5fa; }
+.reveal pre > code.sourceCode { white-space: pre-wrap; }
+.reveal blockquote { width: auto; background: #eef1fa; border-left: 5px solid var(--dp-indigo); padding: .6em .9em; font-style: normal; }
+.reveal .checkpoint { border-top: 3px solid var(--dp-coral); padding-top: .65em; margin-top: .8em; }
+.reveal .eyebrow { color: var(--dp-coral); font-weight: 700; font-size: .7em; text-transform: uppercase; letter-spacing: 0; }
+.reveal .compact { font-size: .85em; }
+.reveal .section-slide h2 { color: white; border-color: #ffffff66; font-size: 2em; }
+.reveal .section-slide { color: white; }
+.reveal .section-slide .eyebrow { color: #ffe29a; }
+.reveal .section-slide strong { color: #ffe29a; }
+.reveal .slide-number { background: var(--dp-indigo); color: white; }
+.reveal .mermaid svg { max-height: 560px; }
+</style>
+```
+
+**AI 380: Human-AI Interaction**
+
+Your assistant works in `rasa inspect`. Now make it reachable by other people.
+
+- **Free:** GitHub Codespaces, Azure for Students
+- **Paid:** DigitalOcean
+- **Shared:** the same preparation for all three
+
+## 🎯 Goals for this session
+
+By the end you can:
+
+1. Explain what **every** deployment needs before you pick a host.
+2. Compare the three options by cost, uptime, and effort.
+3. Choose one and justify it.
+4. Start deploying your own assistant by following its **basic steps**.
+
+> Detailed walkthroughs exist for Azure and Codespaces. This deck is the map.
+
+## 🗺️ Three options at a glance
+
+| | **GitHub Codespaces** | **Azure VM** | **DigitalOcean Droplet** |
+|---|---|---|---|
+| Cost | Free allowance | Student credit | Paid (monthly) |
+| Always on | No (idle stop) | Yes | Yes |
+| Public URL for others | Not for long | Yes | Yes |
+| Free HTTPS name | Yes (forwarded port) | Yes (`cloudapp.azure.com`) | No (bring a domain) |
+| Setup effort | Lowest | Highest | Medium |
+| Best for | Labs, demos, testing | Graded, free, online | Simple, reliable, paid |
+
+::: {.notes}
+Prices and allowances change. Have students check the official pages before the session.
+:::
+
+## 🔁 The shared pipeline
+
+```{mermaid}
+flowchart LR
+    A["✅ Works in<br/>rasa inspect"] --> B["📋 Pre-deployment<br/>(same for all)"]
+    B --> C{"Choose a host"}
+    C --> D["🧑‍💻 Codespaces"]
+    C --> E["☁️ Azure VM"]
+    C --> F["🌊 DigitalOcean"]
+    D --> G["▶️ Run + verify"]
+    E --> G
+    F --> G
+    G --> H["🛑 Update, stop,<br/>clean up"]
+```
+
+## ① Common pre-deployment {.section-slide background-color="#2f4f9d"}
+
+::: {.eyebrow}
+Part 1 · Do this before choosing a host
+:::
+
+**Docker → GitHub → front end → secrets → protection**
+
+## 📋 Pre-deployment checklist
+
+| Step | What | Why |
+|---|---|---|
+| 1 | Finish and test with `rasa train` + `rasa inspect` | Never debug on a server what you can debug locally |
+| 2 | Note `rasa --version` | Server must run the **same** version |
+| 3 | Put keys in **environment variables** | No secrets in files or git |
+| 4 | Containerize: official Rasa image + Compose | Same run command everywhere |
+| 5 | Push to **GitHub** (without secrets or `models/`) | Every host pulls from here |
+| 6 | Decide the **front end**: Inspector or `webchat.html` | Decides what users open |
+| 7 | Plan **protection**: HTTPS + password | Your LLM key and user logs are at stake |
+
+## 🐳 Step 4 · Docker, the minimal way
+
+You do **not** need your own Dockerfile. Use Rasa's official image and mount your project:
+
+```yaml
+services:
+  assistant:
+    image: <official rasa-pro image>:<your tested version>
+    command: ["run", "--inspect"]
+    env_file: .env
+    volumes:
+      - ..:/app
+```
+
+- Actions run inside Rasa, so there is no action server.
+- Train once on the server: `docker compose run --rm assistant train`.
+- A reverse proxy (Caddy) adds HTTPS and a password. See the Azure deck for the full files.
+
+## 🐙 Step 5 · GitHub, what goes in and out
+
+| Commit | Never commit |
+|---|---|
+| `actions/`, `data/`, `domain.yml`, `config.yml` | `.env` (license, LLM key, password hash) |
+| `endpoints.yml`, `credentials.yml` | `models/`, `.rasa/` |
+| `deploy/` (Compose, Caddyfile, `.env.example`) | `lesson_log.jsonl` (user IDs and replies) |
+| `.gitignore` | Any API key, ever |
+
+Private repo on a server? Give that one server a **read-only deploy key**.
+
+## 🖼️ Step 6 · Front end: Inspector or webchat.html?
+
+| | **Rasa Inspector** | **Custom `webchat.html`** |
+|---|---|---|
+| How | `rasa run --inspect` | A small page that calls Rasa's REST channel |
+| Effort | None | Write and host one HTML file |
+| Shows | Chat, Flow, History, Memory | Only what **you** render |
+| Audience | You, classmates, grader | Real end users |
+| Design control | None | Full (large text, buttons, highlights) |
+
+> **Not required.** Use the Inspector to deploy. Build `webchat.html` when the *interface* is part of what you are demonstrating.
+
+## 💬 What `webchat.html` does
+
+1. Sends the user's text to `POST /webhooks/rest/webhook` (needs `rest:` in `credentials.yml`).
+2. Reads the JSON reply: `text`, `buttons`, and `custom` (your highlight payload).
+3. **Renders** text and buttons in your own style.
+4. Sends a button's `payload` back as the next message.
+
+This is where the App Coach **highlight** idea becomes visible: Rasa sends `{"highlight": "add_reminder_button"}`; your page draws the ring.
+
+## 💻 A minimal `webchat.html`
+
+```html
+<div id="log"></div>
+<input id="msg"><button id="go">Send</button>
+<script>
+const log = document.getElementById("log");
+const add = (t) => { const p = document.createElement("p"); p.textContent = t; log.append(p); };
+async function send(text, label = text) {
+  add("You: " + label);
+  const r = await fetch("/webhooks/rest/webhook", { method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sender: "web-user-1", message: text }) });
+  for (const m of await r.json()) {
+    if (m.text) add("Coach: " + m.text);
+    for (const b of m.buttons || []) {
+      const btn = document.createElement("button");
+      btn.textContent = b.title; btn.onclick = () => send(b.payload, b.title);
+      log.append(btn);
+    }
+    if (m.custom?.highlight) add("[highlight: " + m.custom.highlight + "]");
+  }
+}
+document.getElementById("go").onclick = () => send(msg.value);
+</script>
+```
+
+## 🔌 Hosting `webchat.html`
+
+| Pattern | How | Watch out |
+|---|---|---|
+| **Same origin** (preferred) | Caddy serves the page and proxies `/webhooks/*` to Rasa | No CORS setup; one HTTPS address |
+| **Separate host** | Page on GitHub Pages, Rasa elsewhere | Rasa must allow that origin (`--cors`); never use `*` on a public server |
+
+- The page uses `textContent`, not `innerHTML`, so a bot or user message cannot inject HTML.
+- The password gate protects the page **and** the API. A public end-user page needs a different protection plan.
+
+::: {.notes}
+Treat the Caddy pattern as a sketch to test: handle /webhooks/* with reverse_proxy, and serve the page with file_server from a mounted folder.
+:::
+
+## 🔐 Step 7 · Secrets and protection
+
+- **Secrets:** license, LLM key, password hash live in `.env` or the host's secret store.
+- **HTTPS:** microphone access needs it; Caddy gets certificates automatically.
+- **Password:** a login before any request reaches Rasa.
+- **Ports:** only 80/443 public. Never publish Rasa's 5005.
+- **Logs:** `lesson_log.jsonl` has user IDs. Know who can read it and delete it when done.
+
+> An open Rasa URL lets strangers spend your LLM key.
+
+## ✅ Pre-deployment checkpoint
+
+::: {.checkpoint}
+**Before you pick a host, you can say yes to all of these:**
+
+- Works in `rasa inspect`, and I know my Rasa version
+- Keys are in environment variables
+- Project is on GitHub without `.env`, `models/`, or the log
+- I chose Inspector or `webchat.html`
+- I know how I will add HTTPS and a password
+:::
+
+## ② The three options {.section-slide background-color="#263b3e"}
+
+::: {.eyebrow}
+Part 2 · Basic steps for each
+:::
+
+**Free · Free · Paid**
+
+## 🧑‍💻 Option A · GitHub Codespaces
+
+**What it is:** a cloud dev machine in your browser, tied to your repo.
+
+| Strength | Limit |
+|---|---|
+| No server to manage; Docker ready | Stops after about 30 idle minutes |
+| HTTPS URL comes from port forwarding | Free hours are limited (roughly 120 core hours a month) |
+| Everyone gets the same environment | Not an always-on site |
+
+**Best for:** class labs, demos, and testing before a real deploy.
+
+## 🧑‍💻 Codespaces · Basic steps
+
+1. Repo → **Code → Codespaces → Create codespace**.
+2. Add `.devcontainer/devcontainer.json` (Python, Docker-in-Docker, ports 5005 and 8000).
+3. Add `RASA_LICENSE` and your LLM key as **Codespaces secrets**.
+4. Train and run: `rasa train`, then `rasa inspect` (or the Compose command).
+5. In the **Ports** tab, open the forwarded **5005** URL.
+6. **Stop** the codespace when done.
+
+Keep Rasa's port **Private**. Use a 4-core machine for training.
+
+## ☁️ Option B · Azure VM
+
+**What it is:** a Linux VM you control, paid from **student credit**.
+
+| Strength | Limit |
+|---|---|
+| Free for students (credit, no card) | Most steps to set up |
+| Always on, with a free `cloudapp.azure.com` name | A 4 GB VM uses credit, not the free VM allowance |
+| Good fit for a graded, public URL | Billing continues until you **deallocate** |
+
+**Best for:** a free, always-on deployment you can submit.
+
+## ☁️ Azure · Basic steps
+
+1. Create the account and a **5 USD budget alert**.
+2. Cloud Shell: create a resource group and a 4 GB Ubuntu VM with a DNS label.
+3. Open ports **80** and **443**.
+4. SSH in and install Docker.
+5. Clone the repo, create `deploy/.env`, run `docker compose run --rm assistant train`.
+6. `docker compose up -d`, then open your `https://` address.
+7. Deallocate when idle; delete the resource group at the end.
+
+## 🌊 Option C · DigitalOcean
+
+**What it is:** a simple paid cloud server (a **Droplet**).
+
+| Strength | Limit |
+|---|---|
+| Clean interface and flat, predictable pricing | Costs money from the first hour |
+| Docker-ready images and quick setup | No free HTTPS hostname: bring a domain |
+| Always on | Bill continues until you **destroy** the Droplet |
+
+**Best for:** the simplest reliable paid option, or when you outgrow free credit.
+
+::: {.notes}
+Check current pricing and any student or promotional credit (for example through the GitHub Student Developer Pack) before the session.
+:::
+
+## 🌊 DigitalOcean · Basic steps
+
+1. Create an account and add a payment method (or apply credit).
+2. Create a **Droplet**: Ubuntu, about 2 vCPU and 4 GB RAM, with your **SSH key**.
+3. Add a **firewall** allowing 22, 80, 443.
+4. Point a domain's **A record** at the Droplet's IP.
+5. SSH in, install Docker, clone the repo, create `deploy/.env` with that domain.
+6. Train, then `docker compose up -d`.
+7. When finished, **destroy** the Droplet.
+
+## 🌐 The domain question
+
+Azure gives a free name. DigitalOcean does not.
+
+| Option | Notes |
+|---|---|
+| Your own domain | Add an A record to the server IP. Cleanest |
+| A wildcard-DNS service that maps an IP to a name | Free and quick for a class demo, but shared certificate limits may bite; verify it works |
+
+HTTPS needs a **name**, not a bare IP address.
+
+## ⚖️ Compare, side by side
+
+| Question | Codespaces | Azure | DigitalOcean |
+|---|---|---|---|
+| Money | Free quota | Student credit | Monthly bill |
+| Someone else can visit tomorrow | No | Yes | Yes |
+| Caddy/HTTPS to configure | No | Yes | Yes |
+| Memory for Rasa Pro | Pick 4-core | Pick 4 GB VM | Pick 4 GB Droplet |
+| Risk if you forget it | Hours used up | Credit spent | **Money spent** |
+| Typical lab effort | Short | Longest | Medium |
+
+## 🧭 How to choose
+
+```{mermaid}
+flowchart TD
+    A["Do others need to visit<br/>your URL after class?"] -->|No| B["🧑‍💻 Codespaces"]
+    A -->|Yes| C["Free required?"]
+    C -->|Yes| D["☁️ Azure for Students"]
+    C -->|No| E["Want the simplest<br/>always-on server?"]
+    E -->|Yes| F["🌊 DigitalOcean"]
+    E -->|No| D
+```
+
+## 💡 Recommendations and why
+
+| Situation | Choose | Justification |
+|---|---|---|
+| First try, class lab, debugging | **Codespaces** | Nothing to provision; same environment for everyone; free |
+| Graded project that must stay online, no budget | **Azure** | Free credit, always on, free HTTPS hostname |
+| Reliable demo, willing to pay, want less friction | **DigitalOcean** | Simpler interface and pricing; you handle the domain |
+| Not sure | **Codespaces first, then Azure** | Learn the pieces cheaply, then deploy for real |
+
+## ③ Together in class {.section-slide background-color="#a93632"}
+
+::: {.eyebrow}
+Part 3 · Try it, troubleshoot, reflect
+:::
+
+**Choose → deploy → verify → share what broke**
+
+## 🧪 Class activity
+
+1. **Choose** one option.
+2. **Finish pre-deployment** (the checklist) and show your repo.
+3. **Deploy** using that option's basic steps and the detailed deck.
+4. **Verify**: the Inspector (or `webchat.html`) works at your URL and the log has events.
+5. **Clean up**: stop, deallocate, or destroy.
+
+Pairs are fine. Help classmates on **other** options when you finish.
+
+::: {.checkpoint}
+**Done when:** you completed a guided lesson at your own URL and can name one thing that went wrong.
+:::
+
+## 🧯 Common problems on every host
+
+| Symptom | Likely cause → Fix |
+|---|---|
+| License or LLM error at startup | Missing or misnamed variable → check `.env` / secrets |
+| "No model found" | Not trained on the server → run `train` |
+| Version warning | Image tag differs from yours → align and retrain |
+| Page loads but chat cannot connect | Wrong public URL, or CORS → use the https address; same origin |
+| Certificate fails | Port 80 blocked or wrong domain → open ports, check `DOMAIN` |
+| Out of memory | Machine too small → 4 GB or larger |
+| Works locally, not remotely | Secret or file missing in git → compare with `.gitignore` |
+
+## 💸 Cost and safety, every time
+
+- Set a **budget alert** before creating anything.
+- **Stop** (Codespaces), **deallocate** (Azure), or **destroy** (DigitalOcean) when you finish.
+- Never leave Rasa's port open to the internet.
+- Never post a URL **and** its password together.
+- Delete `lesson_log.jsonl` when the course ends.
+
+> Most surprise bills come from something left running.
+
+## 💭 Discussion
+
+1. Which option would you pick for a real older-adult user, and why?
+2. The Inspector exposes History and Memory. Should end users see that? What does `webchat.html` let you hide or show?
+3. A password protects your LLM key. What other risks come with a public coach?
+4. If your host disappears tomorrow, how fast can you redeploy? What does that say about your repo?
+5. Which step would you automate first?
+
+## 📚 Where to go deeper
+
+| Need | Deck |
+|---|---|
+| Full Azure walkthrough for AppCoach_demo | [workshop_deploy_appcoach_azure](workshop_deploy_appcoach_azure.html) |
+| Codespaces walkthrough | [workshop_github_codespaces](workshop_github_codespaces.html) |
+| Rasa deployment docs | [Quick deployment with Docker Compose](https://rasa.com/docs/pro/deploy/quick-deploy) |
+| Inspector over a channel | [Trying your assistant](https://rasa.com/docs/pro/testing/trying-assistant) |
+| Reverse proxy and passwords | [Caddy docs](https://caddyserver.com/docs/) |
+
+## 🏁 Wrap-up
+
+**Prepare once, deploy anywhere.**
+
+- The **pre-deployment** work is the same for every host.
+- **Codespaces** to learn, **Azure** to stay free and online, **DigitalOcean** when you want simple and are willing to pay.
+- Protect the URL, watch the bill, and shut things down.
+
+> A deployed assistant is one you can update, protect, and shut down.

@@ -83,7 +83,7 @@ A **codespace** is a ready-to-use Linux machine with VS Code, running in the clo
 | Labs and class demos | An always-on public website |
 | Same environment for every student | Anything that must keep running overnight |
 | Running Docker and Rasa without local installs | Large, long jobs that burn your free hours |
-| Trying the game over HTTPS (microphone works) | Serving the grader a link days later |
+| Trying a web app over HTTPS (microphone works) | Serving the grader a link days later |
 
 > A codespace **stops when idle**. For a site that must stay online, use a host from the Azure workshop.
 
@@ -139,38 +139,38 @@ git status
 **Checkpoint 1:** All three commands run. If `docker` is missing, continue to Part 2; the dev container fixes it.
 :::
 
-## ② Make it repeatable {.section-slide background-color="#263b4e"}
+<!-- ## ② Make it repeatable {.section-slide background-color="#263b4e"}
 
 ::: {.eyebrow}
 Part 2 · Dev container and secrets
 :::
 
-**One file tells every student's codespace what to install**
+**One file tells every student's codespace what to install** -->
 
 ## 🧱 Part 2 · The dev container
 
 A **dev container** is a description of the environment, stored in the repo. Create:
 
 ```text
-Calm_Wordle/
+project_name/
 └── .devcontainer/
     └── devcontainer.json
 ```
 
 Anyone who opens the repo in a codespace gets the same Python version, Docker, extensions, and ports.
 
-## 📝 `devcontainer.json` · Game and Docker
+## 📝 `devcontainer.json` · Python and Docker
 
 ```json
 {
-  "name": "Calm_Wordle",
+  "name": "project_name",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
   "forwardPorts": [8000, 5005],
   "portsAttributes": {
-    "8000": { "label": "Game" },
+    "8000": { "label": "Web app" },
     "5005": { "label": "Rasa" }
   },
   "customizations": {
@@ -196,7 +196,7 @@ Anyone who opens the repo in a codespace gets the same Python version, Docker, e
 3. Run **Codespaces: Rebuild Container**.
 
 ::: {.checkpoint}
-**Checkpoint 2:** After the rebuild, `docker --version` works and the Ports tab lists *Game* and *Rasa*.
+**Checkpoint 2:** After the rebuild, `docker --version` works and the Ports tab lists *Web app* and *Rasa*.
 :::
 
 ## 🔐 Part 2 · Secrets, never in the repo
@@ -206,7 +206,7 @@ Rasa Pro needs `RASA_LICENSE`. Voice needs `DEEPGRAM_API_KEY`. Store them as **C
 1. github.com → profile photo → **Settings**.
 2. **Codespaces → New secret**.
 3. Name: `RASA_LICENSE`. Paste the value.
-4. **Repository access:** select only `Calm_Wordle`.
+4. **Repository access:** select only your project repo.
 5. Repeat for `DEEPGRAM_API_KEY`.
 
 Secrets appear as environment variables in new or rebuilt codespaces. **Do not commit `.env`.**
@@ -221,35 +221,50 @@ Prints a word, not the key itself.
 
 > Never `echo` the key and never paste it into chat, screenshots, or commits.
 
-## ③ Run the project {.section-slide background-color="#a93632"}
+<!-- ## ③ Run the project {.section-slide background-color="#a93632"}
 
 ::: {.eyebrow}
 Part 3 · Game, ports, Rasa
-:::
+::: 
 
 **Start → forward → open → test**
+-->
 
-## 🎮 Part 3 · Run the game
+## � Part 3 · Start a test web server
 
-Either run Python directly:
+No web app yet? Serve the repo's files with Python's built-in server:
+
+```bash
+python -m http.server 8000
+```
+
+Codespaces notices the port and shows a **notification**. Stop the server with `Ctrl+C`.
+
+::: {.notes}
+This only proves port forwarding and HTTPS work. It does not ask for the microphone.
+:::
+
+## 🎮 Part 3 · Optional: run a real app
+
+If your repo has a web app or a `Dockerfile` (for example the Calm_Wordle game), run it instead:
 
 ```bash
 HOST=0.0.0.0 PORT=8000 python web_server.py
 ```
 
-or run the same Docker image you built for Azure:
+or with Docker:
 
 ```bash
 docker build -t calm-wordle .
 docker run --rm -p 8000:8000 calm-wordle
 ```
 
-Codespaces notices the port and shows a **notification**.
+Use the file name and image name from **your** project.
 
 ## 🌐 Part 3 · Open a forwarded port
 
 1. Open the **Ports** tab.
-2. Find **8000 · Game**.
+2. Find **8000 · Web app**.
 3. Click the globe icon, or hover and choose **Open in Browser**.
 
 The address looks like:
@@ -271,7 +286,7 @@ It is **HTTPS**, so the microphone works without Caddy or a certificate.
 > Make a port **Public** only for a short demo. Never make Rasa's port 5005 public: anyone with the link could use your API keys.
 
 ::: {.checkpoint}
-**Checkpoint 3:** The game loads at the forwarded HTTPS address and the microphone prompt appears.
+**Checkpoint 3:** The page loads at the forwarded HTTPS address. With the real game, the microphone prompt also appears.
 :::
 
 ## 🤖 Part 3 · Run Rasa in the codespace
@@ -306,13 +321,13 @@ rasa inspect
 Prefer the Codespaces secret over exporting a key in a shell, so the key is not in shell history.
 :::
 
-## ④ Save hours and wrap up {.section-slide background-color="#0067b8"}
+<!-- ## ④ Save hours and wrap up {.section-slide background-color="#0067b8"}
 
 ::: {.eyebrow}
 Part 4 · Cost, cleanup, troubleshooting
 :::
 
-**Stop → delete → reuse**
+**Stop → delete → reuse** -->
 
 ## ⏱️ Part 4 · Protect your free hours
 
@@ -340,7 +355,7 @@ Commit and push anything you need **before** deleting. Files not pushed are lost
 | Symptom | Likely cause → Fix |
 |---|---|
 | `docker: command not found` | No Docker feature → add `docker-in-docker`, rebuild container |
-| Port does not appear in the Ports tab | Server bound to `127.0.0.1` only or not running → start with `HOST=0.0.0.0` and check the terminal |
+| Port does not appear in the Ports tab | Server not running → start `python -m http.server 8000` and check the terminal; add the port manually in the Ports tab if needed |
 | Page asks you to sign in to GitHub | Port is Private → open it from the Ports tab while signed in, or change visibility briefly |
 | Rasa training killed or very slow | Out of memory → change machine type to 4-core or larger |
 | Secret is missing | Added after the codespace was created → rebuild or create a new codespace |
@@ -380,8 +395,8 @@ Commit and push anything you need **before** deleting. Files not pushed are lost
 
 Submit:
 
-1. A screenshot of the **Ports** tab with the Game port forwarded.
-2. A screenshot of the game running at the `app.github.dev` address.
+1. A screenshot of the **Ports** tab with port 8000 forwarded.
+2. A screenshot of your page running at the `app.github.dev` address.
 3. Your `.devcontainer/devcontainer.json`.
 4. A short note: **one limitation of Codespaces compared with Azure.**
 
