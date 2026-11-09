@@ -451,7 +451,7 @@ In-class workshop: peer heuristic evaluation of each team's conversational AI sy
 
 1. Freed, A.R. (2021). *Conversational AI.* Chapter 11. PDF on Canvas.
 2. Nielsen, J. (1994). [How to Conduct a Heuristic Evaluation.](https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/) Nielsen Norman Group.
-3. Klemmer, S. [Heuristic Evaluation Lecture.](https://dl.acm.org/doi/pdf/10.1145/97243.97281).
+3. Klemmer, S. [Heuristic Evaluation Lecture.](https://www.youtube.com/playlist?list=PLVtu1bDQijari7LfHOoSTdcpbWIkwZWIA).
 </div>
 
 <div class="week-due">
