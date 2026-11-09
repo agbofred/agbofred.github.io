@@ -38,7 +38,7 @@ if __name__ == '__main__':
     gw = GWindow(800, 600)
     graph = create_histogram_graph(pi_hist, 800, 600)
     gw.add(graph)
-    # gw.add(create_histogram_graph(pi_hist, 800/2, 600/2))
+    gw.add(create_histogram_graph(pi_hist, 800/2, 600/2))
     # gw.add(create_histogram_graph(pi_hist, 800/2, 600/2), 800/2, 0)
     # gw.add(create_histogram_graph(pi_hist, 800/2, 600/2), 0, 600/2)
     # gw.add(create_histogram_graph(pi_hist, 800/2, 600/2), 800/2, 600/2)
