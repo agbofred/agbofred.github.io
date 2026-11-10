@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+$code-color: black;
+
+
+/*-- scss:rules --*/
+
+caption, .table-caption {
+    text-align: left;
+}
+
+.navbar-title {
+    font-weight: bold;
+}
+
+.navbar {
+    background: url("./images/cover.png");
+    font-weight: bold;
+}
+.navbar svg.aa-SubmitIcon {
+    color: white !important;
+}
+
+code {
+    font-weight: bold;
+}

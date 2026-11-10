@@ -1,0 +1,11 @@
+---
+title: Potential Extensions
+sidebar: false
+---
+
+
+While there are many things you _could_ implement to elaborate on the Enigma project, most students find them a bit more difficult than on some past projects. But here are a few ideas.
+
+- _Implement other features of the Enigma machine._ The German wartime Enigma was more complicated than the model presented here. In particular, the wartime machines had a stock of five rotors of which the operators could use any three in any order. The Germans also added a plugboard that swapped pairs of letters before they were fed into the rotors, and after they came out.
+- _Simulate the actions of the Bombe decryption machine._ This assignment has you build a simulator for the German Enigma machine. Check out the extended documentation on Enigma decryption and consider implementing some of the British decoding strategies.
+

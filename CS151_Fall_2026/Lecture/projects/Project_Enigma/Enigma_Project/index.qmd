@@ -9,7 +9,7 @@ As per usual, you will submit this project through GitHub Classroom, and you can
 <br/>
 
 ```{=html}
-<a href='https://classroom.github.com/a/CVJIKrGn' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom50.org/Agbo-CS151/cs151-fa-2026/assignments/enigma-project/accept' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
 ```
 <br>
 

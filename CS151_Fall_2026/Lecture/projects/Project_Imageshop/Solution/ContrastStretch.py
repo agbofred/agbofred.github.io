@@ -80,7 +80,7 @@ if __name__ == "__main__":
     gw.add(
         createGrayscaleImage(image),
         gw.getWidth() / 2 - image.getWidth(),
-        gw.getHeight() / 2 - image.getHeight() / 2,
+        gw.getHeight() / 2 - image.getHeight() / 2
     )
     stretched = stretch_contrast(image)
     gw.add(
