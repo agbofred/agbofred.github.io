@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Fred Agbo">
+  <meta name="dcterms.date" content="2026-11-19">
+  <title>Searching Algorithms</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../html_srcs/reveal.js/dist/theme/python_monokai.css" id="theme">
+  <link rel="stylesheet" href="../html_srcs/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Searching Algorithms</h1>
+  <p class="author">Fred Agbo</p>
+  <p class="date">November 19, 2026</p>
+</section>
+
+<section id="happy-monday" class="slide level2">
+<h2>Happy Monday!</h2>
+<div style="font-size:.8em">
+<ul>
+<li>Class grouping today: Scan the QR code or go to <a
+href="https://tools.jedrembold.prof/daily">https://tools.jedrembold.prof/daily</a></li>
+<li>Class code is <code class="python">SAg4L</code></li>
+<li>Introduce yourselves! How long does it take your brain to add up all
+your siblings birthday?</li>
+</ul>
+</div>
+<div class="cols">
+<div class="col">
+<p><img data-src="../images/group_arrangement.png"
+style="width:60.0%" /></p>
+</div>
+<div class="col">
+<p><img
+data-src="https://barcode.orcascan.com/?data=https://tools.jedrembold.prof/daily?code=lcjjHj"
+style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section id="quick-announcements" class="slide level2">
+<h2>Quick Announcements</h2>
+<div class="sml" style="font-size: 43px;">
+<ul>
+<li>I can imagine that you enjoyed some hands-on practice with
+<strong><em>JSON</em></strong> data structure in last two classes.
+<ul>
+<li>Professor Jed is an amazing teacher!</li>
+</ul></li>
+<li>Project <strong><em>Enigma</em></strong> is due next week
+<strong><em>Monday November 23</em></strong>
+<ul>
+<li>I do not expect people to ask for extension since we have plenty of
+time to complete it</li>
+</ul></li>
+<li>Project</li>
+</ul>
+</div>
+</section>
+<section id="quick-info" class="slide level2">
+<h2>Quick Info</h2>
+<div class="sml" style="font-size: 43px;">
+<ul>
+<li>We are currently in the Spring Course Registration Season
+<ul>
+<li>Consider registering <strong><em>CS-152: Data
+Structures</em></strong>
+<ul>
+<li>Dig deeper into how to develop, measure, and evaluate efficient
+programs</li>
+<li>Counts towards the <strong>CS Major</strong></li>
+<li>Prereq: CS-151 - <strong><em>you are are eligible, consider
+registering it</em></strong></li>
+</ul></li>
+</ul></li>
+<li>Human Perception Research - by Ethan (Senior - CS Major)</li>
+</ul>
+</div>
+</section>
+<section id="todays-class-plan" class="slide level2">
+<h2>Today’s Class Plan</h2>
+<ul>
+<li>Further discussion on searching algorithms?</li>
+<li>Linear Search</li>
+<li>Binary Search</li>
+<li>Jump Search</li>
+<li>Benchmarking: measuring algorithm efficiency</li>
+</ul>
+</section>
+<section id="what-is-searching" class="slide level2">
+<h2>What is Searching?</h2>
+<ul>
+<li><strong>Goal:</strong> find the position of a <em>target</em> value
+in a collection</li>
+<li>Return the <strong>index</strong> if found, otherwise
+<code class="python">-1</code></li>
+<li>The best algorithm depends on:
+<ul>
+<li>Is the data <strong>sorted</strong>?</li>
+<li>How <strong>large</strong> is the data?</li>
+<li>How often do we search?</li>
+</ul></li>
+</ul>
+</section>
+<section id="linear-search" class="slide level2">
+<h2>Linear Search</h2>
+<ul>
+<li>Check each element, one by one, from the start</li>
+<li>Works on <strong>unsorted</strong> data</li>
+</ul>
+<pre ><code class="python">def linear_search(data, target):
+    for i in range(len(data)):
+        if data[i] == target:
+            return i
+    return -1</code></pre>
+</section>
+<section id="linear-search-simulation" class="slide level2">
+<h2>Linear Search: Simulation</h2>
+<p>Search for <code class="python">7</code> in
+<code class="python">[4, 2, 9, 7, 5, 1]</code></p>
+<pre ><code class="text">Step 1: [4] 2  9  7  5  1   4 != 7
+Step 2:  4 [2] 9  7  5  1   2 != 7
+Step 3:  4  2 [9] 7  5  1   9 != 7
+Step 4:  4  2  9 [7] 5  1   7 == 7  -> return 3</code></pre>
+<ul>
+<li>Best case: 1 comparison</li>
+<li>Worst case: <code class="python">n</code> comparisons</li>
+<li>Time complexity: <strong>O(n)</strong>
+<ul>
+<li>We will introduce the concept of <strong><em>Time
+Complexity</em></strong> more concretely later on</li>
+</ul></li>
+</ul>
+</section>
+<section id="binary-search" class="slide level2">
+<h2>Binary Search</h2>
+<ul>
+<li>Requires <strong>sorted</strong> data</li>
+<li>Compare target to the <strong>middle</strong> element, discard half
+each step</li>
+</ul>
+<pre ><code class="python">def binary_search(data, target):
+    low, high = 0, len(data) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if data[mid] == target:
+            return mid
+        elif data[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1</code></pre>
+</section>
+<section id="binary-search-simulation" class="slide level2">
+<h2>Binary Search: Simulation</h2>
+<p>Search for <code class="python">23</code> in
+<code class="python">[2, 5, 8, 12, 16, 23, 38, 56, 72, 91]</code></p>
+<pre ><code class="text">Step 1: low=0 high=9 mid=4 -> 16 < 23  -> low=5
+Step 2: low=5 high=9 mid=7 -> 56 > 23  -> high=6
+Step 3: low=5 high=6 mid=5 -> 23 == 23 -> return 5</code></pre>
+<ul>
+<li>Only 3 comparisons instead of 6!</li>
+<li>Time complexity: <strong>O(log n)</strong></li>
+<li>1,000,000 items need at most ~20 comparisons</li>
+</ul>
+</section>
+<section id="jump-search" class="slide level2">
+<h2>Jump Search</h2>
+<ul>
+<li>Requires <strong>sorted</strong> data</li>
+<li>Jump ahead in blocks of size <code class="python">√n</code>, then do
+a linear search inside the block</li>
+</ul>
+<pre ><code class="python">import math
+
+def jump_search(data, target):
+    n = len(data)
+    step = int(math.sqrt(n))
+    prev = 0
+    while prev < n and data[min(prev + step, n) - 1] < target:
+        prev += step
+    for i in range(prev, min(prev + step, n)):
+        if data[i] == target:
+            return i
+    return -1</code></pre>
+</section>
+<section id="jump-search-simulation" class="slide level2">
+<h2>Jump Search: Simulation</h2>
+<p>Search for <code class="python">56</code> in
+<code class="python">[2, 5, 8, 12, 16, 23, 38, 56, 72, 91]</code> (n=10,
+step=3)</p>
+<pre ><code class="text">Block 0-2: last = 8   < 56 -> jump
+Block 3-5: last = 23  < 56 -> jump
+Block 6-8: last = 72 >= 56 -> stop
+Linear scan: 38 -> 56 found at index 7</code></pre>
+<ul>
+<li>Time complexity: <strong>O(√n)</strong></li>
+<li>Between linear and binary search</li>
+<li>Useful when jumping backward is costly</li>
+</ul>
+</section>
+<section id="comparing-the-algorithms" class="slide level2">
+<h2>Comparing the Algorithms</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>Sorted needed?</th>
+<th>Worst case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linear</td>
+<td>No</td>
+<td>O(n)</td>
+</tr>
+<tr class="even">
+<td>Jump</td>
+<td>Yes</td>
+<td>O(√n)</td>
+</tr>
+<tr class="odd">
+<td>Binary</td>
+<td>Yes</td>
+<td>O(log n)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-is-benchmarking" class="slide level2">
+<h2>What is Benchmarking?</h2>
+<ul>
+<li><strong>Benchmarking:</strong> measuring how long code takes to run
+on real inputs</li>
+<li>Complements theoretical (Big-O) analysis</li>
+<li>Useful for:
+<ul>
+<li>Comparing algorithms empirically</li>
+<li>Seeing how runtime <strong>scales</strong> with input size</li>
+<li>Revealing hardware and implementation effects</li>
+<li>Deciding which algorithm to use in practice</li>
+</ul></li>
+</ul>
+</section>
+<section id="benchmarking-in-python" class="slide level2">
+<h2>Benchmarking in Python</h2>
+<pre ><code class="python">import time
+
+def benchmark(func, data, target, runs=100):
+    start = time.perf_counter()
+    for _ in range(runs):
+        func(data, target)
+    return (time.perf_counter() - start) / runs
+
+for n in [1_000, 10_000, 100_000, 1_000_000]:
+    data = list(range(n))
+    target = n - 1   # worst case
+    print(n,
+          benchmark(linear_search, data, target),
+          benchmark(jump_search, data, target),
+          benchmark(binary_search, data, target))</code></pre>
+</section>
+<section id="benchmarking-tips" class="slide level2">
+<h2>Benchmarking Tips</h2>
+<ul>
+<li>Use <code class="python">time.perf_counter()</code> or the
+<code class="python">timeit</code> module</li>
+<li>Repeat runs and <strong>average</strong> to reduce noise</li>
+<li>Test best, average, and worst cases</li>
+<li>Use the same data for every algorithm</li>
+<li>Sorting costs <code class="python">O(n log n)</code>, so binary
+search pays off with <strong>many</strong> searches</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<!-- ## Practice
+
+1. Trace binary search for `8` in `[1, 3, 5, 8, 10, 12, 15]`
+2. Count comparisons for linear vs. jump search for `91` in a 10-item list
+3. Benchmark all three with `n = 10**6` and compare the results
+
+--- -->
+</section>
+<section id="problem-1-time-it" class="slide level2">
+<h2>Problem 1: Time It!</h2>
+<ul>
+<li>Grab the starter codes from the
+<strong><em>Discord</em></strong></li>
+<li>This is a coding problem. Work in pairs on a single computer, and
+discuss your algorithm/approach <em>before</em> you write any code!</li>
+<li>Write a function to benchmark the time it takes an arbitrary search
+function to run on a particular array and with a particular target</li>
+<li>You can use the <code class="python">perf_counter()</code> function
+from the <code class="python">time</code> library to get an arbitrary
+second count
+<ul>
+<li>Take two and subtract to get elapsed time</li>
+</ul></li>
+<li>Return the elapsed time</li>
+</ul>
+</section>
+<section id="problem-2-averaging-out" class="slide level2">
+<h2>Problem 2: Averaging Out</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>If the target is near the start, we are likely to find it much
+faster</li>
+<li>It is better to randomly choose a bunch of targets, and then average
+over all the times</li>
+<li>Complete <code class="python">compute_avg_time</code> to return the
+average benchmark time for 100 random targets
+<ul>
+<li>Randomly choose targets both inside and outside of the array!</li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-3-multiple-arrays" class="slide level2">
+<h2>Problem 3: Multiple Arrays</h2>
+<ul>
+<li>Swap who is typing!</li>
+<li>Ideally we want to see how our function <em>scales</em>, as the
+arrays get larger</li>
+<li>Complete <code class="python">sweep_of_sizes</code> to compute the
+average benchmark for each size in the list
+<ul>
+<li>Choose a data type to return the results that include both the array
+size and the average time
+<ul>
+<li>You have several good options! Which do you prefer here?</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="problem-4-table-display" class="slide level2">
+<h2>Problem 4: Table Display</h2>
+<div class="cols">
+<div class="col" style="font-size:.8em">
+<ul>
+<li>Swap who is typing!</li>
+<li>Looking at the results in the data type you chose is not the
+nicest</li>
+<li>Complete <code class="python">display_results</code> to print out a
+table of the computed output</li>
+<li>Add a third column for “Ratio”, which is the current time divided by
+the previous time</li>
+<li>How does <code class="python">jump_search</code> compare to our
+other algorithms?</li>
+</ul>
+</div>
+<div class="col">
+<pre ><code class="text" style="font-size:.8em">      N       Time (sec)  Ratio
+          10    2.84e-07
+         100    1.44e-06   5.06
+       1,000    1.87e-05  13.00
+      10,000    2.05e-04  10.99
+     100,000    2.03e-03   9.91
+   1,000,000    2.04e-02  10.02
+  10,000,000    2.05e-01  10.04</code></pre>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../html_srcs/reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../html_srcs/reveal.js/plugin/notes/notes.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/search/search.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/Chart.min.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chart/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/chalkboard/plugin.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/math/math.js"></script>
+  <script src="../html_srcs/reveal.js/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+		//autoAnimateEasing: 'ease-in',
+		//autoAnimateDuration: 1.0,
+		//autoAnimateUnmatched: false,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: true,
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        history: false,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Global override for autoplaying embedded media (video/audio/iframe)
+        // - null: Media will only autoplay if data-autoplay is present
+        // - true: All media will autoplay, regardless of individual setting
+        // - false: No media will autoplay, regardless of individual setting
+        autoPlayMedia: null,
+        // Global override for preloading lazy-loaded iframes
+        // - null: Iframes with data-src AND data-preload will be loaded when within
+        //   the viewDistance, iframes with only data-src will be loaded when visible
+        // - true: All iframes with data-src will be loaded when within the viewDistance
+        // - false: All iframes with data-src will be loaded only when visible
+        preloadIframes: null,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // The display mode that will be used to show slides
+        display: 'block',
+		math: {
+		  <!--mathjax: '../html_srcs/reveal.js/plugin/math/mathjax/tex-mml-chtml.js',-->
+		  <!--config: 'tex-mml-chtml',-->
+		  <!--tex2jax: {-->
+			<!--inlineMath: [['\\(','\\)']],-->
+			<!--displayMath: [['\\[','\\]']],-->
+			<!--balanceBraces: true,-->
+			<!--processEscapes: false,-->
+			<!--processRefs: true,-->
+			<!--processEnvironments: true,-->
+			<!--preview: 'TeX',-->
+			<!--skipTags: ['script','noscript','style','textarea','pre','code'],-->
+			<!--ignoreClass: 'tex2jax_ignore',-->
+			<!--processClass: 'tex2jax_process'-->
+		  <!--},-->
+		  CommonHTML: {scale: 80},
+		},
+	reveald3: {
+			runLastState: true, // true/false, default: true
+			onSlideChangedDelay: 200,
+			mapPath: false, // true / false / "spefific/path/as/string", default: false
+			tryFallbackURL: true, // true/false, default false
+			disableCheckFile: false, //default false
+		 },
+
+        // reveal.js plugins
+        plugins: [
+		  RevealMath,
+          RevealHighlight,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+		  RevealChart,
+		  RevealChalkboard,
+        ],
+		chalkboard: {
+		boardmarkerWidth: 4,
+        chalkWidth: 5,
+		boardmarkers : [
+                { color: 'rgba(248,248,242,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+                { color: 'rgba(102,217,239,1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+                { color: 'rgba(249,38,114,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                { color: 'rgba(166,226,46,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+                { color: 'rgba(253,151,31,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                { color: 'rgba(174,129,255,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+                { color: 'rgba(255,231,146,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}
+        ],
+        chalks: [
+                { color: 'rgba(248,248,242,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+                { color: 'rgba(102,217,239,0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+                { color: 'rgba(249,38,114,0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+                { color: 'rgba(166,226,46,0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+                { color: 'rgba(253,151,31,0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+                { color: 'rgba(174,129,255,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+                { color: 'rgba(255,231,146,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}
+        ]
+		},
+		dependencies: [
+			{ src: "../html_srcs/reveal.js/plugin/title-footer/title-footer.js", async: true, callback: function() { title_footer.initialize({css:"../html_srcs/reveal.js/plugin/title-footer/title-footer.css"}); } },
+			{ src: "../html_srcs/reveal.js/plugin/d3/reveald3.js" },
+		],
+      });
+      
+    </script>
+    </body>
+</html>
