@@ -78,7 +78,8 @@ style="width:60.0%" /></p>
 <li>I do not expect people to ask for extension since we have plenty of
 time to complete it</li>
 </ul></li>
-<li>Project</li>
+<li>My sincere apologies for late feedback on the 2nd Midterm exam. I’ll
+try to send them in by the weekend.</li>
 </ul>
 </div>
 </section>
@@ -278,13 +279,13 @@ def benchmark(func, data, target, runs=100):
         func(data, target)
     return (time.perf_counter() - start) / runs
 
-for n in [1_000, 10_000, 100_000, 1_000_000]:
+for n in [1000, 10000, 100000, 1000000]:
     data = list(range(n))
     target = n - 1   # worst case
     print(n,
-          benchmark(linear_search, data, target),
-          benchmark(jump_search, data, target),
-          benchmark(binary_search, data, target))</code></pre>
+          benchmark(linear_search,target, data),
+          benchmark(jump_search, target, data),
+          benchmark(binary_search, target, data))</code></pre>
 </section>
 <section id="benchmarking-tips" class="slide level2">
 <h2>Benchmarking Tips</h2>
@@ -293,9 +294,8 @@ for n in [1_000, 10_000, 100_000, 1_000_000]:
 <code class="python">timeit</code> module</li>
 <li>Repeat runs and <strong>average</strong> to reduce noise</li>
 <li>Test best, average, and worst cases</li>
-<li>Use the same data for every algorithm</li>
-<li>Sorting costs <code class="python">O(n log n)</code>, so binary
-search pays off with <strong>many</strong> searches</li>
+<li>Use the same data for every algorithm
+<!-- - Sorting costs `O(n log n)`, so binary search pays off with **many** searches --></li>
 </ul>
 </section>
 <section class="slide level2">

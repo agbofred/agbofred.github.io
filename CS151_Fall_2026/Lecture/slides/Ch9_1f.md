@@ -40,7 +40,7 @@ history: false
 	- Professor Jed is an amazing teacher! 
 - Project ***Enigma*** is due next week ***Monday November 23***
 	- I do not expect people to ask for extension since we have plenty of time to complete it
-- Project 
+- My sincere apologies for late feedback on the 2nd Midterm exam. I'll try to send them in by the weekend. 
 
 :::
 
@@ -224,13 +224,13 @@ def benchmark(func, data, target, runs=100):
         func(data, target)
     return (time.perf_counter() - start) / runs
 
-for n in [1_000, 10_000, 100_000, 1_000_000]:
+for n in [1000, 10000, 100000, 1000000]:
     data = list(range(n))
     target = n - 1   # worst case
     print(n,
-          benchmark(linear_search, data, target),
-          benchmark(jump_search, data, target),
-          benchmark(binary_search, data, target))
+          benchmark(linear_search,target, data),
+          benchmark(jump_search, target, data),
+          benchmark(binary_search, target, data))
 ```
 
 ---
@@ -241,7 +241,7 @@ for n in [1_000, 10_000, 100_000, 1_000_000]:
 - Repeat runs and **average** to reduce noise
 - Test best, average, and worst cases
 - Use the same data for every algorithm
-- Sorting costs `O(n log n)`, so binary search pays off with **many** searches
+<!-- - Sorting costs `O(n log n)`, so binary search pays off with **many** searches -->
 
 ---
 
