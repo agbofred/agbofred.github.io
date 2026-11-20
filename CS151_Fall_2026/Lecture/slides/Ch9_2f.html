@@ -139,6 +139,24 @@ any better?</li>
 </ul></li>
 </ul>
 </section>
+<section id="review-of-selection-sort" class="slide level2">
+<h2>Review of Selection Sort</h2>
+<pre ><code class="python">    
+def selection_sort(array):
+    for lh in range(len(array)):
+        rh = lh
+        for i in range(lh+1, len(array)):
+            if array[i] < array[rh]:
+                rh = i
+        array[lh], array[rh] = array[rh], array[lh]
+
+
+
+############################################
+L = [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+selection_sort(L)
+</code></pre>
+</section>
 <section id="problem-2-real-world-o" class="slide level2">
 <h2>Problem 2: Real-World O</h2>
 <ul>

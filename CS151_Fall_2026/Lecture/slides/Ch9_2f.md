@@ -99,6 +99,27 @@ history: false
 
 ---
 
+## Review of Selection Sort 
+```python
+	
+def selection_sort(array):
+    for lh in range(len(array)):
+        rh = lh
+        for i in range(lh+1, len(array)):
+            if array[i] < array[rh]:
+                rh = i
+        array[lh], array[rh] = array[rh], array[lh]
+
+
+
+############################################
+L = [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+selection_sort(L)
+
+```
+
+---
+
 ## Problem 2: Real-World O
 - We are going to cycle through some real-world scenarios here
 - For each, you'll have about 2 minutes to discuss with your group what Big-O scaling you think the process would involve
