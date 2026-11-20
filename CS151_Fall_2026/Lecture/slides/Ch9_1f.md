@@ -1,7 +1,7 @@
 ---
 title: "Searching Algorithms"
 author: Fred Agbo
-date: "November 19, 2026"
+date: "November 18, 2026"
 slideNumber: true
 theme: "python_monokai"
 highlightjs-theme: monokai
