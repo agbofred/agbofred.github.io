@@ -1,0 +1,240 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Project 5: The Infinite Adventure",
+    "section": "",
+    "text": "Welcome to the final project of CS 151! Your mission in this project is to implement an “Adventure” game, similar to classics such as Will Crowther’s pioneering “Adventure” in the early 1970’s, or the later Zork. In games of this sort, the player wanders around from one location to another, discovering new locations and perhaps solving some puzzles. Generally these locations are pre-determined and written to fit the designers vision, but we are going to implement something a bit extra here. Should a player try to access a location that was not originally determined by the game designer, a new location will instead be generated using ChatGPT, thus making the adventure essentially infinite!\n\nAs per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.\nAccept Project\n\n\nStrategies and Hints\nBasic strategies from all the projects thus far still apply, with maybe a few additions:\n\nStart as soon as possible! This assignment is due in a week. There are very cool opportunities for extensions on this project, and you want to give yourself time!\nImplement the program in stages, as described in this handout. As with most projects, the milestones in this project build atop one another. Implement the various pieces of the project one at a time and test them to make sure that each one is working before you move on to the next phase.\nDon’t try to extend the program until you get the basic functionality working! There are some very fun extensions available here, but make sure that you have all the required milestones working and well tested before starting to add extensions.\nDraw yourself a diagram of the nested JSON structure. This project requires working with a heavily nested compound data structure with many dictionaries and lists. It can be easy to lose yourself in the nestings if you are not careful. Diagram it out so that you have something to look at when writing your code.\nBe economical with your API usage. We are funding your LLM usage for this project, within limits. The amount of tokens you have been allocated should easily cover extensive testing, demonstrating, and running of your program, but they are not infinite. Should you decide to invest in your own API key to enable image generation, place clear (and low) limits on the monthly usage to ensure you don’t get an unexpected charge!\n\n\n\nCredit\nThis assignment is the product of contributions from many individuals. It has been loosely adapted by Jed Rembold from the original design by Chris Piech, which in turn was inspired by Eric Roberts. The original student handout was designed by Anjali Sreenivas, Yasmine Alonso, Katie Liu, Javokhir Arifov and Dan Webber. Advise and testing was originally provided from Mehran Sahami, Ngoc Nguyen, and Juliette Woodrow. Further testing and feedback has been provided by all Fall 2025 and Spring 2026 Section Leaders."
+  },
+  {
+    "objectID": "introduction/starting_template.html",
+    "href": "introduction/starting_template.html",
+    "title": "The Starting Template",
+    "section": "",
+    "text": "There are multiple folders and files evident when you first look at the starting materials. Here we will try to break down what each is responsible for and which you will need to interact with.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#the-data-folder",
+    "href": "introduction/starting_template.html#the-data-folder",
+    "title": "The Starting Template",
+    "section": "The data folder",
+    "text": "The data folder\nThis is the folder that holds the JSON files that contain the initial data for each infinite story. You’ll be dealing largely with starter.json and adventure.json for most of the assignment, and will only explore engineer_story.json in the last milestone. These files will need no editing from you unless you decide to write your own initial story as part of an extension. The format of the individual JSON files will be explained later in this guide (here).",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#the-img-folder",
+    "href": "introduction/starting_template.html#the-img-folder",
+    "title": "The Starting Template",
+    "section": "The img folder",
+    "text": "The img folder\nThis folder will hold the pre-populated images that correspond to the initially written scenes. You won’t need to utilize these images until Milestone 5, and will only add to them if you decide to do so an an extension.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#the-notopenai-folder",
+    "href": "introduction/starting_template.html#the-notopenai-folder",
+    "title": "The Starting Template",
+    "section": "The notopenai folder",
+    "text": "The notopenai folder\nThis folder holds the NotOpenAI class that you are using to make API connections to ChatGPT. This class is constructed to be identical to the actual OpenAI API, but instead routes your request through a separate server so that we get billed instead of you. This class gets implemented in Milestone 4, and you should not need to make any edits to the contents of this folder at any point.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#example_request.py",
+    "href": "introduction/starting_template.html#example_request.py",
+    "title": "The Starting Template",
+    "section": "example_request.py",
+    "text": "example_request.py\nThis file is here to serve as an example of how to go about creating a valid prompt to ChatGPT to send over the API. You shouldn’t need to edit it unless you want to try running it, in which case you’ll need to fill in your NotOpenAI key that has been provided to you.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#example_images.py",
+    "href": "introduction/starting_template.html#example_images.py",
+    "title": "The Starting Template",
+    "section": "example_images.py",
+    "text": "example_images.py\nThis file is here to serve as an example of how to go about using ChatGPT to generate images, should you desire. Note that to do this you will need to create your own OpenAI key by creating an account and requesting a key. This will also require you to preload at least a few dollars onto the account. Dalle-3 image generation runs about 4 cents per image, so you could generate a lot of images for the price of a coffee if you wanted. This is all 100% optional though and just exists for potential extensions.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#pgl.py",
+    "href": "introduction/starting_template.html#pgl.py",
+    "title": "The Starting Template",
+    "section": "pgl.py",
+    "text": "pgl.py\nOur classic graphics library. It adds some visual spice to the storytelling if there are pictures (ask any child) and so we’ll be using PGL to visualize the static images from each scene (where they exist).",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#infinite_ethics.txt",
+    "href": "introduction/starting_template.html#infinite_ethics.txt",
+    "title": "The Starting Template",
+    "section": "infinite_ethics.txt",
+    "text": "infinite_ethics.txt\nThis file is part of Milestone 6, and serves as a template to provide some reflection on potential ethical concerns that might arise when using generative AI in your programs. It is explained in Milestone 6, and should be filled out and uploaded as part of your submission.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#infinite_adventure.py",
+    "href": "introduction/starting_template.html#infinite_adventure.py",
+    "title": "The Starting Template",
+    "section": "infinite_adventure.py",
+    "text": "infinite_adventure.py\nThis is the big one! The one where almost all your code will be added! It is pretty barebones initially, but the milestones will sequentially having you build it up. It probably goes without saying, but this file should be uploaded as the main part of your submission.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "introduction/starting_template.html#warmup.py",
+    "href": "introduction/starting_template.html#warmup.py",
+    "title": "The Starting Template",
+    "section": "warmup.py",
+    "text": "warmup.py\nWe’ve seen it before (Milestone 0 in Wordle), but sometimes it helps to have a milestone as a sort of “stepping stone” to ensure you understand what is going on before trying to implement something more complicated. Milestone 0 here will be dealing with reading in a file and finding all the “dead-ends”, and instead of writing it in infinite_adverture.py and then commenting it out, you’ll just complete it in this file. This file should be uploaded as part of your submission.",
+    "crumbs": [
+      "The Starting Template"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone3.html",
+    "href": "milestones/milestone3.html",
+    "title": "Milestone 3: Scene Flow",
+    "section": "",
+    "text": "Now that we have the ability to print out a scene and then prompt and get a valid choice for the next scene, we have everything we need to stitch together the basic adventure flow! In this milestone, your task is to use the helper functions defined earlier to infinitely move the player between scenes: printing out the scene, prompting for input, and then using that input to move on to the next scene. You’ll likely want to accomplish this all in the main function in the starting template.\n\n\n\n\n\n\nTip\n\n\n\nYou should consider having a variable which always keeps track of the current scene key. At the start of the story, this key should always be set to “start”.\n\n\nIn the (nearly) infinite loop, you should:\n\nget the scene data for the current scene\nprint the current scene\nget a valid choice from the user\nupdate the current scene key\n\nThe only exception to the above flow is if the player just presses Enter when prompted to make a choice, in which case your Milestone 2 function should return None. Be checking for this, and if such an instance occurs, you should terminate the infinite loop so that the program ends gracefully.\n\n\n\n\n\n\nTip\n\n\n\nTo make it easier for the user to read, it is recommended to print out an extra blank line to the console before you print each scene, so that different scenes are clearly separated from one another on the console.\n\n\nOnce you have this working, you should be able to navigate from room to room, exploring the pre-defined rooms in the story dictionary. Woohoo!! If you play long enough though, you will eventually reach a scene key that is not defined within your story dictionary. When that happens, your program will likely crash out with an error that says KeyError, and complain that a particular key was not found in your scenes dictionary. That is ok! These are those special dead end scenes that we found in Milestone 0, and in the next milestone we will develop a way to resolve this issue!\n\n\n\n\n\n\nWarning\n\n\n\nAt this point the starter.json story has very few pre-defined scenes to wander around in and test. It is recommended that you switch to playing the adventure.json story at this point, which is heavily based on the original Adventure game created by Willie Crowther. This story has many already defined rooms, so you should be able to play longer before encountering an undefined room.",
+    "crumbs": [
+      "Milestone 3: Scene Flow"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone4.html",
+    "href": "milestones/milestone4.html",
+    "title": "Milestone 4: Handling Infinity",
+    "section": "",
+    "text": "When we get to a scene key where we don’t have scene data (i.e. the key does not exist in our story dictionary, previously described as a dead end), we are not going to crash. Instead, we are going to call upon ChatGPT for help in generating a new scene, including appropriate choices! Then, we will continue our program with the newly created scene. For this milestone, you will want to define a new helper function that is responsible for creating a new scene when a scene key does not exist in the story dictionary. Specifically, you should:",
+    "crumbs": [
+      "Milestone 4: Handling Infinity"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone4.html#the-prompt",
+    "href": "milestones/milestone4.html#the-prompt",
+    "title": "Milestone 4: Handling Infinity",
+    "section": "The Prompt",
+    "text": "The Prompt\nOne of the keys to working with any generative AI is constructing the prompt to try to get the desired results. There is some flexibility in how you can shape the prompts for the Infinite Adventure, but to start you should use the following template:\n\n“Return the next scene of a story for key &lt;scene_key&gt;. An example scene should be formatted in json like this &lt;example scene&gt;. The main plot line of the story is &lt;plot&gt;. A player is entering this scene via &lt;choice text&gt; from a scene with key &lt;prev scene_key&gt;, so one choice should take them back to that scene.”\n\nHere, all the content enclosed within angle brackets are placeholders, where you substitute in the appropriate text (f-strings will be very useful here!). Most of them are self explanatory, but, for clarification:\n\nThe &lt;scene_key&gt; is the key of the scene that needs to be generated\nThe &lt;example scene&gt; should be the start scene’s data (but converted to a string). This is important, as we need to let ChatGPT know what format we are using to generate scenes. You can cast a dictionary to as string just like you can cast an integer to a string, using the str() function.\nThe &lt;plot&gt; is the overall plot of the story, which you can access from the story dictionary\nThe &lt;choice text&gt; is the text of the choice that is sending the player to this new scene. This helps provide a minimal amount of continuity to try to ensure that the next scene makes sense given what choice the player made.\nThe &lt;prev scene_key&gt; is the scene key of the room that your are traveling from. It is important to provide this to ChatGPT so that it can ensure that one of the possible choices will return you to the old room. Without this, you’d never be able to go back!",
+    "crumbs": [
+      "Milestone 4: Handling Infinity"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone4.html#the-api",
+    "href": "milestones/milestone4.html#the-api",
+    "title": "Milestone 4: Handling Infinity",
+    "section": "The API",
+    "text": "The API\nSo how do we communicate with ChatGPT to generate our next scene when we do not already have the data in our scenes dictionary? To accomplish this, we need to first understand a new key concept: APIs.\nAPIs (Application Programming Interfaces) allow software applications to communicate and interact with one another. They define the methods and data formats that applications can use to request and exchange information, allowing computer scientists and others to integrate various services, such as ChatGPT, seamlessly into their own projects without a lot of added complexity. Think of them as functions on a remote computer that you can call over the internet. Much of the modern web is built around them, and they are a super powerful tool!\nIn order to utilize APIs within our own Python programs, it is usually easiest to use an already established library. These libraries have been written specifically to allow Python programmers a straightforward and “easy” way to access and utilize these APIs within their programs. Fortunately, OpenAI, the company that released ChatGPT, has released their own Python library to interface with their generative AI models. Unfortunately, using the OpenAI API is not free. That said, we don’t want you to have to be paying for this (unless you want to do your own fancy stuff), and thus we will instead be using a slightly alternative library called NotOpenAI. This library still uses the OpenAI library under-the-hood, but it does so in a way that ensures that the department gets charged for your API usage, instead of you having to pay the costs yourself. The way we will use the NotOpenAI library is identical to how you would use the actual OpenAI library, so if you later decide you want to pay for your own usage to use ChatGPT in your own programs, it should be extremely easy to switch over!\nAPIs often need to know who is using them (for billing and other security purposes) and thus frequently utilize what is called an “api key”. This key is just a unique string, personalized purely for you, that the API uses to track who is using its services. This key identifies you to the API, and as such you should not share them with others. You have all been issued a key by your instructor at the beginning of this project. If you have lost that key, contact your instructor.\nTo get started, there is a line near the top of the template that looks like\nCLIENT = NotOpenAI(api_key=\"yourapikey\")\nwhich initializes the API. You will need to replace \"yourapikey\" with your own API key (as a string). Now you are set to make your first API request to ChatGPT!\nWhen you make a request to ChatGPT using the NotOpenAI library (or the official OpenAI library) you will need to provide it several pieces of information. These include some configuration options, as well as the prompt itself. The file example_request.py in the starting template has an example, where the important code looks like:\n1chat_completion = CLIENT.chat.completions.create(\n    messages=[\n        {\n2            \"role\": \"user\",\n3            \"content\": \"What is the capital of all countries in east africa? Reply in json where keys are countries\"\n        }\n    ],\n4    model=\"gpt-4o-mini\", # the GPT model to use\n5    response_format={\"type\": \"json_object\"} # we want our response in json format\n)\n\n1\n\nUsing the initialized CLIENT to create a new request to ChatGPT\n\n2\n\nDifferent types of programs can make different types of requests. For your requests, your role will always be \"user\"\n\n3\n\nHere is where you get to provide the prompt! So the prompt that you crafted earlier will go here (or you can type in whatever you want for testing purposes)\n\n4\n\nChatGPT has many different models that we can use, so here you need to specify that. You are only authorized to use the gpt-4o-mini model with the NotOpenAI library\n\n5\n\nWe need to tell ChatGPT what format we’d like the response in. Since it is going to return to us a scene dictionary, it makes the most sense to have it package that dictionary up in a JSON format, as we already know how to work with that in Python\n\n\nWhen this function is called, it might take a moment for ChatGPT to craft a response, but then it will be saved in the chat_completion variable. To access the specific response, we need to dig a little bit into that variable to grab the content. And then that content will be a dictionary in the form of a string (exactly the same as what we did with &lt;example scene&gt; when crafting the prompt), so we will need to use json.loads to read it into a valid Python dictionary. The following lines of code accomplish this:\n# Getting just the content of the response\nresponse_str = chat_completion.choices[0].message.content\n\n# Turning the string into a proper dictionary with json.loads\nnew_scene_data = json.loads(response_str)\nNow you have your new scene data! From here, you’ll want to both print it to the screen, but also save it in your scenes dictionary. After all, if someone should return to this scene at some later point, you want it to remain the same. Otherwise ChatGPT would craft a potentially totally different scene, which would be confusing to players. Now you essentially have an actual infinite adventure you can play!! But sometimes a picture is worth a thousand words, and so for the next milestone we want to add some visual flair.",
+    "crumbs": [
+      "Milestone 4: Handling Infinity"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone6.html",
+    "href": "milestones/milestone6.html",
+    "title": "Milestone 6: Reflection",
+    "section": "",
+    "text": "While you are all done with the coding, in this final project we are taking a moment to ask you to reflect on some potentially ethical considerations that may be present. This project is not unique in having some ethical facets around it, and in fact as programmers we always need to take some time to think about if the code we write or the ways we solve problems uphold the moral principles that govern (or ideally govern) society.\nHere, we have given at least some amount of creative control over storytelling to our code and the AI model. But is it as simple as that? Generative AI is an exciting new tool, but it comes with a lot of complicated questions. Is the AI doing a “good job”? Is the AI just copying stories from human content creators? What does it mean for our society if we can’t tell the difference between AI content and human content? What values and biases does this generative AI have “baked in”? In this last milestone, we want to think and reflect a bit more about that last question.\nConsider all of the choices you make when telling a story. Narratives, settings, and even names are all things that you, as a storyteller, get to decide. When we prompt our AI model, what choices is it making for us? Whose stories is it really telling?\nChange the story name to engineer_story. This story has only a single pre-defined scene, and so it will start generating new scenes as soon as a user makes their first choice. Run the story a few times, playing through at least a handful of scenes each time, and write down the names that are generated for your co-workers. You can then explore the statistics behind any of the names generated using the website here. Feel free to play around some with your own stories and to tweak the prompt or plot slightly as well. Then, answer the following questions in the infinite_ethics.txt file.\n\nQ1: You should notice that the names generated by OpenAI for this story are quite popular in certain countries. What types of countries/regions keep showing up for these names? Do you feel that they are distributed equally across the world population? Justify your answer, writing at least several sentences.\nQ2: How comfortable do you feel letting the AI model decide the names used in the story? Are you willing to trust the model with other storytelling decisions? There is no wrong position, but please justify your answer and write at least several sentences.\nQ3: Given how ChatGPT handled names in this context, what sorts of issues could you imagine coming up if instead of asking ChatGPT to generate a story, you were asking it to evaluate candidates for a job?\n\nMake sure that when submitting your project, you also upload infinite_ethics.txt!",
+    "crumbs": [
+      "Milestone 6: Reflection"
+    ]
+  },
+  {
+    "objectID": "milestones/milestones.html",
+    "href": "milestones/milestones.html",
+    "title": "Introducing Milestones",
+    "section": "",
+    "text": "As per usual, this project has been divided up into a series of smaller tasks to help you approach the project in a controlled and testable fashion. These milestones all build on one another, and so you should absolutely complete each one in its entirety and test it before moving on to the next!",
+    "crumbs": [
+      "Introducing Milestones"
+    ]
+  },
+  {
+    "objectID": "extensions.html",
+    "href": "extensions.html",
+    "title": "Possible Extensions",
+    "section": "",
+    "text": "There are a lot of possible and very fun extensions that you can persue with this project! Some options to get you started are included below, but ultimately you are limited only by your imagination (and time)!\n\nBetter scenes with history\n\nSometimes the scenes generated by ChatGPT can be a bit non-sensical, because the prompt doesn’t give the AI access to the entire history of all the things that have happened. In this extension, you could append a line to the prompt that is something like “Here is what has happened so far: &lt;history&gt;”, where &lt;history&gt; is a list of the scenes that the player has visited and the choices that they have made. Think of a way you could track this!\n\n\n\n\n\n\n\n\nImportant\n\n\n\nIf you do this, use the “scene_summary” part of each scene when adding to your history of visited scenes. This will keep your history (and thus your prompt) from getting too large.\n\n\n\nMake your own creative story\n\nOne way to go above and beyond is to just create your own story. You can write your own plot, your own scenes, and even create your own images if you want. Interested in an alternative history where President Thorsett’s weather machine always malfunctions? Make it! Want to write a story about a detective in the 1920s? Go for it! This is a great way to show off your creativity and storytelling skills, while practice authoring JSON.\n\nOpen-ended actions\n\nWhat if the player wants to do something that is not in the list of choices? For example, what if the player wants to “jump in the stream” when the choices are “Take the road up the hill”, “Walk up to the stream”, and “Knock on the door”? How would you handle this situation? One option is to always give the user the option for an open-ended action, and then to use ChatGPT to generate a new scene based on the user’s input. This can be a challenging extension, but it is a terrific way to make your story more interactive.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nTo make the story still feel believable, you should also introduce a new dynamic where ChatGPT can decide if the open-ended action actually happens. For example, if the player enters in “fly to the moon”, ChatGPT could decide that this is impossible given the plot and other story elements. You could either make that action have no impact on the scene (the action just fails) or you could have ChatGPT generate a new scene for the failed action state! Get creative!\n\n\n\nTracking Objects\n\nFor this extension, you will need to think about how to keep track of objects in your story. For example, if the player picks up a key in one scene, you will want to remember that they have the key in the next scene. Could that key then be necessary to take some particular action? Would that action only be printed if the player has the key? This can be a challenging extension, but is an excellent way to make the interactions between scenes feel more dynamic.\n\nDisplaying all scenes\n\nIn the assignment specification, whene you encounter a scene with no image, you simply draw a black square. What if instead you rendered the text of the scene description? Or maybe just rendered a shortened version of the description? That would help the visual window still have some meaning even when no image exists.\n\n\nAlternatively, if you are willing to register for your own OpenAI API key and invest the price of a cup of coffee, you could also make a call to OpenAI to render a new image from each scene description, which you could then save to the img folder. An example of how the existing images were generated will be included in the starting template.\n\nSaving Extension\n\nCurrently, if you play a story and generate a bunch of new scenes, and then exit the program and play the same story again, those generated scenes are all gone! So for this extension, it might make sense to think about how you could save the state of your story. You could save just the new scenes created by ChatGPT, or you could save the progress of the story as well! So that a player could run the program again to pick back up in a continuing story. Whenever you want to save a nested Python dictionary (or list) to a file, you can just json.dump to write the content to a file in JSON format.\n\nUse your imagination!\n\nThe joy of an extension is sometimes to think of something that nobody else is doing. Always feel free to implement something fun of your own devising!",
+    "crumbs": [
+      "Extensions",
+      "Possible Extensions"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone2.html",
+    "href": "milestones/milestone2.html",
+    "title": "Milestone 2: Getting a Valid Choice",
+    "section": "",
+    "text": "Now that you can print out a scene to the console, the next step is to prompt and get a choice from the player as to what they want to do. However, when we prompt a user in this fashion, they could enter in any possible text. So we want to also check that they entered in something that makes sense and is reasonable for the choices displayed. This milestone is thus about writing a helper function to both prompt the user for input, and then ensure that what they entered was valid, prompting them again if not. This helper function should also take only a single parameter: the data dictionary of a particular scene. It should return the number of the choice that the user made.\nAsk the user what they choose, with an input prompt of \"What do you choose? \". Their response needs to be one of the integers that corresponds to a printed choice for the scene. Until they actually make a valid choice, you should reprompt them with \"Please enter a valid choice: \". Once they finally enter in something valid, return the choice that they made.\nTo give you an example, let us take an instance where the “start” scene was printed to the screen (using the previous milestone). The user first tries to enter in the word cat, then the equally invalid number 5, before finally entering in the valid choice of 1, at which point the function should have returned the number 1.\nYou are standing at the end of a road before a small brick building.\nA small stream flows out of the building and down the gully to the\nsouth. A road runs up a small hill to the west.\n  1. Take the road up the hill\n  2. Walk up to the stream\n  3. Knock on the door\nWhat do you choose? cat\nPlease enter a valid choice: 5\nPlease enter a valid choice: 1\n\n\n\n\n\n\nTip\n\n\n\nPython lists are 0-indexed, but our choices are indexed starting at 1! Don’t forget that you need to account for this!\n\n\nNote that it is always possible that a player decides they are done and want to exit the program. One way to accomplish this would be to add a Quit choice to each and every room. But an easier approach is to just check if a player pressed Enter without entering in any characters. When such a thing happens, instead of reprompting them for a valid response, your helper function should just immediately return None. This will effectively work as a built-in “quit” option for us.",
+    "crumbs": [
+      "Milestone 2: Getting a Valid Choice"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone5.html",
+    "href": "milestones/milestone5.html",
+    "title": "Milestone 5: Visualizing Scene Images",
+    "section": "",
+    "text": "Perhaps you were travelling in a lush valley along a winding river, passing by quaint and charming brick cottages. Or maybe, once dusk has come upon us, you continue following this glowing, luminous stream to encounter a mysterious building with light pouring out of it. These visuals bring magic to the entire assignment–it is up to you to display them now to enhance the user’s experience! For all of the scenes in adventure.json and starter.json, we have utilized Dall-E to generate a corresponding image. They are all saved in the img folder, as described earlier in this guide here.\n\n\n\n\n\n\nImportant\n\n\n\nWhile there are images for the vast majority of scenes, some scenes may be missing an image. This is especially true once you start having ChatGPT generate new scenes! If an image for the current scene does not exist, you should simply display a black rectangle on the canvas (or feel free to spice things up and display something else of your choice as an extension!). You do not need to be generating images yourself, and it is not currently a featured part of the NotOpenAI library owing to the increased cost of generating images.\n\n\nIf you look within the img folder, you will see that all images are stored with a .jpg extension, and each has a filename identical to the scene_key which it is supposed to visualize. So, for example, the starting scene of “start” has the “img/start.jpg” image that looks like:\n\nThe path of an image is a string that tells you how you can get from a starting directory (in this case, the current folder where your infinite_adventure.py file lives) to the end destination (the desired image). We separate folders (directories) with slashes ('/') to indicate what directories must be “clicked through” to get to our destination. Hence why the path to the image above is \"img/start.jpg\".\nSo, whenever we enter a new scene, in addition to printing out the scene to the console, we want to check to see if the corresponding image exists, and, if it does, display it! We can use the PGL library to handle all of this, where you can create the window at the very beginning and then create a GImage for each new file to add to the window. Recall that if no image exists you want to instead display a black screen. Some hopefully helpful tips for when working on this milestone would include:\n\nCreate the initial GWindow at the start of your program. Since all of the images are 600x600 pixels, it is probably the easiest and reasonable to just have the GWindow be the same size\nYou can use your knowledge of concatenating strings to craft the needed path strings!\nThe easiest way to check if an image exists or not is to use a feature from the os library (standing for operating system). You can use os.path.exists(some path) to check if a given path is valid. This is a predicate function, so it will return True if the image path exists, or False if no images exist at the given path.\nYou’ll need to create and add a new GImage for each scene, so clean up after yourself as you go and remove the old content. You could either do this with the gw.remove(your image), or you could use gw.clear() to remove everything from the screen in one fell swoop.\nWhen the program is exited, your window will not automatically close. As such, you should use gw.close() to automatically close it in the case where a player doesn’t enter in any prompt.\n\nAn optional suggestion is to write text on top of every image (maybe in the bottom left) that says “Generated by Dall-E”. Otherwise, users might not know that these images are AI generated.\nWhen you finish with this milestone, CONGRATULATIONS! Look at (and play) your program! What magic! You just implemented your first nested dictionaries, and your first generative AI project! We are so proud of you! ❤",
+    "crumbs": [
+      "Milestone 5: Visualizing Scene Images"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone0.html",
+    "href": "milestones/milestone0.html",
+    "title": "Milestone 0: Loading the Story",
+    "section": "",
+    "text": "A key limitation for any adventure story of this nature is that you will eventually hit a dead end, where a “dead end” in this context is a scene that is referenced by another scene somewhere in the story, but is never actually defined itself. This first milestone is to get you started with understanding how to load in the story content and navigate within them to find these dead ends. As such, it is slightly tangential to your overall objective of programming the Infinite Adventure, but it ensures you understand some important concepts before you go on. As such, you will complete this portion of the project within warmup.py, instead of infinite_adventure.py.\nIn order to complete this warmup, you need to first understand how the story data is stored. All of the data for each story is saved within a nested dictionary, encoded as a JSON file in the data folder. Several story dictionaries initially exist, of which the one named starter.json will be of primary interest here.\nYou should begin by loading in the story data. This entails opening the file, and then using the load function from the json library to parse the JSON data into data structures that Python understands. So something as simple as\nwith open('data/starter.json') as fh:\n    story_data = json.load(fh)\nwill get you going.\nTo proceed further, you really need to ensure that you understand the structure and various pieces of the story_data dictionary. If you haven’t read over the Story Data Format yet, you should absolutely paused to look that over. Once you are feeling confident in your ability to navigate the nested dictionary, your goal is to write some code to find and print out all of the “dead ends” in the starter.json story. To do so, you’ll need to:\n\nLoop over all the scenes in the story\nFor each scene, loop over all the possible choices for that scene\nEach choice references a particular “scene_key” as the next scene to visit. If that scene key does not also appear in the scenes dictionary, then you have found a dead end! Print out the scene key of the dead end scene.\n\nFor the starter story, you’ll know you have done warmup.py correctly when the following scene keys are printed out:\nnext_to_gully\ndescend_into_valley\nwatching_sunset\ncontinue_exploring_hilltop\nreturn_to_small_brick_building\nNote that the order that these scenes are printed does not matter.\nYou can also try some additional optional challenges here if you want to really make sure you understand how to navigate the story dictionary. Can you print out the following?\n\nThe “plot” of the story?\nThe “text” description of the scene with the key “start”?\nThe “scene_key” you would go to if you took the first choice from the “start” scene (which would be the choice with the text “Take the road up the hill”)?",
+    "crumbs": [
+      "Milestone 0: Loading the Story"
+    ]
+  },
+  {
+    "objectID": "milestones/milestone1.html",
+    "href": "milestones/milestone1.html",
+    "title": "Milestone 1: Printing a Scene to Console",
+    "section": "",
+    "text": "We are now moving over to writing code in infinite_adventure.py! One of the first things you’ll want to do is to load in the story that is specified by the STORY_NAME constant, which you can do in a very similar way to how you did things in the Milestone 0. Once you have your story data, our first step will be to print to the screen a single scene from the story.\nTo print out a single scene from the story, we essentially need to print out several things: the content or “text” of the scene, and then all the possible choices that a player can make. When printing out the choices, they should be numbered for the user, starting at 1, so that it is easy for a player to (eventually) indicate which choice they would like to make. Because you are going to be printing out scenes constantly in this program, it makes a lot of sense to write a helper function to manage this.\nWrite a function to print everything from a single scene to the console. Your function should take just a single parameter: the dictionary associated with a single scene.\nWhen testing this function initially, you will need to extract a scene dictionary from the greater story dictionary to pass into your function. The scene with the key “start” is a great candidate, as that is eventually where you’ll want the adventure to start. When printing out the “start” scene then, you should print out the following:\nYou are standing at the end of a road before a small brick building. \nA small stream flows out of the building and down the gully to the \nsouth. A road runs up a small hill to the west.\n  1. Take the road up the hill\n  2. Walk up to the stream\n  3. Knock on the door\nNote that in addition to enumerating the choices, we have indented them by two spaces, which I think helps set them apart from the story description.\nTest your function with scene dictionaries beyond just the “start” scene! It should work for any scene you choose. Note that you do not need to print or do anything with the “scene_summary” key right now: that data will come in handy later.\n\n\n\n\n\n\nNote\n\n\n\nWe are eventually going to render a scene by both printing out a description of the scene to the terminal and rendering an image associated with the scene. But rendering the image is for a future milestone.",
+    "crumbs": [
+      "Milestone 1: Printing a Scene to Console"
+    ]
+  },
+  {
+    "objectID": "introduction/overview.html",
+    "href": "introduction/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "You are exploring a new world. Initially, almost every scene seems normal, but if the player continues to explore enough, they will slowly start to uncover some mysterious parts…\nIn this assignment, you will write a choose-your-own-adventure game that harnesses the power of generative AI. You will get to apply the knowledge you have learned about dictionaries and lists and combine that with making requests to ChatGPT to ultimately help guide you user through a mystical adventure. In the end, you will have a chance to reflect on some of the ethical implications underlying the use of generative AI in storytelling applications.\nOnce completed, when the user starts the program it will look something like this:\n\nThe user can then choose what action to take next. Here they chose option 1, to take the road up the hill, resulting in this next scene:\n\nUp to this point, it seems like a standard storytelling program. The magic happens when the user gets to a scene that hasn’t been written yet. Instead of crashing the program, or just preventing the user from continuing, the program will make a request to ChatGPT to generate the next scene. The story continues!\n\nOne of the goals of this assignment is to get you continued practice decomposing your programs. In the milestones you’ll be given suggestions for helpful functions. However, the flow of the program is ultimately in your capable hands.\nThat said, there are multiple files initially in the starting template. So next we’ll cover how things are organized and where you need to be writing what.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "introduction/json_format.html",
+    "href": "introduction/json_format.html",
+    "title": "The Story Data Format",
+    "section": "",
+    "text": "Before getting into the coding, it is going to be imperative to understand how the story data is stored in the JSON files in the data folder. We can view the structure of the JSON interactively for data/starter.json below. Note that I have started with all of the nested data collapsed, so that you can open and explore it yourself.\n \nIt can be a lot to absorb, I know! But don’t be intimidated: the key is just to systematically understand it step by step.\n\nStory:\n\nEvery story is a dictionary with two keys: a key “plot” that is associated with a string description of the overall story line, and a key “scenes” that is associated with a dictionary containing all the data of the scenes in the story (see below). Here, if you expand the “scenes” key, we can see that there are initially only 4 scenes defined.\n\nScenes:\n\nA dictionary with all of the scene data. In the scenes dictionary, scene keys are associated with all the data for a given scene (which is also stored in a dictionary). We can see that the scene key of the first scene in our above example is just “start”, and corresponds to a dictionary of 3 items. Every single scene is defined by this dictionary of three items, which have keys of “text”, for the scene description, “scene_summary”, for a shortened description, and “choices”, for a list of all the possible choices a player could take to move onwards from that scene. If you expand the “start” scene and then the “choices” key, you’ll see that there are three possible choices the player could make in the initial scene.\n\nChoices:\n\nThe choices key is comprised of a list of possible choices, each of which is yet another dictionary. These individual dictionaries that comprise a single choice always have two keys: a “text” key which describes the choice, and a “scene_key” which is the name of the next scene that the player would travel to if they selected that choice. So, for example, if a player selected the first choice from the “start” scene, which is to “take the road up the hill”, then they would next be taken to the “overlooking_valley” scene (which happens to be defined and be the third scene in starter.json.\n\n\nTake some time to play around with the above structure to ensure you understand it, or open one of the JSON files in VSCode, which will also give you collapsible arrows to the right to help control how much of the data is visible at any given time. The key (no pun intended!) is to not let the nested structure overwhelm you, and to just focus on the overall structure and whatever piece(s) of information you need at any given point.",
+    "crumbs": [
+      "The Story Data Format"
+    ]
+  }
+]

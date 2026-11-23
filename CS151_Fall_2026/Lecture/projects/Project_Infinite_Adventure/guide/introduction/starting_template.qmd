@@ -8,7 +8,7 @@ There are multiple folders and files evident when you first look at the starting
 This is the folder that holds the JSON files that contain the initial data for each infinite story. You'll be dealing largely with `starter.json` and `adventure.json` for most of the assignment, and will only explore `engineer_story.json` in the last milestone. These files will need no editing from you unless you decide to write your own initial story as part of an extension. The format of the individual JSON files will be explained later in this guide ([here](./json_format.qmd)).
 
 ## The `img` folder
-This folder will hold the pre-populated images that correspond to the initially written scenes. You won't need to utilize these images until Milestone 5, and will only add to them if you decide to do so an an extension.
+This folder will hold the pre-populated images that correspond to the initially written scenes. You won't need to utilize these images until Milestone 5, and will only add to them if you decide to do so as an extension.
 
 ## The `notopenai` folder
 This folder holds the `NotOpenAI` class that you are using to make API connections to ChatGPT. This class is constructed to be identical to the _actual_ OpenAI API, but instead routes your request through a separate server so that we get billed instead of you. This class gets implemented in Milestone 4, and you should not need to make any edits to the contents of this folder at any point.

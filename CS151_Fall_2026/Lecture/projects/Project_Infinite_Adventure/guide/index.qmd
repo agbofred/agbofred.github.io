@@ -1,5 +1,6 @@
 ---
 title: "Project 5: The Infinite Adventure"
+subtitle: "Due on December 4"
 ---
 
 
@@ -12,7 +13,7 @@ In order to generate these now locations using ChatGPT, you will need to connect
 As per usual, you will submit this project through GitHub Classroom, and you can find the link to accept the project and download the initial template files below.
 
 ```{=html}
-<a href='https://classroom.github.com/a/IcWSuIk2' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Project</a>
+<a href='https://classroom.github.com/a/IcWSuIk2' target="_blank" class="btn btn-success" style='margin:auto; display: block; width:50%;'>Accept Adventure Project</a>
 ```
 <br>
 
